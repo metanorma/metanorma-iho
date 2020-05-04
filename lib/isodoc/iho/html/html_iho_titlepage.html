@@ -1,0 +1,90 @@
+<div class="document-stage-band" id="{{ stage | downcase | replace: ' ', '-' }}-band">
+  <p class="document-stage">{{ stage }}</p>
+</div>
+
+<div class="document-type-band" id="{{ doctype | downcase | replace: ' ', '-' }}-band">
+  <p class="document-type">Ribose {{ doctype }}</p>
+</div>
+
+
+
+<div id='toggle'> <span>&#x2022;</span> </div>
+
+<header>
+
+  <div class="coverpage">
+    <div class="wrapper-top">
+
+      <div class="coverpage-doc-identity">
+        <div class="doc-number">
+          <span class="docnumber">{{ docnumber }}</span>
+          <span class="docyear">{{ draftinfo }}</span>
+        </div>
+
+        <div class="coverpage-title">
+          <span class="title-first">{{ doctitle }}</span>
+          <!--<span class="title-second">{{ docsubtitle }}</span>-->
+        </div>
+      </div>
+
+      <div class="coverpage-logo">
+        <span>Ribose Group Inc. {{ docyear }}</span>
+      </div>
+
+      <div class="coverpage-tc-name">
+        <span>{{ tc }}</span>
+      </div>
+    </div>
+
+    <div class="wrapper-top-bottom"></div>
+
+    <div class="WordSection11">
+      <div class="coverpage-stage-block" >
+        <span class="coverpage-stage" id="{{ doctype | replace: ' ', '-' | downcase }}">Ribose {{ doctype }}</span>
+      </div>
+
+      <div class="coverpage-stage-block" >
+        <p><span class="coverpage-maturity" id="{{ stage | replace: ' ', '-' | downcase }}">
+          {%- if unpublished -%}
+          {{- stage -}}
+          {%- else -%}
+          {%- if publisheddate and publisheddate != "XXXX" -%}
+          Published {{ publisheddate -}}
+          {%- endif -%}
+          {%- endif -%}</span></p>
+        {% if security %}
+        <p><span class="coverpage-maturity">Classification: {{ security }}</span></p>
+        {% endif %}
+      </div>
+
+      {% if doctype == "Policy And Procedures" or doctype == "Proposal" %}
+      <div  class="coverpage-stage-block" >{{ revdate }}</div>
+      {% endif %}
+
+      {% if unpublished %}
+      <div class="coverpage-warning">
+        <div id="boilerplate-license-destination"/>
+      </div>
+      {% endif %}
+
+      <div class="info-section">
+        <div class="copyright">
+          <div class="year">
+            <div id="boilerplate-copyright-destination"/>
+          </div>
+
+          <div class="message">
+            <div id="boilerplate-legal-destination"/>
+          </div>
+
+          <div class="contact-info">
+            <div id="boilerplate-feedback-destination"/>
+            </div>
+          </div>
+
+          <div class="rule"></div>
+        </div>
+      </div>
+
+
+</header>

@@ -1,0 +1,119 @@
+<p class="MsoNormal" align="right" style='text-align:right'><b style='mso-bidi-font-weight:normal'><span lang="EN-GB" style='font-size:14.0pt;mso-no-proof:yes'>RR {{ docnumber }}:{{docyear}} {{ draftinfo }}</span></b></p>
+
+{% if tc %}
+<p class="MsoNormal" align="right" style='text-align:right'><span
+style='mso-no-proof:yes'>Ribose&#xA0;{{ tc | join: "/" }}</span></p>
+{% endif %}
+
+<p class="MsoNormal" align="center" style='text-align:center;line-height:18.0pt;margin-bottom:0.0pt'><b
+style='mso-bidi-font-weight:normal'><span lang="EN-GB" style='font-size:24.0pt'>{{ doctitle }}</span>
+</b><br/><span lang="EN-GB" style='font-size:16.0pt'>{{ docsubtitle }}</span></p>
+
+<p class="MsoNormal" style='margin-top:100.0pt'><span lang="EN-GB"><o:p>&#xA0;</o:p></span></p>
+
+<div style='mso-element:para-border-div;border:solid windowtext 1.0pt;
+mso-border-alt:solid windowtext .5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+margin-left:4.25pt;margin-right:4.25pt'>
+
+<p class="MsoNormal" align="center" style='text-align:center;border:none;
+mso-border-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><span
+                     lang="EN-GB" style='font-size:16.0pt'>{%- if unpublished -%}
+      {{- stage -}}
+      {%- else -%}
+      {%- if publisheddate and publisheddate != "XXXX" -%}
+      Published {{ publisheddate -}}
+      {%- endif -%}
+      {%- endif  %}</span></p>
+
+<p class="MsoNormal" align="center" style='text-align:center;border:none;
+mso-border-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><span
+                     lang="EN-GB" style='font-size:16.0pt'>Ribose {{ doctype }}</span></p>
+
+
+{% if doctype == "Policy And Procedures" or doctype == "Proposal" %}
+<p class="MsoNormal" align="center" style='text-align:center;border:none;
+mso-border-alt:solid windowtext .5pt;padding:0cm;mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt'><span
+                     lang="EN-GB" style='font-size:16.0pt'>{{ revdate }}<o:p></o:p></span></p>
+{% endif %}
+</div>
+
+<p class="MsoNormal" style='margin-bottom:6.0pt'><span lang="EN-GB"><o:p>&#xA0;</o:p></span></p>
+
+{% for author in authors %}
+<p class="MsoNormal">{{ author }}</p>
+{% endfor %}
+
+<p/>
+
+<p/>
+
+<p/>
+
+{% if draft %}
+<p class="MsoNormal">Version {{draft}}<br/>
+{{ revdate_MMMddyyyy || circulateddate }}</p>
+{% endif %}
+
+{% if security %}
+<p class="MsoNormal">&#xA0;</p>
+
+<p class="MsoNormal"><i> {{ security }}</i></p>
+{% endif %}
+
+{% if recipient %}
+<p class="MsoNormal">&#xA0;</p>
+
+<p class="MsoNormal">Recipient: {{ recipient  }}</p>
+{% endif %}
+
+<div style='mso-element:para-border-div;border:solid windowtext 1.0pt;
+mso-border-alt:solid windowtext .5pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+margin-left:4.25pt;margin-right:4.25pt'>
+
+{% if unpublished %}
+<div id="boilerplate-license-destination"/>
+{% endif %}
+
+</div>
+
+<div align="center" style='text-align:center'>
+  <div id="boilerplate-copyright-destination"/>
+  </div>
+
+
+<p class="MsoHeader"><v:shapetype id="_x0000_t75" coordsize="21600,21600"
+ o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
+ stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_39" o:spid="_x0000_s1026" type="#_x0000_t75"
+ alt="A close up of a logo&#10;&#10;Description automatically generated"
+ style='position:absolute;margin-left:.15pt;margin-top:96pt;width:123.65pt;
+ height:31.1pt;z-index:251658240;visibility:visible;mso-wrap-style:square;
+ mso-width-percent:0;mso-height-percent:0;mso-wrap-distance-left:9pt;
+ mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;
+ mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;
+ mso-position-horizontal-relative:text;mso-position-vertical:absolute;
+ mso-position-vertical-relative:text;mso-width-percent:0;mso-height-percent:0;
+ mso-width-relative:page;mso-height-relative:page'>
+<v:imagedata src="{{ logo }}" o:title="A close up of a logo&#10;&#10;Description automatically generated"/>
+ <w:wrap type="square"/>
+</v:shape>
+</p>
+
+

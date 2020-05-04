@@ -1,0 +1,32 @@
+organization_name_short: IHO
+organization_name_long: International Hydrographic Organization
+document_namespace: https://www.metanorma.org/ns/iho
+xml_root_tag: 'iho-standard'
+logo_path: lib/isodoc/iho/html/logo.png
+validate_rng_file: lib/asciidoctor/iho/iho.rng
+htmlcoverpage: lib/isodoc/iho/html/html_iho_titlepage.html
+htmlintropage: lib/isodoc/iho/html/html_iho_intro.html
+htmlstylesheet: lib/isodoc/iho/html/htmlstyle.scss
+html_bodyfont: '"Source Sans Pro",sans-serif'
+html_headerfont: '"Source Sans Pro",sans-serif'
+html_monospacefont: '"Source Code Pro",monospace'
+scripts: lib/isodoc/iho/html/scripts.html
+scripts_pdf: lib/isodoc/iho/html/scripts.pdf.html
+standardstylesheet: lib/isodoc/iho/html/iho.scss
+header: lib/isodoc/iho/html/header.html
+wordcoverpage: lib/isodoc/iho/html/word_iho_titlepage.html
+wordintropage: lib/isodoc/iho/html/word_iho_intro.html
+wordstylesheet: lib/isodoc/iho/html/wordstyle.scss
+word_bodyfont: '"Source Sans Pro","Arial",sans-serif'
+word_headerfont: '"Source Sans Pro","Arial",sans-serif'
+word_monospacefont: '"Source Code Pro",monospace'
+docid_template: "{{ docnumeric }}{% if stageabbr %}({{ stageabbr }}){%endif%}"
+published_stages:
+  - published
+stage_abbreviations:
+  working-draft: wd
+  committee-draft: cd
+  draft-standard: d
+metadata_extensions:
+ - security
+ - recipient

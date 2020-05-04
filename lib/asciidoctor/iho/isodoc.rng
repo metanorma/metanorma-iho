@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  instantiations of this grammar may replace leaf strings
+  with more elaborated types; e.g. title (text) replaced with
+  title-main, title-intro, title-part; type replaced with
+  enum.
+  
+  some renaming at leaf nodes is permissible
+  
+  obligations can change both from optional to mandatory,
+  and from mandatory to optional; optional elements may
+  be omitted; freely positioned alternatives may be replaced
+  with strict ordering
+  
+  DO NOT introduce a namespace here. We do not want a distinct namespace
+  for these elements, and a distinct namespace for any grammar inheriting
+  these elements; we just want one namespace for any child grammars
+  of this.
+-->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="reqt.rng"/>
+  <!-- include "biblio.rnc" { } -->
+  <include href="basicdoc.rng">
+    <start>
+      <ref name="standard-document"/>
+    </start>
+    <define name="hyperlink">
+      <element name="link">
+        <attribute name="target">
+          <data type="anyURI"/>
+        </attribute>
+        <optional>
+          <attribute name="type">
+            <ref name="ReferenceFormat"/>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="alt"/>
+        </optional>
+        <text/>
+      </element>
+    </define>
+    <define name="xref">
+      <element name="xref">
+        <attribute name="target">
+          <data type="IDREF"/>
+        </attribute>
+        <optional>
+          <attribute name="type">
+            <ref name="ReferenceFormat"/>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="alt"/>
+        </optional>
+        <text/>
+      </element>
+    </define>
+    <define name="example">
+      <element name="example">
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+        <optional>
+          <attribute name="unnumbered">
+            <data type="boolean"/>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="subsequence"/>
+        </optional>
+        <optional>
+          <ref name="tname"/>
+        </optional>
+        <oneOrMore>
+          <choice>
+            <ref name="formula"/>
+            <ref name="ul"/>
+            <ref name="ol"/>
+            <ref name="dl"/>
+            <ref name="quote"/>
+            <ref name="sourcecode"/>
+            <ref name="paragraph-with-footnote"/>
+            <ref name="figure"/>
+          </choice>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="note"/>
+        </zeroOrMore>
+      </element>
+    </define>
+    <define name="BibDataExtensionType">
+      <ref name="doctype"/>
+      <optional>
+        <ref name="editorialgroup"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="ics"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="structuredidentifier"/>
+      </zeroOrMore>
+    </define>
+    <!-- TitleType = text -->
+    <define name="sections">
+      <element name="sections">
+        <oneOrMore>
+          <choice>
+            <ref name="clause"/>
+            <ref name="terms"/>
+            <ref name="term-clause"/>
+            <ref name="definitions"/>
+          </choice>
+        </oneOrMore>
+      </element>
+    </define>
+    <define name="references">
+      <element name="references">
+        <optional>
+          <attribute name="id">
+            <data type="ID"/>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="obligation">
+            <choice>
+              <value>normative</value>
+              <value>informative</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
+          <ref name="section-title"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="BasicBlock"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="note"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="bibitem"/>
+          <zeroOrMore>
+            <ref name="note"/>
+          </zeroOrMore>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="references"/>
+        </zeroOrMore>
+      </element>
+    </define>
+    <define name="note">
+      <element name="note">
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+        <oneOrMore>
+          <choice>
+            <ref name="paragraph"/>
+            <ref name="ul"/>
+            <ref name="ol"/>
+            <ref name="dl"/>
+            <ref name="formula"/>
+          </choice>
+        </oneOrMore>
+      </element>
+    </define>
+    <define name="Basic-Section">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
+      <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <ref name="section-title"/>
+      </optional>
+      <group>
+        <oneOrMore>
+          <ref name="BasicBlock"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="note"/>
+        </zeroOrMore>
+      </group>
+    </define>
+    <define name="li">
+      <element name="li">
+        <group>
+          <optional>
+            <attribute name="id">
+              <data type="ID"/>
+            </attribute>
+          </optional>
+          <oneOrMore>
+            <ref name="BasicBlock"/>
+          </oneOrMore>
+        </group>
+        <!-- exclude figures? -->
+      </element>
+    </define>
+    <define name="dd">
+      <element name="dd">
+        <zeroOrMore>
+          <!-- exclude figures? -->
+          <ref name="BasicBlock"/>
+        </zeroOrMore>
+      </element>
+    </define>
+    <define name="thead">
+      <element name="thead">
+        <oneOrMore>
+          <ref name="tr"/>
+        </oneOrMore>
+      </element>
+    </define>
+    <define name="td">
+      <element name="td">
+        <optional>
+          <attribute name="colspan"/>
+        </optional>
+        <optional>
+          <attribute name="rowspan"/>
+        </optional>
+        <optional>
+          <attribute name="align">
+            <choice>
+              <value>left</value>
+              <value>right</value>
+              <value>center</value>
+            </choice>
+          </attribute>
+        </optional>
+        <choice>
+          <zeroOrMore>
+            <choice>
+              <ref name="TextElement"/>
+              <ref name="fn"/>
+            </choice>
+          </zeroOrMore>
+          <oneOrMore>
+            <choice>
+              <ref name="paragraph-with-footnote"/>
+              <ref name="dl"/>
+              <ref name="ul"/>
+              <ref name="ol"/>
+              <ref name="figure"/>
+            </choice>
+          </oneOrMore>
+        </choice>
+      </element>
+    </define>
+    <define name="th">
+      <element name="th">
+        <optional>
+          <attribute name="colspan"/>
+        </optional>
+        <optional>
+          <attribute name="rowspan"/>
+        </optional>
+        <optional>
+          <attribute name="align">
+            <choice>
+              <value>left</value>
+              <value>right</value>
+              <value>center</value>
+            </choice>
+          </attribute>
+        </optional>
+        <choice>
+          <zeroOrMore>
+            <choice>
+              <ref name="TextElement"/>
+              <ref name="fn"/>
+            </choice>
+          </zeroOrMore>
+          <oneOrMore>
+            <ref name="paragraph-with-footnote"/>
+          </oneOrMore>
+        </choice>
+      </element>
+    </define>
+    <define name="table-note">
+      <element name="note">
+        <optional>
+          <attribute name="id">
+            <data type="ID"/>
+          </attribute>
+        </optional>
+        <ref name="paragraph"/>
+      </element>
+    </define>
+    <define name="TextElement" combine="choice">
+      <ref name="concept"/>
+    </define>
+  </include>
+  <!-- end overrides -->
+  <define name="concept">
+    <element name="concept">
+      <optional>
+        <attribute name="term"/>
+      </optional>
+      <choice>
+        <ref name="eref"/>
+        <ref name="xref"/>
+        <ref name="termref"/>
+      </choice>
+    </element>
+  </define>
+  <define name="BasicBlock" combine="choice">
+    <choice>
+      <ref name="requirement"/>
+      <ref name="recommendation"/>
+      <ref name="permission"/>
+    </choice>
+  </define>
+  <define name="bibliography">
+    <element name="bibliography">
+      <oneOrMore>
+        <choice>
+          <ref name="references"/>
+          <ref name="reference-clause"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="reference-clause">
+    <element name="clause">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
+      <optional>
+        <attribute name="inline-header">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <ref name="section-title"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="BasicBlock"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="note"/>
+      </zeroOrMore>
+      <choice>
+        <oneOrMore>
+          <ref name="reference-clause"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="references"/>
+        </zeroOrMore>
+      </choice>
+    </element>
+  </define>
+  <define name="editorialgroup">
+    <element name="editorialgroup">
+      <oneOrMore>
+        <ref name="technical-committee"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="technical-committee">
+    <element name="technical-committee">
+      <ref name="IsoWorkgroup"/>
+    </element>
+  </define>
+  <define name="IsoWorkgroup">
+    <optional>
+      <attribute name="number">
+        <data type="int"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="type"/>
+    </optional>
+    <text/>
+  </define>
+  <define name="ics">
+    <element name="ics">
+      <element name="code">
+        <text/>
+      </element>
+      <element name="text">
+        <text/>
+      </element>
+    </element>
+  </define>
+  <define name="standard-document">
+    <element name="standard-document">
+      <ref name="bibdata"/>
+      <optional>
+        <ref name="boilerplate"/>
+      </optional>
+      <optional>
+        <ref name="preface"/>
+      </optional>
+      <ref name="sections"/>
+      <zeroOrMore>
+        <ref name="annex"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="references"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="preface">
+    <element name="preface">
+      <oneOrMore>
+        <choice>
+          <ref name="content"/>
+          <ref name="preface_abstract"/>
+          <ref name="foreword"/>
+          <ref name="introduction"/>
+          <ref name="acknowledgements"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="foreword">
+    <element name="foreword">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="introduction">
+    <element name="introduction">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="boilerplate">
+    <element name="boilerplate">
+      <optional>
+        <ref name="copyright-statement"/>
+      </optional>
+      <optional>
+        <ref name="license-statement"/>
+      </optional>
+      <optional>
+        <ref name="legal-statement"/>
+      </optional>
+      <optional>
+        <ref name="feedback-statement"/>
+      </optional>
+    </element>
+  </define>
+  <define name="copyright-statement">
+    <element name="copyright-statement">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="license-statement">
+    <element name="license-statement">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="legal-statement">
+    <element name="legal-statement">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="feedback-statement">
+    <element name="feedback-statement">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="definitions">
+    <element name="definitions">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
+      <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <ref name="section-title"/>
+      </optional>
+      <oneOrMore>
+        <zeroOrMore>
+          <ref name="BasicBlock"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="note"/>
+        </zeroOrMore>
+        <ref name="dl"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="content">
+    <element name="clause">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="abstract">
+    <element name="abstract">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="acknowledgements">
+    <element name="acknowledgements">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="content-subsection">
+    <element name="clause">
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="Content-Section">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="script"/>
+    </optional>
+    <optional>
+      <attribute name="inline-header">
+        <data type="boolean"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="obligation">
+        <choice>
+          <value>normative</value>
+          <value>informative</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <ref name="section-title"/>
+    </optional>
+    <group>
+      <group>
+        <zeroOrMore>
+          <ref name="BasicBlock"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="note"/>
+        </zeroOrMore>
+      </group>
+      <zeroOrMore>
+        <ref name="content-subsection"/>
+      </zeroOrMore>
+    </group>
+  </define>
+  <define name="clause">
+    <element name="clause">
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <ref name="Clause-Section"/>
+    </element>
+  </define>
+  <define name="Clause-Section">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="script"/>
+    </optional>
+    <optional>
+      <attribute name="inline-header">
+        <data type="boolean"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="obligation">
+        <choice>
+          <value>normative</value>
+          <value>informative</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <ref name="section-title"/>
+    </optional>
+    <group>
+      <group>
+        <zeroOrMore>
+          <ref name="BasicBlock"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="note"/>
+        </zeroOrMore>
+      </group>
+      <zeroOrMore>
+        <choice>
+          <ref name="clause-subsection"/>
+          <ref name="terms"/>
+          <ref name="definitions"/>
+        </choice>
+      </zeroOrMore>
+    </group>
+  </define>
+  <define name="Annex-Section">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="script"/>
+    </optional>
+    <optional>
+      <attribute name="inline-header">
+        <data type="boolean"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="obligation">
+        <choice>
+          <value>normative</value>
+          <value>informative</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <ref name="section-title"/>
+    </optional>
+    <group>
+      <group>
+        <zeroOrMore>
+          <ref name="BasicBlock"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="note"/>
+        </zeroOrMore>
+      </group>
+      <zeroOrMore>
+        <choice>
+          <ref name="annex-subsection"/>
+          <ref name="terms"/>
+          <ref name="definitions"/>
+          <ref name="references"/>
+        </choice>
+      </zeroOrMore>
+    </group>
+  </define>
+  <define name="clause-subsection">
+    <element name="clause">
+      <ref name="Clause-Section"/>
+    </element>
+  </define>
+  <define name="annex-subsection">
+    <element name="clause">
+      <ref name="Annex-Section"/>
+    </element>
+  </define>
+  <define name="annex">
+    <element name="annex">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
+      <optional>
+        <attribute name="inline-header">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <attribute name="obligation">
+        <choice>
+          <value>normative</value>
+          <value>informative</value>
+        </choice>
+      </attribute>
+      <optional>
+        <ref name="section-title"/>
+      </optional>
+      <group>
+        <group>
+          <zeroOrMore>
+            <ref name="BasicBlock"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="note"/>
+          </zeroOrMore>
+        </group>
+        <zeroOrMore>
+          <choice>
+            <ref name="annex-subsection"/>
+            <ref name="terms"/>
+            <ref name="definitions"/>
+            <ref name="references"/>
+          </choice>
+        </zeroOrMore>
+      </group>
+    </element>
+  </define>
+  <define name="terms">
+    <element name="terms">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
+      <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <ref name="section-title"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="BasicBlock"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="note"/>
+      </zeroOrMore>
+      <choice>
+        <oneOrMore>
+          <ref name="term"/>
+        </oneOrMore>
+        <group>
+          <zeroOrMore>
+            <ref name="terms"/>
+          </zeroOrMore>
+          <optional>
+            <ref name="definitions"/>
+          </optional>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="term">
+    <element name="term">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <ref name="preferred"/>
+      </oneOrMore>
+      <zeroOrMore>
+        <ref name="admitted"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="related"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="deprecates"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="termdomain"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="termgrammar"/>
+      </zeroOrMore>
+      <ref name="definition"/>
+      <zeroOrMore>
+        <ref name="termnote"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="termexample"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="termsource"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="preferred">
+    <element name="preferred">
+      <oneOrMore>
+        <ref name="TextElement"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="admitted">
+    <element name="admitted">
+      <oneOrMore>
+        <ref name="TextElement"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="related">
+    <element name="related">
+      <optional>
+        <attribute name="type">
+          <choice>
+            <value>compare</value>
+            <value>contrast</value>
+            <value>see</value>
+          </choice>
+        </attribute>
+      </optional>
+      <oneOrMore>
+        <ref name="TextElement"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="deprecates">
+    <element name="deprecates">
+      <oneOrMore>
+        <ref name="TextElement"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="termdomain">
+    <element name="domain">
+      <oneOrMore>
+        <ref name="TextElement"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="termgrammar">
+    <element name="grammar">
+      <oneOrMore>
+        <ref name="TextElement"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="definition">
+    <element name="definition">
+      <oneOrMore>
+        <choice>
+          <ref name="paragraph"/>
+          <ref name="figure"/>
+          <ref name="formula"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="termnote">
+    <element name="termnote">
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+      <ref name="paragraph"/>
+    </element>
+  </define>
+  <define name="termexample">
+    <element name="termexample">
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+      <ref name="paragraph"/>
+    </element>
+  </define>
+  <define name="termsource">
+    <element name="termsource">
+      <attribute name="status">
+        <choice>
+          <value>identical</value>
+          <value>modified</value>
+        </choice>
+      </attribute>
+      <ref name="origin"/>
+      <optional>
+        <ref name="modification"/>
+      </optional>
+    </element>
+  </define>
+  <define name="origin">
+    <element name="origin">
+      <choice>
+        <ref name="erefType"/>
+        <ref name="termref"/>
+      </choice>
+    </element>
+  </define>
+  <define name="modification">
+    <element name="modification">
+      <ref name="paragraph"/>
+    </element>
+  </define>
+  <define name="termref">
+    <element name="termref">
+      <attribute name="base"/>
+      <attribute name="target"/>
+      <optional>
+        <text/>
+      </optional>
+    </element>
+  </define>
+  <define name="structuredidentifier">
+    <element name="structuredidentifier">
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <oneOrMore>
+        <element name="agency">
+          <text/>
+        </element>
+      </oneOrMore>
+      <optional>
+        <element name="class">
+          <text/>
+        </element>
+      </optional>
+      <element name="docnumber">
+        <text/>
+      </element>
+      <optional>
+        <element name="partnumber">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="edition">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="version">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="supplementtype">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="supplementnumber">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="language">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="year">
+          <text/>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="preface_abstract">
+    <element name="abstract">
+      <ref name="Basic-Section"/>
+    </element>
+  </define>
+  <define name="term-clause">
+    <element name="clause">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
+      <optional>
+        <attribute name="inline-header">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <ref name="section-title"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="BasicBlock"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="note"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <choice>
+          <ref name="term-clause"/>
+          <ref name="terms"/>
+          <ref name="definitions"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="termdocsource">
+    <element name="termdocsource">
+      <ref name="CitationType"/>
+    </element>
+  </define>
+</grammar>
