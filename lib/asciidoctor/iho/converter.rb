@@ -27,22 +27,6 @@ module Asciidoctor
         end
       end
 
-      def doctype(node)
-        d = node.attr("doctype")
-        unless %w{standard specification resolution regulation}.include? d
-          @log.add("Document Attributes", nil,
-                   "#{d} is not a legal document type: reverting to 'standard'")
-          d = "standard"
-        end
-        d
-      end
-
-      def metadata_status(node, xml)
-        xml.status do |s|
-          s.stage ( node.attr("status") || node.attr("docstage") || "in-force" )
-        end
-      end
-
       def metadata_series(node, xml)
         series = node.attr("series") or return
         xml.series **{ type: "main" } do |s|

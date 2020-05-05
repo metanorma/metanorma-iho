@@ -23,6 +23,8 @@ word_monospacefont: '"Source Code Pro",monospace'
 docid_template: "{{ docnumeric }}{% if stageabbr %}({{ stageabbr }}){%endif%}"
 published_stages:
   - in-force
+  - retired  
+default_stage: in-force
 stage_abbreviations:
   draft-proposal:
   draft-development:
@@ -30,3 +32,9 @@ stage_abbreviations:
   draft-implementation:
   in-force:
   retired:
+doctypes:
+  - standard 
+  - specification 
+  - resolution 
+  - regulation
+default_doctype: standard

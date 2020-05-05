@@ -60,7 +60,6 @@ RSpec.describe Asciidoctor::IHO do
       :workgroup_3: WG3
       :copyright-year: 2001
       :status: working-draft
-      :iteration: 3
       :language: en
       :title: Main Title
       :security: Client Confidential
@@ -190,6 +189,7 @@ RSpec.describe Asciidoctor::IHO do
   <script>Latn</script>
   <status>
     <stage>committee-draft</stage>
+    <iteration>3</iteration>
   </status>
   <copyright>
     <from>#{Date.today.year}</from>
