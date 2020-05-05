@@ -25,6 +25,18 @@ module IsoDoc
                  Date.parse(isodate).strftime("%B %d, %Y")
                end
       end
+
+      def commentperiod(ixml, _out)
+        from = ixml.at(ns("//bibdata/ext/commentperiod/from"))&.text
+        to = ixml.at(ns("//bibdata/ext/commentperiod/to"))&.text
+        extended = ixml.at(ns("//bibdata/ext/commentperiod/extended"))&.text
+        set(:comment_from, from) if from
+        set(:comment_to, to) if to
+      end
+
+      def series(xml, _out)
+        set(:series, xml.at(ns("//bibdata/series[@type = 'main']/title"))&.text)
+      end
     end
   end
 end

@@ -22,11 +22,11 @@ word_headerfont: '"Source Sans Pro","Arial",sans-serif'
 word_monospacefont: '"Source Code Pro",monospace'
 docid_template: "{{ docnumeric }}{% if stageabbr %}({{ stageabbr }}){%endif%}"
 published_stages:
-  - published
+  - in-force
 stage_abbreviations:
-  working-draft: wd
-  committee-draft: cd
-  draft-standard: d
-metadata_extensions:
- - security
- - recipient
+  draft-proposal:
+  draft-development:
+  draft-testing:
+  draft-implementation:
+  in-force:
+  retired:

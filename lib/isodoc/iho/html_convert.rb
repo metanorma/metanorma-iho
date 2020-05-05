@@ -17,7 +17,6 @@ module IsoDoc
         boilerplate docxml, div3
         abstract docxml, div3
         foreword docxml, div3
-        executivesummary docxml, div3
         introduction docxml, div3
         preface docxml, div3
         acknowledgements docxml, div3

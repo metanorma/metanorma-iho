@@ -52,19 +52,12 @@ RSpec.describe Asciidoctor::IHO do
       :edition: 2
       :revdate: 2000-01-01
       :draft: 3.4
-      :committee: TC
-      :committee-number: 1
-      :committee-type: A
-      :committee_2: TC1
-      :committee-number_2: 11
-      :committee-type_2: A1
-      :subcommittee: SC
-      :subcommittee-number: 2
-      :subcommittee-type: B
-      :workgroup: WG
-      :workgroup-number: 3
-      :workgroup-type: C
-      :secretariat: SECRETARIAT
+      :committee: hssc
+      :workgroup: WG1
+      :committee_2: ircc
+      :workgroup_2: WG2
+      :committee_3: hssc
+      :workgroup_3: WG3
       :copyright-year: 2001
       :status: working-draft
       :iteration: 3
@@ -72,6 +65,11 @@ RSpec.describe Asciidoctor::IHO do
       :title: Main Title
       :security: Client Confidential
       :recipient: tbd@example.com
+      :implemented-date: 2000-01-01
+      :obsoleted-date: 2001-01-01
+      :comment-from: 2010-01-01
+      :comment-to: 2011-01-01
+      :series: iho-bathymetric
       
     INPUT
 
@@ -80,8 +78,14 @@ RSpec.describe Asciidoctor::IHO do
 <iho-standard xmlns="https://www.metanorma.org/ns/iho">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
-<docidentifier>1000(wd)</docidentifier>
+<docidentifier>1000</docidentifier>
 <docnumber>1000</docnumber>
+ <date type='implemented'>
+   <on>2000-01-01</on>
+ </date>
+ <date type='obsoleted'>
+   <on>2001-01-01</on>
+ </date>
   <contributor>
     <role type="author"/>
     <organization>
@@ -103,7 +107,6 @@ RSpec.describe Asciidoctor::IHO do
   <script>Latn</script>
   <status>
     <stage>working-draft</stage>
-    <iteration>3</iteration>
   </status>
   <copyright>
     <from>2001</from>
@@ -113,14 +116,27 @@ RSpec.describe Asciidoctor::IHO do
       </organization>
     </owner>
   </copyright>
+  <series type='main'>
+  <title>iho-bathymetric</title>
+</series>
   <ext>
   <doctype>standard</doctype>
   <editorialgroup>
-    <committee type="A">TC</committee>
-    <committee type="A1">TC1</committee>
-  </editorialgroup>
-  <security>Client Confidential</security>
-  <recipient>tbd@example.com</recipient>
+               <committee>hssc</committee>
+               <workgroup>WG1</workgroup>
+             </editorialgroup>
+             <editorialgroup>
+               <committee>ircc</committee>
+               <workgroup>WG2</workgroup>
+             </editorialgroup>
+             <editorialgroup>
+               <committee>hssc</committee>
+               <workgroup>WG3</workgroup>
+             </editorialgroup>
+             <commentperiod>
+  <from>2010-01-01</from>
+  <to>2011-01-01</to>
+</commentperiod>
   </ext>
 </bibdata>
         #{BOILERPLATE.sub(/<legal-statement/, "#{LICENSE_BOILERPLATE}\n<legal-statement").sub(/Ribose Group Inc\. #{Time.new.year}/, "Ribose Group Inc. 2001")}
@@ -151,7 +167,7 @@ RSpec.describe Asciidoctor::IHO do
         <iho-standard xmlns="https://www.metanorma.org/ns/iho">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
-  <docidentifier>1000(cd)</docidentifier>
+  <docidentifier>1000</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
@@ -174,7 +190,6 @@ RSpec.describe Asciidoctor::IHO do
   <script>Latn</script>
   <status>
     <stage>committee-draft</stage>
-    <iteration>3</iteration>
   </status>
   <copyright>
     <from>#{Date.today.year}</from>
@@ -192,139 +207,6 @@ RSpec.describe Asciidoctor::IHO do
 <sections/>
 </iho-standard>
         OUTPUT
-    end
-
-            it "processes draft-standard" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iho, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      = Document title
-      Author
-      :docfile: test.adoc
-      :nodoc:
-      :novalid:
-      :docnumber: 1000
-      :doctype: standard
-      :edition: 2
-      :revdate: 2000-01-01
-      :draft: 3.4
-      :status: draft-standard
-      :iteration: 3
-      :language: en
-      :title: Main Title
-    INPUT
-        <iho-standard xmlns="https://www.metanorma.org/ns/iho">
-<bibdata type="standard">
-  <title language="en" format="text/plain">Main Title</title>
-  <docidentifier>1000(d)</docidentifier>
-  <docnumber>1000</docnumber>
-  <contributor>
-    <role type="author"/>
-    <organization>
-      <name>International Hydrographic Organization</name>
-    </organization>
-  </contributor>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <name>International Hydrographic Organization</name>
-    </organization>
-  </contributor>
-  <edition>2</edition>
-<version>
-  <revision-date>2000-01-01</revision-date>
-  <draft>3.4</draft>
-</version>
-  <language>en</language>
-  <script>Latn</script>
-  <status>
-    <stage>draft-standard</stage>
-    <iteration>3</iteration>
-  </status>
-  <copyright>
-    <from>#{Date.today.year}</from>
-    <owner>
-      <organization>
-        <name>International Hydrographic Organization</name>
-      </organization>
-    </owner>
-  </copyright>
-  <ext>
-  <doctype>standard</doctype>
-  </ext>
-</bibdata>
-        #{BOILERPLATE.sub(/<legal-statement/, "#{LICENSE_BOILERPLATE}\n<legal-statement")}
-<sections/>
-</iho-standard>
-OUTPUT
-        end
-
-    it "ignores unrecognised status" do
-      input = <<~"INPUT"
-        = Document title
-        Author
-        :docfile: test.adoc
-        :nodoc:
-        :novalid:
-        :docnumber: 1000
-        :doctype: standard
-        :edition: 2
-        :revdate: 2000-01-01
-        :draft: 3.4
-        :copyright-year: 2001
-        :status: standard
-        :iteration: 3
-        :language: en
-        :title: Main Title
-      INPUT
-
-      output = <<~"OUTPUT"
-       <iho-standard xmlns='https://www.metanorma.org/ns/iho'>
-         <bibdata type='standard'>
-           <title language='en' format='text/plain'>Main Title</title>
-           <docidentifier>1000</docidentifier>
-           <docnumber>1000</docnumber>
-           <contributor>
-             <role type='author'/>
-             <organization>
-               <name>International Hydrographic Organization</name>
-             </organization>
-           </contributor>
-           <contributor>
-             <role type='publisher'/>
-             <organization>
-               <name>International Hydrographic Organization</name>
-             </organization>
-           </contributor>
-           <edition>2</edition>
-           <version>
-             <revision-date>2000-01-01</revision-date>
-             <draft>3.4</draft>
-           </version>
-           <language>en</language>
-           <script>Latn</script>
-           <status>
-             <stage>standard</stage>
-             <iteration>3</iteration>
-           </status>
-           <copyright>
-             <from>2001</from>
-             <owner>
-               <organization>
-                 <name>International Hydrographic Organization</name>
-               </organization>
-             </owner>
-           </copyright>
-           <ext>
-             <doctype>standard</doctype>
-           </ext>
-         </bibdata>
-
-
-        #{BOILERPLATE.sub(/<legal-statement/, "#{LICENSE_BOILERPLATE}\n<legal-statement").sub(/Ribose Group Inc\. #{Time.new.year}/, "Ribose Group Inc. 2001")}
-        <sections/>
-        </iho-standard>
-      OUTPUT
-
-      expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho, header_footer: true)))).to(be_equivalent_to(output))
     end
 
   it "strips inline header" do
@@ -448,51 +330,32 @@ OUTPUT
     expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho, header_footer: true)))).to be_equivalent_to output
   end
 
-    it "processes executive summaries" do
+    it "processes appendixes" do
       input = <<~"INPUT"
       #{ASCIIDOC_BLANK_HDR}
 
-      Foreword
+      [appendix]
+      == Annex
 
-      [abstract]
-      == Abstract
-      Abstract
+      === Annex A.1
 
-      == Introduction
-      Introduction
+      [%appendix]
+      === Appendix 1
 
-      == Executive Summary
-      Executive Summary
-
-      [.preface]
-      == Prefatory
-      Prefatory
     INPUT
 
     output = xmlpp(<<~"OUTPUT")
-    #{BLANK_HDR.sub(/<status>/, "<abstract> <p>Abstract</p> </abstract> <status>")}
-       <preface>
-  <abstract id='_'>
-    <p id='_'>Abstract</p>
-  </abstract>
-  <foreword id='_' obligation='informative'>
-    <title>Foreword</title>
-    <p id='_'>Foreword</p>
-  </foreword>
-  <executivesummary id='_'>
-    <title>Executive Summary</title>
-    <p id='_'>Executive Summary</p>
-  </executivesummary>
-  <introduction id='_' obligation='informative'>
-    <title>Introduction</title>
-    <p id='_'>Introduction</p>
-  </introduction>
-  <clause id='_' obligation='informative'>
-    <title>Prefatory</title>
-    <p id='_'>Prefatory</p>
-  </clause>
-</preface>
+    #{BLANK_HDR}
 <sections> </sections>
+<annex id='_' obligation='normative'>
+  <title>Annex</title>
+  <clause id='_' obligation='normative'>
+    <title>Annex A.1</title>
+  </clause>
+  <appendix id='_' obligation='normative'>
+    <title>Appendix 1</title>
+  </appendix>
+</annex>
 </iho-standard>
     OUTPUT
 

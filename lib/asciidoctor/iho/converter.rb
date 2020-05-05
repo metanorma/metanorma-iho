@@ -12,42 +12,71 @@ module Asciidoctor
 
       register_for "iho"
 
-      def sectiontype(node, level = true)
-        ret = node&.attr("heading")&.downcase ||
-          node.title.gsub(/<[^>]+>/, "").downcase
-        ret1 = sectiontype_streamline(ret)
-        return ret1 if "symbols and abbreviated terms" == ret1
-        return ret1 if "executive summary" == ret1
-        return nil unless !level || node.level == 1
-        return nil if @seen_headers.include? ret
-        @seen_headers << ret
-        ret1
-      end
-
-      def make_preface(x, s)
-        if x.at("//foreword | //introduction | //acknowledgements | "\
-            "//clause[@preface] | //executivesummary")
-          preface = s.add_previous_sibling("<preface/>").first
-          f = x.at("//foreword") and preface.add_child f.remove
-          f = x.at("//executivesummary") and preface.add_child f.remove
-          f = x.at("//introduction") and preface.add_child f.remove
-          move_clauses_into_preface(x, preface)
-          f = x.at("//acknowledgements") and preface.add_child f.remove
-        end
-        make_abstract(x, s)
-      end
-
       def clause_parse(attrs, xml, node)
-        sectiontype(node) == "executive summary" and
-          return executivesummary_parse(attrs, xml, node)
+        node.option? "appendix" and
+          return appendix_parse(attrs, xml, node)
         super
       end
 
-      def executivesummary_parse(attrs, xml, node)
-        xml.executivesummary **attr_code(attrs) do |xml_section|
-          xml_section.title { |t| t << node.title || "Executive Summary" }
-          content = node.content
-          xml_section << content
+      def appendix_parse(attrs, xml, node)
+        attrs["inline-header".to_sym] = node.option? "inline-header"
+        set_obligation(attrs, node)
+        xml.appendix **attr_code(attrs) do |xml_section|
+          xml_section.title { |name| name << node.title }
+          xml_section << node.content
+        end
+      end
+
+      def doctype(node)
+        d = node.attr("doctype")
+        unless %w{standard specification resolution regulation}.include? d
+          @log.add("Document Attributes", nil,
+                   "#{d} is not a legal document type: reverting to 'standard'")
+          d = "standard"
+        end
+        d
+      end
+
+      def metadata_status(node, xml)
+        xml.status do |s|
+          s.stage ( node.attr("status") || node.attr("docstage") || "in-force" )
+        end
+      end
+
+      def metadata_series(node, xml)
+        series = node.attr("series") or return
+        xml.series **{ type: "main" } do |s|
+          s.title series
+        end
+      end
+
+      def metadata_ext(node, ext)
+        super
+        metadata_commentperiod(node, ext)
+      end
+
+      def metadata_commentperiod(node, xml)
+        from = node.attr("comment-from") or return
+        to = node.attr("comment-to")
+        xml.commentperiod do |c|
+          c.from from
+          c.to to if to
+        end
+      end
+
+      def metadata_committee(node, xml)
+        return unless node.attr("workgroup")
+        xml.editorialgroup do |a|
+          a.committee node.attr("committee")
+          a.workgroup node.attr("workgroup")
+        end
+        i = 2
+        while node.attr("workgroup_#{i}") do
+          xml.editorialgroup do |a|
+            a.committee node.attr("committee_#{i}")
+            a.workgroup node.attr("workgroup_#{i}")
+          end
+          i += 1
         end
       end
 

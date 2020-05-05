@@ -17,6 +17,12 @@ RSpec.describe IsoDoc::IHO do
   <revision-date>2000-01-01</revision-date>
   <draft>3.4</draft>
 </version>
+ <date type='implemented'>
+   <on>2000-01-01</on>
+ </date>
+ <date type='obsoleted'>
+   <on>2001-01-01</on>
+ </date>
   <contributor>
     <role type="author"/>
     <organization>
@@ -40,12 +46,19 @@ RSpec.describe IsoDoc::IHO do
       </organization>
     </owner>
   </copyright>
+  <series type="main">
+  <title>iho-bathymetric</title>
+  </series>
   <ext>
   <doctype>standard</doctype>
   <editorialgroup>
     <committee type="A">TC</committee>
   </editorialgroup>
   <security>Client Confidential</security>
+  <commentperiod>
+  <from>2010</from>
+  <to>2011</to>
+  </commentperiod>
   </ext>
 </bibdata>
 <sections/>
@@ -53,69 +66,11 @@ RSpec.describe IsoDoc::IHO do
     INPUT
 
     output = <<~"OUTPUT"
-   {:accesseddate=>"XXX", :agency=>"Ribose", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000(wd)", :docnumeric=>"1000", :doctitle=>"Main Title", :doctype=>"Standard", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>"2", :implementeddate=>"XXX", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"XXX", :publisheddate=>"XXX", :publisher=>"Ribose", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_MMMddyyyy=>"January 01, 2000", :revdate_monthyear=>"January 2000", :security=>"Client Confidential", :stage=>"Working Draft", :stageabbr=>"wd", :tc=>"TC", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
+   {:accesseddate=>"XXX", :agency=>"Ribose", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :comment_from=>"2010", :comment_to=>"2011", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000(wd)", :docnumeric=>"1000", :doctitle=>"Main Title", :doctype=>"Standard", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>"2", :implementeddate=>"2000-01-01", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, "logo.png")}", :obsoleteddate=>"2001-01-01", :publisheddate=>"XXX", :publisher=>"Ribose", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_MMMddyyyy=>"January 01, 2000", :revdate_monthyear=>"January 2000", :series=>"iho-bathymetric", :stage=>"Working Draft", :stageabbr=>nil, :tc=>"TC", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
     OUTPUT
 
     docxml, filename, dir = csdc.convert_init(input, "test", true)
     expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
-  end
-
-  it "processes pre" do
-    input = <<~"INPUT"
-<iho-standard xmlns="https://open.ribose.com/standards/iho">
-<preface><foreword>
-<pre>ABC</pre>
-</foreword></preface>
-</iho-standard>
-    INPUT
-
-    output = xmlpp(<<~"OUTPUT")
-    #{HTML_HDR}
-             <br/>
-             <div>
-               <h1 class="ForewordTitle">Foreword</h1>
-               <pre>ABC</pre>
-             </div>
-             <p class="zzSTDTitle1"/>
-           </div>
-         </body>
-    OUTPUT
-
-    expect(xmlpp(
-      IsoDoc::IHO::HtmlConvert.new({}).
-      convert("test", input, true).
-      gsub(%r{^.*<body}m, "<body").
-      gsub(%r{</body>.*}m, "</body>")
-    )).to be_equivalent_to output
-  end
-
-  it "processes keyword" do
-    input = <<~"INPUT"
-<iho-standard xmlns="https://open.ribose.com/standards/iho">
-<preface><foreword>
-<keyword>ABC</keyword>
-</foreword></preface>
-</iho-standard>
-    INPUT
-
-    output = xmlpp(<<~"OUTPUT")
-        #{HTML_HDR}
-             <br/>
-             <div>
-               <h1 class="ForewordTitle">Foreword</h1>
-               <span class="keyword">ABC</span>
-             </div>
-             <p class="zzSTDTitle1"/>
-           </div>
-         </body>
-    OUTPUT
-
-    expect(xmlpp(
-      IsoDoc::IHO::HtmlConvert.new({}).
-      convert("test", input, true).
-      gsub(%r{^.*<body}m, "<body").
-      gsub(%r{</body>.*}m, "</body>")
-    )).to be_equivalent_to output
   end
 
   it "processes section names" do
@@ -191,10 +146,6 @@ RSpec.describe IsoDoc::IHO do
                <p id="A">This is a preamble</p>
              </div>
              <br/>
-<div class='Section3' id='A1'>
-  <h1 class='IntroTitle'>Executive Summary</h1>
-</div>
-             <br/>
              <div class="Section3" id="B">
                <h1 class="IntroTitle">Introduction</h1>
                <div id="C">
@@ -203,23 +154,23 @@ RSpec.describe IsoDoc::IHO do
              </div>
              <p class="zzSTDTitle1"/>
              <div id="D">
-               <h1>1&#160; Scope</h1>
+               <h1>1.&#160; Scope</h1>
                <p id="E">Text</p>
              </div>
              <div>
-               <h1>2&#160; Normative references</h1>
+               <h1>2.&#160; Normative references</h1>
              </div>
-             <div id="H"><h1>3&#160; Terms, definitions, symbols and abbreviated terms</h1>
+             <div id="H"><h1>3.&#160; Terms, definitions, symbols and abbreviated terms</h1>
        <div id="I">
-          <h2>3.1&#160; Normal Terms</h2>
-          <p class="TermNum" id="J">3.1.1</p>
+          <h2>3.1.&#160; Normal Terms</h2>
+          <p class="TermNum" id="J">3.1.1.</p>
           <p class="Terms" style="text-align:left;">Term2</p>
 
-        </div><div id="K"><h2>3.2&#160; Symbols and abbreviated terms</h2>
+        </div><div id="K"><h2>3.2.&#160; Symbols and abbreviated terms</h2>
           <dl><dt><p>Symbol</p></dt><dd>Definition</dd></dl>
         </div></div>
              <div id="L" class="Symbols">
-               <h1>4&#160; Symbols and abbreviated terms</h1>
+               <h1>4.&#160; Symbols and abbreviated terms</h1>
                <dl>
                  <dt>
                    <p>Symbol</p>
@@ -228,21 +179,21 @@ RSpec.describe IsoDoc::IHO do
                </dl>
              </div>
              <div id="M">
-               <h1>5&#160; Clause 4</h1>
+               <h1>5.&#160; Clause 4</h1>
                <div id="N">
-          <h2>5.1&#160; Introduction</h2>
+          <h2>5.1.&#160; Introduction</h2>
         </div>
                <div id="O">
-          <h2>5.2&#160; Clause 4.2</h2>
+          <h2>5.2.&#160; Clause 4.2</h2>
         </div>
              </div>
              <br/>
              <div id="P" class="Section3">
-               <h1 class="Annex">Annex A<br/>(normative) <br/><br/>Annex</h1>
+               <h1 class="Annex"><b>Annex A</b><br/><b>Annex</b></h1>
                <div id="Q">
-          <h2>A.1&#160; Annex A.1</h2>
+          <h2>A.1.&#160; Annex A.1</h2>
           <div id="Q1">
-          <h3>A.1.1&#160; Annex A.1a</h3>
+          <h3>A.1.1.&#160; Annex A.1a</h3>
           </div>
         </div>
              </div>
@@ -263,6 +214,219 @@ RSpec.describe IsoDoc::IHO do
       gsub(%r{</body>.*}m, "</body>")
     )).to be_equivalent_to output
   end
+
+         it "processes annexes and appendixes" do
+    expect(xmlpp(IsoDoc::IHO::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(%r{^.*<body}m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+               <iho-standard xmlns="http://riboseinc.com/isoxml">
+               <bibdata type="standard">
+               <title language="en" format="text/plain" type="main">An ITU Standard</title>
+               <docidentifier type="ITU">12345</docidentifier>
+               <language>en</language>
+               <keyword>A</keyword>
+               <keyword>B</keyword>
+               <ext>
+               </ext>
+               </bibdata>
+               <preface>
+               <abstract>
+                   <xref target="A1"/>
+                   <xref target="B1"/>
+               </abstract>
+               </preface>
+               <annex id="A1" obligation="normative"><title>Annex</title></annex>
+        <annex id="A2" obligation="normative"><title>Annex</title></annex>
+        <annex id="A3" obligation="normative"><title>Annex</title></annex>
+        <annex id="A4" obligation="normative"><title>Annex</title></annex>
+        <annex id="A5" obligation="normative"><title>Annex</title></annex>
+        <annex id="A6" obligation="normative"><title>Annex</title></annex>
+        <annex id="A7" obligation="normative"><title>Annex</title></annex>
+        <annex id="A8" obligation="normative"><title>Annex</title></annex>
+        <annex id="A9" obligation="normative"><title>Annex</title></annex>
+        <annex id="A10" obligation="normative"><title>Annex</title></annex>
+        <annex id="B1" obligation="informative"><title>Annex</title></annex>
+        <annex id="B2" obligation="informative"><title>Annex</title></annex>
+        <annex id="B3" obligation="informative"><title>Annex</title></annex>
+        <annex id="B4" obligation="informative"><title>Annex</title></annex>
+        <annex id="B5" obligation="informative"><title>Annex</title></annex>
+        <annex id="B6" obligation="informative"><title>Annex</title></annex>
+        <annex id="B7" obligation="informative"><title>Annex</title></annex>
+        <annex id="B8" obligation="informative"><title>Annex</title></annex>
+        <annex id="B9" obligation="informative"><title>Annex</title></annex>
+        <annex id="B10" obligation="informative"><title>Annex</title></annex>
+INPUT
+            #{HTML_HDR}
+            <br/>
+            <div>
+                  <h1 class='AbstractTitle'>Abstract</h1>
+      <a href='#A1'>Annex A</a>
+      <a href='#B1'>Appendix 1</a>
+    </div>
+    <p class='zzSTDTitle1'>An ITU Standard</p>
+    <br/>
+    <div id='A1' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex A</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A2' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex B</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A3' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex C</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A4' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex D</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A5' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex E</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A6' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex F</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A7' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex G</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A8' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex H</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A9' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex J</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='A10' class='Section3'>
+      <h1 class='Annex'>
+        <b>Annex K</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B1' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 1</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B2' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 2</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B3' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 3</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B4' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 4</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B5' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 5</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B6' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 6</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B7' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 7</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B8' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 8</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B9' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 9</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+    <br/>
+    <div id='B10' class='Section3'>
+      <h1 class='Annex'>
+        <b>Appendix 10</b>
+        <br/>
+        <b>Annex</b>
+      </h1>
+    </div>
+  </div>
+</body>
+
+OUTPUT
+         end
 
   it "injects JS into blank html" do
     system "rm -f test.html"
@@ -308,6 +472,10 @@ RSpec.describe IsoDoc::IHO do
          <xref target="Q"/>
          <xref target="Q1"/>
          <xref target="Q2"/>
+         <xref target="PP"/>
+         <xref target="QQ"/>
+         <xref target="QQ1"/>
+         <xref target="QQ2"/>
          <xref target="R"/>
          </p>
        </foreword>
@@ -357,7 +525,20 @@ RSpec.describe IsoDoc::IHO do
               <appendix id="Q2" inline-header="false" obligation="normative">
          <title>An Appendix</title>
        </appendix>
-       </annex><bibliography><references id="R" obligation="informative">
+       </annex>
+<annex id="PP" inline-header="false" obligation="informative">
+         <title>Annex</title>
+         <clause id="QQ" inline-header="false" obligation="normative">
+         <title>Annex A.1</title>
+         <clause id="QQ1" inline-header="false" obligation="normative">
+         <title>Annex A.1a</title>
+         </clause>
+       </clause>
+              <appendix id="QQ2" inline-header="false" obligation="normative">
+         <title>An Appendix</title>
+       </appendix>
+       </annex>
+        <bibliography><references id="R" obligation="informative">
          <title>Normative References</title>
        </references><clause id="S" obligation="informative">
          <title>Bibliography</title>
@@ -378,17 +559,21 @@ RSpec.describe IsoDoc::IHO do
           <a href='#C1'>Introduction, 2</a>
           <a href='#D'>Clause 1</a>
           <a href='#H'>Clause 3</a>
-          <a href='#I'>3.1</a>
-          <a href='#J'>3.1.1</a>
-          <a href='#K'>3.2</a>
+          <a href='#I'>Clause 3.1</a>
+          <a href='#J'>Clause 3.1.1</a>
+          <a href='#K'>Clause 3.2</a>
           <a href='#L'>Clause 4</a>
           <a href='#M'>Clause 5</a>
-          <a href='#N'>5.1</a>
-          <a href='#O'>5.2</a>
+          <a href='#N'>Clause 5.1</a>
+          <a href='#O'>Clause 5.2</a>
           <a href='#P'>Annex A</a>
           <a href='#Q'>Annex A.1</a>
           <a href='#Q1'>Annex A.1.1</a>
-          <a href='#Q2'>[Q2]</a>
+          <a href='#Q2'>Annex A, Appendix 1</a>
+          <a href='#PP'>Appendix 1</a>
+<a href='#QQ'>Appendix 1.1</a>
+<a href='#QQ1'>Appendix 1.1.1</a>
+<a href='#QQ2'>Appendix 1, Appendix 1</a>
           <a href='#R'>Clause 2</a>
         </p>
       </div>
@@ -405,21 +590,21 @@ RSpec.describe IsoDoc::IHO do
       </div>
       <p class='zzSTDTitle1'/>
       <div id='D'>
-        <h1>1&#160; Scope</h1>
+        <h1>1.&#160; Scope</h1>
         <p id='E'>Text</p>
       </div>
       <div>
-        <h1>2&#160; Normative references</h1>
+        <h1>2.&#160; Normative references</h1>
       </div>
       <div id='H'>
-        <h1>3&#160; Terms, definitions, symbols and abbreviated terms</h1>
+        <h1>3.&#160; Terms, definitions, symbols and abbreviated terms</h1>
         <div id='I'>
-          <h2>3.1&#160; Normal Terms</h2>
-          <p class='TermNum' id='J'>3.1.1</p>
+          <h2>3.1.&#160; Normal Terms</h2>
+          <p class='TermNum' id='J'>3.1.1.</p>
           <p class='Terms' style='text-align:left;'>Term2</p>
         </div>
         <div id='K'>
-          <h2>3.2&#160; Symbols and abbreviated terms</h2>
+          <h2>3.2.&#160; Symbols and abbreviated terms</h2>
           <dl>
             <dt>
               <p>Symbol</p>
@@ -429,7 +614,7 @@ RSpec.describe IsoDoc::IHO do
         </div>
       </div>
       <div id='L' class='Symbols'>
-        <h1>4&#160; Symbols and abbreviated terms</h1>
+        <h1>4.&#160; Symbols and abbreviated terms</h1>
         <dl>
           <dt>
             <p>Symbol</p>
@@ -438,39 +623,49 @@ RSpec.describe IsoDoc::IHO do
         </dl>
       </div>
       <div id='M'>
-        <h1>5&#160; Clause 4</h1>
+        <h1>5.&#160; Clause 4</h1>
         <div id='N'>
-          <h2>5.1&#160; Introduction</h2>
+          <h2>5.1.&#160; Introduction</h2>
         </div>
         <div id='O'>
-          <h2>5.2&#160; Clause 4.2</h2>
+          <h2>5.2.&#160; Clause 4.2</h2>
         </div>
       </div>
       <br/>
       <div id='P' class='Section3'>
         <h1 class='Annex'>
-          Annex A
+          <b>Annex A</b>
           <br/>
-          (normative)
-          <br/>
-          <br/>
-          Annex
+          <b>Annex</b>
         </h1>
         <div id='Q'>
-          <h2>A.1&#160; Annex A.1</h2>
+          <h2>A.1.&#160; Annex A.1</h2>
           <div id='Q1'>
-            <h3>A.1.1&#160; Annex A.1a</h3>
+            <h3>A.1.1.&#160; Annex A.1a</h3>
           </div>
         </div>
-        <para>
-          <b role='strong'>
-            &lt;appendix id="Q2" inline-header="false"
-            obligation="normative"&gt; &lt;title&gt;An Appendix&lt;/title&gt;
-            &lt;/appendix&gt;
-          </b>
-        </para>
+        <div id='Q2'>
+  <h2>Appendix 1.&#160; An Appendix</h2>
+</div>
       </div>
       <br/>
+       <div id='PP' class='Section3'>
+   <h1 class='Annex'>
+     <b>Appendix 1</b>
+     <br/>
+     <b>Annex</b>
+   </h1>
+   <div id='QQ'>
+     <h2>1.1.&#160; Annex A.1</h2>
+     <div id='QQ1'>
+       <h3>1.1.1.&#160; Annex A.1a</h3>
+     </div>
+   </div>
+   <div id='QQ2'>
+     <h2>Appendix 1.&#160; An Appendix</h2>
+   </div>
+ </div>
+<br/>
       <div>
         <h1 class='Section3'>Bibliography</h1>
         <div>
