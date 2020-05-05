@@ -9,7 +9,7 @@ module IsoDoc
     #
     class HtmlConvert < IsoDoc::Generic::HtmlConvert
       def configuration
-        Metanorma::Rsd.configuration
+        Metanorma::IHO.configuration
       end
 
       def make_body3(body, docxml)

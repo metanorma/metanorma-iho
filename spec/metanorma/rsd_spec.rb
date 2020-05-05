@@ -12,8 +12,8 @@ RSpec.describe Metanorma::IHO do
 
     context 'default attributes' do
       subject(:config) { Metanorma::IHO.configuration }
-      let(:default_organization_name_short) { 'Ribose' }
-      let(:default_organization_name_long) { 'Ribose' }
+      let(:default_organization_name_short) { 'IHO' }
+      let(:default_organization_name_long) { 'International Hydrographic Organization' }
       let(:default_document_namespace) do
         'https://www.metanorma.org/ns/iho'
       end
