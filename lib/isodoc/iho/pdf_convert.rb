@@ -12,6 +12,7 @@ module IsoDoc
       end
 
       def convert(filename, file = nil, debug = false)
+        return
         file = File.read(filename, encoding: "utf-8") if file.nil?
         docxml, outname_html, dir = convert_init(file, filename, debug)
         /\.xml$/.match(filename) or

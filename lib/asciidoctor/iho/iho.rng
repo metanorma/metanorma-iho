@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar ns="https://www.metanorma.org/ns/iho" xmlns="http://relaxng.org/ns/structure/1.0">
+<grammar ns="https://www.metanorma.org/ns/iho" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <!--
     Currently we inherit from a namespaced grammar, isostandard. Until we inherit from isodoc,
     we cannot have a new default namespace: we will end up with a grammar with two different
@@ -7,7 +7,7 @@
   -->
   <include href="isodoc.rng">
     <start>
-      <ref name="rsd-standard"/>
+      <ref name="iho-standard"/>
     </start>
     <define name="DocumentType">
       <choice>
@@ -23,42 +23,107 @@
     </define>
     <define name="editorialgroup">
       <element name="editorialgroup">
-        <oneOrMore>
-          <ref name="committee"/>
-        </oneOrMore>
+        <ref name="committee"/>
+        <ref name="workgroup"/>
       </element>
     </define>
     <define name="BibDataExtensionType">
       <optional>
         <ref name="doctype"/>
       </optional>
-      <ref name="editorialgroup"/>
+      <oneOrMore>
+        <ref name="editorialgroup"/>
+      </oneOrMore>
       <zeroOrMore>
         <ref name="ics"/>
       </zeroOrMore>
       <optional>
-        <ref name="security"/>
+        <ref name="commentperiod"/>
       </optional>
+    </define>
+    <define name="annex">
+      <element name="annex">
+        <optional>
+          <attribute name="id">
+            <data type="ID"/>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="language"/>
+        </optional>
+        <optional>
+          <attribute name="script"/>
+        </optional>
+        <optional>
+          <attribute name="inline-header">
+            <data type="boolean"/>
+          </attribute>
+        </optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+        <optional>
+          <ref name="section-title"/>
+        </optional>
+        <group>
+          <group>
+            <zeroOrMore>
+              <ref name="BasicBlock"/>
+            </zeroOrMore>
+            <zeroOrMore>
+              <ref name="note"/>
+            </zeroOrMore>
+          </group>
+          <zeroOrMore>
+            <choice>
+              <ref name="annex-subsection"/>
+              <ref name="terms"/>
+              <ref name="definitions"/>
+              <ref name="references"/>
+            </choice>
+          </zeroOrMore>
+        </group>
+        <zeroOrMore>
+          <ref name="annex-appendix"/>
+        </zeroOrMore>
+      </element>
     </define>
   </include>
   <define name="committee">
     <element name="committee">
-      <attribute name="type">
-        <choice>
-          <value>technical</value>
-          <value>provisional</value>
-        </choice>
-      </attribute>
+      <choice>
+        <value>hssc</value>
+        <value>ircc</value>
+      </choice>
+    </element>
+  </define>
+  <define name="workgroup">
+    <element name="workgroup">
       <text/>
     </element>
   </define>
-  <define name="security">
-    <element name="security">
-      <text/>
+  <define name="annex-appendix">
+    <element name="appendix">
+      <ref name="Clause-Section"/>
     </element>
   </define>
-  <define name="rsd-standard">
-    <element name="rsd-standard">
+  <define name="commentperiod">
+    <element name="commentperiod">
+      <element name="from">
+        <ref name="ISO8601Date"/>
+      </element>
+      <optional>
+        <element name="to">
+          <ref name="ISO8601Date"/>
+        </element>
+      </optional>
+    </element>
+  </define>
+  <define name="iho-standard">
+    <element name="iho-standard">
       <ref name="bibdata"/>
       <zeroOrMore>
         <ref name="termdocsource"/>
