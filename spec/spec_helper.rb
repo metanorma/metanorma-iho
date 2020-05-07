@@ -70,23 +70,9 @@ BOILERPLATE =
   gsub(/\{\{ docyear \}\}/, Date.today.year.to_s).
   gsub(/<p>/, '<p id="_">').
   gsub(/\{% if unpublished %\}.+?\{% endif %\}/m, "").
-  gsub(/\{% if ip_notice_received %\}\{% else %\}not\{% endif %\}/m, ""))
-
-LICENSE_BOILERPLATE = <<~END
-<license-statement>
-             <clause>
-               <title>Warning for Drafts</title>
-               <p id='_'>
-                This document is not a Ribose Standard. It is distributed for review
-                and comment, and is subject to change without notice and may not be
-                referred to as a Standard. Recipients of this draft are invited to
-                submit, with their comments, notification of any relevant patent
-                rights of which they are aware and to provide supporting
-                documentation.
-               </p>
-             </clause>
-           </license-statement>
-END
+  gsub(/\{% if ip_notice_received %\}\{% else %\}not\{% endif %\}/m, "").
+  gsub(/>"/, '>“').gsub(/"</, '”<').
+gsub(/IHO's/, "IHO’s"))
 
 BLANK_HDR = <<~"HDR"
        <?xml version="1.0" encoding="UTF-8"?>
@@ -94,6 +80,7 @@ BLANK_HDR = <<~"HDR"
        <bibdata type="standard">
 
         <title language="en" format="text/plain">Document title</title>
+        <docidentifier type="IHO">S-</docidentifier>
          <contributor>
            <role type="author"/>
            <organization>

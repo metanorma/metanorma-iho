@@ -68,7 +68,7 @@ RSpec.describe Asciidoctor::IHO do
       :obsoleted-date: 2001-01-01
       :comment-from: 2010-01-01
       :comment-to: 2011-01-01
-      :series: iho-bathymetric
+      :series: B
       
     INPUT
 
@@ -77,7 +77,7 @@ RSpec.describe Asciidoctor::IHO do
 <iho-standard xmlns="https://www.metanorma.org/ns/iho">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
-<docidentifier>1000</docidentifier>
+<docidentifier type="IHO">B-1000</docidentifier>
 <docnumber>1000</docnumber>
  <date type='implemented'>
    <on>2000-01-01</on>
@@ -116,7 +116,8 @@ RSpec.describe Asciidoctor::IHO do
     </owner>
   </copyright>
   <series type='main'>
-  <title>iho-bathymetric</title>
+  <title>Bathymetric</title>
+  <abbreviation>B</abbreviation>
 </series>
   <ext>
   <doctype>standard</doctype>
@@ -138,7 +139,7 @@ RSpec.describe Asciidoctor::IHO do
 </commentperiod>
   </ext>
 </bibdata>
-        #{BOILERPLATE.sub(/<legal-statement/, "#{LICENSE_BOILERPLATE}\n<legal-statement").sub(/Ribose Group Inc\. #{Time.new.year}/, "Ribose Group Inc. 2001")}
+    #{BOILERPLATE.sub(/International Hydrographic Organization #{Date.today.year}/, "International Hydrographic Organization 2001")}
 <sections/>
 </iho-standard>
     OUTPUT
@@ -166,7 +167,7 @@ RSpec.describe Asciidoctor::IHO do
         <iho-standard xmlns="https://www.metanorma.org/ns/iho">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
-  <docidentifier>1000</docidentifier>
+  <docidentifier type="IHO">S-1000</docidentifier>
   <docnumber>1000</docnumber>
   <contributor>
     <role type="author"/>
@@ -203,7 +204,7 @@ RSpec.describe Asciidoctor::IHO do
   <doctype>standard</doctype>
   </ext>
 </bibdata>
-        #{BOILERPLATE.sub(/<legal-statement/, "#{LICENSE_BOILERPLATE}\n<legal-statement")}
+        #{BOILERPLATE}
 <sections/>
 </iho-standard>
         OUTPUT

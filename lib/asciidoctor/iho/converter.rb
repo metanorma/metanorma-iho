@@ -27,10 +27,19 @@ module Asciidoctor
         end
       end
 
+      SERIESNAME = {
+        B: "Bathymetric",
+        C: "Capacity Building",
+        M: "Miscellaneous",
+        P: "Periodic",
+        S: "Standards and Specifications",
+      }
+
       def metadata_series(node, xml)
         series = node.attr("series") or return
         xml.series **{ type: "main" } do |s|
-          s.title series
+          s.title SERIESNAME[series.to_sym] || "N/A"
+          s.abbreviation series
         end
       end
 

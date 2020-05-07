@@ -17,10 +17,10 @@ header: lib/isodoc/iho/html/header.html
 wordcoverpage: lib/isodoc/iho/html/word_iho_titlepage.html
 wordintropage: lib/isodoc/iho/html/word_iho_intro.html
 wordstylesheet: lib/isodoc/iho/html/wordstyle.scss
-word_bodyfont: '"Source Sans Pro","Arial",sans-serif'
-word_headerfont: '"Source Sans Pro","Arial",sans-serif'
-word_monospacefont: '"Source Code Pro",monospace'
-docid_template: "{{ docnumeric }}{% if stageabbr %}({{ stageabbr }}){%endif%}"
+word_bodyfont: '"Cambria",serif'
+word_headerfont: '"Calibri",serif'
+word_monospacefont: '"Cambria",monospace'
+docid_template: "{% if seriesabbr %}{{seriesabbr}}{%else%}S{%endif%}-{{ docnumeric }}{% if stageabbr %}({{ stageabbr }}){%endif%}"
 published_stages:
   - in-force
   - retired  
