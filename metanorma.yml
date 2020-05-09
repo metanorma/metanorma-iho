@@ -2,7 +2,10 @@ organization_name_short: IHO
 organization_name_long: International Hydrographic Organization
 document_namespace: https://www.metanorma.org/ns/iho
 xml_root_tag: 'iho-standard'
-logo_path: lib/isodoc/iho/html/logo.png
+logo_paths:
+  - lib/isodoc/iho/html/image001.png
+  - lib/isodoc/iho/html/image002.png
+  - lib/isodoc/iho/html/image003.png
 validate_rng_file: lib/asciidoctor/iho/iho.rng
 htmlcoverpage: lib/isodoc/iho/html/html_iho_titlepage.html
 htmlintropage: lib/isodoc/iho/html/html_iho_intro.html

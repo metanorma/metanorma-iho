@@ -11,6 +11,15 @@ module IsoDoc
         Metanorma::IHO.configuration
       end
 
+      def make_body1(body, _docxml)
+        body.div **{ class: "WordSection1" } do |div1|
+          div1.p **{style: "font-size:0pt;" } do
+            |p| p << "&nbsp;" 
+          end # placeholder
+        end
+        section_break(body)
+      end
+
       def make_body2(body, docxml)
         body.div **{ class: "WordSection2" } do |div2|
           boilerplate docxml, div2
@@ -22,6 +31,13 @@ module IsoDoc
           div2.p { |p| p << "&nbsp;" } # placeholder
         end
         section_break(body)
+      end
+
+      def authority_cleanup(docxml)
+        super
+        docxml.xpath("//div[@class = 'boilerplate-feedback']/p").each do |p|
+          p["style"] = 'font-size:8pt;font-family:Arial;text-align:right'
+        end
       end
 
       include BaseConvert
