@@ -3,7 +3,7 @@
 </div>
 
 <div class="document-type-band" id="{{ doctype | downcase | replace: ' ', '-' }}-band">
-  <p class="document-type">Ribose {{ doctype }}</p>
+  <p class="document-type">IHO {{ doctype }}</p>
 </div>
 
 
@@ -28,7 +28,7 @@
       </div>
 
       <div class="coverpage-logo">
-        <span>Ribose Group Inc. {{ docyear }}</span>
+        <span>International Hydographic Organization. {{ docyear }}</span>
       </div>
 
       <div class="coverpage-tc-name">
@@ -40,7 +40,7 @@
 
     <div class="WordSection11">
       <div class="coverpage-stage-block" >
-        <span class="coverpage-stage" id="{{ doctype | replace: ' ', '-' | downcase }}">Ribose {{ doctype }}</span>
+        <span class="coverpage-stage" id="{{ doctype | replace: ' ', '-' | downcase }}">IHO {{ doctype }}</span>
       </div>
 
       <div class="coverpage-stage-block" >
@@ -52,9 +52,6 @@
           Published {{ publisheddate -}}
           {%- endif -%}
           {%- endif -%}</span></p>
-        {% if security %}
-        <p><span class="coverpage-maturity">Classification: {{ security }}</span></p>
-        {% endif %}
       </div>
 
       {% if doctype == "Policy And Procedures" or doctype == "Proposal" %}
@@ -74,7 +71,7 @@
           </div>
 
           <div class="message">
-            <div id="boilerplate-legal-destination"/>
+            <div id="boilerplate-license-destination"/>
           </div>
 
           <div class="contact-info">
