@@ -44,9 +44,11 @@ doctypes:
 default_doctype: standard
 symbols_titles:
   - Abbreviations
+  - Abbreviations and acronyms
   - Symbols
 termsdefs_titles:
   - Definitions
+  - Definitions and terminology
   - Terms and definitions
   - Terms, definitions and abbreviations
 normref_titles:

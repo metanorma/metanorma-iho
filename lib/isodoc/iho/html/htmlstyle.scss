@@ -116,30 +116,31 @@ p.document-stage {
 }
 
 #standard-band,
-#published-band {
+#in-force-band {
   background-color: #9ABD48;
 }
 
 #standard,
-#published {
+#in-force {
   border-bottom: solid 3px #9ABD48;
 }
 
-#governance,
-#policy-and-procedures {
+#specification
+{
   border-bottom: solid 3px #750697;
 }
 
-#governance-band,
-#policy-and-procedures-band {
+#specification-band {
   background-color: #750697;
 }
 
-#guide {
+#draft-proposal,
+#resolution {
   border-bottom: solid 3px #48a0e7;
 }
 
-#guide-band {
+#draft-proposal-band,
+#resolution-band {
   background-color: #48a0e7;
 }
 
@@ -147,29 +148,29 @@ p.document-stage {
   @include coverpageStageBlock();
 }
 
-#working-draft,
-#proposal {
+#draft-development,
+#regulation {
   border-bottom: solid 3px #F7803C;
 }
 
-#working-draft-band,
-#proposal-band {
+#draft-development-band,
+#regulation-band {
   background-color: #F7803C;
 }
 
-#committee-draft {
+#draft-testing {
   border-bottom: solid 3px #fd06fd;
 }
 
-#committee-draft-band {
+#draft-testing-band {
   background-color: #fd06fd;
 }
 
-#draft-standard {
+#draft-implementation {
   border-bottom: solid 3px #fdf906;
 }
 
-#draft-standard-band {
+#draft-implementation-band {
   background-color: #fdf906;
 }
 
@@ -181,11 +182,11 @@ p.document-stage {
   background-color: #9ABD48;
 }
 
-#obsolete {
+#retired {
   border-bottom: solid 3px #7e0d13;
 }
 
-#obsolete-band {
+#retired-band {
   background-color: #7e0d13;
 }
 
