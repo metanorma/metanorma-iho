@@ -2,6 +2,7 @@ organization_name_short: IHO
 organization_name_long: International Hydrographic Organization
 document_namespace: https://www.metanorma.org/ns/iho
 xml_root_tag: 'iho-standard'
+logo_path: lib/isodoc/iho/html/image002.png
 logo_paths:
   - lib/isodoc/iho/html/image001.png
   - lib/isodoc/iho/html/image002.png
@@ -41,3 +42,12 @@ doctypes:
   - resolution 
   - regulation
 default_doctype: standard
+symbols_titles:
+  - Abbreviations
+  - Symbols
+termsdefs_titles:
+  - Definitions
+  - Terms and definitions
+  - Terms, definitions and abbreviations
+normref_titles:
+  - References
