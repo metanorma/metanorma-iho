@@ -16,21 +16,24 @@ module IsoDoc
         @anchors[clause["id"]] =
           { label: annex_name_lbl(clause, num), type: "clause",
             xref: "#{lbl} #{num}", level: 1 }
-        clause.xpath(ns("./clause | ./references | ./terms | ./definitions")).
-          each_with_index do |c, i|
-          annex_names1(c, "#{num}.#{i + 1}", 2)
+        if a = single_annex_special_section(clause)
+          annex_names1(a, "#{num}", 1)
+          clause.xpath(ns("./clause | ./references | ./terms | ./definitions")).
+            each_with_index do |c, i|
+            annex_names1(c, "#{num}.#{i + 1}", 2)
+          end
         end
         hierarchical_asset_names(clause, num)
       end
 
       def back_anchor_names(docxml)
         super
-          docxml.xpath(ns("//annex[@obligation = 'informative']")).each_with_index do |c, i|
-            annex_names(c, i + 1)
-          end
-          docxml.xpath(ns("//annex[not(@obligation = 'informative')]")).each_with_index do |c, i|
-            annex_names(c, (65 + i + (i > 7 ? 1 : 0)).chr.to_s)
-          end
+        docxml.xpath(ns("//annex[@obligation = 'informative']")).each_with_index do |c, i|
+          annex_names(c, i + 1)
+        end
+        docxml.xpath(ns("//annex[not(@obligation = 'informative')]")).each_with_index do |c, i|
+          annex_names(c, (65 + i + (i > 7 ? 1 : 0)).chr.to_s)
+        end
       end
 
       def annex_names1(clause, num, level)
