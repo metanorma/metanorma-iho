@@ -10,7 +10,7 @@
 @import 'base_style/all';
 
 body {
-  @include bodyStyle1(15px, 1.4em, #1d1d1d, #ffffff, 300);
+  @include bodyStyle1(15px, 1.4em, #212529, #ffffff, 300);
   // @include sidebarNavContainer(323px);
 }
 
@@ -19,11 +19,11 @@ main {
 }
 
 #toc {
-  @include toc(#485094, #1661AD, #485094);
+  @include toc(#05164d, #fedc5b, #05164d);
   @include sidebarToc();
 
   .toc-active a {
-    color: white;
+    color: #05164d;
   }
 
   li a {
@@ -33,7 +33,7 @@ main {
   ul {
     a:hover {
       box-shadow: none;
-      color: white;
+      color: #05164d;
     }
   }
 }
@@ -43,7 +43,7 @@ nav {
 }
 
 #toggle {
-  @include sidebarNavToggle(white, #1661AD)
+  @include sidebarNavToggle(white, #05164D)
 }
 
 #myBtn {
@@ -51,7 +51,7 @@ nav {
   text-transform: uppercase;
 
   a.anchorjs-link {
-    @include anchorLink(#485094)
+    @include anchorLink(#05164d)
   }
 }
 
@@ -117,12 +117,12 @@ p.document-stage {
 
 #standard-band,
 #in-force-band {
-  background-color: #9ABD48;
+  background-color: #00AAA9;
 }
 
 #standard,
 #in-force {
-  border-bottom: solid 3px #9ABD48;
+  border-bottom: solid 3px #00AAA9;
 }
 
 #specification
@@ -175,11 +175,11 @@ p.document-stage {
 }
 
 #standard {
-  border-bottom: solid 3px #9ABD48;
+  border-bottom: solid 3px #00AAA9;
 }
 
 #standard-band {
-  background-color: #9ABD48;
+  background-color: #00AAA9;
 }
 
 #retired {
@@ -205,7 +205,7 @@ h4,
 h5,
 h6 {
   font-family: $headerfont;
-  color: #1661AD;
+  color: #05164D;
   font-weight: 300;
   margin-top: 1.6em;
   margin-bottom: 0.3em;
@@ -236,7 +236,7 @@ h3 {
 .TermNum,
 .Terms,
 .AltTerms {
-  color: #1661AD;
+  color: #05164D;
   font-weight: 100;
 }
 
@@ -259,7 +259,7 @@ p.AltTerms {
 }
 
 .contact-info a:hover {
-  color: #485094;
+  color: #05164d;
   text-decoration: underline;
   background: none;
   box-shadow: 0 0 0 0;
@@ -268,7 +268,7 @@ p.AltTerms {
 /*
   3.2 Links
 */
-@include elementStyles(#485094, #1661AD, white);
+@include elementStyles(#05164d, #fedc5b, #05164d);
 
 /*
     3.3 Lists
@@ -356,7 +356,7 @@ pre {
 */
 
 .Note {
-  background-color: #fff495;
+  background-color: #fedc5b;
   color: #47430c;
   padding: 1.2em;
   margin: 1em 0 1em 0;
@@ -447,15 +447,15 @@ a.footnote-number {
   width: 250px;
 
   text-align: left;
-  border: #1661AD solid 2px;
-  color: #1661AD !important;
+  border: #05164D solid 2px;
+  color: #05164D !important;
   border-radius: 25px;
 
 }
 
 .contact-info a,
 .contact-info a:hover {
-  color: #1661AD;
+  color: #05164D;
 }
 
 .contact-info p,
@@ -512,7 +512,7 @@ h2 p {
 }
 
 .wrapper-top {
-  background: linear-gradient(200deg, #0f365e, #1661AD);
+  background: #05164D;
   color: #ffffff;
   padding: 2em 0;
   width: 100%;
@@ -521,7 +521,7 @@ h2 p {
 .wrapper-top-bottom {
   width: 0;
   height: 0;
-  border-top: 100px solid #1661AD;
+  border-top: 100px solid #05164D;
   border-right: 100px solid transparent;
   position: absolute;
 }
@@ -564,6 +564,11 @@ h2 p {
 .coverpage {
   text-align: center;
   padding-left: 1.5em;
+
+  img {
+    height: auto;
+    width: 400px;
+  }
 }
 
 .coverpage-logo span,
@@ -608,7 +613,7 @@ h2 p {
   border: #f36f36 solid 2px;
   color: #f36f36 !important;
   margin: 1em 2em;
-  color: #485094;
+  color: #05164d;
   padding: 2em 1em 1em 1em;
   border-radius: 25px;
 }
@@ -632,7 +637,7 @@ h2 p {
 }
 
 
-/*  .copyright .name, .copyright .address {color: #485094;} */
+/*  .copyright .name, .copyright .address {color: #05164d;} */
 
 
 
@@ -724,7 +729,7 @@ To top button
   }
 
   .Note {
-    background-color: #fff495;
+    background-color: #fedc5b;
     color: #47430c;
     padding: 5px;
     margin: 2em 0 1em 0;

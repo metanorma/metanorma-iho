@@ -2,7 +2,7 @@ organization_name_short: IHO
 organization_name_long: International Hydrographic Organization
 document_namespace: https://www.metanorma.org/ns/iho
 xml_root_tag: 'iho-standard'
-logo_path: lib/isodoc/iho/html/image002.png
+logo_path: lib/isodoc/iho/html/logo.png
 logo_paths:
   - lib/isodoc/iho/html/image001.png
   - lib/isodoc/iho/html/image002.png
@@ -11,9 +11,9 @@ validate_rng_file: lib/asciidoctor/iho/iho.rng
 htmlcoverpage: lib/isodoc/iho/html/html_iho_titlepage.html
 htmlintropage: lib/isodoc/iho/html/html_iho_intro.html
 htmlstylesheet: lib/isodoc/iho/html/htmlstyle.scss
-html_bodyfont: '"Source Sans Pro",sans-serif'
-html_headerfont: '"Source Sans Pro",sans-serif'
-html_monospacefont: '"Source Code Pro",monospace'
+html_bodyfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
+html_headerfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
+html_monospacefont: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
 scripts: lib/isodoc/iho/html/scripts.html
 scripts_pdf: lib/isodoc/iho/html/scripts.pdf.html
 standardstylesheet: lib/isodoc/iho/html/iho.scss
@@ -21,13 +21,13 @@ header: lib/isodoc/iho/html/header.html
 wordcoverpage: lib/isodoc/iho/html/word_iho_titlepage.html
 wordintropage: lib/isodoc/iho/html/word_iho_intro.html
 wordstylesheet: lib/isodoc/iho/html/wordstyle.scss
-word_bodyfont: '"Cambria",serif'
-word_headerfont: '"Calibri",serif'
-word_monospacefont: '"Cambria",monospace'
+word_bodyfont: '"Helvetica Neue",Arial,sans-serif'
+word_headerfont: '"Helvetica Neue",Arial,sans-serif'
+word_monospacefont: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
 docid_template: "{% if seriesabbr %}{{seriesabbr}}{%else%}S{%endif%}-{{ docnumeric }}{% if stageabbr %}({{ stageabbr }}){%endif%}"
 published_stages:
   - in-force
-  - retired  
+  - retired
 default_stage: in-force
 stage_abbreviations:
   draft-proposal:
@@ -37,9 +37,9 @@ stage_abbreviations:
   in-force:
   retired:
 doctypes:
-  - standard 
-  - specification 
-  - resolution 
+  - standard
+  - specification
+  - resolution
   - regulation
 default_doctype: standard
 symbols_titles:
