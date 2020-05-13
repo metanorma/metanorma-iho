@@ -18,6 +18,7 @@ module IsoDoc
             xref: "#{lbl} #{num}", level: 1 }
         if a = single_annex_special_section(clause)
           annex_names1(a, "#{num}", 1)
+        else
           clause.xpath(ns("./clause | ./references | ./terms | ./definitions")).
             each_with_index do |c, i|
             annex_names1(c, "#{num}.#{i + 1}", 2)

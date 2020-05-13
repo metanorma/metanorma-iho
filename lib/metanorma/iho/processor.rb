@@ -6,27 +6,20 @@ module Metanorma
       ["SourceSansPro-Light", "SourceSerifPro", "SourceCodePro-Light", "HanSans"]
     end
 
-    class Processor < Metanorma::Processor
-
-      def initialize
-        @short = :iho
-        @input_format = :asciidoc
-        @asciidoctor_backend = :iho
+    class Processor < Metanorma::Generic::Processor
+      def configuration
+        Metanorma::IHO.configuration
       end
 
       def output_formats
         super.merge(
           html: "html",
           doc: "doc",
-        )
+        ).tap { |hs| hs.delete(:pdf) }
       end
 
       def version
         "Metanorma::IHO #{Metanorma::IHO::VERSION}"
-      end
-
-      def input_to_isodoc(file, filename)
-        Metanorma::Input::Asciidoc.new.process(file, filename, @asciidoctor_backend)
       end
 
       def output(isodoc_node, outname, format, options={})
