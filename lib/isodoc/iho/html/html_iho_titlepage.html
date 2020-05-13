@@ -18,7 +18,7 @@
       <div class="coverpage-doc-identity">
         <div class="doc-number">
           <span class="docnumber">{{ docnumber }}</span>
-          <span class="docyear">{{ edition }}</span>
+          {% if edition %}<span class="docyear">Edition {{ edition }}</span>{% endif %}
           <span class="docyear">{{ draftinfo }}</span>
         </div>
 
