@@ -6,6 +6,7 @@ module Metanorma
       {
         html: ["SourceSansPro-Light", "SourceSerifPro", "SourceCodePro-Light", "HanSans"],
         doc: ["SourceSansPro-Light", "SourceSerifPro", "SourceCodePro-Light", "HanSans"],
+        pdf: ["SourceSansPro-Light", "SourceSerifPro", "SourceCodePro-Light", "HanSans"],
       }
     end
 
@@ -18,7 +19,8 @@ module Metanorma
         super.merge(
           html: "html",
           doc: "doc",
-        ).tap { |hs| hs.delete(:pdf) }
+          pdf: "pdf",
+        )
       end
 
       def version
@@ -31,6 +33,8 @@ module Metanorma
           IsoDoc::IHO::HtmlConvert.new(options).convert(outname, isodoc_node)
         when :doc
           IsoDoc::IHO::WordConvert.new(options).convert(outname, isodoc_node)
+        when :pdf
+          IsoDoc::IHO::PdfConvert.new(options).convert(outname, isodoc_node)
         else
           super
         end
