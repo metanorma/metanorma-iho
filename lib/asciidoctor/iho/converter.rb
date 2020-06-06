@@ -58,7 +58,14 @@ module Asciidoctor
       end
 
       def metadata_committee(node, xml)
-        return unless node.attr("workgroup")
+        unless node.attr("workgroup")
+          @log.add("AsciiDoc Input", nil, "Missing workgroup attribute for document")
+          return
+        end
+        metadata_committee1(node, xml)
+      end
+
+      def metadata_committee1(node, xml)
         xml.editorialgroup do |a|
           a.committee node.attr("committee")
           a.workgroup node.attr("workgroup")

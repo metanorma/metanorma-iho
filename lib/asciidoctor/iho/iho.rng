@@ -31,9 +31,9 @@
       <optional>
         <ref name="doctype"/>
       </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <ref name="editorialgroup"/>
-      </oneOrMore>
+      </zeroOrMore>
       <zeroOrMore>
         <ref name="ics"/>
       </zeroOrMore>
