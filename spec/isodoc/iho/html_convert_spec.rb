@@ -67,11 +67,50 @@ RSpec.describe IsoDoc::IHO do
     INPUT
 
     output = <<~"OUTPUT"
-   {:accesseddate=>"XXX", :agency=>"Ribose", :authors=>[], :authors_affiliations=>{}, :circulateddate=>"XXX", :comment_from=>"2010", :comment_to=>"2011", :confirmeddate=>"XXX", :copieddate=>"XXX", :createddate=>"XXX", :docnumber=>"1000(wd)", :docnumeric=>"1000", :doctitle=>"Main Title", :doctype=>"Standard", :docyear=>"2001", :draft=>"3.4", :draftinfo=>" (draft 3.4, 2000-01-01)", :edition=>"2", :implementeddate=>"2000-01-01", :issueddate=>"XXX", :logo=>"#{File.join(logoloc, 'logo.png')}", :logo_paths=>["#{File.join(logoloc, 'image001.png')}", "#{File.join(logoloc, 'image002.png')}", "#{File.join(logoloc, 'image003.png')}"], :obsoleteddate=>"2001-01-01", :publisheddate=>"XXX", :publisher=>"Ribose", :receiveddate=>"XXX", :revdate=>"2000-01-01", :revdate_monthyear=>"January 2000", :series=>"Bathymetric", :seriesabbr=>"B", :stage=>"Working Draft", :stageabbr=>nil, :tc=>"TC", :transmitteddate=>"XXX", :unchangeddate=>"XXX", :unpublished=>true, :updateddate=>"XXX", :vote_endeddate=>"XXX", :vote_starteddate=>"XXX"}
+{:accesseddate=>"XXX",
+:agency=>"Ribose",
+:authors=>[],
+:authors_affiliations=>{},
+:circulateddate=>"XXX",
+:comment_from=>"2010",
+:comment_to=>"2011",
+:confirmeddate=>"XXX",
+:copieddate=>"XXX",
+:createddate=>"XXX",
+:docnumber=>"1000(wd)",
+:docnumeric=>"1000",
+:doctitle=>"Main Title",
+:doctype=>"Standard",
+:docyear=>"2001",
+:draft=>"3.4",
+:draftinfo=>" (draft 3.4, 2000-01-01)",
+:edition=>"2",
+:implementeddate=>"2000-01-01",
+:issueddate=>"XXX",
+:keywords=>[],
+:logo=>"#{File.join(logoloc, 'logo.png')}",
+:logo_paths=>["#{File.join(logoloc, 'image001.png')}", "#{File.join(logoloc, 'image002.png')}", "#{File.join(logoloc, 'image003.png')}"],
+:obsoleteddate=>"2001-01-01",
+:publisheddate=>"XXX",
+:publisher=>"Ribose",
+:receiveddate=>"XXX",
+:revdate=>"2000-01-01",
+:revdate_monthyear=>"January 2000",
+:series=>"Bathymetric",
+:seriesabbr=>"B",
+:stage=>"Working Draft",
+:stageabbr=>nil,
+:tc=>"TC",
+:transmitteddate=>"XXX",
+:unchangeddate=>"XXX",
+:unpublished=>true,
+:updateddate=>"XXX",
+:vote_endeddate=>"XXX",
+:vote_starteddate=>"XXX"}
     OUTPUT
 
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s)).to be_equivalent_to output
+    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s).gsub(/, :/, ",\n:")).to be_equivalent_to output
   end
 
   it "processes section names" do
