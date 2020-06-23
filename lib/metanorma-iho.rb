@@ -4,6 +4,7 @@ require_relative "isodoc/iho/base_convert"
 require_relative "isodoc/iho/html_convert"
 require_relative "isodoc/iho/word_convert"
 require_relative "isodoc/iho/pdf_convert"
+require_relative "isodoc/iho/presentation_xml_convert"
 require_relative "metanorma/iho/version"
 
 if defined? Metanorma
