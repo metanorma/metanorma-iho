@@ -125,46 +125,9 @@
 							<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd-landscape"/>
 						</fo:repeatable-page-master-alternatives>
 					</fo:page-sequence-master>
-
-						
 				</fo:layout-master-set>
 				
-				<fo:declarations>
-					<pdf:catalog xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf">
-							<pdf:dictionary type="normal" key="ViewerPreferences">
-								<pdf:boolean key="DisplayDocTitle">true</pdf:boolean>
-							</pdf:dictionary>
-						</pdf:catalog>
-					<x:xmpmeta xmlns:x="adobe:ns:meta/">
-						<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-							<rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
-							<!-- Dublin Core properties go here -->
-								<dc:title>
-									<xsl:choose>
-										<xsl:when test="normalize-space($title-en) != ''">
-											<xsl:value-of select="$title-en"/>
-										</xsl:when>
-										<xsl:otherwise> </xsl:otherwise>
-									</xsl:choose>
-								</dc:title>
-								<dc:creator><xsl:value-of select="/iho:iho-standard/iho:bibdata/iho:contributor[iho:role/@type='author']/iho:organization/iho:name"/></dc:creator>
-								<dc:description>
-									<xsl:variable name="abstract">
-										<xsl:copy-of select="/iho:iho-standard/iho:bibliography/iho:references/iho:bibitem/iho:abstract//text()"/>
-									</xsl:variable>
-									<xsl:value-of select="normalize-space($abstract)"/>
-								</dc:description>
-								<pdf:Keywords>
-									<xsl:call-template name="insertKeywords"/>
-								</pdf:Keywords>
-							</rdf:Description>
-							<rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
-								<!-- XMP properties go here -->
-								<xmp:CreatorTool/>
-							</rdf:Description>
-						</rdf:RDF>
-					</x:xmpmeta>
-				</fo:declarations>
+				<xsl:call-template name="addPDFUAmeta"/>
 				
 				<!-- =========================== -->
 				<!-- Cover Page -->
@@ -258,6 +221,11 @@
 						<fo:block-container margin-right="-12.7mm">
 							<fo:block-container margin-right="0mm">
 								<fo:block color="rgb(14, 36, 133)" margin-bottom="15.5pt">
+									<xsl:variable name="title-toc">
+										<xsl:call-template name="getTitle">
+											<xsl:with-param name="name" select="'title-toc'"/>
+										</xsl:call-template>
+									</xsl:variable>
 									<xsl:value-of select="$title-toc"/>
 								</fo:block>
 								<xsl:if test="$debug = 'true'">
@@ -421,10 +389,20 @@
 		<xsl:variable name="section">
 			<xsl:choose>
 				<xsl:when test="@obligation = 'informative'">
+					<xsl:variable name="title-appendix">
+						<xsl:call-template name="getTitle">
+							<xsl:with-param name="name" select="'title-appendix'"/>
+						</xsl:call-template>
+					</xsl:variable>
 					<xsl:value-of select="$title-appendix"/>
 					<xsl:number format="1" level="any" count="iho:annex[@obligation = 'informative']"/>
 				</xsl:when>
 				<xsl:otherwise>
+					<xsl:variable name="title-annex">
+						<xsl:call-template name="getTitle">
+							<xsl:with-param name="name" select="'title-annex'"/>
+						</xsl:call-template>
+					</xsl:variable>
 					<xsl:value-of select="$title-annex"/>
 					<xsl:number format="A" level="any" count="iho:annex[not(@obligation = 'informative')]"/>
 				</xsl:otherwise>
@@ -517,7 +495,12 @@
 		<xsl:param name="sectionNum"/>
 		<xsl:variable name="annex-id" select="ancestor::iho:annex/@id"/>
 		<item level="" id="{@id}" display="false" type="table">
-			<xsl:attribute name="section">				
+			<xsl:attribute name="section">
+				<xsl:variable name="title-table">
+					<xsl:call-template name="getTitle">
+						<xsl:with-param name="name" select="'title-table'"/>
+					</xsl:call-template>
+				</xsl:variable>
 				<xsl:value-of select="$title-table"/>
 				<xsl:call-template name="getTableNumber"/>
 			</xsl:attribute>
@@ -528,7 +511,12 @@
 	<xsl:template match="iho:formula" mode="contents">
 		<item level="" id="{@id}" display="false">
 			<xsl:attribute name="section">
-				<xsl:text>Formula (</xsl:text><xsl:number format="A.1" level="multiple" count="iho:annex | iho:formula"/><xsl:text>)</xsl:text>
+				<xsl:variable name="title-formula">
+					<xsl:call-template name="getTitle">
+						<xsl:with-param name="name" select="'title-formula'"/>
+					</xsl:call-template>
+				</xsl:variable>
+				<xsl:value-of select="$title-formula"/><xsl:number format="(A.1)" level="multiple" count="iho:annex | iho:formula"/>
 			</xsl:attribute>
 		</item>
 	</xsl:template>
@@ -562,6 +550,11 @@
 
 	
 	<xsl:template match="/iho:iho-standard/iho:bibdata/iho:edition">
+		<xsl:variable name="title-edition">
+			<xsl:call-template name="getTitle">
+				<xsl:with-param name="name" select="'title-edition'"/>
+			</xsl:call-template>
+		</xsl:variable>
 		<xsl:value-of select="$title-edition"/>
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -914,6 +907,11 @@
 	</xsl:template>
 	
 	<xsl:template name="getFigureNumber">
+		<xsl:variable name="title-figure">
+			<xsl:call-template name="getTitle">
+				<xsl:with-param name="name" select="'title-figure'"/>
+			</xsl:call-template>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::iho:annex">
 				<xsl:choose>
@@ -953,6 +951,11 @@
 			</xsl:if>
 			<xsl:variable name="claims_id" select="ancestor::iho:clause[1]/@id"/>
 			<fo:inline font-size="11pt" padding-right="2mm">
+				<xsl:variable name="title-note">
+					<xsl:call-template name="getTitle">
+						<xsl:with-param name="name" select="'title-note'"/>
+					</xsl:call-template>
+				</xsl:variable>
 				<xsl:value-of select="$title-note"/>
 				<xsl:if test="count(ancestor::iho:clause[1]//iho:note) &gt; 1">
 					<xsl:number count="iho:note[ancestor::iho:clause[@id = $claims_id]]" level="any"/>
@@ -1003,7 +1006,14 @@
 		<fo:block margin-bottom="12pt"> 
 			<!-- Example:[SOURCE: [3]] -->
 			<fo:basic-link internal-destination="{iho:origin/@bibitemid}" fox:alt-text="{iho:origin/@citeas}">
-				<xsl:text>[SOURCE: </xsl:text>
+				<xsl:text>[</xsl:text>
+				<xsl:variable name="title-source">
+					<xsl:call-template name="getTitle">
+						<xsl:with-param name="name" select="'title-source'"/>
+					</xsl:call-template>
+				</xsl:variable>
+				<xsl:value-of select="$title-source"/>
+				<xsl:text>: </xsl:text>
 				<fo:inline color="blue" text-decoration="underline"><xsl:value-of select="iho:origin/@citeas"/></fo:inline>
 				
 				<xsl:apply-templates select="iho:origin/iho:localityStack"/>
@@ -1017,8 +1027,8 @@
 	<xsl:template match="iho:admonition">
 		<fo:block-container border="0.5pt solid rgb(79, 129, 189)" color="rgb(79, 129, 189)" margin-left="16mm" margin-right="16mm" margin-bottom="12pt">
 			<fo:block-container margin-left="0mm" margin-right="0mm" padding="2mm" padding-top="3mm">
-				<fo:block font-size="11pt" margin-bottom="6pt" font-weight="bold" font-style="italic" text-align="center">
-					<xsl:value-of select="translate(@type, $lower, $upper)"/>
+				<fo:block font-size="11pt" margin-bottom="6pt" font-weight="bold" font-style="italic" text-align="center">					
+					<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(@type))"/>
 				</fo:block>
 				<fo:block font-style="italic">
 					<xsl:apply-templates/>
@@ -1027,6 +1037,12 @@
 		</fo:block-container>		
 	</xsl:template>
 
+	<xsl:template match="iho:formula">
+		<fo:block id="{@id}">
+			<xsl:apply-templates/>
+		</fo:block>
+	</xsl:template>
+	
 	<xsl:template match="iho:formula/iho:dt/iho:stem">
 		<fo:inline>
 			<xsl:apply-templates/>
@@ -1034,7 +1050,7 @@
 	</xsl:template>
 	
 	<xsl:template match="iho:formula/iho:stem">
-		<fo:block id="{../@id}" margin-top="6pt" margin-bottom="12pt" text-align="center">
+		<fo:block margin-top="6pt" margin-bottom="12pt" text-align="center">
 			<xsl:apply-templates/>						
 		</fo:block>
 	</xsl:template>
@@ -1059,7 +1075,7 @@
 	
 	<xsl:template match="iho:source">
 		<fo:basic-link internal-destination="{@bibitemid}" fox:alt-text="{@citeas}">
-			<xsl:value-of select="@citeas" disable-output-escaping="yes"/>
+			<xsl:value-of select="@citeas"/> <!--  disable-output-escaping="yes" -->
 			<xsl:apply-templates select="iho:localityStack"/>
 		</fo:basic-link>
 	</xsl:template>
@@ -1080,6 +1096,11 @@
 			<xsl:variable name="level" select="xalan:nodeset($contents)//item[@id =$target]/@level"/>
 			<xsl:choose>
 				<xsl:when test="$type = 'clause' and $root != 'annex' and $level = 1 and normalize-space(.) = ''"><!--     and not (ancestor::annex) -->					
+					<xsl:variable name="title-clause">
+						<xsl:call-template name="getTitle">
+							<xsl:with-param name="name" select="'title-clause'"/>
+						</xsl:call-template>
+					</xsl:variable>
 					<xsl:value-of select="$title-clause"/>
 				</xsl:when>
 				<xsl:when test="$type = 'li'">
@@ -1116,10 +1137,20 @@
 			<fo:block id="{@id}" font-size="13pt" font-weight="bold" text-align="center" margin-bottom="12pt" keep-with-next="always">
 				<xsl:choose>
 					<xsl:when test="@obligation = 'informative'">
+						<xsl:variable name="title-appendix">
+							<xsl:call-template name="getTitle">
+								<xsl:with-param name="name" select="'title-appendix'"/>
+							</xsl:call-template>
+						</xsl:variable>
 						<xsl:value-of select="$title-appendix"/>
 						<xsl:number format="1" level="any" count="iho:annex[@obligation = 'informative']"/>
 					</xsl:when>
 					<xsl:otherwise>
+						<xsl:variable name="title-annex">
+							<xsl:call-template name="getTitle">
+								<xsl:with-param name="name" select="'title-annex'"/>
+							</xsl:call-template>
+						</xsl:variable>
 						<xsl:value-of select="$title-annex"/>
 						<xsl:number format="A" level="any" count="iho:annex[not(@obligation = 'informative')]"/>
 					</xsl:otherwise>
@@ -1180,13 +1211,13 @@
 				<xsl:number level="any" count="iho:bibitem/iho:note"/>
 			</xsl:variable>
 			<fo:inline font-size="8pt" keep-with-previous.within-line="always" baseline-shift="30%"> <!--85% vertical-align="super"-->
-				<fo:basic-link internal-destination="footnote_{../@id}" fox:alt-text="footnote {$number}">
+				<fo:basic-link internal-destination="{generate-id()}" fox:alt-text="footnote {$number}">
 					<xsl:value-of select="$number"/><xsl:text>)</xsl:text>
 				</fo:basic-link>
 			</fo:inline>
 			<fo:footnote-body>
 				<fo:block font-size="10pt" margin-bottom="4pt" start-indent="0pt">
-					<fo:inline id="footnote_{../@id}" keep-with-next.within-line="always" alignment-baseline="hanging" padding-right="3mm"><!-- font-size="60%"  -->
+					<fo:inline id="{generate-id()}" keep-with-next.within-line="always" alignment-baseline="hanging" padding-right="3mm"><!-- font-size="60%"  -->
 						<xsl:value-of select="$number"/><xsl:text>)</xsl:text>
 					</fo:inline>
 					<xsl:apply-templates/>
@@ -1199,7 +1230,12 @@
 		<fo:block font-size="11pt" margin-top="8pt" margin-bottom="12pt">			
 			<xsl:variable name="claims_id" select="ancestor::iho:clause[1]/@id"/>
 			<fo:block margin-bottom="12pt" font-weight="bold">
-				<fo:inline padding-right="5mm">				
+				<fo:inline padding-right="5mm">	
+					<xsl:variable name="title-example">
+						<xsl:call-template name="getTitle">
+							<xsl:with-param name="name" select="'title-example'"/>
+						</xsl:call-template>
+					</xsl:variable>
 					<xsl:value-of select="$title-example"/>
 					<xsl:choose>
 						<xsl:when test="iho:name">
@@ -1245,7 +1281,7 @@
 			</xsl:if>			
 			<xsl:choose>
 				<xsl:when test="@citeas and normalize-space(text()) = ''">
-					<xsl:value-of select="@citeas" disable-output-escaping="yes"/>
+					<xsl:value-of select="@citeas"/> <!--  disable-output-escaping="yes" -->
 				</xsl:when>
 				<xsl:when test="@bibitemid and normalize-space(text()) = ''">
 					<xsl:value-of select="//iho:bibitem[@id = current()/@bibitemid]/iho:docidentifier"/>
@@ -1268,7 +1304,7 @@
 		
 	<xsl:template match="iho:term">
 		<xsl:param name="sectionNum"/>
-		<fo:block margin-bottom="10pt">
+		<fo:block id="{@id}" margin-bottom="10pt">
 			<xsl:apply-templates>
 				<xsl:with-param name="sectionNum" select="$sectionNum"/>
 			</xsl:apply-templates>
@@ -1279,7 +1315,7 @@
 		<xsl:param name="sectionNum"/>
 		<fo:block line-height="1.1">
 			<fo:block font-weight="bold" keep-with-next="always">
-				<fo:inline id="{../@id}">
+				<fo:inline>
 					<xsl:variable name="section">
 						<xsl:call-template name="getSection">
 							<xsl:with-param name="sectionNum" select="$sectionNum"/>
@@ -1302,7 +1338,12 @@
 	</xsl:template>
 	
 	<xsl:template match="iho:deprecates">
-		<fo:block>DEPRECATED: <xsl:apply-templates/></fo:block>
+		<xsl:variable name="title-deprecated">
+			<xsl:call-template name="getTitle">
+				<xsl:with-param name="name" select="'title-deprecated'"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<fo:block><xsl:value-of select="$title-deprecated"/>: <xsl:apply-templates/></fo:block>
 	</xsl:template>
 	
 	<xsl:template match="iho:definition[preceding-sibling::iho:domain]">
@@ -1322,7 +1363,12 @@
 	<xsl:template match="iho:termexample">
 		<fo:block font-size="10pt" margin-top="8pt" margin-bottom="8pt" text-align="justify">
 			<fo:inline padding-right="5mm">
-				<xsl:text>EXAMPLE </xsl:text>
+				<xsl:variable name="title-example">
+					<xsl:call-template name="getTitle">
+						<xsl:with-param name="name" select="'title-example'"/>
+					</xsl:call-template>
+				</xsl:variable>
+				<xsl:value-of select="$title-example"/>
 				<xsl:if test="count(ancestor::iho:term[1]//iho:termexample) &gt; 1">
 					<xsl:number/>
 				</xsl:if>
@@ -1342,10 +1388,14 @@
 	</xsl:template>
 	
 	<xsl:template match="iho:termnote">
-		<fo:block font-size="10pt" margin-top="8pt" margin-bottom="8pt" text-align="justify">
-			<xsl:text>Note </xsl:text>
-			<xsl:number/>
-			<xsl:text> to entry: </xsl:text>
+		<fo:block font-size="10pt" margin-top="8pt" margin-bottom="8pt" text-align="justify">			
+			<xsl:variable name="num"><xsl:number/></xsl:variable>
+			<xsl:variable name="title-note-to-entry">
+				<xsl:call-template name="getTitle">
+					<xsl:with-param name="name" select="'title-note-to-entry'"/>
+				</xsl:call-template>
+			</xsl:variable>
+			<xsl:value-of select="java:replaceAll(java:java.lang.String.new($title-note-to-entry),'#',$num)"/>
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
@@ -1358,15 +1408,32 @@
 		</xsl:if> -->
 	</xsl:template>
 	
-	<xsl:template match="iho:modification">
-		<xsl:text>, modified — </xsl:text>
-		<xsl:apply-templates/>
-	</xsl:template>
+
 	<xsl:template match="iho:modification/iho:p">
 		<fo:inline><xsl:apply-templates/></fo:inline>
 	</xsl:template>
 	
 	<xsl:template match="iho:locality">
+		<xsl:variable name="title-clause">
+			<xsl:call-template name="getTitle">
+				<xsl:with-param name="name" select="'title-clause'"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:variable name="title-annex">
+			<xsl:call-template name="getTitle">
+				<xsl:with-param name="name" select="'title-annex'"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:variable name="title-appendix">
+			<xsl:call-template name="getTitle">
+				<xsl:with-param name="name" select="'title-appendix'"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:variable name="title-table">
+			<xsl:call-template name="getTitle">
+				<xsl:with-param name="name" select="'title-table'"/>
+			</xsl:call-template>
+		</xsl:variable>
 		<xsl:choose>
 			<xsl:when test="ancestor::iho:termsource"/>
 			<xsl:when test="@type ='clause' and ancestor::iho:eref"/>
@@ -1424,38 +1491,6 @@
 		</fo:static-content>
 	</xsl:template>
 	
-	<xsl:template name="getId">
-		<xsl:choose>
-			<xsl:when test="../@id">
-				<xsl:value-of select="../@id"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="text()"/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
-
-	<xsl:template name="getLevel">
-		<xsl:variable name="level_total" select="count(ancestor::*)"/>
-		<xsl:variable name="level">
-			<xsl:choose>
-				<xsl:when test="ancestor::iho:preface">
-					<xsl:value-of select="$level_total - 2"/>
-				</xsl:when>
-				<xsl:when test="ancestor::iho:sections">
-					<xsl:value-of select="$level_total - 2"/>
-				</xsl:when>
-				<xsl:when test="ancestor::iho:bibliography">
-					<xsl:value-of select="$level_total - 2"/>
-				</xsl:when>
-				<xsl:when test="local-name(ancestor::*[1]) = 'annex'">1</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="$level_total - 1"/>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:value-of select="$level"/>
-	</xsl:template>
 
 	<xsl:template name="getSection">
 		<xsl:param name="sectionNum"/>
@@ -1475,7 +1510,7 @@
 						</xsl:when>
 						<xsl:when test="$level &gt;= 2">
 							<xsl:variable name="num">
-								<xsl:number format=".1" level="multiple" count="iho:clause/iho:clause |                                            iho:clause/iho:terms |                                            iho:terms/iho:term |                                            iho:clause/iho:term |                                             iho:terms/iho:clause |                                           iho:terms/iho:definitions |                                           iho:definitions/iho:clause |                                           iho:clause/iho:definitions |                                           iho:clause/iho:references"/>
+								<xsl:call-template name="getSubSection"/>
 							</xsl:variable>
 							<xsl:value-of select="concat($sectionNum, $num)"/><xsl:text>.</xsl:text>
 						</xsl:when>
@@ -1501,9 +1536,19 @@
 						<xsl:when test="$level = 1">							
 							<xsl:choose>
 								<xsl:when test="ancestor::iho:annex/@obligation = 'informative'">
+									<xsl:variable name="title-appendix">
+										<xsl:call-template name="getTitle">
+											<xsl:with-param name="name" select="'title-appendix'"/>
+										</xsl:call-template>
+									</xsl:variable>
 									<xsl:value-of select="$title-appendix"/>									
 								</xsl:when>
 								<xsl:otherwise>
+									<xsl:variable name="title-annex">
+										<xsl:call-template name="getTitle">
+											<xsl:with-param name="name" select="'title-annex'"/>
+										</xsl:call-template>
+									</xsl:variable>
 									<xsl:value-of select="$title-annex"/>									
 								</xsl:otherwise>
 							</xsl:choose>
@@ -1663,44 +1708,185 @@
 		<xsl:text>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</xsl:text>
 	</xsl:variable>
 	
-<xsl:variable name="title-table">
+<xsl:variable name="titles" select="xalan:nodeset($titles_)"/><xsl:variable name="titles_">
 		
-			<xsl:text>Table </xsl:text>
-		
-		
-	</xsl:variable><xsl:variable name="title-note">
-		
-			<xsl:text>NOTE </xsl:text>
+		<title-table lang="en">Table </title-table>
+		<title-table lang="fr">Tableau </title-table>
+					
+			<title-table lang="zh">Table </title-table>
 		
 		
-	</xsl:variable><xsl:variable name="title-figure">
+	
+		<title-note lang="en">NOTE </title-note>
+		<title-note lang="fr">NOTE </title-note>
 		
-			<xsl:text>Figure </xsl:text>
-		
-		
-	</xsl:variable><xsl:variable name="title-example">
-		
-			<xsl:text>EXAMPLE </xsl:text>
+			<title-note lang="zh">NOTE </title-note>
 		
 		
-	</xsl:variable><xsl:variable name="title-inequality">Inequality </xsl:variable><xsl:variable name="title-equation">Equation </xsl:variable><xsl:variable name="title-annex">
 		
-			<xsl:text>Annex </xsl:text>
+		<title-figure lang="en">Figure </title-figure>
+		<title-figure lang="fr">Figure </title-figure>
 		
-		
-	</xsl:variable><xsl:variable name="title-appendix">
-		<xsl:text>Appendix </xsl:text>
-	</xsl:variable><xsl:variable name="title-clause">
-		
-			<xsl:text>Clause </xsl:text>
+			<title-figure lang="zh">Figure </title-figure>
 		
 		
-	</xsl:variable><xsl:variable name="title-edition">
-		<xsl:text>Edition </xsl:text>
-	</xsl:variable><xsl:variable name="title-toc">
-		Contents 
 		
-	</xsl:variable><xsl:variable name="title-page">Page</xsl:variable><xsl:variable name="title-key">Key</xsl:variable><xsl:variable name="title-where">where</xsl:variable><xsl:variable name="title-descriptors">Descriptors</xsl:variable><xsl:variable name="title-part-en">Part </xsl:variable><xsl:variable name="title-part-fr">Partie </xsl:variable><xsl:variable name="title-note-to-entry">Note # to entry: </xsl:variable><xsl:variable name="title-modified">modified</xsl:variable><xsl:variable name="title-source">SOURCE</xsl:variable><xsl:variable name="title-keywords">Keywords</xsl:variable><xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable><xsl:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable><xsl:variable name="en_chars" select="concat($lower,$upper,',.`1234567890-=~!@#$%^*()_+[]{}\|?/')"/><xsl:variable name="linebreak" select="'&#8232;'"/><xsl:attribute-set name="link-style">
+		<title-example lang="en">EXAMPLE </title-example>
+		<title-example lang="fr">EXEMPLE </title-example>
+		
+			<title-example lang="zh">EXAMPLE </title-example>
+		
+		
+		
+		<title-example-xref lang="en">Example </title-example-xref>
+		<title-example-xref lang="fr">Exemple </title-example-xref>
+			
+		<title-section lang="en">Section </title-section>
+		<title-section lang="fr">Section </title-section>
+		
+		<title-inequality lang="en">Inequality </title-inequality>
+		<title-inequality lang="fr">Inequality </title-inequality>
+		
+		<title-equation lang="en">Equation </title-equation>
+		<title-equation lang="fr">Equation </title-equation>
+				
+		<title-annex lang="en">Annex </title-annex>
+		<title-annex lang="fr">Annexe </title-annex>
+		
+			<title-annex lang="zh">Annex </title-annex>
+		
+		
+		
+		<title-appendix lang="en">Appendix </title-appendix>
+		<title-appendix lang="fr">Appendix </title-appendix>
+			
+		<title-clause lang="en">Clause </title-clause>
+		<title-clause lang="fr">Article </title-clause>
+		
+			<title-clause lang="zh">Clause </title-clause>
+		
+		
+		
+		<title-edition lang="en">
+			
+				<xsl:text>Edition </xsl:text>
+			
+			
+		</title-edition>
+		
+		<title-formula lang="en">Formula </title-formula>
+		<title-formula lang="fr">Formula </title-formula>
+		
+		<title-toc lang="en">
+			
+				<xsl:text>Contents</xsl:text>
+			
+			
+			
+		</title-toc>
+		<title-toc lang="fr">Sommaire</title-toc>
+		
+			<title-toc lang="zh">Contents</title-toc>
+		
+		
+		
+		<title-page lang="en">Page</title-page>
+		<title-page lang="fr">Page</title-page>
+		
+		<title-key lang="en">Key</title-key>
+		<title-key lang="fr">Légende</title-key>
+			
+		<title-where lang="en">where</title-where>
+		<title-where lang="fr">où</title-where>
+					
+		<title-descriptors lang="en">Descriptors</title-descriptors>
+		
+		<title-part lang="en">
+			
+			
+		</title-part>
+		<title-part lang="fr">
+			
+			
+		</title-part>		
+		<title-part lang="zh">第 # 部分:</title-part>
+		
+		<title-note-to-entry lang="en">Note # to entry: </title-note-to-entry>
+		<title-note-to-entry lang="fr">Note # à l'article: </title-note-to-entry>
+		
+			<title-note-to-entry lang="zh">Note # to entry: </title-note-to-entry>
+		
+		
+		
+		<title-modified lang="en">modified</title-modified>
+		<title-modified lang="fr">modifiée</title-modified>
+		
+			<title-modified lang="zh">modified</title-modified>
+		
+		
+		
+		<title-source lang="en">SOURCE</title-source>
+		
+		<title-keywords lang="en">Keywords</title-keywords>
+		
+		<title-deprecated lang="en">DEPRECATED</title-deprecated>
+		<title-deprecated lang="fr">DEPRECATED</title-deprecated>
+		
+		<title-submitting-organizations lang="en">Submitting Organizations</title-submitting-organizations>
+		
+		<title-list-tables lang="en">List of Tables</title-list-tables>
+		
+		<title-list-figures lang="en">List of Figures</title-list-figures>
+		
+		<title-recommendation lang="en">Recommendation </title-recommendation>
+		
+		<title-acknowledgements lang="en">Acknowledgements</title-acknowledgements>
+		
+		<title-abstract lang="en">Abstract</title-abstract>
+		
+		<title-summary lang="en">Summary</title-summary>
+		
+		<title-in lang="en">in </title-in>
+		
+		<title-box lang="en">Box </title-box>
+		
+		<title-partly-supercedes lang="en">Partly Supercedes </title-partly-supercedes>
+		<title-partly-supercedes lang="zh">部分代替 </title-partly-supercedes>
+		
+		<title-completion-date lang="en">Completion date for this manuscript</title-completion-date>
+		<title-completion-date lang="zh">本稿完成日期</title-completion-date>
+		
+		<title-issuance-date lang="en">Issuance Date: #</title-issuance-date>
+		<title-issuance-date lang="zh"># 发布</title-issuance-date>
+		
+		<title-implementation-date lang="en">Implementation Date: #</title-implementation-date>
+		<title-implementation-date lang="zh"># 实施</title-implementation-date>
+
+		<title-obligation-normative lang="en">normative</title-obligation-normative>
+		<title-obligation-normative lang="zh">规范性附录</title-obligation-normative>
+		
+		<title-caution lang="en">CAUTION</title-caution>
+		<title-caution lang="zh">注意</title-caution>
+			
+		<title-warning lang="en">WARNING</title-warning>
+		<title-warning lang="zh">警告</title-warning>
+		
+		<title-amendment lang="en">AMENDMENT</title-amendment>
+	</xsl:variable><xsl:template name="getTitle">
+		<xsl:param name="name"/>
+		<xsl:variable name="lang">
+			<xsl:call-template name="getLang"/>
+		</xsl:variable>
+		<xsl:variable name="title_" select="$titles/*[local-name() = $name][@lang = $lang]"/>
+		<xsl:choose>
+			<xsl:when test="normalize-space($title_) != ''">
+				<xsl:value-of select="$title_"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="$titles/*[local-name() = $name][@lang = 'en']"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template><xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable><xsl:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable><xsl:variable name="en_chars" select="concat($lower,$upper,',.`1234567890-=~!@#$%^*()_+[]{}\|?/')"/><xsl:variable name="linebreak" select="'&#8232;'"/><xsl:attribute-set name="link-style">
 		
 			<xsl:attribute name="color">blue</xsl:attribute>
 			<xsl:attribute name="text-decoration">underline</xsl:attribute>
@@ -1772,7 +1958,11 @@
 							<xsl:attribute name="font-weight">normal</xsl:attribute>
 							<xsl:attribute name="font-size">11pt</xsl:attribute>							
 						
-						
+						<xsl:variable name="title-table">
+							<xsl:call-template name="getTitle">
+								<xsl:with-param name="name" select="'title-table'"/>
+							</xsl:call-template>
+						</xsl:variable>
 						<xsl:value-of select="$title-table"/>
 						
 						<xsl:call-template name="getTableNumber"/>
@@ -1864,9 +2054,9 @@
 				
 				
 								
-				<xsl:attribute name="margin-left">0mm</xsl:attribute>
-				<xsl:attribute name="margin-right">0mm</xsl:attribute>
-			
+					<xsl:attribute name="margin-left">0mm</xsl:attribute>
+					<xsl:attribute name="margin-right">0mm</xsl:attribute>
+				
 				<xsl:for-each select="xalan:nodeset($colwidths)//column">
 					<xsl:choose>
 						<xsl:when test=". = 1 or . = 0">
@@ -1877,7 +2067,16 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:for-each>
-				<xsl:apply-templates/>
+				
+				<xsl:choose>
+					<xsl:when test="not(*[local-name()='tbody']) and *[local-name()='thead']">
+						<xsl:apply-templates select="*[local-name()='thead']" mode="process_tbody"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates/>
+					</xsl:otherwise>
+				</xsl:choose>
+				
 			</fo:table>
 			
 			
@@ -2026,6 +2225,10 @@
 			
 			<xsl:apply-templates/>
 		</fo:table-header>
+	</xsl:template><xsl:template match="*[local-name()='thead']" mode="process_tbody">		
+		<fo:table-body>
+			<xsl:apply-templates/>
+		</fo:table-body>
 	</xsl:template><xsl:template match="*[local-name()='tfoot']"/><xsl:template match="*[local-name()='tfoot']" mode="process">
 		<xsl:apply-templates/>
 	</xsl:template><xsl:template name="insertTableFooter">
@@ -2197,6 +2400,11 @@
 					
 						<xsl:attribute name="font-size">11pt</xsl:attribute>					
 					
+					<xsl:variable name="title-note">
+						<xsl:call-template name="getTitle">
+							<xsl:with-param name="name" select="'title-note'"/>
+						</xsl:call-template>
+					</xsl:variable>
 					<xsl:value-of select="$title-note"/>
 					
 						<xsl:variable name="id" select="ancestor::*[local-name() = 'table'][1]/@id"/>
@@ -2277,6 +2485,36 @@
 				</fn>
 			</xsl:for-each>
 		</xsl:variable>
+		
+		<!-- current hierarchy is 'figure' element -->
+		<xsl:variable name="following_dl_colwidths">
+			<xsl:if test="*[local-name() = 'dl']"><!-- if there is a 'dl', then set the same columns width as for 'dl' -->
+				<xsl:variable name="html-table">
+					<xsl:variable name="ns" select="substring-before(name(/*), '-')"/>
+					<xsl:element name="{$ns}:table">
+						<xsl:for-each select="*[local-name() = 'dl'][1]">
+							<tbody>
+								<xsl:apply-templates mode="dl"/>
+							</tbody>
+						</xsl:for-each>
+					</xsl:element>
+				</xsl:variable>
+				
+				<xsl:call-template name="calculate-column-widths">
+					<xsl:with-param name="cols-count" select="2"/>
+					<xsl:with-param name="table" select="$html-table"/>
+				</xsl:call-template>
+				
+			</xsl:if>
+		</xsl:variable>
+		
+		
+		<xsl:variable name="maxlength_dt">
+			<xsl:for-each select="*[local-name() = 'dl'][1]">
+				<xsl:call-template name="getMaxLength_dt"/>			
+			</xsl:for-each>
+		</xsl:variable>
+		
 		<xsl:if test="xalan:nodeset($references)//fn">
 			<fo:block>
 				<fo:table width="95%" table-layout="fixed">
@@ -2284,8 +2522,19 @@
 						<xsl:attribute name="font-size">10pt</xsl:attribute>
 						
 					</xsl:if>
-					<fo:table-column column-width="15%"/>
-					<fo:table-column column-width="85%"/>
+					<xsl:choose>
+						<!-- if there 'dl', then set same columns width -->
+						<xsl:when test="xalan:nodeset($following_dl_colwidths)//column">
+							<xsl:call-template name="setColumnWidth_dl">
+								<xsl:with-param name="colwidths" select="$following_dl_colwidths"/>								
+								<xsl:with-param name="maxlength_dt" select="$maxlength_dt"/>								
+							</xsl:call-template>
+						</xsl:when>
+						<xsl:otherwise>
+							<fo:table-column column-width="15%"/>
+							<fo:table-column column-width="85%"/>
+						</xsl:otherwise>
+					</xsl:choose>
 					<fo:table-body>
 						<xsl:for-each select="xalan:nodeset($references)//fn">
 							<xsl:variable name="reference" select="@reference"/>
@@ -2346,6 +2595,11 @@
 				
 					<fo:block margin-bottom="12pt" text-align="left">
 						
+						<xsl:variable name="title-where">
+							<xsl:call-template name="getTitle">
+								<xsl:with-param name="name" select="'title-where'"/>
+							</xsl:call-template>
+						</xsl:variable>
 						<xsl:value-of select="$title-where"/><xsl:text> </xsl:text>
 						<xsl:apply-templates select="*[local-name()='dt']/*"/>
 						<xsl:text/>
@@ -2359,14 +2613,24 @@
 					
 					
 					
+					<xsl:variable name="title-where">
+						<xsl:call-template name="getTitle">
+							<xsl:with-param name="name" select="'title-where'"/>
+						</xsl:call-template>
+					</xsl:variable>
 					<xsl:value-of select="$title-where"/>
 				</fo:block>
 			</xsl:when>
 			<xsl:when test="$parent = 'figure' and  (not(../@class) or ../@class !='pseudocode')">
-				<fo:block font-weight="bold" text-align="left" margin-bottom="12pt">
+				<fo:block font-weight="bold" text-align="left" margin-bottom="12pt" keep-with-next="always">
 					
 					
 					
+					<xsl:variable name="title-key">
+						<xsl:call-template name="getTitle">
+							<xsl:with-param name="name" select="'title-key'"/>
+						</xsl:call-template>
+					</xsl:variable>
 					<xsl:value-of select="$title-key"/>
 				</fo:block>
 			</xsl:when>
@@ -2385,25 +2649,8 @@
 					
 					
 					
-					<xsl:attribute name="margin-left">-3.5mm</xsl:attribute>
-				
-					<!-- create virtual html table for dl/[dt and dd] -->
-					<xsl:variable name="html-table">
-						<xsl:variable name="ns" select="substring-before(name(/*), '-')"/>
-						<xsl:element name="{$ns}:table">
-							<tbody>
-								<xsl:apply-templates mode="dl"/>
-							</tbody>
-						</xsl:element>
-					</xsl:variable>
-					<!-- html-table<xsl:copy-of select="$html-table"/> -->
-					<xsl:variable name="colwidths">
-						<xsl:call-template name="calculate-column-widths">
-							<xsl:with-param name="cols-count" select="2"/>
-							<xsl:with-param name="table" select="$html-table"/>
-						</xsl:call-template>
-					</xsl:variable>
-					<!-- colwidths=<xsl:value-of select="$colwidths"/> -->
+						<xsl:attribute name="margin-left">-3.5mm</xsl:attribute>
+					
 					
 					<fo:table width="95%" table-layout="fixed">
 						
@@ -2416,42 +2663,30 @@
 								
 							</xsl:when>
 						</xsl:choose>
-						<xsl:choose>
-							<xsl:when test="ancestor::*[local-name()='dl']"><!-- second level, i.e. inlined table -->
-								<fo:table-column column-width="50%"/>
-								<fo:table-column column-width="50%"/>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:choose>
-									<!-- <xsl:when test="xalan:nodeset($colwidths)/column[1] div xalan:nodeset($colwidths)/column[2] &gt; 1.7">
-										<fo:table-column column-width="60%"/>
-										<fo:table-column column-width="40%"/>
-									</xsl:when> -->
-									<xsl:when test="xalan:nodeset($colwidths)/column[1] div xalan:nodeset($colwidths)/column[2] &gt; 1.3">
-										<fo:table-column column-width="50%"/>
-										<fo:table-column column-width="50%"/>
-									</xsl:when>
-									<xsl:when test="xalan:nodeset($colwidths)/column[1] div xalan:nodeset($colwidths)/column[2] &gt; 0.5">
-										<fo:table-column column-width="40%"/>
-										<fo:table-column column-width="60%"/>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:for-each select="xalan:nodeset($colwidths)//column">
-											<xsl:choose>
-												<xsl:when test=". = 1 or . = 0">
-													<fo:table-column column-width="proportional-column-width(2)"/>
-												</xsl:when>
-												<xsl:otherwise>
-													<fo:table-column column-width="proportional-column-width({.})"/>
-												</xsl:otherwise>
-											</xsl:choose>
-										</xsl:for-each>
-									</xsl:otherwise>
-								</xsl:choose>
-								<!-- <fo:table-column column-width="15%"/>
-								<fo:table-column column-width="85%"/> -->
-							</xsl:otherwise>
-						</xsl:choose>
+						<!-- create virtual html table for dl/[dt and dd] -->
+						<xsl:variable name="html-table">
+							<xsl:variable name="ns" select="substring-before(name(/*), '-')"/>
+							<xsl:element name="{$ns}:table">
+								<tbody>
+									<xsl:apply-templates mode="dl"/>
+								</tbody>
+							</xsl:element>
+						</xsl:variable>
+						<!-- html-table<xsl:copy-of select="$html-table"/> -->
+						<xsl:variable name="colwidths">
+							<xsl:call-template name="calculate-column-widths">
+								<xsl:with-param name="cols-count" select="2"/>
+								<xsl:with-param name="table" select="$html-table"/>
+							</xsl:call-template>
+						</xsl:variable>
+						<!-- colwidths=<xsl:value-of select="$colwidths"/> -->
+						<xsl:variable name="maxlength_dt">							
+							<xsl:call-template name="getMaxLength_dt"/>							
+						</xsl:variable>
+						<xsl:call-template name="setColumnWidth_dl">
+							<xsl:with-param name="colwidths" select="$colwidths"/>							
+							<xsl:with-param name="maxlength_dt" select="$maxlength_dt"/>
+						</xsl:call-template>
 						<fo:table-body>
 							<xsl:apply-templates>
 								<xsl:with-param name="key_iso" select="normalize-space($key_iso)"/>
@@ -2461,6 +2696,60 @@
 				</fo:block>
 			</fo:block>
 		</xsl:if>
+	</xsl:template><xsl:template name="setColumnWidth_dl">
+		<xsl:param name="colwidths"/>		
+		<xsl:param name="maxlength_dt"/>
+		<xsl:choose>
+			<xsl:when test="ancestor::*[local-name()='dl']"><!-- second level, i.e. inlined table -->
+				<fo:table-column column-width="50%"/>
+				<fo:table-column column-width="50%"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:choose>
+					<xsl:when test="normalize-space($maxlength_dt) != '' and number($maxlength_dt) &lt;= 2"> <!-- if dt contains short text like t90, a, etc -->
+						<fo:table-column column-width="5%"/>
+						<fo:table-column column-width="95%"/>
+					</xsl:when>
+					<xsl:when test="normalize-space($maxlength_dt) != '' and number($maxlength_dt) &lt;= 5"> <!-- if dt contains short text like t90, a, etc -->
+						<fo:table-column column-width="10%"/>
+						<fo:table-column column-width="90%"/>
+					</xsl:when>
+					<!-- <xsl:when test="xalan:nodeset($colwidths)/column[1] div xalan:nodeset($colwidths)/column[2] &gt; 1.7">
+						<fo:table-column column-width="60%"/>
+						<fo:table-column column-width="40%"/>
+					</xsl:when> -->
+					<xsl:when test="xalan:nodeset($colwidths)/column[1] div xalan:nodeset($colwidths)/column[2] &gt; 1.3">
+						<fo:table-column column-width="50%"/>
+						<fo:table-column column-width="50%"/>
+					</xsl:when>
+					<xsl:when test="xalan:nodeset($colwidths)/column[1] div xalan:nodeset($colwidths)/column[2] &gt; 0.5">
+						<fo:table-column column-width="40%"/>
+						<fo:table-column column-width="60%"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:for-each select="xalan:nodeset($colwidths)//column">
+							<xsl:choose>
+								<xsl:when test=". = 1 or . = 0">
+									<fo:table-column column-width="proportional-column-width(2)"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<fo:table-column column-width="proportional-column-width({.})"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:for-each>
+					</xsl:otherwise>
+				</xsl:choose>
+				<!-- <fo:table-column column-width="15%"/>
+				<fo:table-column column-width="85%"/> -->
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template><xsl:template name="getMaxLength_dt">
+		<xsl:for-each select="*[local-name()='dt']">
+			<xsl:sort select="string-length(normalize-space(.))" data-type="number" order="descending"/>
+			<xsl:if test="position() = 1">
+				<xsl:value-of select="string-length(normalize-space(.))"/>
+			</xsl:if>
+		</xsl:for-each>
 	</xsl:template><xsl:template match="*[local-name()='dl']/*[local-name()='note']">
 		<xsl:param name="key_iso"/>
 		
@@ -2477,6 +2766,11 @@
 					<xsl:if test="normalize-space($key_iso) = 'true'">
 						<xsl:attribute name="margin-top">0</xsl:attribute>
 					</xsl:if>
+					<xsl:variable name="title-note">
+						<xsl:call-template name="getTitle">
+							<xsl:with-param name="name" select="'title-note'"/>
+						</xsl:call-template>
+					</xsl:variable>
 					<xsl:value-of select="$title-note"/>
 				</fo:block>
 			</fo:table-cell>
@@ -2521,7 +2815,11 @@
 					
 					
 					<xsl:apply-templates/>
-					
+					<!-- <xsl:if test="$namespace = 'gb'">
+						<xsl:if test="ancestor::*[local-name()='formula']">
+							<xsl:text>—</xsl:text>
+						</xsl:if>
+					</xsl:if> -->
 				</fo:block>
 			</fo:table-cell>
 			<fo:table-cell>
@@ -2577,7 +2875,8 @@
 	</xsl:template><xsl:template name="recursiveSmallCaps">
     <xsl:param name="text"/>
     <xsl:variable name="char" select="substring($text,1,1)"/>
-    <xsl:variable name="upperCase" select="translate($char, $lower, $upper)"/>
+    <!-- <xsl:variable name="upperCase" select="translate($char, $lower, $upper)"/> -->
+		<xsl:variable name="upperCase" select="java:toUpperCase(java:java.lang.String.new($char))"/>
     <xsl:choose>
       <xsl:when test="$char=$upperCase">
         <fo:inline font-size="{100 div 0.75}%">
@@ -2860,18 +3159,28 @@
 		<xsl:choose>
 			<xsl:when test="contains($str2, ' ')">
 				<xsl:variable name="substr" select="substring-before($str2, ' ')"/>
-				<xsl:value-of select="translate(substring($substr, 1, 1), $lower, $upper)"/>
-				<xsl:value-of select="substring($substr, 2)"/>
+				<!-- <xsl:value-of select="translate(substring($substr, 1, 1), $lower, $upper)"/>
+				<xsl:value-of select="substring($substr, 2)"/> -->
+				<xsl:call-template name="capitalize">
+					<xsl:with-param name="str" select="$substr"/>
+				</xsl:call-template>
 				<xsl:text> </xsl:text>
 				<xsl:call-template name="capitalizeWords">
 					<xsl:with-param name="str" select="substring-after($str2, ' ')"/>
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="translate(substring($str2, 1, 1), $lower, $upper)"/>
-				<xsl:value-of select="substring($str2, 2)"/>
+				<!-- <xsl:value-of select="translate(substring($str2, 1, 1), $lower, $upper)"/>
+				<xsl:value-of select="substring($str2, 2)"/> -->
+				<xsl:call-template name="capitalize">
+					<xsl:with-param name="str" select="$str2"/>
+				</xsl:call-template>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template><xsl:template name="capitalize">
+		<xsl:param name="str"/>
+		<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(substring($str, 1, 1)))"/>
+		<xsl:value-of select="substring($str, 2)"/>		
 	</xsl:template><xsl:template match="mathml:math">
 		<fo:inline font-family="STIX2Math">
 			<fo:instream-foreign-object fox:alt-text="Math"> 
@@ -2929,6 +3238,11 @@
 		<fo:inline id="{@id}"/>
 	</xsl:template><xsl:template match="*[local-name()='appendix']">
 		<fo:block id="{@id}" xsl:use-attribute-sets="appendix-style">
+			<xsl:variable name="title-appendix">
+				<xsl:call-template name="getTitle">
+					<xsl:with-param name="name" select="'title-appendix'"/>
+				</xsl:call-template>
+			</xsl:variable>
 			<fo:inline padding-right="5mm"><xsl:value-of select="$title-appendix"/> <xsl:number/></fo:inline>
 			<xsl:apply-templates select="*[local-name()='title']" mode="process"/>
 		</fo:block>
@@ -2938,6 +3252,11 @@
 	</xsl:template><xsl:template match="*[local-name()='appendix']//*[local-name()='example']">
 		<fo:block xsl:use-attribute-sets="appendix-example-style">
 			<xsl:variable name="claims_id" select="ancestor::*[local-name()='clause'][1]/@id"/>
+			<xsl:variable name="title-example">
+				<xsl:call-template name="getTitle">
+					<xsl:with-param name="name" select="'title-example'"/>
+				</xsl:call-template>
+			</xsl:variable>
 			<xsl:value-of select="$title-example"/>
 			<xsl:if test="count(ancestor::*[local-name()='clause'][1]//*[local-name()='example']) &gt; 1">
 					<xsl:number count="*[local-name()='example'][ancestor::*[local-name()='clause'][@id = $claims_id]]" level="any"/><xsl:text> </xsl:text>
@@ -2968,6 +3287,17 @@
 			<xsl:if test="not(preceding-sibling::*[local-name() = 'p'])"><xsl:value-of select="$callout"/></xsl:if>
 			<xsl:apply-templates/>
 		</fo:inline>		
+	</xsl:template><xsl:template match="*[local-name() = 'modification']">
+		<xsl:variable name="title-modified">
+			<xsl:call-template name="getTitle">
+				<xsl:with-param name="name" select="'title-modified'"/>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="$lang = 'zh'"><xsl:text>、</xsl:text><xsl:value-of select="$title-modified"/><xsl:text>—</xsl:text></xsl:when>
+			<xsl:otherwise><xsl:text>, </xsl:text><xsl:value-of select="$title-modified"/><xsl:text> — </xsl:text></xsl:otherwise>
+		</xsl:choose>
+		<xsl:apply-templates/>
 	</xsl:template><xsl:template name="convertDate">
 		<xsl:param name="date"/>
 		<xsl:param name="format" select="'short'"/>
@@ -3032,4 +3362,107 @@
 			<xsl:when test="position() != last()"><xsl:value-of select="$charDelim"/></xsl:when>
 			<xsl:otherwise><xsl:value-of select="$charAtEnd"/></xsl:otherwise>
 		</xsl:choose>
+	</xsl:template><xsl:template name="addPDFUAmeta">
+		<fo:declarations>
+			<pdf:catalog xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf">
+					<pdf:dictionary type="normal" key="ViewerPreferences">
+						<pdf:boolean key="DisplayDocTitle">true</pdf:boolean>
+					</pdf:dictionary>
+				</pdf:catalog>
+			<x:xmpmeta xmlns:x="adobe:ns:meta/">
+				<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+					<rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
+					<!-- Dublin Core properties go here -->
+						<dc:title>
+							<xsl:variable name="title">
+								
+																
+									<xsl:value-of select="/*/*[local-name() = 'bibdata']/*[local-name() = 'title'][@language = 'en']"/>
+								
+								
+																
+							</xsl:variable>
+							<xsl:choose>
+								<xsl:when test="normalize-space($title) != ''">
+									<xsl:value-of select="$title"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:text> </xsl:text>
+								</xsl:otherwise>
+							</xsl:choose>							
+						</dc:title>
+						<dc:creator>
+							
+								<xsl:value-of select="/*/*[local-name() = 'bibdata']/*[local-name() = 'contributor'][*[local-name() = 'role']/@type='author']/*[local-name() = 'organization']/*[local-name() = 'name']"/>
+							
+							
+						</dc:creator>
+						<dc:description>
+							<xsl:variable name="abstract">
+								
+									<xsl:copy-of select="/*/*[local-name() = 'bibliography']/*[local-name() = 'references']/*[local-name() = 'bibitem']/*[local-name() = 'abstract']//text()"/>
+								
+								
+								
+								
+							</xsl:variable>
+							<xsl:value-of select="normalize-space($abstract)"/>
+						</dc:description>
+						<pdf:Keywords>
+							<xsl:call-template name="insertKeywords"/>
+						</pdf:Keywords>
+					</rdf:Description>
+					<rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
+						<!-- XMP properties go here -->
+						<xmp:CreatorTool/>
+					</rdf:Description>
+				</rdf:RDF>
+			</x:xmpmeta>
+		</fo:declarations>
+	</xsl:template><xsl:template name="getId">
+		<xsl:choose>
+			<xsl:when test="../@id">
+				<xsl:value-of select="../@id"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- <xsl:value-of select="concat(local-name(..), '_', text())"/> -->
+				<xsl:value-of select="concat(generate-id(..), '_', text())"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template><xsl:template name="getLevel">
+		<xsl:variable name="level_total" select="count(ancestor::*)"/>
+		<xsl:variable name="level">
+			<xsl:choose>
+				<xsl:when test="ancestor::*[local-name() = 'preface']">
+					<xsl:value-of select="$level_total - 2"/>
+				</xsl:when>
+				<xsl:when test="ancestor::*[local-name() = 'sections']">
+					<xsl:value-of select="$level_total - 2"/>
+				</xsl:when>
+				<xsl:when test="ancestor::*[local-name() = 'bibliography']">
+					<xsl:value-of select="$level_total - 2"/>
+				</xsl:when>
+				<xsl:when test="local-name(ancestor::*[1]) = 'annex'">1</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$level_total - 1"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:value-of select="$level"/>
+	</xsl:template><xsl:template name="getSubSection">
+		<xsl:number format=".1" level="multiple" count="*[local-name() = 'clause']/*[local-name() = 'clause'] |                  *[local-name() = 'clause']/*[local-name() = 'terms'] |                  *[local-name() = 'terms']/*[local-name() = 'term'] |                  *[local-name() = 'clause']/*[local-name() = 'term'] |                   *[local-name() = 'terms']/*[local-name() = 'clause'] |                 *[local-name() = 'terms']/*[local-name() = 'definitions'] |                 *[local-name() = 'definitions']/*[local-name() = 'clause'] |                 *[local-name() = 'clause']/*[local-name() = 'definitions'] |                 *[local-name() = 'definitions']/*[local-name() = 'definitions'] |                 *[local-name() = 'clause']/*[local-name() = 'references']"/>
+	</xsl:template><xsl:template name="split">
+		<xsl:param name="pText" select="."/>
+		<xsl:param name="sep" select="','"/>
+		<xsl:if test="string-length($pText) &gt;0">
+		<item>
+			<xsl:value-of select="normalize-space(substring-before(concat($pText, ','), $sep))"/>
+		</item>
+		<xsl:call-template name="split">
+			<xsl:with-param name="pText" select="substring-after($pText, $sep)"/>
+			<xsl:with-param name="sep" select="$sep"/>
+		</xsl:call-template>
+		</xsl:if>
+	</xsl:template><xsl:template name="getDocumentId">		
+		<xsl:call-template name="getLang"/><xsl:value-of select="//*[local-name() = 'p'][1]/@id"/>
 	</xsl:template></xsl:stylesheet>
