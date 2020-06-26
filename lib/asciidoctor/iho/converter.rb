@@ -84,6 +84,10 @@ module Asciidoctor
         Metanorma::IHO.configuration
       end
 
+      def presentation_xml_converter(node)
+        IsoDoc::IHO::PresentationXMLConvert.new(html_extract_attributes(node))
+      end
+
       def html_converter(node)
         IsoDoc::IHO::HtmlConvert.new(html_extract_attributes(node))
       end
@@ -93,7 +97,7 @@ module Asciidoctor
         IsoDoc::IHO::PdfConvert.new(html_extract_attributes(node))
       end
 
-      def word_converter(node)
+      def doc_converter(node)
         IsoDoc::IHO::WordConvert.new(doc_extract_attributes(node))
       end
     end

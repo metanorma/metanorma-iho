@@ -27,14 +27,16 @@ module Metanorma
         "Metanorma::IHO #{Metanorma::IHO::VERSION}"
       end
 
-      def output(isodoc_node, outname, format, options={})
+      def output(isodoc_node, inname, outname, format, options={})
         case format
         when :html
-          IsoDoc::IHO::HtmlConvert.new(options).convert(outname, isodoc_node)
+          IsoDoc::IHO::HtmlConvert.new(options).convert(inname, isodoc_node, nil, outname)
         when :doc
-          IsoDoc::IHO::WordConvert.new(options).convert(outname, isodoc_node)
+          IsoDoc::IHO::WordConvert.new(options).convert(inname, isodoc_node, nil, outname)
         when :pdf
-          IsoDoc::IHO::PdfConvert.new(options).convert(outname, isodoc_node)
+          IsoDoc::IHO::PdfConvert.new(options).convert(inname, isodoc_node, nil, outname)
+        when :presentation
+          IsoDoc::IHO::PresentationXMLConvert.new(options).convert(inname, isodoc_node, nil, outname)
         else
           super
         end
