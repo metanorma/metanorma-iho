@@ -1,5 +1,4 @@
 require "isodoc"
-require "isodoc/iho/metadata"
 
 module IsoDoc
   module IHO

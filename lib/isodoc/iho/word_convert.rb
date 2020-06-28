@@ -1,6 +1,6 @@
 require "isodoc"
 require "isodoc/generic/word_convert"
-require "isodoc/iho/metadata"
+require_relative "init"
 
 module IsoDoc
   module IHO
@@ -41,6 +41,7 @@ module IsoDoc
       end
 
       include BaseConvert
+      include Init
     end
   end
 end
