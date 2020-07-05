@@ -44,8 +44,9 @@ RSpec.describe Metanorma::IHO::Processor do
     input = <<~"INPUT"
     <iho-standard xmlns="http://riboseinc.com/isoxml">
       <sections>
-        <terms id="H" obligation="normative"><title>Terms, Definitions, Symbols and Abbreviated Terms</title>
+        <terms id="H" obligation="normative"><title>1.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</title>
           <term id="J">
+          <name>1.1.</name>
             <preferred>Term2</preferred>
           </term>
         </terms>
