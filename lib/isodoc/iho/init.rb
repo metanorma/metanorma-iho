@@ -13,6 +13,10 @@ module IsoDoc
         html = HtmlConvert.new(language: lang, script: script)
         @xrefs = Xref.new(lang, script, html, labels, options)
       end
+
+      def i18n_init(lang, script, i18nyaml = nil)
+        @i18n = I18n.new(lang, script, i18nyaml || @i18nyaml)
+      end
     end
   end
 end
