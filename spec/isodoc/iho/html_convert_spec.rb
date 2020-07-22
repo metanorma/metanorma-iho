@@ -311,6 +311,7 @@ RSpec.describe IsoDoc::IHO do
                </bibdata>
                <preface>
                <abstract>
+               <title>Abstract</abstract>
                    <xref target="A1"/>
                    <xref target="B1"/>
                </abstract>
@@ -349,6 +350,7 @@ presxml = <<~OUTPUT
               </bibdata>
               <preface>
               <abstract>
+              <title>Abstract</title>
                   <xref target="A1">Annex A</xref>
                   <xref target="B1">Appendix 1</xref>
               </abstract>
