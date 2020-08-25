@@ -99,12 +99,12 @@
     </element>
   </define>
   <define name="workgroup">
-    <element name="committee">
+    <element name="workgroup">
       <ref name="IHO_Group"/>
     </element>
   </define>
   <define name="commission">
-    <element name="committee">
+    <element name="commission">
       <ref name="IHO_Group"/>
     </element>
   </define>
