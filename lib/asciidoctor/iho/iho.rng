@@ -23,9 +23,13 @@
     </define>
     <define name="editorialgroup">
       <element name="editorialgroup">
-        <ref name="committee"/>
-        <ref name="workgroup"/>
-        <ref name="commission"/>
+        <oneOrMore>
+          <choice>
+            <ref name="committee"/>
+            <ref name="workgroup"/>
+            <ref name="commission"/>
+          </choice>
+        </oneOrMore>
       </element>
     </define>
     <define name="BibDataExtensionType">
