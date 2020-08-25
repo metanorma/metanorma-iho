@@ -67,14 +67,22 @@ module Asciidoctor
 
       def metadata_committee1(node, xml)
         xml.editorialgroup do |a|
-          a.committee node.attr("committee")
-          a.workgroup node.attr("workgroup")
+          a.committee do |n|
+            n.abbreviation node.attr("committee").upcase
+          end
+          a.workgroup do |n|
+            n.abbreviation node.attr("workgroup").upcase
+          end
         end
         i = 2
         while node.attr("workgroup_#{i}") do
           xml.editorialgroup do |a|
-            a.committee node.attr("committee_#{i}")
-            a.workgroup node.attr("workgroup_#{i}")
+            a.committee do |n|
+              n.abbreviation node.attr("committee_#{i}").upcase
+            end
+            a.workgroup do |n|
+              n.abbreviation node.attr("workgroup_#{i}").upcase
+            end
           end
           i += 1
         end

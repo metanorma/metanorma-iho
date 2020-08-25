@@ -122,16 +122,28 @@ RSpec.describe Asciidoctor::IHO do
   <ext>
   <doctype>standard</doctype>
   <editorialgroup>
-               <committee>hssc</committee>
-               <workgroup>WG1</workgroup>
+               <committee>
+                 <abbreviation>HSSC</abbreviation>
+               </committee>
+               <workgroup>
+                 <abbreviation>WG1</abbreviation>
+               </workgroup>
              </editorialgroup>
              <editorialgroup>
-               <committee>ircc</committee>
-               <workgroup>WG2</workgroup>
+               <committee>
+                 <abbreviation>IRCC</abbreviation>
+               </committee>
+               <workgroup>
+                 <abbreviation>WG2</abbreviation>
+               </workgroup>
              </editorialgroup>
              <editorialgroup>
-               <committee>hssc</committee>
-               <workgroup>WG3</workgroup>
+               <committee>
+                 <abbreviation>HSSC</abbreviation>
+               </committee>
+               <workgroup>
+                 <abbreviation>WG3</abbreviation>
+               </workgroup>
              </editorialgroup>
              <commentperiod>
   <from>2010-01-01</from>
