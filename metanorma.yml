@@ -9,6 +9,7 @@ logo_paths:
   - lib/isodoc/iho/html/image002.png
   - lib/isodoc/iho/html/image003.png
 validate_rng_file: lib/asciidoctor/iho/iho.rng
+i18nyaml: lib/isodoc/iho/i18n-en.yaml
 htmlcoverpage: lib/isodoc/iho/html/html_iho_titlepage.html
 htmlintropage: lib/isodoc/iho/html/html_iho_intro.html
 htmlstylesheet: lib/isodoc/iho/html/htmlstyle.scss
