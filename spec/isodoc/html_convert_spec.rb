@@ -1,6 +1,6 @@
 require "spec_helper"
 
-logoloc = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "..", "lib", "isodoc", "iho", "html"))
+logoloc = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "isodoc", "iho", "html"))
 
 RSpec.describe IsoDoc::IHO do
 
@@ -683,15 +683,15 @@ OUTPUT
                This is a preamble
                <xref target='C'>Introduction Subsection</xref>
                <xref target='C1'>Introduction, 2</xref>
-               <xref target='D'>Clause 1</xref>
-               <xref target='H'>Clause 3</xref>
-               <xref target='I'>Clause 3.1</xref>
-               <xref target='J'>Clause 3.1.1</xref>
-               <xref target='K'>Clause 3.2</xref>
-               <xref target='L'>Clause 4</xref>
-               <xref target='M'>Clause 5</xref>
-               <xref target='N'>Clause 5.1</xref>
-               <xref target='O'>Clause 5.2</xref>
+               <xref target='D'>Chapter 1</xref>
+               <xref target='H'>Chapter 3</xref>
+               <xref target='I'>Section 3.1</xref>
+               <xref target='J'>Section 3.1.1</xref>
+               <xref target='K'>Section 3.2</xref>
+               <xref target='L'>Chapter 4</xref>
+               <xref target='M'>Chapter 5</xref>
+               <xref target='N'>Section 5.1</xref>
+               <xref target='O'>Section 5.2</xref>
                <xref target='P'>Annex A</xref>
                <xref target='Q'>Annex A.1</xref>
                <xref target='Q1'>Annex A.1.1</xref>
@@ -700,7 +700,7 @@ OUTPUT
                <xref target='QQ'>Appendix 1.1</xref>
                <xref target='QQ1'>Appendix 1.1.1</xref>
                <xref target='QQ2'>Appendix 1, Appendix 1</xref>
-               <xref target='R'>Clause 2</xref>
+               <xref target='R'>Chapter 2</xref>
              </p>
            </foreword>
            <introduction id='B' obligation='informative'>
