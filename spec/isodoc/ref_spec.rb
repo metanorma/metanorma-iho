@@ -307,7 +307,7 @@ html = <<~OUTPUT
                amendments) applies.
              </p>
              <p id='ref1' class='NormRef'>
-               [1]&#160; S-57: IHO Transfer Standard for Digital Hydrographic Data,
+               [1]&#160; S-57 edition 3.1.0: IHO Transfer Standard for Digital Hydrographic Data,
                <span>International Hydrographic Organization</span>
                 (
                <a href='https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf'>https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</a>

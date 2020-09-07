@@ -62,7 +62,7 @@ module IsoDoc
       end
 
       def extract_edition(b)
-        b&.at("./edition")&.text
+        b&.at(ns("./edition"))&.text
       end
 
       def extract_uri(b)
@@ -114,6 +114,10 @@ module IsoDoc
         front ? "#{s} #{front}" : s
       end
 
+      def is_iho?(b)
+        extract_publisher(b)[1] == "IHO"
+      end
+
       # [{number}] {docID} edition {edition}: {title}, {author/organization}
       def standard_citation(out, b)
         if ftitle = b.at(ns("./formattedref"))
@@ -121,7 +125,7 @@ module IsoDoc
         else
           id = render_identifier(inline_bibitem_ref_code(b))
           out << id[1] if id[1]
-          ed = extract_edition(b)
+          ed = extract_edition(b) if is_iho?(b)
           out << " edition #{ed}" if ed
           out << ": " if id[1] || ed
           iso_title(b)&.children&.each { |n| parse(n, out) }
