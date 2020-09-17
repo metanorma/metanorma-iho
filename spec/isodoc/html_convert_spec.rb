@@ -177,7 +177,7 @@ RSpec.describe IsoDoc::IHO do
        </bibliography>
        </iho-standard>
     INPUT
-    <iho-standard xmlns='http://riboseinc.com/isoxml'>
+    <iho-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
          <preface>
            <foreword obligation='informative'>
              <title>Foreword</title>
@@ -338,7 +338,7 @@ RSpec.describe IsoDoc::IHO do
         <annex id="B10" obligation="informative"><title>Annex</title></annex>
 INPUT
 presxml = <<~OUTPUT
-<iho-standard xmlns="http://riboseinc.com/isoxml">
+<iho-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
               <bibdata type="standard">
               <title language="en" format="text/plain" type="main">An ITU Standard</title>
               <docidentifier type="ITU">12345</docidentifier>
@@ -675,7 +675,7 @@ OUTPUT
        </bibliography>
        </iho-standard>
     INPUT
-    <iho-standard xmlns='http://riboseinc.com/isoxml'>
+    <iho-standard xmlns='http://riboseinc.com/isoxml' type="presentation">
          <preface>
            <foreword obligation='informative'>
              <title>Foreword</title>
