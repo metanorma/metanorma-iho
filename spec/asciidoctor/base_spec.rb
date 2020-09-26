@@ -89,12 +89,14 @@ RSpec.describe Asciidoctor::IHO do
     <role type="author"/>
     <organization>
       <name>International Hydrographic Organization</name>
+      <abbreviation>IHO</abbreviation>
     </organization>
   </contributor>
   <contributor>
     <role type="publisher"/>
     <organization>
       <name>International Hydrographic Organization</name>
+      <abbreviation>IHO</abbreviation>
     </organization>
   </contributor>
   <edition>2</edition>
@@ -112,6 +114,7 @@ RSpec.describe Asciidoctor::IHO do
     <owner>
       <organization>
         <name>International Hydrographic Organization</name>
+        <abbreviation>IHO</abbreviation>
       </organization>
     </owner>
   </copyright>
@@ -185,12 +188,14 @@ RSpec.describe Asciidoctor::IHO do
     <role type="author"/>
     <organization>
       <name>International Hydrographic Organization</name>
+      <abbreviation>IHO</abbreviation>
     </organization>
   </contributor>
   <contributor>
     <role type="publisher"/>
     <organization>
       <name>International Hydrographic Organization</name>
+      <abbreviation>IHO</abbreviation>
     </organization>
   </contributor>
   <edition>2</edition>
@@ -209,6 +214,7 @@ RSpec.describe Asciidoctor::IHO do
     <owner>
       <organization>
         <name>International Hydrographic Organization</name>
+        <abbreviation>IHO</abbreviation>
       </organization>
     </owner>
   </copyright>

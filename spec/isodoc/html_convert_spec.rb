@@ -348,6 +348,15 @@ presxml = <<~OUTPUT
               <ext>
               </ext>
               </bibdata>
+              <local_bibdata type="standard">
+              <title language="en" format="text/plain" type="main">An ITU Standard</title>
+              <docidentifier type="ITU">12345</docidentifier>
+              <language>en</language>
+              <keyword>A</keyword>
+              <keyword>B</keyword>
+              <ext>
+              </ext>
+              </local_bibdata>
               <preface>
               <abstract>
               <title>Abstract</title>

@@ -86,12 +86,14 @@ BLANK_HDR = <<~"HDR"
            <role type="author"/>
            <organization>
              <name>International Hydrographic Organization</name>
+             <abbreviation>IHO</abbreviation>
            </organization>
          </contributor>
          <contributor>
            <role type="publisher"/>
            <organization>
              <name>International Hydrographic Organization</name>
+             <abbreviation>IHO</abbreviation>
            </organization>
          </contributor>
          <language>en</language>
@@ -104,6 +106,7 @@ BLANK_HDR = <<~"HDR"
            <owner>
              <organization>
                <name>International Hydrographic Organization</name>
+               <abbreviation>IHO</abbreviation>
              </organization>
            </owner>
          </copyright>
