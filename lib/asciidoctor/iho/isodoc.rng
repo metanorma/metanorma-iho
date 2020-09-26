@@ -864,6 +864,13 @@
   </define>
   <define name="standard-document">
     <element name="standard-document">
+      <attribute name="version"/>
+      <attribute name="type">
+        <choice>
+          <value>semantic</value>
+          <value>presentation</value>
+        </choice>
+      </attribute>
       <ref name="bibdata"/>
       <optional>
         <ref name="boilerplate"/>

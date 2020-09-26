@@ -74,7 +74,7 @@ RSpec.describe Asciidoctor::IHO do
 
     output = xmlpp(<<~"OUTPUT")
     <?xml version="1.0" encoding="UTF-8"?>
-<iho-standard xmlns="https://www.metanorma.org/ns/iho">
+<iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
 <docidentifier type="IHO">B-1000</docidentifier>
@@ -176,7 +176,7 @@ RSpec.describe Asciidoctor::IHO do
       :language: en
       :title: Main Title
     INPUT
-        <iho-standard xmlns="https://www.metanorma.org/ns/iho">
+        <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
 <bibdata type="standard">
   <title language="en" format="text/plain">Main Title</title>
   <docidentifier type="IHO">S-1000</docidentifier>
