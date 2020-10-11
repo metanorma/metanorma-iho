@@ -69,11 +69,7 @@ RSpec.describe IsoDoc::IHO do
     output = <<~"OUTPUT"
 {:accesseddate=>"XXX",
 :agency=>"Ribose",
-:authors=>[],
-:authors_affiliations=>{},
 :circulateddate=>"XXX",
-:comment_from=>"2010",
-:comment_to=>"2011",
 :confirmeddate=>"XXX",
 :copieddate=>"XXX",
 :createddate=>"XXX",
@@ -87,9 +83,9 @@ RSpec.describe IsoDoc::IHO do
 :edition=>"2",
 :implementeddate=>"2000-01-01",
 :issueddate=>"XXX",
-:keywords=>[],
 :logo=>"#{File.join(logoloc, 'logo.png')}",
 :logo_paths=>["#{File.join(logoloc, 'image001.png')}", "#{File.join(logoloc, 'image002.png')}", "#{File.join(logoloc, 'image003.png')}"],
+:metadata_extensions=>{"doctype"=>"standard", "editorialgroup"=>{"committee_type"=>"A", "committee"=>"TC"}, "security"=>"Client Confidential", "commentperiod"=>{"from"=>"2010", "to"=>"2011"}},
 :obsoleteddate=>"2001-01-01",
 :publisheddate=>"XXX",
 :publisher=>"Ribose",
@@ -99,7 +95,6 @@ RSpec.describe IsoDoc::IHO do
 :series=>"Bathymetric",
 :seriesabbr=>"B",
 :stage=>"Working Draft",
-:stageabbr=>nil,
 :tc=>"TC",
 :transmitteddate=>"XXX",
 :unchangeddate=>"XXX",
@@ -110,7 +105,7 @@ RSpec.describe IsoDoc::IHO do
     OUTPUT
 
     docxml, filename, dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(Hash[csdc.info(docxml, nil).sort].to_s).gsub(/, :/, ",\n:")).to be_equivalent_to output
+    expect(htmlencode(metadata(csdc.info(docxml, nil)).to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
   end
 
   it "processes section names" do

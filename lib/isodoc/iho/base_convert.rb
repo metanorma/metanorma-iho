@@ -12,7 +12,6 @@ module IsoDoc
 
       def info(isoxml, out)
         @meta.series isoxml, out
-        @meta.commentperiod isoxml, out
         super
       end
 
