@@ -109,7 +109,7 @@ RSpec.describe IsoDoc::IHO do
   end
 
   it "processes section names" do
-      expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).gsub(%r{^.*<body}m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).gsub(%r{^.*<body}m, "<body").gsub(%r{</body>.*}m, "</body>").sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <iho-standard xmlns="http://riboseinc.com/isoxml">
       <preface>
       <foreword obligation="informative">
@@ -555,7 +555,7 @@ html = <<~OUTPUT
 </body>
 
 OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({}).convert("test", input, true))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::IHO::HtmlConvert.new({}).convert("test", presxml, true).gsub(%r{^.*<body}m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
          end
 
