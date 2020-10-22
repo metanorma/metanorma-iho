@@ -77,6 +77,7 @@ RSpec.describe IsoDoc::IHO do
 :docnumeric=>"1000",
 :doctitle=>"Main Title",
 :doctype=>"Standard",
+:doctype_display=>"Standard",
 :docyear=>"2001",
 :draft=>"3.4",
 :draftinfo=>" (draft 3.4, 2000-01-01)",
@@ -97,6 +98,7 @@ RSpec.describe IsoDoc::IHO do
 :series=>"Bathymetric",
 :seriesabbr=>"B",
 :stage=>"Working Draft",
+:stage_display=>"Working Draft",
 :tc=>"TC",
 :transmitteddate=>"XXX",
 :unchangeddate=>"XXX",
@@ -339,21 +341,12 @@ presxml = <<~OUTPUT
               <bibdata type="standard">
               <title language="en" format="text/plain" type="main">An ITU Standard</title>
               <docidentifier type="ITU">12345</docidentifier>
-              <language>en</language>
+              <language current="true">en</language>
               <keyword>A</keyword>
               <keyword>B</keyword>
               <ext>
               </ext>
               </bibdata>
-              <local_bibdata type="standard">
-              <title language="en" format="text/plain" type="main">An ITU Standard</title>
-              <docidentifier type="ITU">12345</docidentifier>
-              <language>en</language>
-              <keyword>A</keyword>
-              <keyword>B</keyword>
-              <ext>
-              </ext>
-              </local_bibdata>
               <preface>
               <abstract>
               <title>Abstract</title>
@@ -557,7 +550,7 @@ html = <<~OUTPUT
 </body>
 
 OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::IHO::HtmlConvert.new({}).convert("test", presxml, true).gsub(%r{^.*<body}m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
          end
 
