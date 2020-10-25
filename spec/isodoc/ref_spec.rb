@@ -140,11 +140,8 @@ RSpec.describe IsoDoc do
     <?xml version='1.0'?>
     <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
            <bibdata>
-           <language>en</language>
+           <language current="true">en</language>
            </bibdata>
-           <local_bibdata>
-           <language>en</language>
-           </local_bibdata>
            <preface><foreword>
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
          <eref bibitemid="ref1">S-57</eref>
@@ -451,7 +448,7 @@ html = <<~OUTPUT
          </div>
        </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({}).convert("test", input, true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::IHO::HtmlConvert.new({}).convert("test", presxml, true).gsub(%r{^.*<body}m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
   end
 
