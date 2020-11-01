@@ -4,7 +4,8 @@ name: rake
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main  ]
+    tags: [ v* ]
   pull_request:
 
 jobs:
@@ -32,13 +33,18 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Use Ruby
-        uses: ruby/setup-ruby@v1
+        uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: bundle
 
       - name: Update gems
-        run: bundle install --jobs 4 --retry 3
+        run: bundle install --jobs 4 --retry 3 --deployment
 
       - name: Install PlantUML Ubuntu
         if: matrix.os == 'ubuntu-latest'
@@ -47,7 +53,9 @@ jobs:
           polling_interval_seconds: 5
           timeout_minutes: 5
           max_attempts: 3
-          command: sudo apt-get update -y && sudo bash -c "curl -L https://github.com/metanorma/plantuml-install/raw/master/ubuntu.sh | bash"
+          command: >
+            sudo apt-get update -y && sudo bash -c 
+            "curl -L https://github.com/metanorma/plantuml-install/raw/master/ubuntu.sh | bash"
 
       - name: Install PlantUML macOS
         if: matrix.os == 'macos-latest'
