@@ -15,7 +15,7 @@ module IsoDoc
           @labels["appendix"] : @labels["annex"]
         @anchors[clause["id"]] =
           { label: annex_name_lbl(clause, num), type: "clause",
-            xref: "#{lbl} #{num}", level: 1, value: lbl }
+            xref: l10n("#{lbl} #{num}"), level: 1, value: lbl }
         if a = single_annex_special_section(clause)
           annex_names1(a, "#{num}", 1)
         else
@@ -43,7 +43,7 @@ module IsoDoc
         lbl = clause.at("./ancestor::xmlns:annex/@obligation").
           text == "informative" ?  @labels["appendix"] : @labels["annex"]
         @anchors[clause["id"]] =
-          { label: num, xref: "#{lbl} #{num}",
+          { label: num, xref: l10n("#{lbl} #{num}"),
             level: level, type: "clause" }
         clause.xpath(ns("./clause | ./references | ./terms | ./definitions")).
           each_with_index do |c, i|
