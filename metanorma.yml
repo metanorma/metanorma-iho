@@ -16,6 +16,8 @@ htmlstylesheet: lib/isodoc/iho/html/htmlstyle.scss
 html_bodyfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
 html_headerfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
 html_monospacefont: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
+html_normalfontsize: "15px"
+html_footnotefontsize: "0.9em"
 scripts: lib/isodoc/iho/html/scripts.html
 scripts_pdf: lib/isodoc/iho/html/scripts.pdf.html
 standardstylesheet: lib/isodoc/iho/html/iho.scss
@@ -26,6 +28,10 @@ wordstylesheet: lib/isodoc/iho/html/wordstyle.scss
 word_bodyfont: '"Helvetica Neue",Arial,sans-serif'
 word_headerfont: '"Helvetica Neue",Arial,sans-serif'
 word_monospacefont: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
+word_normalfontsize: "12.0pt"
+word_smallerfontsize: "11.0pt"
+word_monospacefontsize: "10.0pt"
+word_footnotefontsize: "10.0pt"
 docid_template: "{% if seriesabbr %}{{seriesabbr}}{%else%}S{%endif%}-{{ docnumeric }}{% if stageabbr %}({{ stageabbr }}){%endif%}"
 published_stages:
   - in-force
