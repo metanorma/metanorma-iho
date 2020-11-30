@@ -1,6 +1,6 @@
 require "spec_helper"
 
-logoloc = File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "isodoc", "iho", "html"))
+logoloc = File.join(File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "lib", "metanorma")), "..", "..", "lib", "isodoc", "iho", "html")
 
 RSpec.describe IsoDoc::IHO do
 
