@@ -2,14 +2,6 @@ require "metanorma/processor"
 
 module Metanorma
   module IHO
-    def self.fonts_used
-      {
-        html: ["SourceSansPro-Light", "SourceSerifPro", "SourceCodePro-Light", "HanSans"],
-        doc: ["SourceSansPro-Light", "SourceSerifPro", "SourceCodePro-Light", "HanSans"],
-        pdf: ["SourceSansPro-Light", "SourceSerifPro", "SourceCodePro-Light", "HanSans"],
-      }
-    end
-
     class Processor < Metanorma::Generic::Processor
       def configuration
         Metanorma::IHO.configuration
