@@ -267,7 +267,7 @@ RSpec.describe Asciidoctor::IHO do
     Asciidoctor.convert(input, backend: :iho, header_footer: true)
 
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match(%r[\bpre[^{]+\{[^}]+font-family: SFMono-Regular]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^}]+font-family: "Fira Code"]m)
     expect(html).to match(%r[ div[^{]+\{[^}]+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI"]m)
     expect(html).to match(%r[h1, h2, h3, h4, h5, h6 \{[^}]+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI"]m)
   end
