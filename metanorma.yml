@@ -13,11 +13,13 @@ i18nyaml: lib/isodoc/iho/i18n-en.yaml
 htmlcoverpage: lib/isodoc/iho/html/html_iho_titlepage.html
 htmlintropage: lib/isodoc/iho/html/html_iho_intro.html
 htmlstylesheet: lib/isodoc/iho/html/htmlstyle.scss
-html_bodyfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
-html_headerfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
-html_monospacefont: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
+html_bodyfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
+html_headerfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
+html_monospacefont: '"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
 html_normalfontsize: "15px"
 html_footnotefontsize: "0.9em"
+webfont:
+  - "https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
 scripts: lib/isodoc/iho/html/scripts.html
 scripts_pdf: lib/isodoc/iho/html/scripts.pdf.html
 standardstylesheet: lib/isodoc/iho/html/iho.scss
@@ -25,9 +27,9 @@ header: lib/isodoc/iho/html/header.html
 wordcoverpage: lib/isodoc/iho/html/word_iho_titlepage.html
 wordintropage: lib/isodoc/iho/html/word_iho_intro.html
 wordstylesheet: lib/isodoc/iho/html/wordstyle.scss
-word_bodyfont: '"Helvetica Neue",Arial,sans-serif'
-word_headerfont: '"Helvetica Neue",Arial,sans-serif'
-word_monospacefont: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
+word_bodyfont: 'Arial,sans-serif'
+word_headerfont: 'Arial,sans-serif'
+word_monospacefont: '"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
 word_normalfontsize: "12.0pt"
 word_smallerfontsize: "11.0pt"
 word_monospacefontsize: "10.0pt"
