@@ -15,6 +15,20 @@ module Metanorma
         )
       end
 
+      def fonts_manifest
+        {
+          "Arial" => nil,
+          "Cambria Math" => nil,
+          "Courier" => nil,
+          "Fira Code" => nil,
+          "Source Sans Pro" => [ "Light" ],
+          "Source Serif Pro" => nil,
+          "Source Code Pro" => [ "Light" ],
+          "Source Han Sans" => nil,
+          "STIX Two Math" => nil,
+        }
+      end
+
       def version
         "Metanorma::IHO #{Metanorma::IHO::VERSION}"
       end
