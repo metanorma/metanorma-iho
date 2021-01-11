@@ -2,6 +2,9 @@ require "isodoc/generic/xref"
 
 module IsoDoc
   module IHO
+    class Counter < IsoDoc::XrefGen::Counter
+    end
+
     class Xref < IsoDoc::Generic::Xref
       def annex_name_lbl(clause, num)
         lbl = clause["obligation"] == "informative" ?
@@ -19,9 +22,11 @@ module IsoDoc
         if a = single_annex_special_section(clause)
           annex_names1(a, "#{num}", 1)
         else
+          i = Counter.new
           clause.xpath(ns("./clause | ./references | ./terms | ./definitions")).
-            each_with_index do |c, i|
-            annex_names1(c, "#{num}.#{i + 1}", 2)
+            each do |c|
+            i.increment(c)
+            annex_names1(c, "#{num}.#{i.print}", 2)
           end
         end
         hierarchical_asset_names(clause, num)
@@ -29,13 +34,18 @@ module IsoDoc
 
       def back_anchor_names(docxml)
         super
+        i = Counter.new
         docxml.xpath(ns("//annex[@obligation = 'informative']")).
-          each_with_index do |c, i|
-          annex_names(c, i + 1)
+          each do |c|
+          i.increment(c)
+          annex_names(c, i.print)
         end
+        i = Counter.new("@")
         docxml.xpath(ns("//annex[not(@obligation = 'informative')]")).
-          each_with_index do |c, i|
-          annex_names(c, (65 + i + (i > 7 ? 1 : 0)).chr.to_s)
+          each do |c|
+          i.increment(c)
+          i.increment(c) if i.print == "I"
+          annex_names(c, i.print)
         end
       end
 
@@ -45,16 +55,20 @@ module IsoDoc
         @anchors[clause["id"]] =
           { label: num, xref: l10n("#{lbl} #{num}"),
             level: level, type: "clause" }
+         i = Counter.new
         clause.xpath(ns("./clause | ./references | ./terms | ./definitions")).
-          each_with_index do |c, i|
-          annex_names1(c, "#{num}.#{i + 1}", level + 1)
+          each do |c|
+          i.increment(c)
+          annex_names1(c, "#{num}.#{i.print}", level + 1)
         end
       end
 
       def appendix_names(clause, num)
-        clause.xpath(ns("./appendix")).each_with_index do |c, i|
+         i = Counter.new
+        clause.xpath(ns("./appendix")).each_with_index do |c|
+          i.increment(c)
           @anchors[c["id"]] =
-            anchor_struct(i + 1, nil, @labels["appendix"], "clause")
+            anchor_struct(i.print, nil, @labels["appendix"], "clause")
           @anchors[c["id"]][:level] = 2
           @anchors[c["id"]][:container] = clause["id"]
         end
@@ -64,9 +78,10 @@ module IsoDoc
       @anchors[clause["id"]] =
         { label: num, level: level, xref: l10n("#{@labels["subclause"]} #{num}"),
           type: "clause" }
-      clause.xpath(ns(SUBCLAUSES)).
-        each_with_index do |c, i|
-        section_names1(c, "#{num}.#{i + 1}", level + 1)
+      i = Counter.new
+      clause.xpath(ns(SUBCLAUSES)).each_with_index do |c|
+        i.increment(c)
+        section_names1(c, "#{num}.#{i.print}", level + 1)
       end
     end
     end
