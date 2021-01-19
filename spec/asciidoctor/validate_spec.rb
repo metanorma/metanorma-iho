@@ -16,7 +16,7 @@ RSpec.describe Asciidoctor::IHO do
       expect do
         Metanorma::Compile
           .new
-          .compile("spec/assets/xref_error.adoc", type: "iho")
+          .compile("spec/assets/xref_error.adoc", type: "iho", :"agree-to-terms" => true)
       end.to(change { File.exist?("spec/assets/xref_error.err") }
               .from(false).to(true))
     end
