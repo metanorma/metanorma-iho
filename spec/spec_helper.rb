@@ -73,6 +73,7 @@ BOILERPLATE =
   File.read(File.join(File.dirname(__FILE__), "..", "lib", "asciidoctor", "iho", "boilerplate.xml"), encoding: "utf-8").
   gsub(/\{\{ docyear \}\}/, Date.today.year.to_s).
   gsub(/<p>/, '<p id="_">').
+  gsub(/<quote>/, '<quote id="_">').
   gsub(/<p align="center">/, '<p align="center" id="_">').
   gsub(/\{% if unpublished %\}.+?\{% endif %\}/m, "").
   gsub(/\{% if ip_notice_received %\}\{% else %\}not\{% endif %\}/m, "").
