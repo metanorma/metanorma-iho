@@ -4,7 +4,7 @@ name: rake
 
 on:
   push:
-    branches: [ master, main  ]
+    branches: [ master, main ]
     tags: [ v* ]
   pull_request:
 
@@ -16,17 +16,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: [ '2.6', '2.5', '2.4' ]
+        ruby: [ '2.7', '2.6', '2.5', '2.4' ]
         os: [ ubuntu-latest, windows-latest, macos-latest ]
         experimental: [ false ]
         include:
-          - ruby: '2.7'
+          - ruby: '3.0'
             os: 'ubuntu-latest'
             experimental: true
-          - ruby: '2.7'
+          - ruby: '3.0'
             os: 'windows-latest'
             experimental: true
-          - ruby: '2.7'
+          - ruby: '3.0'
             os: 'macos-latest'
             experimental: true
     steps:
@@ -35,19 +35,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-
-      - if: matrix.os == 'macos-latest'
-        run: brew install autoconf automake libtool
-
-      - uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: bundle-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/*.gemspec') }}
-          restore-keys: bundle-${{ matrix.os }}-${{ matrix.ruby }}
-
-      - run: bundle config set path 'vendor/bundle'
-
-      - run: bundle install --jobs 4 --retry 3
+          bundler-cache: true
 
       - name: install plantuml ubuntu
         if: matrix.os == 'ubuntu-latest'
@@ -65,9 +53,6 @@ jobs:
 
       - if: matrix.os == 'windows-latest'
         run: cinst -y plantuml
-
-      - if: matrix.os == 'macos-latest'
-        run: brew install autoconf automake libtool
 
       - run: bundle exec rake
 
