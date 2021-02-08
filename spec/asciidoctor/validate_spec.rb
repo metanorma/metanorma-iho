@@ -17,24 +17,21 @@ RSpec.describe Asciidoctor::IHO do
         mock_pdf
         Metanorma::Compile
           .new
-          .compile("spec/assets/xref_error.adoc", type: "iho", :"agree-to-terms" => true)
+          .compile("spec/assets/xref_error.adoc", type: "iho", no_install_fonts: true)
       end.to(change { File.exist?("spec/assets/xref_error.err") }
               .from(false).to(true))
     end
   end
 
   it "warns about missing workgroup" do
-  FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :iho, header_footer: true)
-  #{VALIDATING_BLANK_HDR}
+    FileUtils.rm_f "test.err"
+    Asciidoctor.convert(<<~"INPUT", backend: :iho, header_footer: true)
+      #{VALIDATING_BLANK_HDR}
 
-  == Clause 1
+      == Clause 1
 
-  Subclause
-  INPUT
-  expect(File.read("test.err")).to include "Missing workgroup attribute for document"
+      Subclause
+    INPUT
+    expect(File.read("test.err")).to include "Missing workgroup attribute for document"
   end
-
-
 end
-
