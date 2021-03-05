@@ -4116,7 +4116,9 @@
 			</xsl:if>	
 		
 			<fo:basic-link internal-destination="{@bibitemid}" fox:alt-text="{@citeas}">
-					
+				<xsl:if test="normalize-space(@citeas) = ''">
+					<xsl:attribute name="fox:alt-text"><xsl:value-of select="."/></xsl:attribute>
+				</xsl:if>
 				<xsl:if test="@type = 'inline'">
 					
 						<xsl:attribute name="color">blue</xsl:attribute>
