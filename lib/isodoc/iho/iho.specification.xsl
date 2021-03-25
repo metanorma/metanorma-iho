@@ -4484,8 +4484,8 @@
 		<fo:block start-indent="{5 * $level}mm" text-indent="-5mm">
 			<xsl:apply-templates/>
 		</fo:block>
-	</xsl:template><xsl:template match="*[local-name() = 'bookmark']">
-		<fo:inline id="{@id}"/>
+	</xsl:template><xsl:template match="*[local-name() = 'bookmark']" name="bookmark">
+		<fo:inline id="{@id}" font-size="1pt"/>
 	</xsl:template><xsl:template match="*[local-name() = 'errata']">
 		<!-- <row>
 					<date>05-07-2013</date>
