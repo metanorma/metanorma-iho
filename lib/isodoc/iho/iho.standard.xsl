@@ -5,6 +5,7 @@
 	<xsl:param name="svg_images"/>
 	<xsl:param name="external_index"/><!-- path to index xml, generated on 1st pass, based on FOP Intermediate Format -->
 	<xsl:variable name="images" select="document($svg_images)"/>
+	<xsl:param name="basepath"/>
 	
 	
 
@@ -3438,6 +3439,9 @@
 				<xsl:choose>
 					<xsl:when test="@mimetype = 'image/svg+xml' and $images/images/image[@id = current()/@id]">
 						<xsl:value-of select="$images/images/image[@id = current()/@id]/@src"/>
+					</xsl:when>
+					<xsl:when test="not(starts-with(@src, 'data:'))">
+						<xsl:value-of select="concat('url(file:',$basepath, @src, ')')"/>
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:value-of select="@src"/>
