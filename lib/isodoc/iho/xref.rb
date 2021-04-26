@@ -40,11 +40,10 @@ module IsoDoc
           i.increment(c)
           annex_names(c, i.print)
         end
-        i = Counter.new("@")
+        i = Counter.new("@", skip_i: true)
         docxml.xpath(ns("//annex[not(@obligation = 'informative')]")).
           each do |c|
           i.increment(c)
-          i.increment(c) if i.print == "I"
           annex_names(c, i.print)
         end
       end
