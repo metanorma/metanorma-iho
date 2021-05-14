@@ -1,5 +1,5 @@
 require "asciidoctor/standoc/converter"
-require 'asciidoctor/generic/converter'
+require "asciidoctor/generic/converter"
 
 module Asciidoctor
   module IHO
@@ -7,8 +7,8 @@ module Asciidoctor
     # schema encapsulation of the document for validation
     #
     class Converter < Asciidoctor::Generic::Converter
-      XML_ROOT_TAG = 'iho-standard'.freeze
-      XML_NAMESPACE = 'https://www.metanorma.org/ns/iho'.freeze
+      XML_ROOT_TAG = "iho-standard".freeze
+      XML_NAMESPACE = "https://www.metanorma.org/ns/iho".freeze
 
       register_for "iho"
 
@@ -33,7 +33,7 @@ module Asciidoctor
         M: "Miscellaneous",
         P: "Periodic",
         S: "Standards and Specifications",
-      }
+      }.freeze
 
       def metadata_series(node, xml)
         series = node.attr("series") or return
@@ -59,7 +59,8 @@ module Asciidoctor
 
       def metadata_committee(node, xml)
         unless node.attr("workgroup")
-          @log.add("AsciiDoc Input", nil, "Missing workgroup attribute for document")
+          @log.add("AsciiDoc Input", nil,
+                   "Missing workgroup attribute for document")
           return
         end
         metadata_committee1(node, xml)
@@ -75,7 +76,7 @@ module Asciidoctor
           end
         end
         i = 2
-        while node.attr("workgroup_#{i}") do
+        while node.attr("workgroup_#{i}")
           xml.editorialgroup do |a|
             a.committee do |n|
               n.abbreviation node.attr("committee_#{i}").upcase
@@ -102,6 +103,7 @@ module Asciidoctor
 
       def pdf_converter(node)
         return nil if node.attr("no-pdf")
+
         IsoDoc::IHO::PdfConvert.new(html_extract_attributes(node))
       end
 
