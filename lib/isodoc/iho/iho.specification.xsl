@@ -4371,12 +4371,13 @@
 					
 					
 					
+					
 						<xsl:call-template name="getTitle">
 							<xsl:with-param name="name" select="'title-source'"/>
 						</xsl:call-template>
+						<xsl:text>: </xsl:text>
 					
 					
-					<xsl:text>: </xsl:text>
 				</fo:inline>
 			
 			<fo:inline xsl:use-attribute-sets="origin-style">
