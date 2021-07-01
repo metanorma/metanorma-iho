@@ -2305,6 +2305,7 @@
 			
 			
 			
+			
 			<xsl:if test=".//*[local-name() = 'table']">
 				<xsl:attribute name="padding-right">1mm</xsl:attribute>
 			</xsl:if>
