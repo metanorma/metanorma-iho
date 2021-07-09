@@ -5780,4 +5780,100 @@
 				<xsl:otherwise><xsl:value-of select="$default"/></xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
+	</xsl:template><xsl:template name="number-to-words">
+		<xsl:param name="number"/>
+		<xsl:param name="first"/>
+		<xsl:if test="$number != ''">
+			<xsl:variable name="words">
+								<words>
+					<word cardinal="1">One-</word>
+					<word ordinal="1">First </word>
+					<word cardinal="2">Two-</word>
+					<word ordinal="2">Second </word>
+					<word cardinal="3">Three-</word>
+					<word ordinal="3">Third </word>
+					<word cardinal="4">Four-</word>
+					<word ordinal="4">Fourth </word>
+					<word cardinal="5">Five-</word>
+					<word ordinal="5">Fifth </word>
+					<word cardinal="6">Six-</word>
+					<word ordinal="6">Sixth </word>
+					<word cardinal="7">Seven-</word>
+					<word ordinal="7">Seventh </word>
+					<word cardinal="8">Eight-</word>
+					<word ordinal="8">Eighth </word>
+					<word cardinal="9">Nine-</word>
+					<word ordinal="9">Ninth </word>
+					<word ordinal="10">Tenth </word>
+					<word ordinal="11">Eleventh </word>
+					<word ordinal="12">Twelfth </word>
+					<word ordinal="13">Thirteenth </word>
+					<word ordinal="14">Fourteenth </word>
+					<word ordinal="15">Fifteenth </word>
+					<word ordinal="16">Sixteenth </word>
+					<word ordinal="17">Seventeenth </word>
+					<word ordinal="18">Eighteenth </word>
+					<word ordinal="19">Nineteenth </word>
+					<word cardinal="20">Twenty-</word>
+					<word ordinal="20">Twentieth </word>
+					<word cardinal="30">Thirty-</word>
+					<word ordinal="30">Thirtieth </word>
+					<word cardinal="40">Forty-</word>
+					<word ordinal="40">Fortieth </word>
+					<word cardinal="50">Fifty-</word>
+					<word ordinal="50">Fiftieth </word>
+					<word cardinal="60">Sixty-</word>
+					<word ordinal="60">Sixtieth </word>
+					<word cardinal="70">Seventy-</word>
+					<word ordinal="70">Seventieth </word>
+					<word cardinal="80">Eighty-</word>
+					<word ordinal="80">Eightieth </word>
+					<word cardinal="90">Ninety-</word>
+					<word ordinal="90">Ninetieth </word>
+					<word cardinal="100">Hundred-</word>
+					<word ordinal="100">Hundredth </word>
+				</words>
+			</xsl:variable>
+
+			<xsl:variable name="ordinal" select="xalan:nodeset($words)//word[@ordinal = $number]/text()"/>
+			
+			<xsl:variable name="value">
+				<xsl:choose>
+					<xsl:when test="$ordinal != ''">
+						<xsl:value-of select="$ordinal"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:choose>
+							<xsl:when test="$number &lt; 100">
+								<xsl:variable name="decade" select="concat(substring($number,1,1), '0')"/>
+								<xsl:variable name="digit" select="substring($number,2)"/>
+								<xsl:value-of select="xalan:nodeset($words)//word[@cardinal = $decade]/text()"/>
+								<xsl:value-of select="xalan:nodeset($words)//word[@ordinal = $digit]/text()"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<!-- more 100 -->
+								<xsl:variable name="hundred" select="substring($number,1,1)"/>
+								<xsl:variable name="digits" select="number(substring($number,2))"/>
+								<xsl:value-of select="xalan:nodeset($words)//word[@cardinal = $hundred]/text()"/>
+								<xsl:value-of select="xalan:nodeset($words)//word[@cardinal = '100']/text()"/>
+								<xsl:call-template name="number-to-words">
+									<xsl:with-param name="number" select="$digits"/>
+								</xsl:call-template>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
+			<xsl:choose>
+				<xsl:when test="$first = 'true'">
+					<xsl:variable name="value_lc" select="java:toLowerCase(java:java.lang.String.new($value))"/>
+					<xsl:call-template name="capitalize">
+						<xsl:with-param name="str" select="$value_lc"/>
+					</xsl:call-template>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$value"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:if>
 	</xsl:template></xsl:stylesheet>
