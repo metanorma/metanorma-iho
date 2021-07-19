@@ -204,6 +204,18 @@
         </zeroOrMore>
       </element>
     </define>
+    <define name="dt">
+      <element name="dt">
+        <optional>
+          <attribute name="id">
+            <data type="ID"/>
+          </attribute>
+        </optional>
+        <zeroOrMore>
+          <ref name="TextElement"/>
+        </zeroOrMore>
+      </element>
+    </define>
     <define name="example">
       <element name="example">
         <attribute name="id">
@@ -899,7 +911,7 @@
   </include>
   <!-- end overrides -->
   <define name="docsubtype">
-    <element name="docsubtype">
+    <element name="subdoctype">
       <ref name="DocumentSubtype"/>
     </element>
   </define>
@@ -955,6 +967,16 @@
   <define name="concept">
     <element name="concept">
       <optional>
+        <attribute name="ital">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="ref">
+          <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
         <element name="refterm">
           <zeroOrMore>
             <choice>
@@ -998,6 +1020,9 @@
       </attribute>
       <attribute name="name"/>
       <attribute name="action"/>
+      <optional>
+        <attribute name="class"/>
+      </optional>
       <zeroOrMore>
         <choice>
           <ref name="TextElement"/>
@@ -1490,26 +1515,26 @@
     <optional>
       <ref name="section-title"/>
     </optional>
-    <group>
+    <choice>
       <choice>
         <group>
-          <zeroOrMore>
+          <oneOrMore>
             <ref name="BasicBlock"/>
-          </zeroOrMore>
+          </oneOrMore>
           <zeroOrMore>
             <ref name="note"/>
           </zeroOrMore>
         </group>
         <ref name="amend"/>
       </choice>
-      <zeroOrMore>
+      <oneOrMore>
         <choice>
           <ref name="clause-subsection"/>
           <ref name="terms"/>
           <ref name="definitions"/>
         </choice>
-      </zeroOrMore>
-    </group>
+      </oneOrMore>
+    </choice>
   </define>
   <define name="Annex-Section">
     <optional>
