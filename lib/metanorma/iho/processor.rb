@@ -19,12 +19,13 @@ module Metanorma
         {
           "Arial" => nil,
           "Cambria Math" => nil,
-          "Courier" => nil,
+          "Courier New" => nil,
           "Fira Code" => nil,
-          "Source Sans Pro" => [ "Light" ],
+          "Source Sans Pro Light" => nil,
           "Source Serif Pro" => nil,
-          "Source Code Pro" => [ "Light" ],
+          "Source Code Pro Light" => nil,
           "Source Han Sans" => nil,
+          "Source Han Sans Normal" => nil,
           "STIX Two Math" => nil,
         }
       end
