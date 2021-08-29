@@ -155,7 +155,7 @@
 											</fo:table-cell>
 											<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)">
 												<fo:block-container height="154.4mm" text-align="center" display-align="center">
-													<fo:block font-size="28pt" font-weight="bold" color="rgb(0, 0, 76)">
+													<fo:block font-size="28pt" font-weight="bold" color="rgb(0, 0, 76)" role="H1">
 														<xsl:value-of select="$title-en"/>
 													</fo:block>
 												</fo:block-container>
@@ -215,61 +215,63 @@
 						<!-- Table of Contents -->
 						<fo:block-container margin-right="-12.7mm">
 							<fo:block-container margin-right="0mm">
-								<fo:block color="rgb(14, 36, 133)" margin-bottom="15.5pt">
-									<xsl:variable name="title-toc">
-										<xsl:call-template name="getTitle">
-											<xsl:with-param name="name" select="'title-toc'"/>
-										</xsl:call-template>
-									</xsl:variable>
-									<xsl:value-of select="$title-toc"/>
-								</fo:block>
-								<xsl:if test="$debug = 'true'">
-									<xsl:text disable-output-escaping="yes">&lt;!--</xsl:text>
-										DEBUG
-										contents=<xsl:copy-of select="xalan:nodeset($contents)"/>
-									<xsl:text disable-output-escaping="yes">--&gt;</xsl:text>
-								</xsl:if>
-								
-								<xsl:for-each select="xalan:nodeset($contents)//item[@display = 'true']"><!-- [not(@level = 2 and starts-with(@section, '0'))] skip clause from preface -->							
-									<fo:block>
-										<xsl:if test="@level = 1">
-											<xsl:attribute name="margin-top">6pt</xsl:attribute>
-										</xsl:if>
-									
-										<fo:list-block>
-											
-											<xsl:attribute name="provisional-distance-between-starts">
-												<xsl:choose>
-													<xsl:when test="@level &gt;= 1 and @root = 'preface'">0mm</xsl:when>
-													<xsl:when test="@level &gt;= 1 and @root = 'annex' and not(@type = 'annex')">13mm</xsl:when>
-													<xsl:when test="@level &gt;= 1 and not(@type = 'annex')">10mm</xsl:when>													
-													<xsl:otherwise>0mm</xsl:otherwise>
-												</xsl:choose>											
-											</xsl:attribute>
-											<fo:list-item>
-												<fo:list-item-label end-indent="label-end()">
-													<fo:block>
-														<xsl:if test="@section != '' and not(@type = 'annex')"> <!-- output below   -->
-															<xsl:value-of select="@section"/>
-														</xsl:if>
-													</fo:block>
-												</fo:list-item-label>
-													<fo:list-item-body start-indent="body-start()">
-														<fo:block text-align-last="justify" margin-left="12mm" text-indent="-12mm">
-															<fo:basic-link internal-destination="{@id}" fox:alt-text="{title}">																
-																<xsl:apply-templates select="title"/>
-																<fo:inline keep-together.within-line="always">
-																	<fo:leader font-size="9pt" font-weight="normal" leader-pattern="dots"/>
-																	<fo:inline><fo:page-number-citation ref-id="{@id}"/></fo:inline>
-																</fo:inline>
-															</fo:basic-link>
-														</fo:block>
-													</fo:list-item-body>
-											</fo:list-item>
-										</fo:list-block>
+								<fo:block role="TOC">
+									<fo:block color="rgb(14, 36, 133)" margin-bottom="15.5pt" role="H1">
+										<xsl:variable name="title-toc">
+											<xsl:call-template name="getTitle">
+												<xsl:with-param name="name" select="'title-toc'"/>
+											</xsl:call-template>
+										</xsl:variable>
+										<xsl:value-of select="$title-toc"/>
 									</fo:block>
+									<xsl:if test="$debug = 'true'">
+										<xsl:text disable-output-escaping="yes">&lt;!--</xsl:text>
+											DEBUG
+											contents=<xsl:copy-of select="xalan:nodeset($contents)"/>
+										<xsl:text disable-output-escaping="yes">--&gt;</xsl:text>
+									</xsl:if>
 									
-								</xsl:for-each>
+									<xsl:for-each select="xalan:nodeset($contents)//item[@display = 'true']"><!-- [not(@level = 2 and starts-with(@section, '0'))] skip clause from preface -->							
+										<fo:block role="TOCI">
+											<xsl:if test="@level = 1">
+												<xsl:attribute name="margin-top">6pt</xsl:attribute>
+											</xsl:if>
+										
+											<fo:list-block>
+												
+												<xsl:attribute name="provisional-distance-between-starts">
+													<xsl:choose>
+														<xsl:when test="@level &gt;= 1 and @root = 'preface'">0mm</xsl:when>
+														<xsl:when test="@level &gt;= 1 and @root = 'annex' and not(@type = 'annex')">13mm</xsl:when>
+														<xsl:when test="@level &gt;= 1 and not(@type = 'annex')">10mm</xsl:when>													
+														<xsl:otherwise>0mm</xsl:otherwise>
+													</xsl:choose>											
+												</xsl:attribute>
+												<fo:list-item>
+													<fo:list-item-label end-indent="label-end()">
+														<fo:block>
+															<xsl:if test="@section != '' and not(@type = 'annex')"> <!-- output below   -->
+																<xsl:value-of select="@section"/>
+															</xsl:if>
+														</fo:block>
+													</fo:list-item-label>
+														<fo:list-item-body start-indent="body-start()">
+															<fo:block text-align-last="justify" margin-left="12mm" text-indent="-12mm">
+																<fo:basic-link internal-destination="{@id}" fox:alt-text="{title}">																
+																	<xsl:apply-templates select="title"/>
+																	<fo:inline keep-together.within-line="always">
+																		<fo:leader font-size="9pt" font-weight="normal" leader-pattern="dots"/>
+																		<fo:inline><fo:page-number-citation ref-id="{@id}"/></fo:inline>
+																	</fo:inline>
+																</fo:basic-link>
+															</fo:block>
+														</fo:list-item-body>
+												</fo:list-item>
+											</fo:list-block>
+										</fo:block>
+										
+									</xsl:for-each>
+								</fo:block>
 							</fo:block-container>
 						</fo:block-container>
 						
@@ -297,7 +299,7 @@
 					<fo:flow flow-name="xsl-region-body">
 						<fo:block-container>
 							
-							<fo:block font-size="16pt" font-weight="bold" margin-bottom="18pt"><xsl:value-of select="$title-en"/></fo:block>
+							<fo:block font-size="16pt" font-weight="bold" margin-bottom="18pt" role="H1"><xsl:value-of select="$title-en"/></fo:block>
 							
 							<xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name()='clause'][@type='scope']"/>
 							<!-- Normative references  -->
@@ -453,14 +455,14 @@
 	<!-- ====== -->
 	
 	<xsl:template match="iho:annex/iho:title">
-		<fo:block font-size="13pt" font-weight="bold" text-align="center" margin-bottom="12pt" keep-with-next="always">			
+		<fo:block font-size="13pt" font-weight="bold" text-align="center" margin-bottom="12pt" keep-with-next="always" role="H1">			
 			<xsl:apply-templates/>
 			<xsl:apply-templates select="following-sibling::*[1][local-name() = 'variant-title'][@type = 'sub']" mode="subtitle"/>
 		</fo:block>
 	</xsl:template>
 		
 	<xsl:template match="iho:bibliography/iho:references[not(@normative='true')]/iho:title">
-		<fo:block font-size="16pt" font-weight="bold" text-align="center" margin-top="6pt" margin-bottom="36pt" keep-with-next="always">
+		<fo:block font-size="16pt" font-weight="bold" text-align="center" margin-top="6pt" margin-bottom="36pt" keep-with-next="always" role="H1">
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
@@ -504,6 +506,8 @@
 			<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
 				
 			<xsl:attribute name="keep-with-next">always</xsl:attribute>		
+			
+			<xsl:attribute name="role">H<xsl:value-of select="$level"/></xsl:attribute>
 			
 			<xsl:apply-templates/>
 			<xsl:apply-templates select="following-sibling::*[1][local-name() = 'variant-title'][@type = 'sub']" mode="subtitle"/>
@@ -808,8 +812,10 @@
 	
 	
 	<xsl:template match="iho:preferred">
-
-		<fo:block line-height="1.1">
+		<xsl:variable name="levelTerm">
+			<xsl:call-template name="getLevelTermName"/>
+		</xsl:variable>
+		<fo:block line-height="1.1" role="H{$levelTerm}">
 			<fo:block font-weight="bold" keep-with-next="always">
 				<xsl:apply-templates select="ancestor::iho:term/iho:name" mode="presentation"/>				
 			</fo:block>
@@ -1133,6 +1139,7 @@
 	</xsl:attribute-set><xsl:attribute-set name="sourcecode-style">
 		<xsl:attribute name="white-space">pre</xsl:attribute>
 		<xsl:attribute name="wrap-option">wrap</xsl:attribute>
+		<xsl:attribute name="role">Code</xsl:attribute>
 		
 		
 		
@@ -1378,7 +1385,8 @@
 				
 		
 		
-	</xsl:attribute-set><xsl:attribute-set name="quote-style">		
+	</xsl:attribute-set><xsl:attribute-set name="quote-style">
+		<xsl:attribute name="role">BlockQuote</xsl:attribute>
 		
 		
 		
@@ -3577,7 +3585,10 @@
 		</fo:block>
 		<xsl:apply-templates/>
 	</xsl:template><xsl:template match="*[local-name()='appendix']/*[local-name()='title']"/><xsl:template match="*[local-name()='appendix']/*[local-name()='title']" mode="process">
-		<fo:inline><xsl:apply-templates/></fo:inline>
+		<xsl:variable name="level">
+			<xsl:call-template name="getLevel"/>
+		</xsl:variable>
+		<fo:inline role="H{$level}"><xsl:apply-templates/></fo:inline>
 	</xsl:template><xsl:template match="*[local-name()='appendix']//*[local-name()='example']" priority="2">
 		<fo:block id="{@id}" xsl:use-attribute-sets="appendix-example-style">			
 			<xsl:apply-templates select="*[local-name()='name']" mode="presentation"/>
@@ -3763,7 +3774,10 @@
 		</fo:block>
 	</xsl:template><xsl:template match="*[local-name() = 'term']/*[local-name() = 'name']"/><xsl:template match="*[local-name() = 'term']/*[local-name() = 'name']" mode="presentation">
 		<xsl:if test="normalize-space() != ''">
-			<fo:inline>
+			<xsl:variable name="level">
+				<xsl:call-template name="getLevelTermName"/>
+			</xsl:variable>
+			<fo:inline role="H{$level}">
 				<xsl:apply-templates/>
 				<!-- <xsl:if test="$namespace = 'gb' or $namespace = 'ogc'">
 					<xsl:text>.</xsl:text>
@@ -5795,6 +5809,26 @@
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:value-of select="$level"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template><xsl:template name="getLevelTermName">
+		<xsl:choose>
+			<xsl:when test="normalize-space(../@depth) != ''">
+				<xsl:value-of select="../@depth"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="title_level_">
+					<xsl:for-each select="../preceding-sibling::*[local-name() = 'title'][1]">
+						<xsl:call-template name="getLevel"/>
+					</xsl:for-each>
+				</xsl:variable>
+				<xsl:variable name="title_level" select="normalize-space($title_level_)"/>
+				<xsl:choose>
+					<xsl:when test="$title_level != ''"><xsl:value-of select="$title_level + 1"/></xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="getLevel"/>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template><xsl:template name="split">
