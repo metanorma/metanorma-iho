@@ -298,6 +298,13 @@ ul>li:first-child {
   margin-top: 1em;
 }
 
+ul ul > li:first-child {
+      margin-top: 0;
+}
+ol ul > li:first-child {
+      margin-top: 0;
+}
+
 #toc-list ul {
   margin-bottom: 0.25em;
 }
