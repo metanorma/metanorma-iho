@@ -139,6 +139,7 @@ p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxS
 p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
 	{mso-style-noshow:yes;
 	mso-style-unhide:no;
+        mso-style-name:"Comment Text";
 	margin:0cm;
 	margin-bottom:.0001pt;
 	mso-pagination:widow-orphan;
@@ -343,6 +344,7 @@ h1
 	{mso-style-priority:1;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
+	mso-style-name:"Heading 1";
 	mso-style-link:"Heading 1 Char";
 	mso-style-next:Normal;
 	margin-top:13.5pt;
@@ -425,6 +427,7 @@ h2
 	{mso-style-priority:2;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
+	mso-style-name:"Heading 2";
 	mso-style-parent:"Heading 1";
 	mso-style-link:"Heading 2 Char";
 	mso-style-next:Normal;
@@ -452,7 +455,8 @@ h3
 	{mso-style-priority:3;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
-	mso-style-parent:"Heading 1";
+	mso-style-name:"Heading 3";
+	mso-style-parent:"Heading 2";
 	mso-style-link:"Heading 3 Char";
 	mso-style-next:Normal;
 	margin-top:3.0pt;
@@ -478,6 +482,7 @@ h4
 	{mso-style-priority:4;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
+	mso-style-name:"Heading 4";
 	mso-style-parent:"Heading 3";
 	mso-style-link:"Heading 4 Char";
 	mso-style-next:Normal;
@@ -504,6 +509,7 @@ h5
 	{mso-style-priority:5;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
+	mso-style-name:"Heading 5";
 	mso-style-parent:"Heading 4";
 	mso-style-link:"Heading 5 Char";
 	mso-style-next:Normal;
@@ -530,6 +536,7 @@ h6
 	{mso-style-priority:6;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
+	mso-style-name:"Heading 6";
 	mso-style-parent:"Heading 5";
 	mso-style-link:"Heading 6 Char";
 	mso-style-next:Normal;
@@ -555,6 +562,7 @@ h6
 p.MsoToc1, li.MsoToc1, div.MsoToc1
 	{mso-style-priority:39;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 1";
 	mso-style-next:Normal;
 	margin-top:6.0pt;
 	margin-right:25.0pt;
@@ -577,6 +585,7 @@ p.MsoToc2, li.MsoToc2, div.MsoToc2
 	{mso-style-noshow:yes;
 	mso-style-priority:39;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 2";
 	mso-style-parent:"TOC 1";
 	mso-style-next:Normal;
 	margin-top:0cm;
@@ -600,6 +609,7 @@ p.MsoToc3, li.MsoToc3, div.MsoToc3
 	{mso-style-noshow:yes;
 	mso-style-priority:39;
 	mso-style-unhide:no;
+	mso-style-name:"TOC 3";
 	mso-style-parent:"TOC 2";
 	mso-style-next:Normal;
 	margin-top:0cm;
@@ -621,6 +631,7 @@ p.MsoToc3, li.MsoToc3, div.MsoToc3
 	mso-bidi-font-weight:normal;}
 span.MsoFootnoteReference
 	{mso-style-priority:99;
+        mso-style-name:"Footnote Reference";
 	vertical-align:super;}
 p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
 	{mso-style-noshow:yes;
