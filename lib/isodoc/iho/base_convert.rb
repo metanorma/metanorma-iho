@@ -70,7 +70,7 @@ module IsoDoc
       end
 
       def extract_uri(bib)
-        bib.at(ns("./uri"))
+        bib.at(ns("./uri[@type = 'src']")) || bib.at(ns("./uri"))
       end
 
       def omit_docid_prefix(prefix)
