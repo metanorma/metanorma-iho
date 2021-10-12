@@ -344,7 +344,7 @@ html = <<~OUTPUT
              <p id='ref7' class='NormRef'>
                [7]&#160; IETF RFC 1423: Privacy Enhancement for Internet Electronic
                Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson (
-               <a href='https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1423.xml'>https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1423.xml</a>
+               <a href='https://www.rfc-editor.org/info/rfc1423'>https://www.rfc-editor.org/info/rfc1423</a>
                )
              </p>
              <p id='ref8' class='NormRef'>
