@@ -3880,6 +3880,7 @@
 			<xsl:otherwise>
 				<fo:block xsl:use-attribute-sets="image-style">
 					
+					
 					<xsl:variable name="src">
 						<xsl:call-template name="image_src"/>
 					</xsl:variable>
