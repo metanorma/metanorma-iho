@@ -817,7 +817,7 @@
 		</xsl:variable>
 		<fo:block line-height="1.1" role="H{$levelTerm}">
 			<fo:block font-weight="bold" keep-with-next="always">
-				<xsl:apply-templates select="ancestor::iho:term/iho:name" mode="presentation"/>				
+				<xsl:apply-templates select="ancestor::iho:term[1]/iho:name" mode="presentation"/>				
 			</fo:block>
 			<fo:block font-weight="bold" keep-with-next="always">
 				<xsl:apply-templates/>
