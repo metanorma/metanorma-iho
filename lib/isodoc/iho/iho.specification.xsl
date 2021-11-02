@@ -2971,6 +2971,7 @@
 			<fo:table-cell>
 				
 				<fo:block margin-top="6pt">
+					<xsl:copy-of select="@id"/>
 					
 					
 					<xsl:if test="normalize-space($key_iso) = 'true'">
