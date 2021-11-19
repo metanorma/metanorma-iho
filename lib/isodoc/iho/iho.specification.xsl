@@ -5151,10 +5151,10 @@
 	</xsl:template><xsl:template match="*[local-name() = 'deprecates']">
 		<xsl:variable name="title-deprecated">
 			
-			
-				<xsl:call-template name="getTitle">
-					<xsl:with-param name="name" select="'title-deprecated'"/>
+				<xsl:call-template name="getLocalizedString">
+					<xsl:with-param name="key">deprecated</xsl:with-param>
 				</xsl:call-template>
+			
 			
 		</xsl:variable>
 		<fo:block xsl:use-attribute-sets="deprecates-style">
@@ -5166,9 +5166,10 @@
 		</fo:block>
 	</xsl:template><xsl:template match="*[local-name() = 'definition'][preceding-sibling::*[local-name() = 'domain']]">
 		<xsl:apply-templates/>
-	</xsl:template><xsl:template match="*[local-name() = 'definition'][preceding-sibling::*[local-name() = 'domain']]/*[local-name() = 'p']">
+	</xsl:template><xsl:template match="*[local-name() = 'definition'][preceding-sibling::*[local-name() = 'domain']]/*[local-name() = 'p'][1]">
 		<fo:inline> <xsl:apply-templates/></fo:inline>
-		<fo:block> </fo:block>
+		<!-- <fo:block>&#xA0;</fo:block> -->
+		<fo:block/>
 	</xsl:template><xsl:template match="/*/*[local-name() = 'sections']/*" priority="2">
 		
 		<fo:block>
