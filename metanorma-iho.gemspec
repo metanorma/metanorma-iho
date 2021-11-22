@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "htmlentities", "~> 4.3.4"
   spec.add_dependency "metanorma-generic", "~> 1.11.0"
 
-  spec.add_development_dependency "byebug", "~> 9.1"
+  spec.add_development_dependency "debug"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
   spec.add_development_dependency "guard", "~> 2.14"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
