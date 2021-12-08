@@ -104,7 +104,7 @@ module Asciidoctor
       def pdf_converter(node)
         return nil if node.attr("no-pdf")
 
-        IsoDoc::IHO::PdfConvert.new(html_extract_attributes(node))
+        IsoDoc::IHO::PdfConvert.new(pdf_extract_attributes(node))
       end
 
       def doc_converter(node)
