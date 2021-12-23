@@ -340,7 +340,7 @@ div.figure, p.figure
 
 
 
-h1
+h1, .h1
 	{mso-style-priority:1;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -355,8 +355,6 @@ h1
 	line-height:13.5pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:1;
-	mso-list:l1 level1 lfo6;
 	mso-hyphenate:none;
 	tab-stops:20.0pt list 21.6pt left 28.0pt;
 	font-size:13.0pt;
@@ -368,6 +366,10 @@ h1
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:JA;
 	mso-bidi-font-weight:normal;}
+h1 {
+	mso-outline-level:1;
+	mso-list:l1 level1 lfo6;
+}
 h1.Annex
 	{mso-style-priority:1;
 	mso-style-unhide:no;
@@ -423,7 +425,7 @@ h1.Annex
         mso-ansi-language:EN-GB;
         mso-fareast-language:JA;
         mso-bidi-font-weight:normal;}
-h2
+h2, .h2
 	{mso-style-priority:2;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -439,8 +441,6 @@ h2
 	line-height:12.5pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:2;
-	mso-list:l1 level2 lfo6;
 	mso-hyphenate:none;
 	tab-stops:27.0pt 35.0pt;
 	font-size:$normalfontsize;
@@ -451,7 +451,11 @@ h2
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:JA;
 	mso-bidi-font-weight:normal;}
-h3
+h2 {
+	mso-outline-level:2;
+	mso-list:l1 level2 lfo6;
+}
+h3, .h3
 	{mso-style-priority:3;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -467,8 +471,6 @@ h3
 	line-height:$normalfontsize;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:3;
-	mso-list:l1 level3 lfo6;
 	mso-hyphenate:none;
 	tab-stops:list 36.0pt left 44.0pt;
 	font-size:$smallerfontsize;
@@ -478,7 +480,11 @@ h3
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:JA;
 	mso-bidi-font-weight:normal;}
-h4
+h3 {
+	mso-outline-level:3;
+	mso-list:l1 level3 lfo6;
+}
+h4, .h4
 	{mso-style-priority:4;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -494,8 +500,6 @@ h4
 	line-height:$normalfontsize;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:4;
-	mso-list:l1 level4 lfo6;
 	mso-hyphenate:none;
 	tab-stops:51.05pt 57.0pt 68.0pt;
 	font-size:$smallerfontsize;
@@ -505,7 +509,11 @@ h4
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:JA;
 	mso-bidi-font-weight:normal;}
-h5
+h4 {
+	mso-outline-level:4;
+	mso-list:l1 level4 lfo6;
+}
+h5, .h5
 	{mso-style-priority:5;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -521,8 +529,6 @@ h5
 	line-height:$normalfontsize;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:5;
-	mso-list:l1 level5 lfo6;
 	mso-hyphenate:none;
 	tab-stops:51.05pt list 54.0pt;
 	font-size:$smallerfontsize;
@@ -532,7 +538,11 @@ h5
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:JA;
 	mso-bidi-font-weight:normal;}
-h6
+h5 {
+	mso-outline-level:5;
+	mso-list:l1 level5 lfo6;
+}
+h6, .h6
 	{mso-style-priority:6;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -548,8 +558,6 @@ h6
 	line-height:$normalfontsize;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
-	mso-outline-level:6;
-	mso-list:l1 level6 lfo6;
 	mso-hyphenate:none;
 	tab-stops:51.05pt list 72.0pt;
 	font-size:$smallerfontsize;
@@ -559,6 +567,10 @@ h6
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:JA;
 	mso-bidi-font-weight:normal;}
+h6 {
+	mso-outline-level:6;
+	mso-list:l1 level6 lfo6;
+}
 p.MsoToc1, li.MsoToc1, div.MsoToc1
 	{mso-style-priority:39;
 	mso-style-unhide:no;
