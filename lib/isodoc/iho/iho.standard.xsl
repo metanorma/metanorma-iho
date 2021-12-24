@@ -466,7 +466,7 @@
 		</fo:block>
 	</xsl:template>
 		
-	<xsl:template match="iho:title">
+	<xsl:template match="iho:title" name="title">
 		
 		<xsl:variable name="level">
 			<xsl:call-template name="getLevel"/>
@@ -5944,6 +5944,8 @@
 		</fo:inline>
 	</xsl:template><xsl:template match="@language">
 		<xsl:copy-of select="."/>
+	</xsl:template><xsl:template match="*[local-name() = 'p'][@type = 'floating-title']" priority="4">
+		<xsl:call-template name="title"/>
 	</xsl:template><xsl:template name="convertDate">
 		<xsl:param name="date"/>
 		<xsl:param name="format" select="'short'"/>
