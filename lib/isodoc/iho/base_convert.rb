@@ -27,7 +27,7 @@ module IsoDoc
           xml.span do |s|
             node&.children&.each { |x| parse(x, s) }
           end
-        end.join("")
+        end.join
       end
 
       def multiplenames_and(names)
@@ -56,13 +56,15 @@ module IsoDoc
       def inline_bibitem_ref_code(bib)
         id = bib.at(ns("./docidentifier[not(@type = 'DOI' or "\
                        "@type = 'metanorma' or @type = 'ISSN' or "\
-                       "@type = 'ISBN' or @type = 'rfc-anchor')]"))
-        id ||= bib.at(ns("./docidentifier[not(@type = 'metanorma')]"))
-        return [nil, id, nil] if id
+                       "@type = 'ISBN' or @type = 'rfc-anchor' or "\
+                       "@type = 'metanorma-ordinal')]"))
+        id ||= bib.at(ns("./docidentifier[not(@type = 'metanorma' or "\
+                         "@type = 'metanorma-ordinal')]"))
+        return [nil, id, nil, nil] if id
 
         id = Nokogiri::XML::Node.new("docidentifier", bib.document)
         id << "(NO ID)"
-        [nil, id, nil]
+        [nil, id, nil, nil]
       end
 
       def extract_edition(bib)
@@ -101,9 +103,9 @@ module IsoDoc
         c = p.at(ns("./completename")) and return c.text
         s = p&.at(ns("./surname"))&.text or return
         i = p.xpath(ns("./initial")) and
-          front = i.map { |e| e.text.gsub(/[^[:upper:]]/, "") }.join("")
+          front = i.map { |e| e.text.gsub(/[^[:upper:]]/, "") }.join
         i.empty? and f = p.xpath(ns("./forename")) and
-          front = f.map { |e| e.text[0].upcase }.join("")
+          front = f.map { |e| e.text[0].upcase }.join
         front ? "#{s} #{front}" : s
       end
 
@@ -117,10 +119,10 @@ module IsoDoc
           ftitle&.children&.each { |n| parse(n, out) }
         else
           id = render_identifier(inline_bibitem_ref_code(bib))
-          out << id[1] if id[1]
+          out << id[:sdo] if id[:sdo]
           ed = extract_edition(bib) if iho?(bib)
           out << " edition #{ed}" if ed
-          out << ": " if id[1] || ed
+          out << ": " if id[:sdo] || ed
           iso_title(bib)&.children&.each { |n| parse(n, out) }
           out << ", "
           author = extract_author(bib)
