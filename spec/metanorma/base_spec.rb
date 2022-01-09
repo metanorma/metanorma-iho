@@ -1,7 +1,7 @@
 require "spec_helper"
 require "fileutils"
 
-RSpec.describe Asciidoctor::IHO do
+RSpec.describe Metanorma::IHO do
   it "has a version number" do
     expect(Metanorma::IHO::VERSION).not_to be nil
   end

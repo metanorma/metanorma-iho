@@ -1,1 +1,12 @@
 .rubocop-https--*
+
+/.rspec_status
+/Gemfile.devel
+/Gemfile.lock
+/coverage/
+/test.doc
+/test.err
+/test.html
+/test.pdf
+/test.presentation.xml
+/test_*_htmlimages/

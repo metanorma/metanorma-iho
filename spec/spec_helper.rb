@@ -6,10 +6,10 @@ end
 require "bundler/setup"
 require "asciidoctor"
 require "metanorma-iho"
-require "asciidoctor/iho"
+require "metanorma/iho"
 require "isodoc/iho/html_convert"
 require "isodoc/iho/word_convert"
-require "asciidoctor/standoc/converter"
+require "metanorma/standoc/converter"
 require "rspec/matchers"
 require "equivalent-xml"
 require "htmlentities"
@@ -70,7 +70,7 @@ HDR
 
 BOILERPLATE =
   HTMLEntities.new.decode(
-  File.read(File.join(File.dirname(__FILE__), "..", "lib", "asciidoctor", "iho", "boilerplate.xml"), encoding: "utf-8").
+  File.read(File.join(File.dirname(__FILE__), "..", "lib", "metanorma", "iho", "boilerplate.xml"), encoding: "utf-8").
   gsub(/\{\{ docyear \}\}/, Date.today.year.to_s).
   gsub(/<p>/, '<p id="_">').
   gsub(/<quote>/, '<quote id="_">').

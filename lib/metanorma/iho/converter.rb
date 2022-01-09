@@ -1,12 +1,12 @@
-require "asciidoctor/standoc/converter"
-require "asciidoctor/generic/converter"
+require "metanorma/standoc/converter"
+require "metanorma/generic/converter"
 
-module Asciidoctor
+module Metanorma
   module IHO
     # A {Converter} implementation that generates RSD output, and a document
     # schema encapsulation of the document for validation
     #
-    class Converter < Asciidoctor::Generic::Converter
+    class Converter < Metanorma::Generic::Converter
       XML_ROOT_TAG = "iho-standard".freeze
       XML_NAMESPACE = "https://www.metanorma.org/ns/iho".freeze
 
