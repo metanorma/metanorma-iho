@@ -749,6 +749,10 @@
 			<xsl:text>Édition </xsl:text>
 		</title-edition>
 		
+		<title-edition lang="ru">
+			<xsl:text>Издание </xsl:text>
+		</title-edition>
+		
 		<!-- These titles of Table of contents renders different than determined in localized-strings -->
 		<title-toc lang="en">
 			
@@ -777,7 +781,11 @@
 			
 			
 			
-		</title-part>		
+		</title-part>
+		<title-part lang="ru">
+			
+			
+		</title-part>
 		<title-part lang="zh">第 # 部分:</title-part>
 		
 		<title-subpart lang="en">Sub-part #</title-subpart>
@@ -5942,7 +5950,7 @@
 			
 
 			
-					
+			
 			<xsl:apply-templates select="node()[not(local-name() = 'note')]"/>
 		</fo:list-block>
 		<!-- <xsl:for-each select="./iho:note">
@@ -7111,53 +7119,153 @@
 		<xsl:param name="first"/>
 		<xsl:if test="$number != ''">
 			<xsl:variable name="words">
-								<words>
-					<word cardinal="1">One-</word>
-					<word ordinal="1">First </word>
-					<word cardinal="2">Two-</word>
-					<word ordinal="2">Second </word>
-					<word cardinal="3">Three-</word>
-					<word ordinal="3">Third </word>
-					<word cardinal="4">Four-</word>
-					<word ordinal="4">Fourth </word>
-					<word cardinal="5">Five-</word>
-					<word ordinal="5">Fifth </word>
-					<word cardinal="6">Six-</word>
-					<word ordinal="6">Sixth </word>
-					<word cardinal="7">Seven-</word>
-					<word ordinal="7">Seventh </word>
-					<word cardinal="8">Eight-</word>
-					<word ordinal="8">Eighth </word>
-					<word cardinal="9">Nine-</word>
-					<word ordinal="9">Ninth </word>
-					<word ordinal="10">Tenth </word>
-					<word ordinal="11">Eleventh </word>
-					<word ordinal="12">Twelfth </word>
-					<word ordinal="13">Thirteenth </word>
-					<word ordinal="14">Fourteenth </word>
-					<word ordinal="15">Fifteenth </word>
-					<word ordinal="16">Sixteenth </word>
-					<word ordinal="17">Seventeenth </word>
-					<word ordinal="18">Eighteenth </word>
-					<word ordinal="19">Nineteenth </word>
-					<word cardinal="20">Twenty-</word>
-					<word ordinal="20">Twentieth </word>
-					<word cardinal="30">Thirty-</word>
-					<word ordinal="30">Thirtieth </word>
-					<word cardinal="40">Forty-</word>
-					<word ordinal="40">Fortieth </word>
-					<word cardinal="50">Fifty-</word>
-					<word ordinal="50">Fiftieth </word>
-					<word cardinal="60">Sixty-</word>
-					<word ordinal="60">Sixtieth </word>
-					<word cardinal="70">Seventy-</word>
-					<word ordinal="70">Seventieth </word>
-					<word cardinal="80">Eighty-</word>
-					<word ordinal="80">Eightieth </word>
-					<word cardinal="90">Ninety-</word>
-					<word ordinal="90">Ninetieth </word>
-					<word cardinal="100">Hundred-</word>
-					<word ordinal="100">Hundredth </word>
+				<words>
+					<xsl:choose>
+						<xsl:when test="$lang = 'fr'"> <!-- https://en.wiktionary.org/wiki/Appendix:French_numbers -->
+							<word cardinal="1">Une-</word>
+							<word ordinal="1">Première </word>
+							<word cardinal="2">Deux-</word>
+							<word ordinal="2">Seconde </word>
+							<word cardinal="3">Trois-</word>
+							<word ordinal="3">Tierce </word>
+							<word cardinal="4">Quatre-</word>
+							<word ordinal="4">Quatrième </word>
+							<word cardinal="5">Cinq-</word>
+							<word ordinal="5">Cinquième </word>
+							<word cardinal="6">Six-</word>
+							<word ordinal="6">Sixième </word>
+							<word cardinal="7">Sept-</word>
+							<word ordinal="7">Septième </word>
+							<word cardinal="8">Huit-</word>
+							<word ordinal="8">Huitième </word>
+							<word cardinal="9">Neuf-</word>
+							<word ordinal="9">Neuvième </word>
+							<word ordinal="10">Dixième </word>
+							<word ordinal="11">Onzième </word>
+							<word ordinal="12">Douzième </word>
+							<word ordinal="13">Treizième </word>
+							<word ordinal="14">Quatorzième </word>
+							<word ordinal="15">Quinzième </word>
+							<word ordinal="16">Seizième </word>
+							<word ordinal="17">Dix-septième </word>
+							<word ordinal="18">Dix-huitième </word>
+							<word ordinal="19">Dix-neuvième </word>
+							<word cardinal="20">Vingt-</word>
+							<word ordinal="20">Vingtième </word>
+							<word cardinal="30">Trente-</word>
+							<word ordinal="30">Trentième </word>
+							<word cardinal="40">Quarante-</word>
+							<word ordinal="40">Quarantième </word>
+							<word cardinal="50">Cinquante-</word>
+							<word ordinal="50">Cinquantième </word>
+							<word cardinal="60">Soixante-</word>
+							<word ordinal="60">Soixantième </word>
+							<word cardinal="70">Septante-</word>
+							<word ordinal="70">Septantième </word>
+							<word cardinal="80">Huitante-</word>
+							<word ordinal="80">Huitantième </word>
+							<word cardinal="90">Nonante-</word>
+							<word ordinal="90">Nonantième </word>
+							<word cardinal="100">Cent-</word>
+							<word ordinal="100">Centième </word>
+						</xsl:when>
+						<xsl:when test="$lang = 'ru'">
+							<word cardinal="1">Одна-</word>
+							<word ordinal="1">Первое </word>
+							<word cardinal="2">Две-</word>
+							<word ordinal="2">Второе </word>
+							<word cardinal="3">Три-</word>
+							<word ordinal="3">Третье </word>
+							<word cardinal="4">Четыре-</word>
+							<word ordinal="4">Четвертое </word>
+							<word cardinal="5">Пять-</word>
+							<word ordinal="5">Пятое </word>
+							<word cardinal="6">Шесть-</word>
+							<word ordinal="6">Шестое </word>
+							<word cardinal="7">Семь-</word>
+							<word ordinal="7">Седьмое </word>
+							<word cardinal="8">Восемь-</word>
+							<word ordinal="8">Восьмое </word>
+							<word cardinal="9">Девять-</word>
+							<word ordinal="9">Девятое </word>
+							<word ordinal="10">Десятое </word>
+							<word ordinal="11">Одиннадцатое </word>
+							<word ordinal="12">Двенадцатое </word>
+							<word ordinal="13">Тринадцатое </word>
+							<word ordinal="14">Четырнадцатое </word>
+							<word ordinal="15">Пятнадцатое </word>
+							<word ordinal="16">Шестнадцатое </word>
+							<word ordinal="17">Семнадцатое </word>
+							<word ordinal="18">Восемнадцатое </word>
+							<word ordinal="19">Девятнадцатое </word>
+							<word cardinal="20">Двадцать-</word>
+							<word ordinal="20">Двадцатое </word>
+							<word cardinal="30">Тридцать-</word>
+							<word ordinal="30">Тридцатое </word>
+							<word cardinal="40">Сорок-</word>
+							<word ordinal="40">Сороковое </word>
+							<word cardinal="50">Пятьдесят-</word>
+							<word ordinal="50">Пятидесятое </word>
+							<word cardinal="60">Шестьдесят-</word>
+							<word ordinal="60">Шестидесятое </word>
+							<word cardinal="70">Семьдесят-</word>
+							<word ordinal="70">Семидесятое </word>
+							<word cardinal="80">Восемьдесят-</word>
+							<word ordinal="80">Восьмидесятое </word>
+							<word cardinal="90">Девяносто-</word>
+							<word ordinal="90">Девяностое </word>
+							<word cardinal="100">Сто-</word>
+							<word ordinal="100">Сотое </word>
+						</xsl:when>
+						<xsl:otherwise> <!-- default english -->
+							<word cardinal="1">One-</word>
+							<word ordinal="1">First </word>
+							<word cardinal="2">Two-</word>
+							<word ordinal="2">Second </word>
+							<word cardinal="3">Three-</word>
+							<word ordinal="3">Third </word>
+							<word cardinal="4">Four-</word>
+							<word ordinal="4">Fourth </word>
+							<word cardinal="5">Five-</word>
+							<word ordinal="5">Fifth </word>
+							<word cardinal="6">Six-</word>
+							<word ordinal="6">Sixth </word>
+							<word cardinal="7">Seven-</word>
+							<word ordinal="7">Seventh </word>
+							<word cardinal="8">Eight-</word>
+							<word ordinal="8">Eighth </word>
+							<word cardinal="9">Nine-</word>
+							<word ordinal="9">Ninth </word>
+							<word ordinal="10">Tenth </word>
+							<word ordinal="11">Eleventh </word>
+							<word ordinal="12">Twelfth </word>
+							<word ordinal="13">Thirteenth </word>
+							<word ordinal="14">Fourteenth </word>
+							<word ordinal="15">Fifteenth </word>
+							<word ordinal="16">Sixteenth </word>
+							<word ordinal="17">Seventeenth </word>
+							<word ordinal="18">Eighteenth </word>
+							<word ordinal="19">Nineteenth </word>
+							<word cardinal="20">Twenty-</word>
+							<word ordinal="20">Twentieth </word>
+							<word cardinal="30">Thirty-</word>
+							<word ordinal="30">Thirtieth </word>
+							<word cardinal="40">Forty-</word>
+							<word ordinal="40">Fortieth </word>
+							<word cardinal="50">Fifty-</word>
+							<word ordinal="50">Fiftieth </word>
+							<word cardinal="60">Sixty-</word>
+							<word ordinal="60">Sixtieth </word>
+							<word cardinal="70">Seventy-</word>
+							<word ordinal="70">Seventieth </word>
+							<word cardinal="80">Eighty-</word>
+							<word ordinal="80">Eightieth </word>
+							<word cardinal="90">Ninety-</word>
+							<word ordinal="90">Ninetieth </word>
+							<word cardinal="100">Hundred-</word>
+							<word ordinal="100">Hundredth </word>
+						</xsl:otherwise>
+					</xsl:choose>
 				</words>
 			</xsl:variable>
 
