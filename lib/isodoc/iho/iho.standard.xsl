@@ -801,6 +801,7 @@
 		
 		<title-summary lang="en">Summary</title-summary>
 		
+		<title-continued lang="ru">(продолжение)</title-continued>
 		<title-continued lang="en">(continued)</title-continued>
 		<title-continued lang="fr">(continué)</title-continued>
 		
@@ -7339,4 +7340,18 @@
 				<xsl:otherwise>_</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
+	</xsl:template><xsl:template name="substring-after-last">	
+		<xsl:param name="value"/>
+		<xsl:param name="delimiter"/>
+		<xsl:choose>
+			<xsl:when test="contains($value, $delimiter)">
+				<xsl:call-template name="substring-after-last">
+					<xsl:with-param name="value" select="substring-after($value, $delimiter)"/>
+					<xsl:with-param name="delimiter" select="$delimiter"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="$value"/>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template></xsl:stylesheet>
