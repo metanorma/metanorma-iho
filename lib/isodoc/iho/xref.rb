@@ -6,25 +6,27 @@ module IsoDoc
     end
 
     class Xref < IsoDoc::Generic::Xref
+      def annexlbl(cond)
+        cond ? @labels["appendix"] : @labels["annex"]
+      end
+
       def annex_name_lbl(clause, num)
-        lbl = clause["obligation"] == "informative" ?
-          @labels["appendix"] : @labels["annex"]
+        lbl = annexlbl(clause["obligation"] == "informative")
         l10n("<strong>#{lbl} #{num}</strong>")
       end
 
       def annex_names(clause, num)
         appendix_names(clause, num)
-        lbl = clause["obligation"] == "informative" ?
-          @labels["appendix"] : @labels["annex"]
+        lbl = annexlbl(clause["obligation"] == "informative")
         @anchors[clause["id"]] =
-          { label: annex_name_lbl(clause, num), type: "clause",
-            xref: l10n("#{lbl} #{num}"), level: 1, value: lbl }
+          { label: annex_name_lbl(clause, num), type: "clause", elem: lbl,
+            xref: l10n("#{lbl} #{num}"), level: 1, value: num }
         if a = single_annex_special_section(clause)
-          annex_names1(a, "#{num}", 1)
+          annex_names1(a, num.to_s, 1)
         else
           i = Counter.new
-          clause.xpath(ns("./clause | ./references | ./terms | ./definitions")).
-            each do |c|
+          clause.xpath(ns("./clause | ./references | ./terms | ./definitions"))
+            .each do |c|
             i.increment(c)
             annex_names1(c, "#{num}.#{i.print}", 2)
           end
@@ -35,36 +37,36 @@ module IsoDoc
       def back_anchor_names(docxml)
         super
         i = Counter.new
-        docxml.xpath(ns("//annex[@obligation = 'informative']")).
-          each do |c|
+        docxml.xpath(ns("//annex[@obligation = 'informative']"))
+          .each do |c|
           i.increment(c)
           annex_names(c, i.print)
         end
         i = Counter.new("@", skip_i: true)
-        docxml.xpath(ns("//annex[not(@obligation = 'informative')]")).
-          each do |c|
+        docxml.xpath(ns("//annex[not(@obligation = 'informative')]"))
+          .each do |c|
           i.increment(c)
           annex_names(c, i.print)
         end
       end
 
       def annex_names1(clause, num, level)
-        lbl = clause.at("./ancestor::xmlns:annex/@obligation").
-          text == "informative" ?  @labels["appendix"] : @labels["annex"]
+        lbl = annexlbl(clause.at("./ancestor::xmlns:annex/@obligation")
+            .text == "informative")
         @anchors[clause["id"]] =
           { label: num, xref: l10n("#{lbl} #{num}"),
             level: level, type: "clause" }
-         i = Counter.new
-        clause.xpath(ns("./clause | ./references | ./terms | ./definitions")).
-          each do |c|
+        i = Counter.new
+        clause.xpath(ns("./clause | ./references | ./terms | ./definitions"))
+          .each do |c|
           i.increment(c)
           annex_names1(c, "#{num}.#{i.print}", level + 1)
         end
       end
 
-      def appendix_names(clause, num)
-         i = Counter.new
-        clause.xpath(ns("./appendix")).each_with_index do |c|
+      def appendix_names(clause, _num)
+        i = Counter.new
+        clause.xpath(ns("./appendix")).each do |c|
           i.increment(c)
           @anchors[c["id"]] =
             anchor_struct(i.print, nil, @labels["appendix"], "clause")
@@ -73,16 +75,17 @@ module IsoDoc
         end
       end
 
-    def section_names1(clause, num, level)
-      @anchors[clause["id"]] =
-        { label: num, level: level, xref: l10n("#{@labels["subclause"]} #{num}"),
-          type: "clause" }
-      i = Counter.new
-      clause.xpath(ns(SUBCLAUSES)).each_with_index do |c|
-        i.increment(c)
-        section_names1(c, "#{num}.#{i.print}", level + 1)
+      def section_names1(clause, num, level)
+        @anchors[clause["id"]] =
+          { label: num, level: level,
+            xref: l10n("#{@labels['subclause']} #{num}"),
+            type: "clause", elem: @labels["subclause"] }
+        i = Counter.new
+        clause.xpath(ns(SUBCLAUSES)).each do |c|
+          i.increment(c)
+          section_names1(c, "#{num}.#{i.print}", level + 1)
+        end
       end
-    end
     end
   end
 end
