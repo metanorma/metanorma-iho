@@ -6632,13 +6632,19 @@
 		<xsl:variable name="p_fn" select="xalan:nodeset($p_fn_)"/>
 		<xsl:variable name="gen_id" select="generate-id(.)"/>
 		<xsl:variable name="lang" select="ancestor::*[contains(local-name(), '-standard')]/*[local-name()='bibdata']//*[local-name()='language'][@current = 'true']"/>
-		
-		<xsl:variable name="current_fn_number" select="count($p_fn//fn[@gen_id = $gen_id]/preceding-sibling::fn) + 1"/>
-	
+		<!-- fn sequence number in document -->
+		<xsl:variable name="current_fn_number">
+			<xsl:choose>
+				<xsl:when test="@current_fn_number"><xsl:value-of select="@current_fn_number"/></xsl:when> <!-- for BSI -->
+				<xsl:otherwise>
+					<!-- <xsl:value-of select="count($p_fn//fn[@reference = $reference]/preceding-sibling::fn) + 1" /> -->
+					<xsl:value-of select="count($p_fn//fn[@gen_id = $gen_id]/preceding-sibling::fn) + 1"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<fo:footnote>
 			<xsl:variable name="number">
 				
-						<!-- <xsl:number level="any" count="*[local-name() = 'bibitem']/*[local-name() = 'note']"/> -->
 						<xsl:value-of select="$current_fn_number"/>
 					
 			</xsl:variable>
@@ -6899,6 +6905,78 @@
 		 <!-- processing for admonition/p found in the template for 'p' -->
 				<xsl:call-template name="paragraph"/>
 			
+	</xsl:template><xsl:template match="@*|node()" mode="update_xml_step1">
+		<xsl:copy>
+			<xsl:apply-templates select="@*|node()" mode="update_xml_step1"/>
+		</xsl:copy>
+	</xsl:template><xsl:template match="*[local-name() = 'preface']" mode="update_xml_step1">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			
+			<xsl:variable name="nodes_preface_">
+				<xsl:for-each select="*">
+					<node id="{@id}"/>
+				</xsl:for-each>
+			</xsl:variable>
+			<xsl:variable name="nodes_preface" select="xalan:nodeset($nodes_preface_)"/>
+			
+			<xsl:for-each select="*">
+				<xsl:sort select="@displayorder" data-type="number"/>
+				
+				<!-- process Section's title -->
+				<xsl:variable name="preceding-sibling_id" select="$nodes_preface/node[@id = current()/@id]/preceding-sibling::node[1]/@id"/>
+				<xsl:if test="$preceding-sibling_id != ''">
+					<xsl:apply-templates select="parent::*/*[@type = 'section-title' and @id = $preceding-sibling_id and not(@displayorder)]" mode="update_xml_step1"/>
+				</xsl:if>
+				
+				<xsl:choose>
+					<xsl:when test="@type = 'section-title' and not(@displayorder)"><!-- skip, don't copy, because copied in above 'apply-templates' --></xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates select="." mode="update_xml_step1"/>
+					</xsl:otherwise>
+				</xsl:choose>
+				
+			</xsl:for-each>
+		</xsl:copy>
+	</xsl:template><xsl:template match="*[local-name() = 'sections']" mode="update_xml_step1">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			
+			<xsl:variable name="nodes_sections_">
+				<xsl:for-each select="*">
+					<node id="{@id}"/>
+				</xsl:for-each>
+			</xsl:variable>
+			<xsl:variable name="nodes_sections" select="xalan:nodeset($nodes_sections_)"/>
+			
+			<!-- move section 'Normative references' inside 'sections' -->
+			<xsl:for-each select="* |      ancestor::*[contains(local-name(), '-standard')]/*[local-name()='bibliography']/*[local-name()='references'][@normative='true'] |     ancestor::*[contains(local-name(), '-standard')]/*[local-name()='bibliography']/*[local-name()='clause'][*[local-name()='references'][@normative='true']]">
+				<xsl:sort select="@displayorder" data-type="number"/>
+				
+				<!-- process Section's title -->
+				<xsl:variable name="preceding-sibling_id" select="$nodes_sections/node[@id = current()/@id]/preceding-sibling::node[1]/@id"/>
+				<xsl:if test="$preceding-sibling_id != ''">
+					<xsl:apply-templates select="parent::*/*[@type = 'section-title' and @id = $preceding-sibling_id and not(@displayorder)]" mode="update_xml_step1"/>
+				</xsl:if>
+				
+				<xsl:choose>
+					<xsl:when test="@type = 'section-title' and not(@displayorder)"><!-- skip, don't copy, because copied in above 'apply-templates' --></xsl:when>
+					<xsl:otherwise>
+						<xsl:apply-templates select="." mode="update_xml_step1"/>
+					</xsl:otherwise>
+				</xsl:choose>
+				
+			</xsl:for-each>
+		</xsl:copy>
+	</xsl:template><xsl:template match="*[local-name() = 'bibliography']" mode="update_xml_step1">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			<!-- copy all elements from bibliography except 'Normative references' (moved to 'sections') -->
+			<xsl:for-each select="*[not(@normative='true') and not(*[*[@normative='true']])]">
+				<xsl:sort select="@displayorder" data-type="number"/>
+				<xsl:apply-templates select="." mode="update_xml_step1"/>
+			</xsl:for-each>
+		</xsl:copy>
 	</xsl:template><xsl:template name="convertDate">
 		<xsl:param name="date"/>
 		<xsl:param name="format" select="'short'"/>
