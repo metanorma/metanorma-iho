@@ -33,7 +33,13 @@
 	<xsl:template match="/">
 		
 		<xsl:variable name="xslfo">		
-			<fo:root xsl:use-attribute-sets="root-style" xml:lang="{$lang}">
+			<fo:root xml:lang="{$lang}">
+				<xsl:variable name="root-style">
+					<root-style xsl:use-attribute-sets="root-style"/>
+				</xsl:variable>
+				<xsl:call-template name="insertRootStyle">
+					<xsl:with-param name="root-style" select="$root-style"/>
+				</xsl:call-template>
 				<fo:layout-master-set>
 					<!-- cover page -->
 					<fo:simple-page-master master-name="cover" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
@@ -4345,11 +4351,12 @@
 			
 			<fo:inline xsl:use-attribute-sets="termnote-name-style">
 			
-				
-				
 				<xsl:if test="not(*[local-name() = 'name']/following-sibling::node()[1][self::text()][normalize-space()=''])">
 					<xsl:attribute name="padding-right">1mm</xsl:attribute>
 				</xsl:if>
+			
+				
+
 				
 				<!-- if 'p' contains all text in 'add' first and last elements in first p are 'add' -->
 				<!-- <xsl:if test="*[not(local-name()='name')][1][node()[normalize-space() != ''][1][local-name() = 'add'] and node()[normalize-space() != ''][last()][local-name() = 'add']]"> -->
