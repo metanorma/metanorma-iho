@@ -36,17 +36,19 @@ module IsoDoc
 
       def back_anchor_names(docxml)
         super
-        i = Counter.new
-        docxml.xpath(ns("//annex[@obligation = 'informative']"))
-          .each do |c|
-          i.increment(c)
-          annex_names(c, i.print)
-        end
-        i = Counter.new("@", skip_i: true)
-        docxml.xpath(ns("//annex[not(@obligation = 'informative')]"))
-          .each do |c|
-          i.increment(c)
-          annex_names(c, i.print)
+        if @parse_settings.empty? || @parse_settings[:clauses]
+          i = Counter.new
+          docxml.xpath(ns("//annex[@obligation = 'informative']"))
+            .each do |c|
+            i.increment(c)
+            annex_names(c, i.print)
+          end
+          i = Counter.new("@", skip_i: true)
+          docxml.xpath(ns("//annex[not(@obligation = 'informative')]"))
+            .each do |c|
+            i.increment(c)
+            annex_names(c, i.print)
+          end
         end
       end
 
