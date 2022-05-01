@@ -135,7 +135,7 @@
 													<fo:block>
 														<xsl:value-of select="$docidentifier"/>
 														<xsl:text> </xsl:text>
-														<xsl:apply-templates select="/iho:iho-standard/iho:bibdata/iho:edition"/>
+														<xsl:apply-templates select="/iho:iho-standard/iho:bibdata/iho:edition[normalize-space(@language) = '']"/>
 													</fo:block>
 												</fo:block-container>
 											</fo:table-cell>
@@ -463,12 +463,14 @@
 
 	
 	<xsl:template match="/iho:iho-standard/iho:bibdata/iho:edition">
-		<xsl:variable name="title-edition">
-			<xsl:call-template name="getTitle">
-				<xsl:with-param name="name" select="'title-edition'"/>
-			</xsl:call-template>
-		</xsl:variable>
-		<xsl:value-of select="$title-edition"/>
+		<xsl:call-template name="capitalize">
+			<xsl:with-param name="str">
+				<xsl:call-template name="getLocalizedString">
+					<xsl:with-param name="key">edition</xsl:with-param>
+				</xsl:call-template>
+			</xsl:with-param>
+		</xsl:call-template>
+		<xsl:text> </xsl:text>
 		<xsl:apply-templates/>
 	</xsl:template>
 	
@@ -790,20 +792,11 @@
 	</xsl:variable><xsl:variable name="marginTop" select="normalize-space($marginTop_)"/><xsl:variable name="marginBottom_">
 		25.4
 	</xsl:variable><xsl:variable name="marginBottom" select="normalize-space($marginBottom_)"/><xsl:variable name="titles_">
-				
-		<title-edition lang="en">
-			
-					<xsl:text>Edition </xsl:text>
-				
-		</title-edition>
 		
-		<title-edition lang="fr">
-			<xsl:text>Édition </xsl:text>
-		</title-edition>
+		<title-version lang="en">
+			<xsl:text>Version</xsl:text>
+		</title-version>
 		
-		<title-edition lang="ru">
-			<xsl:text>Издание </xsl:text>
-		</title-edition>
 		
 		<!-- These titles of Table of contents renders different than determined in localized-strings -->
 		<title-toc lang="en">
@@ -7322,6 +7315,31 @@
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:otherwise><xsl:value-of select="$text"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template><xsl:template name="printEdition">
+		<xsl:variable name="edition_i18n" select="normalize-space((//*[contains(local-name(), '-standard')])[1]/*[local-name() = 'bibdata']/*[local-name() = 'edition'][normalize-space(@language) != ''])"/>
+		<xsl:text> </xsl:text>
+		<xsl:choose>
+			<xsl:when test="$edition_i18n != ''">
+				<!-- Example: <edition language="fr">deuxième édition</edition> -->
+				<xsl:call-template name="capitalize">
+					<xsl:with-param name="str" select="$edition_i18n"/>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="edition" select="normalize-space((//*[contains(local-name(), '-standard')])[1]/*[local-name() = 'bibdata']/*[local-name() = 'edition'])"/>
+				<xsl:if test="$edition != ''"> <!-- Example: 1.3 -->
+					<xsl:call-template name="capitalize">
+						<xsl:with-param name="str">
+							<xsl:call-template name="getLocalizedString">
+								<xsl:with-param name="key">edition</xsl:with-param>
+							</xsl:call-template>
+						</xsl:with-param>
+					</xsl:call-template>
+					<xsl:text> </xsl:text>
+					<xsl:value-of select="$edition"/>
+				</xsl:if>
+			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template><xsl:template name="convertDate">
 		<xsl:param name="date"/>
