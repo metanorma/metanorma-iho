@@ -6120,7 +6120,16 @@
 				</fo:inline>
 			</xsl:when>
 			<xsl:otherwise> <!-- if there is key('bibitems_hidden', $current_bibitemid) -->
-				<fo:inline><xsl:apply-templates/></fo:inline>
+			
+				<!-- if in bibitem[@hidden='true'] there is url[@type='src'], then create hyperlink  -->
+				<xsl:variable name="uri_src" select="normalize-space($bibitems_hidden/*[local-name() ='bibitem'][@id = $current_bibitemid]/*[local-name() = 'uri'][@type = 'src'])"/>
+				<xsl:choose>
+					<xsl:when test="$uri_src != ''">
+						<fo:basic-link external-destination="{$uri_src}" fox:alt-text="{$uri_src}"><xsl:apply-templates/></fo:basic-link>
+					</xsl:when>
+					<xsl:otherwise><fo:inline><xsl:apply-templates/></fo:inline></xsl:otherwise>
+				</xsl:choose>
+				
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template><xsl:template match="*[local-name() = 'tab']">
