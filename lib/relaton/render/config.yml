@@ -1,0 +1,8 @@
+template:
+  # skip standardidentifier, it is inserted in front of formattedref within metanorma
+  standard: "{{ standardidentifier | first }} edition_{{ edition }} : {{ title }},  {{ creatornames }} ,_{{role}} ({{ uri }}) ." 
+  misc: standard
+nametemplate:
+  one: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} {{initials[0]}}{% endif %}"
+  two: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} {{initials[0]}}{% endif %} and {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{surname[1]}} {{ initials[1]}}{% endif %}"
+  more: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} {{initials[0]}} {% endif %} , {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{surname[1]}} {{ initials[1]}} {% endif %} and {% if nonpersonal[2] %}{{ nonpersonal[2] }}{% else %}{{surname[2]}} {{initials[2]}}{% endif %}"
