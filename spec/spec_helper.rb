@@ -28,29 +28,32 @@ RSpec.configure do |config|
   end
 end
 
-def metadata(x)
-  x.sort.to_h.delete_if do |_k, v|
+def metadata(xml)
+  xml.sort.to_h.delete_if do |_k, v|
     v.nil? || (v.respond_to?(:empty?) && v.empty?)
   end
 end
 
-def strip_guid(x)
-  x.gsub(%r{ id="_[^"]+"}, ' id="_"').gsub(%r{ target="_[^"]+"}, ' target="_"')
+def strip_guid(xml)
+  xml.gsub(%r{ id="_[^"]+"}, ' id="_"')
+    .gsub(%r{ target="_[^"]+"}, ' target="_"')
 end
 
-def htmlencode(x)
-  HTMLEntities.new.encode(x, :hexadecimal).gsub(/&#x3e;/, ">").gsub(/&#xa;/, "\n")
-    .gsub(/&#x22;/, '"').gsub(/&#x3c;/, "<").gsub(/&#x26;/, "&").gsub(/&#x27;/, "'")
+def htmlencode(xml)
+  HTMLEntities.new.encode(xml, :hexadecimal)
+    .gsub(/&#x3e;/, ">").gsub(/&#xa;/, "\n")
+    .gsub(/&#x22;/, '"').gsub(/&#x3c;/, "<")
+    .gsub(/&#x26;/, "&").gsub(/&#x27;/, "'")
     .gsub(/\\u(....)/) do |_s|
     "&#x#{$1.downcase};"
   end
 end
 
-def xmlpp(x)
+def xmlpp(xml)
   s = ""
   f = REXML::Formatters::Pretty.new(2)
   f.compact = true
-  f.write(REXML::Document.new(x), s)
+  f.write(REXML::Document.new(xml), s)
   s
 end
 

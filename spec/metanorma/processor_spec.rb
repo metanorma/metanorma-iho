@@ -61,7 +61,7 @@ RSpec.describe Metanorma::IHO::Processor do
         <p class="zzSTDTitle1"></p>
         <div id="H">
           <h1 id="toc0">1.&#xA0; Terms, Definitions, Symbols and Abbreviated Terms</h1>
-          <p class='Terms' style='text-align:left;' id='J'><strong>1.1.</strong>&#xA0;Term2</p>
+          <p class='Terms' style='text-align:left;' id='J'><strong>1.1.</strong>Term2</p>
         </div>
       </main>
     OUTPUT
