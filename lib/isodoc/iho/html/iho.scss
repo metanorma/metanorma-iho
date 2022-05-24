@@ -135,12 +135,14 @@ p.Note, div.Note, li.Note, p.TableFootnote, div.TableFootnote, li.TableFootnote
 	line-height:$normalfontsize;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
-	font-size:$smallerfontsize;
 	mso-bidi-font-size:$smallerfontsize;
-	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-GB;}
+p.Note, div.Note, li.Note, p.TableFootnote, div.TableFootnote, li.TableFootnote {
+	font-size:$smallerfontsize;
+	font-family:$bodyfont;
+        }
 p.ANNEX, li.ANNEX, div.ANNEX
 	{mso-style-name:ANNEX;
 	mso-style-priority:10;
@@ -470,11 +472,13 @@ p.Quote, li.Quote, div.Quote
 	line-height:$normalfontsize;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
-	font-size:$normalfontsize;
-	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-GB;}
+p.Quote, li.Quote {
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
+        }
 p.QuoteAttribution
         {text-align:right;
         mso-style-priority:99;
@@ -504,8 +508,6 @@ p.Admonition, li.Admonition, div.Admonition
 	mso-border-themecolor:accent1;
 	padding:0cm;
 	mso-padding-alt:10.0pt 10.0pt 10.0pt 10.0pt;
-	font-size:$normalfontsize;
-	font-family:$bodyfont;
 	mso-ascii-font-family:$bodyfont;
 	mso-ascii-theme-font:minor-latin;
 	mso-fareast-font-family:$bodyfont;
@@ -517,7 +519,12 @@ p.Admonition, li.Admonition, div.Admonition
 	color:#4472C4;
 	mso-themecolor:accent1;
 	mso-ansi-language:EN-AU;
-	font-style:italic;}
+      }
+p.Admonition, li.Admonition {
+	font-size:$normalfontsize;
+	font-family:$bodyfont;
+        font-style:italic;
+        }
 p.Code, li.Code, div.Code
 	{mso-style-name:Code;
 	mso-style-priority:16;
@@ -720,6 +727,8 @@ margin-left: -36.0pt;
 p.example, li.example, td.example {
   margin-right: 0pt;
   margin-left: 0pt;
+  font-size:$smallerfontsize;
+  font-family:$bodyfont;
 }
 
 div.example {
@@ -731,8 +740,7 @@ div.example {
 
 p.example, li.example, div.example, td.example {
         mso-pagination:none;
-        font-size:$smallerfontsize;
-        font-family:$bodyfont;}
+      }
 
 td.example p.MsoListParagraph {
   font-size: $smallerfontsize;
