@@ -2165,7 +2165,7 @@
 			</xsl:for-each>
 		</figures>
 	</xsl:template><xsl:template name="processPrefaceSectionsDefault">
-		<xsl:for-each select="/*/*[local-name()='preface']/*">
+		<xsl:for-each select="/*/*[local-name()='preface']/*[not(local-name() = 'note' or local-name() = 'admonition')]">
 			<xsl:sort select="@displayorder" data-type="number"/>
 			<xsl:apply-templates select="."/>
 		</xsl:for-each>
@@ -7635,9 +7635,9 @@
 								<fo:inline>
 									
 											<xsl:value-of select="*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal']"/>
-												<xsl:if test="not(*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal'])">
-													<xsl:number format="[1]"/>
-												</xsl:if>
+											<xsl:if test="not(*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal'])">
+												<xsl:number format="[1]"/>
+											</xsl:if>
 										
 								</fo:inline>
 							</fo:block>
@@ -7661,107 +7661,7 @@
 		
 		
 				<!-- start IHO bibitem processing -->
-				<!-- IHO documents:
-					"[1] S57 edition 3.1: IHO Transfer Standard for Digital Hydrographic Data, International Hydrographic Organization (www.iho.int)”
-					[{number}] {docID} edition {edition}: {title}, {author/organization}
-					Non-IHO documents:
-					Provide title and publisher -->
-				<xsl:choose>
-					<xsl:when test="iho:formattedref">
-						<xsl:apply-templates select="iho:formattedref"/>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:choose>
-					<!-- IHO documents -->
-					<!-- {docID} edition {edition}: {title}, {author/organization} -->
-							<xsl:when test="iho:docidentifier[1]/@type='IHO'">						
-								<xsl:value-of select="iho:docidentifier[1]"/>							
-								<xsl:apply-templates select="iho:edition"/>							
-								<xsl:if test="iho:title or iho:contributor or iho:url">
-									<xsl:text>: </xsl:text>
-								</xsl:if>							
-							</xsl:when>
-							
-							<!-- Non-IHO documents -->
-							<!-- title and publisher -->
-							<xsl:otherwise>						
-								<xsl:variable name="docID">
-									<xsl:call-template name="processBibitemDocId"/>
-								</xsl:variable>							
-								<xsl:value-of select="normalize-space($docID)"/>
-								<xsl:if test="normalize-space($docID) != ''"><xsl:text>: </xsl:text></xsl:if>							
-							</xsl:otherwise>						
-						</xsl:choose>
-						
-						<xsl:choose>
-							<xsl:when test="iho:title[@type = 'main' and @language = 'en']">
-								<xsl:apply-templates select="iho:title[@type = 'main' and @language = 'en']"/>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:apply-templates select="iho:title"/>
-							</xsl:otherwise>
-						</xsl:choose>
-						
-						<xsl:if test="iho:title and iho:contributor">
-							<xsl:text>, </xsl:text>
-						</xsl:if>
-						
-						<xsl:variable name="authors">
-							<xsl:choose>
-								<xsl:when test="*[local-name() = 'contributor'][*[local-name() = 'role']/@type='author']">
-									<xsl:for-each select="*[local-name() = 'contributor'][*[local-name() = 'role']/@type='author']">
-										<xsl:copy-of select="."/>
-									</xsl:for-each>
-								</xsl:when>
-								<xsl:when test="*[local-name() = 'contributor'][*[local-name() = 'role']/@type='editor']">
-									<xsl:for-each select="*[local-name() = 'contributor'][*[local-name() = 'role']/@type='editor']">
-										<xsl:copy-of select="."/>
-									</xsl:for-each>
-								</xsl:when>							
-								<xsl:when test="*[local-name() = 'contributor'][*[local-name() = 'role']/@type='publisher'][*[local-name() = 'organization']]">
-									<xsl:for-each select="*[local-name() = 'contributor'][*[local-name() = 'role']/@type='publisher'][*[local-name() = 'organization']]">
-										<xsl:copy>
-											<xsl:choose>
-												<xsl:when test="position() != 1 and position() != last()">, </xsl:when>
-												<xsl:when test="position() != 1 and position() = last()"> and </xsl:when>
-											</xsl:choose>
-											<xsl:value-of select="*[local-name() = 'organization']/*[local-name() = 'name']"/>
-										</xsl:copy>
-									</xsl:for-each>
-								</xsl:when>
-							</xsl:choose>						
-						</xsl:variable>
-						
-						<xsl:for-each select="xalan:nodeset($authors)/*">
-							<xsl:choose>							
-								<xsl:when test="not(*[local-name() = 'role'])"><!-- publisher organisation -->								
-									<xsl:value-of select="."/>
-								</xsl:when>
-								<xsl:otherwise> <!-- author, editor -->
-									<xsl:choose>
-										<xsl:when test="*[local-name() = 'organization']/*[local-name() = 'name']">										
-											<xsl:value-of select="*[local-name() = 'organization']/*[local-name() = 'name']"/>
-										</xsl:when>
-										<xsl:otherwise>										
-											<xsl:for-each select="*[local-name() = 'person']">
-												<xsl:variable name="author">
-													<xsl:call-template name="processPersonalAuthor"/>
-												</xsl:variable>
-												<xsl:value-of select="xalan:nodeset($author)/author"/>
-											</xsl:for-each>
-										</xsl:otherwise>
-									</xsl:choose>
-								</xsl:otherwise>
-							</xsl:choose>
-							<xsl:if test="*[local-name() = 'organization']/*[local-name() = 'name'] and position() != last()">
-								<xsl:text>, </xsl:text>
-							</xsl:if>						
-						</xsl:for-each>
-						
-						<xsl:apply-templates select="*[local-name() = 'uri'][1]"/>
-						
-					</xsl:otherwise>
-				</xsl:choose>
+				<xsl:apply-templates select="iho:formattedref"/>
 				<!-- end IHO bibitem processing -->
 			
 	</xsl:template><xsl:template name="processBibitemDocId">
