@@ -8285,6 +8285,8 @@
 			</xsl:when>
 			<xsl:otherwise><xsl:value-of select="$text"/></xsl:otherwise>
 		</xsl:choose>
+	</xsl:template><xsl:template match="*[local-name() = 'lang_none']">
+		<fo:inline xml:lang="none"><xsl:value-of select="."/></fo:inline>
 	</xsl:template><xsl:template name="printEdition">
 		<xsl:variable name="edition_i18n" select="normalize-space((//*[contains(local-name(), '-standard')])[1]/*[local-name() = 'bibdata']/*[local-name() = 'edition'][normalize-space(@language) != ''])"/>
 		<xsl:text> </xsl:text>
