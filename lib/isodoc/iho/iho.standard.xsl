@@ -7746,7 +7746,7 @@
 									
 											<xsl:value-of select="*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal']"/>
 											<xsl:if test="not(*[local-name() = 'docidentifier'][@type = 'metanorma-ordinal'])">
-												<xsl:number format="[1]"/>
+												<xsl:number format="[1]" count="*[local-name()='bibitem'][not(@hidden = 'true')]"/>
 											</xsl:if>
 										
 								</fo:inline>
