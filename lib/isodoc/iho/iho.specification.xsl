@@ -1108,7 +1108,10 @@
 		
 	</xsl:attribute-set><xsl:attribute-set name="requirement-style">
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="requirement-name-style">
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
+		
 		
 	</xsl:attribute-set><xsl:attribute-set name="requirement-label-style">
 		
