@@ -3588,6 +3588,7 @@
 		<xsl:variable name="footnote_inline">
 			<fo:inline xsl:use-attribute-sets="fn-num-style">
 				
+				
 				<fo:basic-link internal-destination="{$ref_id}" fox:alt-text="footnote {$current_fn_number}">
 					<xsl:value-of select="$current_fn_number_text"/>
 				</fo:basic-link>
@@ -3609,7 +3610,11 @@
 							<fo:block xsl:use-attribute-sets="fn-body-style">
 								
 								
+								
 								<fo:inline id="{$ref_id}" xsl:use-attribute-sets="fn-body-num-style">
+									
+									
+									
 									
 									<xsl:value-of select="$current_fn_number_text"/>
 								</fo:inline>
