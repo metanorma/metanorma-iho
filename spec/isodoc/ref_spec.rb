@@ -265,7 +265,7 @@ RSpec.describe IsoDoc do
 
     html = <<~OUTPUT
       #{HTML_HDR}
-           <br/>
+                 <br/>
            <div>
              <h1 class='ForewordTitle'>Foreword</h1>
              <p id='_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f'>
@@ -322,7 +322,7 @@ RSpec.describe IsoDoc do
                <a href='https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en'>https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033lang=en</a>
                ).
              </p>
-             <p id='ref5' class='NormRef'>[5], ZIP File Format Specification, PKWare Inc.</p>
+             <p id='ref5' class='NormRef'>[5] ZIP File Format Specification, PKWare Inc.</p>
              <p id='ref6' class='NormRef'>
                [6]&#160; NIST FIPS 81: DES Modes of Operation, National Bureau of
                Standards (
@@ -336,7 +336,7 @@ RSpec.describe IsoDoc do
                ).
              </p>
              <p id='ref8' class='NormRef'>
-               [8], Blowfish encryption algorithm, B. Schneier, Fast Software
+               [8] Blowfish encryption algorithm, B. Schneier, Fast Software
                Encryption, Cambridge Security Workshop Proceedings (December 1993),
                Springer-Verlag, 1994, pp. 191-204 (
                <a href='http://www.counterpane.com'>http://www.counterpane.com</a>
