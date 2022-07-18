@@ -20,6 +20,17 @@ module IsoDoc
           Metanorma::IHO.configuration.i18nyaml || @i18nyaml
         )
       end
+
+      def info(isoxml, out)
+        @meta.series isoxml, out
+        super
+      end
+
+      def omit_docid_prefix(prefix)
+        return true if prefix == "IHO"
+
+        super
+      end
     end
   end
 end

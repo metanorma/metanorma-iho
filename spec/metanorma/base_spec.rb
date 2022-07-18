@@ -8,16 +8,18 @@ RSpec.describe Metanorma::IHO do
 
   it "processes a blank document" do
     input = <<~"INPUT"
-    #{ASCIIDOC_BLANK_HDR}
+      #{ASCIIDOC_BLANK_HDR}
     INPUT
 
     output = xmlpp(<<~"OUTPUT")
-    #{BLANK_HDR}
-<sections/>
-</iho-standard>
+          #{BLANK_HDR}
+      <sections/>
+      </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho, header_footer: true)))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho,
+                                                       header_footer: true))))
+      .to be_equivalent_to output
   end
 
   it "converts a blank document" do
@@ -29,15 +31,17 @@ RSpec.describe Metanorma::IHO do
     INPUT
 
     output = xmlpp(<<~"OUTPUT")
-    #{BLANK_HDR}
-<sections/>
-</iho-standard>
+          #{BLANK_HDR}
+      <sections/>
+      </iho-standard>
     OUTPUT
 
     FileUtils.rm_f "test.html"
     FileUtils.rm_f "test.doc"
     FileUtils.rm_f "test.pdf"
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho, header_footer: true)))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho,
+                                                       header_footer: true))))
+      .to be_equivalent_to output
     expect(File.exist?("test.html")).to be true
     expect(File.exist?("test.doc")).to be true
     expect(File.exist?("test.pdf")).to be true
@@ -72,100 +76,101 @@ RSpec.describe Metanorma::IHO do
       :comment-from: 2010-01-01
       :comment-to: 2011-01-01
       :series: B
-      
+
     INPUT
 
     output = xmlpp(<<~"OUTPUT")
-    <?xml version="1.0" encoding="UTF-8"?>
-<iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
-<bibdata type="standard">
-  <title language="en" format="text/plain">Main Title</title>
-<docidentifier type="IHO">B-1000</docidentifier>
-<docnumber>1000</docnumber>
- <date type='implemented'>
-   <on>2000-01-01</on>
- </date>
- <date type='obsoleted'>
-   <on>2001-01-01</on>
- </date>
-  <contributor>
-    <role type="author"/>
-    <organization>
-      <name>International Hydrographic Organization</name>
-      <abbreviation>IHO</abbreviation>
-    </organization>
-  </contributor>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <name>International Hydrographic Organization</name>
-      <abbreviation>IHO</abbreviation>
-    </organization>
-  </contributor>
-  <edition>2</edition>
-<version>
-  <revision-date>2000-01-01</revision-date>
-  <draft>3.4</draft>
-</version>
-  <language>en</language>
-  <script>Latn</script>
-  <status>
-    <stage>working-draft</stage>
-  </status>
-  <copyright>
-    <from>2001</from>
-    <owner>
-      <organization>
-        <name>International Hydrographic Organization</name>
-        <abbreviation>IHO</abbreviation>
-      </organization>
-    </owner>
-  </copyright>
-  <series type='main'>
-  <title>Bathymetric</title>
-  <abbreviation>B</abbreviation>
-</series>
-  <ext>
-  <doctype>standard</doctype>
-  <editorialgroup>
-               <committee>
-                 <abbreviation>HSSC</abbreviation>
-               </committee>
-               <workgroup>
-                 <abbreviation>WG1</abbreviation>
-               </workgroup>
-             </editorialgroup>
-             <editorialgroup>
-               <committee>
-                 <abbreviation>IRCC</abbreviation>
-               </committee>
-               <workgroup>
-                 <abbreviation>WG2</abbreviation>
-               </workgroup>
-             </editorialgroup>
-             <editorialgroup>
-               <committee>
-                 <abbreviation>HSSC</abbreviation>
-               </committee>
-               <workgroup>
-                 <abbreviation>WG3</abbreviation>
-               </workgroup>
-             </editorialgroup>
-             <commentperiod>
-  <from>2010-01-01</from>
-  <to>2011-01-01</to>
-</commentperiod>
-  </ext>
-</bibdata>
-    #{BOILERPLATE.sub(/International Hydrographic Organization #{Date.today.year}/, "International Hydrographic Organization 2001")}
-<sections/>
-</iho-standard>
+          <?xml version="1.0" encoding="UTF-8"?>
+      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      <bibdata type="standard">
+        <title language="en" format="text/plain">Main Title</title>
+      <docidentifier type="IHO">B-1000</docidentifier>
+      <docnumber>1000</docnumber>
+       <date type='implemented'>
+         <on>2000-01-01</on>
+       </date>
+       <date type='obsoleted'>
+         <on>2001-01-01</on>
+       </date>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Hydrographic Organization</name>
+            <abbreviation>IHO</abbreviation>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Hydrographic Organization</name>
+            <abbreviation>IHO</abbreviation>
+          </organization>
+        </contributor>
+        <edition>2</edition>
+      <version>
+        <revision-date>2000-01-01</revision-date>
+        <draft>3.4</draft>
+      </version>
+        <language>en</language>
+        <script>Latn</script>
+        <status>
+          <stage>working-draft</stage>
+        </status>
+        <copyright>
+          <from>2001</from>
+          <owner>
+            <organization>
+              <name>International Hydrographic Organization</name>
+              <abbreviation>IHO</abbreviation>
+            </organization>
+          </owner>
+        </copyright>
+        <series type='main'>
+        <title>Bathymetric</title>
+        <abbreviation>B</abbreviation>
+      </series>
+        <ext>
+        <doctype>standard</doctype>
+        <editorialgroup>
+                     <committee>
+                       <abbreviation>HSSC</abbreviation>
+                     </committee>
+                     <workgroup>
+                       <abbreviation>WG1</abbreviation>
+                     </workgroup>
+                   </editorialgroup>
+                   <editorialgroup>
+                     <committee>
+                       <abbreviation>IRCC</abbreviation>
+                     </committee>
+                     <workgroup>
+                       <abbreviation>WG2</abbreviation>
+                     </workgroup>
+                   </editorialgroup>
+                   <editorialgroup>
+                     <committee>
+                       <abbreviation>HSSC</abbreviation>
+                     </committee>
+                     <workgroup>
+                       <abbreviation>WG3</abbreviation>
+                     </workgroup>
+                   </editorialgroup>
+                   <commentperiod>
+        <from>2010-01-01</from>
+        <to>2011-01-01</to>
+      </commentperiod>
+        </ext>
+      </bibdata>
+          #{BOILERPLATE.sub(/International Hydrographic Organization #{Date.today.year}/, 'International Hydrographic Organization 2001')}
+      <sections/>
+      </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho, header_footer: true)))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho,
+                                                       header_footer: true)))).to be_equivalent_to output
   end
 
-    it "processes committee-draft" do
+  it "processes committee-draft" do
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iho, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
@@ -182,54 +187,54 @@ RSpec.describe Metanorma::IHO do
       :language: en
       :title: Main Title
     INPUT
-        <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
-<bibdata type="standard">
-  <title language="en" format="text/plain">Main Title</title>
-  <docidentifier type="IHO">S-1000</docidentifier>
-  <docnumber>1000</docnumber>
-  <contributor>
-    <role type="author"/>
-    <organization>
-      <name>International Hydrographic Organization</name>
-      <abbreviation>IHO</abbreviation>
-    </organization>
-  </contributor>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <name>International Hydrographic Organization</name>
-      <abbreviation>IHO</abbreviation>
-    </organization>
-  </contributor>
-  <edition>2</edition>
-<version>
-  <revision-date>2000-01-01</revision-date>
-  <draft>3.4</draft>
-</version>
-  <language>en</language>
-  <script>Latn</script>
-  <status>
-    <stage>committee-draft</stage>
-    <iteration>3</iteration>
-  </status>
-  <copyright>
-    <from>#{Date.today.year}</from>
-    <owner>
-      <organization>
-        <name>International Hydrographic Organization</name>
-        <abbreviation>IHO</abbreviation>
-      </organization>
-    </owner>
-  </copyright>
-  <ext>
-  <doctype>standard</doctype>
-  </ext>
-</bibdata>
-        #{BOILERPLATE}
-<sections/>
-</iho-standard>
-        OUTPUT
-    end
+              <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      <bibdata type="standard">
+        <title language="en" format="text/plain">Main Title</title>
+        <docidentifier type="IHO">S-1000</docidentifier>
+        <docnumber>1000</docnumber>
+        <contributor>
+          <role type="author"/>
+          <organization>
+            <name>International Hydrographic Organization</name>
+            <abbreviation>IHO</abbreviation>
+          </organization>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization>
+            <name>International Hydrographic Organization</name>
+            <abbreviation>IHO</abbreviation>
+          </organization>
+        </contributor>
+        <edition>2</edition>
+      <version>
+        <revision-date>2000-01-01</revision-date>
+        <draft>3.4</draft>
+      </version>
+        <language>en</language>
+        <script>Latn</script>
+        <status>
+          <stage>committee-draft</stage>
+          <iteration>3</iteration>
+        </status>
+        <copyright>
+          <from>#{Date.today.year}</from>
+          <owner>
+            <organization>
+              <name>International Hydrographic Organization</name>
+              <abbreviation>IHO</abbreviation>
+            </organization>
+          </owner>
+        </copyright>
+        <ext>
+        <doctype>standard</doctype>
+        </ext>
+      </bibdata>
+              #{BOILERPLATE}
+      <sections/>
+      </iho-standard>
+    OUTPUT
+  end
 
   it "strips inline header" do
     input = <<~"INPUT"
@@ -240,18 +245,19 @@ RSpec.describe Metanorma::IHO do
     INPUT
 
     output = xmlpp(<<~"OUTPUT")
-    #{BLANK_HDR}
-             <preface><foreword id="_" obligation="informative">
-         <title>Foreword</title>
-         <p id="_">This is a preamble</p>
-       </foreword></preface><sections>
-       <clause id="_" obligation="normative">
-         <title>Section 1</title>
-       </clause></sections>
-       </iho-standard>
+      #{BLANK_HDR}
+               <preface><foreword id="_" obligation="informative">
+           <title>Foreword</title>
+           <p id="_">This is a preamble</p>
+         </foreword></preface><sections>
+         <clause id="_" obligation="normative">
+           <title>Section 1</title>
+         </clause></sections>
+         </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho, header_footer: true)))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho,
+                                                       header_footer: true)))).to be_equivalent_to output
   end
 
   it "uses default fonts" do
@@ -312,35 +318,36 @@ RSpec.describe Metanorma::IHO do
     INPUT
 
     output = xmlpp(<<~"OUTPUT")
-            #{BLANK_HDR}
-       <sections>
-        <p id="_"><em>emphasis</em>
-       <strong>strong</strong>
-       <tt>monospace</tt>
-       “double quote”
-       ‘single quote’
-       super<sup>script</sup>
-       sub<sub>script</sub>
-       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow>
-  <mi>a</mi>
-</mrow>
-<mrow>
-  <mn>90</mn>
-</mrow>
-</msub></math></stem>
-       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
-       <keyword>keyword</keyword>
-       <strike>strike</strike>
-       <smallcap>smallcap</smallcap></p>
-       </sections>
-       </iho-standard>
+                  #{BLANK_HDR}
+             <sections>
+              <p id="_"><em>emphasis</em>
+             <strong>strong</strong>
+             <tt>monospace</tt>
+             “double quote”
+             ‘single quote’
+             super<sup>script</sup>
+             sub<sub>script</sub>
+             <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow>
+        <mi>a</mi>
+      </mrow>
+      <mrow>
+        <mn>90</mn>
+      </mrow>
+      </msub></math></stem>
+             <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
+             <keyword>keyword</keyword>
+             <strike>strike</strike>
+             <smallcap>smallcap</smallcap></p>
+             </sections>
+             </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho, header_footer: true)))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho,
+                                                       header_footer: true)))).to be_equivalent_to output
   end
 
-    it "processes appendixes" do
-      input = <<~"INPUT"
+  it "processes appendixes" do
+    input = <<~"INPUT"
       #{ASCIIDOC_BLANK_HDR}
 
       [appendix]
@@ -354,22 +361,21 @@ RSpec.describe Metanorma::IHO do
     INPUT
 
     output = xmlpp(<<~"OUTPUT")
-    #{BLANK_HDR}
-<sections> </sections>
-<annex id='_' obligation='normative'>
-  <title>Annex</title>
-  <clause id='_' obligation='normative'>
-    <title>Annex A.1</title>
-  </clause>
-  <appendix id='_' obligation='normative'>
-    <title>Appendix 1</title>
-  </appendix>
-</annex>
-</iho-standard>
+          #{BLANK_HDR}
+      <sections> </sections>
+      <annex id='_' obligation='normative'>
+        <title>Annex</title>
+        <clause id='_' obligation='normative'>
+          <title>Annex A.1</title>
+        </clause>
+        <appendix id='_' obligation='normative'>
+          <title>Appendix 1</title>
+        </appendix>
+      </annex>
+      </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho, header_footer: true)))).to be_equivalent_to output
-
-    end
-
+    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho,
+                                                       header_footer: true)))).to be_equivalent_to output
+  end
 end
