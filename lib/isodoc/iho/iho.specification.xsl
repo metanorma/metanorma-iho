@@ -1206,6 +1206,9 @@
 	<xsl:attribute-set name="import-style">
 	</xsl:attribute-set>
 
+	<xsl:attribute-set name="component-style">
+	</xsl:attribute-set>
+
 	<xsl:attribute-set name="recommendation-style">
 
 	</xsl:attribute-set>
@@ -7044,38 +7047,44 @@
 		</fo:block>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'inherit'] | *[local-name() = 'component'][@class = 'inherit']">
+	<xsl:template match="*[local-name() = 'inherit'] | *[local-name() = 'component'][@class = 'inherit'] |           *[local-name() = 'div'][@type = 'requirement-inherit'] |           *[local-name() = 'div'][@type = 'recommendation-inherit'] |           *[local-name() = 'div'][@type = 'permission-inherit']">
 		<fo:block xsl:use-attribute-sets="inherit-style">
 			<xsl:text>Dependency </xsl:text><xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'description'] | *[local-name() = 'component'][@class = 'description']">
+	<xsl:template match="*[local-name() = 'description'] | *[local-name() = 'component'][@class = 'description'] |           *[local-name() = 'div'][@type = 'requirement-description'] |           *[local-name() = 'div'][@type = 'recommendation-description'] |           *[local-name() = 'div'][@type = 'permission-description']">
 		<fo:block xsl:use-attribute-sets="description-style">
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'specification'] | *[local-name() = 'component'][@class = 'specification']">
+	<xsl:template match="*[local-name() = 'specification'] | *[local-name() = 'component'][@class = 'specification'] |           *[local-name() = 'div'][@type = 'requirement-specification'] |           *[local-name() = 'div'][@type = 'recommendation-specification'] |           *[local-name() = 'div'][@type = 'permission-specification']">
 		<fo:block xsl:use-attribute-sets="specification-style">
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'measurement-target'] | *[local-name() = 'component'][@class = 'measurement-target']">
+	<xsl:template match="*[local-name() = 'measurement-target'] | *[local-name() = 'component'][@class = 'measurement-target'] |           *[local-name() = 'div'][@type = 'requirement-measurement-target'] |           *[local-name() = 'div'][@type = 'recommendation-measurement-target'] |           *[local-name() = 'div'][@type = 'permission-measurement-target']">
 		<fo:block xsl:use-attribute-sets="measurement-target-style">
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'verification'] | *[local-name() = 'component'][@class = 'verification']">
+	<xsl:template match="*[local-name() = 'verification'] | *[local-name() = 'component'][@class = 'verification'] |           *[local-name() = 'div'][@type = 'requirement-verification'] |           *[local-name() = 'div'][@type = 'recommendation-verification'] |           *[local-name() = 'div'][@type = 'permission-verification']">
 		<fo:block xsl:use-attribute-sets="verification-style">
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'import'] | *[local-name() = 'component'][@class = 'import']">
+	<xsl:template match="*[local-name() = 'import'] | *[local-name() = 'component'][@class = 'import'] |           *[local-name() = 'div'][@type = 'requirement-import'] |           *[local-name() = 'div'][@type = 'recommendation-import'] |           *[local-name() = 'div'][@type = 'permission-import']">
 		<fo:block xsl:use-attribute-sets="import-style">
+			<xsl:apply-templates/>
+		</fo:block>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'div'][starts-with(@type, 'requirement-component')] |           *[local-name() = 'div'][starts-with(@type, 'recommendation-component')] |           *[local-name() = 'div'][starts-with(@type, 'permission-component')]">
+		<fo:block xsl:use-attribute-sets="component-style">
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
