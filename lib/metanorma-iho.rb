@@ -6,8 +6,9 @@ require_relative "isodoc/iho/word_convert"
 require_relative "isodoc/iho/pdf_convert"
 require_relative "isodoc/iho/presentation_xml_convert"
 require_relative "metanorma/iho/version"
+require "metanorma"
 
-if defined? Metanorma
+if defined? Metanorma::Registry
   require_relative "metanorma/iho"
   Metanorma::Registry.instance.register(Metanorma::IHO::Processor)
 end
