@@ -12,7 +12,7 @@ module Relaton
 
         def misc_fields_format(hash)
           super
-          hash[:standardidentifier].map! do |x|
+          hash[:authoritative_identifier].map! do |x|
             x.sub(/^IHO /, "")
           end
           hash
