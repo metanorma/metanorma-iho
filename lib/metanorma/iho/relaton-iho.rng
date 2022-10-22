@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="biblio-standoc.rng">
+    <define name="DocumentType">
+      <choice>
+        <value>policy-and-procedures</value>
+        <value>best-practices</value>
+        <value>supporting-document</value>
+        <value>report</value>
+        <value>legal</value>
+        <value>directives</value>
+        <value>proposal</value>
+        <value>standard</value>
+      </choice>
+    </define>
+    <define name="editorialgroup">
+      <element name="editorialgroup">
+        <oneOrMore>
+          <choice>
+            <ref name="committee"/>
+            <ref name="workgroup"/>
+            <ref name="commission"/>
+          </choice>
+        </oneOrMore>
+      </element>
+    </define>
+    <define name="BibDataExtensionType">
+      <optional>
+        <attribute name="schema-version"/>
+      </optional>
+      <optional>
+        <ref name="doctype"/>
+      </optional>
+      <optional>
+        <ref name="docsubtype"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="editorialgroup"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="ics"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="commentperiod"/>
+      </optional>
+    </define>
+  </include>
+  <define name="committee">
+    <element name="committee">
+      <ref name="IHO_Group"/>
+    </element>
+  </define>
+  <define name="workgroup">
+    <element name="workgroup">
+      <ref name="IHO_Group"/>
+    </element>
+  </define>
+  <define name="commission">
+    <element name="commission">
+      <ref name="IHO_Group"/>
+    </element>
+  </define>
+  <define name="IHO_Group">
+    <optional>
+      <element name="name">
+        <text/>
+      </element>
+    </optional>
+    <element name="abbreviation">
+      <text/>
+    </element>
+    <optional>
+      <choice>
+        <ref name="committee"/>
+        <ref name="workgroup"/>
+        <ref name="commission"/>
+      </choice>
+    </optional>
+  </define>
+  <define name="commentperiod">
+    <element name="commentperiod">
+      <element name="from">
+        <ref name="ISO8601Date"/>
+      </element>
+      <optional>
+        <element name="to">
+          <ref name="ISO8601Date"/>
+        </element>
+      </optional>
+    </element>
+  </define>
+</grammar>
