@@ -18,6 +18,7 @@ module Metanorma
       def fonts_manifest
         {
           "Arial" => nil,
+          "Calibri" => nil,
           "Cambria Math" => nil,
           "Courier New" => nil,
           "Fira Code" => nil,
