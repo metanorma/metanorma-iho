@@ -3064,6 +3064,10 @@
 							<xsl:with-param name="continued">true</xsl:with-param>
 						</xsl:apply-templates>
 
+						<xsl:if test="not(ancestor::*[local-name()='table']/*[local-name()='name'])"> <!-- to prevent empty fo:table-cell in case of missing table's name -->
+							<fo:block/>
+						</xsl:if>
+
 			</fo:table-cell>
 		</fo:table-row>
 	</xsl:template> <!-- table-header-title -->
@@ -7007,7 +7011,13 @@
 	</xsl:template>
 
 	<xsl:template match="text()" mode="contents_item">
-		<xsl:call-template name="keep_together_standard_number"/>
+		<xsl:variable name="text">
+			<!-- to split by '_' and other chars -->
+			<text><xsl:call-template name="add-zero-spaces-java"/></text>
+		</xsl:variable>
+		<xsl:for-each select="xalan:nodeset($text)/text/text()">
+			<xsl:call-template name="keep_together_standard_number"/>
+		</xsl:for-each>
 	</xsl:template>
 
 	<!-- Note: to enable the addition of character span markup with semantic styling for DIS Word output -->
