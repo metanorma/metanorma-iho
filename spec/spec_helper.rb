@@ -48,6 +48,10 @@ def htmlencode(xml)
   end
 end
 
+def presxml_options
+  { semanticxmlinsert: "false" }
+end
+
 def xmlpp(xml)
   xsl = <<~XSL
   <!--

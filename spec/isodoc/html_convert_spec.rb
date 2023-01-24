@@ -243,7 +243,7 @@ RSpec.describe IsoDoc::IHO do
           </bibliography>
           </iho-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>")
@@ -504,7 +504,7 @@ RSpec.describe IsoDoc::IHO do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_equivalent_to xmlpp(presxml)
@@ -733,7 +733,7 @@ RSpec.describe IsoDoc::IHO do
               </bibliography>
               </iho-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))

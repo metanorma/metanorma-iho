@@ -137,7 +137,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-           <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <bibdata>
            <language current="true">en</language>
          </bibdata>
@@ -145,19 +145,19 @@ RSpec.describe IsoDoc do
            <foreword displayorder="1">
              <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
                <eref bibitemid="ref1">S-57</eref>
-               <eref bibitemid="ref2">NIST FIPS 186</eref>
-               <eref bibitemid="ref3">NIST FIPS 180-1</eref>
-               <eref bibitemid="ref4">ITU-T X.509</eref>
-               <eref bibitemid="ref4">ITU-T X.509</eref>
-               <eref bibitemid="ref6">NIST FIPS 81</eref>
-               <eref bibitemid="ref7">IETF RFC 1423</eref>
+               <eref bibitemid="ref2">NIST&#xa0;FIPS&#xa0;186</eref>
+               <eref bibitemid="ref3">NIST&#xa0;FIPS&#xa0;180-1</eref>
+               <eref bibitemid="ref4">ITU-T&#xa0;X.509</eref>
+               <eref bibitemid="ref4">ITU-T&#xa0;X.509</eref>
+               <eref bibitemid="ref6">NIST&#xa0;FIPS&#xa0;81</eref>
+               <eref bibitemid="ref7">IETF&#xa0;RFC&#xa0;1423</eref>
                <eref bibitemid="ref8">[8]</eref>
-               <eref bibitemid="ref9">ISO/IEC 13239:2002</eref>
-               <eref bibitemid="ISO712">ISO 712</eref>
+               <eref bibitemid="ref9">ISO/IEC&#xa0;13239:2002</eref>
+               <eref bibitemid="ISO712">ISO&#xa0;712</eref>
                <eref bibitemid="ISBN">[1]</eref>
                <eref bibitemid="ISSN">[2]</eref>
                <eref bibitemid="ISO16634">ISO 16634:-- (all parts)</eref>
-               <eref bibitemid="ref11">IETF RFC 10</eref>
+               <eref bibitemid="ref11">IETF&#xa0;RFC&#xa0;10</eref>
                <eref bibitemid="ref10">[4]</eref>
                <eref bibitemid="ref12">Citn</eref>
              </p>
@@ -186,12 +186,12 @@ RSpec.describe IsoDoc do
              </bibitem>
              <bibitem id="ref2" type="standard">
                <formattedref>
-                 NIST FIPS 186: Digital Signature Standard (DSS), National Institute of Standards and Technology, (
+                 NIST&#xa0;FIPS&#xa0;186: Digital Signature Standard (DSS), National Institute of Standards and Technology, (
                  <link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</link>
                  ).
                </formattedref>
                <uri type="uri">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</uri>
-               <docidentifier type="NIST">NIST FIPS 186</docidentifier>
+               <docidentifier type="NIST">NIST&#xa0;FIPS&#xa0;186</docidentifier>
                <biblio-tag>
                  [2]
                  <tab/>
@@ -199,13 +199,13 @@ RSpec.describe IsoDoc do
              </bibitem>
              <bibitem id="ref3" type="standard">
                <formattedref>
-                 NIST FIPS 180-1: Secure Hash Standard, National Institute of Standards and Technology, (
+                 NIST&#xa0;FIPS&#xa0;180-1: Secure Hash Standard, National Institute of Standards and Technology, (
                  <link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</link>
                  ).
                </formattedref>
                <uri type="uri">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</uri>
                <uri type="doi">https://doi.org/10.6028/NIST.FIPS.180-1</uri>
-               <docidentifier type="NIST">NIST FIPS 180-1</docidentifier>
+               <docidentifier type="NIST">NIST&#xa0;FIPS&#xa0;180-1</docidentifier>
                <biblio-tag>
                  [3]
                  <tab/>
@@ -213,13 +213,13 @@ RSpec.describe IsoDoc do
              </bibitem>
              <bibitem id="ref4" type="standard">
                <formattedref>
-                 ITU-T X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (
+                 ITU-T&#xa0;X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (
                  <link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</link>
                  ).
                </formattedref>
                <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</uri>
-               <docidentifier type="ITU">ITU-T X.509</docidentifier>
-               <docidentifier type="ISO">ISO/IEC 9594-8</docidentifier>
+               <docidentifier type="ITU">ITU-T&#xa0;X.509</docidentifier>
+               <docidentifier type="ISO">ISO/IEC&#xa0;9594-8</docidentifier>
                <biblio-tag>
                  [4]
                  <tab/>
@@ -235,13 +235,13 @@ RSpec.describe IsoDoc do
              </bibitem>
              <bibitem id="ref6" type="standard">
                <formattedref>
-                 NIST FIPS 81: DES Modes of Operation, National Bureau of Standards, (
+                 NIST&#xa0;FIPS&#xa0;81: DES Modes of Operation, National Bureau of Standards, (
                  <link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</link>
                  ).
                </formattedref>
                <uri type="uri">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</uri>
                <uri type="doi">https://doi.org/10.6028/NBS.FIPS.81</uri>
-               <docidentifier type="NIST">NIST FIPS 81</docidentifier>
+               <docidentifier type="NIST">NIST&#xa0;FIPS&#xa0;81</docidentifier>
                <biblio-tag>
                  [6]
                  <tab/>
@@ -249,14 +249,14 @@ RSpec.describe IsoDoc do
              </bibitem>
              <bibitem id="ref7" type="standard">
                <formattedref>
-                 IETF RFC 1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (
+                 IETF&#xa0;RFC&#xa0;1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (
                  <link target="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</link>
                  ).
                </formattedref>
                <uri type="xml">https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1423.xml</uri>
                <uri type="src">https://www.rfc-editor.org/info/rfc1423</uri>
-               <docidentifier type="IETF">IETF RFC 1423</docidentifier>
-               <docidentifier type="IETF" scope="anchor">IETF RFC1423</docidentifier>
+               <docidentifier type="IETF">IETF&#xa0;RFC&#xa0;1423</docidentifier>
+               <docidentifier type="IETF" scope="anchor">IETF&#xa0;RFC1423</docidentifier>
                <docidentifier type="DOI">DOI 10.17487/RFC1423</docidentifier>
                <biblio-tag>
                  [7]
@@ -277,22 +277,22 @@ RSpec.describe IsoDoc do
              </bibitem>
              <bibitem id="ref9" type="standard">
                <formattedref>
-                 ISO/IEC 13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (
+                 ISO/IEC&#xa0;13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (
                  <link target="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</link>
                  ).
                </formattedref>
                <uri type="src">https://www.iso.org/standard/37010.html</uri>
                <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:37010:en</uri>
                <uri type="rss">https://www.iso.org/contents/data/standard/03/70/37010.detail.rss</uri>
-               <docidentifier type="ISO">ISO/IEC 13239:2002</docidentifier>
+               <docidentifier type="ISO">ISO/IEC&#xa0;13239:2002</docidentifier>
                <biblio-tag>
                  [9]
                  <tab/>
                </biblio-tag>
              </bibitem>
              <bibitem id="ISO712" type="standard">
-               <formattedref>ISO 712: Cereals and cereal products, International Organization for Standardization.</formattedref>
-               <docidentifier type="ISO">ISO 712</docidentifier>
+               <formattedref>ISO&#xa0;712: Cereals and cereal products, International Organization for Standardization.</formattedref>
+               <docidentifier type="ISO">ISO&#xa0;712</docidentifier>
                <biblio-tag>
                  [10]
                  <tab/>
@@ -308,8 +308,8 @@ RSpec.describe IsoDoc do
                </biblio-tag>
              </bibitem>
              <bibitem id="ISO20483" type="standard">
-               <formattedref>ISO 20483:2013-2014: Cereals and pulses, International Organization for Standardization.</formattedref>
-               <docidentifier type="ISO">ISO 20483:2013-2014</docidentifier>
+               <formattedref>ISO&#xa0;20483:2013-2014: Cereals and pulses, International Organization for Standardization.</formattedref>
+               <docidentifier type="ISO">ISO&#xa0;20483:2013-2014</docidentifier>
                <biblio-tag>
                  [12]
                  <tab/>
@@ -324,7 +324,7 @@ RSpec.describe IsoDoc do
                  <link target="http://www.icc.or.at"/>
                  )
                </formattedref>
-               <docidentifier type="ICC">ICC 167</docidentifier>
+               <docidentifier type="ICC">ICC&#xa0;167</docidentifier>
                <biblio-tag>
                  [13]
                  <tab/>
@@ -370,9 +370,9 @@ RSpec.describe IsoDoc do
                <p>This is another annotation of document ISSN.</p>
              </note>
              <bibitem id="ISO3696" type="standard">
-               <formattedref>ISO 3696: Water for analytical laboratory use.</formattedref>
+               <formattedref>ISO&#xa0;3696: Water for analytical laboratory use.</formattedref>
                <docidentifier type="metanorma-ordinal">[3]</docidentifier>
-               <docidentifier type="ISO">ISO 3696</docidentifier>
+               <docidentifier type="ISO">ISO&#xa0;3696</docidentifier>
                <biblio-tag>
                  [3]
                  <tab/>
@@ -394,9 +394,9 @@ RSpec.describe IsoDoc do
                </biblio-tag>
              </bibitem>
              <bibitem id="ref11">
-               <formattedref>IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</formattedref>
+               <formattedref>IETF&#xa0;RFC&#xa0;10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</formattedref>
                <docidentifier type="metanorma-ordinal">[5]</docidentifier>
-               <docidentifier type="IETF">IETF RFC 10</docidentifier>
+               <docidentifier type="IETF">IETF&#xa0;RFC&#xa0;10</docidentifier>
                <biblio-tag>
                  [5]
                  <tab/>
@@ -409,7 +409,7 @@ RSpec.describe IsoDoc do
                  .
                </formattedref>
                <docidentifier type="metanorma">[Citn]</docidentifier>
-               <docidentifier type="IETF">IETF RFC 20</docidentifier>
+               <docidentifier type="IETF">IETF&#xa0;RFC&#xa0;20</docidentifier>
                <biblio-tag>
                  [6]
                  <tab/>
@@ -427,19 +427,19 @@ RSpec.describe IsoDoc do
              <h1 class="ForewordTitle">Foreword</h1>
              <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
                <a href="#ref1">S-57</a>
-               <a href="#ref2">NIST FIPS 186</a>
-               <a href="#ref3">NIST FIPS 180-1</a>
-               <a href="#ref4">ITU-T X.509</a>
-               <a href="#ref4">ITU-T X.509</a>
-               <a href="#ref6">NIST FIPS 81</a>
-               <a href="#ref7">IETF RFC 1423</a>
+               <a href="#ref2">NIST&#xa0;FIPS&#xa0;186</a>
+               <a href="#ref3">NIST&#xa0;FIPS&#xa0;180-1</a>
+               <a href="#ref4">ITU-T&#xa0;X.509</a>
+               <a href="#ref4">ITU-T&#xa0;X.509</a>
+               <a href="#ref6">NIST&#xa0;FIPS&#xa0;81</a>
+               <a href="#ref7">IETF&#xa0;RFC&#xa0;1423</a>
                <a href="#ref8">[8]</a>
-               <a href="#ref9">ISO/IEC 13239:2002</a>
-               <a href="#ISO712">ISO 712</a>
+               <a href="#ref9">ISO/IEC&#xa0;13239:2002</a>
+               <a href="#ISO712">ISO&#xa0;712</a>
                <a href="#ISBN">[1]</a>
                <a href="#ISSN">[2]</a>
                <a href="#ISO16634">ISO 16634:-- (all parts)</a>
-               <a href="#ref11">IETF RFC 10</a>
+               <a href="#ref11">IETF&#xa0;RFC&#xa0;10</a>
                <a href="#ref10">[4]</a>
                <a href="#ref12">Citn</a>
              </p>
@@ -458,17 +458,17 @@ RSpec.describe IsoDoc do
                ).
              </p>
              <p id="ref2" class="NormRef">
-               [2]   NIST FIPS 186: Digital Signature Standard (DSS), National Institute of Standards and Technology, (
+               [2]   NIST&#xa0;FIPS&#xa0;186: Digital Signature Standard (DSS), National Institute of Standards and Technology, (
                <a href="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</a>
                ).
              </p>
              <p id="ref3" class="NormRef">
-               [3]   NIST FIPS 180-1: Secure Hash Standard, National Institute of Standards and Technology, (
+               [3]   NIST&#xa0;FIPS&#xa0;180-1: Secure Hash Standard, National Institute of Standards and Technology, (
                <a href="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</a>
                ).
              </p>
              <p id="ref4" class="NormRef">
-               [4]   ITU-T X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (
+               [4]   ITU-T&#xa0;X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (
                <a href="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</a>
                ).
              </p>
@@ -477,12 +477,12 @@ RSpec.describe IsoDoc do
                   
                ZIP File Format Specification, PKWare Inc.</p>
              <p id="ref6" class="NormRef">
-               [6]   NIST FIPS 81: DES Modes of Operation, National Bureau of Standards, (
+               [6]   NIST&#xa0;FIPS&#xa0;81: DES Modes of Operation, National Bureau of Standards, (
                <a href="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</a>
                ).
              </p>
              <p id="ref7" class="NormRef">
-               [7]   IETF RFC 1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (
+               [7]   IETF&#xa0;RFC&#xa0;1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (
                <a href="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</a>
                ).
              </p>
@@ -492,14 +492,14 @@ RSpec.describe IsoDoc do
                )
              </p>
              <p id="ref9" class="NormRef">
-               [9]   ISO/IEC 13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (
+               [9]   ISO/IEC&#xa0;13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (
                <a href="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</a>
                ).
              </p>
              <p id="ISO712" class="NormRef">
                  [10]
                   
-               ISO 712: Cereals and cereal products, International Organization for Standardization.</p>
+               ISO&#xa0;712: Cereals and cereal products, International Organization for Standardization.</p>
              <p id="ISO16634" class="NormRef">
                  [11]
                   
@@ -507,7 +507,7 @@ RSpec.describe IsoDoc do
              <p id="ISO20483" class="NormRef">
                  [12]
                   
-               ISO 20483:2013-2014: Cereals and pulses, International Organization for Standardization.</p>
+               ISO&#xa0;20483:2013-2014: Cereals and pulses, International Organization for Standardization.</p>
              <p id="ref11" class="NormRef">
                [13]  
                <span style="font-variant:small-caps;">Standard No I.C.C 167</span>
@@ -552,7 +552,7 @@ RSpec.describe IsoDoc do
              <p id="ISO3696" class="Biblio">
                  [3]
                   
-               ISO 3696: Water for analytical laboratory use.</p>
+               ISO&#xa0;3696: Water for analytical laboratory use.</p>
              <p id="ref10" class="Biblio">
                [4]  
                <span style="font-variant:small-caps;">Standard No I.C.C 167</span>
@@ -565,7 +565,7 @@ RSpec.describe IsoDoc do
              <p id="ref11" class="Biblio">
                  [5]
                   
-               IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</p>
+               IETF&#xa0;RFC&#xa0;10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</p>
              <p id="ref12" class="Biblio">
                [6]   CitationWorks. 2019.
                <i>How to cite a reference</i>
@@ -575,7 +575,7 @@ RSpec.describe IsoDoc do
          </div>
        </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new({})
+    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_equivalent_to xmlpp(presxml)
