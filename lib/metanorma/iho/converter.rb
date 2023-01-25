@@ -3,9 +3,6 @@ require "metanorma/generic/converter"
 
 module Metanorma
   module IHO
-    # A {Converter} implementation that generates RSD output, and a document
-    # schema encapsulation of the document for validation
-    #
     class Converter < Metanorma::Generic::Converter
       XML_ROOT_TAG = "iho-standard".freeze
       XML_NAMESPACE = "https://www.metanorma.org/ns/iho".freeze
@@ -19,7 +16,7 @@ module Metanorma
       end
 
       def appendix_parse(attrs, xml, node)
-        attrs["inline-header".to_sym] = node.option? "inline-header"
+        attrs[:"inline-header"] = node.option? "inline-header"
         set_obligation(attrs, node)
         xml.appendix **attr_code(attrs) do |xml_section|
           xml_section.title { |name| name << node.title }
@@ -37,7 +34,7 @@ module Metanorma
 
       def metadata_series(node, xml)
         series = node.attr("series") or return
-        xml.series **{ type: "main" } do |s|
+        xml.series type: "main" do |s|
           s.title SERIESNAME[series.to_sym] || "N/A"
           s.abbreviation series
         end
@@ -87,6 +84,16 @@ module Metanorma
           end
           i += 1
         end
+      end
+
+      def metadata_version(node, xml)
+        if node.attr("edition-major")
+          ed = node.attr("edition-major")
+          e1 = node.attr("edition-minor") and ed += ".#{e1}"
+          (e2 = node.attr("edition-patch")) && e1 and ed += ".#{e2}"
+          node.set_attribute("edition", ed)
+        end
+        super
       end
 
       def configuration
