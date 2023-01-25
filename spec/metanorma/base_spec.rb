@@ -166,12 +166,13 @@ RSpec.describe Metanorma::IHO do
       </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, backend: :iho,
-                                                       header_footer: true)))).to be_equivalent_to output
+    expect(xmlpp(strip_guid(Asciidoctor
+      .convert(input, backend: :iho, header_footer: true))))
+      .to be_equivalent_to output
   end
 
   it "processes committee-draft" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :iho, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    input = <<~INPUT
       = Document title
       Author
       :docfile: test.adoc
@@ -187,6 +188,7 @@ RSpec.describe Metanorma::IHO do
       :language: en
       :title: Main Title
     INPUT
+    output = <<~OUTPUT
               <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
       <bibdata type="standard">
         <title language="en" format="text/plain">Main Title</title>
@@ -234,6 +236,84 @@ RSpec.describe Metanorma::IHO do
       <sections/>
       </iho-standard>
     OUTPUT
+    expect(xmlpp(strip_guid(Asciidoctor
+      .convert(input, backend: :iho, header_footer: true))))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "processes edition components" do
+    input = <<~INPUT
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :docnumber: 1000
+      :edition: 2
+      :edition-major: 3
+    INPUT
+    xml = Nokogiri::XML(Asciidoctor
+      .convert(input, backend: :iho, header_footer: true))
+    expect(xml.at("//xmlns:edition").text)
+      .to be_equivalent_to "3"
+
+    input = <<~INPUT
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :docnumber: 1000
+      :edition: 2
+      :edition-minor: 3
+    INPUT
+    output <<~OUTPUT
+      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      </iso-standard>
+    OUTPUT
+    xml = Nokogiri::XML(Asciidoctor
+      .convert(input, backend: :iho, header_footer: true))
+    expect(xml.at("//xmlns:edition").text)
+      .to be_equivalent_to "2"
+
+    input = <<~INPUT
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :docnumber: 1000
+      :edition-major: 3
+      :edition-minor: 4
+      :edition-patch: 5
+    INPUT
+    output <<~OUTPUT
+      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      </iso-standard>
+    OUTPUT
+    xml = Nokogiri::XML(Asciidoctor
+      .convert(input, backend: :iho, header_footer: true))
+    expect(xml.at("//xmlns:edition").text)
+      .to be_equivalent_to "3.4.5"
+
+    input = <<~INPUT
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :docnumber: 1000
+      :edition-major: 3
+      :edition-patch: 5
+    INPUT
+    output <<~OUTPUT
+      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      </iso-standard>
+    OUTPUT
+    xml = Nokogiri::XML(Asciidoctor
+      .convert(input, backend: :iho, header_footer: true))
+    expect(xml.at("//xmlns:edition").text)
+      .to be_equivalent_to "3"
   end
 
   it "strips inline header" do
