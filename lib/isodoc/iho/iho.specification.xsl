@@ -3581,17 +3581,20 @@
 		<xsl:for-each select="xalan:nodeset($references)//fn">
 			<xsl:variable name="reference" select="@reference"/>
 			<xsl:if test="not(preceding-sibling::*[@reference = $reference])"> <!-- only unique reference puts in note-->
-				<fo:block xsl:use-attribute-sets="table-fn-style">
 
-					<fo:inline id="{@id}" xsl:use-attribute-sets="table-fn-number-style">
+						<fo:block xsl:use-attribute-sets="table-fn-style">
 
-						<xsl:value-of select="@reference"/>
+							<fo:inline id="{@id}" xsl:use-attribute-sets="table-fn-number-style">
 
-					</fo:inline>
-					<fo:inline xsl:use-attribute-sets="table-fn-body-style">
-						<xsl:copy-of select="./node()"/>
-					</fo:inline>
-				</fo:block>
+								<xsl:value-of select="@reference"/>
+
+							</fo:inline>
+							<fo:inline xsl:use-attribute-sets="table-fn-body-style">
+								<xsl:copy-of select="./node()"/>
+							</fo:inline>
+
+						</fo:block>
+
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
@@ -4534,12 +4537,12 @@
 		<xsl:param name="value"/>
 		<xsl:variable name="add_width" select="string-length($value) * 20"/>
 		<xsl:variable name="maxwidth" select="60 + $add_width"/>
-			<fo:instream-foreign-object fox:alt-text="OpeningTag" baseline-shift="-20%"><!-- alignment-baseline="middle" -->
-				<xsl:attribute name="height">5mm</xsl:attribute>
+			<fo:instream-foreign-object fox:alt-text="OpeningTag" baseline-shift="-10%"><!-- alignment-baseline="middle" -->
+				<xsl:attribute name="height">3.5mm</xsl:attribute> <!-- 5mm -->
 				<xsl:attribute name="content-width">100%</xsl:attribute>
 				<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
 				<xsl:attribute name="scaling">uniform</xsl:attribute>
-				<svg xmlns="http://www.w3.org/2000/svg" width="{$maxwidth + 32}" height="80">
+				<!-- <svg xmlns="http://www.w3.org/2000/svg" width="{$maxwidth + 32}" height="80">
 					<g>
 						<xsl:if test="$type = 'closing' or $type = 'end'">
 							<xsl:attribute name="transform">scale(-1 1) translate(-<xsl:value-of select="$maxwidth + 32"/>,0)</xsl:attribute>
@@ -4552,6 +4555,27 @@
 							<xsl:attribute name="x">25</xsl:attribute>
 						</xsl:if>
 						<xsl:value-of select="$kind"/><tspan dy="10" font-size="30pt"><xsl:value-of select="$value"/></tspan>
+					</text>
+				</svg> -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="{$maxwidth + 32}" height="80">
+					<g>
+						<xsl:if test="$type = 'closing' or $type = 'end'">
+							<xsl:attribute name="transform">scale(-1 1) translate(-<xsl:value-of select="$maxwidth + 32"/>,0)</xsl:attribute>
+						</xsl:if>
+						<polyline points="0,2.5 {$maxwidth},2.5 {$maxwidth + 20},40 {$maxwidth},77.5 0,77.5" stroke="black" stroke-width="5" fill="white"/>
+						<line x1="9.5" y1="0" x2="9.5" y2="80" stroke="black" stroke-width="19"/>
+					</g>
+					<xsl:variable name="text_x">
+						<xsl:choose>
+							<xsl:when test="$type = 'closing' or $type = 'end'">28</xsl:when>
+							<xsl:otherwise>22</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+					<text font-family="Arial" x="{$text_x}" y="50" font-size="40pt">
+						<xsl:value-of select="$kind"/>
+					</text>
+					<text font-family="Arial" x="{$text_x + 33}" y="65" font-size="38pt">
+						<xsl:value-of select="$value"/>
 					</text>
 				</svg>
 			</fo:instream-foreign-object>
