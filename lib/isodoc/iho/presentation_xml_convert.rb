@@ -10,11 +10,11 @@ module IsoDoc
         ::Relaton::Render::IHO::General.new(language: @lang)
       end
 
-      def norm_ref_entry_code(ordinal, _idents, _ids, _standard, _datefn)
+      def norm_ref_entry_code(ordinal, _idents, _ids, _standard, _datefn, _bib)
         "[#{ordinal}]<tab/>"
       end
 
-      def biblio_ref_entry_code(ordinal, _idents, _ids, _standard, _datefn)
+      def biblio_ref_entry_code(ordinal, _idents, _ids, _standard, _datefn, _bib)
         "[#{ordinal}]<tab/>"
       end
 
