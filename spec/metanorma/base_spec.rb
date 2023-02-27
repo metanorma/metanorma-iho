@@ -161,6 +161,20 @@ RSpec.describe Metanorma::IHO do
       </commentperiod>
         </ext>
       </bibdata>
+                         <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+         </metanorma-extension>
           #{BOILERPLATE.sub(/International Hydrographic Organization #{Date.today.year}/, 'International Hydrographic Organization 2001')}
       <sections/>
       </iho-standard>
@@ -232,6 +246,20 @@ RSpec.describe Metanorma::IHO do
         <doctype>standard</doctype>
         </ext>
       </bibdata>
+                         <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+         </metanorma-extension>
               #{BOILERPLATE}
       <sections/>
       </iho-standard>

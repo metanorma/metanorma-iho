@@ -185,6 +185,20 @@ BLANK_HDR = <<~"HDR".freeze
     <doctype>standard</doctype>
     </ext>
   </bibdata>
+                     <metanorma-extension>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+         </metanorma-extension>
   #{BOILERPLATE}
 HDR
 
