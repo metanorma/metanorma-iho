@@ -3851,12 +3851,14 @@
 
 								<fo:block margin-bottom="12pt" text-align="left">
 
-									<xsl:variable name="title-where">
+									<!-- <xsl:variable name="title-where">
 										<xsl:call-template name="getLocalizedString">
 											<xsl:with-param name="key">where</xsl:with-param>
 										</xsl:call-template>
 									</xsl:variable>
-									<xsl:value-of select="$title-where"/><xsl:text> </xsl:text>
+									<xsl:value-of select="$title-where"/> -->
+									<xsl:apply-templates select="preceding-sibling::*[1][local-name() = 'p' and @keep-with-next = 'true']/node()"/>
+									<xsl:text> </xsl:text>
 									<xsl:apply-templates select="*[local-name()='dt']/*"/>
 									<xsl:text/>
 									<xsl:apply-templates select="*[local-name()='dd']/*" mode="inline"/>
@@ -3866,12 +3868,14 @@
 					<xsl:when test="$parent = 'formula'"> <!-- a few components -->
 						<fo:block margin-bottom="12pt" text-align="left">
 
-							<xsl:variable name="title-where">
+							<!-- <xsl:variable name="title-where">
 								<xsl:call-template name="getLocalizedString">
 									<xsl:with-param name="key">where</xsl:with-param>
 								</xsl:call-template>
 							</xsl:variable>
-							<xsl:value-of select="$title-where"/>
+							<xsl:value-of select="$title-where"/><xsl:if test="$namespace = 'bsi' or $namespace = 'itu'">:</xsl:if> -->
+							<!-- preceding 'p' with word 'where' -->
+							<xsl:apply-templates select="preceding-sibling::*[1][local-name() = 'p' and @keep-with-next = 'true']/node()"/>
 						</fo:block>
 					</xsl:when>  <!-- END: a few components -->
 					<xsl:when test="$parent = 'figure' and  (not(../@class) or ../@class !='pseudocode')"> <!-- definition list in a figure -->
@@ -4059,6 +4063,9 @@
 		</xsl:if>
 
 	</xsl:template> <!-- END: dl -->
+
+	<!-- ignore 'p' with 'where' in formula, before 'dl' -->
+	<xsl:template match="*[local-name() = 'formula']/*[local-name() = 'p' and @keep-with-next = 'true' and following-sibling::*[1][local-name() = 'dl']]"/>
 
 	<xsl:template match="*[local-name() = 'dl']/*[local-name() = 'name']">
 		<xsl:param name="process">false</xsl:param>
@@ -5499,6 +5506,27 @@
 			<xsl:with-param name="tags" select="$formatting_tags"/>
 			<xsl:with-param name="text" select="normalize-space(translate($string_with_added_zerospaces, '​­', '  '))"/> <!-- replace zero-width-space and soft-hyphen to space -->
 		</xsl:call-template>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'link'][normalize-space() = '']" mode="td_text_with_formatting">
+		<xsl:variable name="link">
+			<link_updated>
+				<xsl:variable name="target_text">
+					<xsl:choose>
+						<xsl:when test="starts-with(normalize-space(@target), 'mailto:')">
+							<xsl:value-of select="normalize-space(substring-after(@target, 'mailto:'))"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="normalize-space(@target)"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:value-of select="$target_text"/>
+			</link_updated>
+		</xsl:variable>
+		<xsl:for-each select="xalan:nodeset($link)/*">
+			<xsl:apply-templates mode="td_text_with_formatting"/>
+		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template name="getFormattingTags">
