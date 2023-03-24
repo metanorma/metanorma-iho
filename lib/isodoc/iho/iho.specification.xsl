@@ -5967,6 +5967,7 @@
 		<xsl:variable name="annotation-id" select="@id"/>
 		<xsl:variable name="callout" select="//*[@target = $annotation-id]/text()"/>
 		<fo:block id="{$annotation-id}" white-space="nowrap">
+
 			<fo:inline>
 				<xsl:apply-templates>
 					<xsl:with-param name="callout" select="concat('&lt;', $callout, '&gt; ')"/>
