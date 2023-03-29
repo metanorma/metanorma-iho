@@ -8584,13 +8584,8 @@
 	</xsl:template>
 
 	<xsl:template match="*[local-name() = 'deprecates']">
-		<xsl:variable name="title-deprecated">
-			<xsl:call-template name="getLocalizedString">
-				<xsl:with-param name="key">deprecated</xsl:with-param>
-			</xsl:call-template>
-		</xsl:variable>
 		<fo:block xsl:use-attribute-sets="deprecates-style">
-			<xsl:value-of select="$title-deprecated"/>: <xsl:apply-templates/>
+			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template>
 
