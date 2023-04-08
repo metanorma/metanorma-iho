@@ -7941,6 +7941,10 @@
 		</fo:block>
 	</xsl:template>
 
+	<xsl:template match="*[local-name() = 'div']">
+		<fo:block><xsl:apply-templates/></fo:block>
+	</xsl:template>
+
 	<xsl:template match="*[local-name() = 'inherit'] | *[local-name() = 'component'][@class = 'inherit'] |           *[local-name() = 'div'][@type = 'requirement-inherit'] |           *[local-name() = 'div'][@type = 'recommendation-inherit'] |           *[local-name() = 'div'][@type = 'permission-inherit']">
 		<fo:block xsl:use-attribute-sets="inherit-style">
 			<xsl:text>Dependency </xsl:text><xsl:apply-templates/>
