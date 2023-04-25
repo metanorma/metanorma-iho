@@ -130,7 +130,7 @@ RSpec.describe IsoDoc::IHO do
            <title>Introduction Subsection</title>
          </clause>
          </introduction></preface><sections>
-         <clause id="D" obligation="normative">
+         <clause id="D" obligation="normative" type="scope">
            <title>Scope</title>
            <p id="E">Text</p>
          </clause>
@@ -183,48 +183,50 @@ RSpec.describe IsoDoc::IHO do
     output = <<~OUTPUT
        <iho-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <preface>
-         <foreword obligation="informative" displayorder="1">
+             <clause type="toc" id="_" displayorder="1">
+          <title depth="1">Contents</title>
+        </clause>
+         <foreword obligation="informative" displayorder="2">
             <title>Foreword</title>
             <p id="A">This is a preamble</p>
           </foreword>
-           <executivesummary id="A1" obligation="informative" displayorder="2"><title>Executive Summary</title>
+           <executivesummary id="A1" obligation="informative" displayorder="3"><title>Executive Summary</title>
            </executivesummary>
-           <introduction id="B" obligation="informative" displayorder="3"><title>Introduction</title><clause id="C" inline-header="false" obligation="informative">
+           <introduction id="B" obligation="informative" displayorder="4"><title>Introduction</title><clause id="C" inline-header="false" obligation="informative">
             <title depth="2">Introduction Subsection</title>
           </clause>
           </introduction></preface><sections>
-          <clause id="D" obligation="normative" displayorder="7">
-            <title depth="1">4.<tab/>Scope</title>
+          <clause id="D" obligation="normative" type="scope" displayorder="5">
+            <title depth="1">1.<tab/>Scope</title>
             <p id="E">Text</p>
           </clause>
      
-          <clause id="H" obligation="normative" displayorder="5"><title depth="1">2.<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
-            <title depth="2">2.1.<tab/>Normal Terms</title>
-            <term id="J"><name>2.1.1.</name>
+          <clause id="H" obligation="normative" displayorder="7"><title depth="1">3.<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
+            <title depth="2">3.1.<tab/>Normal Terms</title>
+            <term id="J"><name>3.1.1.</name>
             <preferred>Term2</preferred>
           </term>
           </terms>
-          <definitions id="K"><title>2.2.</title>
+          <definitions id="K"><title>3.2.</title>
             <dl>
             <dt>Symbol</dt>
             <dd>Definition</dd>
             </dl>
           </definitions>
           </clause>
-          <definitions id="L" displayorder="6"><title>3.</title>
+          <definitions id="L" displayorder="8"><title>4.</title>
             <dl>
             <dt>Symbol</dt>
             <dd>Definition</dd>
             </dl>
           </definitions>
-          <clause id="M" inline-header="false" obligation="normative" displayorder="8"><title depth="1">5.<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+          <clause id="M" inline-header="false" obligation="normative" displayorder="9"><title depth="1">5.<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
             <title depth="2">5.1.<tab/>Introduction</title>
           </clause>
           <clause id="O" inline-header="false" obligation="normative">
             <title depth="2">5.2.<tab/>Clause 4.2</title>
           </clause></clause>
-     
-          </sections><annex id="P" inline-header="false" obligation="normative" displayorder="9">
+          </sections><annex id="P" inline-header="false" obligation="normative" displayorder="10">
             <title><strong>Annex A</strong><br/><strong>Annex</strong></title>
             <clause id="Q" inline-header="false" obligation="normative">
             <title depth="2">A.1.<tab/>Annex A.1</title>
@@ -232,9 +234,9 @@ RSpec.describe IsoDoc::IHO do
             <title depth="3">A.1.1.<tab/>Annex A.1a</title>
             </clause>
           </clause>
-          </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="4">
-            <title depth="1">1.<tab/>Normative References</title>
-          </references><clause id="S" obligation="informative" displayorder="10">
+          </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="6">
+            <title depth="1">2.<tab/>Normative References</title>
+          </references><clause id="S" obligation="informative" displayorder="11">
             <title depth="1">Bibliography</title>
             <references id="T" obligation="informative" normative="false">
             <title depth="2">Bibliography Subsection</title>
@@ -243,11 +245,11 @@ RSpec.describe IsoDoc::IHO do
           </bibliography>
           </iho-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>")
-      .sub(%r{<i18nyaml>.*</i18nyaml>}m, "")))
+      .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
       .to be_equivalent_to xmlpp(output)
   end
 
@@ -303,37 +305,44 @@ RSpec.describe IsoDoc::IHO do
               </ext>
               </bibdata>
               <preface>
-              <abstract displayorder="1">
+              <clause type="toc" id="_" displayorder="1">
+              <title depth="1">Contents</title>
+              </clause>
+              <abstract displayorder="2">
               <title>Abstract</title>
                   <xref target="A1">Annex A</xref>
                   <xref target="B1">Appendix 1</xref>
               </abstract>
               </preface>
-              <annex id="A1" obligation="normative" displayorder="2"><title><strong>Annex A</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A2" obligation="normative" displayorder="3"><title><strong>Annex B</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A3" obligation="normative" displayorder="4"><title><strong>Annex C</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A4" obligation="normative" displayorder="5"><title><strong>Annex D</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A5" obligation="normative" displayorder="6"><title><strong>Annex E</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A6" obligation="normative" displayorder="7"><title><strong>Annex F</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A7" obligation="normative" displayorder="8"><title><strong>Annex G</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A8" obligation="normative" displayorder="9"><title><strong>Annex H</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A9" obligation="normative" displayorder="10"><title><strong>Annex J</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="A10" obligation="normative" displayorder="11"><title><strong>Annex K</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B1" obligation="informative" displayorder="12"><title><strong>Appendix 1</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B2" obligation="informative" displayorder="13"><title><strong>Appendix 2</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B3" obligation="informative" displayorder="14"><title><strong>Appendix 3</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B4" obligation="informative" displayorder="15"><title><strong>Appendix 4</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B5" obligation="informative" displayorder="16"><title><strong>Appendix 5</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B6" obligation="informative" displayorder="17"><title><strong>Appendix 6</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B7" obligation="informative" displayorder="18"><title><strong>Appendix 7</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B8" obligation="informative" displayorder="19"><title><strong>Appendix 8</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B9" obligation="informative" displayorder="20"><title><strong>Appendix 9</strong><br/><strong>Annex</strong></title></annex>
-       <annex id="B10" obligation="informative" displayorder="21"><title><strong>Appendix 10</strong><br/><strong>Annex</strong></title></annex>
+              <annex id="A1" obligation="normative" displayorder="3"><title><strong>Annex A</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A2" obligation="normative" displayorder="4"><title><strong>Annex B</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A3" obligation="normative" displayorder="5"><title><strong>Annex C</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A4" obligation="normative" displayorder="6"><title><strong>Annex D</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A5" obligation="normative" displayorder="7"><title><strong>Annex E</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A6" obligation="normative" displayorder="8"><title><strong>Annex F</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A7" obligation="normative" displayorder="9"><title><strong>Annex G</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A8" obligation="normative" displayorder="10"><title><strong>Annex H</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A9" obligation="normative" displayorder="11"><title><strong>Annex J</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="A10" obligation="normative" displayorder="12"><title><strong>Annex K</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B1" obligation="informative" displayorder="13"><title><strong>Appendix 1</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B2" obligation="informative" displayorder="14"><title><strong>Appendix 2</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B3" obligation="informative" displayorder="15"><title><strong>Appendix 3</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B4" obligation="informative" displayorder="16"><title><strong>Appendix 4</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B5" obligation="informative" displayorder="17"><title><strong>Appendix 5</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B6" obligation="informative" displayorder="18"><title><strong>Appendix 6</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B7" obligation="informative" displayorder="19"><title><strong>Appendix 7</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B8" obligation="informative" displayorder="20"><title><strong>Appendix 8</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B9" obligation="informative" displayorder="21"><title><strong>Appendix 9</strong><br/><strong>Annex</strong></title></annex>
+       <annex id="B10" obligation="informative" displayorder="22"><title><strong>Appendix 10</strong><br/><strong>Annex</strong></title></annex>
        </iho-standard>
     OUTPUT
 
     html = <<~OUTPUT
                   #{HTML_HDR}
+                      <br/>
+          <div id="_" class="TOC">
+            <h1 class="IntroTitle">Contents</h1>
+          </div>
                   <br/>
                   <div>
                         <h1 class='AbstractTitle'>Abstract</h1>
@@ -504,9 +513,9 @@ RSpec.describe IsoDoc::IHO do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
-      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to xmlpp(presxml)
     expect(xmlpp(IsoDoc::IHO::HtmlConvert.new({})
       .convert("test", presxml, true)
@@ -639,7 +648,10 @@ RSpec.describe IsoDoc::IHO do
     output = <<~OUTPUT
        <iho-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
              <preface>
-             <foreword obligation="informative" displayorder="1">
+                 <clause type="toc" id="_" displayorder="1">
+              <title depth="1">Contents</title>
+                    </clause>
+             <foreword obligation="informative" displayorder="2">
                 <title>Foreword</title>
                 <p id="A">This is a preamble
                 <xref target="C">Introduction Subsection</xref>
@@ -664,16 +676,16 @@ RSpec.describe IsoDoc::IHO do
                 <xref target="R">Chapter 2</xref>
                 </p>
               </foreword>
-               <introduction id="B" obligation="informative" displayorder="2"><title>Introduction</title><clause id="C" inline-header="false" obligation="informative">
+               <introduction id="B" obligation="informative" displayorder="3"><title>Introduction</title><clause id="C" inline-header="false" obligation="informative">
                 <title depth="2">Introduction Subsection</title>
               </clause>
               <clause id="C1" inline-header="false" obligation="informative">Text</clause>
               </introduction></preface><sections>
-              <clause id="D" obligation="normative" type="scope" displayorder="3">
+              <clause id="D" obligation="normative" type="scope" displayorder="4">
                 <title depth="1">1.<tab/>Scope</title>
                 <p id="E">Text</p>
               </clause>
-              <terms id="H" obligation="normative" displayorder="5"><title depth="1">3.<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
+              <terms id="H" obligation="normative" displayorder="6"><title depth="1">3.<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
                 <title depth="2">3.1.<tab/>Normal Terms</title>
                 <term id="J"><name>3.1.1.</name>
                 <preferred>Term2</preferred>
@@ -686,19 +698,19 @@ RSpec.describe IsoDoc::IHO do
                 </dl>
               </definitions>
               </terms>
-              <definitions id="L" displayorder="6"><title>4.</title>
+              <definitions id="L" displayorder="7"><title>4.</title>
                 <dl>
                 <dt>Symbol</dt>
                 <dd>Definition</dd>
                 </dl>
               </definitions>
-              <clause id="M" inline-header="false" obligation="normative" displayorder="7"><title depth="1">5.<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+              <clause id="M" inline-header="false" obligation="normative" displayorder="8"><title depth="1">5.<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
                 <title depth="2">5.1.<tab/>Introduction</title>
               </clause>
               <clause id="O" inline-header="false" obligation="normative">
                 <title depth="2">5.2.<tab/>Clause 4.2</title>
               </clause></clause>
-             </sections><annex id="P" inline-header="false" obligation="normative" displayorder="8">
+             </sections><annex id="P" inline-header="false" obligation="normative" displayorder="9">
                 <title><strong>Annex A</strong><br/><strong>Annex</strong></title>
                 <clause id="Q" inline-header="false" obligation="normative">
                 <title depth="2">A.1.<tab/>Annex A.1</title>
@@ -710,7 +722,7 @@ RSpec.describe IsoDoc::IHO do
                 <title>An Appendix</title>
               </appendix>
               </annex>
-       <annex id="PP" inline-header="false" obligation="informative" displayorder="9">
+       <annex id="PP" inline-header="false" obligation="informative" displayorder="10">
                 <title><strong>Appendix 1</strong><br/><strong>Annex</strong></title>
                 <clause id="QQ" inline-header="false" obligation="normative">
                 <title depth="2">1.1.<tab/>Annex A.1</title>
@@ -722,9 +734,9 @@ RSpec.describe IsoDoc::IHO do
                 <title>An Appendix</title>
               </appendix>
               </annex>
-               <bibliography><references id="R" obligation="informative" normative="true" displayorder="4">
+               <bibliography><references id="R" obligation="informative" normative="true" displayorder="5">
                 <title depth="1">2.<tab/>Normative References</title>
-              </references><clause id="S" obligation="informative" displayorder="10">
+              </references><clause id="S" obligation="informative" displayorder="11">
                 <title depth="1">Bibliography</title>
                 <references id="T" obligation="informative" normative="false">
                 <title depth="2">Bibliography Subsection</title>
@@ -733,10 +745,10 @@ RSpec.describe IsoDoc::IHO do
               </bibliography>
               </iho-standard>
     OUTPUT
-    expect(xmlpp(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>")))
+      .gsub(%r{</body>.*}m, "</body>"))))
       .to be_equivalent_to xmlpp(output)
   end
 end

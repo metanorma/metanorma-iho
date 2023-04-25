@@ -12,6 +12,7 @@ module IsoDoc
         Metanorma::IHO.configuration
       end
 
+=begin
       def make_body3(body, docxml)
         body.div **{ class: "main-section" } do |div3|
           boilerplate docxml, div3
@@ -26,6 +27,7 @@ module IsoDoc
           comments div3
         end
       end
+=end
 
       include BaseConvert
       include Init
