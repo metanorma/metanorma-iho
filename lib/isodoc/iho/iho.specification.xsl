@@ -3520,6 +3520,14 @@
 		<!-- list of footnotes to calculate actual footnotes number -->
 		<xsl:variable name="p_fn_">
 			<xsl:call-template name="get_fn_list"/>
+			<!-- <xsl:choose>
+				<xsl:when test="$namespace = 'jis'">
+					<xsl:call-template name="get_fn_list_for_element"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:call-template name="get_fn_list"/>
+				</xsl:otherwise>
+			</xsl:choose> -->
 		</xsl:variable>
 		<xsl:variable name="p_fn" select="xalan:nodeset($p_fn_)"/>
 
@@ -3544,7 +3552,14 @@
 
 		</xsl:variable>
 
-		<xsl:variable name="ref_id" select="concat('footnote_', $lang, '_', $reference, '_', $current_fn_number)"/>
+		<xsl:variable name="ref_id">
+			<xsl:choose>
+				<xsl:when test="normalize-space(@ref_id) != ''"><xsl:value-of select="@ref_id"/></xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="concat('footnote_', $lang, '_', $reference, '_', $current_fn_number)"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="footnote_inline">
 			<fo:inline>
 
@@ -3570,7 +3585,7 @@
 				<xsl:call-template name="insert_basic_link">
 					<xsl:with-param name="element">
 						<fo:basic-link internal-destination="{$ref_id}" fox:alt-text="footnote {$current_fn_number}">
-							<xsl:value-of select="$current_fn_number_text"/>
+							<xsl:copy-of select="$current_fn_number_text"/>
 						</fo:basic-link>
 					</xsl:with-param>
 				</xsl:call-template>
@@ -3643,6 +3658,28 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template name="get_fn_list_for_element">
+		<xsl:choose>
+			<xsl:when test="@current_fn_number"> <!-- footnote reference number calculated already -->
+				<fn gen_id="{generate-id(.)}">
+					<xsl:copy-of select="@*"/>
+					<xsl:copy-of select="node()"/>
+				</fn>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:for-each select="ancestor::*[local-name() = 'ul' or local-name() = 'ol'][1]">
+					<xsl:variable name="element_id" select="@id"/>
+					<xsl:for-each select=".//*[local-name() = 'fn'][generate-id(.)=generate-id(key('kfn',@reference)[1])]">
+						<!-- copy unique fn -->
+						<fn gen_id="{generate-id(.)}">
+							<xsl:copy-of select="@*"/>
+							<xsl:copy-of select="node()"/>
+						</fn>
+					</xsl:for-each>
+				</xsl:for-each>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 	<!-- ============================ -->
 	<!-- table's footnotes rendering -->
 	<!-- ============================ -->
@@ -9430,6 +9467,7 @@
 
 		<fo:block id="{@id}">
 			<xsl:apply-templates/>
+
 		</fo:block>
 	</xsl:template>
 
@@ -9447,6 +9485,7 @@
 
 		<fo:block id="{@id}" xsl:use-attribute-sets="references-non-normative-style">
 			<xsl:apply-templates/>
+
 		</fo:block>
 
 	</xsl:template> <!-- references -->
@@ -10314,6 +10353,14 @@
 	<xsl:template match="*[local-name() = 'fn'][not(ancestor::*[(local-name() = 'table' or local-name() = 'figure')] and not(ancestor::*[local-name() = 'name']))]" mode="linear_xml" name="linear_xml_fn">
 		<xsl:variable name="p_fn_">
 			<xsl:call-template name="get_fn_list"/>
+			<!-- <xsl:choose>
+				<xsl:when test="$namespace = 'jis'">
+					<xsl:call-template name="get_fn_list_for_element"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:call-template name="get_fn_list"/>
+				</xsl:otherwise>
+			</xsl:choose> -->
 		</xsl:variable>
 		<xsl:variable name="p_fn" select="xalan:nodeset($p_fn_)"/>
 		<xsl:variable name="gen_id" select="generate-id(.)"/>
@@ -10328,8 +10375,14 @@
 			<xsl:attribute name="current_fn_number">
 				<xsl:value-of select="$current_fn_number"/>
 			</xsl:attribute>
+			<xsl:variable name="skip_footnote_body_" select="not($p_fn//fn[@gen_id = $gen_id] and (1 = 1))"/>
 			<xsl:attribute name="skip_footnote_body"> <!-- false for repeatable footnote -->
-				<xsl:value-of select="not($p_fn//fn[@gen_id = $gen_id] and (1 = 1))"/>
+
+						<xsl:value-of select="$skip_footnote_body_"/>
+
+			</xsl:attribute>
+			<xsl:attribute name="ref_id">
+				<xsl:value-of select="concat('footnote_', $lang, '_', $reference, '_', $current_fn_number)"/>
 			</xsl:attribute>
 			<xsl:apply-templates select="node()" mode="linear_xml"/>
 		</xsl:copy>
