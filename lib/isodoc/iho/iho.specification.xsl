@@ -9460,7 +9460,7 @@
 						<xsl:call-template name="append_add-style"/>
 					</xsl:if>
 
-							<xsl:call-template name="getListItemFormat"/>
+					<xsl:call-template name="getListItemFormat"/>
 
 				</fo:block>
 			</fo:list-item-label>
