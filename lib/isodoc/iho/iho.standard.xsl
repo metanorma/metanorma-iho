@@ -5315,7 +5315,10 @@
 			</xsl:choose>
 		</xsl:variable>
 
-		<xsl:value-of select="$text9"/>
+		<!-- replace sequence #x200B and space TO space -->
+		<xsl:variable name="text10" select="java:replaceAll(java:java.lang.String.new($text9), '\u200b ', ' ')"/>
+
+		<xsl:value-of select="$text10"/>
 	</xsl:template>
 
 	<xsl:template name="add-zero-spaces-link-java">
@@ -6404,7 +6407,7 @@
 		<xsl:call-template name="insert_basic_link">
 			<xsl:with-param name="element">
 				<fo:basic-link internal-destination="{@target}" fox:alt-text="{@target}" xsl:use-attribute-sets="xref-style">
-					<xsl:if test="string-length(normalize-space()) &lt; 30 and not(contains(normalize-space(), 'http://')) and not(contains(normalize-space(), 'https://'))">
+					<xsl:if test="string-length(normalize-space()) &lt; 30 and not(contains(normalize-space(), 'http://')) and not(contains(normalize-space(), 'https://')) and not(ancestor::*[local-name() = 'table' or local-name() = 'dl'])">
 						<xsl:attribute name="keep-together.within-line">always</xsl:attribute>
 					</xsl:if>
 					<xsl:if test="parent::*[local-name() = 'add']">
