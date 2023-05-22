@@ -147,22 +147,22 @@ RSpec.describe IsoDoc do
             </clause>
            <foreword displayorder="2">
              <p id="_">
-               <eref bibitemid="ref1">S-57</eref>
-               <eref bibitemid="ref2">NIST&#xa0;FIPS&#xa0;186</eref>
-               <eref bibitemid="ref3">NIST&#xa0;FIPS&#xa0;180-1</eref>
-               <eref bibitemid="ref4">ITU-T&#xa0;X.509</eref>
-               <eref bibitemid="ref4">ITU-T&#xa0;X.509</eref>
-               <eref bibitemid="ref6">NIST&#xa0;FIPS&#xa0;81</eref>
-               <eref bibitemid="ref7">IETF&#xa0;RFC&#xa0;1423</eref>
-               <eref bibitemid="ref8">[8]</eref>
-               <eref bibitemid="ref9">ISO/IEC&#xa0;13239:2002</eref>
-               <eref bibitemid="ISO712">ISO&#xa0;712</eref>
-               <eref bibitemid="ISBN">[1]</eref>
-               <eref bibitemid="ISSN">[2]</eref>
-               <eref bibitemid="ISO16634">ISO 16634:-- (all parts)</eref>
-               <eref bibitemid="ref11">IETF&#xa0;RFC&#xa0;10</eref>
-               <eref bibitemid="ref10">[4]</eref>
-               <eref bibitemid="ref12">Citn</eref>
+                     <xref target="ref1">S-57</xref>
+        <xref target="ref2">NIST FIPS 186</xref>
+        <xref target="ref3">NIST FIPS 180-1</xref>
+        <xref target="ref4">ITU-T X.509</xref>
+        <xref target="ref4">ITU-T X.509</xref>
+        <xref target="ref6">NIST FIPS 81</xref>
+        <xref target="ref7">IETF RFC 1423</xref>
+        <xref target="ref8">[8]</xref>
+        <xref target="ref9">ISO/IEC 13239:2002</xref>
+        <xref target="ISO712">ISO 712</xref>
+        <xref target="ISBN">[1]</xref>
+        <xref target="ISSN">[2]</xref>
+        <xref target="ISO16634">ISO 16634:-- (all parts)</xref>
+        <xref target="ref11">IETF RFC 10</xref>
+        <xref target="ref10">[4]</xref>
+        <xref target="ref12">Citn</xref>
              </p>
            </foreword>
          </preface>
