@@ -1856,6 +1856,10 @@
 	</xsl:attribute-set> <!-- formula-stem-number-style -->
 	<!-- End Formula's styles -->
 
+	<xsl:template name="refine_formula-stem-number-style">
+
+	</xsl:template>
+
 	<xsl:attribute-set name="image-style">
 		<xsl:attribute name="text-align">center</xsl:attribute>
 
@@ -4758,8 +4762,13 @@
 	<!-- ========================= -->
 	<xsl:template match="*[local-name()='em']">
 		<fo:inline font-style="italic">
+			<xsl:call-template name="refine_italic_style"/>
 			<xsl:apply-templates/>
 		</fo:inline>
+	</xsl:template>
+
+	<xsl:template name="refine_italic_style">
+
 	</xsl:template>
 
 	<xsl:template match="*[local-name()='strong'] | *[local-name()='b']">
@@ -5234,6 +5243,10 @@
 
 			<xsl:when test="not(contains($text, $separator))">
 				<word>
+					<xsl:if test="ancestor::*[local-name() = 'p'][@from_dl = 'true']">
+						<xsl:text>
+ </xsl:text> <!-- to add distance between dt and dd -->
+					</xsl:if>
 					<xsl:call-template name="enclose_text_in_tags">
 						<xsl:with-param name="text" select="normalize-space($text)"/>
 						<xsl:with-param name="tags" select="$tags"/>
@@ -5242,6 +5255,10 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<word>
+					<xsl:if test="ancestor::*[local-name() = 'p'][@from_dl = 'true']">
+						<xsl:text>
+ </xsl:text> <!-- to add distance between dt and dd -->
+					</xsl:if>
 					<xsl:call-template name="enclose_text_in_tags">
 						<xsl:with-param name="text" select="normalize-space(substring-before($text, $separator))"/>
 						<xsl:with-param name="tags" select="$tags"/>
@@ -5424,6 +5441,10 @@
 	<!-- Table normalization (colspan,rowspan processing for adding TDs) for column width calculation -->
 	<xsl:template name="getSimpleTable">
 		<xsl:param name="id"/>
+
+		<!-- <test0>
+			<xsl:copy-of select="."/>
+		</test0> -->
 
 		<xsl:variable name="simple-table">
 
@@ -6479,6 +6500,9 @@
 						</fo:table-cell>
 						<fo:table-cell display-align="center">
 							<fo:block xsl:use-attribute-sets="formula-stem-number-style">
+
+								<xsl:call-template name="refine_formula-stem-number-style"/>
+
 								<xsl:apply-templates select="../*[local-name() = 'name']"/>
 							</fo:block>
 						</fo:table-cell>
@@ -9271,7 +9295,48 @@
 				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="local-name(..) = 'ol' and @label"> <!-- for ordered lists 'ol', and if there is @label, for instance label="1.1.2" -->
-				<xsl:value-of select="@label"/>
+
+				<xsl:variable name="label">
+
+					<xsl:variable name="type" select="../@type"/>
+
+					<xsl:variable name="style_prefix_">
+						<xsl:if test="$type = 'roman'">
+							 <!-- Example: (i) -->
+						</xsl:if>
+					</xsl:variable>
+					<xsl:variable name="style_prefix" select="normalize-space($style_prefix_)"/>
+
+					<xsl:variable name="style_suffix_">
+						<xsl:choose>
+							<xsl:when test="$type = 'arabic'">
+								)
+							</xsl:when>
+							<xsl:when test="$type = 'alphabet' or $type = 'alphabetic'">
+								)
+							</xsl:when>
+							<xsl:when test="$type = 'alphabet_upper' or $type = 'alphabetic_upper'">
+								.
+							</xsl:when>
+							<xsl:when test="$type = 'roman'">
+								)
+							</xsl:when>
+							<xsl:when test="$type = 'roman_upper'">.</xsl:when> <!-- Example: I. -->
+						</xsl:choose>
+					</xsl:variable>
+					<xsl:variable name="style_suffix" select="normalize-space($style_suffix_)"/>
+
+					<xsl:if test="$style_prefix != '' and not(starts-with(@label, $style_prefix))">
+						<xsl:value-of select="$style_prefix"/>
+					</xsl:if>
+					<xsl:value-of select="@label"/>
+					<xsl:if test="not(java:endsWith(java:java.lang.String.new(@label),$style_suffix))">
+						<xsl:value-of select="$style_suffix"/>
+					</xsl:if>
+				</xsl:variable>
+
+				<xsl:value-of select="normalize-space($label)"/>
+
 			</xsl:when>
 			<xsl:otherwise> <!-- for ordered lists 'ol' -->
 
