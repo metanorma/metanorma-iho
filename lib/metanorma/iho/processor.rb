@@ -28,6 +28,18 @@ module Metanorma
           "Source Han Sans" => nil,
           "Source Han Sans Normal" => nil,
           "STIX Two Math" => nil,
+          "Noto Sans" => nil,
+          "Noto Sans HK" => nil,
+          "Noto Sans JP" => nil,
+          "Noto Sans KR" => nil,
+          "Noto Sans SC" => nil,
+          "Noto Sans TC" => nil,
+          "Noto Sans Mono" => nil,
+          "Noto Sans Mono CJK HK" => nil,
+          "Noto Sans Mono CJK JP" => nil,
+          "Noto Sans Mono CJK KR" => nil,
+          "Noto Sans Mono CJK SC" => nil,
+          "Noto Sans Mono CJK TC" => nil,
         }
       end
 
