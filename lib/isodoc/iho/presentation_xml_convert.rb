@@ -19,6 +19,8 @@ _bib)
         "[#{ordinal}]<tab/>"
       end
 
+      def middle_title(docxml); end
+
       def preface_rearrange(doc)
         preface_move(doc.at(ns("//preface/abstract")),
                      %w(foreword executivesummary introduction clause acknowledgements), doc)
