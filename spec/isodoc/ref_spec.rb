@@ -166,7 +166,7 @@ RSpec.describe IsoDoc do
              </p>
            </foreword>
          </preface>
-         <bibliography>
+         <sections>
            <references id="_" obligation="informative" normative="true" displayorder="3">
              <title depth="1">
                1.
@@ -338,6 +338,8 @@ RSpec.describe IsoDoc do
                <p>This is an annotation of ISO 20483:2013-2014</p>
              </note>
            </references>
+           </sections>
+           <bibliography>
            <references id="_" obligation="informative" normative="false" displayorder="4">
              <title depth="1">Bibliography</title>
              <bibitem id="ISBN" type="book">
@@ -451,7 +453,6 @@ RSpec.describe IsoDoc do
                <a href="#ref12">Citn</a>
              </p>
            </div>
-           <p class="zzSTDTitle1"/>
            <div>
              <h1>
                1.
