@@ -226,6 +226,9 @@ RSpec.describe IsoDoc::IHO do
           <clause id="O" inline-header="false" obligation="normative">
             <title depth="2">5.2.<tab/>Clause 4.2</title>
           </clause></clause>
+          <references id="R" obligation="informative" normative="true" displayorder="6">
+            <title depth="1">2.<tab/>Normative References</title>
+          </references>
           </sections><annex id="P" inline-header="false" obligation="normative" displayorder="10">
             <title><strong>Annex A</strong><br/><strong>Annex</strong></title>
             <clause id="Q" inline-header="false" obligation="normative">
@@ -234,9 +237,8 @@ RSpec.describe IsoDoc::IHO do
             <title depth="3">A.1.1.<tab/>Annex A.1a</title>
             </clause>
           </clause>
-          </annex><bibliography><references id="R" obligation="informative" normative="true" displayorder="6">
-            <title depth="1">2.<tab/>Normative References</title>
-          </references><clause id="S" obligation="informative" displayorder="11">
+          </annex><bibliography>
+          <clause id="S" obligation="informative" displayorder="11">
             <title depth="1">Bibliography</title>
             <references id="T" obligation="informative" normative="false">
             <title depth="2">Bibliography Subsection</title>
@@ -349,7 +351,6 @@ RSpec.describe IsoDoc::IHO do
             <a href='#A1'>Annex A</a>
             <a href='#B1'>Appendix 1</a>
           </div>
-          <p class='zzSTDTitle1'>An ITU Standard</p>
           <br/>
           <div id='A1' class='Section3'>
             <h1 class='Annex'>
@@ -710,6 +711,9 @@ RSpec.describe IsoDoc::IHO do
               <clause id="O" inline-header="false" obligation="normative">
                 <title depth="2">5.2.<tab/>Clause 4.2</title>
               </clause></clause>
+              <references id="R" obligation="informative" normative="true" displayorder="5">
+                <title depth="1">2.<tab/>Normative References</title>
+              </references>
              </sections><annex id="P" inline-header="false" obligation="normative" displayorder="9">
                 <title><strong>Annex A</strong><br/><strong>Annex</strong></title>
                 <clause id="Q" inline-header="false" obligation="normative">
@@ -734,9 +738,8 @@ RSpec.describe IsoDoc::IHO do
                 <title>An Appendix</title>
               </appendix>
               </annex>
-               <bibliography><references id="R" obligation="informative" normative="true" displayorder="5">
-                <title depth="1">2.<tab/>Normative References</title>
-              </references><clause id="S" obligation="informative" displayorder="11">
+               <bibliography>
+              <clause id="S" obligation="informative" displayorder="11">
                 <title depth="1">Bibliography</title>
                 <references id="T" obligation="informative" normative="false">
                 <title depth="2">Bibliography Subsection</title>
