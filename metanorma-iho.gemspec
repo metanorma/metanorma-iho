@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
 
-  spec.add_dependency "metanorma-generic", "~> 2.4.1"
+  spec.add_dependency "metanorma-generic", "~> 2.5.0"
 
   spec.add_development_dependency "debug"
   spec.add_development_dependency "equivalent-xml", "~> 0.6"
