@@ -35,20 +35,18 @@ module IsoDoc
         hierarchical_asset_names(clause, num)
       end
 
-      def back_anchor_names(docxml)
-        super
-        if @parse_settings.empty? || @parse_settings[:clauses]
-          i = Counter.new
-          docxml.xpath(ns("//annex[@obligation = 'informative']"))
+      def clause_order_annex(_docxml)
+        [{ path: "//annex[not(@obligation = 'informative')]", multi: true },
+         { path: "//annex[@obligation = 'informative']", multi: true }]
+      end
+
+      def annex_anchor_names(docxml)
+        clause_order_annex(docxml).each_with_index do |a, i|
+          n = i.zero? ? Counter.new("@", skip_i: true) : Counter.new
+          docxml.xpath(ns(a[:path]))
             .each do |c|
-            i.increment(c)
-            annex_names(c, i.print)
-          end
-          i = Counter.new("@", skip_i: true)
-          docxml.xpath(ns("//annex[not(@obligation = 'informative')]"))
-            .each do |c|
-            i.increment(c)
-            annex_names(c, i.print)
+            annex_names(c, n.increment(c).print)
+            a[:multi] or break
           end
         end
       end
