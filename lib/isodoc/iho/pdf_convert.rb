@@ -11,7 +11,7 @@ module IsoDoc
       end
 
       def pdf_stylesheet(docxml)
-        case docxml&.at(ns("//bibdata/ext/doctype"))&.text
+        case @doctype
         when "standard" then "iho.standard.xsl"
         else
           "iho.specification.xsl"
