@@ -1,4 +1,0 @@
-gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "fix/doctype-attribute"
-gem "metanorma-iso", git: "https://github.com/metanorma/metanorma-iso", branch: "fix/doctype-attribute"
-gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "main"
-
