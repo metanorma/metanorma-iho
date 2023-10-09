@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe Metanorma::IHO do
   context "when xref_error.adoc compilation" do
     around do |example|
-      FileUtils.rm_f "spec/assets/xref_error.err"
+      FileUtils.rm_f "spec/assets/xref_error.err.html"
       example.run
       Dir["spec/assets/xref_error*"].each do |file|
         next if file.match?(/adoc$/)
@@ -18,13 +18,13 @@ RSpec.describe Metanorma::IHO do
         Metanorma::Compile
           .new
           .compile("spec/assets/xref_error.adoc", type: "iho", no_install_fonts: true)
-      end.to(change { File.exist?("spec/assets/xref_error.err") }
+      end.to(change { File.exist?("spec/assets/xref_error.err.html") }
               .from(false).to(true))
     end
   end
 
   it "warns about missing workgroup" do
-    FileUtils.rm_f "test.err"
+    FileUtils.rm_f "test.err.html"
     Asciidoctor.convert(<<~"INPUT", backend: :iho, header_footer: true)
       #{VALIDATING_BLANK_HDR}
 
@@ -32,6 +32,6 @@ RSpec.describe Metanorma::IHO do
 
       Subclause
     INPUT
-    expect(File.read("test.err")).to include "Missing workgroup attribute for document"
+    expect(File.read("test.err.html")).to include "Missing workgroup attribute for document"
   end
 end
