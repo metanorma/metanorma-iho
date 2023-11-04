@@ -1,4 +1,4 @@
-== copyright-statement>
+== copyright-statement
 === {blank}
 [align="center"]
 © Copyright International Hydrographic Organization {{ docyear }}
