@@ -174,6 +174,10 @@ RSpec.describe Metanorma::IHO do
              <name>DOC TOC Heading Levels</name>
              <value>2</value>
            </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
          </metanorma-extension>
           #{BOILERPLATE.sub(/International Hydrographic Organization #{Date.today.year}/, 'International Hydrographic Organization 2001')}
       <sections/>
@@ -257,6 +261,10 @@ RSpec.describe Metanorma::IHO do
            </presentation-metadata>
            <presentation-metadata>
              <name>DOC TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
              <value>2</value>
            </presentation-metadata>
          </metanorma-extension>

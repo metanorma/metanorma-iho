@@ -71,7 +71,9 @@ RSpec.describe IsoDoc::IHO do
 
     output = <<~"OUTPUT"
       {:accesseddate=>"XXX",
+      :adapteddate=>"XXX",
       :agency=>"Ribose",
+      :announceddate=>"XXX",
       :circulateddate=>"XXX",
       :confirmeddate=>"XXX",
       :copieddate=>"XXX",
@@ -101,6 +103,7 @@ RSpec.describe IsoDoc::IHO do
       :script=>"Latn",
       :series=>"Bathymetric",
       :seriesabbr=>"B",
+      :stable_untildate=>"XXX",
       :stage=>"Working Draft",
       :stage_display=>"Working Draft",
       :tc=>"TC",
