@@ -939,18 +939,12 @@
     </optional>
     <optional>
       <attribute name="width">
-        <choice>
-          <data type="int"/>
-          <value>auto</value>
-        </choice>
+        <ref name="ImageSize"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="height">
-        <choice>
-          <data type="int"/>
-          <value>auto</value>
-        </choice>
+        <ref name="ImageSize"/>
       </attribute>
     </optional>
     <optional>
@@ -964,6 +958,14 @@
         <data type="anyURI"/>
       </attribute>
     </optional>
+  </define>
+  <define name="ImageSize">
+    <choice>
+      <data type="string">
+        <param name="pattern">\d+([.]\d+)?(%?)</param>
+      </data>
+      <value>auto</value>
+    </choice>
   </define>
   <define name="video">
     <element name="video">
