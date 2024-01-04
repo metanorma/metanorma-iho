@@ -60,7 +60,7 @@ _bib)
         pref.next = <<~XML
           <clause id='#{UUIDTools::UUID.random_create}'>
           <title>#{@i18n.dochistory}</title>
-          <table><thead>
+          <table unnumbered="true"><thead>
           <tr><th>Version Number</th><th>Date</th><th>Author</th><th>Description</th></tr>
           </thead><tbody>
           #{ret}
