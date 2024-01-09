@@ -862,7 +862,7 @@ RSpec.describe IsoDoc::IHO do
                <on>2017-05</on>
              </date>
              <contributor>
-               <role type="publisher"/>
+               <role type="author"/>
                <person>
                  <name>
                    <completename>Fred Flintstone</completename>
@@ -871,7 +871,7 @@ RSpec.describe IsoDoc::IHO do
                </person>
              </contributor>
              <contributor>
-               <role type="publisher"/>
+               <role type="author"/>
                <person>
                  <name>
                    <completename>Barney Rubble</completename>
@@ -900,7 +900,7 @@ RSpec.describe IsoDoc::IHO do
                <on>2018-02</on>
              </date>
              <contributor>
-               <role type="publisher"/>
+               <role type="author"/>
                <person>
                  <name><surname>Hering</surname><forename>Milena</forename><forename>S.</forename></name>
                </person>
@@ -1059,12 +1059,97 @@ RSpec.describe IsoDoc::IHO do
        </bibdata>
        <sections/>
        </iho-standard>
-       INPUT
-           output = <<~OUTPUT
-OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    INPUT
+    output = <<~OUTPUT
+                 <preface>
+        <clause type="toc" id="_" displayorder="1">
+          <title depth="1">Contents</title>
+        </clause>
+        <clause id="_" displayorder="2">
+          <title depth="1">Document History</title>
+          <table unnumbered="true">
+            <thead>
+              <tr>
+                <th>Version Number</th>
+                <th>Date</th>
+                <th>Author</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.0.0</td>
+                <td>April 2012</td>
+                <td>
+                  <formattedref/>
+                </td>
+                <td>
+                  <p id="_">Approved edition of S-102</p>
+                </td>
+              </tr>
+              <tr>
+                <td>2.0.0</td>
+                <td>March 2017</td>
+                <td>
+                  <formattedref/>
+                </td>
+                <td>
+                  <p id="_">Updated clause 4.0 and 12.0.
+       Populated clause 9.0 and Annex B.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>2.0.0</td>
+                <td>May 2017</td>
+                <td>
+                  <formattedref>FRED FLINTSTONE</formattedref>
+                  ,
+                  <formattedref>BARNEY RUBBLE</formattedref>
+                </td>
+                <td>
+                  <p id="_">Modified clause 9.0 based on feedback at S-100WG2 meeting.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>2.0.0</td>
+                <td>February 2018</td>
+                <td>
+                  <formattedref>HERING, Milena S.</formattedref>
+                </td>
+                <td>
+                  <p id="_">Modified clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>2.0.0</td>
+                <td>June 2018</td>
+                <td>
+                  <formattedref/>
+                </td>
+                <td>
+                  <p id="_">Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.</p>
+                  <p id="_">Modified content throughout the following sections:</p>
+                  <ul id="_">
+                    <li>
+                      <p id="_">Clause 1, 3, 4, 5, 6, 9, 10, 11, and 12.</p>
+                    </li>
+                    <li>
+                      <p id="_">Annexes A, B, D, F, G, and I.</p>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </clause>
+      </preface>
+    OUTPUT
+    expect(xmlpp(strip_guid(Nokogiri::XML(
+      IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
-      .convert("test", input, true))))
+      .convert("test", input, true),
+    )
+      .at("//xmlns:preface").to_xml)))
       .to be_equivalent_to xmlpp(output)
-end
+  end
 end

@@ -57,8 +57,8 @@ _bib)
 
       def generate_dochistory(updates, pref)
         ret = updates.map { |u| generate_dochistory_row(u) }.flatten.join("\n")
-        pref.next = <<~XML
-          <clause id='#{UUIDTools::UUID.random_create}'>
+        pref << <<~XML
+          <clause id='_#{UUIDTools::UUID.random_create}'>
           <title>#{@i18n.dochistory}</title>
           <table unnumbered="true"><thead>
           <tr><th>Version Number</th><th>Date</th><th>Author</th><th>Description</th></tr>

@@ -1,1 +1,1 @@
-gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "features/pub-history"
+gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "main"

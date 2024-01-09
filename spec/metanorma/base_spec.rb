@@ -605,7 +605,7 @@ RSpec.describe Metanorma::IHO do
               </organization>
             </contributor>
             <edition>1.0.0</edition>
-            <amend>
+            <amend change="modify">
               <description>
                 <p id="_">Approved edition of S-102</p>
               </description>
@@ -627,7 +627,7 @@ RSpec.describe Metanorma::IHO do
               </organization>
             </contributor>
             <edition>2.0.0</edition>
-            <amend>
+            <amend change="modify">
               <description>
                 <p id="_">Updated clause 4.0 and 12.0.
       Populated clause 9.0 and Annex B.</p>
@@ -672,7 +672,7 @@ RSpec.describe Metanorma::IHO do
               </organization>
             </contributor>
             <edition>2.0.0</edition>
-            <amend>
+            <amend change="modify">
               <description>
                 <p id="_">Modified clause 9.0 based on feedback at S-100WG2 meeting.</p>
               </description>
@@ -701,7 +701,7 @@ RSpec.describe Metanorma::IHO do
               </organization>
             </contributor>
             <edition>2.0.0</edition>
-            <amend>
+            <amend change="modify">
               <description>
                 <p id="_">Modified clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.</p>
               </description>
@@ -755,7 +755,7 @@ RSpec.describe Metanorma::IHO do
               </organization>
             </contributor>
             <edition>2.0.0</edition>
-            <amend>
+            <amend change="modify">
               <description>
                 <p id="_">Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.</p>
                 <p id="_">Modified content throughout the following sections:</p>
