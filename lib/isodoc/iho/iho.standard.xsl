@@ -2606,7 +2606,9 @@
 	</xsl:template> <!-- license-statement/p -->
 
 	<xsl:template match="*[local-name()='legal-statement']">
+		<xsl:param name="isLegacy">false</xsl:param>
 		<fo:block xsl:use-attribute-sets="legal-statement-style">
+
 			<xsl:apply-templates/>
 		</fo:block>
 	</xsl:template> <!-- legal-statement -->
