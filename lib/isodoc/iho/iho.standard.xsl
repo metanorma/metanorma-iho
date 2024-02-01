@@ -11058,7 +11058,7 @@
 
 	<xsl:template name="printEdition">
 		<xsl:variable name="edition_i18n" select="normalize-space((//*[contains(local-name(), '-standard')])[1]/*[local-name() = 'bibdata']/*[local-name() = 'edition'][normalize-space(@language) != ''])"/>
-		<xsl:text> </xsl:text>
+
 		<xsl:choose>
 			<xsl:when test="$edition_i18n != ''">
 				<!-- Example: <edition language="fr">deuxième édition</edition> -->
