@@ -1359,6 +1359,10 @@
 
 	</xsl:attribute-set>
 
+	<xsl:template name="refine_termexample-style">
+
+	</xsl:template>
+
 	<xsl:attribute-set name="example-style">
 
 			<!-- <xsl:attribute name="font-size">11pt</xsl:attribute> -->
@@ -2477,6 +2481,36 @@
 		<xsl:for-each select="/*/*[local-name()='bibliography']/*[not(@normative='true')] |          /*/*[local-name()='bibliography']/*[local-name()='clause'][*[local-name()='references'][not(@normative='true')]]">
 			<xsl:sort select="@displayorder" data-type="number"/>
 			<xsl:apply-templates select="."/>
+		</xsl:for-each>
+	</xsl:template>
+
+	<xsl:template name="processMainSectionsDefault_flatxml">
+		<xsl:for-each select="/*/*[local-name()='sections']/* | /*/*[local-name()='bibliography']/*[local-name()='references'][@normative='true']">
+			<xsl:sort select="@displayorder" data-type="number"/>
+			<xsl:variable name="flatxml">
+				<xsl:apply-templates select="." mode="flatxml"/>
+			</xsl:variable>
+			<!-- debug_flatxml='<xsl:copy-of select="$flatxml"/>' -->
+			<xsl:apply-templates select="xalan:nodeset($flatxml)/*"/>
+
+		</xsl:for-each>
+
+		<xsl:for-each select="/*/*[local-name()='annex']">
+			<xsl:sort select="@displayorder" data-type="number"/>
+			<xsl:variable name="flatxml">
+				<xsl:apply-templates select="." mode="flatxml"/>
+			</xsl:variable>
+			<!-- debug_flatxml='<xsl:copy-of select="$flatxml"/>' -->
+			<xsl:apply-templates select="xalan:nodeset($flatxml)/*"/>
+		</xsl:for-each>
+
+		<xsl:for-each select="/*/*[local-name()='bibliography']/*[not(@normative='true')] |          /*/*[local-name()='bibliography']/*[local-name()='clause'][*[local-name()='references'][not(@normative='true')]]">
+			<xsl:sort select="@displayorder" data-type="number"/>
+			<xsl:variable name="flatxml">
+				<xsl:apply-templates select="." mode="flatxml"/>
+			</xsl:variable>
+			<!-- debug_flatxml='<xsl:copy-of select="$flatxml"/>' -->
+			<xsl:apply-templates select="xalan:nodeset($flatxml)/*"/>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -8756,7 +8790,7 @@
 	<!-- ====== -->
 	<xsl:template match="*[local-name() = 'termexample']">
 		<fo:block id="{@id}" xsl:use-attribute-sets="termexample-style">
-
+			<xsl:call-template name="refine_termexample-style"/>
 			<xsl:call-template name="setBlockSpanAll"/>
 
 			<xsl:apply-templates select="*[local-name()='name']"/>
