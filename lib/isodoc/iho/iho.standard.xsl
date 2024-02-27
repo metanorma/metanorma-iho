@@ -2741,7 +2741,7 @@
 			<xsl:variable name="cols-count" select="count(xalan:nodeset($simple-table)/*/tr[1]/td)"/>
 
 			<xsl:variable name="colwidths">
-				<xsl:if test="not(*[local-name()='colgroup']/*[local-name()='col'])">
+				<xsl:if test="not(*[local-name()='colgroup']/*[local-name()='col']) and not(@class = 'dl')">
 					<xsl:call-template name="calculate-column-widths">
 						<xsl:with-param name="cols-count" select="$cols-count"/>
 						<xsl:with-param name="table" select="$simple-table"/>
@@ -2850,6 +2850,11 @@
 							<xsl:choose>
 								<xsl:when test="*[local-name()='colgroup']/*[local-name()='col']">
 									<xsl:for-each select="*[local-name()='colgroup']/*[local-name()='col']">
+										<fo:table-column column-width="{@width}"/>
+									</xsl:for-each>
+								</xsl:when>
+								<xsl:when test="@class = 'dl'">
+									<xsl:for-each select=".//*[local-name()='tr'][1]/*">
 										<fo:table-column column-width="{@width}"/>
 									</xsl:for-each>
 								</xsl:when>
@@ -4128,6 +4133,7 @@
 	<!-- ===================== -->
 	<!-- Definition List -->
 	<!-- ===================== -->
+
 	<xsl:template match="*[local-name()='dl']">
 		<xsl:variable name="isAdded" select="@added"/>
 		<xsl:variable name="isDeleted" select="@deleted"/>
@@ -4342,10 +4348,21 @@
 										</xsl:variable>
 
 										<xsl:variable name="colwidths">
-											<xsl:call-template name="calculate-column-widths">
-												<xsl:with-param name="cols-count" select="2"/>
-												<xsl:with-param name="table" select="$simple-table"/>
-											</xsl:call-template>
+											<xsl:choose>
+												<!-- dl from table[@class='dl'] -->
+												<xsl:when test="*[local-name() = 'colgroup']">
+													<autolayout/>
+													<xsl:for-each select="*[local-name() = 'colgroup']/*[local-name() = 'col']">
+														<column><xsl:value-of select="translate(@width,'%m','')"/></column>
+													</xsl:for-each>
+												</xsl:when>
+												<xsl:otherwise>
+													<xsl:call-template name="calculate-column-widths">
+														<xsl:with-param name="cols-count" select="2"/>
+														<xsl:with-param name="table" select="$simple-table"/>
+													</xsl:call-template>
+												</xsl:otherwise>
+											</xsl:choose>
 										</xsl:variable>
 
 										<!-- <xsl:text disable-output-escaping="yes">&lt;!- -</xsl:text>
