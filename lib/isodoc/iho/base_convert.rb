@@ -9,6 +9,11 @@ module IsoDoc
           super
         end
       end
+
+      def bibrenderer(options = {})
+      ::Relaton::Render::IHO::General.new(options.merge(language: @lang,
+                                                          i18nhash: @i18n.get))
+    end
     end
   end
 end
