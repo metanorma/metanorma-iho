@@ -13,7 +13,7 @@ RSpec.describe IsoDoc do
         <eref bibitemid="ref2"/>
         <eref bibitemid="ref3"/>
         <eref bibitemid="ref4"/>
-        <eref bibitemid="ref4"/>
+        <eref bibitemid="ref5"/>
         <eref bibitemid="ref6"/>
         <eref bibitemid="ref7"/>
         <eref bibitemid="ref8"/>
@@ -150,8 +150,8 @@ RSpec.describe IsoDoc do
                      <xref target="ref1">S-57</xref>
         <xref target="ref2">NIST FIPS 186</xref>
         <xref target="ref3">NIST FIPS 180-1</xref>
-        <xref target="ref4">ITU-T X.509</xref>
-        <xref target="ref4">ITU-T X.509</xref>
+        <xref target="ref4">ITU-T X.509 / ISO/IEC 9594-8</xref>
+        <xref target="ref5">[5]</xref>
         <xref target="ref6">NIST FIPS 81</xref>
         <xref target="ref7">IETF RFC 1423</xref>
         <xref target="ref8">[8]</xref>
@@ -438,8 +438,8 @@ RSpec.describe IsoDoc do
                <a href="#ref1">S-57</a>
                <a href="#ref2">NIST&#xa0;FIPS&#xa0;186</a>
                <a href="#ref3">NIST&#xa0;FIPS&#xa0;180-1</a>
-               <a href="#ref4">ITU-T&#xa0;X.509</a>
-               <a href="#ref4">ITU-T&#xa0;X.509</a>
+               <a href="#ref4">ITU-T X.509 / ISO/IEC 9594-8</a>
+               <a href="#ref5">[5]</a>
                <a href="#ref6">NIST&#xa0;FIPS&#xa0;81</a>
                <a href="#ref7">IETF&#xa0;RFC&#xa0;1423</a>
                <a href="#ref8">[8]</a>
