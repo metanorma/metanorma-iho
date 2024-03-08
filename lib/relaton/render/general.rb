@@ -11,11 +11,7 @@ module Relaton
         end
 
         def klass_initialize(_options)
-          @nametemplateklass = Relaton::Render::Template::Name
-          @seriestemplateklass = Relaton::Render::Template::Series
-          @extenttemplateklass = Relaton::Render::Template::Extent
-          @sizetemplateklass = Relaton::Render::Template::Size
-          @generaltemplateklass = Relaton::Render::Template::General
+          super
           @fieldsklass = Relaton::Render::IHO::Fields
           @parseklass = Relaton::Render::IHO::Parse
         end

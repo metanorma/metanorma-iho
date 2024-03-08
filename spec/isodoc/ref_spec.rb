@@ -182,6 +182,7 @@ RSpec.describe IsoDoc do
                </formattedref>
                <uri type="pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</uri>
                <docidentifier type="IHO">S-57</docidentifier>
+               <docidentifier scope="biblio-tag">S-57</docidentifier>
                <biblio-tag>
                  [1]
                  <tab/>
@@ -195,6 +196,7 @@ RSpec.describe IsoDoc do
                </formattedref>
                <uri type="uri">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</uri>
                <docidentifier type="NIST">NIST&#xa0;FIPS&#xa0;186</docidentifier>
+               <docidentifier scope="biblio-tag">NIST FIPS 186</docidentifier>
                <biblio-tag>
                  [2]
                  <tab/>
@@ -209,6 +211,7 @@ RSpec.describe IsoDoc do
                <uri type="uri">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</uri>
                <uri type="doi">https://doi.org/10.6028/NIST.FIPS.180-1</uri>
                <docidentifier type="NIST">NIST&#xa0;FIPS&#xa0;180-1</docidentifier>
+               <docidentifier scope="biblio-tag">NIST FIPS 180-1</docidentifier>
                <biblio-tag>
                  [3]
                  <tab/>
@@ -223,6 +226,8 @@ RSpec.describe IsoDoc do
                <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</uri>
                <docidentifier type="ITU">ITU-T&#xa0;X.509</docidentifier>
                <docidentifier type="ISO">ISO/IEC&#xa0;9594-8</docidentifier>
+               <docidentifier scope="biblio-tag">ITU-T X.509</docidentifier>
+                <docidentifier scope="biblio-tag">ISO/IEC 9594-8</docidentifier>
                <biblio-tag>
                  [4]
                  <tab/>
@@ -245,6 +250,7 @@ RSpec.describe IsoDoc do
                <uri type="uri">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</uri>
                <uri type="doi">https://doi.org/10.6028/NBS.FIPS.81</uri>
                <docidentifier type="NIST">NIST&#xa0;FIPS&#xa0;81</docidentifier>
+               <docidentifier scope="biblio-tag">NIST FIPS 81</docidentifier>
                <biblio-tag>
                  [6]
                  <tab/>
@@ -261,6 +267,7 @@ RSpec.describe IsoDoc do
                <docidentifier type="IETF">IETF&#xa0;RFC&#xa0;1423</docidentifier>
                <docidentifier type="IETF" scope="anchor">IETF&#xa0;RFC1423</docidentifier>
                <docidentifier type="DOI">DOI 10.17487/RFC1423</docidentifier>
+               <docidentifier scope="biblio-tag">IETF RFC 1423</docidentifier>
                <biblio-tag>
                  [7]
                  <tab/>
@@ -288,6 +295,7 @@ RSpec.describe IsoDoc do
                <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:37010:en</uri>
                <uri type="rss">https://www.iso.org/contents/data/standard/03/70/37010.detail.rss</uri>
                <docidentifier type="ISO">ISO/IEC&#xa0;13239:2002</docidentifier>
+               <docidentifier scope="biblio-tag">ISO/IEC 13239:2002</docidentifier>
                <biblio-tag>
                  [9]
                  <tab/>
@@ -296,6 +304,7 @@ RSpec.describe IsoDoc do
              <bibitem id="ISO712" type="standard">
                <formattedref>ISO&#xa0;712: Cereals and cereal products, International Organization for Standardization.</formattedref>
                <docidentifier type="ISO">ISO&#xa0;712</docidentifier>
+               <docidentifier scope="biblio-tag">ISO 712</docidentifier>
                <biblio-tag>
                  [10]
                  <tab/>
@@ -304,6 +313,7 @@ RSpec.describe IsoDoc do
              <bibitem id="ISO16634" type="standard">
                <formattedref>ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</formattedref>
                <docidentifier type="ISO">ISO 16634:-- (all parts)</docidentifier>
+               <docidentifier scope="biblio-tag">ISO 16634:-- (all parts)</docidentifier>
                <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
                <biblio-tag>
                  [11]
@@ -313,6 +323,7 @@ RSpec.describe IsoDoc do
              <bibitem id="ISO20483" type="standard">
                <formattedref>ISO&#xa0;20483:2013-2014: Cereals and pulses, International Organization for Standardization.</formattedref>
                <docidentifier type="ISO">ISO&#xa0;20483:2013-2014</docidentifier>
+               <docidentifier scope="biblio-tag">ISO 20483:2013-2014</docidentifier>
                <biblio-tag>
                  [12]
                  <tab/>
@@ -328,6 +339,7 @@ RSpec.describe IsoDoc do
                  )
                </formattedref>
                <docidentifier type="ICC">ICC&#xa0;167</docidentifier>
+               <docidentifier scope="biblio-tag">ICC 167</docidentifier>
                <biblio-tag>
                  [13]
                  <tab/>
@@ -378,6 +390,7 @@ RSpec.describe IsoDoc do
                <formattedref>ISO&#xa0;3696: Water for analytical laboratory use.</formattedref>
                <docidentifier type="metanorma-ordinal">[3]</docidentifier>
                <docidentifier type="ISO">ISO&#xa0;3696</docidentifier>
+               <docidentifier scope="biblio-tag">ISO 3696</docidentifier>
                <biblio-tag>
                  [3]
                  <tab/>
@@ -402,6 +415,7 @@ RSpec.describe IsoDoc do
                <formattedref>IETF&#xa0;RFC&#xa0;10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</formattedref>
                <docidentifier type="metanorma-ordinal">[5]</docidentifier>
                <docidentifier type="IETF">IETF&#xa0;RFC&#xa0;10</docidentifier>
+               <docidentifier scope="biblio-tag">IETF RFC 10</docidentifier>
                <biblio-tag>
                  [5]
                  <tab/>
@@ -415,6 +429,7 @@ RSpec.describe IsoDoc do
                </formattedref>
                <docidentifier type="metanorma">[Citn]</docidentifier>
                <docidentifier type="IETF">IETF&#xa0;RFC&#xa0;20</docidentifier>
+               <docidentifier scope="biblio-tag">IETF RFC 20</docidentifier>
                <biblio-tag>
                  [6]
                  <tab/>
