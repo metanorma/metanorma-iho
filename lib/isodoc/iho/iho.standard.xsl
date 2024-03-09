@@ -7322,16 +7322,44 @@
 							</xsl:choose>
 
 							<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
-							<xsl:variable name="svg_width" select="xalan:nodeset($svg_content)/*/@width"/>
-							<xsl:variable name="svg_height" select="xalan:nodeset($svg_content)/*/@height"/>
+							<xsl:variable name="svg_width_" select="xalan:nodeset($svg_content)/*/@width"/>
+							<xsl:variable name="svg_width" select="number(translate($svg_width_, 'px', ''))"/>
+							<xsl:variable name="svg_height_" select="xalan:nodeset($svg_content)/*/@height"/>
+							<xsl:variable name="svg_height" select="number(translate($svg_height_, 'px', ''))"/>
+
+							<!-- Example: -->
 							<!-- effective height 297 - 27.4 - 13 =  256.6 -->
 							<!-- effective width 210 - 12.5 - 25 = 172.5 -->
 							<!-- effective height / width = 1.48, 1.4 - with title -->
-							<xsl:if test="$svg_height &gt; ($svg_width * 1.4)"> <!-- for images with big height -->
+
+							<xsl:variable name="scale_x">
+								<xsl:choose>
+									<xsl:when test="$svg_width &gt; $width_effective_px">
+										<xsl:value-of select="$width_effective_px div $svg_width"/>
+									</xsl:when>
+									<xsl:otherwise>1</xsl:otherwise>
+								</xsl:choose>
+							</xsl:variable>
+							<xsl:variable name="scale_y">
+								<xsl:choose>
+									<xsl:when test="$svg_height * $scale_x &gt; $height_effective_px">
+										<xsl:value-of select="$height_effective_px div ($svg_height * $scale_x)"/>
+									</xsl:when>
+									<xsl:otherwise>1</xsl:otherwise>
+								</xsl:choose>
+							</xsl:variable>
+
+							 <!-- for images with big height -->
+							<!-- <xsl:if test="$svg_height &gt; ($svg_width * 1.4)">
 								<xsl:variable name="width" select="(($svg_width * 1.4) div $svg_height) * 100"/>
 								<xsl:attribute name="width"><xsl:value-of select="$width"/>%</xsl:attribute>
-							</xsl:if>
+							</xsl:if> -->
 							<xsl:attribute name="scaling">uniform</xsl:attribute>
+
+							<xsl:if test="$scale_y != 1">
+								<xsl:attribute name="content-height"><xsl:value-of select="round($scale_x * $scale_y * 100)"/>%</xsl:attribute>
+							</xsl:if>
+
 							<xsl:copy-of select="$svg_content"/>
 						</fo:instream-foreign-object>
 					<!-- </fo:block> -->
@@ -9483,7 +9511,9 @@
 	</xsl:template> <!-- sections_element_style -->
 
 	<xsl:template match="//*[contains(local-name(), '-standard')]/*[local-name() = 'preface']/*" priority="2"> <!-- /*/*[local-name() = 'preface']/* -->
-		<fo:block break-after="page"/>
+
+				<fo:block break-after="page"/>
+
 		<fo:block>
 			<xsl:call-template name="setId"/>
 			<xsl:apply-templates/>
@@ -9550,7 +9580,7 @@
 			<xsl:when test="ancestor::*[contains(local-name(), '-standard')] and not(ancestor::*[contains(local-name(), '-standard')]//*[@id = $id_from])">
 				<fo:block id="{@from}" font-size="1pt"><xsl:value-of select="$hair_space"/></fo:block>
 			</xsl:when>
-			<xsl:when test="not(//*[@id = $id_from]) and not(preceding-sibling::*[@id = $id_from])">
+			<xsl:when test="not(/*[@id = $id_from]) and not(/*//*[@id = $id_from]) and not(preceding-sibling::*[@id = $id_from])">
 				<fo:block id="{@from}" font-size="1pt"><xsl:value-of select="$hair_space"/></fo:block>
 			</xsl:when>
 		</xsl:choose>
