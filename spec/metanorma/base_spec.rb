@@ -84,7 +84,7 @@ RSpec.describe Metanorma::IHO do
       <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
       <bibdata type="standard">
         <title language="en" format="text/plain">Main Title</title>
-      <docidentifier type="IHO">B-1000</docidentifier>
+      <docidentifier primary="true" type="IHO">B-1000</docidentifier>
       <docnumber>1000</docnumber>
        <date type='implemented'>
          <on>2000-01-01</on>
@@ -210,7 +210,7 @@ RSpec.describe Metanorma::IHO do
               <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
       <bibdata type="standard">
         <title language="en" format="text/plain">Main Title</title>
-        <docidentifier type="IHO">S-1000</docidentifier>
+        <docidentifier primary="true" type="IHO">S-1000</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
           <role type="author"/>
@@ -561,7 +561,7 @@ RSpec.describe Metanorma::IHO do
     output = xmlpp(<<~"OUTPUT")
       <bibdata type="standard">
         <title language="en" format="text/plain">Document title</title>
-        <docidentifier type="IHO">S-</docidentifier>
+        <docidentifier primary="true" type="IHO">S-</docidentifier>
         <contributor>
           <role type="author"/>
           <organization>

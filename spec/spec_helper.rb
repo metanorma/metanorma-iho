@@ -160,7 +160,7 @@ BLANK_HDR = <<~"HDR".freeze
   <bibdata type="standard">
 
    <title language="en" format="text/plain">Document title</title>
-   <docidentifier type="IHO">S-</docidentifier>
+   <docidentifier primary="true" type="IHO">S-</docidentifier>
     <contributor>
       <role type="author"/>
       <organization>
