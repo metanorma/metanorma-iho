@@ -854,17 +854,30 @@
 	<xsl:param name="add_math_as_text">true</xsl:param> <!-- add math in text behind svg formula, to copy-paste formula from PDF as text -->
 
 	<xsl:param name="table_if">false</xsl:param> <!-- generate extended table in IF for autolayout-algorithm -->
-	<xsl:param name="table_widths"/> <!-- path to xml with table's widths, generated on 1st pass, based on FOP Intermediate Format -->
+	<xsl:param name="table_widths"/> <!-- (debug: path to) xml with table's widths, generated on 1st pass, based on FOP Intermediate Format -->
 	<!-- Example: <tables>
-			<table id="table_if_tab-symdu" page-width="75"> - table id prefixed by 'table_if_' to simple search in IF 
-				<tbody>
-					<tr>
-						<td id="tab-symdu_1_1">
-							<p_len>6</p_len>
-							<p_len>100</p_len>  for 2nd paragraph
-							<word_len>6</word_len>
-							<word_len>20</word_len>
-						...
+		<table page-width="509103" id="table1" width_max="223561" width_min="223560">
+			<column width_max="39354" width_min="39354"/>
+			<column width_max="75394" width_min="75394"/>
+			<column width_max="108813" width_min="108813"/>
+			<tbody>
+				<tr>
+					<td width_max="39354" width_min="39354">
+						<p_len>39354</p_len>
+						<word_len>39354</word_len>
+					</td>
+					
+		OLD:
+			<tables>
+					<table id="table_if_tab-symdu" page-width="75"> - table id prefixed by 'table_if_' to simple search in IF 
+						<tbody>
+							<tr>
+								<td id="tab-symdu_1_1">
+									<p_len>6</p_len>
+									<p_len>100</p_len>  for 2nd paragraph
+									<word_len>6</word_len>
+									<word_len>20</word_len>
+								...
 	-->
 
 	<!-- for command line debug: <xsl:variable name="table_widths_from_if" select="document($table_widths)"/> -->
@@ -2754,6 +2767,20 @@
 		</xsl:for-each>
 	</xsl:template>
 
+	<xsl:param name="table_only_with_id"/><!-- Example: table1, for table auto-layout algorithm -->
+
+	<xsl:template match="*[local-name()='table']" priority="2">
+		<xsl:choose>
+			<xsl:when test="$table_only_with_id != '' and @id = $table_only_with_id">
+				<xsl:call-template name="table"/>
+			</xsl:when>
+			<xsl:when test="$table_only_with_id != ''"><fo:block/><!-- to prevent empty fo:block-container --></xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="table"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
 	<xsl:template match="*[local-name()='table']" name="table">
 
 		<xsl:variable name="table-preamble">
@@ -2763,9 +2790,11 @@
 		<xsl:variable name="table">
 
 			<xsl:variable name="simple-table">
-				<xsl:call-template name="getSimpleTable">
-					<xsl:with-param name="id" select="@id"/>
-				</xsl:call-template>
+				<xsl:if test="$isGenerateTableIF = 'true' and $isApplyAutolayoutAlgorithm = 'true'">
+					<xsl:call-template name="getSimpleTable">
+						<xsl:with-param name="id" select="@id"/>
+					</xsl:call-template>
+				</xsl:if>
 			</xsl:variable>
 			<!-- <xsl:variable name="simple-table" select="xalan:nodeset($simple-table_)"/> -->
 
@@ -4195,7 +4224,20 @@
 	<!-- Definition List -->
 	<!-- ===================== -->
 
-	<xsl:template match="*[local-name()='dl']">
+	<!-- for table auto-layout algorithm -->
+	<xsl:template match="*[local-name()='dl']" priority="2">
+		<xsl:choose>
+			<xsl:when test="$table_only_with_id != '' and @id = $table_only_with_id">
+				<xsl:call-template name="dl"/>
+			</xsl:when>
+			<xsl:when test="$table_only_with_id != ''"><fo:block/><!-- to prevent empty fo:block-container --></xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="dl"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="*[local-name()='dl']" name="dl">
 		<xsl:variable name="isAdded" select="@added"/>
 		<xsl:variable name="isDeleted" select="@deleted"/>
 		<!-- <dl><xsl:copy-of select="."/></dl> -->
@@ -6202,7 +6244,13 @@
 							<xsl:value-of select="$language_current_2"/>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:value-of select="//*[local-name()='bibdata']//*[local-name()='language']"/>
+							<xsl:variable name="language_current_3" select="normalize-space(//*[local-name()='bibdata']//*[local-name()='language'])"/>
+							<xsl:choose>
+								<xsl:when test="$language_current_3 != ''">
+									<xsl:value-of select="$language_current_3"/>
+								</xsl:when>
+								<xsl:otherwise>en</xsl:otherwise>
+							</xsl:choose>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:otherwise>
