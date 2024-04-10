@@ -7114,10 +7114,11 @@
 	</xsl:template>
 
 	<xsl:template match="*[local-name() = 'image']">
+		<xsl:param name="indent">0</xsl:param>
 		<xsl:variable name="isAdded" select="../@added"/>
 		<xsl:variable name="isDeleted" select="../@deleted"/>
 		<xsl:choose>
-			<xsl:when test="ancestor::*[local-name() = 'title'] or not(parent::*[local-name() = 'figure']) or parent::*[local-name() = 'p']">
+			<xsl:when test="ancestor::*[local-name() = 'title'] or not(parent::*[local-name() = 'figure']) or parent::*[local-name() = 'p']"> <!-- inline image ( 'image:path' in adoc, with one colon after image) -->
 				<fo:inline padding-left="1mm" padding-right="1mm">
 					<xsl:if test="not(parent::*[local-name() = 'figure']) or parent::*[local-name() = 'p']">
 						<xsl:attribute name="padding-left">0mm</xsl:attribute>
@@ -7126,7 +7127,43 @@
 					<xsl:variable name="src">
 						<xsl:call-template name="image_src"/>
 					</xsl:variable>
-					<fo:external-graphic src="{$src}" fox:alt-text="Image {@alt}" vertical-align="middle"/>
+
+					<xsl:variable name="scale">
+						<xsl:call-template name="getImageScale">
+							<xsl:with-param name="indent" select="$indent"/>
+						</xsl:call-template>
+					</xsl:variable>
+
+					<!-- debug scale='<xsl:value-of select="$scale"/>', indent='<xsl:value-of select="$indent"/>' -->
+
+					<!-- <fo:external-graphic src="{$src}" fox:alt-text="Image {@alt}" vertical-align="middle"/> -->
+					<fo:external-graphic src="{$src}" fox:alt-text="Image {@alt}" vertical-align="middle">
+
+						<xsl:variable name="width">
+							<xsl:call-template name="setImageWidth"/>
+						</xsl:variable>
+						<xsl:if test="$width != ''">
+							<xsl:attribute name="width"><xsl:value-of select="$width"/></xsl:attribute>
+						</xsl:if>
+						<xsl:variable name="height">
+							<xsl:call-template name="setImageHeight"/>
+						</xsl:variable>
+						<xsl:if test="$height != ''">
+							<xsl:attribute name="height"><xsl:value-of select="$height"/></xsl:attribute>
+						</xsl:if>
+
+						<xsl:if test="$width = '' and $height = ''">
+							<xsl:if test="number($scale) &lt; 100">
+								<xsl:attribute name="content-width"><xsl:value-of select="number($scale)"/>%</xsl:attribute>
+								<!-- <xsl:attribute name="content-width">scale-to-fit</xsl:attribute>
+								<xsl:attribute name="content-height">100%</xsl:attribute>
+								<xsl:attribute name="width">100%</xsl:attribute>
+								<xsl:attribute name="scaling">uniform</xsl:attribute> -->
+							</xsl:if>
+						</xsl:if>
+
+					</fo:external-graphic>
+
 				</fo:inline>
 			</xsl:when>
 			<xsl:otherwise>
@@ -7147,25 +7184,23 @@
 								<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
 								<xsl:attribute name="scaling">uniform</xsl:attribute>
 
-									<xsl:apply-templates select="." mode="cross_image"/>
+								<xsl:apply-templates select="." mode="cross_image"/>
 
 							</fo:instream-foreign-object>
 						</xsl:when>
 						<xsl:otherwise>
+							<!-- <fo:block>debug block image:
+							<xsl:variable name="scale">
+								<xsl:call-template name="getImageScale">
+									<xsl:with-param name="indent" select="$indent"/>
+								</xsl:call-template>
+							</xsl:variable>
+							<xsl:value-of select="concat('scale=', $scale,', indent=', $indent)"/>
+							</fo:block> -->
 							<fo:external-graphic src="{$src}" fox:alt-text="Image {@alt}" xsl:use-attribute-sets="image-graphic-style">
 								<xsl:if test="not(@mimetype = 'image/svg+xml') and (../*[local-name() = 'name'] or parent::*[local-name() = 'figure'][@unnumbered = 'true']) and not(ancestor::*[local-name() = 'table'])">
 
-									<xsl:if test="@width != '' and @width != 'auto' and @width != 'text-width' and @width != 'full-page-width' and @width != 'narrow'">
-										<xsl:attribute name="width">
-											<xsl:value-of select="@width"/>
-										</xsl:attribute>
-									</xsl:if>
-
-									<xsl:if test="@height != '' and @height != 'auto'">
-										<xsl:attribute name="height">
-											<xsl:value-of select="@height"/>
-										</xsl:attribute>
-									</xsl:if>
+									<xsl:call-template name="setImageWidthHeight"/>
 
 									<xsl:choose>
 										<xsl:when test="@width != '' and @width != 'auto' and @height != '' and @height != 'auto'">
@@ -7173,24 +7208,18 @@
 										</xsl:when>
 										<xsl:otherwise>
 
-											<xsl:variable name="img_src">
-												<xsl:choose>
-													<xsl:when test="not(starts-with(@src, 'data:'))"><xsl:value-of select="concat($basepath, @src)"/></xsl:when>
-													<xsl:otherwise><xsl:value-of select="@src"/></xsl:otherwise>
-												</xsl:choose>
+											<xsl:variable name="scale">
+												<xsl:call-template name="getImageScale">
+													<xsl:with-param name="indent" select="$indent"/>
+												</xsl:call-template>
 											</xsl:variable>
 
-											<xsl:variable name="image_width_effective">
-
-														<xsl:value-of select="$width_effective"/>
-
+											<xsl:variable name="scaleRatio">
+												1
 											</xsl:variable>
 
-											<xsl:variable name="scale" select="java:org.metanorma.fop.Util.getImageScale($img_src, $image_width_effective, $height_effective)"/>
 											<xsl:if test="number($scale) &lt; 100">
-
-														<xsl:attribute name="content-width"><xsl:value-of select="$scale"/>%</xsl:attribute>
-
+												<xsl:attribute name="content-width"><xsl:value-of select="number($scale) * number($scaleRatio)"/>%</xsl:attribute>
 											</xsl:if>
 										</xsl:otherwise>
 									</xsl:choose>
@@ -7204,6 +7233,62 @@
 				</fo:block>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="setImageWidth">
+		<xsl:if test="@width != '' and @width != 'auto' and @width != 'text-width' and @width != 'full-page-width' and @width != 'narrow'">
+			<xsl:value-of select="@width"/>
+		</xsl:if>
+	</xsl:template>
+	<xsl:template name="setImageHeight">
+		<xsl:if test="@height != '' and @height != 'auto'">
+			<xsl:value-of select="@height"/>
+		</xsl:if>
+	</xsl:template>
+	<xsl:template name="setImageWidthHeight">
+		<xsl:variable name="width">
+			<xsl:call-template name="setImageWidth"/>
+		</xsl:variable>
+		<xsl:if test="$width != ''">
+			<xsl:attribute name="width">
+				<xsl:value-of select="$width"/>
+			</xsl:attribute>
+		</xsl:if>
+		<xsl:variable name="height">
+			<xsl:call-template name="setImageHeight"/>
+		</xsl:variable>
+		<xsl:if test="$height != ''">
+			<xsl:attribute name="height">
+				<xsl:value-of select="$height"/>
+			</xsl:attribute>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template name="getImageScale">
+		<xsl:param name="indent"/>
+		<xsl:variable name="indent_left">
+			<xsl:choose>
+				<xsl:when test="$indent != ''"><xsl:value-of select="$indent"/></xsl:when>
+				<xsl:otherwise>0</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="img_src">
+			<xsl:choose>
+				<xsl:when test="not(starts-with(@src, 'data:'))"><xsl:value-of select="concat($basepath, @src)"/></xsl:when>
+				<xsl:otherwise><xsl:value-of select="@src"/></xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+
+		<xsl:variable name="image_width_effective">
+
+					<xsl:value-of select="$width_effective - number($indent_left)"/>
+
+		</xsl:variable>
+		<!-- <xsl:message>width_effective=<xsl:value-of select="$width_effective"/></xsl:message>
+		<xsl:message>indent_left=<xsl:value-of select="$indent_left"/></xsl:message>
+		<xsl:message>image_width_effective=<xsl:value-of select="$image_width_effective"/> for <xsl:value-of select="ancestor::ogc:p[1]/@id"/></xsl:message> -->
+		<xsl:variable name="scale" select="java:org.metanorma.fop.Util.getImageScale($img_src, $image_width_effective, $height_effective)"/>
+		<xsl:value-of select="$scale"/>
 	</xsl:template>
 
 	<xsl:template name="image_src">
@@ -9881,6 +9966,7 @@
 	</xsl:template>
 
 	<xsl:template match="*[local-name() = 'ul'] | *[local-name() = 'ol']">
+		<xsl:param name="indent">0</xsl:param>
 		<xsl:choose>
 			<xsl:when test="parent::*[local-name() = 'note'] or parent::*[local-name() = 'termnote']">
 				<fo:block-container role="SKIP">
@@ -9895,7 +9981,9 @@
 
 					<fo:block-container margin-left="0mm" role="SKIP">
 						<fo:block>
-							<xsl:apply-templates select="." mode="list"/>
+							<xsl:apply-templates select="." mode="list">
+								<xsl:with-param name="indent" select="$indent"/>
+							</xsl:apply-templates>
 						</fo:block>
 					</fo:block-container>
 				</fo:block-container>
@@ -9903,7 +9991,9 @@
 			<xsl:otherwise>
 
 						<fo:block role="SKIP">
-							<xsl:apply-templates select="." mode="list"/>
+							<xsl:apply-templates select="." mode="list">
+								<xsl:with-param name="indent" select="$indent"/>
+							</xsl:apply-templates>
 						</fo:block>
 
 			</xsl:otherwise>
@@ -9988,6 +10078,13 @@
 	</xsl:template>
 
 	<xsl:template match="*[local-name()='li']">
+		<xsl:param name="indent">0</xsl:param>
+		<!-- <fo:list-item xsl:use-attribute-sets="list-item-style">
+			<fo:list-item-label end-indent="label-end()"><fo:block>x</fo:block></fo:list-item-label>
+			<fo:list-item-body start-indent="body-start()" xsl:use-attribute-sets="list-item-body-style">
+				<fo:block>debug li indent=<xsl:value-of select="$indent"/></fo:block>
+			</fo:list-item-body>
+		</fo:list-item> -->
 		<fo:list-item xsl:use-attribute-sets="list-item-style">
 			<xsl:copy-of select="@id"/>
 
@@ -10012,7 +10109,9 @@
 
 					<xsl:call-template name="refine_list-item-body-style"/>
 
-					<xsl:apply-templates/>
+					<xsl:apply-templates>
+						<xsl:with-param name="indent" select="$indent"/>
+					</xsl:apply-templates>
 
 					<!-- <xsl:apply-templates select="node()[not(local-name() = 'note')]" />
 					
