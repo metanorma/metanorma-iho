@@ -662,12 +662,14 @@
 					<xsl:when test="ancestor::iho:quote">justify</xsl:when>
 					<xsl:when test="ancestor::iho:feedback-statement">right</xsl:when>
 					<xsl:when test="ancestor::iho:boilerplate and not(@align)">justify</xsl:when>
+					<xsl:when test="@align = 'justified'">justify</xsl:when>
 					<xsl:when test="@align"><xsl:value-of select="@align"/></xsl:when>
 					<xsl:when test="ancestor::iho:td/@align"><xsl:value-of select="ancestor::iho:td/@align"/></xsl:when>
 					<xsl:when test="ancestor::iho:th/@align"><xsl:value-of select="ancestor::iho:th/@align"/></xsl:when>
 					<xsl:otherwise>justify</xsl:otherwise>
 				</xsl:choose>
 			</xsl:attribute>
+			<xsl:call-template name="setKeepAttributes"/>
 			<xsl:attribute name="space-after">6pt</xsl:attribute>
 			<xsl:if test="parent::iho:dd">
 				<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
@@ -12389,7 +12391,10 @@
 		<xsl:call-template name="setTextAlignment">
 			<xsl:with-param name="default" select="$text_align_default"/>
 		</xsl:call-template>
+		<xsl:call-template name="setKeepAttributes"/>
+	</xsl:template>
 
+	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" name="setKeepAttributes">
 		<!-- https://www.metanorma.org/author/topics/document-format/text/#avoiding-page-breaks -->
 		<!-- Example: keep-lines-together="true" -->
 		<xsl:if test="@keep-lines-together = 'true'">
