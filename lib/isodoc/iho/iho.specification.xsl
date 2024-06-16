@@ -845,7 +845,7 @@
 			<xsl:strip-space xmlns:redirect="http://xml.apache.org/xalan/redirect" elements="iho:xref"/>
 
 	<xsl:variable xmlns:redirect="http://xml.apache.org/xalan/redirect" name="namespace_full" select="namespace-uri(/*)"/> <!-- example: https://www.metanorma.org/ns/iso -->
-	<xsl:variable xmlns:redirect="http://xml.apache.org/xalan/redirect" name="root_element" select="local-name(/*)"/>
+	<xsl:variable xmlns:redirect="http://xml.apache.org/xalan/redirect" name="root_element" select="local-name(/*)"/> <!-- example: iso-standard -->
 
 	<!-- external parameters -->
 
@@ -2536,7 +2536,7 @@
 
 	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" name="processPrefaceSectionsDefault_items">
 
-		<xsl:variable name="updated_xml_step_move_pagebreak_">
+		<xsl:variable name="updated_xml_step_move_pagebreak">
 
 			<xsl:element name="{$root_element}" namespace="{$namespace_full}">
 
@@ -2557,18 +2557,29 @@
 		<!-- <xsl:message>updated_xml_step_move_pagebreak_filename=<xsl:value-of select="$updated_xml_step_move_pagebreak_filename"/></xsl:message>
 		<xsl:message>start write updated_xml_step_move_pagebreak_filename</xsl:message> -->
 		<redirect:write file="{$updated_xml_step_move_pagebreak_filename}">
-			<xsl:copy-of select="$updated_xml_step_move_pagebreak_"/>
+			<xsl:copy-of select="$updated_xml_step_move_pagebreak"/>
 		</redirect:write>
 		<!-- <xsl:message>end write updated_xml_step_move_pagebreak_filename</xsl:message> -->
 
 		<xsl:copy-of select="document($updated_xml_step_move_pagebreak_filename)"/>
+
+		<!-- TODO: instead of 
+		<xsl:for-each select=".//*[local-name() = 'page_sequence'][normalize-space() != '' or .//image or .//svg]">
+		in each template, add removing empty page_sequence here
+		-->
+
+		<xsl:if test="$debug = 'true'">
+			<redirect:write file="page_sequence_preface.xml">
+				<xsl:copy-of select="document($updated_xml_step_move_pagebreak_filename)"/>
+			</redirect:write>
+		</xsl:if>
 
 		<!-- <xsl:message>start delete updated_xml_step_move_pagebreak_filename</xsl:message> -->
 		<xsl:call-template name="deleteFile">
 			<xsl:with-param name="filepath" select="$updated_xml_step_move_pagebreak_filename"/>
 		</xsl:call-template>
 		<!-- <xsl:message>end delete updated_xml_step_move_pagebreak_filename</xsl:message> -->
-	</xsl:template>
+	</xsl:template> <!-- END: processPrefaceSectionsDefault_items -->
 
 	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" name="copyCommonElements">
 		<!-- copy bibdata, localized-strings, metanorma-extension and boilerplate -->
@@ -2613,7 +2624,7 @@
 	-->
 	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" name="processMainSectionsDefault_items">
 
-		<xsl:variable name="updated_xml_step_move_pagebreak_">
+		<xsl:variable name="updated_xml_step_move_pagebreak">
 
 			<xsl:element name="{$root_element}" namespace="{$namespace_full}">
 
@@ -2650,10 +2661,16 @@
 		<xsl:variable name="updated_xml_step_move_pagebreak_filename" select="concat($output_path,'_main_', java:getTime(java:java.util.Date.new()), '.xml')"/>
 
 		<redirect:write file="{$updated_xml_step_move_pagebreak_filename}">
-			<xsl:copy-of select="$updated_xml_step_move_pagebreak_"/>
+			<xsl:copy-of select="$updated_xml_step_move_pagebreak"/>
 		</redirect:write>
 
 		<xsl:copy-of select="document($updated_xml_step_move_pagebreak_filename)"/>
+
+		<xsl:if test="$debug = 'true'">
+			<redirect:write file="page_sequence_main.xml">
+				<xsl:copy-of select="document($updated_xml_step_move_pagebreak_filename)"/>
+			</redirect:write>
+		</xsl:if>
 
 		<xsl:call-template name="deleteFile">
 			<xsl:with-param name="filepath" select="$updated_xml_step_move_pagebreak_filename"/>
@@ -2665,6 +2682,14 @@
 		<xsl:variable name="xml_file" select="java:java.io.File.new($filepath)"/>
 		<xsl:variable name="xml_file_path" select="java:toPath($xml_file)"/>
 		<xsl:variable name="deletefile" select="java:java.nio.file.Files.deleteIfExists($xml_file_path)"/>
+	</xsl:template>
+
+	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" name="getPageSequenceOrientation">
+		<xsl:variable name="previous_orientation" select="preceding-sibling::*[local-name() = 'page_sequence'][@orientation][1]/@orientation"/>
+		<xsl:choose>
+			<xsl:when test="@orientation = 'landscape'">-<xsl:value-of select="@orientation"/></xsl:when>
+			<xsl:when test="$previous_orientation = 'landscape' and not(@orientation = 'portrait')">-<xsl:value-of select="$previous_orientation"/></xsl:when>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:variable xmlns:redirect="http://xml.apache.org/xalan/redirect" name="regex_standard_reference">([A-Z]{2,}(/[A-Z]{2,})* \d+(-\d+)*(:\d{4})?)</xsl:variable>
@@ -11131,6 +11156,75 @@
 	<!-- ===================================== -->
 	<!-- Update xml -->
 	<!-- ===================================== -->
+
+	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" name="updateXML">
+		<xsl:if test="$debug = 'true'"><xsl:message>START updated_xml_step1</xsl:message></xsl:if>
+		<xsl:variable name="startTime1" select="java:getTime(java:java.util.Date.new())"/>
+
+		<!-- STEP1: Re-order elements in 'preface', 'sections' based on @displayorder -->
+		<xsl:variable name="updated_xml_step1">
+			<xsl:if test="$table_if = 'false'">
+				<xsl:apply-templates mode="update_xml_step1"/>
+			</xsl:if>
+		</xsl:variable>
+
+		<xsl:variable name="endTime1" select="java:getTime(java:java.util.Date.new())"/>
+		<xsl:if test="$debug = 'true'">
+			<xsl:message>DEBUG: processing time <xsl:value-of select="$endTime1 - $startTime1"/> msec.</xsl:message>
+			<xsl:message>END updated_xml_step1</xsl:message>
+			<!-- <redirect:write file="updated_xml_step1_{java:getTime(java:java.util.Date.new())}.xml">
+				<xsl:copy-of select="$updated_xml_step1"/>
+			</redirect:write> -->
+		</xsl:if>
+
+		<xsl:if test="$debug = 'true'"><xsl:message>START updated_xml_step2</xsl:message></xsl:if>
+		<xsl:variable name="startTime2" select="java:getTime(java:java.util.Date.new())"/>
+
+		<!-- STEP2: add 'fn' after 'eref' and 'origin', if referenced to bibitem with 'note' = Withdrawn.' or 'Cancelled and replaced...'  -->
+		<xsl:variable name="updated_xml_step2">
+
+					<xsl:if test="$table_if = 'false'">
+						<xsl:copy-of select="$updated_xml_step1"/>
+					</xsl:if>
+
+		</xsl:variable>
+
+		<xsl:variable name="endTime2" select="java:getTime(java:java.util.Date.new())"/>
+		<xsl:if test="$debug = 'true'">
+			<xsl:message>DEBUG: processing time <xsl:value-of select="$endTime2 - $startTime2"/> msec.</xsl:message>
+			<xsl:message>END updated_xml_step2</xsl:message>
+			<!-- <redirect:write file="updated_xml_step2_{java:getTime(java:java.util.Date.new())}.xml">
+				<xsl:copy-of select="$updated_xml_step2"/>
+			</redirect:write> -->
+		</xsl:if>
+
+		<xsl:if test="$debug = 'true'"><xsl:message>START updated_xml_step3</xsl:message></xsl:if>
+		<xsl:variable name="startTime3" select="java:getTime(java:java.util.Date.new())"/>
+
+		<xsl:variable name="updated_xml_step3">
+			<xsl:choose>
+				<xsl:when test="$table_if = 'false'">
+					<xsl:apply-templates select="xalan:nodeset($updated_xml_step2)" mode="update_xml_enclose_keep-together_within-line"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:apply-templates select="." mode="update_xml_enclose_keep-together_within-line"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+
+		<xsl:variable name="endTime3" select="java:getTime(java:java.util.Date.new())"/>
+		<xsl:if test="$debug = 'true'">
+			<xsl:message>DEBUG: processing time <xsl:value-of select="$endTime3 - $startTime3"/> msec.</xsl:message>
+			<xsl:message>END updated_xml_step3</xsl:message>
+			<!-- <redirect:write file="updated_xml_step3_{java:getTime(java:java.util.Date.new())}.xml">
+				<xsl:copy-of select="$updated_xml_step3"/>
+			</redirect:write> -->
+		</xsl:if>
+
+		<xsl:copy-of select="$updated_xml_step3"/>
+
+	</xsl:template>
+
 	<!-- =========================================================================== -->
 	<!-- STEP1:  -->
 	<!--   - Re-order elements in 'preface', 'sections' based on @displayorder -->
@@ -11330,7 +11424,7 @@
 
 		<!-- determine pagebreak is last element before </fo:flow> or not -->
 		<xsl:variable name="isLast">
-			<xsl:for-each select="ancestor-or-self::*[ancestor::*[local-name() = 'sections'] or ancestor-or-self::*[local-name() = 'annex']]">
+			<xsl:for-each select="ancestor-or-self::*[ancestor::*[local-name() = 'preface'] or ancestor::*[local-name() = 'sections'] or ancestor-or-self::*[local-name() = 'annex']]">
 				<xsl:if test="following-sibling::*">false</xsl:if>
 			</xsl:for-each>
 		</xsl:variable>
@@ -11352,7 +11446,7 @@
 			<xsl:text disable-output-escaping="yes">&lt;/page_sequence&gt;</xsl:text>
 
 			<!-- create a new page_sequence (opening elements) -->
-			<xsl:text disable-output-escaping="yes">&lt;page_sequence namespace="</xsl:text><xsl:value-of select="$namespace_full"/>"<xsl:if test="$orientation != ''"> orientation="<xsl:value-of select="$orientation"/>"</xsl:if><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+			<xsl:text disable-output-escaping="yes">&lt;page_sequence xmlns="</xsl:text><xsl:value-of select="$namespace_full"/>"<xsl:if test="$orientation != ''"> orientation="<xsl:value-of select="$orientation"/>"</xsl:if><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 
 			<xsl:call-template name="insertOpeningElements">
 				<xsl:with-param name="tree" select="$tree"/>
@@ -11362,7 +11456,7 @@
 	</xsl:template>
 
 	<xsl:template xmlns:redirect="http://xml.apache.org/xalan/redirect" name="makeAncestorsElementsTree">
-		<xsl:for-each select="ancestor::*[ancestor::*[local-name() = 'sections'] or ancestor-or-self::*[local-name() = 'annex']]">
+		<xsl:for-each select="ancestor::*[ancestor::*[local-name() = 'preface'] or ancestor::*[local-name() = 'sections'] or ancestor-or-self::*[local-name() = 'annex']]">
 			<element pos="{position()}">
 				<xsl:copy-of select="@*[local-name() != 'id']"/>
 				<xsl:value-of select="name()"/>
@@ -11543,7 +11637,7 @@
 				<xsl:value-of select="substring-before($text, $tag_open)"/>
 				<xsl:variable name="text_after" select="substring-after($text, $tag_open)"/>
 
-				<xsl:element name="{substring-before(substring-after($tag_open, '###'),'###')}">
+				<xsl:element name="{substring-before(substring-after($tag_open, '###'),'###')}" namespace="{$namespace_full}">
 					<xsl:value-of select="substring-before($text_after, $tag_close)"/>
 				</xsl:element>
 
