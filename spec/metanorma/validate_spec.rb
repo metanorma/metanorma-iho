@@ -17,7 +17,7 @@ RSpec.describe Metanorma::IHO do
         mock_pdf
         Metanorma::Compile
           .new
-          .compile("spec/assets/xref_error.adoc", type: "iho", no_install_fonts: true)
+          .compile("spec/assets/xref_error.adoc", type: "iho", install_fonts: false)
       end.to(change { File.exist?("spec/assets/xref_error.err.html") }
               .from(false).to(true))
     end
