@@ -21,8 +21,6 @@ html_footnotefontsize: "0.9em"
 boilerplate: lib/metanorma/iho/boilerplate.adoc
 webfont:
   - "https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
-scripts: lib/isodoc/iho/html/scripts.html
-scripts_pdf: lib/isodoc/iho/html/scripts.pdf.html
 standardstylesheet: lib/isodoc/iho/html/iho.scss
 header: lib/isodoc/iho/html/header.html
 wordcoverpage: lib/isodoc/iho/html/word_iho_titlepage.html
