@@ -35,6 +35,24 @@ module IsoDoc
         hierarchical_asset_names(clause, num)
       end
 
+      def clause_order_main(docxml)
+        if docxml.at(ns("//sections/clause//references"))
+          [
+            { path: "//sections/clause[@type = 'scope']" },
+            { path: "//sections/terms | //sections/definitions | " \
+              "//sections/references | " \
+              "//sections/clause[not(@type = 'scope')]", multi: true },
+          ]
+        else
+          [
+            { path: "//sections/clause[@type = 'scope']" },
+            { path: @klass.norm_ref_xpath },
+            { path: "//sections/terms | //sections/definitions | " \
+              "//sections/clause[not(@type = 'scope')]", multi: true },
+          ]
+        end
+      end
+
       def clause_order_annex(_docxml)
         [{ path: "//annex[not(@obligation = 'informative')]", multi: true },
          { path: "//annex[@obligation = 'informative']", multi: true }]

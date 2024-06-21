@@ -250,9 +250,197 @@ RSpec.describe IsoDoc::IHO do
          </bibliography>
          </iho-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
+      .to be_equivalent_to xmlpp(output)
+  end
+
+  it "processes nested references and terms" do
+    input = <<~INPUT
+      <iho-standard xmlns="http://riboseinc.com/isoxml">
+         <sections>
+         <clause id="A"><title>Overview</title>
+         <clause id="D" obligation="normative" type="scope">
+           <title>Scope</title>
+           <p id="E">Text</p>
+         </clause>
+          <references id="R" obligation="informative" normative="true">
+           <title>Normative References</title>
+         </references>
+         <clause id="H" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
+           <title>Normal Terms</title>
+           <term id="J">
+           <preferred>Term2</preferred>
+         </term>
+         </terms>
+         <definitions id="K">
+           <dl>
+           <dt>Symbol</dt>
+           <dd>Definition</dd>
+           </dl>
+         </definitions>
+         </clause>
+         <definitions id="L">
+           <dl>
+           <dt>Symbol</dt>
+           <dd>Definition</dd>
+           </dl>
+         </definitions>
+         <clause id="M" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+           <title>Introduction</title>
+         </clause>
+         </clause>
+         <clause id="O" inline-header="false" obligation="normative">
+           <title>Clause 4.2</title>
+         </clause></clause>
+
+         </sections><annex id="P" inline-header="false" obligation="normative">
+           <title>Annex</title>
+           <clause id="Q" inline-header="false" obligation="normative">
+           <title>Annex A.1</title>
+           <clause id="Q1" inline-header="false" obligation="normative">
+           <title>Annex A.1a</title>
+           </clause>
+         </clause>
+         </annex><bibliography><references id="R" obligation="informative" normative="true">
+           <title>Normative References</title>
+         </references><clause id="S" obligation="informative">
+           <title>Bibliography</title>
+           <references id="T" obligation="informative" normative="false">
+           <title>Bibliography Subsection</title>
+         </references>
+         </clause>
+         </bibliography>
+         </iho-standard>
+    INPUT
+    output = <<~OUTPUT
+           <iho-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+         <preface>
+           <clause type="toc" id="_" displayorder="1">
+             <title depth="1">Contents</title>
+           </clause>
+         </preface>
+         <sections>
+           <clause id="A" displayorder="2">
+             <title depth="1">
+               1.
+               <tab/>
+               Overview
+             </title>
+             <clause id="D" obligation="normative" type="scope">
+               <title depth="2">
+                 1.1.
+                 <tab/>
+                 Scope
+               </title>
+               <p id="E">Text</p>
+             </clause>
+             <references id="R" obligation="informative" normative="true">
+               <title depth="1">
+                 2.
+                 <tab/>
+                 Normative References
+               </title>
+             </references>
+             <clause id="H" obligation="normative">
+               <title depth="2">
+                 1.3.
+                 <tab/>
+                 Terms, definitions, symbols and abbreviated terms
+               </title>
+               <terms id="I" obligation="normative">
+                 <title depth="3">
+                   1.3.1.
+                   <tab/>
+                   Normal Terms
+                 </title>
+                 <term id="J">
+                   <name>1.3.1.1.</name>
+                   <preferred>Term2</preferred>
+                 </term>
+               </terms>
+               <definitions id="K">
+                 <title>1.3.2.</title>
+                 <dl>
+                   <dt>Symbol</dt>
+                   <dd>Definition</dd>
+                 </dl>
+               </definitions>
+             </clause>
+             <definitions id="L">
+               <title>1.4.</title>
+               <dl>
+                 <dt>Symbol</dt>
+                 <dd>Definition</dd>
+               </dl>
+             </definitions>
+             <clause id="M" inline-header="false" obligation="normative">
+               <title depth="2">
+                 1.5.
+                 <tab/>
+                 Clause 4
+               </title>
+               <clause id="N" inline-header="false" obligation="normative">
+                 <title depth="3">
+                   1.5.1.
+                   <tab/>
+                   Introduction
+                 </title>
+               </clause>
+             </clause>
+             <clause id="O" inline-header="false" obligation="normative">
+               <title depth="2">
+                 1.6.
+                 <tab/>
+                 Clause 4.2
+               </title>
+             </clause>
+           </clause>
+           <references id="R" obligation="informative" normative="true" displayorder="3">
+             <title depth="1">
+               2.
+               <tab/>
+               Normative References
+             </title>
+           </references>
+         </sections>
+         <annex id="P" inline-header="false" obligation="normative" displayorder="4">
+           <title>
+             <strong>Annex A</strong>
+             <br/>
+             <strong>Annex</strong>
+           </title>
+           <clause id="Q" inline-header="false" obligation="normative">
+             <title depth="2">
+               A.1.
+               <tab/>
+               Annex A.1
+             </title>
+             <clause id="Q1" inline-header="false" obligation="normative">
+               <title depth="3">
+                 A.1.1.
+                 <tab/>
+                 Annex A.1a
+               </title>
+             </clause>
+           </clause>
+         </annex>
+         <bibliography>
+           <clause id="S" obligation="informative" displayorder="5">
+             <title depth="1">Bibliography</title>
+             <references id="T" obligation="informative" normative="false">
+               <title depth="2">Bibliography Subsection</title>
+             </references>
+           </clause>
+         </bibliography>
+       </iho-standard>
+    OUTPUT
+    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+          .new(presxml_options)
+          .convert("test", input, true)
+          .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
       .to be_equivalent_to xmlpp(output)
   end
 
