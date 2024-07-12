@@ -36,19 +36,21 @@ module IsoDoc
       end
 
       def clause_order_main(docxml)
-        if docxml.at(ns("//sections/clause//references"))
+        if docxml.at(ns("//bibliography//references[@normative = 'true']")) ||
+            docxml.at(ns("//sections/references[@normative = 'true']"))
           [
             { path: "//sections/clause[@type = 'scope']" },
+            { path: "#{@klass.norm_ref_xpath} | //sections/references" },
             { path: "//sections/terms | //sections/definitions | " \
-              "//sections/references | " \
               "//sections/clause[not(@type = 'scope')]", multi: true },
           ]
         else
           [
-            { path: "//sections/clause[@type = 'scope']" },
-            { path: @klass.norm_ref_xpath },
             { path: "//sections/terms | //sections/definitions | " \
-              "//sections/clause[not(@type = 'scope')]", multi: true },
+              "//sections/references | " \
+              "//bibliography/references[@normative = 'true'] | " \
+              "//bibliography/clause[.//references[@normative = 'true']] | " \
+              "//sections/clause", multi: true },
           ]
         end
       end
