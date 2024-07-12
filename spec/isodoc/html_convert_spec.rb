@@ -304,9 +304,9 @@ RSpec.describe IsoDoc::IHO do
            <title>Annex A.1a</title>
            </clause>
          </clause>
-         </annex><bibliography><references id="R" obligation="informative" normative="true">
-           <title>Normative References</title>
-         </references><clause id="S" obligation="informative">
+         </annex>
+         <bibliography>
+         <clause id="S" obligation="informative">
            <title>Bibliography</title>
            <references id="T" obligation="informative" normative="false">
            <title>Bibliography Subsection</title>
@@ -338,8 +338,8 @@ RSpec.describe IsoDoc::IHO do
                <p id="E">Text</p>
              </clause>
              <references id="R" obligation="informative" normative="true">
-               <title depth="1">
-                 2.
+               <title depth="2">
+                 1.2.
                  <tab/>
                  Normative References
                </title>
@@ -398,15 +398,8 @@ RSpec.describe IsoDoc::IHO do
                </title>
              </clause>
            </clause>
-           <references id="R" obligation="informative" normative="true" displayorder="3">
-             <title depth="1">
-               2.
-               <tab/>
-               Normative References
-             </title>
-           </references>
          </sections>
-         <annex id="P" inline-header="false" obligation="normative" displayorder="4">
+         <annex id="P" inline-header="false" obligation="normative" displayorder="3">
            <title>
              <strong>Annex A</strong>
              <br/>
@@ -428,7 +421,7 @@ RSpec.describe IsoDoc::IHO do
            </clause>
          </annex>
          <bibliography>
-           <clause id="S" obligation="informative" displayorder="5">
+           <clause id="S" obligation="informative" displayorder="4">
              <title depth="1">Bibliography</title>
              <references id="T" obligation="informative" normative="false">
                <title depth="2">Bibliography Subsection</title>
@@ -703,7 +696,8 @@ RSpec.describe IsoDoc::IHO do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
+    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+      .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to xmlpp(presxml)
