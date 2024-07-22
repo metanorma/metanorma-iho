@@ -250,11 +250,11 @@ RSpec.describe IsoDoc::IHO do
          </bibliography>
          </iho-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes nested references and terms" do
@@ -430,11 +430,11 @@ RSpec.describe IsoDoc::IHO do
          </bibliography>
        </iho-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert
           .new(presxml_options)
           .convert("test", input, true)
           .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes annexes and appendixes" do
@@ -696,16 +696,16 @@ RSpec.describe IsoDoc::IHO do
         </div>
       </body>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::IHO::HtmlConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Xml::C14n.format(IsoDoc::IHO::HtmlConvert.new({})
       .convert("test", presxml, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to xmlpp(html)
+      .to be_equivalent_to Xml::C14n.format(html)
   end
 
   it "injects JS into blank html" do
@@ -718,13 +718,13 @@ RSpec.describe IsoDoc::IHO do
       :no-pdf:
     INPUT
 
-    output = xmlpp(<<~"OUTPUT")
+    output = Xml::C14n.format(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections/>
       </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor
+    expect(Xml::C14n.format(strip_guid(Asciidoctor
       .convert(input, backend: :iho, header_footer: true))))
       .to be_equivalent_to output
     html = File.read("test.html", encoding: "utf-8")
@@ -931,10 +931,10 @@ RSpec.describe IsoDoc::IHO do
              </bibliography>
              </iho-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "inserts document history clause" do
@@ -1326,12 +1326,12 @@ RSpec.describe IsoDoc::IHO do
         </clause>
       </preface>
     OUTPUT
-    expect(xmlpp(strip_guid(Nokogiri::XML(
+    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(
       IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true),
     )
       .at("//xmlns:preface").to_xml)))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 end

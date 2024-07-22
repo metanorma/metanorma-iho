@@ -13,13 +13,13 @@ RSpec.describe Metanorma::IHO do
       #{ASCIIDOC_BLANK_HDR}
     INPUT
 
-    output = xmlpp(<<~"OUTPUT")
+    output = Xml::C14n.format(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections/>
       </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to output
   end
 
@@ -31,7 +31,7 @@ RSpec.describe Metanorma::IHO do
       :novalid:
     INPUT
 
-    output = xmlpp(<<~"OUTPUT")
+    output = Xml::C14n.format(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections/>
       </iho-standard>
@@ -40,7 +40,7 @@ RSpec.describe Metanorma::IHO do
     FileUtils.rm_f "test.html"
     FileUtils.rm_f "test.doc"
     FileUtils.rm_f "test.pdf"
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to output
     expect(File.exist?("test.html")).to be true
     expect(File.exist?("test.doc")).to be true
@@ -79,7 +79,7 @@ RSpec.describe Metanorma::IHO do
 
     INPUT
 
-    output = xmlpp(<<~"OUTPUT")
+    output = Xml::C14n.format(<<~"OUTPUT")
           <?xml version="1.0" encoding="UTF-8"?>
       <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
       <bibdata type="standard">
@@ -184,7 +184,7 @@ RSpec.describe Metanorma::IHO do
       </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor
+    expect(Xml::C14n.format(strip_guid(Asciidoctor
       .convert(input, *OPTIONS))))
       .to be_equivalent_to output
   end
@@ -272,9 +272,9 @@ RSpec.describe Metanorma::IHO do
       <sections/>
       </iho-standard>
     OUTPUT
-    expect(xmlpp(strip_guid(Asciidoctor
+    expect(Xml::C14n.format(strip_guid(Asciidoctor
       .convert(input, *OPTIONS))))
-      .to be_equivalent_to xmlpp(output)
+      .to be_equivalent_to Xml::C14n.format(output)
   end
 
   it "processes edition components" do
@@ -360,7 +360,7 @@ RSpec.describe Metanorma::IHO do
       == Section 1
     INPUT
 
-    output = xmlpp(<<~"OUTPUT")
+    output = Xml::C14n.format(<<~"OUTPUT")
       #{BLANK_HDR}
                <preface><foreword id="_" obligation="informative">
            <title>Foreword</title>
@@ -372,7 +372,7 @@ RSpec.describe Metanorma::IHO do
          </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to output
   end
 
@@ -430,7 +430,7 @@ RSpec.describe Metanorma::IHO do
 
     INPUT
 
-    output = xmlpp(<<~"OUTPUT")
+    output = Xml::C14n.format(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections> </sections>
       <annex id='_' obligation='normative'>
@@ -445,7 +445,7 @@ RSpec.describe Metanorma::IHO do
       </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to output
   end
 
@@ -558,7 +558,7 @@ RSpec.describe Metanorma::IHO do
             - annex=I
       ----
     INPUT
-    output = xmlpp(<<~"OUTPUT")
+    output = Xml::C14n.format(<<~"OUTPUT")
       <bibdata type="standard">
         <title language="en" format="text/plain">Document title</title>
         <docidentifier primary="true" type="IHO">S-</docidentifier>
@@ -855,7 +855,7 @@ RSpec.describe Metanorma::IHO do
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     xml = xml.at("//xmlns:bibdata")
-    expect(xmlpp(strip_guid(xml.to_xml)))
+    expect(Xml::C14n.format(strip_guid(xml.to_xml)))
       .to be_equivalent_to output
   end
 end

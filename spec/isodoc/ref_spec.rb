@@ -598,14 +598,14 @@ RSpec.describe IsoDoc do
          </div>
        </body>
     OUTPUT
-    expect(xmlpp(strip_guid(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
+    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert.new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to xmlpp(presxml)
-    expect(xmlpp(IsoDoc::IHO::HtmlConvert.new({})
+      .to be_equivalent_to Xml::C14n.format(presxml)
+    expect(Xml::C14n.format(IsoDoc::IHO::HtmlConvert.new({})
       .convert("test", presxml, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to xmlpp(html)
+      .to be_equivalent_to Xml::C14n.format(html)
   end
 end

@@ -29,13 +29,13 @@ RSpec.describe Metanorma::IHO::Processor do
       #{ASCIIDOC_BLANK_HDR}
     INPUT
 
-    output = xmlpp(strip_guid(<<~"OUTPUT"))
+    output = Xml::C14n.format(strip_guid(<<~"OUTPUT"))
           #{BLANK_HDR}
       <sections/>
       </iho-standard>
     OUTPUT
 
-    expect(xmlpp(strip_guid(processor
+    expect(Xml::C14n.format(strip_guid(processor
       .input_to_isodoc(input, nil))))
       .to be_equivalent_to output
   end
@@ -56,7 +56,7 @@ RSpec.describe Metanorma::IHO::Processor do
       </iho-standard>
     INPUT
 
-    output = xmlpp(strip_guid(<<~OUTPUT))
+    output = Xml::C14n.format(strip_guid(<<~OUTPUT))
        <main class="main-section">
          <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
          <div id="H">
@@ -75,7 +75,7 @@ RSpec.describe Metanorma::IHO::Processor do
     processor.output(input, "test.xml", "test.html", :html)
 
     expect(
-      xmlpp(strip_guid(File.read("test.html", encoding: "utf-8")
+      Xml::C14n.format(strip_guid(File.read("test.html", encoding: "utf-8")
       .gsub(%r{^.*<main}m, "<main")
       .gsub(%r{</main>.*}m, "</main>"))),
     ).to be_equivalent_to output
