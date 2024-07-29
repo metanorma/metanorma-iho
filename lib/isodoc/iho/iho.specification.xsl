@@ -11585,6 +11585,17 @@
 		<xsl:copy-of select="."/>
 	</xsl:template>
 
+	<xsl:template match="*[local-name() = 'metanorma-extension']/*[local-name() = 'attachment']" mode="update_xml_step1">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			<xsl:variable name="name_filepath" select="concat($inputxml_basepath, @name)"/>
+			<xsl:variable name="file_exists" select="normalize-space(java:exists(java:java.io.File.new($name_filepath)))"/>
+			<xsl:if test="$file_exists = 'false'"> <!-- copy attachment content only if file on disk doesnt exist -->
+				<xsl:value-of select="."/>
+			</xsl:if>
+		</xsl:copy>
+	</xsl:template>
+
 	<!-- add @id, mandatory for table auto-layout algorithm -->
 	<xsl:template match="*[local-name() = 'dl' or local-name() = 'table'][not(@id)]" mode="update_xml_step1">
 		<xsl:copy>
@@ -12459,7 +12470,8 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<!-- _{filename}_attachments -->
-					<xsl:variable name="url" select="concat('url(file:///',$inputxml_basepath, '_', $inputxml_filename_prefix, '_attachments', '/', @name, ')')"/>
+					<!-- <xsl:variable name="url" select="concat('url(file:///',$inputxml_basepath, '_', $inputxml_filename_prefix, '_attachments', '/', @name, ')')"/> -->
+					<xsl:variable name="url" select="concat('url(file:///',$inputxml_basepath , @name, ')')"/>
 					<pdf:embedded-file xmlns:pdf="http://xmlgraphics.apache.org/fop/extensions/pdf" src="{$url}" filename="{@name}"/>
 				</xsl:otherwise>
 			</xsl:choose>
