@@ -65,3 +65,15 @@ termsdefs_titles:
   - Terms, definitions, symbols and abbreviated terms
 normref_titles:
   - References
+fonts_manifest:
+  Arial:
+  Calibri:
+  Cambria Math:
+  Courier New:
+  Fira Code:
+  Source Sans Pro Light:
+  Source Serif Pro:
+  Source Code Pro Light:
+  Source Han Sans:
+  Source Han Sans Normal:
+  STIX Two Math:
