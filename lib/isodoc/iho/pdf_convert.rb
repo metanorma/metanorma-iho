@@ -1,13 +1,15 @@
 require "isodoc"
+require "metanorma-generic"
+require_relative "base_convert"
 
 module IsoDoc
   module IHO
     # A {Converter} implementation that generates PDF HTML output, and a
     # document schema encapsulation of the document for validation
-    class PdfConvert < IsoDoc::XslfoPdfConvert
+    class PdfConvert < IsoDoc::Generic::PdfConvert
       def initialize(options)
-        @libdir = File.dirname(__FILE__)
         super
+        @libdir = File.dirname(__FILE__)
       end
 
       def pdf_stylesheet(docxml)
@@ -17,6 +19,9 @@ module IsoDoc
           "iho.specification.xsl"
         end
       end
+
+      include BaseConvert
+      include Init
     end
   end
 end

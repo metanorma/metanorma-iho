@@ -9,6 +9,10 @@ module IsoDoc
           super
         end
       end
+
+      def configuration
+        Metanorma::IHO.configuration
+      end
     end
   end
 end
