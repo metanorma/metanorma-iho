@@ -26,6 +26,7 @@ header: lib/isodoc/iho/html/header.html
 wordcoverpage: lib/isodoc/iho/html/word_iho_titlepage.html
 wordintropage: lib/isodoc/iho/html/word_iho_intro.html
 wordstylesheet: lib/isodoc/iho/html/wordstyle.scss
+pdf_stylesheet: lib/isodoc/iho/iho.specification.xsl
 word_bodyfont: 'Arial,sans-serif'
 word_headerfont: 'Arial,sans-serif'
 word_monospacefont: '"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
