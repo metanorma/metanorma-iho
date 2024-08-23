@@ -17,7 +17,8 @@ RSpec.describe Metanorma::IHO do
         mock_pdf
         Metanorma::Compile
           .new
-          .compile("spec/assets/xref_error.adoc", type: "iho", install_fonts: false)
+          .compile("spec/assets/xref_error.adoc", type: "iho",
+                   install_fonts: false)
       end.to(change { File.exist?("spec/assets/xref_error.err.html") }
               .from(false).to(true))
     end
@@ -32,6 +33,7 @@ RSpec.describe Metanorma::IHO do
 
       Subclause
     INPUT
-    expect(File.read("test.err.html")).to include "Missing workgroup attribute for document"
+    expect(File.read("test.err.html"))
+      .to include("Missing workgroup attribute for document")
   end
 end
