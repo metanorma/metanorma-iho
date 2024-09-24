@@ -6,6 +6,10 @@ module IsoDoc
     end
 
     class Xref < IsoDoc::Generic::Xref
+      def hiersep
+        "-"
+      end
+
       def annexlbl(cond)
         cond ? @labels["appendix"] : @labels["annex"]
       end
@@ -21,18 +25,31 @@ module IsoDoc
         @anchors[clause["id"]] =
           { label: annex_name_lbl(clause, num), type: "clause", elem: lbl,
             xref: l10n("#{lbl} #{num}"), level: 1, value: num }
-        if @klass.single_term_clause?(clause)
-          annex_names1(clause.at(ns("./references | ./terms | ./definitions")),
-                       num.to_s, 1)
-        else
-          i = Counter.new
-          clause.xpath(ns("./clause | ./references | ./terms | ./definitions"))
-            .each do |c|
-            i.increment(c)
-            annex_names1(c, "#{num}.#{i.print}", 2)
-          end
+        annex_names_recurse(clause, num)
+        annex_asset_names(clause, num, lbl)
+      end
+
+      def annex_names_recurse(clause, num)
+        @klass.single_term_clause?(clause) and
+          return annex_names1(clause.at(ns("./references | ./terms | ./definitions")),
+                              num.to_s, 1)
+        i = Counter.new
+        clause.xpath(ns("./clause | ./references | ./terms | ./definitions"))
+          .each do |c|
+          i.increment(c)
+          annex_names1(c, "#{num}.#{i.print}", 2)
         end
+      end
+
+      def annex_asset_names(clause, num, lbl)
+        @annex_prefix = lbl
         hierarchical_asset_names(clause, num)
+        @annex_prefix = nil
+      end
+
+      def anchor_struct_value(lbl, elem)
+        @annex_prefix and lbl = l10n("#{@annex_prefix} #{lbl}")
+        super
       end
 
       def clause_order_main(docxml)
@@ -104,6 +121,22 @@ module IsoDoc
         clause.xpath(ns(SUBCLAUSES)).each do |c|
           section_names1(c, i.increment(c).print, level + 1)
         end
+      end
+
+      def middle_sections
+        "//sections/clause | #{@klass.norm_ref_xpath} | " \
+          "//sections/terms | //sections/definitions | //sections/clause"
+      end
+
+      def middle_section_asset_names(doc)
+        doc.xpath(ns(middle_sections)).each do |c|
+          hierarchical_asset_names(c, @anchors[c["id"]][:label])
+        end
+      end
+
+      def preface_names(clause)
+        super
+        sequential_asset_names(clause, container: true)
       end
     end
   end
