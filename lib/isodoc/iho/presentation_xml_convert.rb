@@ -117,6 +117,10 @@ _bib)
         end
       end
 
+      def clausedelim
+        ""
+      end
+
       include Init
     end
   end

@@ -90,22 +90,22 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <foreword displayorder="2">
-          <p>
-             <xref target="N1">Introduction, Note</xref>
-             <xref target="N2">Preparatory, Note</xref>
-             <xref target="N">Section 1, Note</xref>
-             <xref target="note1">Clause 3.1, Note  1</xref>
-             <xref target="note2">Clause 3.1, Note  2</xref>
-             <xref target="AN">Appendix 1.1, Note</xref>
-             <xref target="Anote1">Appendix 1.2, Note  1</xref>
-             <xref target="Anote2">Appendix 1.2, Note  2</xref>
-             <xref target="AAN">Annex A.1, Note</xref>
-             <xref target="AAnote1">Annex A.2, Note  1</xref>
-             <xref target="AAnote2">Annex A.2, Note  2</xref>
-             <xref target="Anote3">Bibliographical Section, Note</xref>
-          </p>
-       </foreword>
+      <foreword displayorder="2">
+         <p>
+            <xref target="N1">Introduction, Note</xref>
+            <xref target="N2">Preparatory, Note</xref>
+            <xref target="N">Section 1, Note</xref>
+            <xref target="note1">Clause 3.1, Note  1</xref>
+            <xref target="note2">Clause 3.1, Note  2</xref>
+            <xref target="AN">Appendix 1.1, Note</xref>
+            <xref target="Anote1">Appendix 1.2, Note  1</xref>
+            <xref target="Anote2">Appendix 1.2, Note  2</xref>
+            <xref target="AAN">Annex A.1, Note</xref>
+            <xref target="AAnote1">Annex A.2, Note  1</xref>
+            <xref target="AAnote2">Annex A.2, Note  2</xref>
+            <xref target="Anote3">Bibliographical Section, Note</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -208,23 +208,23 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <foreword displayorder="2">
-          <p>
-             <xref target="N1">Introduction, Box</xref>
-             <xref target="N2">Preparatory, Box</xref>
-             <xref target="N3">[N3]</xref>
-             <xref target="N">Section 1, Box</xref>
-             <xref target="note1">Clause 3.1, Box  1</xref>
-             <xref target="note2">Clause 3.1, Box  2</xref>
-             <xref target="AN">Appendix 1.1, Box</xref>
-             <xref target="Anote1">Appendix 1.2, Box  1</xref>
-             <xref target="Anote2">Appendix 1.2, Box  2</xref>
-             <xref target="AAN">Annex A.1, Box</xref>
-             <xref target="AAnote1">Annex A.2, Box  1</xref>
-             <xref target="AAnote2">Annex A.2, Box  2</xref>
-             <xref target="Anote3">Bibliographical Section, Box</xref>
-          </p>
-       </foreword>
+      <foreword displayorder="2">
+         <p>
+            <xref target="N1">Introduction, Box</xref>
+            <xref target="N2">Preparatory, Box</xref>
+            <xref target="N3">[N3]</xref>
+            <xref target="N">Section 1, Box</xref>
+            <xref target="note1">Clause 3.1, Box  1</xref>
+            <xref target="note2">Clause 3.1, Box  2</xref>
+            <xref target="AN">Appendix 1.1, Box</xref>
+            <xref target="Anote1">Appendix 1.2, Box  1</xref>
+            <xref target="Anote2">Appendix 1.2, Box  2</xref>
+            <xref target="AAN">Annex A.1, Box</xref>
+            <xref target="AAnote1">Annex A.2, Box  1</xref>
+            <xref target="AAnote2">Annex A.2, Box  2</xref>
+            <xref target="Anote3">Bibliographical Section, Box</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -356,27 +356,27 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <foreword id="fwd" displayorder="2">
-          <p>
-             <xref target="N1">Introduction, Figure 1</xref>
-             <xref target="N2">Preparatory, Figure (??)</xref>
-             <xref target="N">Figure 1-1</xref>
-             <xref target="note1">Figure 3-1</xref>
-             <xref target="note3">Figure 3-2</xref>
-             <xref target="note4">Figure 3-3</xref>
-             <xref target="note2">Figure 3-4</xref>
-             <xref target="note51">[note51]</xref>
-             <xref target="AN">Figure Appendix 1-1</xref>
-             <xref target="Anote1">Figure Appendix (??)</xref>
-             <xref target="Anote2">Figure Appendix 1-2</xref>
-             <xref target="Anote3">Figure Appendix 1-3</xref>
-             <xref target="AAN">Figure Annex A-1</xref>
-             <xref target="AAnote1">Figure Annex (??)</xref>
-             <xref target="AAnote2">Figure Annex A-2</xref>
-             <xref target="AAnote3">Figure Annex A-3</xref>
-             <xref target="Anote4">Bibliographical Section, Figure 1</xref>
-          </p>
-       </foreword>
+      <foreword id="fwd" displayorder="2">
+         <p>
+            <xref target="N1">Introduction, Figure 1</xref>
+            <xref target="N2">Preparatory, Figure (??)</xref>
+            <xref target="N">Figure 1-1</xref>
+            <xref target="note1">Figure 3-1</xref>
+            <xref target="note3">Figure 3-2</xref>
+            <xref target="note4">Figure 3-3</xref>
+            <xref target="note2">Figure 3-4</xref>
+            <xref target="note51">[note51]</xref>
+            <xref target="AN">Figure Appendix 1-1</xref>
+            <xref target="Anote1">Figure Appendix (??)</xref>
+            <xref target="Anote2">Figure Appendix 1-2</xref>
+            <xref target="Anote3">Figure Appendix 1-3</xref>
+            <xref target="AAN">Figure Annex A-1</xref>
+            <xref target="AAnote1">Figure Annex (??)</xref>
+            <xref target="AAnote2">Figure Annex A-2</xref>
+            <xref target="AAnote3">Figure Annex A-3</xref>
+            <xref target="Anote4">Bibliographical Section, Figure 1</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -508,27 +508,27 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <foreword id="fwd" displayorder="2">
-          <p>
-             <xref target="N1">Introduction, Figure 1</xref>
-             <xref target="N2">Preparatory, Figure (??)</xref>
-             <xref target="N">Diagram 1-1</xref>
-             <xref target="note1">Plate 3-1</xref>
-             <xref target="note3">Figure 3-1</xref>
-             <xref target="note4">Figure 3-2</xref>
-             <xref target="note2">Diagram 3-1</xref>
-             <xref target="note5">Figure 3-3</xref>
-             <xref target="AN">Diagram Appendix 1-1</xref>
-             <xref target="Anote1">Plate Appendix (??)</xref>
-             <xref target="Anote2">Figure Appendix 1-1</xref>
-             <xref target="Anote3">Figure Appendix 1-2</xref>
-             <xref target="AAN">Diagram Annex A-1</xref>
-             <xref target="AAnote1">Plate Annex (??)</xref>
-             <xref target="AAnote2">Figure Annex A-1</xref>
-             <xref target="AAnote3">Figure Annex A-2</xref>
-             <xref target="Anote4">Bibliographical Section, Figure 1</xref>
-          </p>
-       </foreword>
+      <foreword id="fwd" displayorder="2">
+         <p>
+            <xref target="N1">Introduction, Figure 1</xref>
+            <xref target="N2">Preparatory, Figure (??)</xref>
+            <xref target="N">Diagram 1-1</xref>
+            <xref target="note1">Plate 3-1</xref>
+            <xref target="note3">Figure 3-1</xref>
+            <xref target="note4">Figure 3-2</xref>
+            <xref target="note2">Diagram 3-1</xref>
+            <xref target="note5">Figure 3-3</xref>
+            <xref target="AN">Diagram Appendix 1-1</xref>
+            <xref target="Anote1">Plate Appendix (??)</xref>
+            <xref target="Anote2">Figure Appendix 1-1</xref>
+            <xref target="Anote3">Figure Appendix 1-2</xref>
+            <xref target="AAN">Diagram Annex A-1</xref>
+            <xref target="AAnote1">Plate Annex (??)</xref>
+            <xref target="AAnote2">Figure Annex A-1</xref>
+            <xref target="AAnote3">Figure Annex A-2</xref>
+            <xref target="Anote4">Bibliographical Section, Figure 1</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -625,22 +625,22 @@ RSpec.describe IsoDoc do
         </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <foreword id="fwd" displayorder="2">
-          <p>
-             <xref target="N">Figure 3-1</xref>
-             <xref target="note1">Figure 3-1-1</xref>
-             <xref target="note2">Figure 3-1-2</xref>
-             <xref target="AN">Figure Appendix 1-1</xref>
-             <xref target="Anote1">Figure Appendix 1-1-1</xref>
-             <xref target="Anote2">Figure Appendix 1-1-2</xref>
-             <xref target="AAN">Figure Annex A-1</xref>
-             <xref target="AAnote1">Figure Annex A-1-1</xref>
-             <xref target="AAnote2">Figure Annex A-1-2</xref>
-             <xref target="AN1">Bibliographical Section, Figure 1</xref>
-             <xref target="Anote11">Bibliographical Section, Figure 1-1</xref>
-             <xref target="Anote21">Bibliographical Section, Figure 1-2</xref>
-          </p>
-       </foreword>
+      <foreword id="fwd" displayorder="2">
+         <p>
+            <xref target="N">Figure 3-1</xref>
+            <xref target="note1">Figure 3-1-1</xref>
+            <xref target="note2">Figure 3-1-2</xref>
+            <xref target="AN">Figure Appendix 1-1</xref>
+            <xref target="Anote1">Figure Appendix 1-1-1</xref>
+            <xref target="Anote2">Figure Appendix 1-1-2</xref>
+            <xref target="AAN">Figure Annex A-1</xref>
+            <xref target="AAnote1">Figure Annex A-1-1</xref>
+            <xref target="AAnote2">Figure Annex A-1-2</xref>
+            <xref target="AN1">Bibliographical Section, Figure 1</xref>
+            <xref target="Anote11">Bibliographical Section, Figure 1-1</xref>
+            <xref target="Anote21">Bibliographical Section, Figure 1-2</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -739,22 +739,22 @@ RSpec.describe IsoDoc do
     INPUT
 
     output = <<~OUTPUT
-       <foreword displayorder="2">
-          <p>
-             <xref target="N1">Introduction, Example</xref>
-             <xref target="N2">Preparatory, Example (??)</xref>
-             <xref target="N">Section 1, Example</xref>
-             <xref target="note1">Clause 3.1, Example  1</xref>
-             <xref target="note2">Clause 3.1, Example (??)</xref>
-             <xref target="AN">Appendix 1.1, Example</xref>
-             <xref target="Anote1">Appendix 1.2, Example (??)</xref>
-             <xref target="Anote2">Appendix 1.2, Example  1</xref>
-             <xref target="AAN">Annex A.1, Example</xref>
-             <xref target="AAnote1">Annex A.2, Example (??)</xref>
-             <xref target="AAnote2">Annex A.2, Example  1</xref>
-             <xref target="Anote3">Bibliographical Section, Example</xref>
-          </p>
-       </foreword>
+      <foreword displayorder="2">
+         <p>
+            <xref target="N1">Introduction, Example</xref>
+            <xref target="N2">Preparatory, Example (??)</xref>
+            <xref target="N">Section 1, Example</xref>
+            <xref target="note1">Clause 3.1, Example  1</xref>
+            <xref target="note2">Clause 3.1, Example (??)</xref>
+            <xref target="AN">Appendix 1.1, Example</xref>
+            <xref target="Anote1">Appendix 1.2, Example (??)</xref>
+            <xref target="Anote2">Appendix 1.2, Example  1</xref>
+            <xref target="AAN">Annex A.1, Example</xref>
+            <xref target="AAnote1">Annex A.2, Example (??)</xref>
+            <xref target="AAnote2">Annex A.2, Example  1</xref>
+            <xref target="Anote3">Bibliographical Section, Example</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -764,7 +764,7 @@ RSpec.describe IsoDoc do
 
     output = <<~OUTPUT
       <clause id='widgets1'>
-         <title>3.1.</title>
+         <title>3.1</title>
          <example id='note1'>
            <name>EXAMPLE 1</name>
            <p>Hello</p>
@@ -999,24 +999,24 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-       <foreword displayorder="2">
-          <p>
-             <xref target="N1">Introduction, Requirement 1</xref>
-             <xref target="N2">Preparatory, Requirement (??)</xref>
-             <xref target="N">Requirement 1-1</xref>
-             <xref target="N3">provision 1-1</xref>
-             <xref target="note1">Requirement 3-1</xref>
-             <xref target="note2">Requirement 3-2</xref>
-             <xref target="note3">provision 3-1</xref>
-             <xref target="AN">Requirement Appendix 1-1</xref>
-             <xref target="Anote1">Requirement Appendix (??)</xref>
-             <xref target="Anote2">Requirement Appendix 1-2</xref>
-             <xref target="AAN">Requirement Annex A-1</xref>
-             <xref target="AAnote1">Requirement Annex (??)</xref>
-             <xref target="AAnote2">Requirement Annex A-2</xref>
-             <xref target="Anote3">Bibliographical Section, Requirement 1</xref>
-          </p>
-       </foreword>
+      <foreword displayorder="2">
+         <p>
+            <xref target="N1">Introduction, Requirement 1</xref>
+            <xref target="N2">Preparatory, Requirement (??)</xref>
+            <xref target="N">Requirement 1-1</xref>
+            <xref target="N3">provision 1-1</xref>
+            <xref target="note1">Requirement 3-1</xref>
+            <xref target="note2">Requirement 3-2</xref>
+            <xref target="note3">provision 3-1</xref>
+            <xref target="AN">Requirement Appendix 1-1</xref>
+            <xref target="Anote1">Requirement Appendix (??)</xref>
+            <xref target="Anote2">Requirement Appendix 1-2</xref>
+            <xref target="AAN">Requirement Annex A-1</xref>
+            <xref target="AAnote1">Requirement Annex (??)</xref>
+            <xref target="AAnote2">Requirement Annex A-2</xref>
+            <xref target="Anote3">Bibliographical Section, Requirement 1</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -1227,22 +1227,22 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-        <foreword displayorder="2">
-           <p>
-              <xref target="N1">Introduction, Permission 1</xref>
-              <xref target="N2">Preparatory, Permission (??)</xref>
-              <xref target="N">Permission 1-1</xref>
-              <xref target="note1">Permission 3-1</xref>
-              <xref target="note2">Permission 3-2</xref>
-              <xref target="AN">Permission Appendix 1-1</xref>
-              <xref target="Anote1">Permission Appendix (??)</xref>
-              <xref target="Anote2">Permission Appendix 1-2</xref>
-              <xref target="AAN">Permission Annex A-1</xref>
-              <xref target="AAnote1">Permission Annex (??)</xref>
-              <xref target="AAnote2">Permission Annex A-2</xref>
-              <xref target="Anote3">Bibliographical Section, Permission 1</xref>
-           </p>
-        </foreword>
+      <foreword displayorder="2">
+         <p>
+            <xref target="N1">Introduction, Permission 1</xref>
+            <xref target="N2">Preparatory, Permission (??)</xref>
+            <xref target="N">Permission 1-1</xref>
+            <xref target="note1">Permission 3-1</xref>
+            <xref target="note2">Permission 3-2</xref>
+            <xref target="AN">Permission Appendix 1-1</xref>
+            <xref target="Anote1">Permission Appendix (??)</xref>
+            <xref target="Anote2">Permission Appendix 1-2</xref>
+            <xref target="AAN">Permission Annex A-1</xref>
+            <xref target="AAnote1">Permission Annex (??)</xref>
+            <xref target="AAnote2">Permission Annex A-2</xref>
+            <xref target="Anote3">Bibliographical Section, Permission 1</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -1333,30 +1333,30 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-        <foreword displayorder="2">
-           <p>
-              <xref target="N1">Permission 1-1</xref>
-              <xref target="N2">Permission 1-1-1</xref>
-              <xref target="N">Permission 1-1-1-1</xref>
-              <xref target="Q1">Requirement 1-1-1</xref>
-              <xref target="R1">Recommendation 1-1-1</xref>
-              <xref target="AN1">Permission Appendix 1-1</xref>
-              <xref target="AN2">Permission Appendix 1-1-1</xref>
-              <xref target="AN">Permission Appendix 1-1-1-1</xref>
-              <xref target="AQ1">Requirement Appendix 1-1-1</xref>
-              <xref target="AR1">Recommendation Appendix 1-1-1</xref>
-              <xref target="AAN1">Permission Annex A-1</xref>
-              <xref target="AAN2">Permission Annex A-1-1</xref>
-              <xref target="AAN">Permission Annex A-1-1-1</xref>
-              <xref target="AAQ1">Requirement Annex A-1-1</xref>
-              <xref target="AAR1">Recommendation Annex A-1-1</xref>
-              <xref target="BN1">Bibliographical Section, Permission 1</xref>
-              <xref target="BN2">Bibliographical Section, Permission 1-1</xref>
-              <xref target="BN">Bibliographical Section, Permission 1-1-1</xref>
-              <xref target="BQ1">Bibliographical Section, Requirement 1-1</xref>
-              <xref target="BR1">Bibliographical Section, Recommendation 1-1</xref>
-           </p>
-        </foreword>
+      <foreword displayorder="2">
+         <p>
+            <xref target="N1">Permission 1-1</xref>
+            <xref target="N2">Permission 1-1-1</xref>
+            <xref target="N">Permission 1-1-1-1</xref>
+            <xref target="Q1">Requirement 1-1-1</xref>
+            <xref target="R1">Recommendation 1-1-1</xref>
+            <xref target="AN1">Permission Appendix 1-1</xref>
+            <xref target="AN2">Permission Appendix 1-1-1</xref>
+            <xref target="AN">Permission Appendix 1-1-1-1</xref>
+            <xref target="AQ1">Requirement Appendix 1-1-1</xref>
+            <xref target="AR1">Recommendation Appendix 1-1-1</xref>
+            <xref target="AAN1">Permission Annex A-1</xref>
+            <xref target="AAN2">Permission Annex A-1-1</xref>
+            <xref target="AAN">Permission Annex A-1-1-1</xref>
+            <xref target="AAQ1">Requirement Annex A-1-1</xref>
+            <xref target="AAR1">Recommendation Annex A-1-1</xref>
+            <xref target="BN1">Bibliographical Section, Permission 1</xref>
+            <xref target="BN2">Bibliographical Section, Permission 1-1</xref>
+            <xref target="BN">Bibliographical Section, Permission 1-1-1</xref>
+            <xref target="BQ1">Bibliographical Section, Requirement 1-1</xref>
+            <xref target="BR1">Bibliographical Section, Recommendation 1-1</xref>
+         </p>
+      </foreword>
     OUTPUT
     expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
       .new(presxml_options)
@@ -1697,43 +1697,43 @@ RSpec.describe IsoDoc do
              <clause id="C1" inline-header="false" obligation="informative">Text</clause>
              </introduction></preface><sections>
              <clause id="D" obligation="normative" type="scope" displayorder="4">
-               <title depth="1">1.<tab/>Scope</title>
+               <title depth="1">1<tab/>Scope</title>
                <p id="E">Text</p>
              </clause>
-             <terms id="H" obligation="normative" displayorder="6"><title depth="1">3.<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
-               <title depth="2">3.1.<tab/>Normal Terms</title>
-               <term id="J"><name>3.1.1.</name>
+             <terms id="H" obligation="normative" displayorder="6"><title depth="1">3<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
+               <title depth="2">3.1<tab/>Normal Terms</title>
+               <term id="J"><name>3.1.1</name>
                <preferred>Term2</preferred>
              </term>
              </terms>
-             <definitions id="K"><title>3.2.</title>
+             <definitions id="K"><title>3.2</title>
                <dl>
                <dt>Symbol</dt>
                <dd>Definition</dd>
                </dl>
              </definitions>
              </terms>
-             <definitions id="L" displayorder="7"><title>4.</title>
+             <definitions id="L" displayorder="7"><title>4</title>
                <dl>
                <dt>Symbol</dt>
                <dd>Definition</dd>
                </dl>
              </definitions>
-             <clause id="M" inline-header="false" obligation="normative" displayorder="8"><title depth="1">5.<tab/>Klause 4</title><clause id="N" inline-header="false" obligation="normative">
-              <title depth="2">5.1.<tab/>Introduction</title>
+             <clause id="M" inline-header="false" obligation="normative" displayorder="8"><title depth="1">5<tab/>Klause 4</title><clause id="N" inline-header="false" obligation="normative">
+              <title depth="2">5.1<tab/>Introduction</title>
              </clause>
              <clause id="O" inline-header="false" obligation="normative">
-               <title depth="2">5.2.<tab/>Klause 4.2</title>
+               <title depth="2">5.2<tab/>Klause 4.2</title>
              </clause></clause>
              <references id="R" obligation="informative" normative="true" displayorder="5">
-               <title depth="1">2.<tab/>Normative References</title>
+               <title depth="1">2<tab/>Normative References</title>
              </references>
             </sections><annex id="P" inline-header="false" obligation="normative" displayorder="9">
                <title><strong>Annex A</strong><br/><strong>Annex</strong></title>
                <clause id="Q" inline-header="false" obligation="normative">
-               <title depth="2">A.1.<tab/>Annex A.1</title>
+               <title depth="2">A.1<tab/>Annex A.1</title>
                <clause id="Q1" inline-header="false" obligation="normative">
-               <title depth="3">A.1.1.<tab/>Annex A.1a</title>
+               <title depth="3">A.1.1<tab/>Annex A.1a</title>
                </clause>
              </clause>
                     <appendix id="Q2" inline-header="false" obligation="normative">
@@ -1743,9 +1743,9 @@ RSpec.describe IsoDoc do
       <annex id="PP" inline-header="false" obligation="informative" displayorder="10">
                <title><strong>Appendix 1</strong><br/><strong>Annex</strong></title>
                <clause id="QQ" inline-header="false" obligation="normative">
-               <title depth="2">1.1.<tab/>Annex A.1</title>
+               <title depth="2">1.1<tab/>Annex A.1</title>
                <clause id="QQ1" inline-header="false" obligation="normative">
-               <title depth="3">1.1.1.<tab/>Annex A.1a</title>
+               <title depth="3">1.1.1<tab/>Annex A.1a</title>
                </clause>
              </clause>
                     <appendix id="QQ2" inline-header="false" obligation="normative">

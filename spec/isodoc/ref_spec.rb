@@ -169,7 +169,7 @@ RSpec.describe IsoDoc do
          <sections>
            <references id="_" obligation="informative" normative="true" displayorder="3">
              <title depth="1">
-               1.
+               1
                <tab/>
                Normative References
              </title>
@@ -470,7 +470,7 @@ RSpec.describe IsoDoc do
            </div>
            <div>
              <h1>
-               1.
+               1
                 
                Normative References
              </h1>

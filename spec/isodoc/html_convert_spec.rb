@@ -203,43 +203,43 @@ RSpec.describe IsoDoc::IHO do
          </clause>
          </introduction></preface><sections>
          <clause id="D" obligation="normative" type="scope" displayorder="5">
-           <title depth="1">1.<tab/>Scope</title>
+           <title depth="1">1<tab/>Scope</title>
            <p id="E">Text</p>
          </clause>
-         <clause id="H" obligation="normative" displayorder="7"><title depth="1">3.<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
-           <title depth="2">3.1.<tab/>Normal Terms</title>
-           <term id="J"><name>3.1.1.</name>
+         <clause id="H" obligation="normative" displayorder="7"><title depth="1">3<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
+           <title depth="2">3.1<tab/>Normal Terms</title>
+           <term id="J"><name>3.1.1</name>
            <preferred>Term2</preferred>
          </term>
          </terms>
-         <definitions id="K"><title>3.2.</title>
+         <definitions id="K"><title>3.2</title>
            <dl>
            <dt>Symbol</dt>
            <dd>Definition</dd>
            </dl>
          </definitions>
          </clause>
-         <definitions id="L" displayorder="8"><title>4.</title>
+         <definitions id="L" displayorder="8"><title>4</title>
            <dl>
            <dt>Symbol</dt>
            <dd>Definition</dd>
            </dl>
          </definitions>
-         <clause id="M" inline-header="false" obligation="normative" displayorder="9"><title depth="1">5.<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
-           <title depth="2">5.1.<tab/>Introduction</title>
+         <clause id="M" inline-header="false" obligation="normative" displayorder="9"><title depth="1">5<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+           <title depth="2">5.1<tab/>Introduction</title>
          </clause>
          <clause id="O" inline-header="false" obligation="normative">
-           <title depth="2">5.2.<tab/>Clause 4.2</title>
+           <title depth="2">5.2<tab/>Clause 4.2</title>
          </clause></clause>
          <references id="R" obligation="informative" normative="true" displayorder="6">
-           <title depth="1">2.<tab/>Normative References</title>
+           <title depth="1">2<tab/>Normative References</title>
          </references>
          </sections><annex id="P" inline-header="false" obligation="normative" displayorder="10">
            <title><strong>Annex A</strong><br/><strong>Annex</strong></title>
            <clause id="Q" inline-header="false" obligation="normative">
-           <title depth="2">A.1.<tab/>Annex A.1</title>
+           <title depth="2">A.1<tab/>Annex A.1</title>
            <clause id="Q1" inline-header="false" obligation="normative">
-           <title depth="3">A.1.1.<tab/>Annex A.1a</title>
+           <title depth="3">A.1.1<tab/>Annex A.1a</title>
            </clause>
          </clause>
          </annex><bibliography>
@@ -327,13 +327,13 @@ RSpec.describe IsoDoc::IHO do
         <sections>
           <clause id="A" displayorder="2">
             <title depth="1">
-              1.
+              1
               <tab/>
               Overview
             </title>
             <clause id="D" obligation="normative" type="scope">
               <title depth="2">
-                1.1.
+                1.1
                 <tab/>
                 Scope
               </title>
@@ -341,30 +341,30 @@ RSpec.describe IsoDoc::IHO do
             </clause>
             <references id="R" obligation="informative" normative="true">
               <title depth="2">
-                1.2.
+                1.2
                 <tab/>
                 Normative References
               </title>
             </references>
             <clause id="H" obligation="normative">
               <title depth="2">
-                1.3.
+                1.3
                 <tab/>
                 Terms, definitions, symbols and abbreviated terms
               </title>
               <terms id="I" obligation="normative">
                 <title depth="3">
-                  1.3.1.
+                  1.3.1
                   <tab/>
                   Normal Terms
                 </title>
                 <term id="J">
-                  <name>1.3.1.1.</name>
+                  <name>1.3.1.1</name>
                   <preferred>Term2</preferred>
                 </term>
               </terms>
               <definitions id="K">
-                <title>1.3.2.</title>
+                <title>1.3.2</title>
                 <dl>
                   <dt>Symbol</dt>
                   <dd>Definition</dd>
@@ -372,7 +372,7 @@ RSpec.describe IsoDoc::IHO do
               </definitions>
             </clause>
             <definitions id="L">
-              <title>1.4.</title>
+              <title>1.4</title>
               <dl>
                 <dt>Symbol</dt>
                 <dd>Definition</dd>
@@ -380,13 +380,13 @@ RSpec.describe IsoDoc::IHO do
             </definitions>
             <clause id="M" inline-header="false" obligation="normative">
               <title depth="2">
-                1.5.
+                1.5
                 <tab/>
                 Clause 4
               </title>
               <clause id="N" inline-header="false" obligation="normative">
                 <title depth="3">
-                  1.5.1.
+                  1.5.1
                   <tab/>
                   Introduction
                 </title>
@@ -394,7 +394,7 @@ RSpec.describe IsoDoc::IHO do
             </clause>
             <clause id="O" inline-header="false" obligation="normative">
               <title depth="2">
-                1.6.
+                1.6
                 <tab/>
                 Clause 4.2
               </title>
@@ -409,13 +409,13 @@ RSpec.describe IsoDoc::IHO do
           </title>
           <clause id="Q" inline-header="false" obligation="normative">
             <title depth="2">
-              A.1.
+              A.1
               <tab/>
               Annex A.1
             </title>
             <clause id="Q1" inline-header="false" obligation="normative">
               <title depth="3">
-                A.1.1.
+                A.1.1
                 <tab/>
                 Annex A.1a
               </title>
