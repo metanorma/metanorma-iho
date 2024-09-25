@@ -94,9 +94,9 @@ RSpec.describe IsoDoc do
           <p>
              <xref target="N1">Introduction, Note</xref>
              <xref target="N2">Preparatory, Note</xref>
-             <xref target="N">Chapter 1, Note</xref>
-             <xref target="note1">Section 3.1, Note  1</xref>
-             <xref target="note2">Section 3.1, Note  2</xref>
+             <xref target="N">Section 1, Note</xref>
+             <xref target="note1">Clause 3.1, Note  1</xref>
+             <xref target="note2">Clause 3.1, Note  2</xref>
              <xref target="AN">Appendix 1.1, Note</xref>
              <xref target="Anote1">Appendix 1.2, Note  1</xref>
              <xref target="Anote2">Appendix 1.2, Note  2</xref>
@@ -213,9 +213,9 @@ RSpec.describe IsoDoc do
              <xref target="N1">Introduction, Box</xref>
              <xref target="N2">Preparatory, Box</xref>
              <xref target="N3">[N3]</xref>
-             <xref target="N">Chapter 1, Box</xref>
-             <xref target="note1">Section 3.1, Box  1</xref>
-             <xref target="note2">Section 3.1, Box  2</xref>
+             <xref target="N">Section 1, Box</xref>
+             <xref target="note1">Clause 3.1, Box  1</xref>
+             <xref target="note2">Clause 3.1, Box  2</xref>
              <xref target="AN">Appendix 1.1, Box</xref>
              <xref target="Anote1">Appendix 1.2, Box  1</xref>
              <xref target="Anote2">Appendix 1.2, Box  2</xref>
@@ -743,9 +743,9 @@ RSpec.describe IsoDoc do
           <p>
              <xref target="N1">Introduction, Example</xref>
              <xref target="N2">Preparatory, Example (??)</xref>
-             <xref target="N">Chapter 1, Example</xref>
-             <xref target="note1">Section 3.1, Example  1</xref>
-             <xref target="note2">Section 3.1, Example (??)</xref>
+             <xref target="N">Section 1, Example</xref>
+             <xref target="note1">Clause 3.1, Example  1</xref>
+             <xref target="note2">Clause 3.1, Example (??)</xref>
              <xref target="AN">Appendix 1.1, Example</xref>
              <xref target="Anote1">Appendix 1.2, Example (??)</xref>
              <xref target="Anote2">Appendix 1.2, Example  1</xref>
@@ -1619,11 +1619,11 @@ RSpec.describe IsoDoc do
                <dd>Definition</dd>
                </dl>
              </definitions>
-             <clause id="M" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+             <clause id="M" inline-header="false" obligation="normative"><title>Klause 4</title><clause id="N" inline-header="false" obligation="normative">
                <title>Introduction</title>
              </clause>
              <clause id="O" inline-header="false" obligation="normative">
-               <title>Clause 4.2</title>
+               <title>Klause 4.2</title>
              </clause></clause>
             </sections><annex id="P" inline-header="false" obligation="normative">
                <title>Annex</title>
@@ -1671,15 +1671,15 @@ RSpec.describe IsoDoc do
                <p id="A">This is a preamble
                <xref target="C">Introduction Subsection</xref>
                <xref target="C1">Introduction, 2</xref>
-               <xref target="D">Chapter 1</xref>
-               <xref target="H">Chapter 3</xref>
-               <xref target="I">Section 3.1</xref>
-               <xref target="J">Section 3.1.1</xref>
-               <xref target="K">Section 3.2</xref>
-               <xref target="L">Chapter 4</xref>
-               <xref target="M">Chapter 5</xref>
-               <xref target="N">Section 5.1</xref>
-               <xref target="O">Section 5.2</xref>
+               <xref target="D">Section 1</xref>
+               <xref target="H">Section 3</xref>
+               <xref target="I">Clause 3.1</xref>
+               <xref target="J">Clause 3.1.1</xref>
+               <xref target="K">Clause 3.2</xref>
+               <xref target="L">Section 4</xref>
+               <xref target="M">Section 5</xref>
+               <xref target="N">Clause 5.1</xref>
+               <xref target="O">Clause 5.2</xref>
                <xref target="P">Annex A</xref>
                <xref target="Q">Annex A.1</xref>
                <xref target="Q1">Annex A.1.1</xref>
@@ -1688,7 +1688,7 @@ RSpec.describe IsoDoc do
                <xref target="QQ">Appendix 1.1</xref>
                <xref target="QQ1">Appendix 1.1.1</xref>
                <xref target="QQ2">Appendix 1, Appendix 1</xref>
-               <xref target="R">Chapter 2</xref>
+               <xref target="R">Section 2</xref>
                </p>
              </foreword>
               <introduction id="B" obligation="informative" displayorder="3"><title>Introduction</title><clause id="C" inline-header="false" obligation="informative">
@@ -1719,11 +1719,11 @@ RSpec.describe IsoDoc do
                <dd>Definition</dd>
                </dl>
              </definitions>
-             <clause id="M" inline-header="false" obligation="normative" displayorder="8"><title depth="1">5.<tab/>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+             <clause id="M" inline-header="false" obligation="normative" displayorder="8"><title depth="1">5.<tab/>Klause 4</title><clause id="N" inline-header="false" obligation="normative">
               <title depth="2">5.1.<tab/>Introduction</title>
              </clause>
              <clause id="O" inline-header="false" obligation="normative">
-               <title depth="2">5.2.<tab/>Clause 4.2</title>
+               <title depth="2">5.2.<tab/>Klause 4.2</title>
              </clause></clause>
              <references id="R" obligation="informative" normative="true" displayorder="5">
                <title depth="1">2.<tab/>Normative References</title>
