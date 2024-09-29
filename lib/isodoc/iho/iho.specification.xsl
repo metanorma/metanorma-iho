@@ -4081,6 +4081,7 @@
 
 			<fo:block role="SKIP">
 				<xsl:apply-templates/>
+				<xsl:if test="$isGenerateTableIF = 'false' and count(node()) = 0"> </xsl:if>
 			</fo:block>
 		</fo:table-cell>
 	</xsl:template> <!-- cell in table header row - 'th' -->
@@ -4143,6 +4144,8 @@
 				<xsl:apply-templates/>
 
 				<xsl:if test="$isGenerateTableIF = 'true'"> <fo:inline id="{@id}_end">end</fo:inline></xsl:if> <!-- to determine width of text --> <!-- <xsl:value-of select="$hair_space"/> -->
+
+				<xsl:if test="$isGenerateTableIF = 'false' and count(node()) = 0"> </xsl:if>
 
 			</fo:block>
 		</fo:table-cell>
@@ -7060,6 +7063,9 @@
 					<xsl:call-template name="insert_basic_link">
 						<xsl:with-param name="element">
 							<fo:basic-link external-destination="{$target}" fox:alt-text="{$target}">
+								<xsl:if test="$isLinkToEmbeddedFile = 'true'">
+									<xsl:attribute name="role">Annot</xsl:attribute>
+								</xsl:if>
 								<xsl:choose>
 									<xsl:when test="normalize-space(.) = ''">
 										<xsl:call-template name="add-zero-spaces-link-java">
@@ -12648,6 +12654,12 @@
 	<!-- Get or calculate depth of the element -->
 	<xsl:template name="getLevel">
 		<xsl:param name="depth"/>
+		<!-- <xsl:message>
+			<xsl:choose>
+				<xsl:when test="local-name() = 'title'">title=<xsl:value-of select="."/></xsl:when>
+				<xsl:when test="local-name() = 'clause'">clause/title=<xsl:value-of select="*[local-name() = 'title']"/></xsl:when>
+			</xsl:choose>
+		</xsl:message> -->
 		<xsl:choose>
 			<xsl:when test="normalize-space(@depth) != ''">
 				<xsl:value-of select="@depth"/>
@@ -12668,14 +12680,44 @@
 						<xsl:when test="ancestor::*[local-name() = 'preface']">
 							<xsl:value-of select="$level_total - 2"/>
 						</xsl:when>
+						<xsl:when test="ancestor::*[local-name() = 'sections'] and self::*[local-name() = 'title']">
+							<xsl:variable name="upper_clause_depth" select="normalize-space(ancestor::*[local-name() = 'clause'][2]/*[local-name() = 'title']/@depth)"/>
+							<xsl:choose>
+								<xsl:when test="string(number($upper_clause_depth)) != 'NaN'">
+									<xsl:value-of select="number($upper_clause_depth + 1)"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="$level_total - 2"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:when>
 						<xsl:when test="ancestor::*[local-name() = 'sections']">
-							<xsl:value-of select="$level_total - 1"/>
+							<xsl:variable name="upper_clause_depth" select="normalize-space(ancestor::*[local-name() = 'clause'][1]/*[local-name() = 'title']/@depth)"/>
+							<xsl:choose>
+								<xsl:when test="string(number($upper_clause_depth)) != 'NaN'">
+									<xsl:value-of select="number($upper_clause_depth + 1)"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="$level_total - 1"/>
+								</xsl:otherwise>
+							</xsl:choose>
 						</xsl:when>
 						<xsl:when test="ancestor::*[local-name() = 'bibliography']">
 							<xsl:value-of select="$level_total - 1"/>
 						</xsl:when>
 						<xsl:when test="parent::*[local-name() = 'annex']">
 							<xsl:value-of select="$level_total - 1"/>
+						</xsl:when>
+						<xsl:when test="ancestor::*[local-name() = 'annex'] and self::*[local-name() = 'title']">
+							<xsl:variable name="upper_clause_depth" select="normalize-space(ancestor::*[local-name() = 'clause'][2]/*[local-name() = 'title']/@depth)"/>
+							<xsl:choose>
+								<xsl:when test="string(number($upper_clause_depth)) != 'NaN'">
+									<xsl:value-of select="number($upper_clause_depth + 1)"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="$level_total - 1"/>
+								</xsl:otherwise>
+							</xsl:choose>
 						</xsl:when>
 						<xsl:when test="ancestor::*[local-name() = 'annex']">
 							<xsl:value-of select="$level_total"/>
@@ -13334,6 +13376,20 @@
 				<xsl:text>&gt;</xsl:text>
 			</fo:block>
 		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="@*|node()" mode="set_table_role_skip">
+		<xsl:copy>
+			<xsl:apply-templates select="@*|node()" mode="set_table_role_skip"/>
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="*[starts-with(local-name(), 'table')]" mode="set_table_role_skip">
+		<xsl:copy>
+			<xsl:apply-templates select="@*" mode="set_table_role_skip"/>
+			<xsl:attribute name="role">SKIP</xsl:attribute>
+			<xsl:apply-templates select="node()" mode="set_table_role_skip"/>
+		</xsl:copy>
 	</xsl:template>
 
 </xsl:stylesheet>
