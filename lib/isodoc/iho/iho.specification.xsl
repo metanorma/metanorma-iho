@@ -4218,7 +4218,8 @@
 			</xsl:choose>
 		</xsl:variable>
 		<xsl:variable name="current_fn_number_text">
-			<xsl:value-of select="$current_fn_number"/>
+
+					<xsl:value-of select="$current_fn_number"/>
 
 		</xsl:variable>
 
@@ -5543,9 +5544,19 @@
 		</fo:inline>
 	</xsl:template>
 
-	<xsl:template match="text()[ancestor::*[local-name()='smallcap']]">
+	<xsl:template match="text()[ancestor::*[local-name()='smallcap']]" name="smallcaps">
+		<xsl:param name="txt"/>
 		<!-- <xsl:variable name="text" select="normalize-space(.)"/> --> <!-- https://github.com/metanorma/metanorma-iso/issues/1115 -->
-		<xsl:variable name="text" select="."/>
+		<xsl:variable name="text">
+			<xsl:choose>
+				<xsl:when test="$txt != ''">
+					<xsl:value-of select="$txt"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="."/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
 		<xsl:variable name="ratio_">
 			0.75
 		</xsl:variable>
@@ -9645,12 +9656,14 @@
 
 					<xsl:when test="contains(normalize-space($fo_element), 'list')">
 
-						<xsl:variable name="provisional_distance_between_starts">
+						<xsl:variable name="provisional_distance_between_starts_">
 							7
 						</xsl:variable>
-						<xsl:variable name="indent">
+						<xsl:variable name="provisional_distance_between_starts" select="normalize-space($provisional_distance_between_starts_)"/>
+						<xsl:variable name="indent_">
 							0
 						</xsl:variable>
+						<xsl:variable name="indent" select="normalize-space($indent_)"/>
 
 						<fo:list-block provisional-distance-between-starts="{$provisional_distance_between_starts}mm">
 							<fo:list-item>
@@ -10373,13 +10386,16 @@
 			</xsl:when>
 			<xsl:when test="local-name(..) = 'ol' and @label"> <!-- for ordered lists 'ol', and if there is @label, for instance label="1.1.2" -->
 
-				<xsl:variable name="label">
+				<xsl:variable name="type" select="../@type"/>
 
-					<xsl:variable name="type" select="../@type"/>
+				<xsl:variable name="label">
 
 					<xsl:variable name="style_prefix_">
 						<xsl:if test="$type = 'roman'">
 							 <!-- Example: (i) -->
+						</xsl:if>
+						<xsl:if test="$type = 'alphabet'">
+
 						</xsl:if>
 					</xsl:variable>
 					<xsl:variable name="style_prefix" select="normalize-space($style_prefix_)"/>
@@ -10406,13 +10422,15 @@
 					<xsl:if test="$style_prefix != '' and not(starts-with(@label, $style_prefix))">
 						<xsl:value-of select="$style_prefix"/>
 					</xsl:if>
+
 					<xsl:value-of select="@label"/>
+
 					<xsl:if test="not(java:endsWith(java:java.lang.String.new(@label),$style_suffix))">
 						<xsl:value-of select="$style_suffix"/>
 					</xsl:if>
 				</xsl:variable>
 
-				<xsl:value-of select="normalize-space($label)"/>
+						<xsl:value-of select="normalize-space($label)"/>
 
 			</xsl:when>
 			<xsl:otherwise> <!-- for ordered lists 'ol' -->
