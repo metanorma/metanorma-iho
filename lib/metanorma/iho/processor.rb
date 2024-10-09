@@ -1,10 +1,10 @@
 require "metanorma/processor"
 
 module Metanorma
-  module IHO
+  module Iho
     class Processor < Metanorma::Generic::Processor
       def configuration
-        Metanorma::IHO.configuration
+        Metanorma::Iho.configuration
       end
 
       def output_formats
@@ -16,20 +16,20 @@ module Metanorma
       end
 
       def version
-        "Metanorma::IHO #{Metanorma::IHO::VERSION}"
+        "Metanorma::Iho #{Metanorma::Iho::VERSION}"
       end
 
       def output(isodoc_node, inname, outname, format, options={})
         options_preprocess(options)
         case format
         when :html
-          IsoDoc::IHO::HtmlConvert.new(options).convert(inname, isodoc_node, nil, outname)
+          IsoDoc::Iho::HtmlConvert.new(options).convert(inname, isodoc_node, nil, outname)
         when :doc
-          IsoDoc::IHO::WordConvert.new(options).convert(inname, isodoc_node, nil, outname)
+          IsoDoc::Iho::WordConvert.new(options).convert(inname, isodoc_node, nil, outname)
         when :pdf
-          IsoDoc::IHO::PdfConvert.new(options).convert(inname, isodoc_node, nil, outname)
+          IsoDoc::Iho::PdfConvert.new(options).convert(inname, isodoc_node, nil, outname)
         when :presentation
-          IsoDoc::IHO::PresentationXMLConvert.new(options).convert(inname, isodoc_node, nil, outname)
+          IsoDoc::Iho::PresentationXMLConvert.new(options).convert(inname, isodoc_node, nil, outname)
         else
           super
         end

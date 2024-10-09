@@ -1,5 +1,5 @@
 module IsoDoc
-  module IHO
+  module Iho
     module BaseConvert
       # terms not defined in standoc
       def error_parse(node, out)
@@ -11,7 +11,7 @@ module IsoDoc
       end
 
       def configuration
-        Metanorma::IHO.configuration
+        Metanorma::Iho.configuration
       end
     end
   end

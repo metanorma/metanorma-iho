@@ -3,7 +3,7 @@ require "isodoc/generic/html_convert"
 require_relative "init"
 
 module IsoDoc
-  module IHO
+  module Iho
     class HtmlConvert < IsoDoc::Generic::HtmlConvert
 
       include BaseConvert

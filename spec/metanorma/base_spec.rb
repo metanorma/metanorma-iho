@@ -3,9 +3,9 @@ require "fileutils"
 
 OPTIONS = [backend: :iho, header_footer: true].freeze
 
-RSpec.describe Metanorma::IHO do
+RSpec.describe Metanorma::Iho do
   it "has a version number" do
-    expect(Metanorma::IHO::VERSION).not_to be nil
+    expect(Metanorma::Iho::VERSION).not_to be nil
   end
 
   it "processes a blank document" do
@@ -81,7 +81,7 @@ RSpec.describe Metanorma::IHO do
 
     output = Xml::C14n.format(<<~"OUTPUT")
           <?xml version="1.0" encoding="UTF-8"?>
-      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
       <bibdata type="standard">
         <title language="en" format="text/plain">Main Title</title>
       <docidentifier primary="true" type="IHO">B-1000</docidentifier>
@@ -131,6 +131,7 @@ RSpec.describe Metanorma::IHO do
       </series>
         <ext>
         <doctype>standard</doctype>
+        <flavor>iho</flavor>
         <editorialgroup>
                      <committee>
                        <abbreviation>HSSC</abbreviation>
@@ -207,7 +208,7 @@ RSpec.describe Metanorma::IHO do
       :title: Main Title
     INPUT
     output = <<~OUTPUT
-              <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+              <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
       <bibdata type="standard">
         <title language="en" format="text/plain">Main Title</title>
         <docidentifier primary="true" type="IHO">S-1000</docidentifier>
@@ -248,6 +249,7 @@ RSpec.describe Metanorma::IHO do
         </copyright>
         <ext>
         <doctype>standard</doctype>
+        <flavor>iho</flavor>
         </ext>
       </bibdata>
                          <metanorma-extension>
@@ -304,7 +306,7 @@ RSpec.describe Metanorma::IHO do
       :edition-minor: 3
     INPUT
     output <<~OUTPUT
-      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
       </iso-standard>
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor
@@ -324,7 +326,7 @@ RSpec.describe Metanorma::IHO do
       :edition-patch: 5
     INPUT
     output <<~OUTPUT
-      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
       </iso-standard>
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor
@@ -343,7 +345,7 @@ RSpec.describe Metanorma::IHO do
       :edition-patch: 5
     INPUT
     output <<~OUTPUT
-      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
       </iso-standard>
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor
@@ -850,6 +852,7 @@ RSpec.describe Metanorma::IHO do
         </relation>
         <ext>
           <doctype>standard</doctype>
+        <flavor>iho</flavor>
         </ext>
       </bibdata>
     OUTPUT

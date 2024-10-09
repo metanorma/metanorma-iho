@@ -4,7 +4,7 @@ require "metanorma/iho/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "metanorma-iho"
-  spec.version       = Metanorma::IHO::VERSION
+  spec.version       = Metanorma::Iho::VERSION
   spec.authors       = ["Ribose Inc."]
   spec.email         = ["open.source@ribose.com"]
 

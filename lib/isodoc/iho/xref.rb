@@ -1,7 +1,7 @@
 require "isodoc/generic/xref"
 
 module IsoDoc
-  module IHO
+  module Iho
     class Counter < IsoDoc::XrefGen::Counter
     end
 

@@ -3,7 +3,7 @@ require "metanorma-generic"
 require_relative "base_convert"
 
 module IsoDoc
-  module IHO
+  module Iho
     # A {Converter} implementation that generates PDF HTML output, and a
     # document schema encapsulation of the document for validation
     class PdfConvert < IsoDoc::Generic::PdfConvert

@@ -1,6 +1,6 @@
 module Relaton
   module Render
-    module IHO
+    module Iho
       class Fields < ::Relaton::Render::Fields
         def edition_fields_format(hash)
           super

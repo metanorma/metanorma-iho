@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe Metanorma::IHO do
+RSpec.describe Metanorma::Iho do
   context "when xref_error.adoc compilation" do
     around do |example|
       FileUtils.rm_f "spec/assets/xref_error.err.html"
@@ -18,7 +18,7 @@ RSpec.describe Metanorma::IHO do
         Metanorma::Compile
           .new
           .compile("spec/assets/xref_error.adoc", type: "iho",
-                   install_fonts: false)
+                                                  install_fonts: false)
       end.to(change { File.exist?("spec/assets/xref_error.err.html") }
               .from(false).to(true))
     end

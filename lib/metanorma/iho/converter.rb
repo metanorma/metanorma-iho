@@ -2,7 +2,7 @@ require "metanorma/standoc/converter"
 require "metanorma/generic/converter"
 
 module Metanorma
-  module IHO
+  module Iho
     class Converter < Metanorma::Generic::Converter
       XML_ROOT_TAG = "iho-standard".freeze
       XML_NAMESPACE = "https://www.metanorma.org/ns/iho".freeze
@@ -97,27 +97,27 @@ module Metanorma
       end
 
       def configuration
-        Metanorma::IHO.configuration
+        Metanorma::Iho.configuration
       end
 
       def presentation_xml_converter(node)
-        IsoDoc::IHO::PresentationXMLConvert
+        IsoDoc::Iho::PresentationXMLConvert
           .new(html_extract_attributes(node)
-          .merge(output_formats: ::Metanorma::IHO::Processor.new.output_formats))
+          .merge(output_formats: ::Metanorma::Iho::Processor.new.output_formats))
       end
 
       def html_converter(node)
-        IsoDoc::IHO::HtmlConvert.new(html_extract_attributes(node))
+        IsoDoc::Iho::HtmlConvert.new(html_extract_attributes(node))
       end
 
       def pdf_converter(node)
         return nil if node.attr("no-pdf")
 
-        IsoDoc::IHO::PdfConvert.new(pdf_extract_attributes(node))
+        IsoDoc::Iho::PdfConvert.new(pdf_extract_attributes(node))
       end
 
       def doc_converter(node)
-        IsoDoc::IHO::WordConvert.new(doc_extract_attributes(node))
+        IsoDoc::Iho::WordConvert.new(doc_extract_attributes(node))
       end
     end
   end
