@@ -8,9 +8,9 @@ logoloc = Pathname.new(File.join(
                          "..", "..", "lib", "isodoc", "iho", "html"
                        )).cleanpath.to_s
 
-RSpec.describe IsoDoc::IHO do
+RSpec.describe IsoDoc::Iho do
   it "processes default metadata" do
-    csdc = IsoDoc::IHO::HtmlConvert.new({})
+    csdc = IsoDoc::Iho::HtmlConvert.new({})
     input = <<~"INPUT"
       <iho-standard xmlns="https://open.ribose.com/standards/iho">
       <bibdata type="standard">
@@ -252,7 +252,7 @@ RSpec.describe IsoDoc::IHO do
          </bibliography>
          </iho-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
@@ -432,7 +432,7 @@ RSpec.describe IsoDoc::IHO do
         </bibliography>
       </iho-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
           .new(presxml_options)
           .convert("test", input, true)
           .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
@@ -698,12 +698,12 @@ RSpec.describe IsoDoc::IHO do
         </div>
       </body>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
       .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(IsoDoc::IHO::HtmlConvert.new({})
+    expect(Xml::C14n.format(IsoDoc::Iho::HtmlConvert.new({})
       .convert("test", presxml, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
@@ -1123,7 +1123,7 @@ RSpec.describe IsoDoc::IHO do
       </preface>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Nokogiri::XML(
-      IsoDoc::IHO::PresentationXMLConvert
+      IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true),
     )

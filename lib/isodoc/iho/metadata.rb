@@ -1,11 +1,11 @@
 require "isodoc"
 
 module IsoDoc
-  module IHO
+  module Iho
 
     class Metadata < IsoDoc::Generic::Metadata
       def configuration
-        Metanorma::IHO.configuration
+        Metanorma::Iho.configuration
       end
 
       def series(xml, _out)

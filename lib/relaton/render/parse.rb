@@ -1,6 +1,6 @@
 module Relaton
   module Render
-    module IHO
+    module Iho
       class Parse < ::Relaton::Render::Parse
         def uri(doc)
           uri = nil

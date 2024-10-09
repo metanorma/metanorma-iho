@@ -10,5 +10,5 @@ require "metanorma"
 
 if defined? Metanorma::Registry
   require_relative "metanorma/iho"
-  Metanorma::Registry.instance.register(Metanorma::IHO::Processor)
+  Metanorma::Registry.instance.register(Metanorma::Iho::Processor)
 end

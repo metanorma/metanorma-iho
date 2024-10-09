@@ -74,7 +74,7 @@ HDR
 
 def boilerplate_read(file)
   HTMLEntities.new.decode(
-    Metanorma::IHO::Converter.new(:iho, {}).boilerplate_file_restructure(file)
+    Metanorma::Iho::Converter.new(:iho, {}).boilerplate_file_restructure(file)
     .to_xml.gsub(/<(\/)?sections>/, "<\\1boilerplate>")
       .gsub(/ id="_[^"]+"/, " id='_'"),
   )
@@ -95,7 +95,7 @@ BOILERPLATE =
 
 BLANK_HDR = <<~"HDR".freeze
   <?xml version="1.0" encoding="UTF-8"?>
-  <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::IHO::VERSION}">
+  <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
   <bibdata type="standard">
 
    <title language="en" format="text/plain">Document title</title>
@@ -130,6 +130,7 @@ BLANK_HDR = <<~"HDR".freeze
     </copyright>
     <ext>
     <doctype>standard</doctype>
+    <flavor>iho</flavor>
     </ext>
   </bibdata>
                      <metanorma-extension>
@@ -168,6 +169,6 @@ HDR
 
 def mock_pdf
   allow(Mn2pdf).to receive(:convert) do |url, output, _c, _d|
-    FileUtils.cp(url.gsub(/"/, ""), output.gsub(/"/, ""))
+    FileUtils.cp(url.delete('"'), output.delete('"'))
   end
 end

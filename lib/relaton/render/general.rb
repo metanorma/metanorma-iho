@@ -4,7 +4,7 @@ require_relative "parse"
 
 module Relaton
   module Render
-    module IHO
+    module Iho
       class General < ::Relaton::Render::IsoDoc::General
         def config_loc
           YAML.load_file(File.join(File.dirname(__FILE__), "config.yml"))
@@ -12,8 +12,8 @@ module Relaton
 
         def klass_initialize(_options)
           super
-          @fieldsklass = Relaton::Render::IHO::Fields
-          @parseklass = Relaton::Render::IHO::Parse
+          @fieldsklass = Relaton::Render::Iho::Fields
+          @parseklass = Relaton::Render::Iho::Parse
         end
       end
     end

@@ -3,7 +3,7 @@ require "isodoc/generic/word_convert"
 require_relative "init"
 
 module IsoDoc
-  module IHO
+  module Iho
     # A {Converter} implementation that generates Word output, and a document
     # schema encapsulation of the document for validation
     class WordConvert < IsoDoc::Generic::WordConvert

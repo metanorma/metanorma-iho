@@ -3,7 +3,7 @@ require_relative "metadata"
 require_relative "xref"
 
 module IsoDoc
-  module IHO
+  module Iho
     module Init
       def metadata_init(lang, script, locale, labels)
         @meta = Metadata.new(lang, script, locale, labels)
@@ -18,12 +18,12 @@ module IsoDoc
         @i18n = I18n.new(
           lang, script, locale: locale,
                         i18nyaml: i18nyaml ||
-          Metanorma::IHO.configuration.i18nyaml || @i18nyaml
+          Metanorma::Iho.configuration.i18nyaml || @i18nyaml
         )
       end
 
       def bibrenderer(options = {})
-        ::Relaton::Render::IHO::General.new(options.merge(language: @lang,
+        ::Relaton::Render::Iho::General.new(options.merge(language: @lang,
                                                           i18nhash: @i18n.get))
       end
 
