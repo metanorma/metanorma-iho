@@ -107,7 +107,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -226,7 +226,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
        .convert("test", input, true))
        .at("//xmlns:foreword").to_xml))
@@ -378,7 +378,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -530,7 +530,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -642,7 +642,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -756,7 +756,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -782,7 +782,7 @@ RSpec.describe IsoDoc do
          </p>
        </clause>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:clause[@id='widgets1']").to_xml))
@@ -895,7 +895,7 @@ RSpec.describe IsoDoc do
           </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -1018,7 +1018,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -1131,7 +1131,7 @@ RSpec.describe IsoDoc do
           </p>
        </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -1244,7 +1244,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -1358,7 +1358,7 @@ RSpec.describe IsoDoc do
          </p>
       </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -1555,7 +1555,7 @@ RSpec.describe IsoDoc do
            </p>
         </foreword>
     OUTPUT
-    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(Nokogiri.XML(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))
       .at("//xmlns:foreword").to_xml))
@@ -1762,7 +1762,7 @@ RSpec.describe IsoDoc do
              </bibliography>
              </iho-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::IHO::PresentationXMLConvert
+    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(output)

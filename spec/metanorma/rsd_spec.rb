@@ -1,24 +1,26 @@
-require 'spec_helper'
+require "spec_helper"
 
-RSpec.describe Metanorma::IHO do
+RSpec.describe Metanorma::Iho do
   it "has a version number" do
-    expect(Metanorma::IHO::VERSION).not_to be nil
+    expect(Metanorma::Iho::VERSION).not_to be nil
   end
-  describe '#configuration' do
-    it 'has `configuration` attribute accessable' do
-      expect(Metanorma::IHO.configuration)
-        .to(be_instance_of(Metanorma::IHO::Configuration))
+  describe "#configuration" do
+    it "has `configuration` attribute accessable" do
+      expect(Metanorma::Iho.configuration)
+        .to(be_instance_of(Metanorma::Iho::Configuration))
     end
 
-    context 'default attributes' do
-      subject(:config) { Metanorma::IHO.configuration }
-      let(:default_organization_name_short) { 'IHO' }
-      let(:default_organization_name_long) { 'International Hydrographic Organization' }
+    context "default attributes" do
+      subject(:config) { Metanorma::Iho.configuration }
+      let(:default_organization_name_short) { "IHO" }
+      let(:default_organization_name_long) do
+        "International Hydrographic Organization"
+      end
       let(:default_document_namespace) do
-        'https://www.metanorma.org/ns/iho'
+        "https://www.metanorma.org/ns/iho"
       end
 
-      it 'sets default atrributes' do
+      it "sets default atrributes" do
         expect(config.organization_name_short)
           .to(eq(default_organization_name_short))
         expect(config.organization_name_long)
@@ -28,14 +30,14 @@ RSpec.describe Metanorma::IHO do
       end
     end
 
-    context 'attribute setters' do
-      subject(:config) { Metanorma::IHO.configuration }
-      let(:organization_name_short) { 'Test' }
-      let(:organization_name_long) { 'Test Corp.' }
-      let(:document_namespace) { 'https://example.com/' }
+    context "attribute setters" do
+      subject(:config) { Metanorma::Iho.configuration }
+      let(:organization_name_short) { "Test" }
+      let(:organization_name_long) { "Test Corp." }
+      let(:document_namespace) { "https://example.com/" }
 
-      it 'sets atrributes' do
-        Metanorma::IHO.configure do |config|
+      it "sets atrributes" do
+        Metanorma::Iho.configure do |config|
           config.organization_name_short = organization_name_short
           config.organization_name_long = organization_name_long
           config.document_namespace = document_namespace

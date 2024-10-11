@@ -3,7 +3,7 @@ require "metanorma-generic"
 require "metanorma/iho/processor"
 
 module Metanorma
-  module IHO
+  module Iho
 
     class Configuration < Metanorma::Generic::Configuration
       def initialize(*args)
@@ -29,4 +29,4 @@ module Metanorma
     configure {}
   end
 end
-Metanorma::Registry.instance.register(Metanorma::IHO::Processor)
+Metanorma::Registry.instance.register(Metanorma::Iho::Processor)
