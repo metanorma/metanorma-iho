@@ -121,6 +121,11 @@ _bib)
         ""
       end
 
+      def omit_docid_prefix(prefix)
+        prefix == "IHO" and return true
+        super
+      end
+
       include Init
     end
   end

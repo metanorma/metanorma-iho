@@ -212,14 +212,24 @@ RSpec.describe IsoDoc::Iho do
            <preferred>Term2</preferred>
          </term>
          </terms>
-         <definitions id="K"><title>3.2</title>
+         <definitions id="K">
+            <title depth="2">
+               3.2
+               <tab/>
+               Symbols
+            </title>
            <dl>
            <dt>Symbol</dt>
            <dd>Definition</dd>
            </dl>
          </definitions>
          </clause>
-         <definitions id="L" displayorder="8"><title>4</title>
+         <definitions id="L" displayorder="8">
+         <title depth="1">
+            4
+            <tab/>
+            Symbols
+         </title>
            <dl>
            <dt>Symbol</dt>
            <dd>Definition</dd>
@@ -364,7 +374,11 @@ RSpec.describe IsoDoc::Iho do
                 </term>
               </terms>
               <definitions id="K">
-                <title>1.3.2</title>
+               <title depth="3">
+                  1.3.2
+                  <tab/>
+                  Symbols
+               </title>
                 <dl>
                   <dt>Symbol</dt>
                   <dd>Definition</dd>
@@ -372,7 +386,11 @@ RSpec.describe IsoDoc::Iho do
               </definitions>
             </clause>
             <definitions id="L">
-              <title>1.4</title>
+            <title depth="2">
+               1.4
+               <tab/>
+               Symbols
+            </title>
               <dl>
                 <dt>Symbol</dt>
                 <dd>Definition</dd>

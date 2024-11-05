@@ -31,12 +31,6 @@ module IsoDoc
         @meta.series isoxml, out
         super
       end
-
-      def omit_docid_prefix(prefix)
-        return true if prefix == "IHO"
-
-        super
-      end
     end
   end
 end

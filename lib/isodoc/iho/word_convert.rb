@@ -10,8 +10,8 @@ module IsoDoc
       def make_body1(body, _docxml)
         body.div class: "WordSection1" do |div1|
           div1.p style: "font-size:0pt;" do |p|
-            p << "&nbsp;"
-          end # placeholder
+            p << "&nbsp;" # placeholder
+          end
         end
         section_break(body)
       end

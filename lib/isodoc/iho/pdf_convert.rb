@@ -12,7 +12,7 @@ module IsoDoc
         @libdir = File.dirname(__FILE__)
       end
 
-      def pdf_stylesheet(docxml)
+      def pdf_stylesheet(_docxml)
         case @doctype
         when "standard" then "iho.standard.xsl"
         else

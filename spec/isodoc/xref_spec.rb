@@ -90,7 +90,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N1">Introduction, Note</xref>
             <xref target="N2">Preparatory, Note</xref>
@@ -208,7 +208,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N1">Introduction, Box</xref>
             <xref target="N2">Preparatory, Box</xref>
@@ -356,7 +356,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword id="fwd" displayorder="2">
+      <foreword id="fwd" displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N1">Introduction, Figure 1</xref>
             <xref target="N2">Preparatory, Figure (??)</xref>
@@ -508,7 +508,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword id="fwd" displayorder="2">
+      <foreword id="fwd" displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N1">Introduction, Figure 1</xref>
             <xref target="N2">Preparatory, Figure (??)</xref>
@@ -625,7 +625,7 @@ RSpec.describe IsoDoc do
         </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword id="fwd" displayorder="2">
+      <foreword id="fwd" displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N">Figure 3-1</xref>
             <xref target="note1">Figure 3-1-1</xref>
@@ -739,7 +739,7 @@ RSpec.describe IsoDoc do
     INPUT
 
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N1">Introduction, Example</xref>
             <xref target="N2">Preparatory, Example (??)</xref>
@@ -878,7 +878,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
           <p>
              <xref target="N1">Introduction, Formula (1)</xref>
              <xref target="N2">Preparatory, Formula ((??))</xref>
@@ -999,7 +999,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N1">Introduction, Requirement 1</xref>
             <xref target="N2">Preparatory, Requirement (??)</xref>
@@ -1114,7 +1114,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
           <p>
              <xref target="N1">Introduction, Recommendation 1</xref>
              <xref target="N2">Preparatory, Recommendation (??)</xref>
@@ -1227,7 +1227,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N1">Introduction, Permission 1</xref>
             <xref target="N2">Preparatory, Permission (??)</xref>
@@ -1333,7 +1333,7 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
          <p>
             <xref target="N1">Permission 1-1</xref>
             <xref target="N2">Permission 1-1-1</xref>
@@ -1538,7 +1538,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     output = <<~OUTPUT
-      <foreword displayorder="2">
+      <foreword displayorder="2"><title>Foreword</title>
            <p>
               <xref target="N1">Introduction, Table 1</xref>
               <xref target="N2">Preparatory, Table (??)</xref>
@@ -1666,8 +1666,7 @@ RSpec.describe IsoDoc do
                 <clause type="toc" id="_" displayorder="1">
              <title depth="1">Contents</title>
                    </clause>
-            <foreword obligation="informative" displayorder="2">
-               <title>Foreword</title>
+            <foreword obligation="informative" displayorder="2"><title>Foreword</title>
                <p id="A">This is a preamble
                <xref target="C">Introduction Subsection</xref>
                <xref target="C1">Introduction, 2</xref>
@@ -1706,14 +1705,24 @@ RSpec.describe IsoDoc do
                <preferred>Term2</preferred>
              </term>
              </terms>
-             <definitions id="K"><title>3.2</title>
+             <definitions id="K">
+            <title depth="2">
+               3.2
+               <tab/>
+               Symbols
+            </title>
                <dl>
                <dt>Symbol</dt>
                <dd>Definition</dd>
                </dl>
              </definitions>
              </terms>
-             <definitions id="L" displayorder="7"><title>4</title>
+             <definitions id="L" displayorder="7">
+         <title depth="1">
+            4
+            <tab/>
+            Symbols
+         </title>
                <dl>
                <dt>Symbol</dt>
                <dd>Definition</dd>
