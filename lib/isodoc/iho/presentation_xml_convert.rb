@@ -126,6 +126,19 @@ _bib)
         super
       end
 
+      def term1(elem); end
+
+      def termsource1(elem)
+        elem.parent.nil? and return
+        while elem&.next_element&.name == "termsource"
+          elem << "; #{to_xml(elem.next_element.remove.children)}"
+        end
+        t = elem.at("./ancestor::xmlns:term")
+        s = l10n(" [#{to_xml(elem.remove.children).strip}]")
+        defn = t.at(ns(".//definition[last()]"))
+        defn.elements.last << s
+      end
+
       include Init
     end
   end
