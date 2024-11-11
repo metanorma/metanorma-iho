@@ -133,7 +133,7 @@ _bib)
         while elem&.next_element&.name == "termsource"
           elem << "; #{to_xml(elem.next_element.remove.children)}"
         end
-        t = elem.at("./ancestor::xmlns:term")
+        t = elem.at("./ancestor::xmlns:term") or return
         s = l10n(" [#{to_xml(elem.remove.children).strip}]")
         defn = t.at(ns(".//definition[last()]")) or return
         defn.elements.last << s
