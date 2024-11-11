@@ -180,6 +180,10 @@ RSpec.describe IsoDoc do
     PRESXML
     html = <<~"OUTPUT"
       #{HTML_HDR}
+            <br/>
+      <div id="_" class="TOC">
+         <h1 class="IntroTitle">Contents</h1>
+      </div>
                       <div id="_">
                    <h1>
                     1
@@ -274,7 +278,9 @@ RSpec.describe IsoDoc do
       .convert("test", input, true))))
       .to be_equivalent_to Xml::C14n.format(presxml)
     expect(Xml::C14n.format(IsoDoc::Iho::HtmlConvert.new({})
-      .convert("test", presxml, true)))
+      .convert("test", presxml, true)
+      .gsub(%r{^.*<body}m, "<body")
+      .gsub(%r{</body>.*}m, "</body>")))
       .to be_equivalent_to Xml::C14n.format(html)
     end
 end

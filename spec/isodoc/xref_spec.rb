@@ -1701,7 +1701,7 @@ RSpec.describe IsoDoc do
              </clause>
              <terms id="H" obligation="normative" displayorder="6"><title depth="1">3<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
                <title depth="2">3.1<tab/>Normal Terms</title>
-               <term id="J"><name>3.1.1</name>
+               <term id="J">
                <preferred>Term2</preferred>
              </term>
              </terms>

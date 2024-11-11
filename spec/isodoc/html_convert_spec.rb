@@ -71,7 +71,7 @@ RSpec.describe IsoDoc::Iho do
       </iho-standard>
     INPUT
 
-    output = <<~"OUTPUT"
+    output = 
       {:accesseddate=>"XXX",
       :adapteddate=>"XXX",
       :agency=>"Ribose",
@@ -115,7 +115,6 @@ RSpec.describe IsoDoc::Iho do
       :updateddate=>"XXX",
       :vote_endeddate=>"XXX",
       :vote_starteddate=>"XXX"}
-    OUTPUT
 
     docxml, _filename, _dir = csdc.convert_init(input, "test", true)
     expect(htmlencode(metadata(csdc.info(docxml, nil))
@@ -208,7 +207,7 @@ RSpec.describe IsoDoc::Iho do
          </clause>
          <clause id="H" obligation="normative" displayorder="7"><title depth="1">3<tab/>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
            <title depth="2">3.1<tab/>Normal Terms</title>
-           <term id="J"><name>3.1.1</name>
+           <term id="J">
            <preferred>Term2</preferred>
          </term>
          </terms>
@@ -369,7 +368,6 @@ RSpec.describe IsoDoc::Iho do
                   Normal Terms
                 </title>
                 <term id="J">
-                  <name>1.3.1.1</name>
                   <preferred>Term2</preferred>
                 </term>
               </terms>

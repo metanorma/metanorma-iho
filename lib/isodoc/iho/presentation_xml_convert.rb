@@ -135,7 +135,7 @@ _bib)
         end
         t = elem.at("./ancestor::xmlns:term")
         s = l10n(" [#{to_xml(elem.remove.children).strip}]")
-        defn = t.at(ns(".//definition[last()]"))
+        defn = t.at(ns(".//definition[last()]")) or return
         defn.elements.last << s
       end
 
