@@ -524,8 +524,8 @@ RSpec.describe IsoDoc::Iho do
       <annex id="A6" obligation="normative" displayorder="8"><title><strong>Annex F</strong><br/><strong>Annex</strong></title></annex>
       <annex id="A7" obligation="normative" displayorder="9"><title><strong>Annex G</strong><br/><strong>Annex</strong></title></annex>
       <annex id="A8" obligation="normative" displayorder="10"><title><strong>Annex H</strong><br/><strong>Annex</strong></title></annex>
-      <annex id="A9" obligation="normative" displayorder="11"><title><strong>Annex J</strong><br/><strong>Annex</strong></title></annex>
-      <annex id="A10" obligation="normative" displayorder="12"><title><strong>Annex K</strong><br/><strong>Annex</strong></title></annex>
+      <annex id="A9" obligation="normative" displayorder="11"><title><strong>Annex I</strong><br/><strong>Annex</strong></title></annex>
+      <annex id="A10" obligation="normative" displayorder="12"><title><strong>Annex J</strong><br/><strong>Annex</strong></title></annex>
       <annex id="B1" obligation="informative" displayorder="13"><title><strong>Appendix 1</strong><br/><strong>Annex</strong></title></annex>
       <annex id="B2" obligation="informative" displayorder="14"><title><strong>Appendix 2</strong><br/><strong>Annex</strong></title></annex>
       <annex id="B3" obligation="informative" displayorder="15"><title><strong>Appendix 3</strong><br/><strong>Annex</strong></title></annex>
@@ -618,7 +618,7 @@ RSpec.describe IsoDoc::Iho do
           <br/>
           <div id='A9' class='Section3'>
             <h1 class='Annex'>
-              <b>Annex J</b>
+              <b>Annex I</b>
               <br/>
               <b>Annex</b>
             </h1>
@@ -626,7 +626,7 @@ RSpec.describe IsoDoc::Iho do
           <br/>
           <div id='A10' class='Section3'>
             <h1 class='Annex'>
-              <b>Annex K</b>
+              <b>Annex J</b>
               <br/>
               <b>Annex</b>
             </h1>

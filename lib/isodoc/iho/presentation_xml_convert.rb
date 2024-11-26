@@ -117,10 +117,6 @@ _bib)
         end
       end
 
-      def clausedelim
-        ""
-      end
-
       def omit_docid_prefix(prefix)
         prefix == "IHO" and return true
         super
@@ -137,6 +133,10 @@ _bib)
         s = l10n(" [#{to_xml(elem.remove.children).strip}]")
         defn = t.at(ns(".//definition[last()]")) or return
         defn.elements.last << s
+      end
+
+       def clausedelim
+        ""
       end
 
       include Init

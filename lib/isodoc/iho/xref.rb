@@ -79,7 +79,7 @@ module IsoDoc
 
       def annex_anchor_names(docxml)
         clause_order_annex(docxml).each_with_index do |a, i|
-          n = i.zero? ? Counter.new("@", skip_i: true) : Counter.new
+          n = i.zero? ? Counter.new("@") : Counter.new
           docxml.xpath(ns(a[:path]))
             .each do |c|
             annex_names(c, n.increment(c).print)
