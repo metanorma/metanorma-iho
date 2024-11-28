@@ -139,6 +139,11 @@ _bib)
         ""
       end
 
+       def clause(docxml)
+         super
+         docxml.xpath(ns("//executivesummary | //appendix")).each { |x| clause1(x) }
+       end
+
       include Init
     end
   end
