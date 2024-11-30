@@ -1197,6 +1197,15 @@ RSpec.describe IsoDoc::Iho do
                    <span class="fmt-element-name">Appendix</span>
                    <semx element="autonum" source="A10b">1</semx>
                 </fmt-xref-label>
+                <fmt-xref-label container="A10">
+                   <span class="fmt-xref-container">
+                      <span class="fmt-element-name">Annex</span>
+                      <semx element="autonum" source="A10">J</semx>
+                   </span>
+                   <span class="fmt-comma">,</span>
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="A10b">1</semx>
+                </fmt-xref-label>
              </appendix>
           </annex>
           <annex id="B1" obligation="informative" autonum="1" displayorder="13">
@@ -1456,6 +1465,15 @@ RSpec.describe IsoDoc::Iho do
                    <semx element="title" source="_">App</semx>
                 </fmt-title>
                 <fmt-xref-label>
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B10b">1</semx>
+                </fmt-xref-label>
+                <fmt-xref-label container="B10">
+                   <span class="fmt-xref-container">
+                      <span class="fmt-element-name">Appendix</span>
+                      <semx element="autonum" source="B10">10</semx>
+                   </span>
+                   <span class="fmt-comma">,</span>
                    <span class="fmt-element-name">Appendix</span>
                    <semx element="autonum" source="B10b">1</semx>
                 </fmt-xref-label>
