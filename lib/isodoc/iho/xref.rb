@@ -43,11 +43,14 @@ module IsoDoc
         end
       end
 
+      # avoid ambiguity of Table 1-1 being in Appendix 1 or Clause 1
       def annex_asset_names(clause, num, lbl)
         #@annex_prefix = lbl
         #require "debug"; binding.b
         #hierarchical_asset_names(clause, num)
-        hierarchical_asset_names(clause,labelled_autonum(lbl, num))
+        n = num
+        clause["obligation"] == "informative" and n = labelled_autonum(lbl, num)
+        hierarchical_asset_names(clause, n)
         #@annex_prefix = nil
       end
 

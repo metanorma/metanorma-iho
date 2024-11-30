@@ -647,7 +647,7 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAN">
                 <span class="fmt-element-name">Figure</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN">1</semx>
              </xref>
@@ -657,13 +657,13 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAnote2">
                 <span class="fmt-element-name">Figure</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAnote2">2</semx>
              </xref>
              <xref target="AAnote3">
                 <span class="fmt-element-name">Figure</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAnote3">3</semx>
              </xref>
@@ -890,7 +890,7 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAN">
                 <span class="fmt-element-name">Diagram</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN">1</semx>
              </xref>
@@ -900,13 +900,13 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAnote2">
                 <span class="fmt-element-name">Figure</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAnote2">1</semx>
              </xref>
              <xref target="AAnote3">
                 <span class="fmt-element-name">Figure</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAnote3">2</semx>
              </xref>
@@ -1068,13 +1068,13 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAN">
                 <span class="fmt-element-name">Figure</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN">1</semx>
              </xref>
              <xref target="AAnote1">
                 <span class="fmt-element-name">Figure</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN">1</semx>
                 <span class="fmt-autonum-delim">-</span>
@@ -1082,27 +1082,35 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAnote2">
                 <span class="fmt-element-name">Figure</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN">1</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAnote2">2</semx>
              </xref>
              <xref target="AN1">
-                      <span class="fmt-xref-container">
-            <semx element="references" source="biblio">Bibliographical Section</semx>
-         </span>
+                <span class="fmt-xref-container">
+                   <semx element="references" source="biblio">Bibliographical Section</semx>
+                </span>
                 <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Figure</span>
                 <semx element="autonum" source="AN1">1</semx>
              </xref>
              <xref target="Anote11">
+                <span class="fmt-xref-container">
+                   <semx element="references" source="biblio">Bibliographical Section</semx>
+                </span>
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Figure</span>
                 <semx element="autonum" source="AN1">1</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="Anote11">1</semx>
              </xref>
              <xref target="Anote21">
+                <span class="fmt-xref-container">
+                   <semx element="references" source="biblio">Bibliographical Section</semx>
+                </span>
+                <span class="fmt-comma">,</span>
                 <span class="fmt-element-name">Figure</span>
                 <semx element="autonum" source="AN1">1</semx>
                 <span class="fmt-autonum-delim">-</span>
@@ -1590,7 +1598,7 @@ RSpec.describe IsoDoc do
              <xref target="AAN">
                 <span class="fmt-element-name">Formula</span>
                 <span class="fmt-autonum-delim">(</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN">1</semx>
                 <span class="fmt-autonum-delim">)</span>
@@ -1604,7 +1612,7 @@ RSpec.describe IsoDoc do
              <xref target="AAnote2">
                 <span class="fmt-element-name">Formula</span>
                 <span class="fmt-autonum-delim">(</span>
-                <semx element="autonum" source="annex11">Annex A</semx>
+                <semx element="autonum" source="annex11">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAnote2">2</semx>
                 <span class="fmt-autonum-delim">)</span>
@@ -1796,7 +1804,7 @@ RSpec.describe IsoDoc do
               </xref>
               <xref target="AAN">
                  <span class="fmt-element-name">Requirement</span>
-                 <semx element="autonum" source="annex11">Annex A</semx>
+                 <semx element="autonum" source="annex11">A</semx>
                  <span class="fmt-autonum-delim">-</span>
                  <semx element="autonum" source="AAN">1</semx>
               </xref>
@@ -1806,7 +1814,7 @@ RSpec.describe IsoDoc do
               </xref>
               <xref target="AAnote2">
                  <span class="fmt-element-name">Requirement</span>
-                 <semx element="autonum" source="annex11">Annex A</semx>
+                 <semx element="autonum" source="annex11">A</semx>
                  <span class="fmt-autonum-delim">-</span>
                  <semx element="autonum" source="AAnote2">2</semx>
               </xref>
@@ -1975,7 +1983,7 @@ RSpec.describe IsoDoc do
               </xref>
               <xref target="AAN">
                  <span class="fmt-element-name">Recommendation</span>
-                 <semx element="autonum" source="annex11">Annex A</semx>
+                 <semx element="autonum" source="annex11">A</semx>
                  <span class="fmt-autonum-delim">-</span>
                  <semx element="autonum" source="AAN">1</semx>
               </xref>
@@ -1985,7 +1993,7 @@ RSpec.describe IsoDoc do
               </xref>
               <xref target="AAnote2">
                  <span class="fmt-element-name">Recommendation</span>
-                 <semx element="autonum" source="annex11">Annex A</semx>
+                 <semx element="autonum" source="annex11">A</semx>
                  <span class="fmt-autonum-delim">-</span>
                  <semx element="autonum" source="AAnote2">2</semx>
               </xref>
@@ -2155,7 +2163,7 @@ RSpec.describe IsoDoc do
               </xref>
               <xref target="AAN">
                  <span class="fmt-element-name">Permission</span>
-                 <semx element="autonum" source="annex11">Annex A</semx>
+                 <semx element="autonum" source="annex11">A</semx>
                  <span class="fmt-autonum-delim">-</span>
                  <semx element="autonum" source="AAN">1</semx>
               </xref>
@@ -2165,7 +2173,7 @@ RSpec.describe IsoDoc do
               </xref>
               <xref target="AAnote2">
                  <span class="fmt-element-name">Permission</span>
-                 <semx element="autonum" source="annex11">Annex A</semx>
+                 <semx element="autonum" source="annex11">A</semx>
                  <span class="fmt-autonum-delim">-</span>
                  <semx element="autonum" source="AAnote2">2</semx>
               </xref>
@@ -2357,13 +2365,13 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAN1">
                 <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="Axyz">Annex A</semx>
+                <semx element="autonum" source="Axyz">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN1">1</semx>
              </xref>
              <xref target="AAN2">
                 <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="Axyz">Annex A</semx>
+                <semx element="autonum" source="Axyz">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN1">1</semx>
                 <span class="fmt-autonum-delim">-</span>
@@ -2371,7 +2379,7 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAN">
                 <span class="fmt-element-name">Permission</span>
-                <semx element="autonum" source="Axyz">Annex A</semx>
+                <semx element="autonum" source="Axyz">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN1">1</semx>
                 <span class="fmt-autonum-delim">-</span>
@@ -2381,7 +2389,7 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAQ1">
                 <span class="fmt-element-name">Requirement</span>
-                <semx element="autonum" source="Axyz">Annex A</semx>
+                <semx element="autonum" source="Axyz">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN1">1</semx>
                 <span class="fmt-autonum-delim">-</span>
@@ -2389,7 +2397,7 @@ RSpec.describe IsoDoc do
              </xref>
              <xref target="AAR1">
                 <span class="fmt-element-name">Recommendation</span>
-                <semx element="autonum" source="Axyz">Annex A</semx>
+                <semx element="autonum" source="Axyz">A</semx>
                 <span class="fmt-autonum-delim">-</span>
                 <semx element="autonum" source="AAN1">1</semx>
                 <span class="fmt-autonum-delim">-</span>
@@ -2687,7 +2695,7 @@ RSpec.describe IsoDoc do
               </xref>
               <xref target="AAN">
                  <span class="fmt-element-name">Table</span>
-                 <semx element="autonum" source="annex11">Annex A</semx>
+                 <semx element="autonum" source="annex11">A</semx>
                  <span class="fmt-autonum-delim">-</span>
                  <semx element="autonum" source="AAN">1</semx>
               </xref>
@@ -2697,7 +2705,7 @@ RSpec.describe IsoDoc do
               </xref>
               <xref target="AAnote2">
                  <span class="fmt-element-name">Table</span>
-                 <semx element="autonum" source="annex11">Annex A</semx>
+                 <semx element="autonum" source="annex11">A</semx>
                  <span class="fmt-autonum-delim">-</span>
                  <semx element="autonum" source="AAnote2">2</semx>
               </xref>
