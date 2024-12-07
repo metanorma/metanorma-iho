@@ -137,89 +137,89 @@
 				<xsl:with-param name="contents" select="$contents"/>
 			</xsl:call-template>
 
-			<!-- =========================== -->
-			<!-- Cover Page -->
-			<fo:page-sequence master-reference="cover">
-				<fo:flow flow-name="xsl-region-body">
-					<fo:block-container position="absolute" left="14.25mm" top="12mm" id="__internal_layout__coverpage_{generate-id()}">
-						<fo:table table-layout="fixed" width="181.1mm">
-								<fo:table-column column-width="26mm"/>
-								<fo:table-column column-width="19.4mm"/>
-								<fo:table-column column-width="135.7mm"/>
-								<fo:table-body>
-									<fo:table-row>
-										<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-										<fo:table-cell>
-											<fo:block-container width="19.4mm" height="21mm" background-color="rgb(241, 234, 202)" border-bottom="0.05pt solid rgb(0, 21, 50)" text-align="center" display-align="center" font-size="10pt" font-weight="bold">
-												<fo:block>
-													<xsl:value-of select="$docidentifier"/>
-												</fo:block>
-											</fo:block-container>
-										</fo:table-cell>
-										<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-									</fo:table-row>
-									<fo:table-row>
-										<fo:table-cell display-align="after" text-align="right">
-											<fo:block font-size="1">
-												<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image IHO"/>
-											</fo:block>
-										</fo:table-cell>
-										<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)" font-weight="bold" color="rgb(0, 0, 76)" padding-top="3mm">
-											<fo:block-container height="165mm" width="115mm">
-												<fo:block-container margin-left="10mm">
-													<fo:block-container margin-left="0mm">
-														<fo:block-container display-align="center" height="90mm">
-															<fo:block font-size="28pt" role="H1" line-height="115%">
-																<xsl:copy-of select="$title-en"/>
-															</fo:block>
-														</fo:block-container>
-														<fo:block font-size="14pt">
-															<xsl:value-of select="$edition"/>
-															<xsl:if test="normalize-space($month_year) != ''">
-																<xsl:text> – </xsl:text>
-																<xsl:value-of select="$month_year"/>
-															</xsl:if>
-														</fo:block>
-													</fo:block-container>
-												</fo:block-container>
-											</fo:block-container>
-										</fo:table-cell>
-									</fo:table-row>
-									<fo:table-row>
-										<fo:table-cell>
-											<fo:block font-size="1">
-												<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Logo-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo IHO"/>
-											</fo:block>
-										</fo:table-cell>
-										<fo:table-cell>
-											<fo:block font-size="1">
-												<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Text-IHO))}" width="25.8mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Text IHO"/>
-											</fo:block>
-										</fo:table-cell>
-										<fo:table-cell>
-											<fo:block-container width="79mm" height="72mm" margin-left="56.8mm" background-color="rgb(0, 172, 158)" text-align="right" display-align="after">
-												<fo:block-container margin-left="0mm">
-													<fo:block font-size="8pt" color="white" margin-right="5mm" margin-bottom="5mm" line-height-shift-adjustment="disregard-shifts">
-														<xsl:apply-templates select="/iho:iho-standard/iho:boilerplate/iho:feedback-statement"/>
-													</fo:block>
-												</fo:block-container>
-											</fo:block-container>
-										</fo:table-cell>
-									</fo:table-row>
-								</fo:table-body>
-							</fo:table>
-					</fo:block-container>
-				</fo:flow>
-			</fo:page-sequence>
-			<!-- End Cover Page -->
-			<!-- =========================== -->
-			<!-- =========================== -->
-
 			<xsl:variable name="updated_xml">
 				<xsl:call-template name="updateXML"/>
 			</xsl:variable>
 
 			<xsl:for-each select="xalan:nodeset($updated_xml)/*">
+
+				<!-- =========================== -->
+				<!-- Cover Page -->
+				<fo:page-sequence master-reference="cover">
+					<fo:flow flow-name="xsl-region-body">
+						<fo:block-container position="absolute" left="14.25mm" top="12mm" id="__internal_layout__coverpage_{generate-id()}">
+							<fo:table table-layout="fixed" width="181.1mm">
+									<fo:table-column column-width="26mm"/>
+									<fo:table-column column-width="19.4mm"/>
+									<fo:table-column column-width="135.7mm"/>
+									<fo:table-body>
+										<fo:table-row>
+											<fo:table-cell><fo:block> </fo:block></fo:table-cell>
+											<fo:table-cell>
+												<fo:block-container width="19.4mm" height="21mm" background-color="rgb(241, 234, 202)" border-bottom="0.05pt solid rgb(0, 21, 50)" text-align="center" display-align="center" font-size="10pt" font-weight="bold">
+													<fo:block>
+														<xsl:value-of select="$docidentifier"/>
+													</fo:block>
+												</fo:block-container>
+											</fo:table-cell>
+											<fo:table-cell><fo:block> </fo:block></fo:table-cell>
+										</fo:table-row>
+										<fo:table-row>
+											<fo:table-cell display-align="after" text-align="right">
+												<fo:block font-size="1">
+													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image IHO"/>
+												</fo:block>
+											</fo:table-cell>
+											<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)" font-weight="bold" color="rgb(0, 0, 76)" padding-top="3mm">
+												<fo:block-container height="165mm" width="115mm">
+													<fo:block-container margin-left="10mm">
+														<fo:block-container margin-left="0mm">
+															<fo:block-container display-align="center" height="90mm">
+																<fo:block font-size="28pt" role="H1" line-height="115%">
+																	<xsl:copy-of select="$title-en"/>
+																</fo:block>
+															</fo:block-container>
+															<fo:block font-size="14pt">
+																<xsl:value-of select="$edition"/>
+																<xsl:if test="normalize-space($month_year) != ''">
+																	<xsl:text> – </xsl:text>
+																	<xsl:value-of select="$month_year"/>
+																</xsl:if>
+															</fo:block>
+														</fo:block-container>
+													</fo:block-container>
+												</fo:block-container>
+											</fo:table-cell>
+										</fo:table-row>
+										<fo:table-row>
+											<fo:table-cell>
+												<fo:block font-size="1">
+													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Logo-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo IHO"/>
+												</fo:block>
+											</fo:table-cell>
+											<fo:table-cell>
+												<fo:block font-size="1">
+													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Text-IHO))}" width="25.8mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Text IHO"/>
+												</fo:block>
+											</fo:table-cell>
+											<fo:table-cell>
+												<fo:block-container width="79mm" height="72mm" margin-left="56.8mm" background-color="rgb(0, 172, 158)" text-align="right" display-align="after">
+													<fo:block-container margin-left="0mm">
+														<fo:block font-size="8pt" color="white" margin-right="5mm" margin-bottom="5mm" line-height-shift-adjustment="disregard-shifts">
+															<xsl:apply-templates select="/iho:iho-standard/iho:boilerplate/iho:feedback-statement"/>
+														</fo:block>
+													</fo:block-container>
+												</fo:block-container>
+											</fo:table-cell>
+										</fo:table-row>
+									</fo:table-body>
+								</fo:table>
+						</fo:block-container>
+					</fo:flow>
+				</fo:page-sequence>
+				<!-- End Cover Page -->
+				<!-- =========================== -->
+				<!-- =========================== -->
 
 				<xsl:variable name="updated_xml_with_pages">
 					<xsl:call-template name="processPrefaceAndMainSectionsDefault_items"/>
@@ -386,19 +386,19 @@
 
 	<xsl:template match="iho:preface//iho:clause[@type = 'toc']" priority="4">
 		<!-- Table of Contents -->
-		<fo:block role="TOC">
+		<fo:block>
 
 			<xsl:apply-templates/>
 
-			<!-- <xsl:if test="$debug = 'true'">
-				<redirect:write file="contents_{java:getTime(java:java.util.Date.new())}.xml">
+			<xsl:if test="$debug = 'true'">
+				<redirect:write file="contents_.xml"> <!-- {java:getTime(java:java.util.Date.new())} -->
 					<xsl:copy-of select="$contents"/>
 				</redirect:write>
-			</xsl:if> -->
+			</xsl:if>
 
 			<xsl:if test="count(*) = 1 and *[local-name() = 'title']"> <!-- if there isn't user ToC -->
 
-				<fo:block line-height="115%">
+				<fo:block line-height="115%" role="TOC">
 
 					<xsl:for-each select="$contents//item[@display = 'true']"><!-- [not(@level = 2 and starts-with(@section, '0'))] skip clause from preface -->
 						<fo:block role="TOCI">
@@ -466,8 +466,8 @@
 	</xsl:template>
 
 	<xsl:template match="iho:preface//iho:clause[@type = 'toc']/iho:title" priority="3">
-		<fo:block font-weight="bold" margin-bottom="7.5pt" role="H1" font-size="12pt" margin-top="4pt">
-			<fo:block-container width="18.3mm" border-bottom="1.25pt solid black">
+		<fo:block font-weight="bold" margin-bottom="7.5pt" font-size="12pt" margin-top="4pt" role="SKIP">
+			<fo:block-container width="18.3mm" border-bottom="1.25pt solid black" role="SKIP">
 				<fo:block line-height="75%">
 					<!-- <xsl:call-template name="getLocalizedString">
 						<xsl:with-param name="key">table_of_contents</xsl:with-param>
@@ -483,10 +483,10 @@
 	<!-- ============================= -->
 
 	<!-- element with title -->
-	<xsl:template match="*[iho:title]" mode="contents">
+	<xsl:template match="*[iho:title or iho:fmt-title]" mode="contents">
 		<xsl:variable name="level">
 			<xsl:call-template name="getLevel">
-				<xsl:with-param name="depth" select="iho:title/@depth"/>
+				<xsl:with-param name="depth" select="iho:fmt-title/@depth | iho:title/@depth"/>
 			</xsl:call-template>
 		</xsl:variable>
 
@@ -881,7 +881,7 @@
 		<xsl:text>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</xsl:text>
 	</xsl:variable>
 
-			<xsl:strip-space elements="iho:xref"/>
+			<!-- <xsl:strip-space elements="iho:xref"/> -->
 
 	<xsl:variable name="namespace_full" select="namespace-uri(/*)"/> <!-- example: https://www.metanorma.org/ns/iso -->
 	<xsl:variable name="root_element" select="local-name(/*)"/> <!-- example: iso-standard -->
@@ -1868,6 +1868,10 @@
 
 	<xsl:template name="refine_termnote-name-style">
 
+		<!-- <xsl:if test="$namespace = 'ieee'">
+			<xsl:attribute name="padding-right">0mm</xsl:attribute>
+		</xsl:if> -->
+
 	</xsl:template>
 
 	<xsl:attribute-set name="termnote-p-style">
@@ -2551,9 +2555,21 @@
 	<xsl:template name="processTables_Contents">
 		<tables>
 			<xsl:for-each select="//*[local-name() = 'table'][not(ancestor::*[local-name() = 'metanorma-extension'])][@id and *[local-name() = 'name'] and normalize-space(@id) != '']">
-				<table id="{@id}" alt-text="{*[local-name() = 'name']}">
-					<xsl:copy-of select="*[local-name() = 'name']"/>
-				</table>
+				<xsl:choose>
+					<xsl:when test="*[local-name() = 'fmt-name']">
+						<xsl:variable name="fmt_name">
+							<xsl:apply-templates select="*[local-name() = 'fmt-name']" mode="update_xml_step1"/>
+						</xsl:variable>
+						<table id="{@id}" alt-text="{normalize-space($fmt_name)}">
+							<xsl:copy-of select="$fmt_name"/>
+						</table>
+					</xsl:when>
+					<xsl:otherwise>
+						<table id="{@id}" alt-text="{*[local-name() = 'name']}">
+							<xsl:copy-of select="*[local-name() = 'name']"/>
+						</table>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:for-each>
 		</tables>
 	</xsl:template>
@@ -2561,9 +2577,21 @@
 	<xsl:template name="processFigures_Contents">
 		<figures>
 			<xsl:for-each select="//*[local-name() = 'figure'][@id and *[local-name() = 'name'] and not(@unnumbered = 'true') and normalize-space(@id) != ''] | //*[@id and starts-with(*[local-name() = 'name'], 'Figure ') and normalize-space(@id) != '']">
-				<figure id="{@id}" alt-text="{*[local-name() = 'name']}">
-					<xsl:copy-of select="*[local-name() = 'name']"/>
-				</figure>
+				<xsl:choose>
+					<xsl:when test="*[local-name() = 'fmt-name']">
+						<xsl:variable name="fmt_name">
+							<xsl:apply-templates select="*[local-name() = 'fmt-name']" mode="update_xml_step1"/>
+						</xsl:variable>
+						<figure id="{@id}" alt-text="{normalize-space($fmt_name)}">
+							<xsl:copy-of select="$fmt_name"/>
+						</figure>
+					</xsl:when>
+					<xsl:otherwise>
+						<figure id="{@id}" alt-text="{*[local-name() = 'name']}">
+							<xsl:copy-of select="*[local-name() = 'name']"/>
+						</figure>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:for-each>
 		</figures>
 	</xsl:template>
@@ -7385,6 +7413,8 @@
 
 									<fo:inline xsl:use-attribute-sets="note-name-style" role="SKIP">
 
+										<xsl:apply-templates select="*[local-name() = 'name']/*[local-name() = 'tab']" mode="tab"/>
+
 										<xsl:call-template name="refine_note-name-style"/>
 
 										<!-- if 'p' contains all text in 'add' first and last elements in first p are 'add' -->
@@ -7440,10 +7470,6 @@
 			<xsl:call-template name="refine_termnote-style"/>
 
 			<fo:inline xsl:use-attribute-sets="termnote-name-style">
-
-				<xsl:if test="not(*[local-name() = 'name']/following-sibling::node()[1][self::text()][normalize-space()=''])">
-					<xsl:attribute name="padding-right">1mm</xsl:attribute>
-				</xsl:if>
 
 				<xsl:call-template name="refine_termnote-name-style"/>
 
@@ -8403,20 +8429,48 @@
 	<xsl:template match="*[local-name() = 'emf']"/>
 
 	<xsl:template match="*[local-name() = 'figure']/*[local-name() = 'name'] |                *[local-name() = 'table']/*[local-name() = 'name'] |               *[local-name() = 'permission']/*[local-name() = 'name'] |               *[local-name() = 'recommendation']/*[local-name() = 'name'] |               *[local-name() = 'requirement']/*[local-name() = 'name']" mode="contents">
+		<xsl:if test="not(following-sibling::*[1][local-name() = 'fmt-name'])">
+			<xsl:apply-templates mode="contents"/>
+			<xsl:text> </xsl:text>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'title'][following-sibling::*[1][local-name() = 'fmt-title']]" mode="contents"/>
+
+	<xsl:template match="*[local-name() = 'figure']/*[local-name() = 'fmt-name'] |                *[local-name() = 'table']/*[local-name() = 'fmt-name'] |               *[local-name() = 'permission']/*[local-name() = 'fmt-name'] |               *[local-name() = 'recommendation']/*[local-name() = 'fmt-name'] |               *[local-name() = 'requirement']/*[local-name() = 'fmt-name']" mode="contents">
 		<xsl:apply-templates mode="contents"/>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="*[local-name() = 'figure']/*[local-name() = 'name'] |                *[local-name() = 'table']/*[local-name() = 'name'] |               *[local-name() = 'permission']/*[local-name() = 'name'] |               *[local-name() = 'recommendation']/*[local-name() = 'name'] |               *[local-name() = 'requirement']/*[local-name() = 'name'] |               *[local-name() = 'sourcecode']/*[local-name() = 'name']" mode="bookmarks">
+		<xsl:if test="not(following-sibling::*[1][local-name() = 'fmt-name'])">
+			<xsl:apply-templates mode="bookmarks"/>
+			<xsl:text> </xsl:text>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'figure']/*[local-name() = 'fmt-name'] |                *[local-name() = 'table']/*[local-name() = 'fmt-name'] |               *[local-name() = 'permission']/*[local-name() = 'fmt-name'] |               *[local-name() = 'recommendation']/*[local-name() = 'fmt-name'] |               *[local-name() = 'requirement']/*[local-name() = 'fmt-name'] |               *[local-name() = 'sourcecode']/*[local-name() = 'fmt-name']" mode="bookmarks">
 		<xsl:apply-templates mode="bookmarks"/>
 		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="*[local-name() = 'figure' or local-name() = 'table' or local-name() = 'permission' or local-name() = 'recommendation' or local-name() = 'requirement']/*[local-name() = 'name']/text()" mode="contents" priority="2">
+		<xsl:if test="not(../following-sibling::*[1][local-name() = 'fmt-name'])">
+			<xsl:value-of select="."/>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'figure' or local-name() = 'table' or local-name() = 'permission' or local-name() = 'recommendation' or local-name() = 'requirement']/*[local-name() = 'fmt-name']/text()" mode="contents" priority="2">
 		<xsl:value-of select="."/>
 	</xsl:template>
 
 	<xsl:template match="*[local-name() = 'figure' or local-name() = 'table' or local-name() = 'permission' or local-name() = 'recommendation' or local-name() = 'requirement' or local-name() = 'sourcecode']/*[local-name() = 'name']//text()" mode="bookmarks" priority="2">
+		<xsl:if test="not(../following-sibling::*[1][local-name() = 'fmt-name'])">
+			<xsl:value-of select="."/>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'figure' or local-name() = 'table' or local-name() = 'permission' or local-name() = 'recommendation' or local-name() = 'requirement' or local-name() = 'sourcecode']/*[local-name() = 'fmt-name']//text()" mode="bookmarks" priority="2">
 		<xsl:value-of select="."/>
 	</xsl:template>
 
@@ -8437,7 +8491,7 @@
 	</xsl:template>
 
 	<!-- special case: ignore section-title if @depth different than @depth of parent clause, or @depth of parent clause = 1 -->
-	<xsl:template match="*[local-name() = 'clause']/*[local-name() = 'p'][@type = 'section-title' and (@depth != ../*[local-name() = 'title']/@depth or ../*[local-name() = 'title']/@depth = 1)]" priority="3" mode="contents"/>
+	<xsl:template match="*[local-name() = 'clause']/*[local-name() = 'p'][@type = 'section-title' and (@depth != ../*[local-name() = 'title' or local-name() = 'fmt-title']/@depth or ../*[local-name() = 'title' or local-name() = 'fmt-title']/@depth = 1)]" priority="3" mode="contents"/>
 
 	<xsl:template match="*[local-name() = 'p'][@type = 'floating-title' or @type = 'section-title']" priority="2" name="contents_section-title" mode="contents">
 		<xsl:variable name="level">
@@ -8449,6 +8503,9 @@
 		<xsl:variable name="section">
 			<xsl:choose>
 				<xsl:when test="@type = 'section-title'"/>
+				<xsl:when test="*[local-name() = 'span'][@class = 'fmt-caption-delim']">
+					<xsl:value-of select="*[local-name() = 'span'][@class = 'fmt-caption-delim'][1]/preceding-sibling::node()"/>
+				</xsl:when>
 				<xsl:otherwise>
 					<xsl:value-of select="*[local-name() = 'tab'][1]/preceding-sibling::node()"/>
 				</xsl:otherwise>
@@ -8471,6 +8528,19 @@
 
 			<xsl:variable name="title">
 				<xsl:choose>
+					<!-- https://github.com/metanorma/mn-native-pdf/issues/770 -->
+					<xsl:when test="*[local-name() = 'span'][@class = 'fmt-caption-delim']">
+						<xsl:choose>
+							<xsl:when test="@type = 'section-title'">
+								<xsl:value-of select="*[local-name() = 'span'][@class = 'fmt-caption-delim'][1]/preceding-sibling::node()"/>
+								<xsl:text>: </xsl:text>
+								<xsl:copy-of select="*[local-name() = 'span'][@class = 'fmt-caption-delim'][1]/following-sibling::node()[not(local-name = 'fmt-xref-label')]"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:copy-of select="*[local-name() = 'span'][@class = 'fmt-caption-delim'][1]/following-sibling::node()[not(local-name = 'fmt-xref-label')]"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:when>
 					<xsl:when test="*[local-name() = 'tab']">
 						<xsl:choose>
 							<xsl:when test="@type = 'section-title'">
@@ -8506,7 +8576,7 @@
 		<xsl:apply-templates mode="bookmarks"/>
 	</xsl:template>
 
-	<xsl:template match="*[local-name() = 'title' or local-name() = 'name']//*[local-name() = 'stem']" mode="contents">
+	<xsl:template match="*[local-name() = 'title' or local-name() = 'name' or local-name() = 'fmt-title' or local-name() = 'fmt-name']//*[local-name() = 'stem']" mode="contents">
 		<xsl:apply-templates select="."/>
 	</xsl:template>
 
@@ -8519,6 +8589,10 @@
 		<xsl:apply-templates mode="contents"/>
 	</xsl:template>
 
+	<xsl:template match="*[local-name() = 'semx']" mode="contents">
+		<xsl:apply-templates mode="contents"/>
+	</xsl:template>
+
 	<xsl:template match="*[local-name() = 'stem']" mode="bookmarks">
 		<xsl:apply-templates mode="bookmarks"/>
 	</xsl:template>
@@ -8528,9 +8602,14 @@
 		<xsl:apply-templates mode="bookmarks"/>
 	</xsl:template>
 
+	<xsl:template match="*[local-name() = 'semx']" mode="bookmarks">
+		<xsl:apply-templates mode="bookmarks"/>
+	</xsl:template>
+
 	<!-- Bookmarks -->
 	<xsl:template name="addBookmarks">
 		<xsl:param name="contents"/>
+		<xsl:param name="contents_addon"/>
 		<xsl:variable name="contents_nodes" select="xalan:nodeset($contents)"/>
 		<xsl:if test="$contents_nodes//item">
 			<fo:bookmark-tree>
@@ -8627,6 +8706,9 @@
 
 					</xsl:otherwise>
 				</xsl:choose>
+
+				<!-- for $namespace = 'nist-sp' $namespace = 'ogc' $namespace = 'ogc-white-paper' -->
+				<xsl:copy-of select="$contents_addon"/>
 
 			</fo:bookmark-tree>
 		</xsl:if>
@@ -8782,18 +8864,54 @@
 	<!-- ====== -->
 	<xsl:template match="*[local-name() = 'title']" mode="contents_item">
 		<xsl:param name="mode">bookmarks</xsl:param>
+		<xsl:if test="not(following-sibling::*[1][local-name() = 'fmt-title'])">
+			<xsl:apply-templates mode="contents_item">
+				<xsl:with-param name="mode" select="$mode"/>
+			</xsl:apply-templates>
+			<!-- <xsl:text> </xsl:text> -->
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'fmt-title']" mode="contents_item">
+		<xsl:param name="mode">bookmarks</xsl:param>
 		<xsl:apply-templates mode="contents_item">
 			<xsl:with-param name="mode" select="$mode"/>
 		</xsl:apply-templates>
 		<!-- <xsl:text> </xsl:text> -->
 	</xsl:template>
 
+	<xsl:template match="*[local-name() = 'span'][                @class = 'fmt-caption-label' or                 @class = 'fmt-element-name' or                @class = 'fmt-caption-delim']" mode="contents_item" priority="3">
+		<xsl:apply-templates mode="contents_item"/>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'semx']" mode="contents_item">
+		<xsl:apply-templates mode="contents_item"/>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'fmt-xref-label']" mode="contents_item"/>
+
 	<xsl:template name="getSection">
-		<xsl:value-of select="*[local-name() = 'title']/*[local-name() = 'tab'][1]/preceding-sibling::node()"/>
+		<xsl:choose>
+			<xsl:when test="*[local-name() = 'fmt-title']">
+				<xsl:variable name="fmt_title_section">
+					<xsl:copy-of select="*[local-name() = 'fmt-title']//*[local-name() = 'span'][@class = 'fmt-caption-delim'][*[local-name() = 'tab']][1]/preceding-sibling::node()[not(local-name() = 'review')]"/>
+				</xsl:variable>
+				<xsl:value-of select="normalize-space($fmt_title_section)"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="*[local-name() = 'title']/*[local-name() = 'tab'][1]/preceding-sibling::node()"/>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="getName">
 		<xsl:choose>
+			<xsl:when test="*[local-name() = 'fmt-title']//*[local-name() = 'span'][@class = 'fmt-caption-delim'][*[local-name() = 'tab']]">
+				<xsl:copy-of select="*[local-name() = 'fmt-title']//*[local-name() = 'span'][@class = 'fmt-caption-delim'][*[local-name() = 'tab']][1]/following-sibling::node()"/>
+			</xsl:when>
+			<xsl:when test="*[local-name() = 'fmt-title']">
+				<xsl:copy-of select="*[local-name() = 'fmt-title']/node()"/>
+			</xsl:when>
 			<xsl:when test="*[local-name() = 'title']/*[local-name() = 'tab']">
 				<xsl:copy-of select="*[local-name() = 'title']/*[local-name() = 'tab'][1]/following-sibling::node()"/>
 			</xsl:when>
@@ -8900,6 +9018,15 @@
 	</xsl:template>
 
 	<xsl:template match="*[local-name() = 'name']" mode="contents_item">
+		<xsl:param name="mode">bookmarks</xsl:param>
+		<xsl:if test="not(following-sibling::*[1][local-name() = 'fmt-name'])">
+			<xsl:apply-templates mode="contents_item">
+				<xsl:with-param name="mode" select="$mode"/>
+			</xsl:apply-templates>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'fmt-name']" mode="contents_item">
 		<xsl:param name="mode">bookmarks</xsl:param>
 		<xsl:apply-templates mode="contents_item">
 			<xsl:with-param name="mode" select="$mode"/>
@@ -10221,6 +10348,15 @@
 		</xsl:choose>
 
 	</xsl:template> <!-- tab -->
+
+	<xsl:template match="*[local-name() = 'note']/*[local-name() = 'name']/*[local-name() = 'tab']" priority="2"/>
+	<xsl:template match="*[local-name() = 'termnote']/*[local-name() = 'name']/*[local-name() = 'tab']" priority="2"/>
+
+	<xsl:template match="*[local-name() = 'note']/*[local-name() = 'name']/*[local-name() = 'tab']" mode="tab">
+
+			<xsl:attribute name="padding-right">2mm</xsl:attribute>
+
+	</xsl:template>
 
 	<xsl:template name="insertNonBreakSpaces">
 		<xsl:param name="count"/>
@@ -11759,10 +11895,20 @@
 	<!--   - Remove semantic xml part -->
 	<!--   - Remove image/emf (EMF vector image for Word) -->
 	<!--   - add @id, redundant for table auto-layout algorithm -->
+	<!--   - process 'passthrough' element -->
+	<!--   - split math by element with @linebreak into maths -->
+	<!--   - rename fmt-title to title, fmt-name to name and another changes to convert new presentation XML to  -->
+	<!--   - old XML without significant changes in XSLT -->
 	<!-- =========================================================================== -->
 	<xsl:template match="@*|node()" mode="update_xml_step1">
 		<xsl:copy>
 			<xsl:apply-templates select="@*|node()" mode="update_xml_step1"/>
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="@*|node()" mode="update_xml_pres">
+		<xsl:copy>
+			<xsl:apply-templates select="@*|node()" mode="update_xml_pres"/>
 		</xsl:copy>
 	</xsl:template>
 
@@ -11861,14 +12007,17 @@
 
 	<!-- remove semantic xml -->
 	<xsl:template match="*[local-name() = 'metanorma-extension']/*[local-name() = 'metanorma']/*[local-name() = 'source']" mode="update_xml_step1"/>
+	<xsl:template match="*[local-name() = 'metanorma-extension']/*[local-name() = 'metanorma']/*[local-name() = 'source']" mode="update_xml_pres"/>
 
 	<!-- remove image/emf -->
 	<xsl:template match="*[local-name() = 'image']/*[local-name() = 'emf']" mode="update_xml_step1"/>
+	<xsl:template match="*[local-name() = 'image']/*[local-name() = 'emf']" mode="update_xml_pres"/>
 
 	<!-- remove preprocess-xslt -->
 	<xsl:template match="*[local-name() = 'preprocess-xslt']" mode="update_xml_step1"/>
+	<xsl:template match="*[local-name() = 'preprocess-xslt']" mode="update_xml_pres"/>
 
-	<xsl:template match="*[local-name() = 'stem'][not(.//*[local-name() = 'passthrough']) and not(.//*[@linebreak])] |        *[local-name() = 'image'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'sourcecode'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'bibdata'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'localized-strings']" mode="update_xml_step1">
+	<xsl:template match="*[local-name() = 'stem'][not(.//*[local-name() = 'passthrough']) and not(.//*[@linebreak])] |        *[local-name() = 'image'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'sourcecode'][not(.//*[local-name() = 'passthrough']) and not(.//*[local-name() = 'fmt-name'])] |        *[local-name() = 'bibdata'][not(.//*[local-name() = 'passthrough'])] |        *[local-name() = 'localized-strings']" mode="update_xml_step1">
 		<xsl:copy-of select="."/>
 	</xsl:template>
 
@@ -11950,19 +12099,76 @@
 		<xsl:copy-of select="$maths"/>
 	</xsl:template>
 
+	<!-- update new Presentation XML -->
+	<xsl:template match="*[local-name() = 'title'][following-sibling::*[1][local-name() = 'fmt-title']]" mode="update_xml_step1"/>
+	<xsl:template match="*[local-name() = 'title'][following-sibling::*[1][local-name() = 'fmt-title']]" mode="update_xml_pres"/>
+	<xsl:template match="*[local-name() = 'name'][following-sibling::*[1][local-name() = 'fmt-name']]" mode="update_xml_step1"/>
+	<xsl:template match="*[local-name() = 'name'][following-sibling::*[1][local-name() = 'fmt-name']]" mode="update_xml_pres"/>
+	<xsl:template match="*[local-name() = 'section-title'][following-sibling::*[1][local-name() = 'p'][@type = 'section-title' or @type = 'floating-title']]" mode="update_xml_step1"/>
+	<xsl:template match="*[local-name() = 'section-title'][following-sibling::*[1][local-name() = 'p'][@type = 'section-title' or @type = 'floating-title']]" mode="update_xml_pres"/>
+
+	<xsl:template match="*[local-name() = 'p'][@type = 'section-title' or @type = 'floating-title'][preceding-sibling::*[1][local-name() = 'section-title']]" mode="update_xml_step1">
+		<xsl:copy>
+			<xsl:apply-templates select="@*" mode="update_xml_step1"/>
+			<xsl:copy-of select="preceding-sibling::*[1][local-name() = 'section-title']/@depth"/>
+			<xsl:apply-templates select="node()" mode="update_xml_step1"/>
+		</xsl:copy>
+	</xsl:template>
+	<xsl:template match="*[local-name() = 'p'][@type = 'section-title' or @type = 'floating-title'][preceding-sibling::*[1][local-name() = 'section-title']]" mode="update_xml_pres">
+		<xsl:copy>
+			<xsl:apply-templates select="@*" mode="update_xml_pres"/>
+			<xsl:copy-of select="preceding-sibling::*[1][local-name() = 'section-title']/@depth"/>
+			<xsl:apply-templates select="node()" mode="update_xml_pres"/>
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'fmt-title']"/>
 	<xsl:template match="*[local-name() = 'fmt-title']" mode="update_xml_step1">
 		<xsl:element name="title" namespace="{$namespace_full}">
 			<xsl:copy-of select="@*"/>
 			<xsl:apply-templates mode="update_xml_step1"/>
 		</xsl:element>
 	</xsl:template>
+	<xsl:template match="*[local-name() = 'fmt-title']" mode="update_xml_pres">
+		<xsl:element name="title" namespace="{$namespace_full}">
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates mode="update_xml_pres"/>
+		</xsl:element>
+	</xsl:template>
 
+	<xsl:template match="*[local-name() = 'fmt-name']"/>
 	<xsl:template match="*[local-name() = 'fmt-name']" mode="update_xml_step1">
 		<xsl:element name="name" namespace="{$namespace_full}">
 			<xsl:copy-of select="@*"/>
 			<xsl:apply-templates mode="update_xml_step1"/>
 		</xsl:element>
 	</xsl:template>
+	<xsl:template match="*[local-name() = 'fmt-name']" mode="update_xml_pres">
+		<xsl:element name="name" namespace="{$namespace_full}">
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates mode="update_xml_pres"/>
+		</xsl:element>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'span'][                @class = 'fmt-caption-label' or                 @class = 'fmt-element-name' or                @class = 'fmt-caption-delim' or                @class = 'fmt-autonum-delim']" mode="update_xml_step1" priority="3">
+		<xsl:apply-templates mode="update_xml_step1"/>
+	</xsl:template>
+	<xsl:template match="*[local-name() = 'span'][                @class = 'fmt-caption-label' or                 @class = 'fmt-element-name' or                @class = 'fmt-caption-delim' or                @class = 'fmt-autonum-delim']" mode="update_xml_pres" priority="3">
+		<xsl:apply-templates mode="update_xml_pres"/>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'semx']" mode="update_xml_step1">
+		<xsl:apply-templates mode="update_xml_step1"/>
+	</xsl:template>
+	<xsl:template match="*[local-name() = 'semx']" mode="update_xml_pres">
+		<xsl:apply-templates mode="update_xml_pres"/>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'fmt-xref-label']"/>
+	<xsl:template match="*[local-name() = 'fmt-xref-label']" mode="update_xml_step1"/>
+	<xsl:template match="*[local-name() = 'fmt-xref-label']" mode="update_xml_pres"/>
+
+	<!-- END: update new Presentation XML -->
 
 	<!-- =========================================================================== -->
 	<!-- END STEP1: Re-order elements in 'preface', 'sections' based on @displayorder -->
@@ -12156,7 +12362,7 @@
 	<xsl:variable name="non_white_space">[^\s\u3000-\u9FFF]</xsl:variable>
 	<xsl:variable name="regex_dots_units">((\b((<xsl:value-of select="$non_white_space"/>{1,3}\.<xsl:value-of select="$non_white_space"/>+)|(<xsl:value-of select="$non_white_space"/>+\.<xsl:value-of select="$non_white_space"/>{1,3}))\b)|(\.<xsl:value-of select="$non_white_space"/>{1,3})\b)</xsl:variable>
 
-	<xsl:template match="text()[not(ancestor::*[local-name() = 'bibdata'] or      ancestor::*[local-name() = 'link'][not(contains(.,' '))] or      ancestor::*[local-name() = 'sourcecode'] or      ancestor::*[local-name() = 'math'] or     ancestor::*[local-name() = 'svg'] or     starts-with(., 'http://') or starts-with(., 'https://') or starts-with(., 'www.') or normalize-space() = '' )]" name="keep_together_standard_number" mode="update_xml_enclose_keep-together_within-line">
+	<xsl:template match="text()[not(ancestor::*[local-name() = 'bibdata'] or      ancestor::*[local-name() = 'link'][not(contains(.,' '))] or      ancestor::*[local-name() = 'sourcecode'] or      ancestor::*[local-name() = 'math'] or     ancestor::*[local-name() = 'svg'] or     ancestor::*[local-name() = 'name'] or     starts-with(., 'http://') or starts-with(., 'https://') or starts-with(., 'www.') or normalize-space() = '' )]" name="keep_together_standard_number" mode="update_xml_enclose_keep-together_within-line">
 
 		<xsl:variable name="parent" select="local-name(..)"/>
 
@@ -12815,7 +13021,7 @@
 					<xsl:variable name="dc_description">
 						<xsl:variable name="abstract">
 
-									<xsl:copy-of select="//*[contains(local-name(), '-standard')]/*[local-name() = 'preface']/*[local-name() = 'abstract']//text()[not(ancestor::*[local-name() = 'title'])]"/>
+									<xsl:copy-of select="//*[contains(local-name(), '-standard')]/*[local-name() = 'preface']/*[local-name() = 'abstract']//text()[not(ancestor::*[local-name() = 'fmt-title']) and not(ancestor::*[local-name() = 'title']) and not(ancestor::*[local-name() = 'fmt-xref-label'])]"/>
 
 						</xsl:variable>
 						<rdf:Alt>
