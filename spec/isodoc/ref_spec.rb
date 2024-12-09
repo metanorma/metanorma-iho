@@ -137,7 +137,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <bibdata>
              <language current="true">en</language>
           </bibdata>
@@ -154,7 +154,7 @@ RSpec.describe IsoDoc do
                    <xref target="ref1">S-57</xref>
                    <xref target="ref2">NIST FIPS 186</xref>
                    <xref target="ref3">NIST FIPS 180-1</xref>
-                   <xref target="ref4">ITU-T X.509 / ISO/IEC 9594-8</xref>
+                   <xref target="ref4">ITU-T X.509 / ISO/IEC 9594-8</xref>
                    <xref target="ref5">[5]</xref>
                    <xref target="ref6">NIST FIPS 81</xref>
                    <xref target="ref7">IETF RFC 1423</xref>
@@ -163,7 +163,7 @@ RSpec.describe IsoDoc do
                    <xref target="ISO712">ISO 712</xref>
                    <xref target="ISBN">[1]</xref>
                    <xref target="ISSN">[2]</xref>
-                   <xref target="ISO16634">ISO 16634:-- (all parts)</xref>
+                   <xref target="ISO16634">ISO 16634:-- (all parts)</xref>
                    <xref target="ref11">IETF RFC 10</xref>
                    <xref target="ref10">[4]</xref>
                    <xref target="ref12">Citn</xref>
@@ -279,7 +279,7 @@ RSpec.describe IsoDoc do
                    <uri type="src">https://www.rfc-editor.org/info/rfc1423</uri>
                    <docidentifier type="IETF">IETF RFC 1423</docidentifier>
                    <docidentifier type="IETF" scope="anchor">IETF RFC1423</docidentifier>
-                   <docidentifier type="DOI">DOI 10.17487/RFC1423</docidentifier>
+                   <docidentifier type="DOI">DOI 10.17487/RFC1423</docidentifier>
                    <docidentifier scope="biblio-tag">IETF RFC 1423</docidentifier>
                    <biblio-tag>
                       [7]
@@ -324,9 +324,9 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                 </bibitem>
                 <bibitem id="ISO16634" type="standard">
-                   <formattedref>ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</formattedref>
-                   <docidentifier type="ISO">ISO 16634:-- (all parts)</docidentifier>
-                   <docidentifier scope="biblio-tag">ISO 16634:-- (all parts)</docidentifier>
+                   <formattedref>ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</formattedref>
+                   <docidentifier type="ISO">ISO 16634:-- (all parts)</docidentifier>
+                   <docidentifier scope="biblio-tag">ISO 16634:-- (all parts)</docidentifier>
                    <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
                    <biblio-tag>
                       [11]
@@ -484,13 +484,13 @@ RSpec.describe IsoDoc do
                 <h1 class="IntroTitle">Contents</h1>
              </div>
              <br/>
-             <div>
+                         <div>
                 <h1 class="ForewordTitle">Foreword</h1>
-                <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
+                <p id="_">
                    <a href="#ref1">S-57</a>
                    <a href="#ref2">NIST FIPS 186</a>
                    <a href="#ref3">NIST FIPS 180-1</a>
-                   <a href="#ref4">ITU-T X.509 / ISO/IEC 9594-8</a>
+                   <a href="#ref4">ITU-T X.509 / ISO/IEC 9594-8</a>
                    <a href="#ref5">[5]</a>
                    <a href="#ref6">NIST FIPS 81</a>
                    <a href="#ref7">IETF RFC 1423</a>
@@ -499,7 +499,7 @@ RSpec.describe IsoDoc do
                    <a href="#ISO712">ISO 712</a>
                    <a href="#ISBN">[1]</a>
                    <a href="#ISSN">[2]</a>
-                   <a href="#ISO16634">ISO 16634:-- (all parts)</a>
+                   <a href="#ISO16634">ISO 16634:-- (all parts)</a>
                    <a href="#ref11">IETF RFC 10</a>
                    <a href="#ref10">[4]</a>
                    <a href="#ref12">Citn</a>
@@ -550,7 +550,7 @@ RSpec.describe IsoDoc do
                    ).
                 </p>
                 <p id="ISO712" class="NormRef">[10]  ISO 712: Cereals and cereal products, International Organization for Standardization.</p>
-                <p id="ISO16634" class="NormRef">[11]  ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</p>
+                <p id="ISO16634" class="NormRef">[11]  ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</p>
                 <p id="ISO20483" class="NormRef">[12]  ISO 20483:2013-2014: Cereals and pulses, International Organization for Standardization.</p>
                 <p id="ref11" class="NormRef">
                    [13] 
