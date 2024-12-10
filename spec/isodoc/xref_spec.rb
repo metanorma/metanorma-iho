@@ -2753,6 +2753,8 @@ RSpec.describe IsoDoc do
                <xref target="QQ"/>
                <xref target="QQ1"/>
                <xref target="QQ2"/>
+               <xref target="PPP"/>
+               <xref target="PPP1"/>
                <xref target="R"/>
                </p>
              </foreword>
@@ -2814,6 +2816,10 @@ RSpec.describe IsoDoc do
                <title>An Appendix</title>
              </appendix>
              </annex>
+             <annex id="PPP" inline-header="false" obligation="normative">
+               <title>Annex X</title>
+               <terms id="PPP1"><title>Annex X Terms</title></terms>
+               </annex>
               <bibliography><references id="R" obligation="informative" normative="true">
                <title>Normative References</title>
              </references><clause id="S" obligation="informative">
@@ -2943,6 +2949,14 @@ RSpec.describe IsoDoc do
                  <span class="fmt-element-name">Appendix</span>
                  <semx element="autonum" source="QQ2">1</semx>
               </xref>
+                   <xref target="PPP">
+        <span class="fmt-element-name">Annex</span>
+        <semx element="autonum" source="PPP">B</semx>
+     </xref>
+     <xref target="PPP1">
+        <span class="fmt-element-name">Annex</span>
+        <semx element="autonum" source="PPP1">B</semx>
+     </xref>
               <xref target="R">
                  <span class="fmt-element-name">Section</span>
                  <semx element="autonum" source="R">2</semx>

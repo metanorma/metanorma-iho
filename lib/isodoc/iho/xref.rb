@@ -32,14 +32,16 @@ module IsoDoc
       end
 
       def annex_names_recurse(clause, num)
-        @klass.single_term_clause?(clause) and
-          return annex_names1(clause.at(ns("./references | ./terms | ./definitions")),
+        if @klass.single_term_clause?(clause)
+          annex_names1(clause.at(ns("./references | ./terms | ./definitions")),
                               nil, num.to_s, 1)
+        else
         i = Counter.new
         clause.xpath(ns("./clause | ./references | ./terms | ./definitions"))
           .each do |c|
           i.increment(c)
           annex_names1(c, semx(clause, num), i.print, 2)
+        end
         end
       end
 
