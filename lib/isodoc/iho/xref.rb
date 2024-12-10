@@ -34,7 +34,7 @@ module IsoDoc
       def annex_names_recurse(clause, num)
         @klass.single_term_clause?(clause) and
           return annex_names1(clause.at(ns("./references | ./terms | ./definitions")),
-                              num.to_s, 1)
+                              nil, num.to_s, 1)
         i = Counter.new
         clause.xpath(ns("./clause | ./references | ./terms | ./definitions"))
           .each do |c|
