@@ -155,17 +155,17 @@ RSpec.describe IsoDoc do
                    <xref target="ref2">NIST FIPS 186</xref>
                    <xref target="ref3">NIST FIPS 180-1</xref>
                    <xref target="ref4">ITU-T X.509 / ISO/IEC 9594-8</xref>
-                   <xref target="ref5">[5]</xref>
+                   <xref target="ref5">[1]</xref>
                    <xref target="ref6">NIST FIPS 81</xref>
                    <xref target="ref7">IETF RFC 1423</xref>
-                   <xref target="ref8">[8]</xref>
+                   <xref target="ref8">[2]</xref>
                    <xref target="ref9">ISO/IEC 13239:2002</xref>
                    <xref target="ISO712">ISO 712</xref>
-                   <xref target="ISBN">[1]</xref>
-                   <xref target="ISSN">[2]</xref>
+                   <xref target="ISBN">[3]</xref>
+                   <xref target="ISSN">[4]</xref>
                    <xref target="ISO16634">ISO 16634:-- (all parts)</xref>
                    <xref target="ref11">IETF RFC 10</xref>
-                   <xref target="ref10">[4]</xref>
+                   <xref target="ref10">[6]</xref>
                    <xref target="ref12">Citn</xref>
                 </p>
              </foreword>
@@ -248,7 +248,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ref5">
                    <formattedref format="application/x-isodoc+xml">ZIP File Format Specification, PKWare Inc.</formattedref>
-                   <docidentifier type="metanorma">[5]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[1]</docidentifier>
                    <biblio-tag>
                       [5]
                       <tab/>
@@ -292,7 +292,7 @@ RSpec.describe IsoDoc do
                       <link target="http://www.counterpane.com"/>
                       )
                    </formattedref>
-                   <docidentifier type="metanorma">[8]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[2]</docidentifier>
                    <biblio-tag>
                       [8]
                       <tab/>
@@ -382,7 +382,7 @@ RSpec.describe IsoDoc do
                       <em>Chemicals for analytical laboratory use</em>
                       . n.p.: n.d. ISBN: ISBN.
                    </formattedref>
-                   <docidentifier type="metanorma-ordinal">[1]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[3]</docidentifier>
                    <docidentifier type="ISBN">ISBN</docidentifier>
                    <biblio-tag>
                       [1]
@@ -394,7 +394,7 @@ RSpec.describe IsoDoc do
                       <em>Instruments for analytical laboratory use</em>
                       . n.d. ISSN: ISSN.
                    </formattedref>
-                   <docidentifier type="metanorma-ordinal">[2]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[4]</docidentifier>
                    <docidentifier type="ISSN">ISSN</docidentifier>
                    <biblio-tag>
                       [2]
@@ -425,7 +425,7 @@ RSpec.describe IsoDoc do
                 </note>
                 <bibitem id="ISO3696" type="standard">
                    <formattedref>ISO 3696: Water for analytical laboratory use.</formattedref>
-                   <docidentifier type="metanorma-ordinal">[3]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[5]</docidentifier>
                    <docidentifier type="ISO">ISO 3696</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 3696</docidentifier>
                    <biblio-tag>
@@ -442,7 +442,7 @@ RSpec.describe IsoDoc do
                       <link target="http://www.icc.or.at"/>
                       )
                    </formattedref>
-                   <docidentifier type="metanorma-ordinal">[4]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[6]</docidentifier>
                    <biblio-tag>
                       [4]
                       <tab/>
@@ -450,7 +450,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ref11">
                    <formattedref>IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</formattedref>
-                   <docidentifier type="metanorma-ordinal">[5]</docidentifier>
+                   <docidentifier type="metanorma-ordinal">[7]</docidentifier>
                    <docidentifier type="IETF">IETF RFC 10</docidentifier>
                    <docidentifier scope="biblio-tag">IETF RFC 10</docidentifier>
                    <biblio-tag>
@@ -484,24 +484,24 @@ RSpec.describe IsoDoc do
                 <h1 class="IntroTitle">Contents</h1>
              </div>
              <br/>
-                         <div>
+                          <div>
                 <h1 class="ForewordTitle">Foreword</h1>
                 <p id="_">
                    <a href="#ref1">S-57</a>
                    <a href="#ref2">NIST FIPS 186</a>
                    <a href="#ref3">NIST FIPS 180-1</a>
                    <a href="#ref4">ITU-T X.509 / ISO/IEC 9594-8</a>
-                   <a href="#ref5">[5]</a>
+                   <a href="#ref5">[1]</a>
                    <a href="#ref6">NIST FIPS 81</a>
                    <a href="#ref7">IETF RFC 1423</a>
-                   <a href="#ref8">[8]</a>
+                   <a href="#ref8">[2]</a>
                    <a href="#ref9">ISO/IEC 13239:2002</a>
                    <a href="#ISO712">ISO 712</a>
-                   <a href="#ISBN">[1]</a>
-                   <a href="#ISSN">[2]</a>
+                   <a href="#ISBN">[3]</a>
+                   <a href="#ISSN">[4]</a>
                    <a href="#ISO16634">ISO 16634:-- (all parts)</a>
                    <a href="#ref11">IETF RFC 10</a>
-                   <a href="#ref10">[4]</a>
+                   <a href="#ref10">[6]</a>
                    <a href="#ref12">Citn</a>
                 </p>
              </div>
