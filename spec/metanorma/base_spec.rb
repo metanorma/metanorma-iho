@@ -584,7 +584,7 @@ RSpec.describe Metanorma::Iho do
           <stage>in-force</stage>
         </status>
         <copyright>
-          <from>2024</from>
+          <from>#{Date.today.year}</from>
           <owner>
             <organization>
               <name>International Hydrographic Organization</name>
