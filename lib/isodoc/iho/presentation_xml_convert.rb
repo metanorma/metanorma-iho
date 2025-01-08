@@ -124,6 +124,7 @@ _bib)
 
       def term1(elem); end
 
+      # KILL
       def termsource1(elem)
         elem.parent.nil? and return
         while elem&.next_element&.name == "termsource"
@@ -133,6 +134,32 @@ _bib)
         s = l10n(" [#{to_xml(elem.remove.children).strip}]")
         defn = t.at(ns(".//definition[last()]")) or return
         defn.elements.last << s
+      end
+
+      def termsource1(elem)
+        elem.parent.nil? and return
+        super
+      end
+
+      def termsource_label(elem, sources)
+        elem.at("./ancestor::xmlns:term") or return
+      elem.replace(l10n("[#{sources}]"))
+    end
+
+      def termcleanup(docxml)
+        collapse_term docxml
+        super
+      end
+
+      def collapse_term(docxml)
+        docxml.xpath(ns("//term")).each { |t| collapse_term1(t) }
+      end
+
+      def collapse_term1(term)
+        defn = term.at(ns("./fmt-definition")) or return
+        source = term.at(ns("./fmt-termsource")) or return
+        defn.elements.last << source.children
+        source.remove
       end
 
        def clausedelim

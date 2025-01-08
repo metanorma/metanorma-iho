@@ -143,7 +143,7 @@ RSpec.describe IsoDoc::Iho do
          <clause id="H" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
            <title>Normal Terms</title>
            <term id="J">
-           <preferred>Term2</preferred>
+           <preferred><expression><name>Term2</name></expression></preferred>
          </term>
          </terms>
          <definitions id="K">
@@ -270,7 +270,14 @@ RSpec.describe IsoDoc::Iho do
                       <semx element="autonum" source="I">1</semx>
                    </fmt-xref-label>
                    <term id="J">
-                      <preferred>Term2</preferred>
+                      <preferred id="_"><expression><name>Term2</name></expression></preferred>
+               <fmt-preferred>
+                  <p>
+                     <semx element="preferred" source="_">
+                        <strong>Term2</strong>
+                     </semx>
+                  </p>
+               </fmt-preferred>
                    </term>
                 </terms>
                 <definitions id="K">
@@ -496,7 +503,7 @@ RSpec.describe IsoDoc::Iho do
          <clause id="H" obligation="normative"><title>Terms, definitions, symbols and abbreviated terms</title><terms id="I" obligation="normative">
            <title>Normal Terms</title>
            <term id="J">
-           <preferred>Term2</preferred>
+           <preferred><expression><name>Term2</name></expression></preferred>
          </term>
          </terms>
          <definitions id="K">
@@ -646,7 +653,18 @@ RSpec.describe IsoDoc::Iho do
                          <semx element="autonum" source="I">1</semx>
                       </fmt-xref-label>
                       <term id="J">
-                         <preferred>Term2</preferred>
+                 <preferred id="_">
+                    <expression>
+                       <name>Term2</name>
+                    </expression>
+                 </preferred>
+                 <fmt-preferred>
+                    <p>
+                       <semx element="preferred" source="_">
+                          <strong>Term2</strong>
+                       </semx>
+                    </p>
+                 </fmt-preferred>
                       </term>
                    </terms>
                    <definitions id="K">
