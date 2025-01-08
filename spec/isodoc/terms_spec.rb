@@ -75,7 +75,7 @@ RSpec.describe IsoDoc do
       </iso-standard>
     INPUT
     presxml = <<~PRESXML
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
@@ -128,8 +128,6 @@ RSpec.describe IsoDoc do
                                &gt;
                             </span>
                          </semx>
-                      </p>
-                      <fmt-termsource>
                          [
                          <semx element="termsource" source="_">
                             <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
@@ -138,10 +136,11 @@ RSpec.describe IsoDoc do
                                </locality>
                                ISO 7301:2011, Clause 3.1
                             </origin>
-                            , modified — <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
+                            , modified —
+                            <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
                          </semx>
                          ]
-                      </fmt-termsource>
+                      </p>
                    </fmt-preferred>
                    <domain id="_">rice</domain>
                    <definition id="_">
@@ -161,14 +160,16 @@ RSpec.describe IsoDoc do
                             <origin citeas="">
                                <termref base="IEV" target="xyz">t1</termref>
                             </origin>
-                            — <semx element="modification" source="_">comment</semx>
+                            —
+                            <semx element="modification" source="_">comment</semx>
                          </semx>
                          ;
                          <semx element="termsource" source="_">
                             <origin citeas="">
                                <termref base="IEV" target="xyz"/>
                             </origin>
-                            , modified — <semx element="modification" source="_">with adjustments</semx>
+                            , modified —
+                            <semx element="modification" source="_">with adjustments</semx>
                          </semx>
                          ]
                       </semx>
@@ -426,9 +427,8 @@ RSpec.describe IsoDoc do
                 <p class="TermNum" id="paddy1"/>
                 <p class="Terms" style="text-align:left;">
                    <b>paddy</b>
-                   , &lt;in agriculture, dated&gt;
+                   , &lt;in agriculture, dated&gt; [ISO 7301:2011, Clause 3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
                 </p>
-                <p>[ISO 7301:2011, Clause 3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]</p>
                 <p id="_">&lt;rice&gt;  rice retaining its husk after threshing</p>
                 [t1 — comment; Termbase IEV, term ID xyz, modified — with adjustments]
                 <div id="_" class="example" style="page-break-after: avoid;page-break-inside: avoid;">
