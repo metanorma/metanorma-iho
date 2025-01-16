@@ -11387,6 +11387,7 @@
 
 	<!-- Normative references -->
 	<xsl:template match="*[local-name() = 'references'][@normative='true']/*[local-name() = 'bibitem']" name="bibitem" priority="2">
+		<xsl:param name="skip" select="normalize-space(preceding-sibling::*[1][local-name() = 'bibitem'] and 1 = 1)"/> <!-- current bibiitem is non-first -->
 
 				<fo:list-block id="{@id}" xsl:use-attribute-sets="bibitem-normative-list-style">
 
