@@ -49,7 +49,7 @@ RSpec.describe Metanorma::Iho::Processor do
             <fmt-title>1.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</fmt-title>
             <term id="J">
             <fmt-name>1.1.</fmt-name>
-              <preferred>Term2</preferred>
+              <fmt-preferred><p>Term2</p></fmt-preferred>
             </term>
           </terms>
         </sections>
