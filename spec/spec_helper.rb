@@ -97,7 +97,7 @@ BOILERPLATE =
 
 BLANK_HDR = <<~"HDR".freeze
   <?xml version="1.0" encoding="UTF-8"?>
-  <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
+  <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}">
   <bibdata type="standard">
 
    <title language="en" format="text/plain">Document title</title>

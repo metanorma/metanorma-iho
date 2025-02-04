@@ -16,7 +16,7 @@ RSpec.describe Metanorma::Iho do
     output = Xml::C14n.format(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections/>
-      </iho-standard>
+      </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
@@ -34,7 +34,7 @@ RSpec.describe Metanorma::Iho do
     output = Xml::C14n.format(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections/>
-      </iho-standard>
+      </metanorma>
     OUTPUT
 
     FileUtils.rm_f "test.html"
@@ -81,7 +81,7 @@ RSpec.describe Metanorma::Iho do
 
     output = Xml::C14n.format(<<~"OUTPUT")
           <?xml version="1.0" encoding="UTF-8"?>
-      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
+      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}">
       <bibdata type="standard">
         <title language="en" format="text/plain">Main Title</title>
       <docidentifier primary="true" type="IHO">B-1000</docidentifier>
@@ -182,7 +182,7 @@ RSpec.describe Metanorma::Iho do
          </metanorma-extension>
           #{BOILERPLATE.sub(/International Hydrographic Organization #{Date.today.year}/, 'International Hydrographic Organization 2001')}
       <sections/>
-      </iho-standard>
+      </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor
@@ -208,7 +208,7 @@ RSpec.describe Metanorma::Iho do
       :title: Main Title
     INPUT
     output = <<~OUTPUT
-              <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
+              <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}">
       <bibdata type="standard">
         <title language="en" format="text/plain">Main Title</title>
         <docidentifier primary="true" type="IHO">S-1000</docidentifier>
@@ -272,7 +272,7 @@ RSpec.describe Metanorma::Iho do
          </metanorma-extension>
               #{BOILERPLATE}
       <sections/>
-      </iho-standard>
+      </metanorma>
     OUTPUT
     expect(Xml::C14n.format(strip_guid(Asciidoctor
       .convert(input, *OPTIONS))))
@@ -306,7 +306,7 @@ RSpec.describe Metanorma::Iho do
       :edition-minor: 3
     INPUT
     output <<~OUTPUT
-      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
+      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}">
       </iso-standard>
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor
@@ -326,7 +326,7 @@ RSpec.describe Metanorma::Iho do
       :edition-patch: 5
     INPUT
     output <<~OUTPUT
-      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
+      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}">
       </iso-standard>
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor
@@ -345,7 +345,7 @@ RSpec.describe Metanorma::Iho do
       :edition-patch: 5
     INPUT
     output <<~OUTPUT
-      <iho-standard xmlns="https://www.metanorma.org/ns/iho" type="semantic" version="#{Metanorma::Iho::VERSION}">
+      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}">
       </iso-standard>
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor
@@ -371,7 +371,7 @@ RSpec.describe Metanorma::Iho do
          <clause id="_" obligation="normative">
            <title>Section 1</title>
          </clause></sections>
-         </iho-standard>
+         </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
@@ -444,7 +444,7 @@ RSpec.describe Metanorma::Iho do
           <title>Appendix 1</title>
         </appendix>
       </annex>
-      </iho-standard>
+      </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
