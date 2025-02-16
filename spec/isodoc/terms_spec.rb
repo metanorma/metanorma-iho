@@ -130,12 +130,19 @@ RSpec.describe IsoDoc do
                          </semx>
                          [
                          <semx element="termsource" source="_">
-                            <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                            <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011" id="_">
                                <locality type="clause">
                                   <referenceFrom>3.1</referenceFrom>
                                </locality>
-                               ISO 7301:2011, Clause 3.1
                             </origin>
+                            <semx element="origin" source="_">
+                               <fmt-origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
+                                  <locality type="clause">
+                                     <referenceFrom>3.1</referenceFrom>
+                                  </locality>
+                                  ISO 7301:2011, Clause 3.1
+                               </fmt-origin>
+                            </semx>
                             , modified —
                             <semx element="modification" source="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</semx>
                          </semx>
@@ -157,17 +164,27 @@ RSpec.describe IsoDoc do
                          </p>
                          [
                          <semx element="termsource" source="_">
-                            <origin citeas="">
+                            <origin citeas="" id="_">
                                <termref base="IEV" target="xyz">t1</termref>
                             </origin>
+                            <semx element="origin" source="_">
+                               <fmt-origin citeas="">
+                                  <termref base="IEV" target="xyz">t1</termref>
+                               </fmt-origin>
+                            </semx>
                             —
                             <semx element="modification" source="_">comment</semx>
                          </semx>
                          ;
                          <semx element="termsource" source="_">
-                            <origin citeas="">
+                            <origin citeas="" id="_">
                                <termref base="IEV" target="xyz"/>
                             </origin>
+                            <semx element="origin" source="_">
+                               <fmt-origin citeas="">
+                                  <termref base="IEV" target="xyz"/>
+                               </fmt-origin>
+                            </semx>
                             , modified —
                             <semx element="modification" source="_">with adjustments</semx>
                          </semx>
@@ -304,18 +321,32 @@ RSpec.describe IsoDoc do
                          <p id="_">rice retaining its husk after threshing</p>
                          [
                          <semx element="termsource" source="_">
-                            <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011">
+                            <origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011" id="_">
                                <locality type="clause">
                                   <referenceFrom>3.1</referenceFrom>
                                </locality>
-                               ISO 7301:2011, 3.1
                             </origin>
-                            <origin bibitemid="ISO7301" type="inline" case="lowercase" citeas="ISO 7301:2011">
+                            <semx element="origin" source="_">
+                               <fmt-origin bibitemid="ISO7301" type="inline" droploc="true" citeas="ISO 7301:2011">
+                                  <locality type="clause">
+                                     <referenceFrom>3.1</referenceFrom>
+                                  </locality>
+                                  ISO 7301:2011, 3.1
+                               </fmt-origin>
+                            </semx>
+                            <origin bibitemid="ISO7301" type="inline" case="lowercase" citeas="ISO 7301:2011" id="_">
                                <locality type="clause">
                                   <referenceFrom>3.1</referenceFrom>
                                </locality>
-                               ISO 7301:2011, clause 3.1
                             </origin>
+                            <semx element="origin" source="_">
+                               <fmt-origin bibitemid="ISO7301" type="inline" case="lowercase" citeas="ISO 7301:2011">
+                                  <locality type="clause">
+                                     <referenceFrom>3.1</referenceFrom>
+                                  </locality>
+                                  ISO 7301:2011, clause 3.1
+                               </fmt-origin>
+                            </semx>
                          </semx>
                          ]
                       </semx>
