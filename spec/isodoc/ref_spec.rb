@@ -137,7 +137,7 @@ RSpec.describe IsoDoc do
           </iso-standard>
     INPUT
     presxml = <<~OUTPUT
-      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <bibdata>
              <language current="true">en</language>
           </bibdata>
@@ -145,28 +145,76 @@ RSpec.describe IsoDoc do
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
              </clause>
-             <foreword displayorder="2">
+             <foreword id="_" displayorder="2">
                 <title id="_">Foreword</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">Foreword</semx>
                 </fmt-title>
                 <p id="_">
-                   <xref target="ref1">S-57</xref>
-                   <xref target="ref2">NIST FIPS 186</xref>
-                   <xref target="ref3">NIST FIPS 180-1</xref>
-                   <xref target="ref4">ITU-T X.509 / ISO/IEC 9594-8</xref>
-                   <xref target="ref5">[1]</xref>
-                   <xref target="ref6">NIST FIPS 81</xref>
-                   <xref target="ref7">IETF RFC 1423</xref>
-                   <xref target="ref8">[2]</xref>
-                   <xref target="ref9">ISO/IEC 13239:2002</xref>
-                   <xref target="ISO712">ISO 712</xref>
-                   <xref target="ISBN">[3]</xref>
-                   <xref target="ISSN">[4]</xref>
-                   <xref target="ISO16634">ISO 16634:-- (all parts)</xref>
-                   <xref target="ref11">IETF RFC 10</xref>
-                   <xref target="ref10">[6]</xref>
-                   <xref target="ref12">Citn</xref>
+                   <eref bibitemid="ref1" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref1">S-57</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref2" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref2">NIST FIPS 186</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref3" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref3">NIST FIPS 180-1</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref4" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref4">ITU-T X.509 / ISO/IEC 9594-8</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref5" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref5">[1]</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref6" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref6">NIST FIPS 81</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref7" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref7">IETF RFC 1423</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref8" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref8">[2]</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref9" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref9">ISO/IEC 13239:2002</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ISO712" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ISO712">ISO 712</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ISBN" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ISBN">[3]</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ISSN" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ISSN">[4]</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ISO16634" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ISO16634">ISO 16634:-- (all parts)</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref11" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref11">IETF RFC 10</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref10" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref10">[6]</fmt-xref>
+                   </semx>
+                   <eref bibitemid="ref12" id="_"/>
+                   <semx element="eref" source="_">
+                      <fmt-xref target="ref12">Citn</fmt-xref>
+                   </semx>
                 </p>
              </foreword>
           </preface>
@@ -190,7 +238,10 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref1" type="standard">
                    <formattedref>
                       S-57 edition 3.1.0: IHO Transfer Standard for Digital Hydrographic Data, International Hydrographic Organization (
-                      <link target="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</link>
+                      <link target="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf" id="_">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</link>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</fmt-link>
+                      </semx>
                       ).
                    </formattedref>
                    <uri type="pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</uri>
@@ -204,7 +255,10 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref2" type="standard">
                    <formattedref>
                       NIST FIPS 186: Digital Signature Standard (DSS), National Institute of Standards and Technology, (
-                      <link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</link>
+                      <link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30" id="_">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</link>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</fmt-link>
+                      </semx>
                       ).
                    </formattedref>
                    <uri type="uri">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</uri>
@@ -218,7 +272,10 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref3" type="standard">
                    <formattedref>
                       NIST FIPS 180-1: Secure Hash Standard, National Institute of Standards and Technology, (
-                      <link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</link>
+                      <link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17" id="_">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</link>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</fmt-link>
+                      </semx>
                       ).
                    </formattedref>
                    <uri type="uri">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</uri>
@@ -233,7 +290,10 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref4" type="standard">
                    <formattedref>
                       ITU-T X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (
-                      <link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</link>
+                      <link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en" id="_">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</link>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</fmt-link>
+                      </semx>
                       ).
                    </formattedref>
                    <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</uri>
@@ -257,7 +317,10 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref6" type="standard">
                    <formattedref>
                       NIST FIPS 81: DES Modes of Operation, National Bureau of Standards, (
-                      <link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</link>
+                      <link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02" id="_">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</link>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</fmt-link>
+                      </semx>
                       ).
                    </formattedref>
                    <uri type="uri">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</uri>
@@ -272,7 +335,10 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref7" type="standard">
                    <formattedref>
                       IETF RFC 1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (
-                      <link target="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</link>
+                      <link target="https://www.rfc-editor.org/info/rfc1423" id="_">https://www.rfc-editor.org/info/rfc1423</link>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</fmt-link>
+                      </semx>
                       ).
                    </formattedref>
                    <uri type="xml">https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1423.xml</uri>
@@ -289,7 +355,10 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref8">
                    <formattedref format="application/x-isodoc+xml">
                       Blowfish encryption algorithm, B. Schneier, Fast Software Encryption, Cambridge Security Workshop Proceedings (December 1993), Springer-Verlag, 1994, pp. 191-204 (
-                      <link target="http://www.counterpane.com"/>
+                      <link target="http://www.counterpane.com" id="_"/>
+                      <semx element="link" source="_">
+                         <fmt-link target="http://www.counterpane.com"/>
+                      </semx>
                       )
                    </formattedref>
                    <docidentifier type="metanorma-ordinal">[2]</docidentifier>
@@ -301,7 +370,10 @@ RSpec.describe IsoDoc do
                 <bibitem id="ref9" type="standard">
                    <formattedref>
                       ISO/IEC 13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (
-                      <link target="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</link>
+                      <link target="https://www.iso.org/standard/37010.html" id="_">https://www.iso.org/standard/37010.html</link>
+                      <semx element="link" source="_">
+                         <fmt-link target="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</fmt-link>
+                      </semx>
                       ).
                    </formattedref>
                    <uri type="src">https://www.iso.org/standard/37010.html</uri>
@@ -348,7 +420,10 @@ RSpec.describe IsoDoc do
                       .
                       <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em>
                       (see
-                      <link target="http://www.icc.or.at"/>
+                      <link target="http://www.icc.or.at" id="_"/>
+                      <semx element="link" source="_">
+                         <fmt-link target="http://www.icc.or.at"/>
+                      </semx>
                       )
                    </formattedref>
                    <docidentifier type="ICC">ICC 167</docidentifier>
@@ -439,7 +514,10 @@ RSpec.describe IsoDoc do
                       .
                       <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em>
                       (see
-                      <link target="http://www.icc.or.at"/>
+                      <link target="http://www.icc.or.at" id="_"/>
+                      <semx element="link" source="_">
+                         <fmt-link target="http://www.icc.or.at"/>
+                      </semx>
                       )
                    </formattedref>
                    <docidentifier type="metanorma-ordinal">[6]</docidentifier>
@@ -484,7 +562,7 @@ RSpec.describe IsoDoc do
                 <h1 class="IntroTitle">Contents</h1>
              </div>
              <br/>
-                          <div>
+                          <div id="_">
                 <h1 class="ForewordTitle">Foreword</h1>
                 <p id="_">
                    <a href="#ref1">S-57</a>

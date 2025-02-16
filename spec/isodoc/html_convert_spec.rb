@@ -191,7 +191,7 @@ RSpec.describe IsoDoc::Iho do
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
              </clause>
-             <foreword obligation="informative" displayorder="2">
+             <foreword obligation="informative" displayorder="2" id="_">
                 <title id="_">Foreword</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">Foreword</semx>
@@ -926,7 +926,7 @@ RSpec.describe IsoDoc::Iho do
       </iho-standard)
     INPUT
     presxml = <<~OUTPUT
-       <iho-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+      <iho-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <bibdata type="standard">
              <title language="en" format="text/plain" type="main">An ITU Standard</title>
              <docidentifier type="ITU">12345</docidentifier>
@@ -940,19 +940,25 @@ RSpec.describe IsoDoc::Iho do
              <clause type="toc" id="_" displayorder="1">
                 <fmt-title depth="1">Contents</fmt-title>
              </clause>
-             <abstract displayorder="2">
+             <abstract id="_" displayorder="2">
                 <title id="_">Abstract</title>
                 <fmt-title depth="1">
                    <semx element="title" source="_">Abstract</semx>
                 </fmt-title>
-                <xref target="A1">
-                   <span class="fmt-element-name">Annex</span>
-                   <semx element="autonum" source="A1">A</semx>
-                </xref>
-                <xref target="B1">
-                   <span class="fmt-element-name">Appendix</span>
-                   <semx element="autonum" source="B1">1</semx>
-                </xref>
+                <xref target="A1" id="_"/>
+                <semx element="xref" source="_">
+                   <fmt-xref target="A1">
+                      <span class="fmt-element-name">Annex</span>
+                      <semx element="autonum" source="A1">A</semx>
+                   </fmt-xref>
+                </semx>
+                <xref target="B1" id="_"/>
+                <semx element="xref" source="_">
+                   <fmt-xref target="B1">
+                      <span class="fmt-element-name">Appendix</span>
+                      <semx element="autonum" source="B1">1</semx>
+                   </fmt-xref>
+                </semx>
              </abstract>
           </preface>
           <annex id="A1" obligation="normative" autonum="A" displayorder="3">
@@ -1507,7 +1513,7 @@ RSpec.describe IsoDoc::Iho do
                 <h1 class="IntroTitle">Contents</h1>
              </div>
              <br/>
-             <div>
+             <div id="_">
                 <h1 class="AbstractTitle">Abstract</h1>
                 <a href="#A1">Annex A</a>
                 <a href="#B1">Appendix 1</a>

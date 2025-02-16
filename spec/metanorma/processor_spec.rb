@@ -32,7 +32,7 @@ RSpec.describe Metanorma::Iho::Processor do
     output = Xml::C14n.format(strip_guid(<<~"OUTPUT"))
           #{BLANK_HDR}
       <sections/>
-      </iho-standard>
+      </metanorma>
     OUTPUT
 
     expect(Xml::C14n.format(strip_guid(processor
@@ -43,7 +43,7 @@ RSpec.describe Metanorma::Iho::Processor do
   it "generates HTML from IsoDoc XML" do
     FileUtils.rm_f "test.xml"
     input = <<~INPUT
-      <iho-standard xmlns="http://riboseinc.com/isoxml">
+      <metanorma xmlns="http://riboseinc.com/isoxml">
         <sections>
           <terms id="H" obligation="normative" displayorder="1">
             <fmt-title>1.<tab/>Terms, Definitions, Symbols and Abbreviated Terms</fmt-title>
@@ -53,7 +53,7 @@ RSpec.describe Metanorma::Iho::Processor do
             </term>
           </terms>
         </sections>
-      </iho-standard>
+      </metanorma>
     INPUT
 
     output = Xml::C14n.format(strip_guid(<<~OUTPUT))
