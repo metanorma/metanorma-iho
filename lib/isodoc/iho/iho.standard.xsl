@@ -221,16 +221,55 @@
 				<!-- =========================== -->
 				<!-- =========================== -->
 
+				<xsl:choose>
+					<xsl:when test="/iho:metanorma/iho:boilerplate/*[local-name() != 'feedback-statement']">
+						<fo:page-sequence master-reference="preface" format="i" force-page-count="no-force">
+							<xsl:call-template name="insertHeaderFooter">
+								<xsl:with-param name="font-weight">normal</xsl:with-param>
+							</xsl:call-template>
+							<fo:flow flow-name="xsl-region-body">
+								<fo:block-container margin-left="-1.5mm" margin-right="-1mm">
+									<fo:block-container margin-left="0mm" margin-right="0mm" border="0.5pt solid black">
+										<fo:block-container margin-top="6.5mm" margin-left="7.5mm" margin-right="8.5mm" margin-bottom="7.5mm">
+											<fo:block-container margin="0">
+												<fo:block text-align="justify">
+													<xsl:apply-templates select="/iho:metanorma/iho:boilerplate/*[local-name() != 'feedback-statement']"/>
+												</fo:block>
+											</fo:block-container>
+										</fo:block-container>
+									</fo:block-container>
+								</fo:block-container>
+							</fo:flow>
+						</fo:page-sequence>
+					</xsl:when>
+					<xsl:otherwise>
+						<!-- https://github.com/metanorma/metanorma-iho/issues/293:
+							If the publication has no copyright boxed note (normally on page ii of the publication), page ii should be "Page intentionally left blank". -->
+						<fo:page-sequence master-reference="blankpage" format="i" force-page-count="no-force">
+							<xsl:call-template name="insertHeaderFooterBlank"/>
+							<fo:flow flow-name="xsl-region-body">
+								<fo:block/>
+							</fo:flow>
+						</fo:page-sequence>
+					</xsl:otherwise>
+				</xsl:choose>
+
 				<xsl:variable name="updated_xml_with_pages">
-					<xsl:call-template name="processPrefaceAndMainSectionsDefault_items"/>
+					<xsl:call-template name="processPrefaceAndMainSectionsIHO_items"/>
 				</xsl:variable>
+
+				<xsl:if test="$debug = 'true'">
+					<redirect:write file="updated_xml_with_pages.xml">
+						<xsl:copy-of select="$updated_xml_with_pages"/>
+					</redirect:write>
+				</xsl:if>
 
 				<xsl:for-each select="xalan:nodeset($updated_xml_with_pages)"> <!-- set context to preface/sections -->
 
 					<xsl:for-each select=".//*[local-name() = 'page_sequence'][parent::*[local-name() = 'preface']][normalize-space() != '' or .//*[local-name() = 'image'] or .//*[local-name() = 'svg']]">
 
 						<!-- Preface Pages -->
-						<fo:page-sequence master-reference="preface" format="i">
+						<fo:page-sequence master-reference="preface" format="i" force-page-count="end-on-even">
 
 							<xsl:attribute name="master-reference">
 								<xsl:text>preface</xsl:text>
@@ -247,9 +286,9 @@
 							</xsl:call-template>
 							<fo:flow flow-name="xsl-region-body">
 
-								<xsl:if test="position() = 1">
+								<!-- <xsl:if test="position() = 1">
 									<fo:block-container margin-left="-1.5mm" margin-right="-1mm">
-										<fo:block-container margin-left="0mm" margin-right="0mm" border="0.5pt solid black">
+										<fo:block-container margin-left="0mm" margin-right="0mm" border="0.5pt solid black" >
 											<fo:block-container margin-top="6.5mm" margin-left="7.5mm" margin-right="8.5mm" margin-bottom="7.5mm">
 												<fo:block-container margin="0">
 													<fo:block text-align="justify">
@@ -260,11 +299,41 @@
 										</fo:block-container>
 									</fo:block-container>
 									<fo:block break-after="page"/>
-								</xsl:if>
+								</xsl:if> -->
 
-								<!-- Contents, Foreword, Introduction -->
+								<!-- Contents, Document History, ... except Foreword and Introduction -->
 								<!-- <xsl:call-template name="processPrefaceSectionsDefault"/> -->
-								<xsl:apply-templates/>
+								<xsl:apply-templates select="*[not(local-name() = 'foreword') and not(local-name() = 'introduction')]"/>
+
+							</fo:flow>
+						</fo:page-sequence>
+						<!-- End Preface Pages -->
+						<!-- =========================== -->
+						<!-- =========================== -->
+					</xsl:for-each>
+
+					<xsl:for-each select=".//*[local-name() = 'page_sequence'][*[local-name() = 'foreword'] or *[local-name() = 'introduction']][parent::*[local-name() = 'preface']][normalize-space() != '' or .//*[local-name() = 'image'] or .//*[local-name() = 'svg']]">
+
+						<!-- Preface Pages -->
+						<fo:page-sequence master-reference="preface" format="i" force-page-count="end-on-even">
+
+							<xsl:attribute name="master-reference">
+								<xsl:text>preface</xsl:text>
+								<xsl:call-template name="getPageSequenceOrientation"/>
+							</xsl:attribute>
+
+							<fo:static-content flow-name="xsl-footnote-separator">
+								<fo:block>
+									<fo:leader leader-pattern="rule" leader-length="30%"/>
+								</fo:block>
+							</fo:static-content>
+							<xsl:call-template name="insertHeaderFooter">
+								<xsl:with-param name="font-weight">normal</xsl:with-param>
+							</xsl:call-template>
+							<fo:flow flow-name="xsl-region-body">
+
+								<!-- Foreword, Introduction -->
+								<xsl:apply-templates select="*[local-name() = 'foreword' or local-name() = 'introduction']"/>
 
 							</fo:flow>
 						</fo:page-sequence>
@@ -275,7 +344,7 @@
 
 					<xsl:for-each select=".//*[local-name() = 'page_sequence'][not(parent::*[local-name() = 'preface'])][normalize-space() != '' or .//*[local-name() = 'image'] or .//*[local-name() = 'svg']]">
 
-						<fo:page-sequence master-reference="document" format="1" force-page-count="no-force">
+						<fo:page-sequence master-reference="document" format="1" force-page-count="end-on-even">
 
 							<xsl:attribute name="master-reference">
 								<xsl:text>document</xsl:text>
@@ -384,6 +453,42 @@
 		</fo:block>
 	</xsl:template>
 
+	<xsl:template name="processPrefaceAndMainSectionsIHO_items">
+
+		<xsl:variable name="updated_xml_step_move_pagebreak">
+			<xsl:element name="{$root_element}" namespace="{$namespace_full}">
+				<xsl:call-template name="copyCommonElements"/>
+				<xsl:call-template name="insertPrefaceSectionsPageSequences"/>
+
+				<!-- <xsl:call-template name="insertMainSectionsPageSequences"/> -->
+
+				<xsl:call-template name="insertSectionsInPageSequence"/>
+				<xsl:call-template name="insertAnnexInSeparatePageSequences"/>
+				<xsl:call-template name="insertBibliographyInSeparatePageSequences"/>
+				<xsl:call-template name="insertIndexInSeparatePageSequences"/>
+
+			</xsl:element>
+		</xsl:variable>
+
+		<xsl:variable name="updated_xml_step_move_pagebreak_filename" select="concat($output_path,'_main_', java:getTime(java:java.util.Date.new()), '.xml')"/>
+
+		<redirect:write file="{$updated_xml_step_move_pagebreak_filename}">
+			<xsl:copy-of select="$updated_xml_step_move_pagebreak"/>
+		</redirect:write>
+
+		<xsl:copy-of select="document($updated_xml_step_move_pagebreak_filename)"/>
+
+		<xsl:if test="$debug = 'true'">
+			<redirect:write file="page_sequence_preface_and_main.xml">
+				<xsl:copy-of select="$updated_xml_step_move_pagebreak"/>
+			</redirect:write>
+		</xsl:if>
+
+		<xsl:call-template name="deleteFile">
+			<xsl:with-param name="filepath" select="$updated_xml_step_move_pagebreak_filename"/>
+		</xsl:call-template>
+	</xsl:template>
+
 	<xsl:template match="iho:preface//iho:clause[@type = 'toc']" priority="4">
 		<!-- Table of Contents -->
 		<fo:block>
@@ -419,7 +524,7 @@
 								</xsl:attribute>
 								<fo:list-item>
 									<fo:list-item-label end-indent="label-end()">
-										<fo:block>
+										<fo:block id="__internal_layout__toc_sectionnum_{generate-id()}">
 											<xsl:if test="@section != '' and not(@type = 'annex')"> <!-- output below   -->
 												<xsl:value-of select="@section"/>
 											</xsl:if>
@@ -831,6 +936,10 @@
 				</fo:block>
 			</fo:block-container>
 		</fo:static-content>
+		<xsl:call-template name="insertHeaderBlank"/>
+		<xsl:call-template name="insertFooter"/>
+	</xsl:template>
+	<xsl:template name="insertHeaderBlank">
 		<fo:static-content flow-name="header-blank" role="artifact">
 			<fo:block-container height="100%" font-size="8pt">
 				<fo:block padding-top="12.5mm">
@@ -852,6 +961,8 @@
 				<fo:block>Page intentionally left blank</fo:block>
 			</fo:block-container>
 		</fo:static-content>
+	</xsl:template>
+	<xsl:template name="insertFooter">
 		<fo:static-content flow-name="footer" role="artifact">
 			<fo:block-container height="100%" display-align="after">
 				<fo:block padding-bottom="12.5mm" font-size="8pt" text-align-last="justify">
@@ -867,6 +978,10 @@
 				</fo:block>
 			</fo:block-container>
 		</fo:static-content>
+	</xsl:template>
+	<xsl:template name="insertHeaderFooterBlank">
+		<xsl:call-template name="insertHeaderBlank"/>
+		<xsl:call-template name="insertFooter"/>
 	</xsl:template>
 
 	<xsl:variable name="Image-IHO">
@@ -2709,15 +2824,8 @@
 	</xsl:template> <!-- END: insertPrefaceSectionsPageSequences -->
 
 	<xsl:template name="insertMainSectionsPageSequences">
-		<xsl:element name="sections" namespace="{$namespace_full}"> <!-- save context element -->
-			<xsl:element name="page_sequence" namespace="{$namespace_full}">
-				<xsl:for-each select="/*/*[local-name()='sections']/* | /*/*[local-name()='bibliography']/*[local-name()='references'][@normative='true']">
-					<xsl:sort select="@displayorder" data-type="number"/>
-					<xsl:apply-templates select="." mode="update_xml_step_move_pagebreak"/>
 
-				</xsl:for-each>
-			</xsl:element>
-		</xsl:element>
+		<xsl:call-template name="insertSectionsInPageSequence"/>
 
 		<xsl:element name="page_sequence" namespace="{$namespace_full}">
 			<xsl:for-each select="/*/*[local-name()='annex']">
@@ -2735,6 +2843,18 @@
 			</xsl:element>
 		</xsl:element>
 	</xsl:template> <!-- END: insertMainSectionsPageSequences -->
+
+	<xsl:template name="insertSectionsInPageSequence">
+		<xsl:element name="sections" namespace="{$namespace_full}"> <!-- save context element -->
+			<xsl:element name="page_sequence" namespace="{$namespace_full}">
+				<xsl:for-each select="/*/*[local-name()='sections']/* | /*/*[local-name()='bibliography']/*[local-name()='references'][@normative='true']">
+					<xsl:sort select="@displayorder" data-type="number"/>
+					<xsl:apply-templates select="." mode="update_xml_step_move_pagebreak"/>
+
+				</xsl:for-each>
+			</xsl:element>
+		</xsl:element>
+	</xsl:template>
 
 	<xsl:template name="insertMainSectionsInSeparatePageSequences">
 		<xsl:element name="sections" namespace="{$namespace_full}"> <!-- save context element -->
