@@ -244,54 +244,9 @@ RSpec.describe IsoDoc do
                       </semx>
                       ).
                    </formattedref>
-                   <fetched/>
-                   <title type="main" format="text/plain" language="en">IHO Transfer Standard for Digital Hydrographic Data</title>
-                   <title type="main" format="text/plain" language="fr">Normes de l’OHI pour le transfert de données hydrographiques numériques</title>
                    <uri type="pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</uri>
                    <docidentifier type="IHO">S-57</docidentifier>
                    <docidentifier scope="biblio-tag">S-57</docidentifier>
-                   <docnumber>57</docnumber>
-                   <date type="published">
-                      <from>2000</from>
-                   </date>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>International Hydrographic Organization</name>
-                         <abbreviation>IHO</abbreviation>
-                         <uri>www.iho.int</uri>
-                      </organization>
-                   </contributor>
-                   <edition>3.1.0</edition>
-                   <version>
-                      <revision-date>2000-11-01</revision-date>
-                   </version>
-                   <language>en</language>
-                   <language>fr</language>
-                   <script>Latn</script>
-                   <status>
-                      <stage>in-force</stage>
-                   </status>
-                   <copyright>
-                      <from>2000</from>
-                      <owner>
-                         <organization>
-                            <name>International Hydrographic Organization</name>
-                            <abbreviation>IHO</abbreviation>
-                            <uri>www.iho.int</uri>
-                         </organization>
-                      </owner>
-                   </copyright>
-                   <series type="main">
-                      <title type="original" format="text/plain">      Standards and Specifications      Normes et Spécifications    </title>
-                      <place>Monaco</place>
-                      <organization>International Hydrographic Organization</organization>
-                      <number>S</number>
-                   </series>
-                   <place>Monaco</place>
-                   <validity>
-                      <validityBegins>2000-11-01 00:00</validityBegins>
-                   </validity>
                    <biblio-tag>
                       [1]
                       <tab/>
@@ -306,61 +261,9 @@ RSpec.describe IsoDoc do
                       </semx>
                       ).
                    </formattedref>
-                   <fetched/>
-                   <title format="text/plain" language="en" script="Latn">Digital Signature Standard (DSS)</title>
                    <uri type="uri">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</uri>
                    <docidentifier type="NIST">NIST FIPS 186</docidentifier>
                    <docidentifier scope="biblio-tag">NIST FIPS 186</docidentifier>
-                   <date type="published">
-                      <on>1996-12</on>
-                   </date>
-                   <date type="obsoleted">
-                      <on>1998-12</on>
-                   </date>
-                   <date type="issued">
-                      <on>1994-05</on>
-                   </date>
-                   <contributor>
-                      <role type="author"/>
-                      <organization>
-                         <name>National Institute of Standards and Technology</name>
-                      </organization>
-                   </contributor>
-                   <edition>Revision 1</edition>
-                   <language>en</language>
-                   <script>Latn</script>
-                   <status>
-                      <stage>final</stage>
-                      <substage>withdrawn</substage>
-                   </status>
-                   <copyright>
-                      <from>1996</from>
-                      <owner>
-                         <organization>
-                            <name>National Institute of Standards and Technology</name>
-                            <abbreviation>NIST</abbreviation>
-                            <uri>www.nist.gov</uri>
-                         </organization>
-                      </owner>
-                   </copyright>
-                   <relation type="supersedes">
-                      <bibitem>
-                         <formattedref format="text/plain" language="en" script="Latn">FIPS 186</formattedref>
-                         <uri type="src">https://csrc.nist.gov/publications/detail/fips/186/archive/1994-05-19</uri>
-                      </bibitem>
-                   </relation>
-                   <relation type="updates">
-                      <bibitem>
-                         <formattedref format="text/plain" language="en" script="Latn">FIPS 186-1</formattedref>
-                         <uri type="src">https://csrc.nist.gov/publications/detail/fips/186/1/archive/1998-12-15</uri>
-                      </bibitem>
-                   </relation>
-                   <place>Gaithersburg, MD</place>
-                   <keyword>ADP security</keyword>
-                   <keyword>computer security</keyword>
-                   <keyword>digital signatures</keyword>
-                   <keyword>public-key cryptography</keyword>
-                   <keyword>Federal Information Processing Standard</keyword>
                    <biblio-tag>
                       [2]
                       <tab/>
@@ -375,60 +278,10 @@ RSpec.describe IsoDoc do
                       </semx>
                       ).
                    </formattedref>
-                   <fetched/>
-                   <title format="text/plain" language="en" script="Latn">Secure Hash Standard</title>
                    <uri type="uri">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</uri>
                    <uri type="doi">https://doi.org/10.6028/NIST.FIPS.180-1</uri>
                    <docidentifier type="NIST">NIST FIPS 180-1</docidentifier>
                    <docidentifier scope="biblio-tag">NIST FIPS 180-1</docidentifier>
-                   <date type="published">
-                      <on>1995-04</on>
-                   </date>
-                   <date type="obsoleted">
-                      <on>2002-08</on>
-                   </date>
-                   <date type="issued">
-                      <on>1995-04</on>
-                   </date>
-                   <contributor>
-                      <role type="author"/>
-                      <organization>
-                         <name>National Institute of Standards and Technology</name>
-                      </organization>
-                   </contributor>
-                   <language>en</language>
-                   <script>Latn</script>
-                   <status>
-                      <stage>final</stage>
-                      <substage>withdrawn</substage>
-                   </status>
-                   <copyright>
-                      <from>1995</from>
-                      <owner>
-                         <organization>
-                            <name>National Institute of Standards and Technology</name>
-                            <abbreviation>NIST</abbreviation>
-                            <uri>www.nist.gov</uri>
-                         </organization>
-                      </owner>
-                   </copyright>
-                   <relation type="supersedes">
-                      <bibitem>
-                         <formattedref format="text/plain" language="en" script="Latn">FIPS 180</formattedref>
-                         <uri type="src">https://csrc.nist.gov/publications/detail/fips/180/archive/1993-05-11</uri>
-                      </bibitem>
-                   </relation>
-                   <relation type="updates">
-                      <bibitem>
-                         <formattedref format="text/plain" language="en" script="Latn">FIPS 180-2</formattedref>
-                         <uri type="src">https://csrc.nist.gov/publications/detail/fips/180/2/archive/2002-08-01</uri>
-                      </bibitem>
-                   </relation>
-                   <place>Gaithersburg, MD</place>
-                   <keyword>computer security</keyword>
-                   <keyword>digital signatures</keyword>
-                   <keyword>Federal Information Processing Standard</keyword>
-                   <keyword>hash algorithm</keyword>
                    <biblio-tag>
                       [3]
                       <tab/>
@@ -443,87 +296,11 @@ RSpec.describe IsoDoc do
                       </semx>
                       ).
                    </formattedref>
-                   <fetched/>
-                   <title type="title-main" format="text/plain" language="en" script="Latn">Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks</title>
-                   <title type="main" format="text/plain" language="en" script="Latn">Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks</title>
                    <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</uri>
                    <docidentifier type="ITU">ITU-T X.509</docidentifier>
                    <docidentifier type="ISO">ISO/IEC 9594-8</docidentifier>
                    <docidentifier scope="biblio-tag">ITU-T X.509</docidentifier>
                    <docidentifier scope="biblio-tag">ISO/IEC 9594-8</docidentifier>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>International Telecommunication Union</name>
-                         <abbreviation>ITU</abbreviation>
-                         <uri>www.itu.int</uri>
-                      </organization>
-                   </contributor>
-                   <edition>9</edition>
-                   <language>en</language>
-                   <script>Latn</script>
-                   <status>
-                      <stage>Published</stage>
-                   </status>
-                   <copyright>
-                      <from>2019</from>
-                      <owner>
-                         <organization>
-                            <name>International Telecommunication Union</name>
-                            <abbreviation>ITU</abbreviation>
-                            <uri>www.itu.int</uri>
-                         </organization>
-                      </owner>
-                   </copyright>
-                   <relation type="complements">
-                      <bibitem type="standard">
-                         <formattedref format="text/plain" language="en" script="Latn">X Suppl. 34 (01/2019)</formattedref>
-                      </bibitem>
-                   </relation>
-                   <relation type="instance">
-                      <bibitem type="standard">
-                         <fetched/>
-                         <title type="title-main" format="text/plain" language="en" script="Latn">Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks</title>
-                         <title type="main" format="text/plain" language="en" script="Latn">Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks</title>
-                         <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</uri>
-                         <docidentifier type="ITU">ITU-T X.509</docidentifier>
-                         <docidentifier type="ISO">ISO/IEC 9594-8</docidentifier>
-                         <date type="published">
-                            <on>2019</on>
-                         </date>
-                         <contributor>
-                            <role type="publisher"/>
-                            <organization>
-                               <name>International Telecommunication Union</name>
-                               <abbreviation>ITU</abbreviation>
-                               <uri>www.itu.int</uri>
-                            </organization>
-                         </contributor>
-                         <edition>9</edition>
-                         <language>en</language>
-                         <script>Latn</script>
-                         <status>
-                            <stage>Published</stage>
-                         </status>
-                         <copyright>
-                            <from>2019</from>
-                            <owner>
-                               <organization>
-                                  <name>International Telecommunication Union</name>
-                                  <abbreviation>ITU</abbreviation>
-                                  <uri>www.itu.int</uri>
-                               </organization>
-                            </owner>
-                         </copyright>
-                         <relation type="complements">
-                            <bibitem type="standard">
-                               <formattedref format="text/plain" language="en" script="Latn">X Suppl. 34 (01/2019)</formattedref>
-                            </bibitem>
-                         </relation>
-                         <place>Geneva</place>
-                      </bibitem>
-                   </relation>
-                   <place>Geneva</place>
                    <biblio-tag>
                       [4]
                       <tab/>
@@ -546,51 +323,10 @@ RSpec.describe IsoDoc do
                       </semx>
                       ).
                    </formattedref>
-                   <fetched/>
-                   <title format="text/plain" language="en" script="Latn">DES Modes of Operation</title>
                    <uri type="uri">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</uri>
                    <uri type="doi">https://doi.org/10.6028/NBS.FIPS.81</uri>
                    <docidentifier type="NIST">NIST FIPS 81</docidentifier>
                    <docidentifier scope="biblio-tag">NIST FIPS 81</docidentifier>
-                   <date type="published">
-                      <on>1980-12</on>
-                   </date>
-                   <date type="obsoleted">
-                      <on>2005-05</on>
-                   </date>
-                   <date type="issued">
-                      <on>1980-12</on>
-                   </date>
-                   <contributor>
-                      <role type="author"/>
-                      <organization>
-                         <name>National Bureau of Standards</name>
-                      </organization>
-                   </contributor>
-                   <language>en</language>
-                   <script>Latn</script>
-                   <status>
-                      <stage>final</stage>
-                      <substage>withdrawn</substage>
-                   </status>
-                   <copyright>
-                      <from>1980</from>
-                      <owner>
-                         <organization>
-                            <name>National Institute of Standards and Technology</name>
-                            <abbreviation>NIST</abbreviation>
-                            <uri>www.nist.gov</uri>
-                         </organization>
-                      </owner>
-                   </copyright>
-                   <place>Gaithersburg, MD</place>
-                   <keyword>cryptography</keyword>
-                   <keyword>data security</keyword>
-                   <keyword>DES</keyword>
-                   <keyword>encryption</keyword>
-                   <keyword>Federal Information Processing Standards</keyword>
-                   <keyword>computer security</keyword>
-                   <keyword>modes of operation</keyword>
                    <biblio-tag>
                       [6]
                       <tab/>
@@ -605,45 +341,12 @@ RSpec.describe IsoDoc do
                       </semx>
                       ).
                    </formattedref>
-                   <fetched/>
-                   <title format="text/plain" language="en" script="Latn">Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers</title>
                    <uri type="xml">https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1423.xml</uri>
                    <uri type="src">https://www.rfc-editor.org/info/rfc1423</uri>
                    <docidentifier type="IETF">IETF RFC 1423</docidentifier>
                    <docidentifier type="IETF" scope="anchor">IETF RFC1423</docidentifier>
                    <docidentifier type="DOI">DOI 10.17487/RFC1423</docidentifier>
                    <docidentifier scope="biblio-tag">IETF RFC 1423</docidentifier>
-                   <date type="published">
-                      <on>1993-02</on>
-                   </date>
-                   <contributor>
-                      <role type="author"/>
-                      <person>
-                         <name>
-                            <completename language="en">D. Balenson</completename>
-                         </name>
-                         <affiliation>
-                            <organization>
-                               <name>Internet Engineering Task Force</name>
-                               <abbreviation>IETF</abbreviation>
-                            </organization>
-                         </affiliation>
-                      </person>
-                   </contributor>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>Internet Engineering Task Force</name>
-                         <abbreviation>IETF</abbreviation>
-                      </organization>
-                   </contributor>
-                   <language>en</language>
-                   <script>Latn</script>
-                   <series type="main">
-                      <title format="text/plain" language="en" script="Latn">RFC</title>
-                      <number>1423</number>
-                   </series>
-                   <place>Fremont, CA</place>
                    <biblio-tag>
                       [7]
                       <tab/>
@@ -673,82 +376,11 @@ RSpec.describe IsoDoc do
                       </semx>
                       ).
                    </formattedref>
-                   <fetched/>
-                   <title type="title-intro" format="text/plain" language="en" script="Latn">Information technology</title>
-                   <title type="title-main" format="text/plain" language="en" script="Latn">Telecommunications and information exchange between systems</title>
-                   <title type="title-part" format="text/plain" language="en" script="Latn">High-level data link control (HDLC) procedures</title>
-                   <title type="main" format="text/plain" language="en" script="Latn">Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures</title>
-                   <title type="title-intro" format="text/plain" language="fr" script="Latn">Technologies de l’information</title>
-                   <title type="title-main" format="text/plain" language="fr" script="Latn">Télécommunications et échange d’information entre systèmes</title>
-                   <title type="title-part" format="text/plain" language="fr" script="Latn">Procédures de commande de liaison de données à haut niveau (HDLC)</title>
-                   <title type="main" format="text/plain" language="fr" script="Latn">Technologies de l’information — Télécommunications et échange d’information entre systèmes — Procédures de commande de liaison de données à haut niveau (HDLC)</title>
                    <uri type="src">https://www.iso.org/standard/37010.html</uri>
                    <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:37010:en</uri>
                    <uri type="rss">https://www.iso.org/contents/data/standard/03/70/37010.detail.rss</uri>
                    <docidentifier type="ISO">ISO/IEC 13239:2002</docidentifier>
                    <docidentifier scope="biblio-tag">ISO/IEC 13239:2002</docidentifier>
-                   <docnumber>13239</docnumber>
-                   <date type="published">
-                      <on>2002</on>
-                   </date>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>International Organization for Standardization</name>
-                         <abbreviation>ISO</abbreviation>
-                         <uri>www.iso.org</uri>
-                      </organization>
-                   </contributor>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>International Electrotechnical Commission</name>
-                         <abbreviation>IEC</abbreviation>
-                         <uri>www.iec.ch</uri>
-                      </organization>
-                   </contributor>
-                   <edition>3</edition>
-                   <language>en</language>
-                   <language>fr</language>
-                   <script>Latn</script>
-                   <status>
-                      <stage>90</stage>
-                      <substage>93</substage>
-                   </status>
-                   <copyright>
-                      <from>2002</from>
-                      <owner>
-                         <organization>
-                            <name>ISO/IEC</name>
-                         </organization>
-                      </owner>
-                   </copyright>
-                   <relation type="obsoletes">
-                      <bibitem type="standard">
-                         <formattedref format="text/plain">ISO/IEC 3309:1993</formattedref>
-                      </bibitem>
-                   </relation>
-                   <relation type="obsoletes">
-                      <bibitem type="standard">
-                         <formattedref format="text/plain">ISO/IEC 4335:1993</formattedref>
-                      </bibitem>
-                   </relation>
-                   <relation type="obsoletes">
-                      <bibitem type="standard">
-                         <formattedref format="text/plain">ISO/IEC 7809:1993</formattedref>
-                      </bibitem>
-                   </relation>
-                   <relation type="obsoletes">
-                      <bibitem type="standard">
-                         <formattedref format="text/plain">ISO/IEC 8885:1993</formattedref>
-                      </bibitem>
-                   </relation>
-                   <relation type="obsoletes">
-                      <bibitem type="standard">
-                         <formattedref format="text/plain">ISO/IEC 13239:2000</formattedref>
-                      </bibitem>
-                   </relation>
-                   <place>Geneva</place>
                    <biblio-tag>
                       [9]
                       <tab/>
@@ -756,16 +388,8 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ISO712" type="standard">
                    <formattedref>ISO 712: Cereals and cereal products, International Organization for Standardization.</formattedref>
-                   <title format="text/plain">Cereals or cereal products</title>
-                   <title type="main" format="text/plain">Cereals and cereal products</title>
                    <docidentifier type="ISO">ISO 712</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 712</docidentifier>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>International Organization for Standardization</name>
-                      </organization>
-                   </contributor>
                    <biblio-tag>
                       [10]
                       <tab/>
@@ -773,23 +397,9 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ISO16634" type="standard">
                    <formattedref>ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</formattedref>
-                   <title language="x" format="text/plain">Cereals, pulses, milled cereal products, xxxx, oilseeds and animal feeding stuffs</title>
-                   <title language="en" format="text/plain">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
                    <docidentifier type="ISO">ISO 16634:-- (all parts)</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 16634:-- (all parts)</docidentifier>
-                   <date type="published">
-                      <on>--</on>
-                   </date>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <abbreviation>ISO</abbreviation>
-                      </organization>
-                   </contributor>
                    <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
-                   <extent type="part">
-                      <referenceFrom>all</referenceFrom>
-                   </extent>
                    <biblio-tag>
                       [11]
                       <tab/>
@@ -797,19 +407,8 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ISO20483" type="standard">
                    <formattedref>ISO 20483:2013-2014: Cereals and pulses, International Organization for Standardization.</formattedref>
-                   <title format="text/plain">Cereals and pulses</title>
                    <docidentifier type="ISO">ISO 20483:2013-2014</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 20483:2013-2014</docidentifier>
-                   <date type="published">
-                      <from>2013</from>
-                      <to>2014</to>
-                   </date>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <name>International Organization for Standardization</name>
-                      </organization>
-                   </contributor>
                    <biblio-tag>
                       [12]
                       <tab/>
@@ -858,15 +457,8 @@ RSpec.describe IsoDoc do
                       <em>Chemicals for analytical laboratory use</em>
                       . n.p.: n.d. ISBN: ISBN.
                    </formattedref>
-                   <title format="text/plain">Chemicals for analytical laboratory use</title>
                    <docidentifier type="metanorma-ordinal">[3]</docidentifier>
                    <docidentifier type="ISBN">ISBN</docidentifier>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <abbreviation>ISBN</abbreviation>
-                      </organization>
-                   </contributor>
                    <biblio-tag>
                       [1]
                       <tab/>
@@ -877,15 +469,8 @@ RSpec.describe IsoDoc do
                       <em>Instruments for analytical laboratory use</em>
                       . n.d. ISSN: ISSN.
                    </formattedref>
-                   <title format="text/plain">Instruments for analytical laboratory use</title>
                    <docidentifier type="metanorma-ordinal">[4]</docidentifier>
                    <docidentifier type="ISSN">ISSN</docidentifier>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <abbreviation>ISSN</abbreviation>
-                      </organization>
-                   </contributor>
                    <biblio-tag>
                       [2]
                       <tab/>
@@ -915,16 +500,9 @@ RSpec.describe IsoDoc do
                 </note>
                 <bibitem id="ISO3696" type="standard">
                    <formattedref>ISO 3696: Water for analytical laboratory use.</formattedref>
-                   <title format="text/plain">Water for analytical laboratory use</title>
                    <docidentifier type="metanorma-ordinal">[5]</docidentifier>
                    <docidentifier type="ISO">ISO 3696</docidentifier>
                    <docidentifier scope="biblio-tag">ISO 3696</docidentifier>
-                   <contributor>
-                      <role type="publisher"/>
-                      <organization>
-                         <abbreviation>ISO</abbreviation>
-                      </organization>
-                   </contributor>
                    <biblio-tag>
                       [3]
                       <tab/>
@@ -950,7 +528,6 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ref11">
                    <formattedref>IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</formattedref>
-                   <title>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
                    <docidentifier type="metanorma-ordinal">[7]</docidentifier>
                    <docidentifier type="IETF">IETF RFC 10</docidentifier>
                    <docidentifier scope="biblio-tag">IETF RFC 10</docidentifier>
