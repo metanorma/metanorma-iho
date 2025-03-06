@@ -3359,9 +3359,13 @@
 
 					<xsl:variable name="isNoteOrFnExist" select="./*[local-name()='note'][not(@type = 'units')] or ./*[local-name()='example'] or .//*[local-name()='fn'][local-name(..) != 'name'] or ./*[local-name()='source']"/>
 					<xsl:if test="$isNoteOrFnExist = 'true'">
-
-								<xsl:attribute name="border-bottom">0pt solid black</xsl:attribute><!-- set 0pt border, because there is a separete table below for footer -->
-
+						<!-- <xsl:choose>
+							<xsl:when test="$namespace = 'plateau'"></xsl:when>
+							<xsl:otherwise>
+								
+							</xsl:otherwise>
+						</xsl:choose> -->
+						<xsl:attribute name="border-bottom">0pt solid black</xsl:attribute><!-- set 0pt border, because there is a separete table below for footer -->
 					</xsl:if>
 
 					<xsl:choose>
@@ -3419,13 +3423,26 @@
 
 				<xsl:variable name="colgroup" select="*[local-name()='colgroup']"/>
 
-						<xsl:for-each select="*[local-name()='tbody']"><!-- select context to tbody -->
-							<xsl:call-template name="insertTableFooterInSeparateTable">
-								<xsl:with-param name="table_attributes" select="$table_attributes"/>
-								<xsl:with-param name="colwidths" select="$colwidths"/>
-								<xsl:with-param name="colgroup" select="$colgroup"/>
-							</xsl:call-template>
-						</xsl:for-each>
+				<!-- https://github.com/metanorma/metanorma-plateau/issues/171 -->
+
+				<xsl:for-each select="*[local-name()='tbody']"><!-- select context to tbody -->
+					<xsl:call-template name="insertTableFooterInSeparateTable">
+						<xsl:with-param name="table_attributes" select="$table_attributes"/>
+						<xsl:with-param name="colwidths" select="$colwidths"/>
+						<xsl:with-param name="colgroup" select="$colgroup"/>
+					</xsl:call-template>
+				</xsl:for-each>
+
+				<!-- https://github.com/metanorma/metanorma-plateau/issues/171
+				<xsl:if test="$namespace = 'plateau'">
+					<xsl:apply-templates select="*[not(local-name()='thead') and not(local-name()='tbody') and not(local-name()='tfoot') and not(local-name()='name')]" />
+					<xsl:for-each select="*[local-name()='tbody']"> - select context to tbody -
+						<xsl:variable name="table_fn_block">
+							<xsl:call-template name="table_fn_display" />
+						</xsl:variable>
+						<xsl:copy-of select="$table_fn_block"/>
+					</xsl:for-each>
+				</xsl:if> -->
 
 				<xsl:if test="*[local-name()='bookmark']"> <!-- special case: table/bookmark -->
 					<fo:block keep-with-previous="always" line-height="0.1">
@@ -4300,6 +4317,17 @@
 				<xsl:attribute name="text-align">left</xsl:attribute>
 			</xsl:if>
 
+			<xsl:if test="$isGenerateTableIF = 'false'">
+				<xsl:if test="@colspan and *[local-name() = 'note'][@type = 'units']">
+					<xsl:attribute name="text-align">right</xsl:attribute>
+					<xsl:attribute name="border">none</xsl:attribute>
+					<xsl:attribute name="border-bottom"><xsl:value-of select="$table-border"/></xsl:attribute>
+					<xsl:attribute name="border-top">1pt solid white</xsl:attribute>
+					<xsl:attribute name="border-left">1pt solid white</xsl:attribute>
+					<xsl:attribute name="border-right">1pt solid white</xsl:attribute>
+				</xsl:if>
+			</xsl:if>
+
 			<fo:block role="SKIP">
 
 				<xsl:if test="$isGenerateTableIF = 'true'">
@@ -4552,14 +4580,25 @@
 
 						<fo:block xsl:use-attribute-sets="table-fn-style">
 							<xsl:call-template name="refine_table-fn-style"/>
+
+							<!-- https://github.com/metanorma/metanorma-plateau/issues/171 -->
+
 							<fo:inline id="{@id}" xsl:use-attribute-sets="table-fn-number-style">
 								<xsl:call-template name="refine_table-fn-number-style"/>
+
+								<!-- <xsl:if test="$namespace = 'plateau'">
+									<xsl:text>※</xsl:text>
+								</xsl:if> -->
 
 								<xsl:value-of select="@reference"/>
 
 								<!-- commented https://github.com/metanorma/isodoc/issues/614 -->
 								<!-- <xsl:if test="$namespace = 'itu'">
 									<xsl:text>)</xsl:text>
+								</xsl:if> -->
+
+								<!-- <xsl:if test="$namespace = 'plateau'">
+									<xsl:text>：</xsl:text>
 								</xsl:if> -->
 
 							</fo:inline>
@@ -4692,6 +4731,7 @@
 										<fo:table-row>
 											<fo:table-cell>
 												<fo:block>
+
 													<fo:inline id="{@id}" xsl:use-attribute-sets="figure-fn-number-style">
 														<xsl:value-of select="@reference"/>
 													</fo:inline>
@@ -4704,6 +4744,7 @@
 																<xsl:attribute name="margin-bottom">0</xsl:attribute>
 
 													</xsl:if>
+
 													<xsl:copy-of select="./node()"/>
 												</fo:block>
 											</fo:table-cell>
@@ -4750,6 +4791,9 @@
 					</xsl:attribute>
 				</xsl:if>
 
+				<!-- <xsl:if test="$namespace = 'plateau'">
+					<xsl:text>※</xsl:text>
+				</xsl:if> -->
 				<xsl:value-of select="@reference"/>
 
 				<!-- commented, https://github.com/metanorma/isodoc/issues/614 -->
@@ -7632,7 +7676,7 @@
 
 	<xsl:template name="refine_note_block_style">
 
-	</xsl:template>
+	</xsl:template> <!-- refine_note_block_style -->
 
 	<xsl:template match="*[local-name() = 'note']/*[local-name() = 'p']">
 		<xsl:variable name="num"><xsl:number/></xsl:variable>
