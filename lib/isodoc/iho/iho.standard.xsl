@@ -1661,6 +1661,7 @@
 	</xsl:template> <!-- refine_table-style -->
 
 	<xsl:attribute-set name="table-name-style">
+		<xsl:attribute name="role">Caption</xsl:attribute>
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 
 			<xsl:attribute name="text-align">center</xsl:attribute>
@@ -1672,6 +1673,9 @@
 
 	<xsl:template name="refine_table-name-style">
 		<xsl:param name="continued"/>
+		<xsl:if test="$continued = 'true'">
+			<xsl:attribute name="role">SKIP</xsl:attribute>
+		</xsl:if>
 
 	</xsl:template> <!-- refine_table-name-style -->
 
@@ -3448,7 +3452,7 @@
 				</xsl:if>
 
 			</fo:block-container>
-		</xsl:variable>
+		</xsl:variable> <!-- END: variable name="table" -->
 
 		<xsl:variable name="isAdded" select="@added"/>
 		<xsl:variable name="isDeleted" select="@deleted"/>
@@ -3458,14 +3462,14 @@
 
 				<!-- centered table when table name is centered (see table-name-style) -->
 
-					<fo:table table-layout="fixed" width="100%" xsl:use-attribute-sets="table-container-style">
+					<fo:table table-layout="fixed" width="100%" xsl:use-attribute-sets="table-container-style" role="SKIP">
 
 						<fo:table-column column-width="proportional-column-width(1)"/>
 						<fo:table-column column-width="{@width}"/>
 						<fo:table-column column-width="proportional-column-width(1)"/>
-						<fo:table-body>
-							<fo:table-row>
-								<fo:table-cell column-number="2">
+						<fo:table-body role="SKIP">
+							<fo:table-row role="SKIP">
+								<fo:table-cell column-number="2" role="SKIP">
 									<xsl:copy-of select="$table-preamble"/>
 									<fo:block role="SKIP">
 										<xsl:call-template name="setTrackChangesStyles">
@@ -3510,7 +3514,7 @@
 		<xsl:param name="continued"/>
 		<xsl:if test="normalize-space() != ''">
 
-					<fo:block xsl:use-attribute-sets="table-name-style" role="SKIP">
+					<fo:block xsl:use-attribute-sets="table-name-style">
 
 						<xsl:call-template name="refine_table-name-style">
 							<xsl:with-param name="continued" select="$continued"/>
@@ -3987,7 +3991,7 @@
 
 			<xsl:variable name="tableWithNotesAndFootnotes">
 
-				<fo:table keep-with-previous="always">
+				<fo:table keep-with-previous="always" role="SKIP">
 					<xsl:for-each select="xalan:nodeset($table_attributes)/table_attributes/@*">
 						<xsl:variable name="name" select="local-name()"/>
 						<xsl:choose>
@@ -4018,9 +4022,9 @@
 						</xsl:otherwise>
 					</xsl:choose>
 
-					<fo:table-body>
-						<fo:table-row>
-							<fo:table-cell xsl:use-attribute-sets="table-footer-cell-style" number-columns-spanned="{$cols-count}">
+					<fo:table-body role="SKIP">
+						<fo:table-row role="SKIP">
+							<fo:table-cell xsl:use-attribute-sets="table-footer-cell-style" number-columns-spanned="{$cols-count}" role="SKIP">
 
 								<xsl:call-template name="refine_table-footer-cell-style"/>
 
