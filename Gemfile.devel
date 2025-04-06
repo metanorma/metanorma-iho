@@ -1,0 +1,2 @@
+gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "features/passthrough_validate"
+gem "metanorma-generic", git: "https://github.com/metanorma/metanorma-generic", branch: "features/passthrough_validate"
