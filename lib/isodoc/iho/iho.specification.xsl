@@ -1661,6 +1661,7 @@
 	</xsl:template> <!-- refine_table-style -->
 
 	<xsl:attribute-set name="table-name-style">
+		<xsl:attribute name="role">Caption</xsl:attribute>
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 
 			<xsl:attribute name="text-align">center</xsl:attribute>
@@ -1672,6 +1673,9 @@
 
 	<xsl:template name="refine_table-name-style">
 		<xsl:param name="continued"/>
+		<xsl:if test="$continued = 'true'">
+			<xsl:attribute name="role">SKIP</xsl:attribute>
+		</xsl:if>
 
 	</xsl:template> <!-- refine_table-name-style -->
 
@@ -3448,7 +3452,7 @@
 				</xsl:if>
 
 			</fo:block-container>
-		</xsl:variable>
+		</xsl:variable> <!-- END: variable name="table" -->
 
 		<xsl:variable name="isAdded" select="@added"/>
 		<xsl:variable name="isDeleted" select="@deleted"/>
@@ -3458,14 +3462,14 @@
 
 				<!-- centered table when table name is centered (see table-name-style) -->
 
-					<fo:table table-layout="fixed" width="100%" xsl:use-attribute-sets="table-container-style">
+					<fo:table table-layout="fixed" width="100%" xsl:use-attribute-sets="table-container-style" role="SKIP">
 
 						<fo:table-column column-width="proportional-column-width(1)"/>
 						<fo:table-column column-width="{@width}"/>
 						<fo:table-column column-width="proportional-column-width(1)"/>
-						<fo:table-body>
-							<fo:table-row>
-								<fo:table-cell column-number="2">
+						<fo:table-body role="SKIP">
+							<fo:table-row role="SKIP">
+								<fo:table-cell column-number="2" role="SKIP">
 									<xsl:copy-of select="$table-preamble"/>
 									<fo:block role="SKIP">
 										<xsl:call-template name="setTrackChangesStyles">
@@ -3510,7 +3514,7 @@
 		<xsl:param name="continued"/>
 		<xsl:if test="normalize-space() != ''">
 
-					<fo:block xsl:use-attribute-sets="table-name-style" role="SKIP">
+					<fo:block xsl:use-attribute-sets="table-name-style">
 
 						<xsl:call-template name="refine_table-name-style">
 							<xsl:with-param name="continued" select="$continued"/>
@@ -3987,7 +3991,7 @@
 
 			<xsl:variable name="tableWithNotesAndFootnotes">
 
-				<fo:table keep-with-previous="always">
+				<fo:table keep-with-previous="always" role="SKIP">
 					<xsl:for-each select="xalan:nodeset($table_attributes)/table_attributes/@*">
 						<xsl:variable name="name" select="local-name()"/>
 						<xsl:choose>
@@ -4018,9 +4022,9 @@
 						</xsl:otherwise>
 					</xsl:choose>
 
-					<fo:table-body>
-						<fo:table-row>
-							<fo:table-cell xsl:use-attribute-sets="table-footer-cell-style" number-columns-spanned="{$cols-count}">
+					<fo:table-body role="SKIP">
+						<fo:table-row role="SKIP">
+							<fo:table-cell xsl:use-attribute-sets="table-footer-cell-style" number-columns-spanned="{$cols-count}" role="SKIP">
 
 								<xsl:call-template name="refine_table-footer-cell-style"/>
 
@@ -11232,8 +11236,14 @@
 			<xsl:when test="local-name(..) = 'ul'">
 				<xsl:choose>
 					<xsl:when test="normalize-space($processing_instruction_type) = 'simple'"/>
+					<!-- https://github.com/metanorma/isodoc/issues/675 -->
+					<xsl:when test="@label"><xsl:value-of select="@label"/></xsl:when>
 					<xsl:otherwise><xsl:call-template name="setULLabel"/></xsl:otherwise>
 				</xsl:choose>
+			</xsl:when>
+			<!-- https://github.com/metanorma/isodoc/issues/675 -->
+			<xsl:when test="local-name(..) = 'ol' and @label and @full = 'true'"> <!-- @full added in the template li/fmt-name -->
+				<xsl:value-of select="@label"/>
 			</xsl:when>
 			<xsl:when test="local-name(..) = 'ol' and @label"> <!-- for ordered lists 'ol', and if there is @label, for instance label="1.1.2" -->
 
@@ -11359,7 +11369,7 @@
 
 			</xsl:otherwise>
 		</xsl:choose>
-	</xsl:template>
+	</xsl:template> <!-- getListItemFormat -->
 
 	<xsl:template match="*[local-name() = 'ul'] | *[local-name() = 'ol']">
 		<xsl:param name="indent">0</xsl:param>
@@ -11490,6 +11500,11 @@
 				<fo:block xsl:use-attribute-sets="list-item-label-style" role="SKIP">
 
 					<xsl:call-template name="refine_list-item-label-style"/>
+
+					<xsl:if test="local-name(..) = 'ul'">
+						<xsl:variable name="li_label" select="@label"/>
+						<xsl:copy-of select="$ul_labels//label[. = $li_label]/@*[not(local-name() = 'level')]"/>
+					</xsl:if>
 
 					<!-- if 'p' contains all text in 'add' first and last elements in first p are 'add' -->
 					<xsl:if test="*[1][count(node()[normalize-space() != '']) = 1 and *[local-name() = 'add']]">
@@ -12888,6 +12903,16 @@
 				</xsl:element>
 			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<!-- li/fmt-name -->
+	<xsl:template match="*[local-name() = 'li']/*[local-name() = 'fmt-name']" priority="2" mode="update_xml_step1">
+		<xsl:attribute name="label"><xsl:value-of select="."/></xsl:attribute>
+		<xsl:attribute name="full">true</xsl:attribute>
+	</xsl:template>
+	<xsl:template match="*[local-name() = 'li']/*[local-name() = 'fmt-name']" priority="2" mode="update_xml_pres">
+		<xsl:attribute name="label"><xsl:value-of select="."/></xsl:attribute>
+		<xsl:attribute name="full">true</xsl:attribute>
 	</xsl:template>
 
 	<xsl:template match="*[local-name() = 'fmt-preferred']"/>
