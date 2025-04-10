@@ -153,74 +153,131 @@
 				<!-- Cover Page -->
 				<fo:page-sequence master-reference="cover">
 					<fo:flow flow-name="xsl-region-body">
-						<fo:block-container position="absolute" left="14.25mm" top="12mm" id="__internal_layout__coverpage_{generate-id()}">
-							<fo:table table-layout="fixed" width="181.1mm">
-									<fo:table-column column-width="26mm"/>
-									<fo:table-column column-width="19.4mm"/>
-									<fo:table-column column-width="135.7mm"/>
-									<fo:table-body>
-										<fo:table-row>
-											<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-											<fo:table-cell>
-												<fo:block-container width="19.4mm" height="21mm" background-color="rgb(241, 234, 202)" border-bottom="0.05pt solid rgb(0, 21, 50)" text-align="center" display-align="center" font-size="10pt" font-weight="bold">
-													<fo:block>
-														<xsl:value-of select="$docidentifier"/>
-													</fo:block>
-												</fo:block-container>
-											</fo:table-cell>
-											<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-										</fo:table-row>
-										<fo:table-row>
-											<fo:table-cell display-align="after" text-align="right">
-												<fo:block font-size="1">
-													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image IHO"/>
-												</fo:block>
-											</fo:table-cell>
-											<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)" font-weight="bold" color="rgb(0, 0, 76)" padding-top="3mm">
-												<fo:block-container height="165mm" width="115mm">
-													<fo:block-container margin-left="10mm">
-														<fo:block-container margin-left="0mm">
-															<fo:block-container display-align="center" height="90mm">
-																<fo:block font-size="28pt" role="H1" line-height="115%">
-																	<xsl:copy-of select="$title-en"/>
-																</fo:block>
-															</fo:block-container>
-															<fo:block font-size="14pt">
-																<xsl:value-of select="$edition"/>
-																<xsl:if test="normalize-space($month_year) != ''">
-																	<xsl:text> – </xsl:text>
-																	<xsl:value-of select="$month_year"/>
+
+						<xsl:variable name="isCoverPageImage" select="normalize-space(/*[local-name() = 'metanorma']/*[local-name() = 'metanorma-extension']/*[local-name() = 'presentation-metadata'][*[local-name() = 'name'] = 'coverpage-image']/*[local-name() = 'value']/*[local-name() = 'image'] and 1 = 1)"/>
+
+						<xsl:variable name="document_scheme" select="normalize-space(/*[local-name() = 'metanorma']/*[local-name() = 'metanorma-extension']/*[local-name() = 'presentation-metadata'][*[local-name() = 'name'] = 'document-scheme']/*[local-name() = 'value'])"/>
+
+						<xsl:choose>
+							<xsl:when test="$document_scheme != '' and $document_scheme != '2019' and $isCoverPageImage = 'true'">
+								<xsl:call-template name="insertBackgroundPageImage"/>
+							</xsl:when>
+							<xsl:otherwise>
+
+								<fo:block-container position="absolute" left="14.25mm" top="12mm" id="__internal_layout__coverpage_{generate-id()}">
+									<fo:table table-layout="fixed" width="181.1mm">
+											<fo:table-column column-width="26mm"/>
+											<fo:table-column column-width="19.4mm"/>
+											<fo:table-column column-width="135.7mm"/>
+											<fo:table-body>
+												<fo:table-row>
+													<fo:table-cell><fo:block> </fo:block></fo:table-cell>
+													<fo:table-cell>
+														<fo:block-container width="19.4mm" height="21mm" background-color="rgb(241, 234, 202)" border-bottom="0.05pt solid rgb(0, 21, 50)" text-align="center" display-align="center" font-size="10pt" font-weight="bold">
+															<xsl:if test="$isCoverPageImage = 'true'">
+																<xsl:attribute name="width">42.5mm</xsl:attribute>
+															</xsl:if>
+															<fo:block>
+																<xsl:value-of select="$docidentifier"/>
+																<xsl:if test="$isCoverPageImage = 'true'">
+																	<xsl:text> </xsl:text><xsl:value-of select="$edition"/>
 																</xsl:if>
 															</fo:block>
 														</fo:block-container>
-													</fo:block-container>
-												</fo:block-container>
-											</fo:table-cell>
-										</fo:table-row>
-										<fo:table-row>
-											<fo:table-cell>
-												<fo:block font-size="1">
-													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Logo-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo IHO"/>
-												</fo:block>
-											</fo:table-cell>
-											<fo:table-cell>
-												<fo:block font-size="1">
-													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Text-IHO))}" width="25.8mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Text IHO"/>
-												</fo:block>
-											</fo:table-cell>
-											<fo:table-cell>
-												<fo:block-container width="79mm" height="72mm" margin-left="56.8mm" background-color="rgb(0, 172, 158)" text-align="right" display-align="after">
-													<fo:block-container margin-left="0mm">
-														<fo:block font-size="8pt" color="white" margin-right="5mm" margin-bottom="5mm" line-height-shift-adjustment="disregard-shifts">
-															<xsl:apply-templates select="/iho:metanorma/iho:boilerplate/iho:feedback-statement"/>
+													</fo:table-cell>
+													<fo:table-cell><fo:block> </fo:block></fo:table-cell>
+												</fo:table-row>
+												<fo:table-row>
+													<fo:table-cell display-align="after" text-align="right">
+														<fo:block font-size="1">
+															<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image IHO"/>
 														</fo:block>
-													</fo:block-container>
-												</fo:block-container>
-											</fo:table-cell>
-										</fo:table-row>
-									</fo:table-body>
-								</fo:table>
-						</fo:block-container>
+													</fo:table-cell>
+
+													<!-- https://github.com/metanorma/metanorma-iho/issues/288 -->
+													<xsl:choose>
+														<xsl:when test="$isCoverPageImage = 'true'">
+															<fo:table-cell number-columns-spanned="2">
+																<fo:block-container font-size="0"> <!-- height="168mm" width="115mm"  -->
+																	<fo:block>
+																		<xsl:for-each select="/*[local-name() = 'metanorma']/*[local-name() = 'metanorma-extension']/*[local-name() = 'presentation-metadata'][*[local-name() = 'name'] = 'coverpage-image'][1]/*[local-name() = 'value']/*[local-name() = 'image'][1]">
+																			<xsl:choose>
+																				<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
+																					<fo:instream-foreign-object fox:alt-text="Image Front">
+																						<xsl:attribute name="content-height"><xsl:value-of select="$pageHeight"/>mm</xsl:attribute>
+																						<xsl:call-template name="getSVG"/>
+																					</fo:instream-foreign-object>
+																				</xsl:when>
+																				<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
+																					<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
+																				</xsl:when>
+																				<xsl:otherwise> <!-- bitmap image -->
+																					<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
+																					<xsl:if test="$coverimage_src != ''">
+																						<xsl:variable name="coverpage">
+																							<xsl:call-template name="getImageURL">
+																								<xsl:with-param name="src" select="$coverimage_src"/>
+																							</xsl:call-template>
+																						</xsl:variable>
+																						<fo:external-graphic src="{$coverpage}" width="155.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
+																					</xsl:if>
+																				</xsl:otherwise>
+																			</xsl:choose>
+																		</xsl:for-each>
+																	</fo:block>
+																</fo:block-container>
+															</fo:table-cell>
+														</xsl:when>
+														<xsl:otherwise>
+															<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)" font-weight="bold" color="rgb(0, 0, 76)" padding-top="3mm">
+																<fo:block-container height="165mm" width="115mm">
+																	<fo:block-container margin-left="10mm">
+																		<fo:block-container margin-left="0mm">
+																			<fo:block-container display-align="center" height="90mm">
+																				<fo:block font-size="28pt" role="H1" line-height="115%">
+																					<xsl:copy-of select="$title-en"/>
+																				</fo:block>
+																			</fo:block-container>
+																			<fo:block font-size="14pt">
+																				<xsl:value-of select="$edition"/>
+																				<xsl:if test="normalize-space($month_year) != ''">
+																					<xsl:text> – </xsl:text>
+																					<xsl:value-of select="$month_year"/>
+																				</xsl:if>
+																			</fo:block>
+																		</fo:block-container>
+																	</fo:block-container>
+																</fo:block-container>
+															</fo:table-cell>
+														</xsl:otherwise>
+													</xsl:choose>
+												</fo:table-row>
+												<fo:table-row>
+													<fo:table-cell>
+														<fo:block font-size="1">
+															<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Logo-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo IHO"/>
+														</fo:block>
+													</fo:table-cell>
+													<fo:table-cell>
+														<fo:block font-size="1">
+															<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Text-IHO))}" width="25.8mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Text IHO"/>
+														</fo:block>
+													</fo:table-cell>
+													<fo:table-cell>
+														<fo:block-container width="79mm" height="72mm" margin-left="56.8mm" background-color="rgb(0, 172, 158)" text-align="right" display-align="after">
+															<fo:block-container margin-left="0mm">
+																<fo:block font-size="8pt" color="white" margin-right="5mm" margin-bottom="5mm" line-height-shift-adjustment="disregard-shifts">
+																	<xsl:apply-templates select="/iho:metanorma/iho:boilerplate/iho:feedback-statement"/>
+																</fo:block>
+															</fo:block-container>
+														</fo:block-container>
+													</fo:table-cell>
+												</fo:table-row>
+											</fo:table-body>
+										</fo:table>
+								</fo:block-container>
+							</xsl:otherwise>
+						</xsl:choose>
 					</fo:flow>
 				</fo:page-sequence>
 				<!-- End Cover Page -->
