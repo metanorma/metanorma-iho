@@ -153,74 +153,131 @@
 				<!-- Cover Page -->
 				<fo:page-sequence master-reference="cover">
 					<fo:flow flow-name="xsl-region-body">
-						<fo:block-container position="absolute" left="14.25mm" top="12mm" id="__internal_layout__coverpage_{generate-id()}">
-							<fo:table table-layout="fixed" width="181.1mm">
-									<fo:table-column column-width="26mm"/>
-									<fo:table-column column-width="19.4mm"/>
-									<fo:table-column column-width="135.7mm"/>
-									<fo:table-body>
-										<fo:table-row>
-											<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-											<fo:table-cell>
-												<fo:block-container width="19.4mm" height="21mm" background-color="rgb(241, 234, 202)" border-bottom="0.05pt solid rgb(0, 21, 50)" text-align="center" display-align="center" font-size="10pt" font-weight="bold">
-													<fo:block>
-														<xsl:value-of select="$docidentifier"/>
-													</fo:block>
-												</fo:block-container>
-											</fo:table-cell>
-											<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-										</fo:table-row>
-										<fo:table-row>
-											<fo:table-cell display-align="after" text-align="right">
-												<fo:block font-size="1">
-													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image IHO"/>
-												</fo:block>
-											</fo:table-cell>
-											<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)" font-weight="bold" color="rgb(0, 0, 76)" padding-top="3mm">
-												<fo:block-container height="165mm" width="115mm">
-													<fo:block-container margin-left="10mm">
-														<fo:block-container margin-left="0mm">
-															<fo:block-container display-align="center" height="90mm">
-																<fo:block font-size="28pt" role="H1" line-height="115%">
-																	<xsl:copy-of select="$title-en"/>
-																</fo:block>
-															</fo:block-container>
-															<fo:block font-size="14pt">
-																<xsl:value-of select="$edition"/>
-																<xsl:if test="normalize-space($month_year) != ''">
-																	<xsl:text> – </xsl:text>
-																	<xsl:value-of select="$month_year"/>
+
+						<xsl:variable name="isCoverPageImage" select="normalize-space(/*[local-name() = 'metanorma']/*[local-name() = 'metanorma-extension']/*[local-name() = 'presentation-metadata'][*[local-name() = 'name'] = 'coverpage-image']/*[local-name() = 'value']/*[local-name() = 'image'] and 1 = 1)"/>
+
+						<xsl:variable name="document_scheme" select="normalize-space(/*[local-name() = 'metanorma']/*[local-name() = 'metanorma-extension']/*[local-name() = 'presentation-metadata'][*[local-name() = 'name'] = 'document-scheme']/*[local-name() = 'value'])"/>
+
+						<xsl:choose>
+							<xsl:when test="$document_scheme != '' and $document_scheme != '2019' and $isCoverPageImage = 'true'">
+								<xsl:call-template name="insertBackgroundPageImage"/>
+							</xsl:when>
+							<xsl:otherwise>
+
+								<fo:block-container position="absolute" left="14.25mm" top="12mm" id="__internal_layout__coverpage_{generate-id()}">
+									<fo:table table-layout="fixed" width="181.1mm">
+											<fo:table-column column-width="26mm"/>
+											<fo:table-column column-width="19.4mm"/>
+											<fo:table-column column-width="135.7mm"/>
+											<fo:table-body>
+												<fo:table-row>
+													<fo:table-cell><fo:block> </fo:block></fo:table-cell>
+													<fo:table-cell>
+														<fo:block-container width="19.4mm" height="21mm" background-color="rgb(241, 234, 202)" border-bottom="0.05pt solid rgb(0, 21, 50)" text-align="center" display-align="center" font-size="10pt" font-weight="bold">
+															<xsl:if test="$isCoverPageImage = 'true'">
+																<xsl:attribute name="width">42.5mm</xsl:attribute>
+															</xsl:if>
+															<fo:block>
+																<xsl:value-of select="$docidentifier"/>
+																<xsl:if test="$isCoverPageImage = 'true'">
+																	<xsl:text> </xsl:text><xsl:value-of select="$edition"/>
 																</xsl:if>
 															</fo:block>
 														</fo:block-container>
-													</fo:block-container>
-												</fo:block-container>
-											</fo:table-cell>
-										</fo:table-row>
-										<fo:table-row>
-											<fo:table-cell>
-												<fo:block font-size="1">
-													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Logo-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo IHO"/>
-												</fo:block>
-											</fo:table-cell>
-											<fo:table-cell>
-												<fo:block font-size="1">
-													<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Text-IHO))}" width="25.8mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Text IHO"/>
-												</fo:block>
-											</fo:table-cell>
-											<fo:table-cell>
-												<fo:block-container width="79mm" height="72mm" margin-left="56.8mm" background-color="rgb(0, 172, 158)" text-align="right" display-align="after">
-													<fo:block-container margin-left="0mm">
-														<fo:block font-size="8pt" color="white" margin-right="5mm" margin-bottom="5mm" line-height-shift-adjustment="disregard-shifts">
-															<xsl:apply-templates select="/iho:metanorma/iho:boilerplate/iho:feedback-statement"/>
+													</fo:table-cell>
+													<fo:table-cell><fo:block> </fo:block></fo:table-cell>
+												</fo:table-row>
+												<fo:table-row>
+													<fo:table-cell display-align="after" text-align="right">
+														<fo:block font-size="1">
+															<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image IHO"/>
 														</fo:block>
-													</fo:block-container>
-												</fo:block-container>
-											</fo:table-cell>
-										</fo:table-row>
-									</fo:table-body>
-								</fo:table>
-						</fo:block-container>
+													</fo:table-cell>
+
+													<!-- https://github.com/metanorma/metanorma-iho/issues/288 -->
+													<xsl:choose>
+														<xsl:when test="$isCoverPageImage = 'true'">
+															<fo:table-cell number-columns-spanned="2">
+																<fo:block-container font-size="0"> <!-- height="168mm" width="115mm"  -->
+																	<fo:block>
+																		<xsl:for-each select="/*[local-name() = 'metanorma']/*[local-name() = 'metanorma-extension']/*[local-name() = 'presentation-metadata'][*[local-name() = 'name'] = 'coverpage-image'][1]/*[local-name() = 'value']/*[local-name() = 'image'][1]">
+																			<xsl:choose>
+																				<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
+																					<fo:instream-foreign-object fox:alt-text="Image Front">
+																						<xsl:attribute name="content-height"><xsl:value-of select="$pageHeight"/>mm</xsl:attribute>
+																						<xsl:call-template name="getSVG"/>
+																					</fo:instream-foreign-object>
+																				</xsl:when>
+																				<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
+																					<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
+																				</xsl:when>
+																				<xsl:otherwise> <!-- bitmap image -->
+																					<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
+																					<xsl:if test="$coverimage_src != ''">
+																						<xsl:variable name="coverpage">
+																							<xsl:call-template name="getImageURL">
+																								<xsl:with-param name="src" select="$coverimage_src"/>
+																							</xsl:call-template>
+																						</xsl:variable>
+																						<fo:external-graphic src="{$coverpage}" width="155.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
+																					</xsl:if>
+																				</xsl:otherwise>
+																			</xsl:choose>
+																		</xsl:for-each>
+																	</fo:block>
+																</fo:block-container>
+															</fo:table-cell>
+														</xsl:when>
+														<xsl:otherwise>
+															<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)" font-weight="bold" color="rgb(0, 0, 76)" padding-top="3mm">
+																<fo:block-container height="165mm" width="115mm">
+																	<fo:block-container margin-left="10mm">
+																		<fo:block-container margin-left="0mm">
+																			<fo:block-container display-align="center" height="90mm">
+																				<fo:block font-size="28pt" role="H1" line-height="115%">
+																					<xsl:copy-of select="$title-en"/>
+																				</fo:block>
+																			</fo:block-container>
+																			<fo:block font-size="14pt">
+																				<xsl:value-of select="$edition"/>
+																				<xsl:if test="normalize-space($month_year) != ''">
+																					<xsl:text> – </xsl:text>
+																					<xsl:value-of select="$month_year"/>
+																				</xsl:if>
+																			</fo:block>
+																		</fo:block-container>
+																	</fo:block-container>
+																</fo:block-container>
+															</fo:table-cell>
+														</xsl:otherwise>
+													</xsl:choose>
+												</fo:table-row>
+												<fo:table-row>
+													<fo:table-cell>
+														<fo:block font-size="1">
+															<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Logo-IHO))}" width="25.9mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Logo IHO"/>
+														</fo:block>
+													</fo:table-cell>
+													<fo:table-cell>
+														<fo:block font-size="1">
+															<fo:external-graphic src="{concat('data:image/png;base64,', normalize-space($Image-Text-IHO))}" width="25.8mm" content-width="scale-to-fit" scaling="uniform" fox:alt-text="Image Text IHO"/>
+														</fo:block>
+													</fo:table-cell>
+													<fo:table-cell>
+														<fo:block-container width="79mm" height="72mm" margin-left="56.8mm" background-color="rgb(0, 172, 158)" text-align="right" display-align="after">
+															<fo:block-container margin-left="0mm">
+																<fo:block font-size="8pt" color="white" margin-right="5mm" margin-bottom="5mm" line-height-shift-adjustment="disregard-shifts">
+																	<xsl:apply-templates select="/iho:metanorma/iho:boilerplate/iho:feedback-statement"/>
+																</fo:block>
+															</fo:block-container>
+														</fo:block-container>
+													</fo:table-cell>
+												</fo:table-row>
+											</fo:table-body>
+										</fo:table>
+								</fo:block-container>
+							</xsl:otherwise>
+						</xsl:choose>
 					</fo:flow>
 				</fo:page-sequence>
 				<!-- End Cover Page -->
@@ -3510,6 +3567,7 @@
 
 	</xsl:template>
 
+	<!-- table/name-->
 	<xsl:template match="*[local-name()='table']/*[local-name() = 'name']">
 		<xsl:param name="continued"/>
 		<xsl:if test="normalize-space() != ''">
@@ -4421,6 +4479,7 @@
 	<!-- footnotes in text (title, bibliography, main body), not for tables, figures and names --> <!-- table's, figure's names -->
 	<!-- fn in text -->
 	<xsl:template match="*[local-name() = 'fn'][not(ancestor::*[(local-name() = 'table' or local-name() = 'figure')] and not(ancestor::*[local-name() = 'name']))]" priority="2" name="fn">
+		<xsl:param name="footnote_body_from_table">false</xsl:param>
 
 		<!-- list of unique footnotes -->
 		<xsl:variable name="p_fn_">
@@ -4486,7 +4545,7 @@
 				<xsl:copy-of select="$footnote_inline"/>
 			</xsl:when>
 			<!-- <xsl:when test="$footnotes//*[local-name() = 'fmt-fn-body'][@id = $ref_id] or normalize-space(@skip_footnote_body) = 'false'"> -->
-			<xsl:when test="$p_fn//fn[@gen_id = $gen_id] or normalize-space(@skip_footnote_body) = 'false'">
+			<xsl:when test="$p_fn//fn[@gen_id = $gen_id] or normalize-space(@skip_footnote_body) = 'false' or $footnote_body_from_table = 'true'">
 
 				<fo:footnote xsl:use-attribute-sets="fn-style" role="SKIP">
 					<xsl:copy-of select="$footnote_inline"/>
@@ -4895,39 +4954,51 @@
 	<!-- fn reference in the table rendering (for instance, 'some text 1) some text' ) -->
 	<!-- fn --> <!-- in table --> <!-- for figure see <xsl:template match="*[local-name() = 'figure']/*[local-name() = 'fn']" priority="2"/> -->
 	<xsl:template match="*[local-name()='fn']">
-		<fo:inline xsl:use-attribute-sets="fn-reference-style">
+		<xsl:variable name="target" select="@target"/>
+		<xsl:choose>
+			<!-- case for footnotes in Requirement tables (https://github.com/metanorma/metanorma-ogc/issues/791) -->
+			<xsl:when test="not(ancestor::*[local-name() = 'table'][1]/*[local-name() = 'fmt-footnote-container']/*[local-name() = 'fmt-fn-body'][@id = $target]) and        $footnotes/*[local-name() = 'fmt-fn-body'][@id = $target]">
+				<xsl:call-template name="fn">
+					<xsl:with-param name="footnote_body_from_table">true</xsl:with-param>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
 
-			<xsl:call-template name="refine_fn-reference-style"/>
+				<fo:inline xsl:use-attribute-sets="fn-reference-style">
 
-			<!-- <fo:basic-link internal-destination="{@reference}_{ancestor::*[@id][1]/@id}" fox:alt-text="footnote {@reference}"> --> <!-- @reference   | ancestor::*[local-name()='clause'][1]/@id-->
-			<fo:basic-link internal-destination="{@target}" fox:alt-text="footnote {@reference}">
-				<!-- <xsl:if test="ancestor::*[local-name()='table'][1]/@id"> --> <!-- for footnotes in tables -->
-				<!-- 	<xsl:attribute name="internal-destination">
-						<xsl:value-of select="concat(@reference, '_', ancestor::*[local-name()='table'][1]/@id)"/>
-					</xsl:attribute>
-				</xsl:if>
-				<xsl:if test="$namespace = 'ogc' or $namespace = 'ogc-white-paper'">
-					<xsl:attribute name="internal-destination">
-						<xsl:value-of select="@reference"/><xsl:text>_</xsl:text>
-						<xsl:value-of select="ancestor::*[local-name()='table'][1]/@id"/>
-					</xsl:attribute>
-				</xsl:if> -->
-				<!-- <xsl:if test="$namespace = 'plateau'">
-					<xsl:text>※</xsl:text>
-				</xsl:if> -->
-				<!-- <xsl:value-of select="@reference"/> -->
+					<xsl:call-template name="refine_fn-reference-style"/>
 
-						<xsl:value-of select="normalize-space(*[local-name() = 'fmt-fn-label'])"/>
+					<!-- <fo:basic-link internal-destination="{@reference}_{ancestor::*[@id][1]/@id}" fox:alt-text="footnote {@reference}"> --> <!-- @reference   | ancestor::*[local-name()='clause'][1]/@id-->
+					<fo:basic-link internal-destination="{@target}" fox:alt-text="footnote {@reference}">
+						<!-- <xsl:if test="ancestor::*[local-name()='table'][1]/@id"> --> <!-- for footnotes in tables -->
+						<!-- 	<xsl:attribute name="internal-destination">
+								<xsl:value-of select="concat(@reference, '_', ancestor::*[local-name()='table'][1]/@id)"/>
+							</xsl:attribute>
+						</xsl:if>
+						<xsl:if test="$namespace = 'ogc' or $namespace = 'ogc-white-paper'">
+							<xsl:attribute name="internal-destination">
+								<xsl:value-of select="@reference"/><xsl:text>_</xsl:text>
+								<xsl:value-of select="ancestor::*[local-name()='table'][1]/@id"/>
+							</xsl:attribute>
+						</xsl:if> -->
+						<!-- <xsl:if test="$namespace = 'plateau'">
+							<xsl:text>※</xsl:text>
+						</xsl:if> -->
+						<!-- <xsl:value-of select="@reference"/> -->
 
-				<!-- <xsl:if test="$namespace = 'bsi'">
-					<xsl:text>)</xsl:text>
-				</xsl:if> -->
-				<!-- commented, https://github.com/metanorma/isodoc/issues/614 -->
-				<!-- <xsl:if test="$namespace = 'jis'">
-					<fo:inline font-weight="normal">)</fo:inline>
-				</xsl:if> -->
-			</fo:basic-link>
-		</fo:inline>
+								<xsl:value-of select="normalize-space(*[local-name() = 'fmt-fn-label'])"/>
+
+						<!-- <xsl:if test="$namespace = 'bsi'">
+							<xsl:text>)</xsl:text>
+						</xsl:if> -->
+						<!-- commented, https://github.com/metanorma/isodoc/issues/614 -->
+						<!-- <xsl:if test="$namespace = 'jis'">
+							<fo:inline font-weight="normal">)</fo:inline>
+						</xsl:if> -->
+					</fo:basic-link>
+				</fo:inline>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template> <!-- fn -->
 
 	<!-- fn/text() -->
@@ -8999,6 +9070,13 @@
 		<xsl:apply-templates select="."/>
 	</xsl:template>
 
+	<!-- prevent missing stem for table and figures in ToC -->
+	<xsl:template match="*[local-name() = 'name' or local-name() = 'fmt-name']//*[local-name() = 'stem']" mode="contents">
+		<xsl:if test="not(following-sibling::*[1][local-name() = 'fmt-stem'])">
+			<xsl:apply-templates select="."/>
+		</xsl:if>
+	</xsl:template>
+
 	<xsl:template match="*[local-name() = 'references'][@hidden='true']" mode="contents" priority="3"/>
 
 	<xsl:template match="*[local-name() = 'references']/*[local-name() = 'bibitem']" mode="contents"/>
@@ -9222,7 +9300,8 @@
 
 						<xsl:for-each select="$contents_nodes//tables/table">
 							<fo:bookmark internal-destination="{@id}">
-								<fo:bookmark-title><xsl:value-of select="normalize-space(.)"/></fo:bookmark-title>
+								<!-- <fo:bookmark-title><xsl:value-of select="normalize-space(.)"/></fo:bookmark-title> -->
+								<fo:bookmark-title><xsl:apply-templates mode="bookmark_clean"/></fo:bookmark-title>
 							</fo:bookmark>
 						</xsl:for-each>
 					</fo:bookmark>
@@ -9230,6 +9309,26 @@
 
 	</xsl:template> <!-- insertTableBookmarks -->
 	<!-- End Bookmarks -->
+
+	<!-- ============================ -->
+	<!-- mode="bookmark_clean" -->
+	<!-- ============================ -->
+	<xsl:template match="node()" mode="bookmark_clean">
+		<xsl:apply-templates select="node()" mode="bookmark_clean"/>
+	</xsl:template>
+
+	<xsl:template match="text()" mode="bookmark_clean">
+		<xsl:value-of select="."/>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'math']" mode="bookmark_clean">
+		<xsl:value-of select="normalize-space(.)"/>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'asciimath']" mode="bookmark_clean"/>
+	<!-- ============================ -->
+	<!-- END: mode="bookmark_clean" -->
+	<!-- ============================ -->
 
 	<xsl:template name="getLangVersion">
 		<xsl:param name="lang"/>
@@ -13728,6 +13827,64 @@
 	<xsl:template match="*[local-name() = 'lang_none']">
 		<fo:inline xml:lang="none"><xsl:value-of select="."/></fo:inline>
 	</xsl:template>
+
+	<!-- ===================================== -->
+	<!-- ===================================== -->
+	<!-- Ruby text (CJK languages) rendering -->
+	<!-- ===================================== -->
+	<!-- ===================================== -->
+	<xsl:template match="*[local-name() = 'ruby']">
+		<fo:inline-container text-indent="0mm" last-line-end-indent="0mm">
+			<xsl:if test="not(ancestor::*[local-name() = 'ruby'])">
+				<xsl:attribute name="alignment-baseline">central</xsl:attribute>
+			</xsl:if>
+			<xsl:variable name="rt_text" select="*[local-name() = 'rt']"/>
+			<xsl:variable name="rb_text" select=".//*[local-name() = 'rb'][not(*[local-name() = 'ruby'])]"/>
+			<!-- Example: width="2em"  -->
+			<xsl:variable name="text_rt_width" select="java:org.metanorma.fop.Util.getStringWidthByFontSize($rt_text, $font_main, 6)"/>
+			<xsl:variable name="text_rb_width" select="java:org.metanorma.fop.Util.getStringWidthByFontSize($rb_text, $font_main, 10)"/>
+			<xsl:variable name="text_width">
+				<xsl:choose>
+					<xsl:when test="$text_rt_width &gt;= $text_rb_width"><xsl:value-of select="$text_rt_width"/></xsl:when>
+					<xsl:otherwise><xsl:value-of select="$text_rb_width"/></xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
+			<xsl:attribute name="width"><xsl:value-of select="$text_width div 10"/>em</xsl:attribute>
+
+			<xsl:choose>
+				<xsl:when test="ancestor::*[local-name() = 'ruby']">
+					<xsl:apply-templates select="*[local-name() = 'rb']"/>
+					<xsl:apply-templates select="*[local-name() = 'rt']"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:apply-templates select="*[local-name() = 'rt']"/>
+					<xsl:apply-templates select="*[local-name() = 'rb']"/>
+				</xsl:otherwise>
+			</xsl:choose>
+
+			<xsl:apply-templates select="node()[not(local-name() = 'rt') and not(local-name() = 'rb')]"/>
+		</fo:inline-container>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'rb']">
+		<fo:block line-height="1em" text-align="center"><xsl:apply-templates/></fo:block>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'rt']">
+		<fo:block font-size="0.5em" text-align="center" line-height="1.2em" space-before="-1.4em" space-before.conditionality="retain"> <!--  -->
+			<xsl:if test="ancestor::*[local-name() = 'ruby'][last()]//*[local-name() = 'ruby'] or      ancestor::*[local-name() = 'rb']">
+				<xsl:attribute name="space-before">0em</xsl:attribute>
+			</xsl:if>
+			<xsl:apply-templates/>
+		</fo:block>
+
+	</xsl:template>
+
+	<!-- ===================================== -->
+	<!-- ===================================== -->
+	<!-- END: Ruby text (CJK languages) rendering -->
+	<!-- ===================================== -->
+	<!-- ===================================== -->
 
 	<xsl:template name="printEdition">
 		<xsl:variable name="edition_i18n" select="normalize-space((//*[local-name() = 'metanorma'])[1]/*[local-name() = 'bibdata']/*[local-name() = 'edition'][normalize-space(@language) != ''])"/>
