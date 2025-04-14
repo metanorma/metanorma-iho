@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
   <include href="biblio-standoc.rng">
     <define name="DocumentType">
       <choice>
@@ -24,28 +24,14 @@
         </oneOrMore>
       </element>
     </define>
-    <define name="BibDataExtensionType">
-      <optional>
-        <attribute name="schema-version"/>
-      </optional>
-      <optional>
-        <ref name="doctype"/>
-      </optional>
-      <optional>
-        <ref name="docsubtype"/>
-      </optional>
-      <ref name="flavor"/>
-      <zeroOrMore>
-        <ref name="editorialgroup"/>
-      </zeroOrMore>
-      <zeroOrMore>
-        <ref name="ics"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="commentperiod"/>
-      </optional>
-    </define>
   </include>
+  <define name="BibDataExtensionType" combine="interleave">
+    <optional>
+      <ref name="commentperiod">
+        <a:documentation>The period during which comments may be submitted to the document draft</a:documentation>
+      </ref>
+    </optional>
+  </define>
   <define name="committee">
     <element name="committee">
       <ref name="IHO_Group"/>
@@ -79,12 +65,16 @@
     </optional>
   </define>
   <define name="commentperiod">
+    <a:documentation>The period during which comments may be submitted to the document draft</a:documentation>
     <element name="commentperiod">
       <element name="from">
+        <a:documentation>The beginning of the period during which comments may be submitted to the document draft</a:documentation>
         <ref name="ISO8601Date"/>
       </element>
       <optional>
         <element name="to">
+          <a:documentation>The end of the period during which comments may be submitted to the document draft. 
+The end of the period may change, and may be left open-ended (omitted)</a:documentation>
           <ref name="ISO8601Date"/>
         </element>
       </optional>
