@@ -141,14 +141,6 @@ _bib)
         ""
       end
 
-      # KILL
-      def clausex(docxml)
-        super
-        docxml.xpath(ns("//appendix")).each do |x|
-          clause1(x)
-        end
-      end
-
       def ul_label_list(_elem)
         %w(&#x2022; &#x2014; &#x6f;)
       end
