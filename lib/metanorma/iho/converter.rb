@@ -9,19 +9,25 @@ module Metanorma
 
       register_for "iho"
 
-      def clause_parse(attrs, xml, node)
+      # KILL
+      def clause_parsex(attrs, xml, node)
         node.option? "appendix" and
           return appendix_parse(attrs, xml, node)
         super
       end
 
-      def appendix_parse(attrs, xml, node)
+      # KILL
+      def appendix_parsex(attrs, xml, node)
         attrs[:"inline-header"] = node.option? "inline-header"
         set_obligation(attrs, node)
         xml.appendix **attr_code(attrs) do |xml_section|
           xml_section.title { |name| name << node.title }
           xml_section << node.content
         end
+      end
+
+      def support_appendix?(_node)
+        true
       end
 
       SERIESNAME = {
