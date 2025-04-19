@@ -78,13 +78,7 @@ RSpec.describe IsoDoc::Iho do
                </fmt-title>
                <p id="A">This is a preamble</p>
             </foreword>
-            <executivesummary id="A1" obligation="informative" displayorder="3">
-               <title id="_">Executive Summary</title>
-               <fmt-title depth="1">
-                  <semx element="title" source="_">Executive Summary</semx>
-               </fmt-title>
-            </executivesummary>
-            <introduction id="B" obligation="informative" displayorder="4">
+            <introduction id="B" obligation="informative" displayorder="3">
                <title id="_">Introduction</title>
                <fmt-title depth="1">
                   <semx element="title" source="_">Introduction</semx>
@@ -96,6 +90,12 @@ RSpec.describe IsoDoc::Iho do
                   </fmt-title>
                </clause>
             </introduction>
+            <executivesummary id="A1" obligation="informative" displayorder="4">
+        <title id="_">Executive Summary</title>
+        <fmt-title depth="1">
+           <semx element="title" source="_">Executive Summary</semx>
+        </fmt-title>
+     </executivesummary>
          </preface>
          <sections>
             <clause id="D" obligation="normative" type="scope" displayorder="5">

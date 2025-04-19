@@ -17,19 +17,6 @@ _bib)
 
       def middle_title(docxml); end
 
-      def preface_rearrange(doc)
-        preface_move(doc.xpath(ns("//preface/abstract")),
-                     %w(foreword executivesummary introduction clause acknowledgements), doc)
-        preface_move(doc.xpath(ns("//preface/foreword")),
-                     %w(executivesummary introduction clause acknowledgements), doc)
-        preface_move(doc.xpath(ns("//preface/executivesummary")),
-                     %w(introduction clause acknowledgements), doc)
-        preface_move(doc.xpath(ns("//preface/introduction")),
-                     %w(clause acknowledgements), doc)
-        preface_move(doc.xpath(ns("//preface/acknowledgements")),
-                     %w(), doc)
-      end
-
       def bibdata(docxml)
         super
         dochistory(docxml)
@@ -152,13 +139,6 @@ _bib)
 
       def clausedelim
         ""
-      end
-
-      def clause(docxml)
-        super
-        docxml.xpath(ns("//executivesummary | //appendix")).each do |x|
-          clause1(x)
-        end
       end
 
       def ul_label_list(_elem)

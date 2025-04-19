@@ -126,7 +126,6 @@ module IsoDoc
         lbl = clause_number_semx(parentnum, clause, num)
         @anchors[clause["id"]] =
           { label: lbl, level: level,
-            #xref: l10n("#{@labels['subclause']} #{num}"),
             xref: labelled_autonum(@labels['subclause'], lbl),
             type: "clause", elem: @labels["subclause"] }
         i = Counter.new(0)
