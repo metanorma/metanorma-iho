@@ -201,7 +201,7 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref bibitemid="ISO16634" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref target="ISO16634">ISO 16634:-- (all parts)</fmt-xref>
+                      <fmt-xref target="ISO16634">ISO 16634:--</fmt-xref>
                    </semx>
                    <eref bibitemid="ref11" id="_"/>
                    <semx element="eref" source="_">
@@ -1000,7 +1000,7 @@ RSpec.describe IsoDoc do
                    <a href="#ISO712">ISO 712</a>
                    <a href="#ISBN">[3]</a>
                    <a href="#ISSN">[4]</a>
-                   <a href="#ISO16634">ISO 16634:-- (all parts)</a>
+                   <a href="#ISO16634">ISO 16634:--</a>
                    <a href="#ref11">IETF RFC 10</a>
                    <a href="#ref10">[6]</a>
                    <a href="#ref12">Citn</a>
