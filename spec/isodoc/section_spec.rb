@@ -1892,7 +1892,7 @@ RSpec.describe IsoDoc::Iho do
        </iho-standard>
     INPUT
     output = <<~OUTPUT
-       <preface>
+      <preface>
           <clause type="toc" id="_" displayorder="1">
              <fmt-title depth="1">Contents</fmt-title>
           </clause>
@@ -1914,9 +1914,7 @@ RSpec.describe IsoDoc::Iho do
                    <tr>
                       <td>1.0.0</td>
                       <td>April 2012</td>
-                      <td>
-                         <formattedref/>
-                      </td>
+                      <td>TSMAD</td>
                       <td>
                          <p id="_">Approved edition of S-102</p>
                       </td>
@@ -1924,9 +1922,7 @@ RSpec.describe IsoDoc::Iho do
                    <tr>
                       <td>2.0.0</td>
                       <td>March 2017</td>
-                      <td>
-                         <formattedref/>
-                      </td>
+                      <td>S-102 Project Team</td>
                       <td>
                          <p id="_">Updated clause 4.0 and 12.0.
         Populated clause 9.0 and Annex B.</p>
@@ -1935,11 +1931,7 @@ RSpec.describe IsoDoc::Iho do
                    <tr>
                       <td>2.0.0</td>
                       <td>May 2017</td>
-                      <td>
-                         <formattedref>FRED FLINTSTONE</formattedref>
-                         ,
-                         <formattedref>BARNEY RUBBLE</formattedref>
-                      </td>
+                      <td>FF, Barney Rubble</td>
                       <td>
                          <p id="_">Modified clause 9.0 based on feedback at S-100WG2 meeting.</p>
                       </td>
@@ -1947,9 +1939,7 @@ RSpec.describe IsoDoc::Iho do
                    <tr>
                       <td>2.0.0</td>
                       <td>February 2018</td>
-                      <td>
-                         <formattedref>HERING, Milena S.</formattedref>
-                      </td>
+                      <td>HERING, Milena S.</td>
                       <td>
                          <p id="_">Modified clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.</p>
                       </td>
@@ -1957,9 +1947,7 @@ RSpec.describe IsoDoc::Iho do
                    <tr>
                       <td>2.0.0</td>
                       <td>June 2018</td>
-                      <td>
-                         <formattedref/>
-                      </td>
+                      <td>S-102PT</td>
                       <td>
                          <p id="_">Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.</p>
                          <p id="_">Modified content throughout the following sections:</p>
