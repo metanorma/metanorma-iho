@@ -111,7 +111,7 @@ RSpec.describe IsoDoc do
                                <referenceFrom>3.1</referenceFrom>
                             </locality>
                          </origin>
-                         <modification>
+                         <modification id="_">
                             <p original-id="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
                          </modification>
                       </termsource>
@@ -258,7 +258,7 @@ RSpec.describe IsoDoc do
                       <origin citeas="">
                          <termref base="IEV" target="xyz">t1</termref>
                       </origin>
-                      <modification>
+                      <modification id="_">
                          <p original-id="_">comment</p>
                       </modification>
                    </termsource>
@@ -266,7 +266,7 @@ RSpec.describe IsoDoc do
                       <origin citeas="">
                          <termref base="IEV" target="xyz"/>
                       </origin>
-                      <modification>
+                      <modification id="_">
                          <p original-id="_">with adjustments</p>
                       </modification>
                    </termsource>

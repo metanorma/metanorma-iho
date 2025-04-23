@@ -27,9 +27,4 @@
       </element>
     </define>
   </include>
-  <define name="annex-appendix">
-    <element name="appendix">
-      <ref name="Clause-Section"/>
-    </element>
-  </define>
 </grammar>

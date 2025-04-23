@@ -73,18 +73,19 @@ _bib)
       end
 
       def dochistory_contributor(contrib)
-        ret = contrib.at("./organization/abbreviation") ||
-          contrib.at("./organization/subdivision") ||
-          contrib.at("./organization/name") ||
-          contrib.at("./person/name/abbreviation") ||
-          contrib.at("./person/name/completename")
+        ret = contrib.at(ns("./organization/abbreviation")) ||
+          contrib.at(ns("./organization/subdivision")) ||
+          contrib.at(ns("./organization/name")) ||
+          contrib.at(ns("./person/name/abbreviation")) ||
+          contrib.at(ns("./person/name/completename"))
         ret and return ret.text
         format_personalname(contrib)
       end
 
       def format_personalname(contrib)
         Relaton::Render::General.new(template: { book: "{{ creatornames }}" })
-          .render("<bibitem type='book'>#{contrib.to_xml}</bibitem>")
+          .render("<bibitem type='book'>#{contrib.to_xml}</bibitem>",
+                  embedded: true)
       end
 
       def dochistory_description(item)
