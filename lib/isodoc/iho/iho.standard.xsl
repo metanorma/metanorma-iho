@@ -1694,8 +1694,9 @@
 
 	<xsl:attribute-set name="example-p-style">
 
-			<xsl:attribute name="font-size">11pt</xsl:attribute>
-			<xsl:attribute name="margin-left">12.7mm</xsl:attribute>
+			<!-- <xsl:attribute name="font-size">11pt</xsl:attribute>
+			<xsl:attribute name="margin-left">12.7mm</xsl:attribute> -->
+			<xsl:attribute name="space-before">2pt</xsl:attribute>
 
 	</xsl:attribute-set> <!-- example-p-style -->
 
