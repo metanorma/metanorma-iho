@@ -11,6 +11,9 @@
         <value>directives</value>
         <value>proposal</value>
         <value>standard</value>
+        <value>specification</value>
+        <value>resolution</value>
+        <value>regulation</value>
       </choice>
     </define>
     <define name="editorialgroup">
