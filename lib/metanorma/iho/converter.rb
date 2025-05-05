@@ -4,9 +4,6 @@ require "metanorma/generic/converter"
 module Metanorma
   module Iho
     class Converter < Metanorma::Generic::Converter
-      XML_ROOT_TAG = "iho-standard".freeze
-      XML_NAMESPACE = "https://www.metanorma.org/ns/iho".freeze
-
       register_for "iho"
 
       def support_appendix?(_node)
@@ -100,8 +97,7 @@ module Metanorma
       end
 
       def pdf_converter(node)
-        return nil if node.attr("no-pdf")
-
+        node.attr("no-pdf") and return nil
         IsoDoc::Iho::PdfConvert.new(pdf_extract_attributes(node))
       end
 

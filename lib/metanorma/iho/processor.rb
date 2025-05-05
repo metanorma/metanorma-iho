@@ -23,13 +23,17 @@ module Metanorma
         options_preprocess(options)
         case format
         when :html
-          IsoDoc::Iho::HtmlConvert.new(options).convert(inname, isodoc_node, nil, outname)
+          IsoDoc::Iho::HtmlConvert.new(options)
+            .convert(inname, isodoc_node, nil, outname)
         when :doc
-          IsoDoc::Iho::WordConvert.new(options).convert(inname, isodoc_node, nil, outname)
+          IsoDoc::Iho::WordConvert.new(options)
+            .convert(inname, isodoc_node, nil, outname)
         when :pdf
-          IsoDoc::Iho::PdfConvert.new(options).convert(inname, isodoc_node, nil, outname)
+          IsoDoc::Iho::PdfConvert.new(options)
+            .convert(inname, isodoc_node, nil, outname)
         when :presentation
-          IsoDoc::Iho::PresentationXMLConvert.new(options).convert(inname, isodoc_node, nil, outname)
+          IsoDoc::Iho::PresentationXMLConvert.new(options)
+            .convert(inname, isodoc_node, nil, outname)
         else
           super
         end
