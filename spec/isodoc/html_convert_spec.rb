@@ -150,8 +150,8 @@ RSpec.describe IsoDoc::Iho do
     input = <<~INPUT
       <iso-standard xmlns="http://riboseinc.com/isoxml">
           <preface>
-          <clause type="toc" id="_" displayorder="1"> <fmt-title depth="1">Table of contents</fmt-title> </clause>
-          <foreword displayorder="2" id="fwd"><fmt-title>Foreword</fmt-title>
+          <clause type="toc" id="_" displayorder="1"> <fmt-title id="_" depth="1">Table of contents</fmt-title> </clause>
+          <foreword displayorder="2" id="fwd"><fmt-title id="_">Foreword</fmt-title>
           <ul id="_61961034-0fb1-436b-b281-828857a59ddb"  keep-with-next="true" keep-lines-together="true">
           <name>Caption</name>
         <li>
@@ -180,59 +180,59 @@ RSpec.describe IsoDoc::Iho do
       </iso-standard>
     INPUT
     presxml = <<~INPUT
-         <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-         <preface>
-            <foreword displayorder="1" id="fwd">
-               <title id="_">Foreword</title>
-               <fmt-title depth="1">Foreword</fmt-title>
-               <ul id="_" keep-with-next="true" keep-lines-together="true">
-                  <name id="_">Caption</name>
-                  <fmt-name>
-                     <semx element="name" source="_">Caption</semx>
-                  </fmt-name>
-                  <li>
-                     <fmt-name>
-                        <semx element="autonum" source="">•</semx>
-                     </fmt-name>
-                     <p id="_">Level 1</p>
-                  </li>
-                  <li>
-                     <fmt-name>
-                        <semx element="autonum" source="">•</semx>
-                     </fmt-name>
-                     <p id="_">deletion of 4.3.</p>
-                     <ul id="_" keep-with-next="true" keep-lines-together="true">
-                        <li>
-                           <fmt-name>
-                              <semx element="autonum" source="">—</semx>
-                           </fmt-name>
-                           <p id="_">Level 2</p>
-                           <ul id="_" keep-with-next="true" keep-lines-together="true">
-                              <li>
-                                 <fmt-name>
-                                    <semx element="autonum" source="">o</semx>
-                                 </fmt-name>
-                                 <p id="_">Level 3</p>
-                                 <ul id="_" keep-with-next="true" keep-lines-together="true">
-                                    <li>
-                                       <fmt-name>
-                                          <semx element="autonum" source="">•</semx>
-                                       </fmt-name>
-                                       <p id="_">Level 4</p>
-                                    </li>
-                                 </ul>
-                              </li>
-                           </ul>
-                        </li>
-                     </ul>
-                  </li>
-               </ul>
-            </foreword>
-            <clause type="toc" id="_" displayorder="2">
-               <fmt-title depth="1">Table of contents</fmt-title>
-            </clause>
-         </preface>
-      </iso-standard>
+       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+          <preface>
+             <foreword displayorder="1" id="fwd">
+                <title id="_">Foreword</title>
+                <fmt-title id="_" depth="1">Foreword</fmt-title>
+                <ul id="_" keep-with-next="true" keep-lines-together="true">
+                   <name id="_">Caption</name>
+                   <fmt-name id="_">
+                      <semx element="name" source="_">Caption</semx>
+                   </fmt-name>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">•</semx>
+                      </fmt-name>
+                      <p id="_">Level 1</p>
+                   </li>
+                   <li id="_">
+                      <fmt-name id="_">
+                         <semx element="autonum" source="_">•</semx>
+                      </fmt-name>
+                      <p id="_">deletion of 4.3.</p>
+                      <ul id="_" keep-with-next="true" keep-lines-together="true">
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">—</semx>
+                            </fmt-name>
+                            <p id="_">Level 2</p>
+                            <ul id="_" keep-with-next="true" keep-lines-together="true">
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">o</semx>
+                                  </fmt-name>
+                                  <p id="_">Level 3</p>
+                                  <ul id="_" keep-with-next="true" keep-lines-together="true">
+                                     <li id="_">
+                                        <fmt-name id="_">
+                                           <semx element="autonum" source="_">•</semx>
+                                        </fmt-name>
+                                        <p id="_">Level 4</p>
+                                     </li>
+                                  </ul>
+                               </li>
+                            </ul>
+                         </li>
+                      </ul>
+                   </li>
+                </ul>
+             </foreword>
+             <clause type="toc" id="_" displayorder="2">
+                <fmt-title id="_" depth="1">Table of contents</fmt-title>
+             </clause>
+          </preface>
+       </iso-standard>
     INPUT
     expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
@@ -284,20 +284,20 @@ RSpec.describe IsoDoc::Iho do
           <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
          <preface>
             <clause type="toc" id="_" displayorder="1">
-               <fmt-title depth="1">Contents</fmt-title>
+               <fmt-title id="_" depth="1">Contents</fmt-title>
             </clause>
             <foreword id="_" displayorder="2">
                <title id="_">Foreword</title>
-               <fmt-title depth="1">
+               <fmt-title id="_" depth="1">
                   <semx element="title" source="_">Foreword</semx>
                </fmt-title>
                <ol id="_" type="alphabet" keep-with-next="true" keep-lines-together="true" autonum="1">
                   <name id="_">Caption</name>
-                  <fmt-name>
+                  <fmt-name id="_">
                      <semx element="name" source="_">Caption</semx>
                   </fmt-name>
                   <li id="_">
-                     <fmt-name>
+                     <fmt-name id="_">
                         <semx element="autonum" source="_">a</semx>
                         <span class="fmt-label-delim">)</span>
                      </fmt-name>
@@ -306,35 +306,35 @@ RSpec.describe IsoDoc::Iho do
                </ol>
                <ol id="A" type="alphabet">
                   <li id="_">
-                     <fmt-name>
+                     <fmt-name id="_">
                         <semx element="autonum" source="_">a</semx>
                         <span class="fmt-label-delim">)</span>
                      </fmt-name>
                      <p id="_">Level 1</p>
                   </li>
                   <li id="_">
-                     <fmt-name>
+                     <fmt-name id="_">
                         <semx element="autonum" source="_">b</semx>
                         <span class="fmt-label-delim">)</span>
                      </fmt-name>
                      <p id="_">Level 1</p>
                      <ol type="arabic">
                         <li id="_">
-                           <fmt-name>
+                           <fmt-name id="_">
                               <semx element="autonum" source="_">1</semx>
                               <span class="fmt-label-delim">)</span>
                            </fmt-name>
                            <p id="_">Level 2</p>
                            <ol type="roman">
                               <li id="_">
-                                 <fmt-name>
+                                 <fmt-name id="_">
                                     <semx element="autonum" source="_">i</semx>
                                     <span class="fmt-label-delim">)</span>
                                  </fmt-name>
                                  <p id="_">Level 3</p>
                                  <ol type="alphabet_upper">
                                     <li id="_">
-                                       <fmt-name>
+                                       <fmt-name id="_">
                                           <semx element="autonum" source="_">A</semx>
                                           <span class="fmt-label-delim">.</span>
                                        </fmt-name>

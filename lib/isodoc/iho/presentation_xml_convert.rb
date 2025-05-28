@@ -41,10 +41,10 @@ _bib)
       def generate_dochistory(updates, pref)
         ret = updates.map { |u| generate_dochistory_row(u) }.flatten.join("\n")
         pref << <<~XML
-          <clause id='_#{UUIDTools::UUID.random_create}'>
-          <title>#{@i18n.dochistory}</title>
-          <table unnumbered="true"><thead>
-          <tr><th>Version Number</th><th>Date</th><th>Author</th><th>Description</th></tr>
+          <clause #{add_id_text}>
+          <title #{add_id_text}>#{@i18n.dochistory}</title>
+          <table #{add_id_text} unnumbered="true"><thead>
+          <tr #{add_id_text}><th #{add_id_text}>Version Number</th><th #{add_id_text}>Date</th><th #{add_id_text}>Author</th><th #{add_id_text}>Description</th></tr>
           </thead><tbody>
           #{ret}
           </tbody></table></clause>
@@ -56,7 +56,9 @@ _bib)
         date = dochistory_date(item)
         c = dochistory_contributors(item)
         desc = dochistory_description(item)
-        "<tr><td>#{e}</td><td>#{date}</td><td>#{c}</td><td>#{desc}</td></tr>"
+        <<~XML
+          <tr #{add_id_text}><td #{add_id_text}>#{e}</td><td #{add_id_text}>#{date}</td><td #{add_id_text}>#{c}</td><td #{add_id_text}>#{desc}</td></tr>
+        XML
       end
 
       def dochistory_date(item)

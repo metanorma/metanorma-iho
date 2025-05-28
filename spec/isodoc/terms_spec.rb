@@ -78,13 +78,13 @@ RSpec.describe IsoDoc do
        <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title depth="1" id="_">Contents</fmt-title>
              </clause>
           </preface>
           <sections>
              <terms id="_" obligation="normative" displayorder="2">
                 <title id="_">Terms and Definitions</title>
-                <fmt-title depth="1">
+                <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                    </span>
@@ -105,14 +105,14 @@ RSpec.describe IsoDoc do
                       </expression>
                       <field-of-application id="_">in agriculture</field-of-application>
                       <usage-info id="_">dated</usage-info>
-                      <source status="modified" original-id="_">
+                      <source status="modified" id="_">
                          <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301:2011">
                             <locality type="clause">
                                <referenceFrom>3.1</referenceFrom>
                             </locality>
                          </origin>
                          <modification id="_">
-                            <p original-id="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
+                            <p id="_">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
                          </modification>
                       </source>
                    </preferred>
@@ -155,7 +155,7 @@ RSpec.describe IsoDoc do
                          <p original-id="_">rice retaining its husk after threshing</p>
                       </verbal-definition>
                    </definition>
-                   <fmt-definition>
+                   <fmt-definition id="_">
                       <semx element="definition" source="_">
                          <p id="_">
                             &lt;
@@ -192,7 +192,7 @@ RSpec.describe IsoDoc do
                       </semx>
                    </fmt-definition>
                    <termexample id="_" keep-with-next="true" keep-lines-together="true" autonum="1">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">EXAMPLE</span>
                             <semx element="autonum" source="_">1</semx>
@@ -215,16 +215,16 @@ RSpec.describe IsoDoc do
                       </fmt-xref-label>
                       <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                       <ul>
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">•</semx>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">•</semx>
                             </fmt-name>
                             A
                          </li>
                       </ul>
                    </termexample>
                    <termexample id="_" autonum="2">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">EXAMPLE</span>
                             <semx element="autonum" source="_">2</semx>
@@ -246,9 +246,9 @@ RSpec.describe IsoDoc do
                          <semx element="autonum" source="_">2</semx>
                       </fmt-xref-label>
                       <ul>
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">•</semx>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">•</semx>
                             </fmt-name>
                             A
                          </li>
@@ -259,7 +259,7 @@ RSpec.describe IsoDoc do
                          <termref base="IEV" target="xyz">t1</termref>
                       </origin>
                       <modification id="_">
-                         <p original-id="_">comment</p>
+                         <p id="_">comment</p>
                       </modification>
                    </source>
                    <source status="modified" id="_">
@@ -326,7 +326,7 @@ RSpec.describe IsoDoc do
                          <p original-id="_">rice retaining its husk after threshing</p>
                       </verbal-definition>
                    </definition>
-                   <fmt-definition>
+                   <fmt-definition id="_">
                       <semx element="definition" source="_">
                          <p id="_">rice retaining its husk after threshing</p>
                          [
@@ -362,7 +362,7 @@ RSpec.describe IsoDoc do
                       </semx>
                    </fmt-definition>
                    <termexample id="_" autonum="">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <span class="fmt-caption-label">
                             <span class="fmt-element-name">EXAMPLE</span>
                          </span>
@@ -381,16 +381,16 @@ RSpec.describe IsoDoc do
                          <span class="fmt-element-name">Example</span>
                       </fmt-xref-label>
                       <ul>
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">•</semx>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">•</semx>
                             </fmt-name>
                             A
                          </li>
                       </ul>
                    </termexample>
                    <termnote id="_" keep-with-next="true" keep-lines-together="true" autonum="1">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <span class="fmt-caption-label">
                             Note
                             <semx element="autonum" source="_">1</semx>
@@ -416,7 +416,7 @@ RSpec.describe IsoDoc do
                       <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
                    </termnote>
                    <termnote id="_" autonum="2">
-                      <fmt-name>
+                      <fmt-name id="_">
                          <span class="fmt-caption-label">
                             Note
                             <semx element="autonum" source="_">2</semx>
@@ -440,9 +440,9 @@ RSpec.describe IsoDoc do
                          <semx element="autonum" source="_">2</semx>
                       </fmt-xref-label>
                       <ul>
-                         <li>
-                            <fmt-name>
-                               <semx element="autonum" source="">•</semx>
+                         <li id="_">
+                            <fmt-name id="_">
+                               <semx element="autonum" source="_">•</semx>
                             </fmt-name>
                             A
                          </li>
@@ -487,7 +487,7 @@ RSpec.describe IsoDoc do
                    <p id="_">Foreign seeds, husks, bran, sand, dust.</p>
                    <div class="ul_wrap">
                       <ul>
-                         <li>A</li>
+                         <li id="_">A</li>
                       </ul>
                    </div>
                 </div>
@@ -495,7 +495,7 @@ RSpec.describe IsoDoc do
                    <p class="example-title">EXAMPLE 2</p>
                    <div class="ul_wrap">
                       <ul>
-                         <li>A</li>
+                         <li id="_">A</li>
                       </ul>
                    </div>
                 </div>
@@ -512,7 +512,7 @@ RSpec.describe IsoDoc do
                    <p class="example-title">EXAMPLE</p>
                    <div class="ul_wrap">
                       <ul>
-                         <li>A</li>
+                         <li id="_">A</li>
                       </ul>
                    </div>
                 </div>
@@ -528,7 +528,7 @@ RSpec.describe IsoDoc do
                    </p>
                    <div class="ul_wrap">
                       <ul>
-                         <li>A</li>
+                         <li id="_">A</li>
                       </ul>
                    </div>
                    <p id="_">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
