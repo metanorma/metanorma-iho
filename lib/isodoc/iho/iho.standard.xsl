@@ -14323,7 +14323,7 @@
 						<xsl:for-each select="(//*[local-name() = 'metanorma'])[1]/*[local-name() = 'bibdata']">
 
 									<rdf:Seq>
-										<xsl:for-each select="*[local-name() = 'contributor'][*[local-name() = 'role']/@type='author']">
+										<xsl:for-each select="*[local-name() = 'contributor'][*[local-name() = 'role'][not(*[local-name() = 'description'])]/@type='author']">
 											<rdf:li>
 												<xsl:value-of select="*[local-name() = 'organization']/*[local-name() = 'name']"/>
 											</rdf:li>
