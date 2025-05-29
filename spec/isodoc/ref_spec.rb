@@ -143,11 +143,11 @@ RSpec.describe IsoDoc do
           </bibdata>
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title depth="1">Contents</fmt-title>
+                <fmt-title id="_" depth="1">Contents</fmt-title>
              </clause>
              <foreword id="_" displayorder="2">
                 <title id="_">Foreword</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <semx element="title" source="_">Foreword</semx>
                 </fmt-title>
                 <p id="_">
@@ -221,7 +221,7 @@ RSpec.describe IsoDoc do
           <sections>
              <references id="_" obligation="informative" normative="true" displayorder="3">
                 <title id="_">Normative References</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                    </span>
@@ -835,7 +835,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                 </bibitem>
                 <note>
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">NOTE</span>
                       </span>
@@ -850,7 +850,7 @@ RSpec.describe IsoDoc do
           <bibliography>
              <references id="_" obligation="informative" normative="false" displayorder="4">
                 <title id="_">Bibliography</title>
-                <fmt-title depth="1">
+                <fmt-title id="_" depth="1">
                    <semx element="title" source="_">Bibliography</semx>
                 </fmt-title>
                 <bibitem id="ISBN" type="book">
@@ -892,7 +892,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                 </bibitem>
                 <note>
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">NOTE</span>
                       </span>
@@ -903,7 +903,7 @@ RSpec.describe IsoDoc do
                    <p>This is an annotation of document ISSN.</p>
                 </note>
                 <note>
-                   <fmt-name>
+                   <fmt-name id="_">
                       <span class="fmt-caption-label">
                          <span class="fmt-element-name">NOTE</span>
                       </span>

@@ -365,11 +365,11 @@ RSpec.describe Metanorma::Iho do
     output = Xml::C14n.format(<<~"OUTPUT")
       #{BLANK_HDR}
                <preface><foreword id="_" obligation="informative">
-           <title>Foreword</title>
+           <title id="_">Foreword</title>
            <p id="_">This is a preamble</p>
          </foreword></preface><sections>
          <clause id="_" obligation="normative">
-           <title>Section 1</title>
+           <title id="_">Section 1</title>
          </clause></sections>
          </metanorma>
     OUTPUT
@@ -436,12 +436,12 @@ RSpec.describe Metanorma::Iho do
           #{BLANK_HDR}
       <sections> </sections>
       <annex id='_' obligation='normative'>
-        <title>Annex</title>
+        <title id="_">Annex</title>
         <clause id='_' obligation='normative'>
-          <title>Annex A.1</title>
+          <title id="_">Annex A.1</title>
         </clause>
         <appendix id='_' obligation='normative'>
-          <title>Appendix 1</title>
+          <title id="_">Appendix 1</title>
         </appendix>
       </annex>
       </metanorma>

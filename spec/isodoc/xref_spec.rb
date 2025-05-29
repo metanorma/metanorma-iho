@@ -92,7 +92,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
        <foreword id="_" displayorder="2">
           <title id="_">Foreword</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
@@ -353,7 +353,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
       <foreword id="_" displayorder="2">
           <title id="_">Foreword</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
@@ -647,7 +647,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
       <foreword id="fwd" displayorder="2">
           <title id="_">Foreword</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
@@ -936,7 +936,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
        <foreword id="fwd" displayorder="2">
           <title id="_">Foreword</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
@@ -1195,7 +1195,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
        <foreword id="fwd" displayorder="2">
           <title id="_">Foreword</title>
-          <fmt-title depth="1">
+          <fmt-title id="_" depth="1">
              <semx element="title" source="_">Foreword</semx>
           </fmt-title>
           <p>
@@ -1431,7 +1431,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
         <foreword id="_" displayorder="2">
            <title id="_">Foreword</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Foreword</semx>
            </fmt-title>
            <p>
@@ -1598,7 +1598,7 @@ RSpec.describe IsoDoc do
 
     output = <<~OUTPUT
        <clause id="widgets1">
-          <fmt-title depth="2">
+          <fmt-title id="_" depth="2">
              <span class="fmt-caption-label">
                 <semx element="autonum" source="widgets">3</semx>
                 <span class="fmt-autonum-delim">.</span>
@@ -1612,7 +1612,7 @@ RSpec.describe IsoDoc do
              <semx element="autonum" source="widgets1">1</semx>
           </fmt-xref-label>
           <example id="note1" autonum="1">
-             <fmt-name>
+             <fmt-name id="_">
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">EXAMPLE</span>
                    <semx element="autonum" source="note1">1</semx>
@@ -1636,7 +1636,7 @@ RSpec.describe IsoDoc do
              <p>Hello</p>
           </example>
           <example id="note2" unnumbered="true">
-             <fmt-name>
+             <fmt-name id="_">
                 <span class="fmt-caption-label">
                    <span class="fmt-element-name">EXAMPLE</span>
                 </span>
@@ -1783,7 +1783,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
         <foreword id="_" displayorder="2">
            <title id="_">Foreword</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Foreword</semx>
            </fmt-title>
            <p>
@@ -2030,7 +2030,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
         <foreword id="_" displayorder="2">
            <title id="_">Foreword</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Foreword</semx>
            </fmt-title>
            <p>
@@ -2263,7 +2263,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
         <foreword id="_" displayorder="2">
            <title id="_">Foreword</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Foreword</semx>
            </fmt-title>
            <p>
@@ -2478,7 +2478,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
         <foreword id="_" displayorder="2">
            <title id="_">Foreword</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Foreword</semx>
            </fmt-title>
            <p>
@@ -2686,7 +2686,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
         <foreword id="_" displayorder="2">
            <title id="_">Foreword</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Foreword</semx>
            </fmt-title>
            <p>
@@ -3105,7 +3105,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
         <foreword id="_" displayorder="2">
            <title id="_">Foreword</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Foreword</semx>
            </fmt-title>
            <p>
@@ -3336,7 +3336,7 @@ RSpec.describe IsoDoc do
     output = <<~OUTPUT
         <foreword obligation="informative" id="_" displayorder="2">
            <title id="_">Foreword</title>
-           <fmt-title depth="1">
+           <fmt-title id="_" depth="1">
               <semx element="title" source="_">Foreword</semx>
            </fmt-title>
            <p id="A">
