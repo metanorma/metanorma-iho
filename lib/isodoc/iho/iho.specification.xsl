@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:iho="https://www.metanorma.org/ns/standoc" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:xalan="http://xml.apache.org/xalan" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:java="http://xml.apache.org/xalan/java" xmlns:redirect="http://xml.apache.org/xalan/redirect" exclude-result-prefixes="java xalan" extension-element-prefixes="redirect" version="1.0">
+<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:iho="https://www.metanorma.org/ns/standoc" xmlns:mn="https://www.metanorma.org/ns/xslt" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:xalan="http://xml.apache.org/xalan" xmlns:fox="http://xmlgraphics.apache.org/fop/extensions" xmlns:java="http://xml.apache.org/xalan/java" xmlns:redirect="http://xml.apache.org/xalan/redirect" exclude-result-prefixes="java xalan" extension-element-prefixes="redirect" version="1.0">
 
 	<xsl:output method="xml" encoding="UTF-8" indent="no"/>
 
@@ -23,12 +23,12 @@
 		<item id="term-script" display="false">3.2</item>
 	-->
 	<xsl:variable name="contents_">
-		<contents>
+		<mn:contents>
 			<xsl:call-template name="processPrefaceSectionsDefault_Contents"/>
 			<xsl:call-template name="processMainSectionsDefault_Contents"/>
 
 			<xsl:call-template name="processTablesFigures_Contents"/>
-		</contents>
+		</mn:contents>
 	</xsl:variable>
 	<xsl:variable name="contents" select="xalan:nodeset($contents_)"/>
 
@@ -570,7 +570,7 @@
 
 				<fo:block line-height="115%" role="TOC">
 
-					<xsl:for-each select="$contents//item[@display = 'true']"><!-- [not(@level = 2 and starts-with(@section, '0'))] skip clause from preface -->
+					<xsl:for-each select="$contents//mn:item[@display = 'true']"><!-- [not(@level = 2 and starts-with(@section, '0'))] skip clause from preface -->
 						<fo:block role="TOCI">
 							<fo:list-block>
 								<xsl:attribute name="provisional-distance-between-starts">
@@ -597,8 +597,8 @@
 									</fo:list-item-label>
 										<fo:list-item-body start-indent="body-start()">
 											<fo:block text-align-last="justify" margin-left="12mm" text-indent="-12mm">
-												<fo:basic-link internal-destination="{@id}" fox:alt-text="{title}">
-													<xsl:apply-templates select="title"/>
+												<fo:basic-link internal-destination="{@id}" fox:alt-text="{mn:title}">
+													<xsl:apply-templates select="mn:title"/>
 													<fo:inline keep-together.within-line="always">
 														<fo:leader font-size="9pt" font-weight="normal" leader-pattern="dots"/>
 														<fo:inline><fo:page-number-citation ref-id="{@id}"/></fo:inline>
@@ -612,21 +612,21 @@
 					</xsl:for-each>
 
 					<!-- List of Tables -->
-					<xsl:if test="$contents//tables/table">
+					<xsl:if test="$contents//mn:tables/mn:table">
 						<xsl:call-template name="insertListOf_Title">
 							<xsl:with-param name="title" select="$title-list-tables"/>
 						</xsl:call-template>
-						<xsl:for-each select="$contents//tables/table">
+						<xsl:for-each select="$contents//mn:tables/mn:table">
 							<xsl:call-template name="insertListOf_Item"/>
 						</xsl:for-each>
 					</xsl:if>
 
 					<!-- List of Figures -->
-					<xsl:if test="$contents//figures/figure">
+					<xsl:if test="$contents//mn:figures/mn:figure">
 						<xsl:call-template name="insertListOf_Title">
 							<xsl:with-param name="title" select="$title-list-figures"/>
 						</xsl:call-template>
-						<xsl:for-each select="$contents//figures/figure">
+						<xsl:for-each select="$contents//mn:figures/mn:figure">
 							<xsl:call-template name="insertListOf_Item"/>
 						</xsl:for-each>
 					</xsl:if>
@@ -696,12 +696,12 @@
 				<xsl:if test="ancestor-or-self::iho:annex">annex</xsl:if>
 			</xsl:variable>
 
-			<item id="{@id}" level="{$level}" section="{$section}" type="{$type}" root="{$root}" display="{$display}">
-				<title>
+			<mn:item id="{@id}" level="{$level}" section="{$section}" type="{$type}" root="{$root}" display="{$display}">
+				<mn:title>
 					<xsl:apply-templates select="xalan:nodeset($title)" mode="contents_item"/>
-				</title>
+				</mn:title>
 				<xsl:apply-templates mode="contents"/>
-			</item>
+			</mn:item>
 
 		</xsl:if>
 
@@ -1179,6 +1179,9 @@
 
 	<!-- https://www.metanorma.org/ns/standoc -->
 	<xsl:variable name="namespace_full" select="namespace-uri(//*[local-name() = 'metanorma'][1])"/>
+
+	<!-- https://www.metanorma.org/ns/xsl -->
+	<xsl:variable name="namespace_mn_xsl">https://www.metanorma.org/ns/xslt</xsl:variable>
 
 	<xsl:variable name="root_element">metanorma</xsl:variable>
 
@@ -2629,47 +2632,47 @@
 	</xsl:template>
 
 	<xsl:template name="processTables_Contents">
-		<tables>
+		<mn:tables>
 			<xsl:for-each select="//*[local-name() = 'table'][not(ancestor::*[local-name() = 'metanorma-extension'])][@id and *[local-name() = 'name'] and normalize-space(@id) != '']">
 				<xsl:choose>
 					<xsl:when test="*[local-name() = 'fmt-name']">
 						<xsl:variable name="fmt_name">
 							<xsl:apply-templates select="*[local-name() = 'fmt-name']" mode="update_xml_step1"/>
 						</xsl:variable>
-						<table id="{@id}" alt-text="{normalize-space($fmt_name)}">
+						<mn:table id="{@id}" alt-text="{normalize-space($fmt_name)}">
 							<xsl:copy-of select="$fmt_name"/>
-						</table>
+						</mn:table>
 					</xsl:when>
 					<xsl:otherwise>
-						<table id="{@id}" alt-text="{*[local-name() = 'name']}">
+						<mn:table id="{@id}" alt-text="{*[local-name() = 'name']}">
 							<xsl:copy-of select="*[local-name() = 'name']"/>
-						</table>
+						</mn:table>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:for-each>
-		</tables>
+		</mn:tables>
 	</xsl:template>
 
 	<xsl:template name="processFigures_Contents">
-		<figures>
+		<mn:figures>
 			<xsl:for-each select="//*[local-name() = 'figure'][@id and *[local-name() = 'name'] and not(@unnumbered = 'true') and normalize-space(@id) != ''] | //*[@id and starts-with(*[local-name() = 'name'], 'Figure ') and normalize-space(@id) != '']">
 				<xsl:choose>
 					<xsl:when test="*[local-name() = 'fmt-name']">
 						<xsl:variable name="fmt_name">
 							<xsl:apply-templates select="*[local-name() = 'fmt-name']" mode="update_xml_step1"/>
 						</xsl:variable>
-						<figure id="{@id}" alt-text="{normalize-space($fmt_name)}">
+						<mn:figure id="{@id}" alt-text="{normalize-space($fmt_name)}">
 							<xsl:copy-of select="$fmt_name"/>
-						</figure>
+						</mn:figure>
 					</xsl:when>
 					<xsl:otherwise>
-						<figure id="{@id}" alt-text="{*[local-name() = 'name']}">
+						<mn:figure id="{@id}" alt-text="{*[local-name() = 'name']}">
 							<xsl:copy-of select="*[local-name() = 'name']"/>
-						</figure>
+						</mn:figure>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:for-each>
-		</figures>
+		</mn:figures>
 	</xsl:template>
 
 	<xsl:template name="processPrefaceSectionsDefault">
@@ -3030,7 +3033,7 @@
 						<xsl:with-param name="keep_sep">true</xsl:with-param>
 					</xsl:call-template>
 				</xsl:variable>
-				<xsl:for-each select="xalan:nodeset($items)/item">
+				<xsl:for-each select="xalan:nodeset($items)/mn:item">
 					<xsl:choose>
 						<xsl:when test=". = $sep">
 							<xsl:value-of select="$sep"/><xsl:value-of select="$zero_width_space"/>
@@ -4123,7 +4126,7 @@
 						<xsl:with-param name="pText" select="$border_under_row_"/>
 					</xsl:call-template>
 				</xsl:variable>
-				<xsl:if test="xalan:nodeset($border_under_row)/item[. = normalize-space($row_num)]">
+				<xsl:if test="xalan:nodeset($border_under_row)/mn:item[. = normalize-space($row_num)]">
 					<xsl:attribute name="border-bottom"><xsl:value-of select="$table-border"/></xsl:attribute>
 				</xsl:if>
 			</xsl:when>
@@ -4240,7 +4243,7 @@
 		</xsl:variable>
 		<xsl:variable name="quot">"</xsl:variable>
 		<xsl:variable name="styles_">
-			<xsl:for-each select="xalan:nodeset($styles__)/item">
+			<xsl:for-each select="xalan:nodeset($styles__)/mn:item">
 				<xsl:variable name="key" select="normalize-space(substring-before(., ':'))"/>
 				<xsl:variable name="value" select="normalize-space(substring-after(translate(.,$quot,''), ':'))"/>
 				<xsl:if test="$key = 'color' or       $key = 'background-color' or      $key = 'border' or      $key = 'border-top' or      $key = 'border-right' or      $key = 'border-left' or      $key = 'border-bottom' or      $key = 'border-style' or      $key = 'border-width' or      $key = 'border-color' or      $key = 'border-top-style' or      $key = 'border-top-width' or      $key = 'border-top-color' or      $key = 'border-right-style' or      $key = 'border-right-width' or      $key = 'border-right-color' or      $key = 'border-left-style' or      $key = 'border-left-width' or      $key = 'border-left-color' or      $key = 'border-bottom-style' or      $key = 'border-bottom-width' or      $key = 'border-bottom-color'">
@@ -6043,7 +6046,7 @@
 
 		<xsl:variable name="quot">"</xsl:variable>
 		<xsl:variable name="styles_">
-			<xsl:for-each select="xalan:nodeset($styles__)/item">
+			<xsl:for-each select="xalan:nodeset($styles__)/mn:item">
 				<xsl:variable name="key" select="normalize-space(substring-before(., ':'))"/>
 				<xsl:variable name="value_" select="normalize-space(substring-after(translate(.,$quot,''), ':'))"/>
 				<xsl:variable name="value">
@@ -8525,8 +8528,8 @@
 				</xsl:call-template>
 			</xsl:variable>
 			<xsl:variable name="viewbox" select="xalan:nodeset($viewbox_)"/>
-			<xsl:variable name="width" select="normalize-space($viewbox//item[3])"/>
-			<xsl:variable name="height" select="normalize-space($viewbox//item[4])"/>
+			<xsl:variable name="width" select="normalize-space($viewbox//mn:item[3])"/>
+			<xsl:variable name="height" select="normalize-space($viewbox//mn:item[4])"/>
 
 			<xsl:variable name="parent_image_width" select="normalize-space(ancestor::*[1][local-name() = 'image']/@width)"/>
 			<xsl:variable name="parent_image_height" select="normalize-space(ancestor::*[1][local-name() = 'image']/@height)"/>
@@ -8598,8 +8601,8 @@
 		</xsl:variable>
 		<xsl:variable name="components" select="xalan:nodeset($components_)"/>
 		<xsl:variable name="att_name" select="local-name()"/>
-		<xsl:attribute name="{$att_name}"><xsl:value-of select="concat('rgb(', $components/item[1], ',', $components/item[2], ',', $components/item[3], ')')"/></xsl:attribute>
-		<xsl:attribute name="{$att_name}-opacity"><xsl:value-of select="$components/item[4]"/></xsl:attribute>
+		<xsl:attribute name="{$att_name}"><xsl:value-of select="concat('rgb(', $components/mn:item[1], ',', $components/mn:item[2], ',', $components/mn:item[3], ')')"/></xsl:attribute>
+		<xsl:attribute name="{$att_name}-opacity"><xsl:value-of select="$components/mn:item[4]"/></xsl:attribute>
 	</xsl:template>
 
 	<!-- ============== -->
@@ -8672,13 +8675,13 @@
 				</xsl:call-template>
 			</xsl:variable>
 			<xsl:variable name="x_coords">
-				<xsl:for-each select="xalan:nodeset($points)//item[position() mod 2 = 1]">
+				<xsl:for-each select="xalan:nodeset($points)//mn:item[position() mod 2 = 1]">
 					<xsl:sort select="." data-type="number"/>
 					<x><xsl:value-of select="."/></x>
 				</xsl:for-each>
 			</xsl:variable>
 			<xsl:variable name="y_coords">
-				<xsl:for-each select="xalan:nodeset($points)//item[position() mod 2 = 0]">
+				<xsl:for-each select="xalan:nodeset($points)//mn:item[position() mod 2 = 0]">
 					<xsl:sort select="." data-type="number"/>
 					<y><xsl:value-of select="."/></y>
 				</xsl:for-each>
@@ -8883,11 +8886,11 @@
 				<xsl:if test="ancestor-or-self::*[local-name() = 'annex']">annex</xsl:if>
 			</xsl:variable>
 
-			<item id="{@id}" level="{$level}" section="{$section}" type="{$type}" root="{$root}" display="{$display}">
-				<title>
+			<mn:item id="{@id}" level="{$level}" section="{$section}" type="{$type}" root="{$root}" display="{$display}">
+				<mn:title>
 					<xsl:apply-templates select="xalan:nodeset($title)" mode="contents_item"/>
-				</title>
-			</item>
+				</mn:title>
+			</mn:item>
 		</xsl:if>
 	</xsl:template>
 
@@ -8958,12 +8961,12 @@
 		<xsl:param name="contents"/>
 		<xsl:param name="contents_addon"/>
 		<xsl:variable name="contents_nodes" select="xalan:nodeset($contents)"/>
-		<xsl:if test="$contents_nodes//item">
+		<xsl:if test="$contents_nodes//mn:item">
 			<fo:bookmark-tree>
 				<xsl:choose>
-					<xsl:when test="$contents_nodes/doc">
+					<xsl:when test="$contents_nodes/mn:doc">
 						<xsl:choose>
-							<xsl:when test="count($contents_nodes/doc) &gt; 1">
+							<xsl:when test="count($contents_nodes/mn:doc) &gt; 1">
 
 								<xsl:if test="$contents_nodes/collection">
 									<fo:bookmark internal-destination="{$contents/collection/@firstpage_id}">
@@ -8971,8 +8974,8 @@
 									</fo:bookmark>
 								</xsl:if>
 
-								<xsl:for-each select="$contents_nodes/doc">
-									<fo:bookmark internal-destination="{contents/item[@display = 'true'][1]/@id}" starting-state="hide">
+								<xsl:for-each select="$contents_nodes/mn:doc">
+									<fo:bookmark internal-destination="{contents/mn:item[@display = 'true'][1]/@id}" starting-state="hide">
 										<xsl:if test="@bundle = 'true'">
 											<xsl:attribute name="internal-destination"><xsl:value-of select="@firstpage_id"/></xsl:attribute>
 										</xsl:if>
@@ -9006,14 +9009,14 @@
 											</xsl:choose>
 										</fo:bookmark-title>
 
-										<xsl:apply-templates select="contents/item" mode="bookmark"/>
+										<xsl:apply-templates select="contents/mn:item" mode="bookmark"/>
 
 										<xsl:call-template name="insertFigureBookmarks">
-											<xsl:with-param name="contents" select="contents"/>
+											<xsl:with-param name="contents" select="mn:contents"/>
 										</xsl:call-template>
 
 										<xsl:call-template name="insertTableBookmarks">
-											<xsl:with-param name="contents" select="contents"/>
+											<xsl:with-param name="contents" select="mn:contents"/>
 											<xsl:with-param name="lang" select="@lang"/>
 										</xsl:call-template>
 
@@ -9022,16 +9025,16 @@
 								</xsl:for-each>
 							</xsl:when>
 							<xsl:otherwise>
-								<xsl:for-each select="$contents_nodes/doc">
+								<xsl:for-each select="$contents_nodes/mn:doc">
 
-									<xsl:apply-templates select="contents/item" mode="bookmark"/>
+									<xsl:apply-templates select="mn:contents/mn:item" mode="bookmark"/>
 
 									<xsl:call-template name="insertFigureBookmarks">
-										<xsl:with-param name="contents" select="contents"/>
+										<xsl:with-param name="contents" select="mn:contents"/>
 									</xsl:call-template>
 
 									<xsl:call-template name="insertTableBookmarks">
-										<xsl:with-param name="contents" select="contents"/>
+										<xsl:with-param name="contents" select="mn:contents"/>
 										<xsl:with-param name="lang" select="@lang"/>
 									</xsl:call-template>
 
@@ -9040,14 +9043,14 @@
 						</xsl:choose>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates select="$contents_nodes/contents/item" mode="bookmark"/>
+						<xsl:apply-templates select="$contents_nodes/mn:contents/mn:item" mode="bookmark"/>
 
 						<xsl:call-template name="insertFigureBookmarks">
-							<xsl:with-param name="contents" select="$contents_nodes/contents"/>
+							<xsl:with-param name="contents" select="$contents_nodes/mn:contents"/>
 						</xsl:call-template>
 
 						<xsl:call-template name="insertTableBookmarks">
-							<xsl:with-param name="contents" select="$contents_nodes/contents"/>
+							<xsl:with-param name="contents" select="$contents_nodes/mn:contents"/>
 							<xsl:with-param name="lang" select="@lang"/>
 						</xsl:call-template>
 
@@ -9064,26 +9067,26 @@
 	<xsl:template name="insertFigureBookmarks">
 		<xsl:param name="contents"/>
 		<xsl:variable name="contents_nodes" select="xalan:nodeset($contents)"/>
-		<xsl:if test="$contents_nodes/figure">
-			<fo:bookmark internal-destination="{$contents_nodes/figure[1]/@id}" starting-state="hide">
+		<xsl:if test="$contents_nodes/mn:figure">
+			<fo:bookmark internal-destination="{$contents_nodes/mn:figure[1]/@id}" starting-state="hide">
 				<fo:bookmark-title>Figures</fo:bookmark-title>
-				<xsl:for-each select="$contents_nodes/figure">
+				<xsl:for-each select="$contents_nodes/mn:figure">
 					<fo:bookmark internal-destination="{@id}">
 						<fo:bookmark-title>
-							<xsl:value-of select="normalize-space(title)"/>
+							<xsl:value-of select="normalize-space(mn:title)"/>
 						</fo:bookmark-title>
 					</fo:bookmark>
 				</xsl:for-each>
 			</fo:bookmark>
 		</xsl:if>
-		<xsl:if test="$contents_nodes//figures/figure">
+		<xsl:if test="$contents_nodes//mn:figures/mn:figure">
 			<fo:bookmark internal-destination="empty_bookmark" starting-state="hide">
 
 				<xsl:variable name="bookmark-title">
 							<xsl:value-of select="$title-list-figures"/>
 				</xsl:variable>
 				<fo:bookmark-title><xsl:value-of select="normalize-space($bookmark-title)"/></fo:bookmark-title>
-				<xsl:for-each select="$contents_nodes//figures/figure">
+				<xsl:for-each select="$contents_nodes//mn:figures/mn:figure">
 					<fo:bookmark internal-destination="{@id}">
 						<fo:bookmark-title><xsl:value-of select="normalize-space(.)"/></fo:bookmark-title>
 					</fo:bookmark>
@@ -9096,24 +9099,24 @@
 		<xsl:param name="contents"/>
 		<xsl:param name="lang"/>
 		<xsl:variable name="contents_nodes" select="xalan:nodeset($contents)"/>
-		<xsl:if test="$contents_nodes/table">
-			<fo:bookmark internal-destination="{$contents_nodes/table[1]/@id}" starting-state="hide">
+		<xsl:if test="$contents_nodes/mn:table">
+			<fo:bookmark internal-destination="{$contents_nodes/mn:table[1]/@id}" starting-state="hide">
 				<fo:bookmark-title>
 					<xsl:choose>
 						<xsl:when test="$lang = 'fr'">Tableaux</xsl:when>
 						<xsl:otherwise>Tables</xsl:otherwise>
 					</xsl:choose>
 				</fo:bookmark-title>
-				<xsl:for-each select="$contents_nodes/table">
+				<xsl:for-each select="$contents_nodes/mn:table">
 					<fo:bookmark internal-destination="{@id}">
 						<fo:bookmark-title>
-							<xsl:value-of select="normalize-space(title)"/>
+							<xsl:value-of select="normalize-space(mn:title)"/>
 						</fo:bookmark-title>
 					</fo:bookmark>
 				</xsl:for-each>
 			</fo:bookmark>
 		</xsl:if>
-		<xsl:if test="$contents_nodes//tables/table">
+		<xsl:if test="$contents_nodes//mn:tables/mn:table">
 			<fo:bookmark internal-destination="empty_bookmark" starting-state="hide">
 
 				<xsl:variable name="bookmark-title">
@@ -9122,7 +9125,7 @@
 
 				<fo:bookmark-title><xsl:value-of select="$bookmark-title"/></fo:bookmark-title>
 
-				<xsl:for-each select="$contents_nodes//tables/table">
+				<xsl:for-each select="$contents_nodes//mn:tables/mn:table">
 					<fo:bookmark internal-destination="{@id}">
 						<!-- <fo:bookmark-title><xsl:value-of select="normalize-space(.)"/></fo:bookmark-title> -->
 						<fo:bookmark-title><xsl:apply-templates mode="bookmark_clean"/></fo:bookmark-title>
@@ -9167,7 +9170,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="item" mode="bookmark">
+	<xsl:template match="mn:item" mode="bookmark">
 		<xsl:choose>
 			<xsl:when test="@id != ''">
 				<fo:bookmark internal-destination="{@id}" starting-state="hide">
@@ -9177,7 +9180,7 @@
 							<xsl:text> </xsl:text>
 						</xsl:if>
 						<xsl:variable name="title">
-							<xsl:for-each select="title/node()">
+							<xsl:for-each select="mn:title/node()">
 								<xsl:choose>
 									<xsl:when test="local-name() = 'add' and starts-with(., $ace_tag)"><!-- skip --></xsl:when>
 									<xsl:otherwise><xsl:value-of select="."/></xsl:otherwise>
@@ -9195,7 +9198,7 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="title" mode="bookmark"/>
+	<xsl:template match="mn:title" mode="bookmark"/>
 	<xsl:template match="text()" mode="bookmark"/>
 
 	<!-- figure/name -->
@@ -9424,9 +9427,9 @@
 	<xsl:template match="text()" mode="contents_item">
 		<xsl:variable name="text">
 			<!-- to split by '_' and other chars -->
-			<text><xsl:call-template name="add-zero-spaces-java"/></text>
+			<mn:text><xsl:call-template name="add-zero-spaces-java"/></mn:text>
 		</xsl:variable>
-		<xsl:for-each select="xalan:nodeset($text)/text/text()">
+		<xsl:for-each select="xalan:nodeset($text)/mn:text/text()">
 			<xsl:call-template name="keep_together_standard_number"/>
 		</xsl:for-each>
 	</xsl:template>
@@ -9811,7 +9814,7 @@
 			</xsl:variable>
 			<xsl:variable name="classes" select="xalan:nodeset($classes_)"/>
 
-			<xsl:for-each select="$classes/item">
+			<xsl:for-each select="$classes/*[local-name() = 'item']">
 				<xsl:variable name="class_name" select="."/>
 				<xsl:for-each select="$syntax_highlight_styles/style[@class = $class_name]/@*[not(local-name() = 'class')]">
 					<xsl:attribute name="{local-name()}"><xsl:value-of select="."/></xsl:attribute>
@@ -14183,7 +14186,7 @@
 		<xsl:param name="normalize-space" select="'true'"/>
 		<xsl:param name="keep_sep" select="'false'"/>
 		<xsl:if test="string-length($pText) &gt;0">
-			<item>
+			<xsl:element name="item" namespace="{$namespace_mn_xsl}">
 				<xsl:choose>
 					<xsl:when test="$normalize-space = 'true'">
 						<xsl:value-of select="normalize-space(substring-before(concat($pText, $sep), $sep))"/>
@@ -14192,8 +14195,8 @@
 						<xsl:value-of select="substring-before(concat($pText, $sep), $sep)"/>
 					</xsl:otherwise>
 				</xsl:choose>
-			</item>
-			<xsl:if test="$keep_sep = 'true' and contains($pText, $sep)"><item><xsl:value-of select="$sep"/></item></xsl:if>
+			</xsl:element>
+			<xsl:if test="$keep_sep = 'true' and contains($pText, $sep)"><xsl:element name="item" namespace="{$namespace_mn_xsl}"><xsl:value-of select="$sep"/></xsl:element></xsl:if>
 			<xsl:call-template name="split">
 				<xsl:with-param name="pText" select="substring-after($pText, $sep)"/>
 				<xsl:with-param name="sep" select="$sep"/>
