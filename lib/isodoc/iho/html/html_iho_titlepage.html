@@ -33,6 +33,17 @@
         <img src="{{ logo }}"/>
       </div>
 
+      {% if copublisher_logos.size > 0 %}
+        <div class="coverpage-logo">
+          <table><tbody><tr>
+          {% for logo1 in copublisher_logos %}
+          <td><img height="100px" width="auto" style="width: auto; height: 100px;" src="{{ logo1 }}"/></td>
+          {% endfor %}
+          </tr></tbody></table>
+        </div>
+      {% endif %}
+
+
       <div class="coverpage-tc-name">
         <span>{{ tc }}</span>
       </div>
