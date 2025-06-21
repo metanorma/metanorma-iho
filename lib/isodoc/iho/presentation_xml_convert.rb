@@ -17,9 +17,10 @@ _bib)
 
       def middle_title(docxml); end
 
-      def bibdata(docxml)
-        super
+      def section(docxml)
         dochistory(docxml)
+        @xrefs.parse docxml
+        super
       end
 
       UPDATE_RELATIONS = <<~XPATH.freeze
