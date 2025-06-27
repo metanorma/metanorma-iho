@@ -32,6 +32,96 @@
 	</xsl:variable>
 	<xsl:variable name="contents" select="xalan:nodeset($contents_)"/>
 
+	<xsl:template name="layout-master-set">
+		<fo:layout-master-set>
+			<!-- cover page -->
+			<fo:simple-page-master master-name="cover" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+				<fo:region-body margin-top="0mm" margin-bottom="5mm" margin-left="0mm" margin-right="5mm"/>
+			</fo:simple-page-master>
+
+			<fo:simple-page-master master-name="first" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+				<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight1}mm" margin-right="{$marginLeftRight2}mm"/>
+				<fo:region-before region-name="header" extent="{$marginTop}mm"/>
+				<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
+				<fo:region-start region-name="left-region" extent="{$marginLeftRight1}mm"/>
+				<fo:region-end region-name="right-region" extent="{$marginLeftRight2}mm"/>
+			</fo:simple-page-master>
+			<fo:simple-page-master master-name="odd" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+				<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight1}mm" margin-right="{$marginLeftRight2}mm"/>
+				<fo:region-before region-name="header-odd" extent="{$marginTop}mm"/>
+				<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
+				<fo:region-start region-name="left-region" extent="{$marginLeftRight1}mm"/>
+				<fo:region-end region-name="right-region" extent="{$marginLeftRight2}mm"/>
+			</fo:simple-page-master>
+			<fo:simple-page-master master-name="odd-landscape" page-width="{$pageHeight}mm" page-height="{$pageWidth}mm">
+				<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight1}mm" margin-right="{$marginLeftRight2}mm"/>
+				<fo:region-before region-name="header-odd" extent="{$marginTop}mm"/>
+				<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
+				<fo:region-start region-name="left-region" extent="{$marginLeftRight1}mm"/>
+				<fo:region-end region-name="right-region" extent="{$marginLeftRight2}mm"/>
+			</fo:simple-page-master>
+			<fo:simple-page-master master-name="even" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+				<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight2}mm" margin-right="{$marginLeftRight1}mm"/>
+				<fo:region-before region-name="header-even" extent="{$marginTop}mm"/>
+				<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
+				<fo:region-start region-name="left-region" extent="{$marginLeftRight2}mm"/>
+				<fo:region-end region-name="right-region" extent="{$marginLeftRight1}mm"/>
+			</fo:simple-page-master>
+			<fo:simple-page-master master-name="even-landscape" page-width="{$pageHeight}mm" page-height="{$pageWidth}mm">
+				<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight2}mm" margin-right="{$marginLeftRight1}mm"/>
+				<fo:region-before region-name="header-even" extent="{$marginTop}mm"/>
+				<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
+				<fo:region-start region-name="left-region" extent="{$marginLeftRight2}mm"/>
+				<fo:region-end region-name="right-region" extent="{$marginLeftRight1}mm"/>
+			</fo:simple-page-master>
+			<fo:simple-page-master master-name="blankpage" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
+				<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight2}mm" margin-right="{$marginLeftRight1}mm"/>
+				<fo:region-before region-name="header-blank" extent="{$marginTop}mm"/>
+				<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
+				<fo:region-start region-name="left-region" extent="{$marginLeftRight2}mm"/>
+				<fo:region-end region-name="right-region" extent="{$marginLeftRight1}mm"/>
+			</fo:simple-page-master>
+			<!-- Preface pages -->
+			<fo:page-sequence-master master-name="preface">
+				<fo:repeatable-page-master-alternatives>
+					<!-- <fo:conditional-page-master-reference master-reference="first" page-position="first"/> -->
+					<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
+					<fo:conditional-page-master-reference odd-or-even="even" master-reference="even"/>
+					<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd"/>
+				</fo:repeatable-page-master-alternatives>
+			</fo:page-sequence-master>
+			<fo:page-sequence-master master-name="preface-landscape">
+				<fo:repeatable-page-master-alternatives>
+					<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
+					<fo:conditional-page-master-reference odd-or-even="even" master-reference="even-landscape"/>
+					<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd-landscape"/>
+				</fo:repeatable-page-master-alternatives>
+			</fo:page-sequence-master>
+			<!-- Document pages -->
+			<fo:page-sequence-master master-name="document">
+				<fo:repeatable-page-master-alternatives>
+					<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
+					<fo:conditional-page-master-reference odd-or-even="even" master-reference="even"/>
+					<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd"/>
+				</fo:repeatable-page-master-alternatives>
+			</fo:page-sequence-master>
+			<fo:page-sequence-master master-name="document-portrait">
+				<fo:repeatable-page-master-alternatives>
+					<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
+					<fo:conditional-page-master-reference odd-or-even="even" master-reference="even"/>
+					<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd"/>
+				</fo:repeatable-page-master-alternatives>
+			</fo:page-sequence-master>
+			<fo:page-sequence-master master-name="document-landscape">
+				<fo:repeatable-page-master-alternatives>
+					<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
+					<fo:conditional-page-master-reference odd-or-even="even" master-reference="even-landscape"/>
+					<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd-landscape"/>
+				</fo:repeatable-page-master-alternatives>
+			</fo:page-sequence-master>
+		</fo:layout-master-set>
+	</xsl:template> <!-- END: layout-master-set -->
+
 	<xsl:template match="/">
 
 		<fo:root xml:lang="{$lang}">
@@ -41,93 +131,8 @@
 			<xsl:call-template name="insertRootStyle">
 				<xsl:with-param name="root-style" select="$root-style"/>
 			</xsl:call-template>
-			<fo:layout-master-set>
-				<!-- cover page -->
-				<fo:simple-page-master master-name="cover" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
-					<fo:region-body margin-top="0mm" margin-bottom="5mm" margin-left="0mm" margin-right="5mm"/>
-				</fo:simple-page-master>
 
-				<fo:simple-page-master master-name="first" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
-					<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight1}mm" margin-right="{$marginLeftRight2}mm"/>
-					<fo:region-before region-name="header" extent="{$marginTop}mm"/>
-					<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
-					<fo:region-start region-name="left-region" extent="{$marginLeftRight1}mm"/>
-					<fo:region-end region-name="right-region" extent="{$marginLeftRight2}mm"/>
-				</fo:simple-page-master>
-				<fo:simple-page-master master-name="odd" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
-					<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight1}mm" margin-right="{$marginLeftRight2}mm"/>
-					<fo:region-before region-name="header-odd" extent="{$marginTop}mm"/>
-					<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
-					<fo:region-start region-name="left-region" extent="{$marginLeftRight1}mm"/>
-					<fo:region-end region-name="right-region" extent="{$marginLeftRight2}mm"/>
-				</fo:simple-page-master>
-				<fo:simple-page-master master-name="odd-landscape" page-width="{$pageHeight}mm" page-height="{$pageWidth}mm">
-					<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight1}mm" margin-right="{$marginLeftRight2}mm"/>
-					<fo:region-before region-name="header-odd" extent="{$marginTop}mm"/>
-					<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
-					<fo:region-start region-name="left-region" extent="{$marginLeftRight1}mm"/>
-					<fo:region-end region-name="right-region" extent="{$marginLeftRight2}mm"/>
-				</fo:simple-page-master>
-				<fo:simple-page-master master-name="even" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
-					<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight2}mm" margin-right="{$marginLeftRight1}mm"/>
-					<fo:region-before region-name="header-even" extent="{$marginTop}mm"/>
-					<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
-					<fo:region-start region-name="left-region" extent="{$marginLeftRight2}mm"/>
-					<fo:region-end region-name="right-region" extent="{$marginLeftRight1}mm"/>
-				</fo:simple-page-master>
-				<fo:simple-page-master master-name="even-landscape" page-width="{$pageHeight}mm" page-height="{$pageWidth}mm">
-					<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight2}mm" margin-right="{$marginLeftRight1}mm"/>
-					<fo:region-before region-name="header-even" extent="{$marginTop}mm"/>
-					<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
-					<fo:region-start region-name="left-region" extent="{$marginLeftRight2}mm"/>
-					<fo:region-end region-name="right-region" extent="{$marginLeftRight1}mm"/>
-				</fo:simple-page-master>
-				<fo:simple-page-master master-name="blankpage" page-width="{$pageWidth}mm" page-height="{$pageHeight}mm">
-					<fo:region-body margin-top="{$marginTop}mm" margin-bottom="{$marginBottom}mm" margin-left="{$marginLeftRight2}mm" margin-right="{$marginLeftRight1}mm"/>
-					<fo:region-before region-name="header-blank" extent="{$marginTop}mm"/>
-					<fo:region-after region-name="footer" extent="{$marginBottom}mm"/>
-					<fo:region-start region-name="left-region" extent="{$marginLeftRight2}mm"/>
-					<fo:region-end region-name="right-region" extent="{$marginLeftRight1}mm"/>
-				</fo:simple-page-master>
-				<!-- Preface pages -->
-				<fo:page-sequence-master master-name="preface">
-					<fo:repeatable-page-master-alternatives>
-						<!-- <fo:conditional-page-master-reference master-reference="first" page-position="first"/> -->
-						<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
-						<fo:conditional-page-master-reference odd-or-even="even" master-reference="even"/>
-						<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd"/>
-					</fo:repeatable-page-master-alternatives>
-				</fo:page-sequence-master>
-				<fo:page-sequence-master master-name="preface-landscape">
-					<fo:repeatable-page-master-alternatives>
-						<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
-						<fo:conditional-page-master-reference odd-or-even="even" master-reference="even-landscape"/>
-						<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd-landscape"/>
-					</fo:repeatable-page-master-alternatives>
-				</fo:page-sequence-master>
-				<!-- Document pages -->
-				<fo:page-sequence-master master-name="document">
-					<fo:repeatable-page-master-alternatives>
-						<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
-						<fo:conditional-page-master-reference odd-or-even="even" master-reference="even"/>
-						<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd"/>
-					</fo:repeatable-page-master-alternatives>
-				</fo:page-sequence-master>
-				<fo:page-sequence-master master-name="document-portrait">
-					<fo:repeatable-page-master-alternatives>
-						<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
-						<fo:conditional-page-master-reference odd-or-even="even" master-reference="even"/>
-						<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd"/>
-					</fo:repeatable-page-master-alternatives>
-				</fo:page-sequence-master>
-				<fo:page-sequence-master master-name="document-landscape">
-					<fo:repeatable-page-master-alternatives>
-						<fo:conditional-page-master-reference master-reference="blankpage" blank-or-not-blank="blank"/>
-						<fo:conditional-page-master-reference odd-or-even="even" master-reference="even-landscape"/>
-						<fo:conditional-page-master-reference odd-or-even="odd" master-reference="odd-landscape"/>
-					</fo:repeatable-page-master-alternatives>
-				</fo:page-sequence-master>
-			</fo:layout-master-set>
+			<xsl:call-template name="layout-master-set"/>
 
 			<fo:declarations>
 				<xsl:call-template name="addPDFUAmeta"/>
@@ -149,160 +154,7 @@
 
 			<xsl:for-each select="xalan:nodeset($updated_xml)/*">
 
-				<!-- =========================== -->
-				<!-- Cover Page -->
-				<fo:page-sequence master-reference="cover">
-					<fo:flow flow-name="xsl-region-body">
-
-						<xsl:variable name="isCoverPageImage" select="normalize-space(/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = 'coverpage-image']/mn:value/mn:image and 1 = 1)"/>
-
-						<xsl:variable name="document_scheme" select="normalize-space(/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = 'document-scheme']/mn:value)"/>
-
-						<xsl:choose>
-							<xsl:when test="$document_scheme != '' and $document_scheme != '2019' and $isCoverPageImage = 'true'">
-								<xsl:call-template name="insertBackgroundPageImage"/>
-							</xsl:when>
-							<xsl:otherwise>
-
-								<fo:block-container position="absolute" left="14.25mm" top="12mm" id="__internal_layout__coverpage_{generate-id()}">
-									<fo:table table-layout="fixed" width="181.1mm">
-											<fo:table-column column-width="26mm"/>
-											<fo:table-column column-width="19.4mm"/>
-											<fo:table-column column-width="135.7mm"/>
-											<fo:table-body>
-												<fo:table-row>
-													<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-													<fo:table-cell>
-														<fo:block-container width="19.4mm" height="21mm" background-color="rgb(241, 234, 202)" border-bottom="0.05pt solid rgb(0, 21, 50)" text-align="center" display-align="center" font-size="10pt" font-weight="bold">
-															<xsl:if test="$isCoverPageImage = 'true'">
-																<xsl:attribute name="width">42.5mm</xsl:attribute>
-															</xsl:if>
-															<fo:block>
-																<xsl:value-of select="$docidentifier"/>
-																<xsl:if test="$isCoverPageImage = 'true'">
-																	<xsl:text> </xsl:text><xsl:value-of select="$edition"/>
-																</xsl:if>
-															</fo:block>
-														</fo:block-container>
-													</fo:table-cell>
-													<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-												</fo:table-row>
-												<fo:table-row>
-													<fo:table-cell display-align="after" text-align="right">
-														<fo:block font-size="1">
-															<fo:instream-foreign-object content-width="25.9mm" fox:alt-text="Image IHO">
-																<xsl:copy-of select="$Image-IHO-SVG"/>
-															</fo:instream-foreign-object>
-														</fo:block>
-													</fo:table-cell>
-
-													<!-- https://github.com/metanorma/metanorma-iho/issues/288 -->
-													<xsl:choose>
-														<xsl:when test="$isCoverPageImage = 'true'">
-															<fo:table-cell number-columns-spanned="2">
-																<fo:block-container font-size="0"> <!-- height="168mm" width="115mm"  -->
-																	<fo:block>
-																		<xsl:for-each select="/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = 'coverpage-image'][1]/mn:value/mn:image[1]">
-																			<xsl:choose>
-																				<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
-																					<fo:instream-foreign-object fox:alt-text="Image Front">
-																						<xsl:attribute name="content-height"><xsl:value-of select="$pageHeight"/>mm</xsl:attribute>
-																						<xsl:call-template name="getSVG"/>
-																					</fo:instream-foreign-object>
-																				</xsl:when>
-																				<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
-																					<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
-																				</xsl:when>
-																				<xsl:otherwise> <!-- bitmap image -->
-																					<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
-																					<xsl:if test="$coverimage_src != ''">
-																						<xsl:variable name="coverpage">
-																							<xsl:call-template name="getImageURL">
-																								<xsl:with-param name="src" select="$coverimage_src"/>
-																							</xsl:call-template>
-																						</xsl:variable>
-																						<fo:external-graphic src="{$coverpage}" width="155.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
-																					</xsl:if>
-																				</xsl:otherwise>
-																			</xsl:choose>
-																		</xsl:for-each>
-																	</fo:block>
-																</fo:block-container>
-															</fo:table-cell>
-														</xsl:when>
-														<xsl:otherwise>
-															<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)" font-weight="bold" color="rgb(0, 0, 76)" padding-top="3mm">
-																<fo:block-container height="165mm" width="115mm">
-																	<fo:block-container margin-left="10mm">
-																		<fo:block-container margin-left="0mm">
-																			<fo:block-container display-align="center" height="90mm">
-																				<fo:block font-size="28pt" role="H1" line-height="115%">
-																					<xsl:copy-of select="$title-en"/>
-																				</fo:block>
-																			</fo:block-container>
-																			<fo:block font-size="14pt">
-																				<xsl:value-of select="$edition"/>
-																				<xsl:if test="normalize-space($month_year) != ''">
-																					<xsl:text> – </xsl:text>
-																					<xsl:value-of select="$month_year"/>
-																				</xsl:if>
-																			</fo:block>
-																		</fo:block-container>
-																	</fo:block-container>
-																</fo:block-container>
-															</fo:table-cell>
-														</xsl:otherwise>
-													</xsl:choose>
-												</fo:table-row>
-												<fo:table-row>
-													<fo:table-cell>
-														<fo:block font-size="1">
-															<fo:instream-foreign-object content-width="25.9mm" fox:alt-text="Image Logo IHO">
-																<xsl:copy-of select="$Image-Logo-IHO-SVG"/>
-															</fo:instream-foreign-object>
-														</fo:block>
-													</fo:table-cell>
-													<fo:table-cell>
-														<fo:block font-size="1">
-															<fo:instream-foreign-object content-width="25.8mm" fox:alt-text="Image Logo IHO">
-																<xsl:copy-of select="$Image-Text-IHO-SVG"/>
-															</fo:instream-foreign-object>
-														</fo:block>
-													</fo:table-cell>
-													<fo:table-cell number-rows-spanned="2">
-														<fo:block-container width="79mm" height="72mm" margin-left="56.8mm" background-color="rgb(0, 172, 158)" text-align="right" display-align="after">
-															<fo:block-container margin-left="0mm">
-																<fo:block font-size="8pt" color="white" margin-right="5mm" margin-bottom="5mm" line-height-shift-adjustment="disregard-shifts">
-																	<xsl:apply-templates select="/mn:metanorma/mn:boilerplate/mn:feedback-statement"/>
-																</fo:block>
-															</fo:block-container>
-														</fo:block-container>
-													</fo:table-cell>
-												</fo:table-row>
-												<fo:table-row>
-													<fo:table-cell number-columns-spanned="2" padding-top="2mm">
-														<fo:block-container width="51.5mm">
-															<fo:block>
-																<xsl:for-each select="/mn:metanorma/mn:bibdata/mn:contributor[mn:role/@type = 'publisher']/mn:organization[not(mn:abbreviation = 'IHO')]">
-																	<xsl:apply-templates select="mn:logo/mn:image">
-																		<xsl:with-param name="logo_width">25.8mm</xsl:with-param>
-																	</xsl:apply-templates>
-																	<xsl:if test="position() != last()"><fo:inline> </fo:inline></xsl:if>
-																</xsl:for-each>
-															</fo:block>
-														</fo:block-container>
-													</fo:table-cell>
-												</fo:table-row>
-											</fo:table-body>
-										</fo:table>
-								</fo:block-container>
-							</xsl:otherwise>
-						</xsl:choose>
-					</fo:flow>
-				</fo:page-sequence>
-				<!-- End Cover Page -->
-				<!-- =========================== -->
-				<!-- =========================== -->
+				<xsl:call-template name="cover-page"/>
 
 				<xsl:choose>
 					<xsl:when test="/mn:metanorma/mn:boilerplate/*[not(self::mn:feedback-statement)]">
@@ -494,6 +346,163 @@
 					<!-- =========================== -->
 			</xsl:for-each>
 		</fo:root>
+	</xsl:template>
+
+	<xsl:template name="cover-page">
+		<!-- =========================== -->
+		<!-- Cover Page -->
+		<fo:page-sequence master-reference="cover">
+			<fo:flow flow-name="xsl-region-body">
+
+				<xsl:variable name="isCoverPageImage" select="normalize-space(/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = 'coverpage-image']/mn:value/mn:image and 1 = 1)"/>
+
+				<xsl:variable name="document_scheme" select="normalize-space(/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = 'document-scheme']/mn:value)"/>
+
+				<xsl:choose>
+					<xsl:when test="$document_scheme != '' and $document_scheme != '2019' and $isCoverPageImage = 'true'">
+						<xsl:call-template name="insertBackgroundPageImage"/>
+					</xsl:when>
+					<xsl:otherwise>
+
+						<fo:block-container position="absolute" left="14.25mm" top="12mm" id="__internal_layout__coverpage_{generate-id()}">
+							<fo:table table-layout="fixed" width="181.1mm">
+									<fo:table-column column-width="26mm"/>
+									<fo:table-column column-width="19.4mm"/>
+									<fo:table-column column-width="135.7mm"/>
+									<fo:table-body>
+										<fo:table-row>
+											<fo:table-cell><fo:block> </fo:block></fo:table-cell>
+											<fo:table-cell>
+												<fo:block-container width="19.4mm" height="21mm" background-color="rgb(241, 234, 202)" border-bottom="0.05pt solid rgb(0, 21, 50)" text-align="center" display-align="center" font-size="10pt" font-weight="bold">
+													<xsl:if test="$isCoverPageImage = 'true'">
+														<xsl:attribute name="width">42.5mm</xsl:attribute>
+													</xsl:if>
+													<fo:block>
+														<xsl:value-of select="$docidentifier"/>
+														<xsl:if test="$isCoverPageImage = 'true'">
+															<xsl:text> </xsl:text><xsl:value-of select="$edition"/>
+														</xsl:if>
+													</fo:block>
+												</fo:block-container>
+											</fo:table-cell>
+											<fo:table-cell><fo:block> </fo:block></fo:table-cell>
+										</fo:table-row>
+										<fo:table-row>
+											<fo:table-cell display-align="after" text-align="right">
+												<fo:block font-size="1">
+													<fo:instream-foreign-object content-width="25.9mm" fox:alt-text="Image IHO">
+														<xsl:copy-of select="$Image-IHO-SVG"/>
+													</fo:instream-foreign-object>
+												</fo:block>
+											</fo:table-cell>
+
+											<!-- https://github.com/metanorma/metanorma-iho/issues/288 -->
+											<xsl:choose>
+												<xsl:when test="$isCoverPageImage = 'true'">
+													<fo:table-cell number-columns-spanned="2">
+														<fo:block-container font-size="0"> <!-- height="168mm" width="115mm"  -->
+															<fo:block>
+																<xsl:for-each select="/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = 'coverpage-image'][1]/mn:value/mn:image[1]">
+																	<xsl:choose>
+																		<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
+																			<fo:instream-foreign-object fox:alt-text="Image Front">
+																				<xsl:attribute name="content-height"><xsl:value-of select="$pageHeight"/>mm</xsl:attribute>
+																				<xsl:call-template name="getSVG"/>
+																			</fo:instream-foreign-object>
+																		</xsl:when>
+																		<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
+																			<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
+																		</xsl:when>
+																		<xsl:otherwise> <!-- bitmap image -->
+																			<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
+																			<xsl:if test="$coverimage_src != ''">
+																				<xsl:variable name="coverpage">
+																					<xsl:call-template name="getImageURL">
+																						<xsl:with-param name="src" select="$coverimage_src"/>
+																					</xsl:call-template>
+																				</xsl:variable>
+																				<fo:external-graphic src="{$coverpage}" width="155.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
+																			</xsl:if>
+																		</xsl:otherwise>
+																	</xsl:choose>
+																</xsl:for-each>
+															</fo:block>
+														</fo:block-container>
+													</fo:table-cell>
+												</xsl:when>
+												<xsl:otherwise>
+													<fo:table-cell number-columns-spanned="2" border="0.5pt solid rgb(0, 21, 50)" font-weight="bold" color="rgb(0, 0, 76)" padding-top="3mm">
+														<fo:block-container height="165mm" width="115mm">
+															<fo:block-container margin-left="10mm">
+																<fo:block-container margin-left="0mm">
+																	<fo:block-container display-align="center" height="90mm">
+																		<fo:block font-size="28pt" role="H1" line-height="115%">
+																			<xsl:copy-of select="$title-en"/>
+																		</fo:block>
+																	</fo:block-container>
+																	<fo:block font-size="14pt">
+																		<xsl:value-of select="$edition"/>
+																		<xsl:if test="normalize-space($month_year) != ''">
+																			<xsl:text> – </xsl:text>
+																			<xsl:value-of select="$month_year"/>
+																		</xsl:if>
+																	</fo:block>
+																</fo:block-container>
+															</fo:block-container>
+														</fo:block-container>
+													</fo:table-cell>
+												</xsl:otherwise>
+											</xsl:choose>
+										</fo:table-row>
+										<fo:table-row>
+											<fo:table-cell>
+												<fo:block font-size="1">
+													<fo:instream-foreign-object content-width="25.9mm" fox:alt-text="Image Logo IHO">
+														<xsl:copy-of select="$Image-Logo-IHO-SVG"/>
+													</fo:instream-foreign-object>
+												</fo:block>
+											</fo:table-cell>
+											<fo:table-cell>
+												<fo:block font-size="1">
+													<fo:instream-foreign-object content-width="25.8mm" fox:alt-text="Image Logo IHO">
+														<xsl:copy-of select="$Image-Text-IHO-SVG"/>
+													</fo:instream-foreign-object>
+												</fo:block>
+											</fo:table-cell>
+											<fo:table-cell number-rows-spanned="2">
+												<fo:block-container width="79mm" height="72mm" margin-left="56.8mm" background-color="rgb(0, 172, 158)" text-align="right" display-align="after">
+													<fo:block-container margin-left="0mm">
+														<fo:block font-size="8pt" color="white" margin-right="5mm" margin-bottom="5mm" line-height-shift-adjustment="disregard-shifts">
+															<xsl:apply-templates select="/mn:metanorma/mn:boilerplate/mn:feedback-statement"/>
+														</fo:block>
+													</fo:block-container>
+												</fo:block-container>
+											</fo:table-cell>
+										</fo:table-row>
+										<fo:table-row>
+											<fo:table-cell number-columns-spanned="2" padding-top="2mm">
+												<fo:block-container width="51.5mm">
+													<fo:block>
+														<xsl:for-each select="/mn:metanorma/mn:bibdata/mn:contributor[mn:role/@type = 'publisher']/mn:organization[not(mn:abbreviation = 'IHO')]">
+															<xsl:apply-templates select="mn:logo/mn:image">
+																<xsl:with-param name="logo_width">25.8mm</xsl:with-param>
+															</xsl:apply-templates>
+															<xsl:if test="position() != last()"><fo:inline> </fo:inline></xsl:if>
+														</xsl:for-each>
+													</fo:block>
+												</fo:block-container>
+											</fo:table-cell>
+										</fo:table-row>
+									</fo:table-body>
+								</fo:table>
+						</fo:block-container>
+					</xsl:otherwise>
+				</xsl:choose>
+			</fo:flow>
+		</fo:page-sequence>
+		<!-- End Cover Page -->
+		<!-- =========================== -->
+		<!-- =========================== -->
 	</xsl:template>
 
 	<xsl:template name="insertListOf_Title">
@@ -1317,10 +1326,6 @@
 		<title-part lang="ru">
 		</title-part>
 		<title-part lang="zh">第 # 部分:</title-part>
-
-		<title-subpart lang="en">Sub-part #</title-subpart>
-		<title-subpart lang="fr">Partie de sub #</title-subpart>
-
 	</xsl:variable>
 	<xsl:variable name="titles" select="xalan:nodeset($titles_)"/>
 
