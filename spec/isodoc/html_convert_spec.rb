@@ -14,7 +14,12 @@ RSpec.describe IsoDoc::Iho do
     input = <<~"INPUT"
       <iho-standard xmlns="https://open.ribose.com/standards/iho">
       <bibdata type="standard">
-        <title language="en" format="plain">Main Title</title>
+        <title type="main" language="en" format="plain">Main Title, Part 1: Part</title>
+        <title type="title-main" language="en" format="plain">Main Title</title>
+        <title type="title-part" language="en" format="plain">Part Title</title>
+        <title type="title-appendix" language="en" format="plain">Appendix Title</title>
+        <title type="title-annex" language="en" format="plain">Annex Title</title>
+        <title type="title-supplement" language="en" format="plain">Supplement Title</title>
         <docidentifier>1000(wd)</docidentifier>
         <docnumber>1000</docnumber>
         <edition>2</edition>
@@ -75,7 +80,9 @@ RSpec.describe IsoDoc::Iho do
       { accesseddate: "XXX",
         adapteddate: "XXX",
         agency: "Ribose",
+        annextitle: "Annex Title",
         announceddate: "XXX",
+        appendixtitle: "Appendix Title",
         circulateddate: "XXX",
         confirmeddate: "XXX",
         copieddate: "XXX",
@@ -83,7 +90,7 @@ RSpec.describe IsoDoc::Iho do
         createddate: "XXX",
         docnumber: "1000(wd)",
         docnumeric: "1000",
-        doctitle: "Main Title",
+        doctitle: "Main Title, Part 1: Part",
         doctype: "Standard",
         doctype_display: "Standard",
         docyear: "2001",
@@ -96,9 +103,11 @@ RSpec.describe IsoDoc::Iho do
         logo: "#{File.join(logoloc, 'logo.png')}",
         logo_paths: ["#{File.join(logoloc, 'image001.png')}",
                      "#{File.join(logoloc, 'image002.png')}", "#{File.join(logoloc, 'image003.png')}"],
+        maintitle: "Main Title",
         metadata_extensions: { "doctype" => "standard",
                                "editorialgroup" => { "committee_type" => "A", "committee" => "TC" }, "security" => "Client Confidential", "commentperiod" => { "from" => "2010", "to" => "2011" } },
         obsoleteddate: "2001-01-01",
+        parttitle: "Part Title",
         publisheddate: "XXX",
         publisher: "Ribose",
         receiveddate: "XXX",
@@ -110,6 +119,7 @@ RSpec.describe IsoDoc::Iho do
         stable_untildate: "XXX",
         stage: "Working Draft",
         stage_display: "Working Draft",
+        supplementtitle: "Supplement Title",
         tc: "TC",
         transmitteddate: "XXX",
         unchangeddate: "XXX",

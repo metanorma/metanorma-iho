@@ -83,7 +83,8 @@ RSpec.describe Metanorma::Iho do
           <?xml version="1.0" encoding="UTF-8"?>
       <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
       <bibdata type="standard">
-        <title language="en" format="text/plain">Main Title</title>
+        <title type="main">Main Title</title>
+        <title type="title-main">Main Title</title>
       <docidentifier primary="true" type="IHO">B-1000</docidentifier>
       <docnumber>1000</docnumber>
        <date type='implemented'>
@@ -156,6 +157,9 @@ RSpec.describe Metanorma::Iho do
                        <abbreviation>WG3</abbreviation>
                      </workgroup>
                    </editorialgroup>
+                   <structuredidentifier>
+            <docnumber>1000</docnumber>
+         </structuredidentifier>
                    <commentperiod>
         <from>2010-01-01</from>
         <to>2011-01-01</to>
@@ -190,6 +194,116 @@ RSpec.describe Metanorma::Iho do
       .to be_equivalent_to output
   end
 
+  it "processes part, annex, appendix, supplement" do
+    input = <<~INPUT
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :docnumber: 1000
+      :doctype: standard
+      :language: en
+      :title: Main Title
+      :title-part: Part Title
+      :title-annex: Annex Title
+      :title-appendix: Appendix Title
+      :title-supplement: Supplement Title
+      :semantic-metadata-annex-informative: true
+      :partnumber: 1
+      :annex-id: 2
+      :appendix-id: 3
+      :supplement-id: 4
+    INPUT
+    output = <<~OUTPUT
+      <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
+          <bibdata type="standard">
+             <title type="main">Main Title, Part 1: Part Title, Annex 2 (Informative) Annex Title, Appendix 3: Appendix Title, Supplement 4: Supplement Title</title>
+             <title type="title-main">Main Title</title>
+      <title type="title-appendix">Appendix 3: Appendix Title</title>
+      <title type="title-annex">Annex 2 (Informative) Annex Title</title>
+      <title type="title-part">Part 1: Part Title</title>
+      <title type="title-supplement">Supplement 4: Supplement Title</title>
+             <docidentifier primary="true" type="IHO">S-1000 Part 1 Appendix 3 Annex 2 Supplement 4</docidentifier>
+             <docidentifier type="IHO-parent-document">S-1000</docidentifier>
+             <docnumber>1000</docnumber>
+             <contributor>
+                <role type="author"/>
+                <organization>
+                   <name>International Hydrographic Organization</name>
+                   <abbreviation>IHO</abbreviation>
+                </organization>
+             </contributor>
+             <contributor>
+                <role type="publisher"/>
+                <organization>
+                   <name>International Hydrographic Organization</name>
+                   <abbreviation>IHO</abbreviation>
+                </organization>
+             </contributor>
+             <language>en</language>
+             <script>Latn</script>
+             <status>
+                <stage>in-force</stage>
+             </status>
+        <copyright>
+          <from>#{Date.today.year}</from>
+          <owner>
+            <organization>
+              <name>International Hydrographic Organization</name>
+              <abbreviation>IHO</abbreviation>
+            </organization>
+          </owner>
+        </copyright>
+        <ext>
+        <doctype>standard</doctype>
+        <flavor>iho</flavor>
+        <structuredidentifier>
+                           <docnumber>1000</docnumber>
+                   <part>1</part>
+                   <appendixid>3</appendixid>
+                   <annexid>2</annexid>
+                   <supplementid>4</supplementid>
+                   </structuredidentifier>
+        </ext>
+      </bibdata>
+                         <metanorma-extension>
+           <semantic-metadata>
+         <annex-informative>true</annex-informative>
+      </semantic-metadata>
+           <presentation-metadata>
+             <name>TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>HTML TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>DOC TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+           <presentation-metadata>
+             <name>PDF TOC Heading Levels</name>
+             <value>2</value>
+           </presentation-metadata>
+         </metanorma-extension>
+              #{BOILERPLATE}
+      <sections/>
+      </metanorma>
+    OUTPUT
+    expect(Xml::C14n.format(strip_guid(Asciidoctor
+  .convert(input, *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output)
+
+    expect(Xml::C14n.format(strip_guid(Asciidoctor
+      .convert(input.sub(":semantic-metadata-annex-informative: true\n", ""),
+               *OPTIONS))))
+      .to be_equivalent_to Xml::C14n.format(output
+      .gsub("Annex 2 (Informative) Annex Title", "Annex 2 Annex Title")
+      .sub(%r{<semantic-metadata>.*</semantic-metadata>}m, ""))
+  end
+
   it "processes committee-draft" do
     input = <<~INPUT
       = Document title
@@ -210,7 +324,8 @@ RSpec.describe Metanorma::Iho do
     output = <<~OUTPUT
               <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
       <bibdata type="standard">
-        <title language="en" format="text/plain">Main Title</title>
+            <title type="main">Main Title</title>
+      <title type="title-main">Main Title</title>
         <docidentifier primary="true" type="IHO">S-1000</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
@@ -250,6 +365,9 @@ RSpec.describe Metanorma::Iho do
         <ext>
         <doctype>standard</doctype>
         <flavor>iho</flavor>
+         <structuredidentifier>
+            <docnumber>1000</docnumber>
+         </structuredidentifier>
         </ext>
       </bibdata>
                          <metanorma-extension>
@@ -562,7 +680,7 @@ RSpec.describe Metanorma::Iho do
     INPUT
     output = Xml::C14n.format(<<~"OUTPUT")
       <bibdata type="standard">
-        <title language="en" format="text/plain">Document title</title>
+        <title type="main">Document title</title>
         <docidentifier primary="true" type="IHO">S-</docidentifier>
         <contributor>
           <role type="author"/>
