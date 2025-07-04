@@ -6,10 +6,23 @@
 
 	<xsl:variable name="debug">false</xsl:variable>
 
-	<xsl:variable name="title-en">
-		<xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@language = 'en']/node()"/>
+	<xsl:variable name="title-en"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@language = 'en']/node()"/></xsl:variable>
+	<xsl:variable name="title-main_"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'main']/node()"/></xsl:variable>
+	<xsl:variable name="title-main"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'title-main']/node()"/></xsl:variable>
+	<xsl:variable name="title-appendix"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'title-appendix']/node()"/></xsl:variable>
+	<xsl:variable name="title-annex"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'title-annex']/node()"/></xsl:variable>
+	<xsl:variable name="title-part"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'title-part']/node()"/></xsl:variable>
+	<xsl:variable name="title-supplement"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'title-supplement']/node()"/></xsl:variable>
+	<xsl:variable name="title_header">
+		<xsl:copy-of select="$title-main_"/>
+		<xsl:if test="normalize-space($title-main_) = ''"><xsl:copy-of select="$title-en"/></xsl:if>
 	</xsl:variable>
-	<xsl:variable name="docidentifier" select="/mn:metanorma/mn:bibdata/mn:docidentifier[@type = 'IHO']"/>
+
+  <xsl:variable name="docidentifier_parent" select="normalize-space(/mn:metanorma/mn:bibdata/mn:docidentifier[@type = 'IHO-parent-document'])"/>
+	<xsl:variable name="docidentifier">
+		<xsl:value-of select="$docidentifier_parent"/>
+		<xsl:if test="$docidentifier_parent = ''"><xsl:value-of select="/mn:metanorma/mn:bibdata/mn:docidentifier[@type = 'IHO']"/></xsl:if>
+  </xsl:variable>
 	<xsl:variable name="copyrightText" select="concat('© International Hydrographic Association ', /mn:metanorma/mn:bibdata/mn:copyright/mn:from ,' – All rights reserved')"/>
 	<xsl:variable name="edition">
 		<xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:edition[normalize-space(@language) = '']"/>
@@ -435,11 +448,38 @@
 														<fo:block-container height="165mm" width="115mm">
 															<fo:block-container margin-left="10mm">
 																<fo:block-container margin-left="0mm">
-																	<fo:block-container display-align="center" height="90mm">
-																		<fo:block font-size="28pt" role="H1" line-height="115%">
-																			<xsl:copy-of select="$title-en"/>
-																		</fo:block>
-																	</fo:block-container>
+
+																	<!-- <fo:block-container display-align="center" height="90mm"> -->
+																	<fo:table table-layout="fixed" width="100%">
+																		<fo:table-body>
+																			<fo:table-row min-height="90mm"> <!-- for debug: border="1pt solid blue" -->
+																				<fo:table-cell display-align="center">
+																					<xsl:if test="normalize-space($title-annex) != '' or                        normalize-space($title-appendix) != '' or                       normalize-space($title-supplement) != ''">
+																						<fo:block font-size="14pt" role="H1" line-height="115%" margin-top="35mm">
+																							<fo:block><xsl:copy-of select="$title-annex"/></fo:block>
+																							<fo:block><xsl:copy-of select="$title-appendix"/></fo:block>
+																							<fo:block><xsl:copy-of select="$title-supplement"/></fo:block>
+																						</fo:block>
+																						<fo:block font-size="28pt" role="SKIP" line-height="115%"> </fo:block>
+																					</xsl:if>
+																					<fo:block font-size="28pt" role="H1" line-height="115%">
+																						<xsl:copy-of select="$title-main"/>
+																						<xsl:if test="normalize-space($title-main) = ''">
+																							<xsl:copy-of select="$title-en"/>
+																						</xsl:if>
+																					</fo:block>
+																					<xsl:if test="normalize-space($title-part) != ''">
+																						<fo:block font-size="28pt" role="SKIP" line-height="115%"> </fo:block>
+																						<fo:block font-size="18pt" role="H2" line-height="115%" margin-bottom="10mm">
+																							<xsl:copy-of select="$title-part"/>
+																						</fo:block>
+																					</xsl:if>
+																				</fo:table-cell>
+																			</fo:table-row>
+																		</fo:table-body>
+																	</fo:table>
+																	<!-- </fo:block-container> -->
+
 																	<fo:block font-size="14pt">
 																		<xsl:value-of select="$edition"/>
 																		<xsl:if test="normalize-space($month_year) != ''">
@@ -1014,7 +1054,7 @@
 						<fo:table-body>
 							<fo:table-row>
 								<fo:table-cell><fo:block> </fo:block></fo:table-cell>
-								<fo:table-cell text-align="center"><fo:block><xsl:copy-of select="$title-en"/></fo:block></fo:table-cell>
+								<fo:table-cell text-align="center"><fo:block><xsl:copy-of select="$title_header"/></fo:block></fo:table-cell>
 								<fo:table-cell text-align="right"><fo:block><fo:page-number/></fo:block></fo:table-cell>
 							</fo:table-row>
 						</fo:table-body>
@@ -1032,7 +1072,7 @@
 						<fo:table-body>
 							<fo:table-row>
 								<fo:table-cell><fo:block><fo:page-number/></fo:block></fo:table-cell>
-								<fo:table-cell text-align="center"><fo:block><xsl:copy-of select="$title-en"/></fo:block></fo:table-cell>
+								<fo:table-cell text-align="center"><fo:block><xsl:copy-of select="$title_header"/></fo:block></fo:table-cell>
 								<fo:table-cell><fo:block> </fo:block></fo:table-cell>
 							</fo:table-row>
 						</fo:table-body>
@@ -1054,7 +1094,7 @@
 						<fo:table-body>
 							<fo:table-row>
 								<fo:table-cell><fo:block><fo:page-number/></fo:block></fo:table-cell>
-								<fo:table-cell text-align="center"><fo:block><xsl:copy-of select="$title-en"/></fo:block></fo:table-cell>
+								<fo:table-cell text-align="center"><fo:block><xsl:copy-of select="$title_header"/></fo:block></fo:table-cell>
 								<fo:table-cell><fo:block> </fo:block></fo:table-cell>
 							</fo:table-row>
 						</fo:table-body>
