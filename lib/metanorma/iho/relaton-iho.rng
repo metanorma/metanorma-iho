@@ -27,6 +27,33 @@
         </oneOrMore>
       </element>
     </define>
+    <define name="structuredidentifier">
+      <element name="structuredidentifier">
+        <element name="docnumber">
+          <text/>
+        </element>
+        <optional>
+          <element name="part">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="annexid">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="appendixid">
+            <text/>
+          </element>
+        </optional>
+        <optional>
+          <element name="supplementid">
+            <text/>
+          </element>
+        </optional>
+      </element>
+    </define>
   </include>
   <define name="BibDataExtensionType" combine="interleave">
     <optional>

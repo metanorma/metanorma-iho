@@ -78,3 +78,15 @@ fonts_manifest:
   Source Han Sans:
   Source Han Sans Normal:
   STIX Two Math:
+metadata_extensions:
+  structuredidentifier:
+    docnumber:
+    partnumber:
+     _output: part
+    appendix-id:
+      _output: appendixid
+    annex-id:
+      _output: annexid
+    supplement-id:
+      _output: supplementid
+
