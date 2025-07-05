@@ -1636,26 +1636,6 @@ RSpec.describe IsoDoc do
              <p>Hello</p>
           </example>
           <example id="note2" unnumbered="true">
-             <fmt-name id="_">
-                <span class="fmt-caption-label">
-                   <span class="fmt-element-name">EXAMPLE</span>
-                </span>
-             </fmt-name>
-             <fmt-xref-label>
-                <span class="fmt-element-name">Example</span>
-                <semx element="autonum" source="note2">(??)</semx>
-             </fmt-xref-label>
-             <fmt-xref-label container="widgets1">
-                <span class="fmt-xref-container">
-                   <span class="fmt-element-name">Clause</span>
-                   <semx element="autonum" source="widgets">3</semx>
-                   <span class="fmt-autonum-delim">.</span>
-                   <semx element="autonum" source="widgets1">1</semx>
-                </span>
-                <span class="fmt-comma">,</span>
-                <span class="fmt-element-name">Example</span>
-                <semx element="autonum" source="note2">(??)</semx>
-             </fmt-xref-label>
              <p>
                 Hello
                 <xref target="note1" id="_"/>
