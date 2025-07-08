@@ -465,7 +465,8 @@
 																					<fo:block font-size="28pt" role="H1" line-height="115%">
 																						<xsl:copy-of select="$title-main"/>
 																						<xsl:if test="normalize-space($title-main) = ''">
-																							<xsl:copy-of select="$title-en"/>
+																							<xsl:copy-of select="$title-main_"/>
+																							<xsl:if test="normalize-space($title-main_) = ''"><xsl:copy-of select="$title-en"/></xsl:if>
 																						</xsl:if>
 																					</fo:block>
 																					<xsl:if test="normalize-space($title-part) != ''">
