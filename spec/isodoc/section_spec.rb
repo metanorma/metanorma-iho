@@ -1794,6 +1794,7 @@ RSpec.describe IsoDoc::Iho do
              <amend>
                <description>
                  <p id="_">Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.</p>
+                 </description><description>
                  <p id="_">Modified content throughout the following sections:</p>
                  <ul id="_">
                    <li>
@@ -1959,6 +1960,8 @@ RSpec.describe IsoDoc::Iho do
                       <td id="_">
                          <semx element="description" source="_">
                             <p id="_">Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.</p>
+                            </semx>
+                         <semx element="description" source="_">
                             <p id="_">Modified content throughout the following sections:</p>
                             <ul id="_">
                                <li id="_">

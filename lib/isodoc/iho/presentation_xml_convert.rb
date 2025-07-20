@@ -92,9 +92,9 @@ _bib)
       end
 
       def dochistory_description(item)
-        d = item.at(ns("./amend/description")) or return ""
-        semx_fmt_dup(d)
-        #d.children.to_xml
+        d = item.xpath(ns("./amend/description"))
+        d.empty? and return ""
+        d.map { |d1| semx_fmt_dup(d1).to_xml }.join("\n")
       end
 
       def ddMMMyyyy(isodate)
