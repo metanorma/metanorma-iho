@@ -1916,7 +1916,9 @@ RSpec.describe IsoDoc::Iho do
                       <td id="_">April 2012</td>
                       <td id="_">TSMAD</td>
                       <td id="_">
-                         <p id="_">Approved edition of S-102</p>
+                         <semx element="description" source="_">
+                            <p id="_">Approved edition of S-102</p>
+                         </semx>
                       </td>
                    </tr>
                    <tr id="_">
@@ -1924,8 +1926,10 @@ RSpec.describe IsoDoc::Iho do
                       <td id="_">March 2017</td>
                       <td id="_">S-102 Project Team</td>
                       <td id="_">
-                         <p id="_">Updated clause 4.0 and 12.0.
+                         <semx element="description" source="_">
+                            <p id="_">Updated clause 4.0 and 12.0.
         Populated clause 9.0 and Annex B.</p>
+                         </semx>
                       </td>
                    </tr>
                    <tr id="_">
@@ -1933,7 +1937,9 @@ RSpec.describe IsoDoc::Iho do
                       <td id="_">May 2017</td>
                       <td id="_">FF, Barney Rubble</td>
                       <td id="_">
-                         <p id="_">Modified clause 9.0 based on feedback at S-100WG2 meeting.</p>
+                         <semx element="description" source="_">
+                            <p id="_">Modified clause 9.0 based on feedback at S-100WG2 meeting.</p>
+                         </semx>
                       </td>
                    </tr>
                    <tr id="_">
@@ -1941,7 +1947,9 @@ RSpec.describe IsoDoc::Iho do
                       <td id="_">February 2018</td>
                       <td id="_">HERING, Milena S.</td>
                       <td id="_">
-                         <p id="_">Modified clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.</p>
+                         <semx element="description" source="_">
+                            <p id="_">Modified clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.</p>
+                         </semx>
                       </td>
                    </tr>
                    <tr id="_">
@@ -1949,22 +1957,24 @@ RSpec.describe IsoDoc::Iho do
                       <td id="_">June 2018</td>
                       <td id="_">S-102PT</td>
                       <td id="_">
-                         <p id="_">Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.</p>
-                         <p id="_">Modified content throughout the following sections:</p>
-                         <ul id="_">
-                            <li id="_">
-                               <fmt-name id="_">
-                                  <semx element="autonum" source="_">•</semx>
-                               </fmt-name>
-                               <p id="_">Clause 1, 3, 4, 5, 6, 9, 10, 11, and 12.</p>
-                            </li>
-                            <li id="_">
-                               <fmt-name id="_">
-                                  <semx element="autonum" source="_">•</semx>
-                               </fmt-name>
-                               <p id="_">Annexes A, B, D, F, G, and I.</p>
-                            </li>
-                         </ul>
+                         <semx element="description" source="_">
+                            <p id="_">Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.</p>
+                            <p id="_">Modified content throughout the following sections:</p>
+                            <ul id="_">
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">•</semx>
+                                  </fmt-name>
+                                  <p id="_">Clause 1, 3, 4, 5, 6, 9, 10, 11, and 12.</p>
+                               </li>
+                               <li id="_">
+                                  <fmt-name id="_">
+                                     <semx element="autonum" source="_">•</semx>
+                                  </fmt-name>
+                                  <p id="_">Annexes A, B, D, F, G, and I.</p>
+                               </li>
+                            </ul>
+                         </semx>
                       </td>
                    </tr>
                 </tbody>

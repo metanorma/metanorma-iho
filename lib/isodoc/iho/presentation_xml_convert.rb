@@ -93,7 +93,8 @@ _bib)
 
       def dochistory_description(item)
         d = item.at(ns("./amend/description")) or return ""
-        d.children.to_xml
+        semx_fmt_dup(d)
+        #d.children.to_xml
       end
 
       def ddMMMyyyy(isodate)
