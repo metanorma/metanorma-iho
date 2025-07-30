@@ -143,13 +143,13 @@ RSpec.describe IsoDoc::Iho do
       :no-pdf:
     INPUT
 
-    output = Xml::C14n.format(<<~"OUTPUT")
+    output = Canon.format_xml(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections/>
       </iho-standard>
     OUTPUT
 
-    expect(Xml::C14n.format(strip_guid(Asciidoctor
+    expect(Canon.format_xml(strip_guid(Asciidoctor
       .convert(input, backend: :iho, header_footer: true))))
       .to be_equivalent_to output
     html = File.read("test.html", encoding: "utf-8")
@@ -244,11 +244,11 @@ RSpec.describe IsoDoc::Iho do
           </preface>
        </iso-standard>
     INPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 
   it "processes ordered lists" do
@@ -361,10 +361,10 @@ RSpec.describe IsoDoc::Iho do
          </preface>
       </iso-standard>
     INPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
+      .to be_equivalent_to Canon.format_xml(presxml)
   end
 end

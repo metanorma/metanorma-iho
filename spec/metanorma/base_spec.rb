@@ -13,13 +13,13 @@ RSpec.describe Metanorma::Iho do
       #{ASCIIDOC_BLANK_HDR}
     INPUT
 
-    output = Xml::C14n.format(<<~"OUTPUT")
+    output = Canon.format_xml(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections/>
       </metanorma>
     OUTPUT
 
-    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to output
   end
 
@@ -31,7 +31,7 @@ RSpec.describe Metanorma::Iho do
       :novalid:
     INPUT
 
-    output = Xml::C14n.format(<<~"OUTPUT")
+    output = Canon.format_xml(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections/>
       </metanorma>
@@ -40,7 +40,7 @@ RSpec.describe Metanorma::Iho do
     FileUtils.rm_f "test.html"
     FileUtils.rm_f "test.doc"
     FileUtils.rm_f "test.pdf"
-    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to output
     expect(File.exist?("test.html")).to be true
     expect(File.exist?("test.doc")).to be true
@@ -79,7 +79,7 @@ RSpec.describe Metanorma::Iho do
 
     INPUT
 
-    output = Xml::C14n.format(<<~"OUTPUT")
+    output = Canon.format_xml(<<~"OUTPUT")
           <?xml version="1.0" encoding="UTF-8"?>
       <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
       <bibdata type="standard">
@@ -189,7 +189,7 @@ RSpec.describe Metanorma::Iho do
       </metanorma>
     OUTPUT
 
-    expect(Xml::C14n.format(strip_guid(Asciidoctor
+    expect(Canon.format_xml(strip_guid(Asciidoctor
       .convert(input, *OPTIONS))))
       .to be_equivalent_to output
   end
@@ -292,14 +292,14 @@ RSpec.describe Metanorma::Iho do
       <sections/>
       </metanorma>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Asciidoctor
+    expect(Canon.format_xml(strip_guid(Asciidoctor
   .convert(input, *OPTIONS))))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
 
-    expect(Xml::C14n.format(strip_guid(Asciidoctor
+    expect(Canon.format_xml(strip_guid(Asciidoctor
       .convert(input.sub(":semantic-metadata-annex-informative: true\n", ""),
                *OPTIONS))))
-      .to be_equivalent_to Xml::C14n.format(output
+      .to be_equivalent_to Canon.format_xml(output
       .gsub("Annex 2 (Informative) Annex Title", "Annex 2 Annex Title")
       .sub(%r{<semantic-metadata>.*</semantic-metadata>}m, ""))
   end
@@ -392,9 +392,9 @@ RSpec.describe Metanorma::Iho do
       <sections/>
       </metanorma>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Asciidoctor
+    expect(Canon.format_xml(strip_guid(Asciidoctor
       .convert(input, *OPTIONS))))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes edition components" do
@@ -480,7 +480,7 @@ RSpec.describe Metanorma::Iho do
       == Section 1
     INPUT
 
-    output = Xml::C14n.format(<<~"OUTPUT")
+    output = Canon.format_xml(<<~"OUTPUT")
       #{BLANK_HDR}
                <preface><foreword id="_" obligation="informative">
            <title id="_">Foreword</title>
@@ -492,7 +492,7 @@ RSpec.describe Metanorma::Iho do
          </metanorma>
     OUTPUT
 
-    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to output
   end
 
@@ -550,7 +550,7 @@ RSpec.describe Metanorma::Iho do
 
     INPUT
 
-    output = Xml::C14n.format(<<~"OUTPUT")
+    output = Canon.format_xml(<<~"OUTPUT")
           #{BLANK_HDR}
       <sections> </sections>
       <annex id='_' obligation='normative'>
@@ -565,7 +565,7 @@ RSpec.describe Metanorma::Iho do
       </metanorma>
     OUTPUT
 
-    expect(Xml::C14n.format(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
+    expect(Canon.format_xml(strip_guid(Asciidoctor.convert(input, *OPTIONS))))
       .to be_equivalent_to output
   end
 
@@ -678,7 +678,7 @@ RSpec.describe Metanorma::Iho do
             - annex=I
       ----
     INPUT
-    output = Xml::C14n.format(<<~"OUTPUT")
+    output = Canon.format_xml(<<~"OUTPUT")
       <bibdata type="standard">
         <title type="main">Document title</title>
         <docidentifier primary="true" type="IHO">S-</docidentifier>
@@ -976,7 +976,7 @@ RSpec.describe Metanorma::Iho do
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
     xml = xml.at("//xmlns:bibdata")
-    expect(Xml::C14n.format(strip_guid(xml.to_xml)))
+    expect(Canon.format_xml(strip_guid(xml.to_xml)))
       .to be_equivalent_to output
   end
 end

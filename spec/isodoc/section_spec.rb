@@ -361,11 +361,11 @@ RSpec.describe IsoDoc::Iho do
          </bibliography>
       </iho-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
       .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes nested references and terms" do
@@ -749,11 +749,11 @@ RSpec.describe IsoDoc::Iho do
            </bibliography>
         </iho-standard>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::PresentationXMLConvert
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
           .new(presxml_options)
           .convert("test", input, true)
           .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 
   it "processes annexes and appendixes" do
@@ -1576,14 +1576,14 @@ RSpec.describe IsoDoc::Iho do
     pres_output = IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Xml::C14n.format(strip_guid(pres_output
+    expect(Canon.format_xml(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to Xml::C14n.format(presxml)
-    expect(Xml::C14n.format(strip_guid(IsoDoc::Iho::HtmlConvert.new({})
+      .to be_equivalent_to Canon.format_xml(presxml)
+    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::HtmlConvert.new({})
       .convert("test", pres_output, true)
       .gsub(%r{^.*<body}m, "<body")
       .gsub(%r{</body>.*}m, "</body>"))))
-      .to be_equivalent_to Xml::C14n.format(html)
+      .to be_equivalent_to Canon.format_xml(html)
   end
 
   it "inserts document history clause" do
@@ -1985,12 +1985,12 @@ RSpec.describe IsoDoc::Iho do
           </clause>
        </preface>
     OUTPUT
-    expect(Xml::C14n.format(strip_guid(Nokogiri::XML(
+    expect(Canon.format_xml(strip_guid(Nokogiri::XML(
       IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true),
     )
       .at("//xmlns:preface").to_xml)))
-      .to be_equivalent_to Xml::C14n.format(output)
+      .to be_equivalent_to Canon.format_xml(output)
   end
 end
