@@ -72,6 +72,11 @@ RSpec.describe IsoDoc::Iho do
         </commentperiod>
         </ext>
       </bibdata>
+      <metanorma-extension>
+      <semantic-metadata>
+      <stage-published>false</stage-published>
+      </semantic-metadata>
+      </metanorma-extension>
       <sections/>
       </iho-standard>
     INPUT
