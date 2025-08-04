@@ -2,7 +2,7 @@
 
 image:https://img.shields.io/gem/v/metanorma-iho.svg["Gem Version", link="https://rubygems.org/gems/metanorma-iho"]
 image:https://github.com/metanorma/metanorma-iso/workflows/rake/badge.svg["Build Status", link="https://github.com/metanorma/metanorma-iso/actions?workflow=rake"]
-image:https://codeclimate.com/github/metanorma/metanorma-iho/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-iho"]
+// image:https://codeclimate.com/github/metanorma/metanorma-iho/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-iho"]
 image:https://img.shields.io/github/issues-pr-raw/metanorma/metanorma-iho.svg["Pull Requests", link="https://github.com/metanorma/metanorma-iho/pulls"]
 image:https://img.shields.io/github/commits-since/metanorma/metanorma-iho/latest.svg["Commits since latest",link="https://github.com/metanorma/metanorma-iho/releases"]
 
