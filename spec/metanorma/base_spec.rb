@@ -167,6 +167,9 @@ RSpec.describe Metanorma::Iho do
         </ext>
       </bibdata>
                          <metanorma-extension>
+      <semantic-metadata>
+         <stage-published>false</stage-published>
+      </semantic-metadata>
            <presentation-metadata>
              <name>TOC Heading Levels</name>
              <value>2</value>
@@ -268,6 +271,9 @@ RSpec.describe Metanorma::Iho do
         </ext>
       </bibdata>
                          <metanorma-extension>
+                               <semantic-metadata>
+         <stage-published>true</stage-published>
+      </semantic-metadata>
            <semantic-metadata>
          <annex-informative>true</annex-informative>
       </semantic-metadata>
@@ -301,7 +307,7 @@ RSpec.describe Metanorma::Iho do
                *OPTIONS))))
       .to be_equivalent_to Canon.format_xml(output
       .gsub("Annex 2 (Informative) Annex Title", "Annex 2 Annex Title")
-      .sub(%r{<semantic-metadata>.*</semantic-metadata>}m, ""))
+      .sub(%r{<semantic-metadata>\s*<annex.*</semantic-metadata>}m, ""))
   end
 
   it "processes committee-draft" do
@@ -371,6 +377,9 @@ RSpec.describe Metanorma::Iho do
         </ext>
       </bibdata>
                          <metanorma-extension>
+           <semantic-metadata>
+         <stage-published>false</stage-published>
+      </semantic-metadata>
            <presentation-metadata>
              <name>TOC Heading Levels</name>
              <value>2</value>

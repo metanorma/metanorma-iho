@@ -1,0 +1,4 @@
+gem "metanorma-generic", git: "https://github.com/metanorma/metanorma-generic", branch: "features/metadata-unpublished"
+gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "features/metadata-unpublished"
+gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "features/metadata-unpublished"
+
