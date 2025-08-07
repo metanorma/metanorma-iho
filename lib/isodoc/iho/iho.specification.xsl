@@ -416,28 +416,11 @@
 														<fo:block-container font-size="0"> <!-- height="168mm" width="115mm"  -->
 															<fo:block>
 																<xsl:for-each select="/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = 'coverpage-image'][1]/mn:value/mn:image[1]">
-																	<xsl:choose>
-																		<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
-																			<fo:instream-foreign-object fox:alt-text="Image Front">
-																				<xsl:attribute name="content-height"><xsl:value-of select="$pageHeight"/>mm</xsl:attribute>
-																				<xsl:call-template name="getSVG"/>
-																			</fo:instream-foreign-object>
-																		</xsl:when>
-																		<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
-																			<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
-																		</xsl:when>
-																		<xsl:otherwise> <!-- bitmap image -->
-																			<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
-																			<xsl:if test="$coverimage_src != ''">
-																				<xsl:variable name="coverpage">
-																					<xsl:call-template name="getImageURL">
-																						<xsl:with-param name="src" select="$coverimage_src"/>
-																					</xsl:call-template>
-																				</xsl:variable>
-																				<fo:external-graphic src="{$coverpage}" width="155.5mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
-																			</xsl:if>
-																		</xsl:otherwise>
-																	</xsl:choose>
+
+																	<xsl:call-template name="insertPageImage">
+																		<xsl:with-param name="bitmap_width">155.5</xsl:with-param>
+																	</xsl:call-template>
+
 																</xsl:for-each>
 															</fo:block>
 														</fo:block-container>
@@ -14141,32 +14124,39 @@
 		<fo:block-container absolute-position="fixed" left="0mm" top="0mm" font-size="0" id="__internal_layout__coverpage{$suffix}_{$name}_{$number}_{generate-id()}">
 			<fo:block>
 				<xsl:for-each select="/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata[mn:name = $name][1]/mn:value/mn:image[$num]">
-					<xsl:choose>
-						<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
-							<fo:instream-foreign-object fox:alt-text="Image Front">
-								<xsl:attribute name="content-height"><xsl:value-of select="$pageHeight"/>mm</xsl:attribute>
-								<xsl:call-template name="getSVG"/>
-							</fo:instream-foreign-object>
-						</xsl:when>
-						<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
-							<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
-						</xsl:when>
-						<xsl:otherwise> <!-- bitmap image -->
-							<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
-							<xsl:if test="$coverimage_src != ''">
-								<xsl:variable name="coverpage">
-									<xsl:call-template name="getImageURL">
-										<xsl:with-param name="src" select="$coverimage_src"/>
-									</xsl:call-template>
-								</xsl:variable>
-								<!-- <xsl:variable name="coverpage" select="concat('url(file:',$basepath, 'coverpage1.png', ')')"/> --> <!-- for DEBUG -->
-								<fo:external-graphic src="{$coverpage}" width="{$pageWidth}mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
-							</xsl:if>
-						</xsl:otherwise>
-					</xsl:choose>
+
+					<xsl:call-template name="insertPageImage"/>
+
 				</xsl:for-each>
 			</fo:block>
 		</fo:block-container>
+	</xsl:template>
+
+	<xsl:template name="insertPageImage">
+		<xsl:param name="svg_content_height" select="$pageHeight"/>
+		<xsl:param name="bitmap_width" select="$pageWidth"/>
+		<xsl:choose>
+			<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
+				<fo:instream-foreign-object fox:alt-text="Image Front">
+					<xsl:attribute name="content-height"><xsl:value-of select="$svg_content_height"/>mm</xsl:attribute>
+					<xsl:call-template name="getSVG"/>
+				</fo:instream-foreign-object>
+			</xsl:when>
+			<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
+				<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
+			</xsl:when>
+			<xsl:otherwise> <!-- bitmap image -->
+				<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
+				<xsl:if test="$coverimage_src != ''">
+					<xsl:variable name="coverpage">
+						<xsl:call-template name="getImageURL">
+							<xsl:with-param name="src" select="$coverimage_src"/>
+						</xsl:call-template>
+					</xsl:variable>
+					<fo:external-graphic src="{$coverpage}" width="{$bitmap_width}mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
+				</xsl:if>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="getImageURL">
@@ -14594,6 +14584,14 @@
 				<xsl:otherwise>_</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
+	</xsl:template>
+
+	<xsl:template name="getCharByCodePoint">
+		<xsl:param name="codepoint"/>
+		<xsl:param name="radix">16</xsl:param>
+		<xsl:variable name="codepointInt" select="java:java.lang.Integer.parseInt($codepoint,$radix)"/>
+		<xsl:variable name="chars" select="java:java.lang.Character.toChars($codepointInt)"/>
+		<xsl:value-of select="java:java.lang.String.new($chars)"/>
 	</xsl:template>
 
 	<xsl:template name="substring-after-last">
