@@ -100,6 +100,48 @@ RSpec.describe Metanorma::Iho do
             <abbreviation>IHO</abbreviation>
           </organization>
         </contributor>
+      <contributor>
+         <role type="author">
+            <description>committee</description>
+         </role>
+         <organization>
+            <name>International Hydrographic Organization</name>
+            <subdivision type="Committee">
+               <name>hssc</name>
+            </subdivision>
+            <subdivision type="Workgroup">
+               <name>WG1</name>
+            </subdivision>
+         </organization>
+      </contributor>
+      <contributor>
+         <role type="author">
+            <description>committee</description>
+         </role>
+         <organization>
+            <name>International Hydrographic Organization</name>
+            <subdivision type="Committee">
+               <name>ircc</name>
+            </subdivision>
+            <subdivision type="Workgroup">
+               <name>WG2</name>
+            </subdivision>
+         </organization>
+      </contributor>
+      <contributor>
+         <role type="author">
+            <description>committee</description>
+         </role>
+         <organization>
+            <name>International Hydrographic Organization</name>
+            <subdivision type="Committee">
+               <name>hssc</name>
+            </subdivision>
+            <subdivision type="Workgroup">
+               <name>WG3</name>
+            </subdivision>
+         </organization>
+      </contributor>
         <contributor>
           <role type="publisher"/>
           <organization>
