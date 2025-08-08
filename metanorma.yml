@@ -46,6 +46,9 @@ stage_abbreviations:
   draft-implementation:
   in-force:
   retired:
+committee_types:
+  - committee
+  - workgroup
 doctypes:
   - standard
   - specification
