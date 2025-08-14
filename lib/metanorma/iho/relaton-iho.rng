@@ -16,17 +16,6 @@
         <value>regulation</value>
       </choice>
     </define>
-    <define name="editorialgroup">
-      <element name="editorialgroup">
-        <oneOrMore>
-          <choice>
-            <ref name="committee"/>
-            <ref name="workgroup"/>
-            <ref name="commission"/>
-          </choice>
-        </oneOrMore>
-      </element>
-    </define>
     <define name="structuredidentifier">
       <element name="structuredidentifier">
         <element name="docnumber">
@@ -60,38 +49,6 @@
       <ref name="commentperiod">
         <a:documentation>The period during which comments may be submitted to the document draft</a:documentation>
       </ref>
-    </optional>
-  </define>
-  <define name="committee">
-    <element name="committee">
-      <ref name="IHO_Group"/>
-    </element>
-  </define>
-  <define name="workgroup">
-    <element name="workgroup">
-      <ref name="IHO_Group"/>
-    </element>
-  </define>
-  <define name="commission">
-    <element name="commission">
-      <ref name="IHO_Group"/>
-    </element>
-  </define>
-  <define name="IHO_Group">
-    <optional>
-      <element name="name">
-        <text/>
-      </element>
-    </optional>
-    <element name="abbreviation">
-      <text/>
-    </element>
-    <optional>
-      <choice>
-        <ref name="committee"/>
-        <ref name="workgroup"/>
-        <ref name="commission"/>
-      </choice>
     </optional>
   </define>
   <define name="commentperiod">

@@ -18,6 +18,10 @@ module Metanorma
       end
 
       def metadata_ext(node, ext)
+        unless node.attr("workgroup")
+          @log.add("AsciiDoc Input", nil,
+                   "Missing workgroup attribute for document")
+        end
         super
         metadata_commentperiod(node, ext)
       end
@@ -28,38 +32,6 @@ module Metanorma
         xml.commentperiod do |c|
           c.from from
           c.to to if to
-        end
-      end
-
-      def metadata_committee(node, xml)
-        unless node.attr("workgroup")
-          @log.add("AsciiDoc Input", nil,
-                   "Missing workgroup attribute for document")
-          return
-        end
-        metadata_committee1(node, xml)
-      end
-
-      def metadata_committee1(node, xml)
-        xml.editorialgroup do |a|
-          a.committee do |n|
-            n.abbreviation node.attr("committee").upcase
-          end
-          a.workgroup do |n|
-            n.abbreviation node.attr("workgroup").upcase
-          end
-        end
-        i = 2
-        while node.attr("workgroup_#{i}")
-          xml.editorialgroup do |a|
-            a.committee do |n|
-              n.abbreviation node.attr("committee_#{i}").upcase
-            end
-            a.workgroup do |n|
-              n.abbreviation node.attr("workgroup_#{i}").upcase
-            end
-          end
-          i += 1
         end
       end
 
