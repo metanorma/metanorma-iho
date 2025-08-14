@@ -49,6 +49,7 @@ stage_abbreviations:
 committee_types:
   - committee
   - workgroup
+  - commission
 doctypes:
   - standard
   - specification
