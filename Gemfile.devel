@@ -1,4 +1,0 @@
-gem "metanorma-generic", git: "https://github.com/metanorma/metanorma-generic", branch: "fix/no-editorialgroup"
-gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "fix/no-editorialgroup"
-gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "main"
-
