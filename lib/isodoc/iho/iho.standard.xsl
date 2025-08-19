@@ -4685,6 +4685,8 @@
 			<xsl:when test="contains($element, 'block')">
 				<fo:block xsl:use-attribute-sets="example-p-style">
 
+					<xsl:call-template name="refine_example-p-style"/>
+
 					<xsl:apply-templates/>
 				</fo:block>
 			</xsl:when>
