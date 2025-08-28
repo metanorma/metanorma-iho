@@ -2914,6 +2914,9 @@
 	<xsl:attribute-set name="feedback-statement-style">
 	</xsl:attribute-set> <!-- feedback-statement-style -->
 
+	<xsl:template name="refine_feedback-statement-style">
+	</xsl:template>
+
 	<xsl:attribute-set name="feedback-statement-title-style">
 		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 	</xsl:attribute-set> <!-- feedback-statement-title-style -->
@@ -5031,6 +5034,9 @@
 
 	<xsl:template name="refine_table-container-style">
 		<xsl:param name="margin-side"/>
+		<xsl:if test="contains(translate(@style, ' ', ''), 'border:none')">
+			<xsl:attribute name="font-size">inherit</xsl:attribute>
+		</xsl:if>
 		<!-- end table block-container attributes -->
 	</xsl:template> <!-- refine_table-container-style -->
 
@@ -5130,6 +5136,9 @@
 
 		<xsl:if test="$lang = 'ar'">
 			<xsl:attribute name="padding-right">1mm</xsl:attribute>
+		</xsl:if>
+		<xsl:if test="contains(translate(ancestor::mn:table/@style, ' ', ''), 'border:none')">
+			<xsl:attribute name="padding-left">0mm</xsl:attribute>
 		</xsl:if>
 
 		<xsl:call-template name="setBordersTableArray"/>
