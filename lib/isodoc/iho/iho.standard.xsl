@@ -12105,10 +12105,32 @@
 				<xsl:when test="@level &gt;= 1 and @root = 'preface'">0mm</xsl:when>
 				<xsl:when test="@level &gt;= 1 and @root = 'annex' and not(@type = 'annex')">13mm</xsl:when>
 				<xsl:when test="@level &gt;= 1 and not(@type = 'annex')">
+					<!-- for default values, maximum digits for 2nd level is 4, for example 20.19, 
+						for 3rd level is 5, for example 2.15.12
+						if not, then increase -->
+					<xsl:variable name="default_value_">
+						<xsl:choose>
+							<xsl:when test="$toc_level = 3">12.9</xsl:when>
+							<xsl:when test="$toc_level &gt; 3">15</xsl:when>
+							<xsl:otherwise>10</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+					<xsl:variable name="default_value" select="number($default_value_)"/>
+					<xsl:variable name="root-style"><root-style xsl:use-attribute-sets="root-style"/></xsl:variable>
+					<xsl:variable name="font_size" select="normalize-space(translate(xalan:nodeset($root-style)/root-style/@font-size, 'pt', ''))"/>
+					<xsl:variable name="item_section_max">
+						<xsl:choose>
+							<xsl:when test="following-sibling::mnx:item"><xsl:value-of select="following-sibling::mnx:item[last()]/@section"/></xsl:when>
+							<xsl:otherwise><xsl:value-of select="@section"/></xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+					<!-- in em -->
+					<xsl:variable name="text_rt_width_em" select="java:org.metanorma.fop.Util.getStringWidthByFontSize($item_section_max, $font_main, $font_size)"/>
+					<!-- in mm, multiplier 3.175 for Arial em size -->
+					<xsl:variable name="text_rt_width_mm" select="number($text_rt_width_em) div 10 * 3.175 + 2"/>
 					<xsl:choose>
-						<xsl:when test="$toc_level = 3">12.9mm</xsl:when>
-						<xsl:when test="$toc_level &gt; 3">15mm</xsl:when>
-						<xsl:otherwise>10mm</xsl:otherwise>
+						<xsl:when test="$text_rt_width_mm &gt; $default_value"><xsl:value-of select="ceiling($text_rt_width_mm) + 1"/>mm</xsl:when>
+						<xsl:otherwise><xsl:value-of select="$default_value"/>mm</xsl:otherwise>
 					</xsl:choose>
 				</xsl:when>
 				<xsl:otherwise>0mm</xsl:otherwise>
