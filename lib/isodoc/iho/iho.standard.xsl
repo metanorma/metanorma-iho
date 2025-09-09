@@ -954,9 +954,18 @@
 		</xsl:variable>
 
 		<xsl:element name="{$element-name}">
-			<xsl:for-each select="parent::mn:clause">
-				<xsl:call-template name="setId"/>
-			</xsl:for-each>
+
+			<xsl:choose>
+				<xsl:when test="@type = 'floating-title' or @type = 'section-title'">
+					<xsl:copy-of select="@id"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:for-each select="parent::mn:clause">
+						<xsl:call-template name="setId"/>
+					</xsl:for-each>
+				</xsl:otherwise>
+			</xsl:choose>
+
 			<xsl:attribute name="font-size"><xsl:value-of select="$font-size"/></xsl:attribute>
 			<xsl:attribute name="font-weight">bold</xsl:attribute>
 			<xsl:attribute name="space-before">
@@ -2089,6 +2098,7 @@
 	<xsl:template match="mn:title[following-sibling::*[1][self::mn:fmt-title]]" mode="update_xml_step1"/>
 	<xsl:template match="mn:name[following-sibling::*[1][self::mn:fmt-name]]" mode="update_xml_step1"/>
 	<xsl:template match="mn:section-title[following-sibling::*[1][self::mn:p][@type = 'section-title' or @type = 'floating-title']]" mode="update_xml_step1"/>
+	<xsl:template match="mn:floating-title[following-sibling::*[1][self::mn:p][@type = 'section-title' or @type = 'floating-title']]" mode="update_xml_step1"/>
 	<!-- <xsl:template match="mn:preferred[following-sibling::*[not(local-name() = 'preferred')][1][local-name() = 'fmt-preferred']]" mode="update_xml_step1"/> -->
 	<xsl:template match="mn:preferred" mode="update_xml_step1"/>
 	<!-- <xsl:template match="mn:admitted[following-sibling::*[not(local-name() = 'admitted')][1][local-name() = 'fmt-admitted']]" mode="update_xml_step1"/> -->
@@ -2103,10 +2113,10 @@
 
 	<xsl:template match="mn:term[@unnumbered = 'true'][not(.//*[starts-with(local-name(), 'fmt-')])]" mode="update_xml_step1"/>
 
-	<xsl:template match="mn:p[@type = 'section-title' or @type = 'floating-title'][preceding-sibling::*[1][self::mn:section-title]]" mode="update_xml_step1">
+	<xsl:template match="mn:p[@type = 'section-title' or @type = 'floating-title'][preceding-sibling::*[1][self::mn:section-title or self::mn:floating-title]]" mode="update_xml_step1">
 		<xsl:copy>
 			<xsl:apply-templates select="@*" mode="update_xml_step1"/>
-			<xsl:copy-of select="preceding-sibling::*[1][self::mn:section-title]/@depth"/>
+			<xsl:copy-of select="preceding-sibling::*[1][self::mn:section-title or self::mn:floating-title]/@depth"/>
 			<xsl:apply-templates select="node()" mode="update_xml_step1"/>
 		</xsl:copy>
 	</xsl:template>
