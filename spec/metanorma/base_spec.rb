@@ -83,8 +83,8 @@ RSpec.describe Metanorma::Iho do
           <?xml version="1.0" encoding="UTF-8"?>
       <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
       <bibdata type="standard">
-        <title type="main">Main Title</title>
-        <title type="title-main">Main Title</title>
+        <title language="en" type="main">Main Title</title>
+        <title language="en" type="title-main">Main Title</title>
       <docidentifier primary="true" type="IHO">B-1000</docidentifier>
       <docnumber>1000</docnumber>
        <date type='implemented'>
@@ -239,12 +239,12 @@ RSpec.describe Metanorma::Iho do
     output = <<~OUTPUT
       <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
           <bibdata type="standard">
-             <title type="main">Main Title, Part 1: Part Title, Annex 2 (Informative) Annex Title, Appendix 3: Appendix Title, Supplement 4: Supplement Title</title>
-             <title type="title-main">Main Title</title>
-      <title type="title-appendix">Appendix 3: Appendix Title</title>
-      <title type="title-annex">Annex 2 (Informative) Annex Title</title>
-      <title type="title-part">Part 1: Part Title</title>
-      <title type="title-supplement">Supplement 4: Supplement Title</title>
+             <title language="en" type="main">Main Title, Part 1: Part Title, Annex 2 (Informative) Annex Title, Appendix 3: Appendix Title, Supplement 4: Supplement Title</title>
+             <title language="en" type="title-main">Main Title</title>
+      <title language="en" type="title-appendix">Appendix 3: Appendix Title</title>
+      <title language="en" type="title-annex">Annex 2 (Informative) Annex Title</title>
+      <title language="en" type="title-part">Part 1: Part Title</title>
+      <title language="en" type="title-supplement">Supplement 4: Supplement Title</title>
              <docidentifier primary="true" type="IHO">S-1000 Part 1 Appendix 3 Annex 2 Supplement 4</docidentifier>
              <docidentifier type="IHO-parent-document">S-1000</docidentifier>
              <docnumber>1000</docnumber>
@@ -348,8 +348,8 @@ RSpec.describe Metanorma::Iho do
     output = <<~OUTPUT
               <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
       <bibdata type="standard">
-            <title type="main">Main Title</title>
-      <title type="title-main">Main Title</title>
+      <title language="en" type="main">Main Title</title>
+      <title language="en" type="title-main">Main Title</title>
         <docidentifier primary="true" type="IHO">S-1000</docidentifier>
         <docnumber>1000</docnumber>
         <contributor>
@@ -707,7 +707,8 @@ RSpec.describe Metanorma::Iho do
     INPUT
     output = Canon.format_xml(<<~"OUTPUT")
       <bibdata type="standard">
-        <title type="main">Document title</title>
+         <title language="en" type="main">Document title</title>
+        <title language="en" type="title-main">Document title</title>
         <docidentifier primary="true" type="IHO">S-</docidentifier>
         <contributor>
           <role type="author"/>

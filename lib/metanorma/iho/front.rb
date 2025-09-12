@@ -45,13 +45,15 @@ module Metanorma
         super
       end
 
+      def title_main(node, xml)
+        title = node.attr("title") || node.attr("doctitle")
+        add_title_xml(xml, title, "en", "title-main")
+      end
+
       def title(node, xml)
         m = full_title_prep(node)
         full_title(m, xml)
-        title = node.attr("title")
-        xml.title **attr_code(type: "title-main") do |t1|
-          t1 << Metanorma::Utils::asciidoc_sub(title)
-        end
+        title_main(node, xml)
         %i(appendix annex part supplement).each do |w|
           typed_title(m, xml, w)
         end
@@ -61,9 +63,7 @@ module Metanorma
         metadata[type] or return
         title = full_title_part(metadata, type, TITLE_COMPONENTS[type][:id],
                                 TITLE_COMPONENTS[type][:info])
-        xml.title **attr_code(type: "title-#{type}") do |t1|
-          t1 << Metanorma::Utils::asciidoc_sub(title)
-        end
+        add_title_xml(xml, title, "en", "title-#{type}")
       end
 
       TITLE_COMPONENTS = {
@@ -79,9 +79,7 @@ module Metanorma
           acc << full_title_part(metadata, p, TITLE_COMPONENTS[p][:id],
                                  TITLE_COMPONENTS[p][:info])
         end
-        xml.title **attr_code(type: "main") do |t1|
-          t1 << Metanorma::Utils::asciidoc_sub(parts.compact.join(", "))
-        end
+        add_title_xml(xml, parts.compact.join(", "), "en", "main")
       end
 
       TITLE_ID_LABELS = { main: "", annex: "Annex", appendix: "Appendix",

@@ -101,7 +101,8 @@ BLANK_HDR = <<~"HDR".freeze
   <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
   <bibdata type="standard">
 
-   <title type="main">Document title</title>
+   <title language="en" type="main">Document title</title>
+   <title language="en" type="title-main">Document title</title>
    <docidentifier primary="true" type="IHO">S-</docidentifier>
     <contributor>
       <role type="author"/>
