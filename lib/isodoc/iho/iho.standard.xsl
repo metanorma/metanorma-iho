@@ -340,46 +340,54 @@
 
 						<xsl:for-each select=".//mn:page_sequence[not(parent::mn:preface)][normalize-space() != '' or .//mn:image or .//*[local-name() = 'svg']]">
 
-							<fo:page-sequence master-reference="document" format="1" force-page-count="end-on-even">
+							<xsl:variable name="page_sequence_content">
+								<xsl:apply-templates/>
+							</xsl:variable>
 
-								<xsl:attribute name="master-reference">
-									<xsl:text>document</xsl:text>
-									<xsl:call-template name="getPageSequenceOrientation"/>
-								</xsl:attribute>
+							<xsl:if test="xalan:nodeset($page_sequence_content)/node()">
 
-								<xsl:if test="position() = 1">
-									<xsl:attribute name="initial-page-number">1</xsl:attribute>
-								</xsl:if>
+								<fo:page-sequence master-reference="document" format="1" force-page-count="end-on-even">
 
-								<xsl:call-template name="insertFootnoteSeparatorCommon"/>
-								<xsl:call-template name="insertHeaderFooter">
-									<xsl:with-param name="title_header" select="$title_header"/>
-									<xsl:with-param name="docidentifier" select="$docidentifier"/>
-									<xsl:with-param name="edition" select="$edition"/>
-									<xsl:with-param name="month_year" select="$month_year"/>
-									<xsl:with-param name="orientation"><xsl:call-template name="getPageSequenceOrientation"/></xsl:with-param>
-								</xsl:call-template>
-								<fo:flow flow-name="xsl-region-body">
-									<fo:block-container>
+									<xsl:attribute name="master-reference">
+										<xsl:text>document</xsl:text>
+										<xsl:call-template name="getPageSequenceOrientation"/>
+									</xsl:attribute>
 
-										<!-- <fo:block font-size="16pt" font-weight="bold" margin-bottom="18pt" role="H1"><xsl:value-of select="$title-en"/></fo:block> -->
+									<xsl:if test="position() = 1">
+										<xsl:attribute name="initial-page-number">1</xsl:attribute>
+									</xsl:if>
 
-										<!-- <xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name()='clause'][@type='scope']" /> -->
-										<!-- Normative references  -->
-										<!-- <xsl:apply-templates select="/*/*[local-name()='bibliography']/*[local-name()='references'][@normative='true']" /> -->
-										<!-- Terms and definitions -->
-										<!-- <xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name()='terms']" />
-										<xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name()='definitions']" />
-										<xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name() != 'terms' and local-name() != 'definitions' and not(@type='scope')]" /> -->
+									<xsl:call-template name="insertFootnoteSeparatorCommon"/>
+									<xsl:call-template name="insertHeaderFooter">
+										<xsl:with-param name="title_header" select="$title_header"/>
+										<xsl:with-param name="docidentifier" select="$docidentifier"/>
+										<xsl:with-param name="edition" select="$edition"/>
+										<xsl:with-param name="month_year" select="$month_year"/>
+										<xsl:with-param name="orientation"><xsl:call-template name="getPageSequenceOrientation"/></xsl:with-param>
+									</xsl:call-template>
+									<fo:flow flow-name="xsl-region-body">
+										<fo:block-container>
 
-										<!-- <xsl:call-template name="processMainSectionsDefault"/> -->
+											<!-- <fo:block font-size="16pt" font-weight="bold" margin-bottom="18pt" role="H1"><xsl:value-of select="$title-en"/></fo:block> -->
 
-										<xsl:apply-templates/>
+											<!-- <xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name()='clause'][@type='scope']" /> -->
+											<!-- Normative references  -->
+											<!-- <xsl:apply-templates select="/*/*[local-name()='bibliography']/*[local-name()='references'][@normative='true']" /> -->
+											<!-- Terms and definitions -->
+											<!-- <xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name()='terms']" />
+											<xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name()='definitions']" />
+											<xsl:apply-templates select="/*/*[local-name()='sections']/*[local-name() != 'terms' and local-name() != 'definitions' and not(@type='scope')]" /> -->
 
-										<xsl:if test="$table_if = 'true'"><fo:block/></xsl:if>
-									</fo:block-container>
-								</fo:flow>
-							</fo:page-sequence>
+											<!-- <xsl:call-template name="processMainSectionsDefault"/> -->
+
+											<!--<xsl:apply-templates /> -->
+											<xsl:copy-of select="$page_sequence_content"/>
+
+											<xsl:if test="$table_if = 'true'"><fo:block/></xsl:if>
+										</fo:block-container>
+									</fo:flow>
+								</fo:page-sequence>
+							</xsl:if>
 					<!-- </xsl:if> -->
 						</xsl:for-each>
 					</xsl:for-each>
