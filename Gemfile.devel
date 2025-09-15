@@ -1,3 +1,0 @@
-gem "metanorma-generic", git: "https://github.com/metanorma/metanorma-generic", branch: "features/title-type-lang-template"
-gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "features/title-type-lang-template"
-gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "main"
