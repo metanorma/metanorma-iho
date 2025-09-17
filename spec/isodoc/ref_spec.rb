@@ -999,7 +999,7 @@ RSpec.describe IsoDoc do
                    <a href="#ISBN">[3]</a>
                    <a href="#ISSN">[4]</a>
                    <a href="#ISO16634">ISO 16634:--</a>
-                   <a href="#ref11">IETF RFC 10</a>
+                   <a href="#ref11">???</a>
                    <a href="#ref10">[6]</a>
                    <a href="#ref12">Citn</a>
                 </p>
