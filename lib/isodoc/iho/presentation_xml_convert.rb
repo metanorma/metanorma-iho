@@ -150,6 +150,17 @@ _bib)
         %w(&#x2022; &#x2014; &#x6f;)
       end
 
+      def bibliography_bibitem_tag1(ref, idx, norm)
+        ref.xpath(ns("./bibitem")).each do |b|
+          implicit_reference(b) and next
+          # display ordinal biblio tags whatever the supress-identifier status
+          # b["suppress_identifier"] == "true" and next
+          idx += 1 unless b["hidden"]
+          insert_biblio_tag(b, idx, !norm, standard?(b))
+        end
+        idx
+      end
+
       include Init
     end
   end

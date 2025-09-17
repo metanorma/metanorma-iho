@@ -121,7 +121,7 @@ RSpec.describe IsoDoc do
         <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
         <docidentifier type="metanorma">[10]</docidentifier>
       </bibitem>
-      <bibitem id="ref11">
+      <bibitem id="ref11" suppress_identifier="true">
         <title>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
         <docidentifier type="IETF">RFC 10</docidentifier>
       </bibitem>
@@ -143,11 +143,11 @@ RSpec.describe IsoDoc do
           </bibdata>
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title id="_" depth="1">Contents</fmt-title>
+                <fmt-title depth="1" id="_">Contents</fmt-title>
              </clause>
              <foreword id="_" displayorder="2">
                 <title id="_">Foreword</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <semx element="title" source="_">Foreword</semx>
                 </fmt-title>
                 <p id="_">
@@ -205,7 +205,7 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref bibitemid="ref11" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref target="ref11">IETF RFC 10</fmt-xref>
+                      <fmt-xref target="ref11">???</fmt-xref>
                    </semx>
                    <eref bibitemid="ref10" id="_"/>
                    <semx element="eref" source="_">
@@ -221,7 +221,7 @@ RSpec.describe IsoDoc do
           <sections>
              <references id="_" obligation="informative" normative="true" displayorder="3">
                 <title id="_">Normative References</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="_">1</semx>
                    </span>
@@ -236,6 +236,10 @@ RSpec.describe IsoDoc do
                 </fmt-xref-label>
                 <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
                 <bibitem id="ref1" type="standard">
+                   <biblio-tag>
+                      [1]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       S-57 edition 3.1.0: IHO Transfer Standard for Digital Hydrographic Data, International Hydrographic Organization (
                       <link target="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf" id="_">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</link>
@@ -292,12 +296,12 @@ RSpec.describe IsoDoc do
                    <validity>
                       <validityBegins>2000-11-01 00:00</validityBegins>
                    </validity>
-                   <biblio-tag>
-                      [1]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref2" type="standard">
+                   <biblio-tag>
+                      [2]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       NIST FIPS 186: Digital Signature Standard (DSS), National Institute of Standards and Technology, (
                       <link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30" id="_">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</link>
@@ -361,12 +365,12 @@ RSpec.describe IsoDoc do
                    <keyword>digital signatures</keyword>
                    <keyword>public-key cryptography</keyword>
                    <keyword>Federal Information Processing Standard</keyword>
-                   <biblio-tag>
-                      [2]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref3" type="standard">
+                   <biblio-tag>
+                      [3]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       NIST FIPS 180-1: Secure Hash Standard, National Institute of Standards and Technology, (
                       <link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17" id="_">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</link>
@@ -429,12 +433,12 @@ RSpec.describe IsoDoc do
                    <keyword>digital signatures</keyword>
                    <keyword>Federal Information Processing Standard</keyword>
                    <keyword>hash algorithm</keyword>
-                   <biblio-tag>
-                      [3]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref4" type="standard">
+                   <biblio-tag>
+                      [4]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       ITU-T X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (
                       <link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en" id="_">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</link>
@@ -524,20 +528,20 @@ RSpec.describe IsoDoc do
                       </bibitem>
                    </relation>
                    <place>Geneva</place>
-                   <biblio-tag>
-                      [4]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref5">
-                   <formattedref format="application/x-isodoc+xml">ZIP File Format Specification, PKWare Inc.</formattedref>
-                   <docidentifier type="metanorma-ordinal">[1]</docidentifier>
                    <biblio-tag>
                       [5]
                       <tab/>
                    </biblio-tag>
+                   <formattedref format="application/x-isodoc+xml">ZIP File Format Specification, PKWare Inc.</formattedref>
+                   <docidentifier type="metanorma-ordinal">[1]</docidentifier>
                 </bibitem>
                 <bibitem id="ref6" type="standard">
+                   <biblio-tag>
+                      [6]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       NIST FIPS 81: DES Modes of Operation, National Bureau of Standards, (
                       <link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02" id="_">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</link>
@@ -591,12 +595,12 @@ RSpec.describe IsoDoc do
                    <keyword>Federal Information Processing Standards</keyword>
                    <keyword>computer security</keyword>
                    <keyword>modes of operation</keyword>
-                   <biblio-tag>
-                      [6]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref7" type="standard">
+                   <biblio-tag>
+                      [7]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       IETF RFC 1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (
                       <link target="https://www.rfc-editor.org/info/rfc1423" id="_">https://www.rfc-editor.org/info/rfc1423</link>
@@ -644,12 +648,12 @@ RSpec.describe IsoDoc do
                       <number>1423</number>
                    </series>
                    <place>Fremont, CA</place>
-                   <biblio-tag>
-                      [7]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref8">
+                   <biblio-tag>
+                      [8]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref format="application/x-isodoc+xml">
                       Blowfish encryption algorithm, B. Schneier, Fast Software Encryption, Cambridge Security Workshop Proceedings (December 1993), Springer-Verlag, 1994, pp. 191-204 (
                       <link target="http://www.counterpane.com" id="_"/>
@@ -659,12 +663,12 @@ RSpec.describe IsoDoc do
                       )
                    </formattedref>
                    <docidentifier type="metanorma-ordinal">[2]</docidentifier>
-                   <biblio-tag>
-                      [8]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref9" type="standard">
+                   <biblio-tag>
+                      [9]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       ISO/IEC 13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (
                       <link target="https://www.iso.org/standard/37010.html" id="_">https://www.iso.org/standard/37010.html</link>
@@ -749,12 +753,12 @@ RSpec.describe IsoDoc do
                       </bibitem>
                    </relation>
                    <place>Geneva</place>
-                   <biblio-tag>
-                      [9]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ISO712" type="standard">
+                   <biblio-tag>
+                      [10]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>ISO 712: Cereals and cereal products, International Organization for Standardization.</formattedref>
                    <title format="text/plain">Cereals or cereal products</title>
                    <title type="main" format="text/plain">Cereals and cereal products</title>
@@ -766,12 +770,12 @@ RSpec.describe IsoDoc do
                          <name>International Organization for Standardization</name>
                       </organization>
                    </contributor>
-                   <biblio-tag>
-                      [10]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ISO16634" type="standard">
+                   <biblio-tag>
+                      [11]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</formattedref>
                    <title language="x" format="text/plain">Cereals, pulses, milled cereal products, xxxx, oilseeds and animal feeding stuffs</title>
                    <title language="en" format="text/plain">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
@@ -790,12 +794,12 @@ RSpec.describe IsoDoc do
                    <extent type="part">
                       <referenceFrom>all</referenceFrom>
                    </extent>
-                   <biblio-tag>
-                      [11]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ISO20483" type="standard">
+                   <biblio-tag>
+                      [12]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>ISO 20483:2013-2014: Cereals and pulses, International Organization for Standardization.</formattedref>
                    <title format="text/plain">Cereals and pulses</title>
                    <docidentifier type="ISO">ISO 20483:2013-2014</docidentifier>
@@ -810,12 +814,12 @@ RSpec.describe IsoDoc do
                          <name>International Organization for Standardization</name>
                       </organization>
                    </contributor>
-                   <biblio-tag>
-                      [12]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref11">
+                   <biblio-tag>
+                      [13]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref format="application/x-isodoc+xml">
                       <smallcap>Standard No I.C.C 167</smallcap>
                       .
@@ -829,10 +833,6 @@ RSpec.describe IsoDoc do
                    </formattedref>
                    <docidentifier type="ICC">ICC 167</docidentifier>
                    <docidentifier scope="biblio-tag">ICC 167</docidentifier>
-                   <biblio-tag>
-                      [13]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <note>
                    <fmt-name id="_">
@@ -850,10 +850,14 @@ RSpec.describe IsoDoc do
           <bibliography>
              <references id="_" obligation="informative" normative="false" displayorder="4">
                 <title id="_">Bibliography</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <semx element="title" source="_">Bibliography</semx>
                 </fmt-title>
                 <bibitem id="ISBN" type="book">
+                   <biblio-tag>
+                      [1]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       <em>Chemicals for analytical laboratory use</em>
                       . n.p.: n.d. ISBN: ISBN.
@@ -867,12 +871,12 @@ RSpec.describe IsoDoc do
                          <abbreviation>ISBN</abbreviation>
                       </organization>
                    </contributor>
-                   <biblio-tag>
-                      [1]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ISSN" type="journal">
+                   <biblio-tag>
+                      [2]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>
                       <em>Instruments for analytical laboratory use</em>
                       . n.d. ISSN: ISSN.
@@ -886,10 +890,6 @@ RSpec.describe IsoDoc do
                          <abbreviation>ISSN</abbreviation>
                       </organization>
                    </contributor>
-                   <biblio-tag>
-                      [2]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <note>
                    <fmt-name id="_">
@@ -914,6 +914,10 @@ RSpec.describe IsoDoc do
                    <p>This is another annotation of document ISSN.</p>
                 </note>
                 <bibitem id="ISO3696" type="standard">
+                   <biblio-tag>
+                      [3]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref>ISO 3696: Water for analytical laboratory use.</formattedref>
                    <title format="text/plain">Water for analytical laboratory use</title>
                    <docidentifier type="metanorma-ordinal">[5]</docidentifier>
@@ -925,12 +929,12 @@ RSpec.describe IsoDoc do
                          <abbreviation>ISO</abbreviation>
                       </organization>
                    </contributor>
-                   <biblio-tag>
-                      [3]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
                 <bibitem id="ref10">
+                   <biblio-tag>
+                      [4]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref format="application/x-isodoc+xml">
                       <smallcap>Standard No I.C.C 167</smallcap>
                       .
@@ -943,23 +947,21 @@ RSpec.describe IsoDoc do
                       )
                    </formattedref>
                    <docidentifier type="metanorma-ordinal">[6]</docidentifier>
-                   <biblio-tag>
-                      [4]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
-                <bibitem id="ref11">
-                   <formattedref>IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</formattedref>
-                   <title>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
-                   <docidentifier type="metanorma-ordinal">[7]</docidentifier>
-                   <docidentifier type="IETF">IETF RFC 10</docidentifier>
-                   <docidentifier scope="biblio-tag">IETF RFC 10</docidentifier>
+                <bibitem id="ref11" suppress_identifier="true">
                    <biblio-tag>
                       [5]
                       <tab/>
                    </biblio-tag>
+                   <formattedref>IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</formattedref>
+                   <title>Internet Calendaring and Scheduling Core Object Specification (iCalendar)</title>
+                   <docidentifier type="IETF">IETF RFC 10</docidentifier>
                 </bibitem>
                 <bibitem id="ref12">
+                   <biblio-tag>
+                      [6]
+                      <tab/>
+                   </biblio-tag>
                    <formattedref format="application/x-isodoc+xml">
                       CitationWorks. 2019.
                       <em>How to cite a reference</em>
@@ -968,10 +970,6 @@ RSpec.describe IsoDoc do
                    <docidentifier type="metanorma">[Citn]</docidentifier>
                    <docidentifier type="IETF">IETF RFC 20</docidentifier>
                    <docidentifier scope="biblio-tag">IETF RFC 20</docidentifier>
-                   <biblio-tag>
-                      [6]
-                      <tab/>
-                   </biblio-tag>
                 </bibitem>
              </references>
           </bibliography>
