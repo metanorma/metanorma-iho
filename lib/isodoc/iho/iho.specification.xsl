@@ -10925,7 +10925,7 @@
 
 	<xsl:template name="refine_fn-reference-style">
 		<!-- https://github.com/metanorma/metanorma-ieee/issues/595 -->
-		<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">,</xsl:if>
+		<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">, </xsl:if><!-- <xsl:if test="$namespace = 'bsi' or $namespace = 'pas'"></xsl:if> -->
 	</xsl:template> <!-- refine_fn-reference-style -->
 
 	<xsl:attribute-set name="fn-style">
@@ -11036,7 +11036,7 @@
 					<xsl:attribute name="padding-right">0.5mm</xsl:attribute>
 				</xsl:if> -->
 
-				<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">,</xsl:if>
+				<xsl:if test="preceding-sibling::node()[normalize-space() != ''][1][self::mn:fn]">, </xsl:if>
 
 				<xsl:call-template name="insert_basic_link">
 					<xsl:with-param name="element">
