@@ -210,47 +210,12 @@
 						<xsl:with-param name="month_year" select="$month_year"/>
 					</xsl:call-template>
 
-					<xsl:choose>
-						<xsl:when test="/mn:metanorma/mn:boilerplate/*[not(self::mn:feedback-statement)]">
-							<fo:page-sequence master-reference="preface" format="i" force-page-count="no-force">
-								<xsl:call-template name="insertHeaderFooter">
-									<xsl:with-param name="title_header" select="$title_header"/>
-									<xsl:with-param name="docidentifier" select="$docidentifier"/>
-									<xsl:with-param name="edition" select="$edition"/>
-									<xsl:with-param name="month_year" select="$month_year"/>
-									<xsl:with-param name="font-weight">normal</xsl:with-param>
-								</xsl:call-template>
-								<fo:flow flow-name="xsl-region-body">
-									<fo:block-container margin-left="-1.5mm" margin-right="-1mm">
-										<fo:block-container margin-left="0mm" margin-right="0mm" border="0.5pt solid black">
-											<fo:block-container margin-top="6.5mm" margin-left="7.5mm" margin-right="8.5mm" margin-bottom="7.5mm">
-												<fo:block-container margin="0">
-													<fo:block text-align="justify">
-														<xsl:apply-templates select="/mn:metanorma/mn:boilerplate/*[not(self::mn:feedback-statement)]"/>
-													</fo:block>
-												</fo:block-container>
-											</fo:block-container>
-										</fo:block-container>
-									</fo:block-container>
-								</fo:flow>
-							</fo:page-sequence>
-						</xsl:when>
-						<xsl:otherwise>
-							<!-- https://github.com/metanorma/metanorma-iho/issues/293:
-								If the publication has no copyright boxed note (normally on page ii of the publication), page ii should be "Page intentionally left blank". -->
-							<fo:page-sequence master-reference="blankpage" format="i" force-page-count="no-force">
-								<xsl:call-template name="insertHeaderFooterBlank">
-									<xsl:with-param name="title_header" select="$title_header"/>
-									<xsl:with-param name="docidentifier" select="$docidentifier"/>
-									<xsl:with-param name="edition" select="$edition"/>
-									<xsl:with-param name="month_year" select="$month_year"/>
-								</xsl:call-template>
-								<fo:flow flow-name="xsl-region-body">
-									<fo:block/>
-								</fo:flow>
-							</fo:page-sequence>
-						</xsl:otherwise>
-					</xsl:choose>
+					<xsl:call-template name="inner-cover-page">
+						<xsl:with-param name="title_header" select="$title_header"/>
+						<xsl:with-param name="docidentifier" select="$docidentifier"/>
+						<xsl:with-param name="edition" select="$edition"/>
+						<xsl:with-param name="month_year" select="$month_year"/>
+					</xsl:call-template>
 
 					<xsl:variable name="updated_xml_with_pages">
 						<xsl:call-template name="processPrefaceAndMainSectionsIHO_items"/>
@@ -624,6 +589,54 @@
 		<!-- End Cover Page -->
 		<!-- =========================== -->
 		<!-- =========================== -->
+	</xsl:template>
+
+	<xsl:template name="inner-cover-page">
+		<xsl:param name="title_header"/>
+		<xsl:param name="docidentifier"/>
+		<xsl:param name="edition"/>
+		<xsl:param name="month_year"/>
+		<xsl:choose>
+			<xsl:when test="/mn:metanorma/mn:boilerplate/*[not(self::mn:feedback-statement)]">
+				<fo:page-sequence master-reference="preface" format="i" force-page-count="no-force">
+					<xsl:call-template name="insertHeaderFooter">
+						<xsl:with-param name="title_header" select="$title_header"/>
+						<xsl:with-param name="docidentifier" select="$docidentifier"/>
+						<xsl:with-param name="edition" select="$edition"/>
+						<xsl:with-param name="month_year" select="$month_year"/>
+						<xsl:with-param name="font-weight">normal</xsl:with-param>
+					</xsl:call-template>
+					<fo:flow flow-name="xsl-region-body">
+						<fo:block-container margin-left="-1.5mm" margin-right="-1mm">
+							<fo:block-container margin-left="0mm" margin-right="0mm" border="0.5pt solid black">
+								<fo:block-container margin-top="6.5mm" margin-left="7.5mm" margin-right="8.5mm" margin-bottom="7.5mm">
+									<fo:block-container margin="0">
+										<fo:block text-align="justify">
+											<xsl:apply-templates select="/mn:metanorma/mn:boilerplate/*[not(self::mn:feedback-statement)]"/>
+										</fo:block>
+									</fo:block-container>
+								</fo:block-container>
+							</fo:block-container>
+						</fo:block-container>
+					</fo:flow>
+				</fo:page-sequence>
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- https://github.com/metanorma/metanorma-iho/issues/293:
+					If the publication has no copyright boxed note (normally on page ii of the publication), page ii should be "Page intentionally left blank". -->
+				<fo:page-sequence master-reference="blankpage" format="i" force-page-count="no-force">
+					<xsl:call-template name="insertHeaderFooterBlank">
+						<xsl:with-param name="title_header" select="$title_header"/>
+						<xsl:with-param name="docidentifier" select="$docidentifier"/>
+						<xsl:with-param name="edition" select="$edition"/>
+						<xsl:with-param name="month_year" select="$month_year"/>
+					</xsl:call-template>
+					<fo:flow flow-name="xsl-region-body">
+						<fo:block/>
+					</fo:flow>
+				</fo:page-sequence>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template name="insertListOf_Title">
