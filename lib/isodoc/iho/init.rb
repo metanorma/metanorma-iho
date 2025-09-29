@@ -24,7 +24,7 @@ module IsoDoc
 
       def bibrenderer(options = {})
         ::Relaton::Render::Iho::General.new(options
-          .merge(language: @lang, i18nhash: @i18n.get))
+          .merge(language: @lang, script: @script, i18nhash: @i18n.get))
       end
 
       def info(isoxml, out)
