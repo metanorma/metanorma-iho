@@ -46,7 +46,7 @@ module Metanorma
       end
 
       def title_main(node, xml)
-        title = node.attr("title") || node.attr("doctitle")
+        title = node.attr("title") or return
         add_title_xml(xml, title, "en", "title-main")
       end
 
@@ -57,6 +57,7 @@ module Metanorma
         %i(appendix annex part supplement).each do |w|
           typed_title(m, xml, w)
         end
+        title_fallback(node, xml)
       end
 
       def typed_title(metadata, xml, type)

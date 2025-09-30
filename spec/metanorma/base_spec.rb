@@ -708,7 +708,6 @@ RSpec.describe Metanorma::Iho do
     output = Canon.format_xml(<<~"OUTPUT")
       <bibdata type="standard">
          <title language="en" type="main">Document title</title>
-        <title language="en" type="title-main">Document title</title>
         <docidentifier primary="true" type="IHO">S-</docidentifier>
         <contributor>
           <role type="author"/>
