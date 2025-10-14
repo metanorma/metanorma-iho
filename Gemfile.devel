@@ -1,0 +1,1 @@
+gem "isodoc-i18n", git: "https://github.com/metanorma/isodoc-i18n", branch: "fix/multiple-i18n-yaml"
