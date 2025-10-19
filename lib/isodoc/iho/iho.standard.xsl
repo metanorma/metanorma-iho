@@ -1049,57 +1049,15 @@
 				<xsl:otherwise>fo:block</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+
+		<xsl:variable name="p_styles">
+			<styles xsl:use-attribute-sets="p-style">
+				<xsl:call-template name="refine_p-style"><xsl:with-param name="element-name" select="$element-name"/></xsl:call-template>
+			</styles>
+		</xsl:variable>
+
 		<xsl:element name="{$element-name}">
-			<xsl:attribute name="text-align">
-				<xsl:choose>
-					<xsl:when test="ancestor::mn:quote">justify</xsl:when>
-					<xsl:when test="ancestor::mn:feedback-statement">right</xsl:when>
-					<xsl:when test="ancestor::mn:boilerplate and not(@align)">justify</xsl:when>
-					<xsl:when test="@align = 'justified'">justify</xsl:when>
-					<xsl:when test="@align"><xsl:value-of select="@align"/></xsl:when>
-					<xsl:when test="ancestor::mn:td/@align"><xsl:value-of select="ancestor::mn:td/@align"/></xsl:when>
-					<xsl:when test="ancestor::mn:th/@align"><xsl:value-of select="ancestor::mn:th/@align"/></xsl:when>
-					<xsl:otherwise>justify</xsl:otherwise>
-				</xsl:choose>
-			</xsl:attribute>
-			<xsl:call-template name="setKeepAttributes"/>
-			<xsl:attribute name="space-after">6pt</xsl:attribute>
-			<xsl:if test="parent::mn:dd">
-				<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="ancestor::*[2][self::mn:license-statement] and not(following-sibling::mn:p)">
-				<xsl:attribute name="space-after">0pt</xsl:attribute>
-			</xsl:if>
-			<xsl:attribute name="line-height">115%</xsl:attribute>
-			<!-- <xsl:attribute name="border">1pt solid red</xsl:attribute> -->
-			<xsl:if test="ancestor::mn:boilerplate and not(ancestor::mn:feedback-statement)">
-				<xsl:attribute name="line-height">125%</xsl:attribute>
-				<xsl:attribute name="space-after">14pt</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="following-sibling::*[1][self::mn:ol or self::mn:ul or self::mn:note or self::mn:termnote or self::mn:example or self::mn:dl]">
-				<xsl:attribute name="space-after">3pt</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="following-sibling::*[1][self::mn:dl]">
-				<xsl:attribute name="space-after">6pt</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="ancestor::mn:quote">
-				<xsl:attribute name="line-height">130%</xsl:attribute>
-				<!-- <xsl:attribute name="margin-bottom">12pt</xsl:attribute> -->
-			</xsl:if>
-
-			<xsl:if test="ancestor::*[self::mn:recommendation or self::mn:requirement or self::mn:permission] and    not(following-sibling::*)">
-				<xsl:attribute name="space-after">0pt</xsl:attribute>
-			</xsl:if>
-
-			<xsl:if test="ancestor::mn:li and ancestor::mn:table">
-				<xsl:attribute name="space-after">0pt</xsl:attribute>
-			</xsl:if>
-
-			<xsl:if test=".//mn:fn">
-				<xsl:attribute name="line-height-shift-adjustment">disregard-shifts</xsl:attribute>
-			</xsl:if>
-
-			<xsl:copy-of select="@id"/>
+			<xsl:copy-of select="xalan:nodeset($p_styles)/styles/@*"/>
 
 			<xsl:apply-templates>
 				<xsl:with-param name="split_keep-within-line" select="$split_keep-within-line"/>
@@ -13550,10 +13508,65 @@
 	</xsl:template>
 
 	<xsl:attribute-set name="p-style">
+		<xsl:attribute name="space-after">6pt</xsl:attribute>
+		<xsl:attribute name="line-height">115%</xsl:attribute>
 	</xsl:attribute-set> <!-- p-style -->
 
 	<xsl:template name="refine_p-style">
 		<xsl:param name="element-name"/>
+		<xsl:param name="margin"/>
+		<xsl:attribute name="text-align">
+			<xsl:choose>
+				<xsl:when test="ancestor::mn:quote">justify</xsl:when>
+				<xsl:when test="ancestor::mn:feedback-statement">right</xsl:when>
+				<xsl:when test="ancestor::mn:boilerplate and not(@align)">justify</xsl:when>
+				<xsl:when test="@align = 'justified'">justify</xsl:when>
+				<xsl:when test="@align"><xsl:value-of select="@align"/></xsl:when>
+				<xsl:when test="ancestor::mn:td/@align"><xsl:value-of select="ancestor::mn:td/@align"/></xsl:when>
+				<xsl:when test="ancestor::mn:th/@align"><xsl:value-of select="ancestor::mn:th/@align"/></xsl:when>
+				<xsl:otherwise>justify</xsl:otherwise>
+			</xsl:choose>
+		</xsl:attribute>
+		<xsl:call-template name="setKeepAttributes"/>
+
+		<xsl:if test="parent::mn:dd">
+			<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
+		</xsl:if>
+		<xsl:if test="ancestor::*[2][self::mn:license-statement] and not(following-sibling::mn:p)">
+			<xsl:attribute name="space-after">0pt</xsl:attribute>
+		</xsl:if>
+
+		<!-- <xsl:attribute name="border">1pt solid red</xsl:attribute> -->
+		<xsl:if test="ancestor::mn:boilerplate and not(ancestor::mn:feedback-statement)">
+			<xsl:attribute name="line-height">125%</xsl:attribute>
+			<xsl:attribute name="space-after">14pt</xsl:attribute>
+		</xsl:if>
+		<xsl:if test="following-sibling::*[1][self::mn:ol or self::mn:ul or self::mn:note or self::mn:termnote or self::mn:example or self::mn:dl]">
+			<xsl:attribute name="space-after">3pt</xsl:attribute>
+		</xsl:if>
+		<xsl:if test="following-sibling::*[1][self::mn:dl]">
+			<xsl:attribute name="space-after">6pt</xsl:attribute>
+		</xsl:if>
+		<xsl:if test="ancestor::mn:quote">
+			<xsl:attribute name="line-height">130%</xsl:attribute>
+			<!-- <xsl:attribute name="margin-bottom">12pt</xsl:attribute> -->
+		</xsl:if>
+
+		<xsl:if test="ancestor::*[self::mn:recommendation or self::mn:requirement or self::mn:permission] and    not(following-sibling::*)">
+			<xsl:attribute name="space-after">0pt</xsl:attribute>
+		</xsl:if>
+
+		<xsl:if test="ancestor::mn:li and ancestor::mn:table">
+			<xsl:attribute name="space-after">0pt</xsl:attribute>
+		</xsl:if>
+
+		<xsl:if test=".//mn:fn">
+			<xsl:attribute name="line-height-shift-adjustment">disregard-shifts</xsl:attribute>
+		</xsl:if>
+
+		<xsl:copy-of select="@id"/>
+		<!-- $namespace = 'iho' -->
+
 	</xsl:template> <!-- refine_p-style -->
 
 	<xsl:template name="processPrefaceSectionsDefault">
