@@ -19,8 +19,7 @@ module Metanorma
 
       def metadata_ext(node, ext)
         unless node.attr("workgroup")
-          @log.add("AsciiDoc Input", nil,
-                   "Missing workgroup attribute for document")
+          @log.add("IHO_1", nil)
         end
         super
         metadata_commentperiod(node, ext)

@@ -37,3 +37,5 @@ module Metanorma
     end
   end
 end
+
+require_relative "log"
