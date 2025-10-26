@@ -960,19 +960,6 @@
 
 	<xsl:template match="mn:fmt-title" name="title">
 
-		<xsl:variable name="level">
-			<xsl:call-template name="getLevel"/>
-		</xsl:variable>
-
-		<xsl:variable name="font-size">
-			<xsl:choose>
-				<xsl:when test="$level = 1">12pt</xsl:when>
-				<xsl:when test="$level = 2">11pt</xsl:when>
-				<xsl:when test="$level &gt;= 3">10pt</xsl:when>
-				<xsl:otherwise>12pt</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-
 		<xsl:variable name="element-name">
 			<xsl:choose>
 				<xsl:when test="../@inline-header = 'true'">fo:inline</xsl:when>
@@ -980,58 +967,20 @@
 			</xsl:choose>
 		</xsl:variable>
 
+		<xsl:variable name="title_styles">
+			<styles xsl:use-attribute-sets="title-style"><xsl:call-template name="refine_title-style"/></styles>
+		</xsl:variable>
+
 		<xsl:element name="{$element-name}">
-
-			<xsl:choose>
-				<xsl:when test="@type = 'floating-title' or @type = 'section-title'">
-					<xsl:copy-of select="@id"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:for-each select="parent::mn:clause">
-						<xsl:call-template name="setId"/>
-					</xsl:for-each>
-				</xsl:otherwise>
-			</xsl:choose>
-
-			<xsl:attribute name="font-size"><xsl:value-of select="$font-size"/></xsl:attribute>
-			<xsl:attribute name="font-weight">bold</xsl:attribute>
-			<xsl:attribute name="space-before">
-				<xsl:choose>
-					<xsl:when test="$level = 1">24pt</xsl:when>
-					<xsl:when test="$level = 2 and ../preceding-sibling::*[1][self::mn:fmt-title]">10pt</xsl:when>
-					<xsl:when test="$level = 2">24pt</xsl:when>
-					<xsl:when test="$level &gt;= 3">6pt</xsl:when>
-					<xsl:when test="ancestor::mn:preface">8pt</xsl:when>
-					<xsl:when test="$level = ''">6pt</xsl:when><!-- 13.5pt -->
-					<xsl:otherwise>12pt</xsl:otherwise>
-				</xsl:choose>
-			</xsl:attribute>
-			<xsl:attribute name="space-after">
-				<xsl:choose>
-					<xsl:when test="$level &gt;= 3">6pt</xsl:when>
-					<xsl:otherwise>10pt</xsl:otherwise>
-				</xsl:choose>
-			</xsl:attribute>
-			<!-- <xsl:attribute name="margin-bottom">10pt</xsl:attribute> -->
-
-			<xsl:attribute name="keep-with-next">always</xsl:attribute>
-
-			<xsl:attribute name="role">H<xsl:value-of select="$level"/></xsl:attribute>
-
-			<xsl:if test="../@id = '_document_history' or . = 'Document History'">
-				<xsl:attribute name="text-align">center</xsl:attribute>
-			</xsl:if>
+			<xsl:copy-of select="xalan:nodeset($title_styles)/styles/@*"/>
 
 			<xsl:apply-templates/>
 			<xsl:apply-templates select="following-sibling::*[1][mn:variant-title][@type = 'sub']" mode="subtitle"/>
 		</xsl:element>
 
 		<xsl:if test="$element-name = 'fo:inline' and not(following-sibling::mn:p)">
-			<fo:block> <!-- margin-bottom="12pt" -->
-				<xsl:value-of select="$linebreak"/>
-			</fo:block>
+			<fo:block><xsl:value-of select="$linebreak"/></fo:block>
 		</xsl:if>
-
 	</xsl:template>
 	<!-- ====== -->
 	<!-- ====== -->
@@ -13568,6 +13517,51 @@
 		<!-- $namespace = 'iho' -->
 
 	</xsl:template> <!-- refine_p-style -->
+
+	<xsl:attribute-set name="title-style">
+		<!-- Note: font-size for level 1 title -->
+		<xsl:attribute name="font-size">12pt</xsl:attribute>
+		<xsl:attribute name="font-weight">bold</xsl:attribute>
+		<xsl:attribute name="space-before">24pt</xsl:attribute>
+		<xsl:attribute name="space-after">10pt</xsl:attribute>
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
+	</xsl:attribute-set> <!-- title-style -->
+
+	<xsl:template name="refine_title-style">
+		<xsl:param name="element-name"/>
+		<xsl:variable name="level">
+			<xsl:call-template name="getLevel"/>
+		</xsl:variable>
+		<xsl:choose>
+			<xsl:when test="@type = 'floating-title' or @type = 'section-title'">
+				<xsl:copy-of select="@id"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:for-each select="parent::mn:clause">
+					<xsl:call-template name="setId"/>
+				</xsl:for-each>
+			</xsl:otherwise>
+		</xsl:choose>
+
+		<xsl:if test="$level = 2">
+			<xsl:attribute name="font-size">11pt</xsl:attribute>
+			<xsl:attribute name="space-before">24pt</xsl:attribute>
+			<xsl:if test="../preceding-sibling::*[1][self::mn:fmt-title]">
+				<xsl:attribute name="space-before">10pt</xsl:attribute>
+			</xsl:if>
+		</xsl:if>
+		<xsl:if test="$level &gt;= 3">
+			<xsl:attribute name="font-size">10pt</xsl:attribute>
+			<xsl:attribute name="space-before">6pt</xsl:attribute>
+			<xsl:attribute name="space-after">6pt</xsl:attribute>
+		</xsl:if>
+
+		<xsl:if test="../@id = '_document_history' or . = 'Document History'">
+			<xsl:attribute name="text-align">center</xsl:attribute>
+		</xsl:if>
+		<!-- $namespace = 'iho' -->
+		<xsl:attribute name="role">H<xsl:value-of select="$level"/></xsl:attribute>
+	</xsl:template> <!-- refine_title-style -->
 
 	<xsl:template name="processPrefaceSectionsDefault">
 		<xsl:for-each select="/*/mn:preface/*[not(self::mn:note or self::mn:admonition)]">
