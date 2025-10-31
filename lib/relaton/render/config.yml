@@ -1,5 +1,5 @@
 template:
-  standard: "{{ authoritative_identifier | first }} edition_{{ edition }} : {{ title }}, {{ creatornames }}, {{role}}, {{ publisher }} ({{ uri }}) ." 
+  standard: "{{ authoritative_identifier | first }} {{ edition | downcase }} : {{ title }}$$$ {{ creatornames }}$$$ {{role}}$$$ {{ publisher }} ({{ uri }})" 
   misc: standard
 nametemplate:
   one: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{surname[0] }} {{initials[0]}}{% endif %}"

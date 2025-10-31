@@ -2,3 +2,5 @@ table_of_contents: Contents
 clause: Section
 subclause: Clause
 dochistory: Document History
+punct:
+  biblio-field-delimiter: ", "
