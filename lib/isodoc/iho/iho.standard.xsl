@@ -921,25 +921,6 @@
 	<!-- title      -->
 	<!-- ====== -->
 
-	<xsl:template match="mn:annex/mn:fmt-title" name="annex_title">
-		<fo:block xsl:use-attribute-sets="annex-title-style">
-
-			<xsl:call-template name="refine_annex-title-style"/>
-
-			<xsl:apply-templates/>
-			<xsl:apply-templates select="following-sibling::*[1][mn:variant-title][@type = 'sub']" mode="subtitle"/>
-		</fo:block>
-	</xsl:template>
-
-	<xsl:template match="mn:bibliography/mn:references[not(@normative='true')]/mn:fmt-title">
-		<fo:block xsl:use-attribute-sets="references-non-normative-title-style">
-
-			<xsl:call-template name="refine_references-non-normative-title-style"/>
-
-			<xsl:apply-templates/>
-		</fo:block>
-	</xsl:template>
-
 	<xsl:template match="mn:clause" priority="3">
 		<xsl:if test="parent::mn:preface or (parent::mn:page_sequence and local-name(../..) = 'preface')">
 			<fo:block break-after="page"/>
@@ -11316,7 +11297,7 @@
 	<!-- END Admonition -->
 	<!-- ================ -->
 
-	<xsl:attribute-set name="references-non-normative-title-style">
+	<xsl:attribute-set name="bibliography-title-style">
 		<xsl:attribute name="font-size">16pt</xsl:attribute>
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
 		<xsl:attribute name="text-align">center</xsl:attribute>
@@ -11326,7 +11307,7 @@
 		<xsl:attribute name="role">H1</xsl:attribute>
 	</xsl:attribute-set>
 
-	<xsl:template name="refine_references-non-normative-title-style">
+	<xsl:template name="refine_bibliography-title-style">
 	</xsl:template>
 
 	<!-- bibitem in Normative References (references/@normative="true") -->
@@ -13439,11 +13420,12 @@
 	<!-- ===================================== -->
 
 	<xsl:attribute-set name="annex-title-style">
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		<xsl:attribute name="font-size">12pt</xsl:attribute>
 		<xsl:attribute name="font-weight">bold</xsl:attribute>
 		<xsl:attribute name="text-align">center</xsl:attribute>
+		<xsl:attribute name="space-before">0</xsl:attribute>
 		<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
-		<xsl:attribute name="keep-with-next">always</xsl:attribute>
 		<xsl:attribute name="role">H1</xsl:attribute>
 	</xsl:attribute-set> <!-- annex-title-style -->
 
@@ -13558,6 +13540,20 @@
 
 		<xsl:if test="../@id = '_document_history' or . = 'Document History'">
 			<xsl:attribute name="text-align">center</xsl:attribute>
+		</xsl:if>
+
+		<xsl:if test="parent::mn:annex"><!-- Annex title -->
+			<xsl:variable name="annex_title_styles">
+				<styles xsl:use-attribute-sets="annex-title-style"><xsl:call-template name="refine_annex-title-style"/></styles>
+			</xsl:variable>
+			<xsl:copy-of select="xalan:nodeset($annex_title_styles)/styles/@*"/>
+		</xsl:if>
+
+		<xsl:if test="parent::mn:references[not(@normative='true')] and ancestor::mn:bibliography">
+			<xsl:variable name="bibliography_title_styles">
+				<styles xsl:use-attribute-sets="bibliography-title-style"><xsl:call-template name="refine_bibliography-title-style"/></styles>
+			</xsl:variable>
+			<xsl:copy-of select="xalan:nodeset($bibliography_title_styles)/styles/@*"/>
 		</xsl:if>
 		<!-- $namespace = 'iho' -->
 		<xsl:attribute name="role">H<xsl:value-of select="$level"/></xsl:attribute>
