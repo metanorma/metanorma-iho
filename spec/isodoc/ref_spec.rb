@@ -242,10 +242,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                    <formattedref>
                       S-57 edition 3.1.0: IHO Transfer Standard for Digital Hydrographic Data, International Hydrographic Organization (
-                      <link target="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf" id="_">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</link>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</fmt-link>
-                      </semx>
+                      <fmt-link target="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</fmt-link>
                       ).
                    </formattedref>
                    <fetched/>
@@ -304,10 +301,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                    <formattedref>
                       NIST FIPS 186: Digital Signature Standard (DSS), National Institute of Standards and Technology, (
-                      <link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30" id="_">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</link>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</fmt-link>
-                      </semx>
+                      <fmt-link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</fmt-link>
                       ).
                    </formattedref>
                    <fetched/>
@@ -373,10 +367,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                    <formattedref>
                       NIST FIPS 180-1: Secure Hash Standard, National Institute of Standards and Technology, (
-                      <link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17" id="_">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</link>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</fmt-link>
-                      </semx>
+                      <fmt-link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</fmt-link>
                       ).
                    </formattedref>
                    <fetched/>
@@ -441,10 +432,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                    <formattedref>
                       ITU-T X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (
-                      <link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en" id="_">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</link>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</fmt-link>
-                      </semx>
+                      <fmt-link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</fmt-link>
                       ).
                    </formattedref>
                    <fetched/>
@@ -544,10 +532,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                    <formattedref>
                       NIST FIPS 81: DES Modes of Operation, National Bureau of Standards, (
-                      <link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02" id="_">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</link>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</fmt-link>
-                      </semx>
+                      <fmt-link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</fmt-link>
                       ).
                    </formattedref>
                    <fetched/>
@@ -603,10 +588,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                    <formattedref>
                       IETF RFC 1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (
-                      <link target="https://www.rfc-editor.org/info/rfc1423" id="_">https://www.rfc-editor.org/info/rfc1423</link>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</fmt-link>
-                      </semx>
+                      <fmt-link target="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</fmt-link>
                       ).
                    </formattedref>
                    <fetched/>
@@ -671,10 +653,7 @@ RSpec.describe IsoDoc do
                    </biblio-tag>
                    <formattedref>
                       ISO/IEC 13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (
-                      <link target="https://www.iso.org/standard/37010.html" id="_">https://www.iso.org/standard/37010.html</link>
-                      <semx element="link" source="_">
-                         <fmt-link target="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</fmt-link>
-                      </semx>
+                      <fmt-link target="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</fmt-link>
                       ).
                    </formattedref>
                    <fetched/>
