@@ -12,8 +12,8 @@ module Metanorma
       def metadata_series(node, xml)
         series = node.attr("series") or return
         xml.series type: "main" do |s|
-          s.title SERIESNAME[series.to_sym] || "N/A"
-          s.abbreviation series
+          add_noko_elem(s, "title", SERIESNAME[series.to_sym] || "N/A")
+          add_noko_elem(s, "abbreviation", series)
         end
       end
 
@@ -27,10 +27,9 @@ module Metanorma
 
       def metadata_commentperiod(node, xml)
         from = node.attr("comment-from") or return
-        to = node.attr("comment-to")
         xml.commentperiod do |c|
-          c.from from
-          c.to to if to
+          add_noko_elem(c, "from", from)
+          add_noko_elem(c, "to", node.attr("comment-to"))
         end
       end
 
