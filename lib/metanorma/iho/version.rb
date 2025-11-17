@@ -1,5 +1,5 @@
 module Metanorma
   module Iho
-    VERSION = "1.2.8".freeze
+    VERSION = "1.2.9".freeze
   end
 end
