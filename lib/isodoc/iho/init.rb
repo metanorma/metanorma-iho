@@ -15,16 +15,15 @@ module IsoDoc
       end
 
       def i18n_init(lang, script, locale, i18nyaml = nil)
-        @i18n = I18n.new(
-          lang, script, locale: locale,
-                        i18nyaml: [i18nyaml,
-          Metanorma::Iho.configuration.i18nyaml, @i18nyaml]
-        )
+        i18ns = [i18nyaml,
+                 Metanorma::Iho.configuration.i18nyaml, @i18nyaml]
+        @i18n = I18n.new(lang, script, locale: locale, i18nyaml: i18ns)
       end
 
       def bibrenderer(options = {})
         ::Relaton::Render::Iho::General.new(options
-          .merge(language: @lang, script: @script, i18nhash: @i18n.get))
+          .merge(language: @lang, script: @script, i18nhash: @i18n.get,
+                 config: @relatonrenderconfig))
       end
 
       def info(isoxml, out)

@@ -213,7 +213,7 @@ RSpec.describe IsoDoc do
                    </semx>
                    <eref bibitemid="ref12" id="_"/>
                    <semx element="eref" source="_">
-                      <fmt-xref target="ref12">Citn</fmt-xref>
+                      <fmt-xref target="ref12">[Citn]</fmt-xref>
                    </semx>
                 </p>
              </foreword>
@@ -980,7 +980,7 @@ RSpec.describe IsoDoc do
                    <a href="#ISO16634">ISO 16634:--</a>
                    <a href="#ref11">???</a>
                    <a href="#ref10">[6]</a>
-                   <a href="#ref12">Citn</a>
+                   <a href="#ref12">[Citn]</a>
                 </p>
              </div>
              <div>
