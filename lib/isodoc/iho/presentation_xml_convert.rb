@@ -6,12 +6,11 @@ require_relative "../../relaton/render/general"
 module IsoDoc
   module Iho
     class PresentationXMLConvert < IsoDoc::Generic::PresentationXMLConvert
-      def norm_ref_entry_code(ordinal, _idents, _ids, _standard, _datefn, _bib)
+      def norm_ref_entry_code(ordinal, _idents, _standard, _datefn, _bib)
         "[#{ordinal}]<tab/>"
       end
 
-      def biblio_ref_entry_code(ordinal, _idents, _ids, _standard, _datefn,
-_bib)
+      def biblio_ref_entry_code(ordinal, _idents, _standard, _datefn, _bib)
         "[#{ordinal}]<tab/>"
       end
 
