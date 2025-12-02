@@ -596,7 +596,7 @@ RSpec.describe Metanorma::Iho do
       .to be_equivalent_to output
   end
 
-  it "processes errata in misc-container" do
+  it "processes docuemnt history in Metanorma Extension" do
     input = <<~"INPUT"
       #{ASCIIDOC_BLANK_HDR}
 
@@ -604,6 +604,13 @@ RSpec.describe Metanorma::Iho do
       == misc-container
 
       === document history
+
+      [.boilerplate]
+      --
+      Changes to this Specification are coordinated by the IHO S-100 Working Group. New
+      editions will be made available via the IHO website. Maintenance of the Specification
+      shall conform to IHO Resolution 2/2007 (as amended).
+      --
 
       [source,yaml]
       ----
@@ -1002,8 +1009,119 @@ RSpec.describe Metanorma::Iho do
       </bibdata>
     OUTPUT
     xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
-    xml = xml.at("//xmlns:bibdata")
-    expect(Canon.format_xml(strip_guid(xml.to_xml)))
+    bibdata = xml.at("//xmlns:bibdata")
+    expect(Canon.format_xml(strip_guid(bibdata.to_xml)))
       .to be_equivalent_to output
+    output = <<~OUTPUT
+       <clause id="_" obligation="normative">
+          <title id="_">document history</title>
+          <note id="_" type="boilerplate">
+             <p id="_">Changes to this Specification are coordinated by the IHO S-100 Working Group. New
+       editions will be made available via the IHO website. Maintenance of the Specification
+       shall conform to IHO Resolution 2/2007 (as amended).</p>
+          </note>
+          <sourcecode id="_" lang="yaml">
+             <body>- date:
+         - type: published
+           value:  2012-04
+         edition: 1.0.0
+         contributor:
+         - organization:
+             name: International Hydrographic Organization
+             subdivision: Transfer Standard Maintenance and Application Development
+             abbreviation: TSMAD
+         amend:
+           - description: Approved edition of S-102
+       - date:
+         - type: published
+           value:  2017-03
+         edition: 2.0.0
+         contributor:
+         - organization:
+             name: International Hydrographic Organization
+             subdivision: S-102 Project Team
+             abbreviation: S-102PT
+         amend:
+           description: &gt;
+             Updated clause 4.0 and 12.0.
+     
+             Populated clause 9.0 and Annex B.
+           location:
+             - clause=4.0
+             - clause=12.0
+             - clause=9.0
+             - annex=B
+       - date:
+         - type: updated
+           value:  2017-05
+         edition: 2.0.0
+         contributor:
+         - organization:
+             name: International Hydrographic Organization
+             subdivision: S-102 Project Team
+             abbreviation: S-102PT
+         amend:
+           description: &gt;
+             Modified clause 9.0 based on feedback at S-100WG2 meeting.
+           location:
+             - clause=9.0
+       - date:
+         - type: updated
+           value:  2018-02
+         edition: 2.0.0
+         contributor:
+         - organization:
+             name: International Hydrographic Organization
+             subdivision: S-102 Project Team
+             abbreviation: S-102PT
+         amend:
+           description: &gt;
+             Modified clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.
+           location:
+             - clause=9.0
+             - annex=B
+             - annex=F
+             - annex=G
+             - annex=H
+             - annex=I
+       - date:
+         - type: updated
+           value:  2018-06
+         edition: 2.0.0
+         contributor:
+         - organization:
+             name: International Hydrographic Organization
+             subdivision: S-102 Project Team
+             abbreviation: S-102PT
+         amend:
+           description: |
+             Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.
+     
+             Modified content throughout the following sections:
+     
+             * Clause 1, 3, 4, 5, 6, 9, 10, 11, and 12.
+             * Annexes A, B, D, F, G, and I.
+           location:
+             - clause=1
+             - clause=3
+             - clause=4
+             - clause=5
+             - clause=6
+             - clause=9
+             - clause=10
+             - clause=11
+             - clause=12
+             - annex=A
+             - annex=B
+             - annex=D
+             - annex=F
+             - annex=G
+             - annex=I</body>
+          </sourcecode>
+       </clause>
+    OUTPUT
+    misc = xml.at("//xmlns:metanorma-extension/xmlns:clause")
+    expect(Canon.format_xml(strip_guid(misc.to_xml)))
+      .to be_equivalent_to Canon.format_xml(output)
   end
 end
