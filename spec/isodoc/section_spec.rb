@@ -1889,6 +1889,16 @@ RSpec.describe IsoDoc::Iho do
            <doctype>standard</doctype>
          </ext>
        </bibdata>
+        <metanorma-extension>
+          <clause>
+                 <title id="_">document history</title>
+          <note id="_" type="boilerplate">
+             <p id="_">Changes to this Specification are coordinated by the IHO S-100 Working Group. New
+       editions will be made available via the IHO website. Maintenance of the Specification
+       shall conform to IHO Resolution 2/2007 (as amended).</p>
+          </note>
+          </clause>
+        </metanorma-extension>
        <sections/>
        </iho-standard>
     INPUT
@@ -1902,6 +1912,9 @@ RSpec.describe IsoDoc::Iho do
              <fmt-title depth="1" id="_">
                 <semx element="title" source="_">Document History</semx>
              </fmt-title>
+             <p id="_">Changes to this Specification are coordinated by the IHO S-100 Working Group. New
+            editions will be made available via the IHO website. Maintenance of the Specification
+            shall conform to IHO Resolution 2/2007 (as amended).</p>
              <table id="_" unnumbered="true">
                 <thead>
                    <tr id="_">

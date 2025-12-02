@@ -29,8 +29,14 @@ module IsoDoc
       def dochistory(docxml)
         updates = docxml.xpath(ns(UPDATE_RELATIONS))
         updates.empty? and return
-        pref = preface_insert_point(docxml)
-        generate_dochistory(updates, pref)
+        ins = preface_insert_point(docxml)
+        boilerplate = dochistory_boilerplate(docxml)
+        generate_dochistory(updates, ins, boilerplate)
+      end
+
+      def dochistory_boilerplate(docxml)
+        docxml.at(ns("//metanorma-extension/clause" \
+          "[title[text() = 'document history']]/note[@type = 'boilerplate']"))
       end
 
       def preface_insert_point(docxml)
@@ -38,11 +44,13 @@ module IsoDoc
           .add_previous_sibling("<preface> </preface>").first
       end
 
-      def generate_dochistory(updates, pref)
+      def generate_dochistory(updates, ins, boilerplate)
         ret = updates.map { |u| generate_dochistory_row(u) }.flatten.join("\n")
-        pref << <<~XML
+        b = boilerplate&.children
+        ins << <<~XML
           <clause #{add_id_text}>
           <title #{add_id_text}>#{@i18n.dochistory}</title>
+          #{to_xml(b)}
           <table #{add_id_text} unnumbered="true"><thead>
           <tr #{add_id_text}><th #{add_id_text}>Version Number</th><th #{add_id_text}>Date</th><th #{add_id_text}>Author</th><th #{add_id_text}>Description</th></tr>
           </thead><tbody>
