@@ -6,6 +6,11 @@ require_relative "../../relaton/render/general"
 module IsoDoc
   module Iho
     class PresentationXMLConvert < IsoDoc::Generic::PresentationXMLConvert
+      def initialize(options)
+        super
+        @libdir = File.dirname(__FILE__)
+      end
+
       def norm_ref_entry_code(ordinal, _idents, _standard, _datefn, _bib)
         "[#{ordinal}]<tab/>"
       end
@@ -166,6 +171,26 @@ module IsoDoc
           insert_biblio_tag(b, idx, !norm, standard?(b))
         end
         idx
+      end
+
+      def bibdata_i18n(bibdata)
+        super
+        bibdata_logos(bibdata)
+      end
+
+      def bibdata_logos(bibdata)
+        iho = bibdata.at(ns("./contributor[role/@type = 'publisher']/" \
+                  "organization[abbreviation = 'IHO']")) or return
+        lang = %w(en fr es).include?(@lang) ? @lang : "en"
+        svgs = { full: svg_load("logo", "iho-logo_iho-#{lang}.svg"),
+                 desc: svg_load("logo", "iho-logo_iho-tile-desc-#{lang}.svg"),
+                 mark: svg_load("logo", "iho-logo_iho-tile-mark-#{lang}.svg"),
+                 sign: svg_load("logo", "iho-logo_iho-tile-sign.svg") }
+        svgs.each do |k, v|
+          iho << <<~XML
+            <logo type="#{k}"><image src="" mimetype="image/svg+xml">#{v}</image></logo>
+          XML
+        end
       end
 
       include Init
