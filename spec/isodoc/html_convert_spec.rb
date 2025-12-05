@@ -1,13 +1,5 @@
 require "spec_helper"
 
-logoloc = Pathname.new(File.join(
-                         File.expand_path(
-                           File.join(File.dirname(__FILE__),
-                                     "..", "..", "lib", "metanorma"),
-                         ),
-                         "..", "..", "lib", "isodoc", "iho", "html"
-                       )).cleanpath.to_s
-
 RSpec.describe IsoDoc::Iho do
   it "processes default metadata" do
     csdc = IsoDoc::Iho::HtmlConvert.new({})
@@ -84,7 +76,8 @@ RSpec.describe IsoDoc::Iho do
         <contributor>
           <role type="publisher"/>
           <organization>
-            <name>Ribose</name>
+            <name>International Hydrographic Organization</name>
+            <abbreviation>IHO</abbreviation>
           </organization>
         </contributor>
         <language>en</language>
@@ -126,7 +119,7 @@ RSpec.describe IsoDoc::Iho do
     output =
       { accesseddate: "XXX",
         adapteddate: "XXX",
-        agency: "Ribose",
+        agency: "IHO",
         annextitle: "Annex Title",
         announceddate: "XXX",
         appendixtitle: "Appendix Title",
@@ -144,19 +137,22 @@ RSpec.describe IsoDoc::Iho do
         draft: "3.4",
         draftinfo: " (draft 3.4, 2000-01-01)",
         edition: "2",
+        edition_display: "second edition",
         implementeddate: "2000-01-01",
         issueddate: "XXX",
         lang: "en",
-        logo: "#{File.join(logoloc, 'logo.png')}",
-        logo_paths: ["#{File.join(logoloc, 'image001.png')}",
-                     "#{File.join(logoloc, 'image002.png')}", "#{File.join(logoloc, 'image003.png')}"],
         maintitle: "Main Title",
         metadata_extensions: { "doctype" => "standard",
-                               "editorialgroup" => { "committee_type" => "A", "committee" => "TC" }, "security" => "Client Confidential", "commentperiod" => { "from" => "2010", "to" => "2011" } },
+                               "editorialgroup" => { "committee_type" => "A",
+                                                     "committee" => "TC" },
+                               "security" => "Client Confidential",
+                               "commentperiod" => {
+                                 "from" => "2010", "to" => "2011"
+                               } },
         obsoleteddate: "2001-01-01",
         parttitle: "Part Title",
         publisheddate: "XXX",
-        publisher: "Ribose",
+        publisher: "International Hydrographic Organization",
         receiveddate: "XXX",
         revdate: "2000-01-01",
         revdate_monthyear: "January 2000",
@@ -175,9 +171,32 @@ RSpec.describe IsoDoc::Iho do
         vote_endeddate: "XXX",
         vote_starteddate: "XXX" }
 
-    docxml, _filename, _dir = csdc.convert_init(input, "test", true)
-    expect(htmlencode(metadata(csdc.info(docxml, nil))
-      .to_s.gsub(/, :/, ",\n:"))).to be_equivalent_to output
+    a_eacute = <<~XML.strip
+      <path d="M369.13,332.71c.79-1.63,1.86-2.96,3.22-4,1.36-1.04,2.95-1.8,4.77-2.29,1.83-.49,3.85-.74,6.07-.74,1.68,0,3.35.16,5.03.48,1.68.32,3.18.92,4.51,1.81,1.33.89,2.42,2.13,3.26,3.74.84,1.6,1.26,3.69,1.26,6.25v20.28c0,1.88.91,2.81,2.74,2.81.54,0,1.04-.1,1.48-.3v3.92c-.54.1-1.02.17-1.44.22-.42.05-.95.07-1.59.07-1.18,0-2.13-.16-2.85-.48-.72-.32-1.27-.78-1.67-1.37-.4-.59-.66-1.29-.78-2.11-.12-.81-.18-1.71-.18-2.7h-.15c-.84,1.23-1.69,2.33-2.55,3.29-.86.96-1.83,1.76-2.89,2.41-1.06.64-2.27,1.13-3.63,1.48-1.36.34-2.97.52-4.85.52-1.78,0-3.44-.21-5-.63-1.55-.42-2.91-1.08-4.07-2-1.16-.91-2.07-2.07-2.74-3.48-.67-1.41-1-3.07-1-5,0-2.66.59-4.75,1.78-6.25,1.18-1.5,2.75-2.65,4.7-3.44,1.95-.79,4.14-1.34,6.59-1.67,2.44-.32,4.92-.63,7.44-.92.99-.1,1.85-.22,2.59-.37.74-.15,1.36-.41,1.85-.78s.88-.88,1.15-1.52c.27-.64.41-1.48.41-2.52,0-1.58-.26-2.87-.78-3.88-.52-1.01-1.23-1.81-2.15-2.41-.91-.59-1.97-1-3.18-1.22-1.21-.22-2.5-.33-3.88-.33-2.96,0-5.38.7-7.25,2.11-1.88,1.41-2.86,3.66-2.96,6.77h-4.66c.15-2.22.62-4.14,1.41-5.77ZM392.44,344.1c-.3.54-.86.94-1.7,1.18s-1.58.42-2.22.52c-1.97.35-4.01.65-6.11.92-2.1.27-4.01.68-5.73,1.22-1.73.54-3.15,1.32-4.25,2.33-1.11,1.01-1.67,2.46-1.67,4.33,0,1.18.23,2.23.7,3.15.47.91,1.1,1.7,1.89,2.37.79.67,1.7,1.17,2.74,1.52,1.04.35,2.1.52,3.18.52,1.78,0,3.48-.27,5.11-.81,1.63-.54,3.04-1.33,4.25-2.37,1.21-1.04,2.17-2.29,2.89-3.77.71-1.48,1.07-3.16,1.07-5.03v-6.07h-.15ZM378.53,321.46l7.77-10.43h5.77l-9.77,10.43h-3.77Z" style="fill:#00154c;"/>
+    XML
+
+    presxml = IsoDoc::Iho::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input, true)
+    docxml, _filename, _dir = csdc.convert_init(presxml, "test", true)
+    result = metadata(csdc.info(docxml, nil))
+    expect(result[:logo]).to match(/<svg/m)
+    expect(result[:logo_mark]).to match(/<svg/m)
+    expect(result[:logo_desc]).to match(/<svg/m)
+    # á in Hidrográfica
+    expect(result[:logo_desc]).not_to include a_eacute
+    expect(result[:logo_sign]).to match(/<svg/m)
+    expect(result.except(:logo, :logo_mark, :logo_desc, :logo_sign))
+      .to be_equivalent_to(output.except(:logo, :logo_mark,
+                                         :logo_desc, :logo_sign))
+
+    presxml = IsoDoc::Iho::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input.sub("<language>en</language>",
+                                 "<language>es</language>"), true)
+    docxml, _filename, _dir = csdc.convert_init(presxml, "test", true)
+    result = metadata(csdc.info(docxml, nil))
+    expect(result[:logo_desc]).to include a_eacute
   end
 
   it "injects JS into blank html" do
@@ -237,59 +256,59 @@ RSpec.describe IsoDoc::Iho do
       </iso-standard>
     INPUT
     presxml = <<~INPUT
-       <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
-          <preface>
-             <foreword displayorder="1" id="fwd">
-                <title id="_">Foreword</title>
-                <fmt-title id="_" depth="1">Foreword</fmt-title>
-                <ul id="_" keep-with-next="true" keep-lines-together="true">
-                   <name id="_">Caption</name>
-                   <fmt-name id="_">
-                      <semx element="name" source="_">Caption</semx>
-                   </fmt-name>
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">•</semx>
-                      </fmt-name>
-                      <p id="_">Level 1</p>
-                   </li>
-                   <li id="_">
-                      <fmt-name id="_">
-                         <semx element="autonum" source="_">•</semx>
-                      </fmt-name>
-                      <p id="_">deletion of 4.3.</p>
-                      <ul id="_" keep-with-next="true" keep-lines-together="true">
-                         <li id="_">
-                            <fmt-name id="_">
-                               <semx element="autonum" source="_">—</semx>
-                            </fmt-name>
-                            <p id="_">Level 2</p>
-                            <ul id="_" keep-with-next="true" keep-lines-together="true">
-                               <li id="_">
-                                  <fmt-name id="_">
-                                     <semx element="autonum" source="_">o</semx>
-                                  </fmt-name>
-                                  <p id="_">Level 3</p>
-                                  <ul id="_" keep-with-next="true" keep-lines-together="true">
-                                     <li id="_">
-                                        <fmt-name id="_">
-                                           <semx element="autonum" source="_">•</semx>
-                                        </fmt-name>
-                                        <p id="_">Level 4</p>
-                                     </li>
-                                  </ul>
-                               </li>
-                            </ul>
-                         </li>
-                      </ul>
-                   </li>
-                </ul>
-             </foreword>
-             <clause type="toc" id="_" displayorder="2">
-                <fmt-title id="_" depth="1">Table of contents</fmt-title>
-             </clause>
-          </preface>
-       </iso-standard>
+      <iso-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+         <preface>
+            <foreword displayorder="1" id="fwd">
+               <title id="_">Foreword</title>
+               <fmt-title id="_" depth="1">Foreword</fmt-title>
+               <ul id="_" keep-with-next="true" keep-lines-together="true">
+                  <name id="_">Caption</name>
+                  <fmt-name id="_">
+                     <semx element="name" source="_">Caption</semx>
+                  </fmt-name>
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">•</semx>
+                     </fmt-name>
+                     <p id="_">Level 1</p>
+                  </li>
+                  <li id="_">
+                     <fmt-name id="_">
+                        <semx element="autonum" source="_">•</semx>
+                     </fmt-name>
+                     <p id="_">deletion of 4.3.</p>
+                     <ul id="_" keep-with-next="true" keep-lines-together="true">
+                        <li id="_">
+                           <fmt-name id="_">
+                              <semx element="autonum" source="_">—</semx>
+                           </fmt-name>
+                           <p id="_">Level 2</p>
+                           <ul id="_" keep-with-next="true" keep-lines-together="true">
+                              <li id="_">
+                                 <fmt-name id="_">
+                                    <semx element="autonum" source="_">o</semx>
+                                 </fmt-name>
+                                 <p id="_">Level 3</p>
+                                 <ul id="_" keep-with-next="true" keep-lines-together="true">
+                                    <li id="_">
+                                       <fmt-name id="_">
+                                          <semx element="autonum" source="_">•</semx>
+                                       </fmt-name>
+                                       <p id="_">Level 4</p>
+                                    </li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </foreword>
+            <clause type="toc" id="_" displayorder="2">
+               <fmt-title id="_" depth="1">Table of contents</fmt-title>
+            </clause>
+         </preface>
+      </iso-standard>
     INPUT
     expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
