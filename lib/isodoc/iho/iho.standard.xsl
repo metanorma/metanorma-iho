@@ -1473,6 +1473,22 @@
 		</xsl:choose>
 	</xsl:variable>
 
+	<xsl:attribute-set name="page-sequence-preface">
+		<xsl:attribute name="format">i</xsl:attribute>
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_page-sequence-preface">
+		<xsl:param name="layoutVersion"/>
+	</xsl:template>
+
+	<xsl:attribute-set name="page-sequence-main">
+
+	</xsl:attribute-set>
+
+	<xsl:template name="refine_page-sequence-main">
+		<xsl:param name="layoutVersion"/>
+	</xsl:template>
+
 	<xsl:variable name="font_noto_sans">Noto Sans, Noto Sans HK, Noto Sans JP, Noto Sans KR, Noto Sans SC, Noto Sans TC</xsl:variable>
 	<xsl:variable name="font_noto_sans_mono">Noto Sans Mono, Noto Sans Mono CJK HK, Noto Sans Mono CJK JP, Noto Sans Mono CJK KR, Noto Sans Mono CJK SC, Noto Sans Mono CJK TC</xsl:variable>
 	<xsl:variable name="font_noto_serif">Noto Serif, Noto Serif HK, Noto Serif JP, Noto Serif KR, Noto Serif SC, Noto Serif TC</xsl:variable>
