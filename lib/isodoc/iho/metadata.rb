@@ -50,7 +50,6 @@ module IsoDoc
         images_logo_xpaths.each do |k, v|
           i = xml.at(ns(v))
           set(k, i ? to_xml(i.at("./*[local-name() = 'svg']"))&.strip : nil)
-          # require "debug"; binding.b if i&.at(ns("./emf/@src"))
           src = i&.at(ns("./emf/@src"))
           src and set("#{k}_emf".to_sym, save_dataimage(src.text))
         end

@@ -245,6 +245,10 @@ RSpec.describe Metanorma::Iho do
       <title language="en" type="title-annex">Annex 2 (Informative) Annex Title</title>
       <title language="en" type="title-part">Part 1: Part Title</title>
       <title language="en" type="title-supplement">Supplement 4: Supplement Title</title>
+      <title language="en" type="title-part-prefix">Part 1</title>
+      <title language="en" type="title-annex-prefix">Annex 2</title>
+      <title language="en" type="title-appendix-prefix">Appendix 3</title>
+      <title language="en" type="title-supplement-prefix">Supplement 4</title>
              <docidentifier primary="true" type="IHO">S-1000 Part 1 Appendix 3 Annex 2 Supplement 4</docidentifier>
              <docidentifier type="IHO-parent-document">S-1000</docidentifier>
              <docnumber>1000</docnumber>
