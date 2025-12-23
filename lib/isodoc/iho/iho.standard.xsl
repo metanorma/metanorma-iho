@@ -1313,8 +1313,6 @@
 		</title-part>
 		<title-part lang="fr">
 		</title-part>
-		<title-part lang="ru">
-		</title-part>
 		<title-part lang="zh">第 # 部分:</title-part>
 	</xsl:variable>
 	<xsl:variable name="titles" select="xalan:nodeset($titles_)"/>
@@ -1355,31 +1353,6 @@
 		<xsl:copy-of select="//mn:metanorma/mn:bibdata"/>
 		<xsl:copy-of select="//mn:metanorma/mn:localized-strings"/>
 	</xsl:variable>
-
-	<xsl:template name="getTitle">
-		<xsl:param name="name"/>
-		<xsl:param name="lang"/>
-		<xsl:variable name="lang_">
-			<xsl:choose>
-				<xsl:when test="$lang != ''">
-					<xsl:value-of select="$lang"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:call-template name="getLang"/>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<xsl:variable name="language" select="normalize-space($lang_)"/>
-		<xsl:variable name="title_" select="$titles/*[local-name() = $name][@lang = $language]"/>
-		<xsl:choose>
-			<xsl:when test="normalize-space($title_) != ''">
-				<xsl:value-of select="$title_"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="$titles/*[local-name() = $name][@lang = 'en']"/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
 
 	<!-- Characters -->
 	<xsl:variable name="linebreak">&#8232;</xsl:variable>
