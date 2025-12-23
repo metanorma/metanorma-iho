@@ -56,6 +56,7 @@ module Metanorma
           typed_title(m, xml, w)
         end
         title_fallback(node, xml)
+        title_nums(node, xml, @lang)
       end
 
       def typed_title(metadata, xml, type)
@@ -72,6 +73,13 @@ module Metanorma
         appendix: { id: :appendixid },
         supplement: { id: :supplementid },
       }.freeze
+
+      def title_nums_prep(node)
+        { part: node.attr("partnumber"),
+          annex: node.attr("annex-id"),
+          appendix: node.attr("appendix-id"),
+          supplement: node.attr("supplement-id") }
+      end
 
       def full_title(metadata, xml)
         parts = TITLE_COMPONENTS.keys.each_with_object([]) do |p, acc|
