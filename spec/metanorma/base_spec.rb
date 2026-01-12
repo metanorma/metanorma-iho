@@ -285,6 +285,7 @@ RSpec.describe Metanorma::Iho do
                          <metanorma-extension>
                                <semantic-metadata>
          <stage-published>true</stage-published>
+          <annex-informative>true</annex-informative>
       </semantic-metadata>
            <presentation-metadata>
                     <toc-heading-levels>2</toc-heading-levels>
@@ -306,7 +307,7 @@ RSpec.describe Metanorma::Iho do
                *OPTIONS))))
       .to be_equivalent_to Canon.format_xml(output
       .gsub("Annex 2 (Informative) Annex Title", "Annex 2 Annex Title")
-      .sub(%r{<semantic-metadata>\s*<annex.*</semantic-metadata>}m, ""))
+      .sub(%r{<annex-informative>.*</annex-informative>}m, ""))
   end
 
   it "processes committee-draft" do
