@@ -285,7 +285,6 @@ RSpec.describe Metanorma::Iho do
                          <metanorma-extension>
                                <semantic-metadata>
          <stage-published>true</stage-published>
-         <annex-informative>true</annex-informative>
       </semantic-metadata>
            <presentation-metadata>
                     <toc-heading-levels>2</toc-heading-levels>
