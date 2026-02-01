@@ -75,11 +75,11 @@ RSpec.describe IsoDoc do
           </organization>
         </contributor>
       </bibitem>
-      <bibitem id="ref11">
+      <bibitem id="ref110">
         <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
         <docidentifier type="ICC">167</docidentifier>
       </bibitem>
-      <note><p>This is an annotation of ISO 20483:2013-2014</p></note>
+      <note id="A"><p>This is an annotation of ISO 20483:2013-2014</p></note>
 
       </references><references id="_bibliography" obligation="informative" normative="false">
         <title>Bibliography</title>
@@ -105,8 +105,8 @@ RSpec.describe IsoDoc do
           </organization>
         </contributor>
       </bibitem>
-      <note><p>This is an annotation of document ISSN.</p></note>
-      <note><p>This is another annotation of document ISSN.</p></note>
+      <note id="B"><p>This is an annotation of document ISSN.</p></note>
+      <note id="C"><p>This is another annotation of document ISSN.</p></note>
       <bibitem id="ISO3696" type="standard">
         <title format="text/plain">Water for analytical laboratory use</title>
         <docidentifier type="ISO">ISO 3696</docidentifier>
@@ -794,7 +794,7 @@ RSpec.describe IsoDoc do
                       </organization>
                    </contributor>
                 </bibitem>
-                <bibitem id="ref11">
+                <bibitem id="ref110">
                    <biblio-tag>
                       [13]
                       <tab/>
@@ -809,21 +809,41 @@ RSpec.describe IsoDoc do
                          <fmt-link target="http://www.icc.or.at"/>
                       </semx>
                       )
+                      <note type="display" id="A" autonum="">
+                         <fmt-name id="_">
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">NOTE</span>
+                            </span>
+                            <span class="fmt-label-delim">
+                               <tab/>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="ref110">
+                            <span class="fmt-xref-container">
+                               <span class="fmt-xref-container">
+                                  <span class="fmt-element-name">Section</span>
+                                  <semx element="autonum" source="_">1</semx>
+                               </span>
+                               <span class="fmt-comma">,</span>
+                               ICC 167
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                         </fmt-xref-label>
+                         <semx element="note" source="A">
+                            <p>This is an annotation of ISO 20483:2013-2014</p>
+                         </semx>
+                      </note>
                    </formattedref>
                    <docidentifier type="ICC">ICC 167</docidentifier>
                    <docidentifier scope="biblio-tag">ICC 167</docidentifier>
+                   <note type="display" original-id="A" id="_">
+                      <p>This is an annotation of ISO 20483:2013-2014</p>
+                   </note>
                 </bibitem>
-                <note>
-                   <fmt-name id="_">
-                      <span class="fmt-caption-label">
-                         <span class="fmt-element-name">NOTE</span>
-                      </span>
-                      <span class="fmt-label-delim">
-                         <tab/>
-                      </span>
-                   </fmt-name>
-                   <p>This is an annotation of ISO 20483:2013-2014</p>
-                </note>
              </references>
           </sections>
           <bibliography>
@@ -859,6 +879,66 @@ RSpec.describe IsoDoc do
                    <formattedref>
                       <em>Instruments for analytical laboratory use</em>
                       , n.d., ISSN: ISSN.
+                      <note type="display" id="B" autonum="1">
+                         <fmt-name id="_">
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">NOTE</span>
+                               <semx element="autonum" source="B">1</semx>
+                            </span>
+                            <span class="fmt-label-delim">
+                               <tab/>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="B">1</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="ISSN">
+                            <span class="fmt-xref-container">
+                               <span class="fmt-xref-container">
+                                  <semx element="references" source="_">Bibliography</semx>
+                               </span>
+                               <span class="fmt-comma">,</span>
+                               [4]
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="B">1</semx>
+                         </fmt-xref-label>
+                         <semx element="note" source="B">
+                            <p>This is an annotation of document ISSN.</p>
+                         </semx>
+                      </note>
+                      <note type="display" id="C" autonum="2">
+                         <fmt-name id="_">
+                            <span class="fmt-caption-label">
+                               <span class="fmt-element-name">NOTE</span>
+                               <semx element="autonum" source="C">2</semx>
+                            </span>
+                            <span class="fmt-label-delim">
+                               <tab/>
+                            </span>
+                         </fmt-name>
+                         <fmt-xref-label>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="C">2</semx>
+                         </fmt-xref-label>
+                         <fmt-xref-label container="ISSN">
+                            <span class="fmt-xref-container">
+                               <span class="fmt-xref-container">
+                                  <semx element="references" source="_">Bibliography</semx>
+                               </span>
+                               <span class="fmt-comma">,</span>
+                               [4]
+                            </span>
+                            <span class="fmt-comma">,</span>
+                            <span class="fmt-element-name">Note</span>
+                            <semx element="autonum" source="C">2</semx>
+                         </fmt-xref-label>
+                         <semx element="note" source="C">
+                            <p>This is another annotation of document ISSN.</p>
+                         </semx>
+                      </note>
                    </formattedref>
                    <title format="text/plain">Instruments for analytical laboratory use</title>
                    <docidentifier type="metanorma-ordinal">[4]</docidentifier>
@@ -869,29 +949,13 @@ RSpec.describe IsoDoc do
                          <abbreviation>ISSN</abbreviation>
                       </organization>
                    </contributor>
+                   <note type="display" original-id="B" id="_">
+                      <p>This is an annotation of document ISSN.</p>
+                   </note>
+                   <note type="display" original-id="C" id="_">
+                      <p>This is another annotation of document ISSN.</p>
+                   </note>
                 </bibitem>
-                <note>
-                   <fmt-name id="_">
-                      <span class="fmt-caption-label">
-                         <span class="fmt-element-name">NOTE</span>
-                      </span>
-                      <span class="fmt-label-delim">
-                         <tab/>
-                      </span>
-                   </fmt-name>
-                   <p>This is an annotation of document ISSN.</p>
-                </note>
-                <note>
-                   <fmt-name id="_">
-                      <span class="fmt-caption-label">
-                         <span class="fmt-element-name">NOTE</span>
-                      </span>
-                      <span class="fmt-label-delim">
-                         <tab/>
-                      </span>
-                   </fmt-name>
-                   <p>This is another annotation of document ISSN.</p>
-                </note>
                 <bibitem id="ISO3696" type="standard">
                    <biblio-tag>
                       [3]
@@ -962,7 +1026,7 @@ RSpec.describe IsoDoc do
                 <h1 class="IntroTitle">Contents</h1>
              </div>
              <br/>
-                          <div id="_">
+             <div id="_">
                 <h1 class="ForewordTitle">Foreword</h1>
                 <p id="_">
                    <a href="#ref1">S-57</a>
@@ -1030,7 +1094,7 @@ RSpec.describe IsoDoc do
                 <p id="ISO712" class="NormRef">[10]  ISO 712: Cereals and cereal products, International Organization for Standardization.</p>
                 <p id="ISO16634" class="NormRef">[11]  ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</p>
                 <p id="ISO20483" class="NormRef">[12]  ISO 20483:2013-2014: Cereals and pulses, International Organization for Standardization.</p>
-                <p id="ref11" class="NormRef">
+                <p id="ref110" class="NormRef">
                    [13] 
                    <span style="font-variant:small-caps;">Standard No I.C.C 167</span>
                    .
@@ -1039,7 +1103,7 @@ RSpec.describe IsoDoc do
                    <a href="http://www.icc.or.at">http://www.icc.or.at</a>
                    )
                 </p>
-                <div class="Note">
+                <div id="A" class="Note NormRef">
                    <p>
                       <span class="note_label">NOTE  </span>
                       This is an annotation of ISO 20483:2013-2014
@@ -1059,15 +1123,15 @@ RSpec.describe IsoDoc do
                    <i>Instruments for analytical laboratory use</i>
                    , n.d., ISSN: ISSN.
                 </p>
-                <div class="Note">
+                <div id="B" class="Note Biblio">
                    <p>
-                      <span class="note_label">NOTE  </span>
+                      <span class="note_label">NOTE 1  </span>
                       This is an annotation of document ISSN.
                    </p>
                 </div>
-                <div class="Note">
+                <div id="C" class="Note Biblio">
                    <p>
-                      <span class="note_label">NOTE  </span>
+                      <span class="note_label">NOTE 2  </span>
                       This is another annotation of document ISSN.
                    </p>
                 </div>
