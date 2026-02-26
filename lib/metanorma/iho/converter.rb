@@ -1,5 +1,5 @@
-require "metanorma/standoc/converter"
-require "metanorma/generic/converter"
+require "metanorma-standoc"
+require "metanorma-generic"
 require_relative "front"
 
 module Metanorma
