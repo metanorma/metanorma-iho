@@ -1,6 +1,5 @@
 require "metanorma/standoc/converter"
 require "metanorma/generic/converter"
-require_relative "cleanup"
 require_relative "front"
 
 module Metanorma

@@ -1,6 +1,10 @@
 module Metanorma
   module Iho
-    class Converter < Metanorma::Generic::Converter
+    class Cleanup < ::Metanorma::Generic::Cleanup
+      extend Forwardable
+
+      def_delegators :@converter, *delegator_methods
+
       def bibdata_docidentifier_cleanup(isoxml)
         bibdata_docidentifier_i18n(isoxml)
         super
@@ -20,8 +24,8 @@ module Metanorma
         id = isoxml.at("//bibdata/docidentifier[@type = 'IHO']")
         parts = %w(appendixid annexid part supplementid)
           .each_with_object({}) do |w, m|
-          dn = isoxml.at("//bibdata/ext/structuredidentifier/#{w}") and
-            m[w] = dn.text
+            dn = isoxml.at("//bibdata/ext/structuredidentifier/#{w}") and
+              m[w] = dn.text
         end
         [id, parts]
       end
@@ -37,7 +41,7 @@ module Metanorma
       def bibdata_docidentifier_enhance(id, parts)
         ret = %w(part appendixid annexid supplementid)
           .each_with_object([]) do |w, m|
-          p = parts[w] and m << "#{ID_LABELS[w.to_sym]} #{p}"
+            p = parts[w] and m << "#{ID_LABELS[w.to_sym]} #{p}"
         end
         id.children = "#{id.text} #{ret.join(' ')}"
       end
