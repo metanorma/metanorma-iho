@@ -9,7 +9,7 @@ require "metanorma-iho"
 require "metanorma/iho"
 require "isodoc/iho/html_convert"
 require "isodoc/iho/word_convert"
-require "metanorma/standoc/converter"
+require "metanorma-standoc"
 require "rspec/matchers"
 require "equivalent-xml"
 require "htmlentities"
@@ -36,7 +36,7 @@ end
 
 def strip_guid(xml)
   xml.gsub(%r{ id="_[^"]+"}, ' id="_"')
-    .gsub(%r{ semx-id="[^"]*"}, '')
+    .gsub(%r{ semx-id="[^"]*"}, "")
     .gsub(%r{ original-id="_[^"]+"}, ' original-id="_"')
     .gsub(%r{ source="_[^"]+"}, ' source="_"')
     .gsub(%r{ target="_[^"]+"}, ' target="_"')
@@ -50,7 +50,7 @@ def htmlencode(xml)
     .gsub(/&#x22;/, '"').gsub(/&#x3c;/, "<")
     .gsub(/&#x26;/, "&").gsub(/&#x27;/, "'")
     .gsub(/\\u(....)/) do |_s|
-    "&#x#{$1.downcase};"
+      "&#x#{$1.downcase};"
   end
 end
 
@@ -76,8 +76,10 @@ VALIDATING_BLANK_HDR = <<~HDR.freeze
 HDR
 
 def boilerplate_read(file)
+  conv = Metanorma::Iho::Converter.new(:iho, {})
+  cl = Metanorma::Iho::Cleanup.new(conv)
   HTMLEntities.new.decode(
-    Metanorma::Iho::Converter.new(:iho, {}).boilerplate_file_restructure(file)
+    cl.boilerplate_file_restructure(file)
     .to_xml.gsub(/<(\/)?sections>/, "<\\1boilerplate>")
       .gsub(/ id="_[^"]+"/, " id='_'"),
   )

@@ -1,5 +1,8 @@
 require "asciidoctor" unless defined? Asciidoctor::Converter
+require "metanorma-generic"
 require_relative "metanorma/iho/converter"
+require_relative "metanorma/iho/cleanup"
+require_relative "metanorma/iho/validate"
 require_relative "isodoc/iho/base_convert"
 require_relative "isodoc/iho/html_convert"
 require_relative "isodoc/iho/word_convert"

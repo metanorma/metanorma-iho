@@ -1,6 +1,8 @@
 module Metanorma
   module Iho
-    class Converter < Metanorma::Generic::Converter
+    class Cleanup < ::Metanorma::Generic::Cleanup
+      extend Forwardable
+
       def bibdata_docidentifier_cleanup(isoxml)
         bibdata_docidentifier_i18n(isoxml)
         super
