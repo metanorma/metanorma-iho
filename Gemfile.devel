@@ -1,3 +1,5 @@
 # gem "metanorma-standoc", path: "../metanorma-standoc"
-gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "refactor/cleanup_class"
-gem "metanorma-generic", git: "https://github.com/metanorma/metanorma-generic", branch: "refactor/cleanup_class"
+gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "main"
+gem "metanorma-generic", git: "https://github.com/metanorma/metanorma-generic", branch: "features/html5-tables"
+gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "features/html5-tables"
+
