@@ -84,11 +84,11 @@ nav {
   }
 }
 
-div.figure {
+figure {
   @include figureBlock();
 }
 
-table div.figure {
+table figure {
   padding: 0;
   margin: 0;
 }
@@ -360,7 +360,7 @@ p.NormRef, div.Biblio, div.NormRef {
     3.6 Source Code + figures
 */
 
-.figure,
+figure,
 pre,
 .pseudocode {
   @include pseudocodeBlock(#f7f7f7);
@@ -374,7 +374,7 @@ pre {
 @include recommendationBlock();
 @include listBlock();
 
-.FigureTitle,
+figcaption,
 .SourceTitle {
   @include blockTitle()
 }
@@ -430,7 +430,7 @@ table {
   @include table(1px solid black);
 }
 
-p.TableTitle {
+table > caption {
   text-align: center;
   margin-top: 2.5em;
   font-weight: 400;
@@ -712,7 +712,7 @@ To top button
   }
 
   .note,
-  .figure,
+  figure,
   pre,
   .pseudocode,
   table {
