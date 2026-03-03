@@ -101,7 +101,7 @@ RSpec.describe IsoDoc do
                 <term id="paddy1">
                    <preferred id="_">
                       <expression>
-                         <name>paddy</name>
+                         <name id="_">paddy</name>
                       </expression>
                       <field-of-application id="_">in agriculture</field-of-application>
                       <usage-info id="_">dated</usage-info>
@@ -119,7 +119,9 @@ RSpec.describe IsoDoc do
                    <fmt-preferred>
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>paddy</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">paddy</semx>
+                            </strong>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="field-of-application" source="_">in agriculture</semx>
@@ -274,31 +276,33 @@ RSpec.describe IsoDoc do
                 <term id="paddy">
                    <preferred id="_">
                       <expression>
-                         <name>paddy</name>
+                         <name id="_">paddy</name>
                       </expression>
                    </preferred>
                    <fmt-preferred>
                       <p>
                          <semx element="preferred" source="_">
-                            <strong>paddy</strong>
+                            <strong>
+                               <semx element="expression/name" source="_">paddy</semx>
+                            </strong>
                          </semx>
                       </p>
                    </fmt-preferred>
                    <admitted id="_">
                       <letter-symbol>
-                         <name>paddy rice</name>
+                         <name id="_">paddy rice</name>
                       </letter-symbol>
                       <field-of-application id="_">in agriculture</field-of-application>
                    </admitted>
                    <admitted id="_">
                       <expression>
-                         <name>rough rice</name>
+                         <name id="_">rough rice</name>
                       </expression>
                    </admitted>
                    <fmt-admitted>
                       <p>
                          <semx element="admitted" source="_">
-                            paddy rice
+                            <semx element="letter-symbol/name" source="_">paddy rice</semx>
                             <span class="fmt-designation-field">
                                , &lt;
                                <semx element="field-of-application" source="_">in agriculture</semx>
@@ -307,18 +311,22 @@ RSpec.describe IsoDoc do
                          </semx>
                       </p>
                       <p>
-                         <semx element="admitted" source="_">rough rice</semx>
+                         <semx element="admitted" source="_">
+                            <semx element="expression/name" source="_">rough rice</semx>
+                         </semx>
                       </p>
                    </fmt-admitted>
                    <deprecates id="_">
                       <expression>
-                         <name>cargo rice</name>
+                         <name id="_">cargo rice</name>
                       </expression>
                    </deprecates>
                    <fmt-deprecates>
                       <p>
                          DEPRECATED:
-                         <semx element="deprecates" source="_">cargo rice</semx>
+                         <semx element="deprecates" source="_">
+                            <semx element="expression/name" source="_">cargo rice</semx>
+                         </semx>
                       </p>
                    </fmt-deprecates>
                    <definition id="_">
@@ -477,7 +485,9 @@ RSpec.describe IsoDoc do
                 <p>For the purposes of this document, the following terms and definitions apply.</p>
                 <p class="TermNum" id="paddy1"/>
                 <p class="Terms" style="text-align:left;">
-                   <b>paddy</b>
+                   <b>
+                      <dfn>paddy</dfn>
+                   </b>
                    , &lt;in agriculture, dated&gt; [ISO 7301:2011, Clause 3.1, modified — The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here]
                 </p>
                 <p id="_">&lt;rice&gt;  rice retaining its husk after threshing</p>
@@ -501,11 +511,21 @@ RSpec.describe IsoDoc do
                 </div>
                 <p class="TermNum" id="paddy"/>
                 <p class="Terms" style="text-align:left;">
-                   <b>paddy</b>
+                   <b>
+                      <dfn>paddy</dfn>
+                   </b>
                 </p>
-                <p class="AltTerms" style="text-align:left;">paddy rice, &lt;in agriculture&gt;</p>
-                <p class="AltTerms" style="text-align:left;">rough rice</p>
-                <p class="DeprecatedTerms" style="text-align:left;">DEPRECATED: cargo rice</p>
+                <p class="AltTerms" style="text-align:left;">
+                   <dfn>paddy rice</dfn>
+                   , &lt;in agriculture&gt;
+                </p>
+                <p class="AltTerms" style="text-align:left;">
+                   <dfn>rough rice</dfn>
+                </p>
+                <p class="DeprecatedTerms" style="text-align:left;">
+                   DEPRECATED:
+                   <dfn>cargo rice</dfn>
+                </p>
                 <p id="_">rice retaining its husk after threshing</p>
                 [ISO 7301:2011, 3.1ISO 7301:2011, clause 3.1]
                 <div id="_" class="example">
