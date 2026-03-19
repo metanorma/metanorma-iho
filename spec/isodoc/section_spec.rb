@@ -285,9 +285,7 @@ RSpec.describe IsoDoc::Iho do
              </references>
           </sections>
           <annex id="P" inline-header="false" obligation="normative" autonum="A" displayorder="10">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -306,6 +304,16 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="P">A</semx>
              </fmt-xref-label>
+      <variant-title type="toc">
+         <span class="fmt-caption-label">
+            <span class="fmt-element-name">Annex</span>
+            <semx element="autonum" source="P">A</semx>
+         </span>
+         <span class="fmt-caption-delim">
+            <tab/>
+         </span>
+         <semx element="title" source="_">Annex</semx>
+      </variant-title>
              <clause id="Q" inline-header="false" obligation="normative">
                 <title id="_">Annex A.1</title>
                 <fmt-title depth="2" id="_">
@@ -675,9 +683,7 @@ RSpec.describe IsoDoc::Iho do
              </clause>
           </sections>
           <annex id="P" inline-header="false" obligation="normative" autonum="A" displayorder="3">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+              <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -696,6 +702,16 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="P">A</semx>
              </fmt-xref-label>
+      <variant-title type="toc">
+         <span class="fmt-caption-label">
+            <span class="fmt-element-name">Annex</span>
+            <semx element="autonum" source="P">A</semx>
+         </span>
+         <span class="fmt-caption-delim">
+            <tab/>
+         </span>
+         <semx element="title" source="_">Annex</semx>
+      </variant-title>
              <clause id="Q" inline-header="false" obligation="normative">
                 <title id="_">Annex A.1</title>
                 <fmt-title depth="2" id="_">
@@ -814,7 +830,7 @@ RSpec.describe IsoDoc::Iho do
       </iho-standard)
     INPUT
     presxml = <<~OUTPUT
-      <iho-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
+       <iho-standard xmlns="http://riboseinc.com/isoxml" type="presentation">
           <bibdata type="standard">
              <title language="en" format="text/plain" type="main">An ITU Standard</title>
              <docidentifier type="ITU">12345</docidentifier>
@@ -826,11 +842,11 @@ RSpec.describe IsoDoc::Iho do
           </bibdata>
           <preface>
              <clause type="toc" id="_" displayorder="1">
-                <fmt-title id="_" depth="1">Contents</fmt-title>
+                <fmt-title depth="1" id="_">Contents</fmt-title>
              </clause>
              <abstract id="_" displayorder="2">
                 <title id="_">Abstract</title>
-                <fmt-title id="_" depth="1">
+                <fmt-title depth="1" id="_">
                    <semx element="title" source="_">Abstract</semx>
                 </fmt-title>
                 <xref target="A1" id="_"/>
@@ -850,9 +866,7 @@ RSpec.describe IsoDoc::Iho do
              </abstract>
           </preface>
           <annex id="A1" obligation="normative" autonum="A" displayorder="3">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -871,11 +885,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A1">A</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A1">A</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A2" obligation="normative" autonum="B" displayorder="4">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -894,11 +916,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A2">B</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A2">B</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A3" obligation="normative" autonum="C" displayorder="5">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -917,11 +947,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A3">C</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A3">C</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A4" obligation="normative" autonum="D" displayorder="6">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -940,11 +978,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A4">D</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A4">D</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A5" obligation="normative" autonum="E" displayorder="7">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -963,11 +1009,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A5">E</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A5">E</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A6" obligation="normative" autonum="F" displayorder="8">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -986,11 +1040,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A6">F</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A6">F</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A7" obligation="normative" autonum="G" displayorder="9">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1009,11 +1071,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A7">G</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A7">G</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A8" obligation="normative" autonum="H" displayorder="10">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1032,11 +1102,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A8">H</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A8">H</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A9" obligation="normative" autonum="I" displayorder="11">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1055,11 +1133,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A9">I</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A9">I</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="A10" obligation="normative" autonum="J" displayorder="12">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1078,8 +1164,18 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Annex</span>
                 <semx element="autonum" source="A10">J</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Annex</span>
+                   <semx element="autonum" source="A10">J</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
              <clause id="A10a">
-                <fmt-title id="_" depth="2">
+                <fmt-title depth="2" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="A10">J</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -1095,7 +1191,7 @@ RSpec.describe IsoDoc::Iho do
              </clause>
              <appendix id="A10b" autonum="1">
                 <title id="_">App</title>
-                <fmt-title id="_" depth="2">
+                <fmt-title depth="2" id="_">
                    <span class="fmt-caption-label">
                       <span class="fmt-element-name">Appendix</span>
                       <semx element="autonum" source="A10b">1</semx>
@@ -1121,9 +1217,7 @@ RSpec.describe IsoDoc::Iho do
              </appendix>
           </annex>
           <annex id="B1" obligation="informative" autonum="1" displayorder="13">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1142,11 +1236,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B1">1</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B1">1</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B2" obligation="informative" autonum="2" displayorder="14">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1165,11 +1267,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B2">2</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B2">2</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B3" obligation="informative" autonum="3" displayorder="15">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1188,11 +1298,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B3">3</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B3">3</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B4" obligation="informative" autonum="4" displayorder="16">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1211,11 +1329,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B4">4</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B4">4</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B5" obligation="informative" autonum="5" displayorder="17">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1234,11 +1360,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B5">5</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B5">5</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B6" obligation="informative" autonum="6" displayorder="18">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1257,11 +1391,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B6">6</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B6">6</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B7" obligation="informative" autonum="7" displayorder="19">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1280,11 +1422,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B7">7</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B7">7</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B8" obligation="informative" autonum="8" displayorder="20">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1303,11 +1453,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B8">8</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B8">8</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B9" obligation="informative" autonum="9" displayorder="21">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1326,11 +1484,19 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B9">9</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B9">9</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
           </annex>
           <annex id="B10" obligation="informative" autonum="10" displayorder="22">
-             <title id="_">
-                <strong>Annex</strong>
-             </title>
+             <title id="_">Annex</title>
              <fmt-title id="_">
                 <span class="fmt-caption-label">
                    <strong>
@@ -1349,8 +1515,18 @@ RSpec.describe IsoDoc::Iho do
                 <span class="fmt-element-name">Appendix</span>
                 <semx element="autonum" source="B10">10</semx>
              </fmt-xref-label>
+             <variant-title type="toc">
+                <span class="fmt-caption-label">
+                   <span class="fmt-element-name">Appendix</span>
+                   <semx element="autonum" source="B10">10</semx>
+                </span>
+                <span class="fmt-caption-delim">
+                   <tab/>
+                </span>
+                <semx element="title" source="_">Annex</semx>
+             </variant-title>
              <clause id="B10a">
-                <fmt-title id="_" depth="2">
+                <fmt-title depth="2" id="_">
                    <span class="fmt-caption-label">
                       <semx element="autonum" source="B10">10</semx>
                       <span class="fmt-autonum-delim">.</span>
@@ -1366,7 +1542,7 @@ RSpec.describe IsoDoc::Iho do
              </clause>
              <appendix id="B10b" autonum="1">
                 <title id="_">App</title>
-                <fmt-title id="_" depth="2">
+                <fmt-title depth="2" id="_">
                    <span class="fmt-caption-label">
                       <span class="fmt-element-name">Appendix</span>
                       <semx element="autonum" source="B10b">1</semx>
@@ -1401,185 +1577,205 @@ RSpec.describe IsoDoc::Iho do
                <h1 class="IntroTitle">Contents</h1>
             </div>
             <br/>
-            <div id="_">
-               <h1 class="AbstractTitle">Abstract</h1>
-               <a href="#A1">Annex A</a>
-               <a href="#B1">Appendix 1</a>
-            </div>
-            <br/>
-            <div id="A1" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex A</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A2" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex B</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A3" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex C</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A4" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex D</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A5" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex E</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A6" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex F</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A7" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex G</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A8" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex H</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A9" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex I</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="A10" class="Section3">
-               <h1 class="Annex">
-                  <b>Annex J</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-               <div id="A10a">
-                  <h2>J.1</h2>
-               </div>
-               <div id="A10b">
-                  <h2>Appendix 1  App</h2>
-               </div>
-            </div>
-            <br/>
-            <div id="B1" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 1</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B2" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 2</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B3" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 3</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B4" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 4</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B5" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 5</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B6" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 6</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B7" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 7</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B8" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 8</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B9" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 9</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-            </div>
-            <br/>
-            <div id="B10" class="Section3">
-               <h1 class="Annex">
-                  <b>Appendix 10</b>
-                  <br/>
-                  <b>Annex</b>
-               </h1>
-               <div id="B10a">
-                  <h2>10.1</h2>
-               </div>
-               <div id="B10b">
-                  <h2>Appendix 1  App</h2>
-               </div>
-            </div>
-         </div>
-      </body>
+             <div id="_">
+                <h1 class="AbstractTitle">Abstract</h1>
+                <a href="#A1">Annex A</a>
+                <a href="#B1">Appendix 1</a>
+             </div>
+             <br/>
+             <div id="A1" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex A</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex A  Annex</p>
+             </div>
+             <br/>
+             <div id="A2" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex B</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex B  Annex</p>
+             </div>
+             <br/>
+             <div id="A3" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex C</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex C  Annex</p>
+             </div>
+             <br/>
+             <div id="A4" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex D</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex D  Annex</p>
+             </div>
+             <br/>
+             <div id="A5" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex E</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex E  Annex</p>
+             </div>
+             <br/>
+             <div id="A6" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex F</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex F  Annex</p>
+             </div>
+             <br/>
+             <div id="A7" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex G</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex G  Annex</p>
+             </div>
+             <br/>
+             <div id="A8" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex H</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex H  Annex</p>
+             </div>
+             <br/>
+             <div id="A9" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex I</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex I  Annex</p>
+             </div>
+             <br/>
+             <div id="A10" class="Section3">
+                <h1 class="Annex">
+                   <b>Annex J</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Annex J  Annex</p>
+                <div id="A10a">
+                   <h2>J.1</h2>
+                </div>
+                <div id="A10b">
+                   <h2>Appendix 1  App</h2>
+                </div>
+             </div>
+             <br/>
+             <div id="B1" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 1</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 1  Annex</p>
+             </div>
+             <br/>
+             <div id="B2" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 2</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 2  Annex</p>
+             </div>
+             <br/>
+             <div id="B3" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 3</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 3  Annex</p>
+             </div>
+             <br/>
+             <div id="B4" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 4</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 4  Annex</p>
+             </div>
+             <br/>
+             <div id="B5" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 5</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 5  Annex</p>
+             </div>
+             <br/>
+             <div id="B6" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 6</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 6  Annex</p>
+             </div>
+             <br/>
+             <div id="B7" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 7</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 7  Annex</p>
+             </div>
+             <br/>
+             <div id="B8" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 8</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 8  Annex</p>
+             </div>
+             <br/>
+             <div id="B9" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 9</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 9  Annex</p>
+             </div>
+             <br/>
+             <div id="B10" class="Section3">
+                <h1 class="Annex">
+                   <b>Appendix 10</b>
+                   <br/>
+                   <b>Annex</b>
+                </h1>
+                <p style="display:none;" class="variant-title-toc">Appendix 10  Annex</p>
+                <div id="B10a">
+                   <h2>10.1</h2>
+                </div>
+                <div id="B10b">
+                   <h2>Appendix 1  App</h2>
+                </div>
+             </div>
+          </div>
+       </body>
     OUTPUT
     pres_output = IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
