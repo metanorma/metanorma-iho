@@ -595,6 +595,8 @@ RSpec.describe Metanorma::Iho do
             name: International Hydrographic Organization
             subdivision: Transfer Standard Maintenance and Application Development
             abbreviation: TSMAD
+          role:
+            type: publisher
         amend:
           - description: Approved edition of S-102
       - date:
@@ -606,6 +608,8 @@ RSpec.describe Metanorma::Iho do
             name: International Hydrographic Organization
             subdivision: S-102 Project Team
             abbreviation: S-102PT
+          role:
+            type: publisher
         amend:
           description: >
             Updated clause 4.0 and 12.0.
@@ -625,6 +629,8 @@ RSpec.describe Metanorma::Iho do
             name: International Hydrographic Organization
             subdivision: S-102 Project Team
             abbreviation: S-102PT
+          role:
+            type: publisher
         amend:
           description: >
             Modified clause 9.0 based on feedback at S-100WG2 meeting.
@@ -639,6 +645,8 @@ RSpec.describe Metanorma::Iho do
             name: International Hydrographic Organization
             subdivision: S-102 Project Team
             abbreviation: S-102PT
+          role:
+            type: publisher
         amend:
           description: >
             Modified clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.
@@ -658,6 +666,8 @@ RSpec.describe Metanorma::Iho do
             name: International Hydrographic Organization
             subdivision: S-102 Project Team
             abbreviation: S-102PT
+          role:
+            type: publisher
         amend:
           description: |
             Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.
@@ -726,7 +736,7 @@ RSpec.describe Metanorma::Iho do
               <role type="publisher"/>
               <organization>
                 <name>International Hydrographic Organization</name>
-                <subdivision>Transfer Standard Maintenance and Application Development</subdivision>
+                <subdivision><name>Transfer Standard Maintenance and Application Development</name></subdivision>
                 <abbreviation>TSMAD</abbreviation>
               </organization>
             </contributor>
@@ -748,7 +758,7 @@ RSpec.describe Metanorma::Iho do
               <role type="publisher"/>
               <organization>
                 <name>International Hydrographic Organization</name>
-                <subdivision>S-102 Project Team</subdivision>
+                <subdivision><name>S-102 Project Team</name></subdivision>
                 <abbreviation>S-102PT</abbreviation>
               </organization>
             </contributor>
@@ -793,7 +803,7 @@ RSpec.describe Metanorma::Iho do
               <role type="publisher"/>
               <organization>
                 <name>International Hydrographic Organization</name>
-                <subdivision>S-102 Project Team</subdivision>
+                <subdivision><name>S-102 Project Team</name></subdivision>
                 <abbreviation>S-102PT</abbreviation>
               </organization>
             </contributor>
@@ -822,7 +832,7 @@ RSpec.describe Metanorma::Iho do
               <role type="publisher"/>
               <organization>
                 <name>International Hydrographic Organization</name>
-                <subdivision>S-102 Project Team</subdivision>
+                <subdivision><name>S-102 Project Team</name></subdivision>
                 <abbreviation>S-102PT</abbreviation>
               </organization>
             </contributor>
@@ -876,7 +886,7 @@ RSpec.describe Metanorma::Iho do
               <role type="publisher"/>
               <organization>
                 <name>International Hydrographic Organization</name>
-                <subdivision>S-102 Project Team</subdivision>
+                <subdivision><name>S-102 Project Team</name></subdivision>
                 <abbreviation>S-102PT</abbreviation>
               </organization>
             </contributor>
@@ -1002,6 +1012,8 @@ RSpec.describe Metanorma::Iho do
              name: International Hydrographic Organization
              subdivision: Transfer Standard Maintenance and Application Development
              abbreviation: TSMAD
+           role:
+             type: publisher
          amend:
            - description: Approved edition of S-102
        - date:
@@ -1013,6 +1025,8 @@ RSpec.describe Metanorma::Iho do
              name: International Hydrographic Organization
              subdivision: S-102 Project Team
              abbreviation: S-102PT
+           role:
+             type: publisher
          amend:
            description: &gt;
              Updated clause 4.0 and 12.0.
@@ -1032,6 +1046,8 @@ RSpec.describe Metanorma::Iho do
              name: International Hydrographic Organization
              subdivision: S-102 Project Team
              abbreviation: S-102PT
+           role:
+             type: publisher
          amend:
            description: &gt;
              Modified clause 9.0 based on feedback at S-100WG2 meeting.
@@ -1046,6 +1062,8 @@ RSpec.describe Metanorma::Iho do
              name: International Hydrographic Organization
              subdivision: S-102 Project Team
              abbreviation: S-102PT
+           role:
+             type: publisher
          amend:
            description: &gt;
              Modified clause 9.0. Deleted contents of Annex B in preparation for updated S-100 Part 10C guidance. Added Annex F: S-102 Dataset Size and Production, Annex G: Gridding Example, Annex H: Statement added for Multi-Resolution Gridding, Annex I: Statement for future S-102 Tiling.
@@ -1065,6 +1083,8 @@ RSpec.describe Metanorma::Iho do
              name: International Hydrographic Organization
              subdivision: S-102 Project Team
              abbreviation: S-102PT
+           role:
+             type: publisher
          amend:
            description: |
              Modifications to align with S-100 v4.0.0, S-100 Part 10c development, and actions from 4th April S-102 Project Team Meeting.
