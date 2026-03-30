@@ -209,15 +209,15 @@ RSpec.describe IsoDoc::Iho do
       :no-pdf:
     INPUT
 
-    output = Canon.format_xml(<<~"OUTPUT")
+    output = <<~"OUTPUT"
           #{BLANK_HDR}
       <sections/>
       </iho-standard>
     OUTPUT
 
-    expect(Canon.format_xml(strip_guid(Asciidoctor
-      .convert(input, backend: :iho, header_footer: true))))
-      .to be_equivalent_to output
+    expect(strip_guid(Asciidoctor
+      .convert(input, backend: :iho, header_footer: true)))
+      .to be_xml_equivalent_to output
     html = File.read("test.html", encoding: "utf-8")
     expect(html).to match(%r{jquery\.min\.js})
   end
@@ -310,11 +310,11 @@ RSpec.describe IsoDoc::Iho do
          </preface>
       </iso-standard>
     INPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-      .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .sub(%r{<i18nyaml>.*</i18nyaml>}m, "")))
+      .to be_xml_equivalent_to presxml
   end
 
   it "processes ordered lists" do
@@ -427,10 +427,10 @@ RSpec.describe IsoDoc::Iho do
          </preface>
       </iso-standard>
     INPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-      .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
+      .sub(%r{<i18nyaml>.*</i18nyaml>}m, "")))
+      .to be_xml_equivalent_to presxml
   end
 end
