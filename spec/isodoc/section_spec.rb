@@ -375,11 +375,11 @@ RSpec.describe IsoDoc::Iho do
           </bibliography>
        </iho-standard>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-      .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(output)
+      .sub(%r{<i18nyaml>.*</i18nyaml>}m, "")))
+      .to be_xml_equivalent_to output
   end
 
   it "processes nested references and terms" do
@@ -773,11 +773,11 @@ RSpec.describe IsoDoc::Iho do
           </bibliography>
        </iho-standard>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::PresentationXMLConvert
+    expect(strip_guid(IsoDoc::Iho::PresentationXMLConvert
           .new(presxml_options)
           .convert("test", input, true)
-          .sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(output)
+          .sub(%r{<i18nyaml>.*</i18nyaml>}m, "")))
+      .to be_xml_equivalent_to output
   end
 
   it "processes annexes and appendixes" do
@@ -1780,14 +1780,14 @@ RSpec.describe IsoDoc::Iho do
     pres_output = IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    expect(Canon.format_xml(strip_guid(pres_output
-      .sub(%r{<localized-strings>.*</localized-strings>}m, ""))))
-      .to be_equivalent_to Canon.format_xml(presxml)
-    expect(Canon.format_xml(strip_guid(IsoDoc::Iho::HtmlConvert.new({})
+    expect(strip_guid(pres_output
+      .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
+      .to be_xml_equivalent_to presxml
+    expect(strip_guid(IsoDoc::Iho::HtmlConvert.new({})
       .convert("test", pres_output, true)
       .gsub(%r{^.*<body}m, "<body")
-      .gsub(%r{</body>.*}m, "</body>"))))
-      .to be_equivalent_to Canon.format_xml(html)
+      .gsub(%r{</body>.*}m, "</body>")))
+      .to be_html5_equivalent_to html
   end
 
   it "inserts document history clause" do
@@ -2202,12 +2202,12 @@ RSpec.describe IsoDoc::Iho do
           </clause>
        </preface>
     OUTPUT
-    expect(Canon.format_xml(strip_guid(Nokogiri::XML(
+    expect(strip_guid(Nokogiri::XML(
       IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true),
     )
-      .at("//xmlns:preface").to_xml)))
-      .to be_equivalent_to Canon.format_xml(output)
+      .at("//xmlns:preface").to_xml))
+      .to be_xml_equivalent_to output
   end
 end
