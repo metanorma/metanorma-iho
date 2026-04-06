@@ -568,7 +568,7 @@ RSpec.describe Metanorma::Iho do
       .to be_equivalent_to output
   end
 
-  it "processes docuemnt history in Metanorma Extension" do
+  it "processes document history in Metanorma Extension" do
     input = <<~"INPUT"
       #{ASCIIDOC_BLANK_HDR}
 
