@@ -5,9 +5,9 @@ module Relaton
         def uri(doc)
           uri = nil
           %w(src).each do |t|
-            uri = doc.link.detect { |u| u.type == t } and break
+            uri = Array(doc.source).detect { |u| u.type == t } and break
           end
-          uri ||= doc.link.first
+          uri ||= Array(doc.source).first
           return nil unless uri
 
           uri.content.to_s
