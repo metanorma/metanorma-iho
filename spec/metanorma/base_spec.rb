@@ -80,7 +80,6 @@ RSpec.describe Metanorma::Iho do
     INPUT
 
     output = <<~"OUTPUT"
-          <?xml version="1.0" encoding="UTF-8"?>
       <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
       <bibdata type="standard">
         <title language="en" type="main">Main Title</title>

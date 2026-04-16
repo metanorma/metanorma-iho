@@ -16,19 +16,7 @@ require "htmlentities"
 require "metanorma"
 require "canon"
 
-Canon::Config.instance.tap do |cfg|
-  # Configure Canon to use spec-friendly match profiles
-  cfg.xml.match.profile = :spec_friendly
-  cfg.html.match.profile = :spec_friendly
-
-  # Configure Canon to show all diffs (including inactive diffs)
-  cfg.html.diff.show_diffs = :normative
-  cfg.xml.diff.show_diffs = :normative
-
-  # Enable verbose diff output for debugging
-  cfg.html.diff.verbose_diff = true
-  cfg.xml.diff.verbose_diff = true
-end
+Canon::Config.instance.profile = :metanorma
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -113,7 +101,6 @@ BOILERPLATE =
   )
 
 BLANK_HDR = <<~"HDR".freeze
-  <?xml version="1.0" encoding="UTF-8"?>
   <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
   <bibdata type="standard">
 
