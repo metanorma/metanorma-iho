@@ -9,7 +9,7 @@ require_relative "isodoc/iho/word_convert"
 require_relative "isodoc/iho/pdf_convert"
 require_relative "isodoc/iho/presentation_xml_convert"
 require_relative "metanorma/iho/version"
-require "metanorma"
+require "metanorma-core"
 
 if defined? Metanorma::Registry
   require_relative "metanorma/iho"
