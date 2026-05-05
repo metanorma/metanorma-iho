@@ -1571,105 +1571,62 @@ RSpec.describe IsoDoc::Iho do
     OUTPUT
 
     html = <<~OUTPUT
-                 #{HTML_HDR}
+         #{HTML_HDR}
                             <br/>
             <div id="_" class="TOC">
                <h1 class="IntroTitle">Contents</h1>
             </div>
             <br/>
              <div id="_">
-                <h1 class="AbstractTitle">Abstract</h1>
-                <a href="#A1">Annex A</a>
-                <a href="#B1">Appendix 1</a>
-             </div>
+                <h1 class="AbstractTitle">Abstract</h1><a href="#A1">Annex A</a><a href="#B1">Appendix 1</a></div>
              <br/>
              <div id="A1" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex A</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex A</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex A  Annex</p>
              </div>
              <br/>
              <div id="A2" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex B</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex B</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex B  Annex</p>
              </div>
              <br/>
              <div id="A3" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex C</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex C</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex C  Annex</p>
              </div>
              <br/>
              <div id="A4" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex D</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex D</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex D  Annex</p>
              </div>
              <br/>
              <div id="A5" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex E</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex E</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex E  Annex</p>
              </div>
              <br/>
              <div id="A6" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex F</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex F</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex F  Annex</p>
              </div>
              <br/>
              <div id="A7" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex G</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex G</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex G  Annex</p>
              </div>
              <br/>
              <div id="A8" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex H</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex H</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex H  Annex</p>
              </div>
              <br/>
              <div id="A9" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex I</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex I</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex I  Annex</p>
              </div>
              <br/>
              <div id="A10" class="Section3">
-                <h1 class="Annex">
-                   <b>Annex J</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Annex J</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Annex J  Annex</p>
                 <div id="A10a">
                    <h2>J.1</h2>
@@ -1680,92 +1637,52 @@ RSpec.describe IsoDoc::Iho do
              </div>
              <br/>
              <div id="B1" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 1</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 1</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 1  Annex</p>
              </div>
              <br/>
              <div id="B2" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 2</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 2</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 2  Annex</p>
              </div>
              <br/>
              <div id="B3" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 3</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 3</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 3  Annex</p>
              </div>
              <br/>
              <div id="B4" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 4</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 4</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 4  Annex</p>
              </div>
              <br/>
              <div id="B5" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 5</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 5</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 5  Annex</p>
              </div>
              <br/>
              <div id="B6" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 6</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 6</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 6  Annex</p>
              </div>
              <br/>
              <div id="B7" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 7</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 7</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 7  Annex</p>
              </div>
              <br/>
              <div id="B8" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 8</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 8</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 8  Annex</p>
              </div>
              <br/>
              <div id="B9" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 9</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 9</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 9  Annex</p>
              </div>
              <br/>
              <div id="B10" class="Section3">
-                <h1 class="Annex">
-                   <b>Appendix 10</b>
-                   <br/>
-                   <b>Annex</b>
-                </h1>
+                <h1 class="Annex"><b>Appendix 10</b><br/><b>Annex</b></h1>
                 <p style="display:none;" class="variant-title-toc">Appendix 10  Annex</p>
                 <div id="B10a">
                    <h2>10.1</h2>
