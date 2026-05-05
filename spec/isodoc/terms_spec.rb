@@ -483,7 +483,7 @@ RSpec.describe IsoDoc do
              <div id="_">
                 <h1>1  Terms and Definitions</h1>
                 <p>For the purposes of this document, the following terms and definitions apply.</p>
-                <p class="TermNum" id="paddy1"/>
+                <p class="TermNum" id="paddy1"></ class="TermNum" id="paddy1">
                 <p class="Terms" style="text-align:left;">
                    <b>
                       <dfn>paddy</dfn>
@@ -509,7 +509,7 @@ RSpec.describe IsoDoc do
                       </ul>
                    </div>
                 </div>
-                <p class="TermNum" id="paddy"/>
+                <p class="TermNum" id="paddy"></ class="TermNum" id="paddy">
                 <p class="Terms" style="text-align:left;">
                    <b>
                       <dfn>paddy</dfn>

@@ -76,9 +76,9 @@ RSpec.describe Metanorma::Iho::Processor do
     processor.output(input, "test.xml", "test.html", :html)
 
     expect(
-      strip_guid(File.read("test.html", encoding: "utf-8"
-      .gsub(%r{^.*<main}m, "<main")
-      .gsub(%r{</main>.*}m, "</main>"))),
+      strip_guid(File.read("test.html", encoding: "utf-8")
+      .gsub(%r{\A.*<main}m, "<main")
+      .gsub(%r{</main>.*\Z}m, "</main>")),
     ).to be_html5_equivalent_to output
   end
 end
