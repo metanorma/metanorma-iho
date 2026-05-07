@@ -695,7 +695,6 @@ RSpec.describe Metanorma::Iho do
     output = <<~"OUTPUT"
       <bibdata type="standard">
          <title language="en" type="main">Document title</title>
-        <docidentifier primary="true" type="IHO">S-</docidentifier>
         <contributor>
           <role type="author"/>
           <organization>
@@ -726,7 +725,6 @@ RSpec.describe Metanorma::Iho do
         </copyright>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="published">
               <on>2012-04</on>
             </date>
@@ -748,7 +746,6 @@ RSpec.describe Metanorma::Iho do
         </relation>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="published">
               <on>2017-03</on>
             </date>
@@ -792,7 +789,6 @@ RSpec.describe Metanorma::Iho do
         </relation>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="updated">
               <on>2017-05</on>
             </date>
@@ -821,7 +817,6 @@ RSpec.describe Metanorma::Iho do
         </relation>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="updated">
               <on>2018-02</on>
             </date>
@@ -875,7 +870,6 @@ RSpec.describe Metanorma::Iho do
         </relation>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="updated">
               <on>2018-06</on>
             </date>
