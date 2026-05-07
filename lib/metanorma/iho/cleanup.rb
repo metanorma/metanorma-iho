@@ -32,12 +32,12 @@ module Metanorma
         appendixid: "Appendix",
         annexid: "Annex",
         part: "Part",
-        supplementid: "Supplement",
+        supplementid: "Suppl",
       }.freeze
 
       # not language-specific, just space-delimited
       def bibdata_docidentifier_enhance(id, parts)
-        ret = %w(part appendixid annexid supplementid)
+        ret = %w(appendixid part annexid supplementid)
           .each_with_object([]) do |w, m|
           p = parts[w] and m << "#{ID_LABELS[w.to_sym]} #{p}"
         end
