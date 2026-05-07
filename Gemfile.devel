@@ -1,7 +1,8 @@
-gem "canon", git: "https://github.com/lutaml/canon", branch: "fix/144-asymmetric-comments-element-structure"
-gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "fix/canon-0.2.4"
+gem "isodoc", git: "https://github.com/metanorma/isodoc", branch: "fix/lutaml-model-0.8.0"
+gem "html2doc", git: "https://github.com/metanorma/html2doc", branch: "fix/lutaml-model-0.8.0"
+gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "fix/lutaml-model-0.8.0"
+gem "metanorma-generic", git: "https://github.com/metanorma/metanorma-generic", branch: "fix/lutaml-model-0.8.0"
 gem "metanorma-core", git: "https://github.com/metanorma/metanorma-core", branch: "main"
-gem "metanorma-standoc", git: "https://github.com/metanorma/metanorma-standoc", branch: "fix/canon-0.2.4"
-gem "metanorma-generic", git: "https://github.com/metanorma/metanorma-generic", branch: "fix/canon-0.2.4"
-gem "html2doc", git: "https://github.com/metanorma/html2doc", branch: "main"
-gem "pubid-itu", git: "https://github.com/metanorma/pubid", branch: "feature/pubid-itu-i18n-annex", glob: "gems/pubid-itu/*.gemspec"
+gem "metanorma-plugin-lutaml", git: "https://github.com/metanorma/metanorma-plugin-lutaml", branch: "fix/ruby-4.0"
+
+
