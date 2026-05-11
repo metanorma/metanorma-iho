@@ -92,6 +92,9 @@ RSpec.describe Metanorma::Iho do
        <date type='obsoleted'>
          <on>2001-01-01</on>
        </date>
+       <date type='updated'>
+         <on>2000-01-01</on>
+       </date>
         <contributor>
           <role type="author"/>
           <organization>
@@ -149,10 +152,7 @@ RSpec.describe Metanorma::Iho do
           </organization>
         </contributor>
         <edition>2</edition>
-      <version>
-        <revision-date>2000-01-01</revision-date>
-        <draft>3.4</draft>
-      </version>
+      <version>3.4</version>
         <language>en</language>
         <script>Latn</script>
         <status>
@@ -332,6 +332,7 @@ RSpec.describe Metanorma::Iho do
       <title language="en" type="title-main">Main Title</title>
         <docidentifier primary="true" type="IHO">S-1000</docidentifier>
         <docnumber>1000</docnumber>
+        <date type="updated"><on>2000-01-01</on></date>
         <contributor>
           <role type="author"/>
           <organization>
@@ -347,10 +348,7 @@ RSpec.describe Metanorma::Iho do
           </organization>
         </contributor>
         <edition>2</edition>
-      <version>
-        <revision-date>2000-01-01</revision-date>
-        <draft>3.4</draft>
-      </version>
+      <version>3.4</version>
         <language>en</language>
         <script>Latn</script>
         <status>
