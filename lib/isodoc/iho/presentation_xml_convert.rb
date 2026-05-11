@@ -110,23 +110,13 @@ module IsoDoc
       end
 
       def ddMMMyyyy(isodate)
-        return isodate if isodate.nil? || isodate.to_s.empty?
-
-        parts = isodate.split("-")
-        normalized = [parts[0], parts[1] || "01", parts[2] || "01"].join("-")
-        IsoDoc::ExtendedDateFormatter.format(
-          normalized, date_format_by_arity(parts.size), lang: @lang
+        IsoDoc::ExtendedDateFormatter.format_iso_date(
+          isodate,
+          lang: @lang,
+          year: "%Y",
+          year_month: "%B %Y",
+          full: "%d %B %Y",
         )
-      rescue StandardError
-        isodate
-      end
-
-      def date_format_by_arity(arity)
-        case arity
-        when 1 then "%Y"
-        when 2 then "%B %Y"
-        else "%d %B %Y"
-        end
       end
 
       def omit_docid_prefix(prefix)
