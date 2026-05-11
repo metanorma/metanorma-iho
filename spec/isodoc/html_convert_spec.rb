@@ -14,11 +14,9 @@ RSpec.describe IsoDoc::Iho do
         <title type="title-supplement" language="en" format="plain">Supplement Title</title>
         <docidentifier>1000(wd)</docidentifier>
         <docnumber>1000</docnumber>
+        <date type="updated"><on>2000-01-01</on></date>
         <edition>2</edition>
-        <version>
-        <revision-date>2000-01-01</revision-date>
-        <draft>3.4</draft>
-      </version>
+        <version>3.4</version>
        <date type='implemented'>
          <on>2000-01-01</on>
        </date>
@@ -167,7 +165,7 @@ RSpec.describe IsoDoc::Iho do
         transmitteddate: "XXX",
         unchangeddate: "XXX",
         unpublished: true,
-        updateddate: "XXX",
+        updateddate: "2000-01-01",
         vote_endeddate: "XXX",
         vote_starteddate: "XXX" }
 

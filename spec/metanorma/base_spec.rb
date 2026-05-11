@@ -92,6 +92,9 @@ RSpec.describe Metanorma::Iho do
        <date type='obsoleted'>
          <on>2001-01-01</on>
        </date>
+       <date type='updated'>
+         <on>2000-01-01</on>
+       </date>
         <contributor>
           <role type="author"/>
           <organization>
@@ -149,10 +152,7 @@ RSpec.describe Metanorma::Iho do
           </organization>
         </contributor>
         <edition>2</edition>
-      <version>
-        <revision-date>2000-01-01</revision-date>
-        <draft>3.4</draft>
-      </version>
+      <version>3.4</version>
         <language>en</language>
         <script>Latn</script>
         <status>
@@ -221,24 +221,24 @@ RSpec.describe Metanorma::Iho do
       :title-supplement: Supplement Title
       :semantic-metadata-annex-informative: true
       :partnumber: 1
-      :annex-id: 2
+      :annex-id: B
       :appendix-id: 3
       :supplement-id: 4
     INPUT
     output = <<~OUTPUT
       <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Iho::VERSION}" flavor="iho">
           <bibdata type="standard">
-             <title language="en" type="main">Main Title, Part 1: Part Title, Annex 2 (Informative) Annex Title, Appendix 3: Appendix Title, Supplement 4: Supplement Title</title>
+             <title language="en" type="main">Main Title, Part 1: Part Title, Annex B (Informative) Annex Title, Appendix 3: Appendix Title, Supplement 4: Supplement Title</title>
              <title language="en" type="title-main">Main Title</title>
       <title language="en" type="title-appendix">Appendix 3: Appendix Title</title>
-      <title language="en" type="title-annex">Annex 2 (Informative) Annex Title</title>
+      <title language="en" type="title-annex">Annex B (Informative) Annex Title</title>
       <title language="en" type="title-part">Part 1: Part Title</title>
       <title language="en" type="title-supplement">Supplement 4: Supplement Title</title>
       <title language="en" type="title-part-prefix">Part 1</title>
-      <title language="en" type="title-annex-prefix">Annex 2</title>
+      <title language="en" type="title-annex-prefix">Annex B</title>
       <title language="en" type="title-appendix-prefix">Appendix 3</title>
       <title language="en" type="title-supplement-prefix">Supplement 4</title>
-             <docidentifier primary="true" type="IHO">S-1000 Part 1 Appendix 3 Annex 2 Supplement 4</docidentifier>
+             <docidentifier primary="true" type="IHO">S-1000 Appendix 3 Part 1 Annex B Suppl 4</docidentifier>
              <docidentifier type="IHO-parent-document">S-1000</docidentifier>
              <docnumber>1000</docnumber>
              <contributor>
@@ -276,7 +276,7 @@ RSpec.describe Metanorma::Iho do
                            <docnumber>1000</docnumber>
                    <part>1</part>
                    <appendixid>3</appendixid>
-                   <annexid>2</annexid>
+                   <annexid>B</annexid>
                    <supplementid>4</supplementid>
                    </structuredidentifier>
         </ext>
@@ -304,7 +304,7 @@ RSpec.describe Metanorma::Iho do
     expect(strip_guid(Asciidoctor.convert(
       input.sub(":semantic-metadata-annex-informative: true\n", ""), *OPTIONS)))
       .to be_xml_equivalent_to output
-      .gsub("Annex 2 (Informative) Annex Title", "Annex 2 Annex Title")
+      .gsub("Annex B (Informative) Annex Title", "Annex B Annex Title")
       .sub(%r{<annex-informative>.*</annex-informative>}m, "")
   end
 
@@ -332,6 +332,7 @@ RSpec.describe Metanorma::Iho do
       <title language="en" type="title-main">Main Title</title>
         <docidentifier primary="true" type="IHO">S-1000</docidentifier>
         <docnumber>1000</docnumber>
+        <date type="updated"><on>2000-01-01</on></date>
         <contributor>
           <role type="author"/>
           <organization>
@@ -347,10 +348,7 @@ RSpec.describe Metanorma::Iho do
           </organization>
         </contributor>
         <edition>2</edition>
-      <version>
-        <revision-date>2000-01-01</revision-date>
-        <draft>3.4</draft>
-      </version>
+      <version>3.4</version>
         <language>en</language>
         <script>Latn</script>
         <status>
@@ -695,7 +693,6 @@ RSpec.describe Metanorma::Iho do
     output = <<~"OUTPUT"
       <bibdata type="standard">
          <title language="en" type="main">Document title</title>
-        <docidentifier primary="true" type="IHO">S-</docidentifier>
         <contributor>
           <role type="author"/>
           <organization>
@@ -726,7 +723,6 @@ RSpec.describe Metanorma::Iho do
         </copyright>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="published">
               <on>2012-04</on>
             </date>
@@ -748,7 +744,6 @@ RSpec.describe Metanorma::Iho do
         </relation>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="published">
               <on>2017-03</on>
             </date>
@@ -792,7 +787,6 @@ RSpec.describe Metanorma::Iho do
         </relation>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="updated">
               <on>2017-05</on>
             </date>
@@ -821,7 +815,6 @@ RSpec.describe Metanorma::Iho do
         </relation>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="updated">
               <on>2018-02</on>
             </date>
@@ -875,7 +868,6 @@ RSpec.describe Metanorma::Iho do
         </relation>
         <relation type="updatedBy">
           <bibitem>
-            <docidentifier type="IHO">S-</docidentifier>
             <date type="updated">
               <on>2018-06</on>
             </date>
