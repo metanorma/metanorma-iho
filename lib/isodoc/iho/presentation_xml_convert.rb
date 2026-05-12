@@ -110,15 +110,13 @@ module IsoDoc
       end
 
       def ddMMMyyyy(isodate)
-        isodate.nil? and return nil
-        arr = isodate.split("-")
-        if arr.size == 1 && (/^\d+$/.match isodate)
-          Date.new(*arr.map(&:to_i)).strftime("%Y")
-        elsif arr.size == 2
-          Date.new(*arr.map(&:to_i)).strftime("%B %Y")
-        else
-          Date.parse(isodate).strftime("%d %B %Y")
-        end
+        IsoDoc::ExtendedDateFormatter.format_iso_date(
+          isodate,
+          lang: @lang,
+          year: "%Y",
+          year_month: "%B %Y",
+          full: "%d %B %Y",
+        )
       end
 
       def omit_docid_prefix(prefix)
