@@ -2267,6 +2267,14 @@
 
 	<xsl:template match="@semx-id | @anchor" mode="update_xml_step1"/>
 
+	<xsl:template match="mn:pagebreak" mode="update_xml_step1">
+		<xsl:copy>
+			<xsl:apply-templates select="@*" mode="update_xml_step1"/>
+			<xsl:attribute name="from_source_xml">true</xsl:attribute>
+			<xsl:apply-templates select="node()" mode="update_xml_step1"/>
+		</xsl:copy>
+	</xsl:template>
+
 	<!-- END: update new Presentation XML -->
 
 	<!-- =========================================================================== -->
@@ -2304,6 +2312,7 @@
 			<xsl:for-each select="ancestor-or-self::*[ancestor::mn:preface or ancestor::mn:sections or ancestor-or-self::mn:annex]">
 				<xsl:if test="following-sibling::*">false</xsl:if>
 			</xsl:for-each>
+			<xsl:if test="@from_source_xml = 'true'">false</xsl:if>
 		</xsl:variable>
 
 		<xsl:if test="contains($isLast, 'false')">
