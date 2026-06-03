@@ -34,32 +34,32 @@ module IsoDoc
       def annex_names_recurse(clause, num)
         if @klass.single_term_clause?(clause)
           annex_names1(clause.at(ns("./references | ./terms | ./definitions")),
-                              nil, num.to_s, 1)
+                       nil, num.to_s, 1)
         else
-        i = Counter.new
-        clause.xpath(ns("./clause | ./references | ./terms | ./definitions"))
-          .each do |c|
-          i.increment(c)
-          annex_names1(c, semx(clause, num), i.print, 2)
-        end
+          i = Counter.new
+          clause.xpath(ns("./clause | ./references | ./terms | ./definitions"))
+            .each do |c|
+            i.increment(c)
+            annex_names1(c, semx(clause, num), i.print, 2)
+          end
         end
       end
 
       # avoid ambiguity of Table 1-1 being in Appendix 1 or Clause 1
       def annex_asset_names(clause, num, lbl)
-        #@annex_prefix = lbl
-        #require "debug"; binding.b
-        #hierarchical_asset_names(clause, num)
+        # @annex_prefix = lbl
+        # require "debug"; binding.b
+        # hierarchical_asset_names(clause, num)
         n = num
         clause["obligation"] == "informative" and n = labelled_autonum(lbl, num)
         hierarchical_asset_names(clause, n)
-        #@annex_prefix = nil
+        # @annex_prefix = nil
       end
 
-      #def anchor_struct_value(lbl, elem)
-        #@annex_prefix and lbl = l10n("<span class='fmt-element-name'>#{@annex_prefix}</span> #{lbl}")
-        #super
-      #end
+      # def anchor_struct_value(lbl, elem)
+      # @annex_prefix and lbl = l10n("<span class='fmt-element-name'>#{@annex_prefix}</span> #{lbl}")
+      # super
+      # end
 
       def clause_order_main(docxml)
         if docxml.at(ns("//bibliography//references[@normative = 'true']")) ||
@@ -68,15 +68,15 @@ module IsoDoc
             { path: "//sections/clause[@type = 'scope']" },
             { path: "#{@klass.norm_ref_xpath} | //sections/references" },
             { path: "//sections/terms | //sections/definitions | " \
-              "//sections/clause[not(@type = 'scope')]", multi: true },
+                    "//sections/clause[not(@type = 'scope')]", multi: true },
           ]
         else
           [
             { path: "//sections/terms | //sections/definitions | " \
-              "//sections/references | " \
-              "//bibliography/references[@normative = 'true'] | " \
-              "//bibliography/clause[.//references[@normative = 'true']] | " \
-              "//sections/clause", multi: true },
+                    "//sections/references | " \
+                    "//bibliography/references[@normative = 'true'] | " \
+                    "//bibliography/clause[.//references[@normative = 'true']] | " \
+                    "//sections/clause", multi: true },
           ]
         end
       end
@@ -116,7 +116,8 @@ module IsoDoc
         clause.xpath(ns("./appendix")).each do |c|
           i.increment(c)
           @anchors[c["id"]] =
-            anchor_struct(i.print, c, @labels["appendix"], "clause", { container: true })
+            anchor_struct(i.print, c, @labels["appendix"], "clause",
+                          { container: true })
           @anchors[c["id"]][:level] = 2
           @anchors[c["id"]][:container] = clause["id"]
         end
@@ -126,7 +127,7 @@ module IsoDoc
         lbl = clause_number_semx(parentnum, clause, num)
         @anchors[clause["id"]] =
           { label: lbl, level: level,
-            xref: labelled_autonum(@labels['subclause'], lbl),
+            xref: labelled_autonum(@labels["subclause"], lbl),
             type: "clause", elem: @labels["subclause"] }
         i = Counter.new(0)
         clause.xpath(ns(SUBCLAUSES)).each do |c|
