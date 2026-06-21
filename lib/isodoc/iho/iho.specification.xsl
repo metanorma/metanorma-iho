@@ -795,6 +795,7 @@
 
 	<xsl:template match="mn:preface//mn:clause[@type = 'toc']/mn:fmt-title" priority="3">
 		<fo:block xsl:use-attribute-sets="toc-title-style">
+			<xsl:call-template name="refine_toc-title-style"/>
 			<fo:block-container width="18.3mm" border-bottom="1.25pt solid black" role="SKIP">
 				<fo:block line-height="75%">
 					<!-- <xsl:call-template name="getLocalizedString">
