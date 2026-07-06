@@ -66,7 +66,7 @@ RSpec.describe Metanorma::Iho::Processor do
              <a class="header" href="#H">1.  Terms, Definitions, Symbols and Abbreviated Terms</a>
            </h1>
            <p class="Terms" style="text-align:left;" id="J">
-             <strong>1.1.</strong>
+             <span class="TermNum">1.1.</span>
               Term2
            </p>
          </div>
