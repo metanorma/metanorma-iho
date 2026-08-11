@@ -1227,7 +1227,7 @@
 	</xsl:template>
 
 	<xsl:template match="mn:logo[@type = 'desc' or @type = 'mark' or @type = 'sign']">
-		<fo:instream-foreign-object content-width="25.9mm" fox:alt-text="Image Logo IHO">
+		<fo:instream-foreign-object content-width="25.9mm" fox:alt-text="Image Logo IHO" fox:placement="Block">
 			<xsl:if test="@type = 'desc'"><xsl:attribute name="content-width">25.8mm</xsl:attribute></xsl:if>
 			<xsl:copy-of select="mn:image/*[local-name() = 'svg']"/>
 			<xsl:if test="not(mn:image/*[local-name() = 'svg'])">
@@ -4196,7 +4196,7 @@
 		<xsl:param name="value"/>
 		<xsl:variable name="add_width" select="string-length($value) * 20"/>
 		<xsl:variable name="maxwidth" select="60 + $add_width"/>
-			<fo:instream-foreign-object fox:alt-text="OpeningTag" baseline-shift="-10%"><!-- alignment-baseline="middle" -->
+			<fo:instream-foreign-object fox:alt-text="OpeningTag" baseline-shift="-10%" fox:placement="Inline"><!-- alignment-baseline="middle" -->
 				<xsl:attribute name="height">3.5mm</xsl:attribute> <!-- 5mm -->
 				<xsl:attribute name="content-width">100%</xsl:attribute>
 				<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -4429,7 +4429,7 @@
 						<xsl:attribute name="margin-top">0pt</xsl:attribute>
 						<xsl:attribute name="margin-bottom">0pt</xsl:attribute>
 					</xsl:if>
-					<fo:instream-foreign-object fox:alt-text="{.}" content-width="95%">
+					<fo:instream-foreign-object fox:alt-text="{.}" content-width="95%" fox:placement="Inline">
 						<math xmlns="http://www.w3.org/1998/Math/MathML">
 							<mtext><xsl:value-of select="."/></mtext>
 						</math>
@@ -9638,7 +9638,7 @@
 
 					<!-- debug scale='<xsl:value-of select="$scale"/>', indent='<xsl:value-of select="$indent"/>' -->
 
-					<fo:external-graphic src="{$src}" vertical-align="middle" fox:placement="inline">
+					<fo:external-graphic src="{$src}" vertical-align="middle" fox:placement="Inline">
 						<xsl:call-template name="addAltText"/>
 
 						<xsl:if test="parent::mn:logo"> <!-- publisher's logo -->
@@ -9703,7 +9703,7 @@
 					<xsl:choose>
 						<xsl:when test="$isDeleted = 'true'">
 							<!-- enclose in svg -->
-							<fo:instream-foreign-object>
+							<fo:instream-foreign-object fox:placement="Block">
 								<xsl:attribute name="width">100%</xsl:attribute>
 								<xsl:attribute name="content-height">100%</xsl:attribute>
 								<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -9724,7 +9724,7 @@
 							<xsl:value-of select="concat('scale=', $scale,', indent=', $indent)"/>
 							</fo:block> -->
 
-							<fo:external-graphic src="{$src}">
+							<fo:external-graphic src="{$src}" fox:placement="Block">
 								<xsl:call-template name="addAltText"/>
 
 								<xsl:choose>
@@ -10063,7 +10063,7 @@
 											</xsl:if>
 											<fo:block text-depth="0" line-height="0" font-size="0">
 
-												<fo:instream-foreign-object fox:alt-text="{$alt-text}">
+												<fo:instream-foreign-object fox:alt-text="{$alt-text}" fox:placement="Block">
 													<xsl:attribute name="width">100%</xsl:attribute>
 													<xsl:attribute name="content-height">100%</xsl:attribute>
 													<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -10112,7 +10112,7 @@
 					<xsl:copy>
 						<xsl:copy-of select="@*"/>
 					<!-- <fo:block xsl:use-attribute-sets="image-style"> -->
-						<fo:instream-foreign-object fox:alt-text="{$alt-text}">
+						<fo:instream-foreign-object fox:alt-text="{$alt-text}" fox:placement="Block">
 
 							<xsl:choose>
 								<xsl:when test="$image_class = 'corrigenda-tag'">
@@ -10178,7 +10178,7 @@
 							</xsl:if>
 
 							<xsl:if test="self::fo:inline">
-								<xsl:attribute name="fox:placement">inline</xsl:attribute>
+								<xsl:attribute name="fox:placement">Inline</xsl:attribute>
 							</xsl:if>
 
 							<xsl:copy-of select="$svg_content"/>
@@ -10516,6 +10516,18 @@
 	<xsl:template name="refine_mathml-style">
 	</xsl:template>
 
+	<xsl:attribute-set name="mathml-instream-foreign-object-style">
+		<xsl:attribute name="fox:alt-text">Math</xsl:attribute>
+		<xsl:attribute name="fox:actual-text">Math</xsl:attribute>
+		<xsl:attribute name="fox:placement">Inline</xsl:attribute>
+	</xsl:attribute-set> <!-- mathml-instream-foreign-object-style -->
+
+	<xsl:template name="refine_mathml-instream-foreign-object-style">
+		<xsl:if test="ancestor::mn:formula">
+			<xsl:attribute name="fox:placement">Block</xsl:attribute>
+		</xsl:if>
+	</xsl:template> <!-- refine_mathml-instream-foreign-object-style -->
+
 	<!-- ====== -->
 	<!-- formula  -->
 	<!-- ====== -->
@@ -10727,9 +10739,9 @@
 			<xsl:apply-templates select="." mode="mathml"/>
 		</xsl:variable>
 
-		<fo:instream-foreign-object fox:alt-text="Math" fox:actual-text="Math" fox:placement="inline">
+		<fo:instream-foreign-object xsl:use-attribute-sets="mathml-instream-foreign-object-style">
 
-			<xsl:call-template name="refine_mathml_insteam_object_style"/>
+			<xsl:call-template name="refine_mathml-instream-foreign-object-style"/>
 
 			<xsl:if test="$isGenerateTableIF = 'false'">
 				<!-- put MathML in Actual Text -->
@@ -10752,9 +10764,6 @@
 
 		</fo:instream-foreign-object>
 	</xsl:template>
-
-	<xsl:template name="refine_mathml_insteam_object_style">
-	</xsl:template> <!-- refine_mathml_insteam_object_style -->
 
 	<xsl:template match="mathml:*" mode="mathml_actual_text">
 		<!-- <xsl:text>a+b</xsl:text> -->
@@ -12578,7 +12587,7 @@
 			<xsl:call-template name="set_id_metanorma_form_item">
 				<xsl:with-param name="form_item_type" select="$form_item_type"/>
 			</xsl:call-template>
-			<fo:instream-foreign-object fox:alt-text="Box" baseline-shift="-10%">
+			<fo:instream-foreign-object fox:alt-text="Box" baseline-shift="-10%" fox:placement="Inline">
 				<xsl:attribute name="height">3.5mm</xsl:attribute>
 				<xsl:attribute name="content-width">100%</xsl:attribute>
 				<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -12605,7 +12614,7 @@
 			<xsl:call-template name="set_id_metanorma_form_item">
 				<xsl:with-param name="form_item_type" select="$form_item_type"/>
 			</xsl:call-template>
-			<fo:instream-foreign-object fox:alt-text="Box" baseline-shift="-10%">
+			<fo:instream-foreign-object fox:alt-text="Box" baseline-shift="-10%" fox:placement="Inline">
 				<xsl:attribute name="height">3.5mm</xsl:attribute>
 				<xsl:attribute name="content-width">100%</xsl:attribute>
 				<xsl:attribute name="content-width">scale-down-to-fit</xsl:attribute>
@@ -14813,7 +14822,7 @@
 
 	<xsl:template match="mn:blacksquare" name="blacksquare">
 		<fo:inline padding-right="2.5mm" baseline-shift="5%">
-			<fo:instream-foreign-object content-height="2mm" content-width="2mm" fox:alt-text="Quad">
+			<fo:instream-foreign-object content-height="2mm" content-width="2mm" fox:alt-text="Quad" fox:placement="Inline">
 					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 2 2">
 						<rect x="0" y="0" width="2" height="2" fill="black"/>
 					</svg>
@@ -15769,13 +15778,13 @@
 		<xsl:param name="bitmap_width" select="$pageWidth"/>
 		<xsl:choose>
 			<xsl:when test="*[local-name() = 'svg'] or java:endsWith(java:java.lang.String.new(@src), '.svg')">
-				<fo:instream-foreign-object fox:alt-text="Image Front">
+				<fo:instream-foreign-object fox:alt-text="Image Front" fox:placement="Block">
 					<xsl:attribute name="content-height"><xsl:value-of select="$svg_content_height"/>mm</xsl:attribute>
 					<xsl:call-template name="getSVG"/>
 				</fo:instream-foreign-object>
 			</xsl:when>
 			<xsl:when test="starts-with(@src, 'data:application/pdf;base64')">
-				<fo:external-graphic src="{@src}" fox:alt-text="Image Front"/>
+				<fo:external-graphic src="{@src}" fox:alt-text="Image Front" fox:placement="Block"/>
 			</xsl:when>
 			<xsl:otherwise> <!-- bitmap image -->
 				<xsl:variable name="coverimage_src" select="normalize-space(@src)"/>
@@ -15785,7 +15794,7 @@
 							<xsl:with-param name="src" select="$coverimage_src"/>
 						</xsl:call-template>
 					</xsl:variable>
-					<fo:external-graphic src="{$coverpage}" width="{$bitmap_width}mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front"/>
+					<fo:external-graphic src="{$coverpage}" width="{$bitmap_width}mm" content-height="scale-to-fit" scaling="uniform" fox:alt-text="Image Front" fox:placement="Block"/>
 				</xsl:if>
 			</xsl:otherwise>
 		</xsl:choose>
