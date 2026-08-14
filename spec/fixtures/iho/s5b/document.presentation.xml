@@ -1,0 +1,1874 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="presentation" version="1.1.2" schema-version="v2.0.0" flavor="iho">
+<bibdata type="standard">
+<title language="en" format="text/plain">Standards of Competence for Category "B" Hydrographic Surveyors (Preview PR)</title>
+<docidentifier primary="true" type="IHO">S-5B</docidentifier><docnumber>5B</docnumber><date type="published"><on>2017-06</on></date><contributor><role type="author"/><organization>
+<name>International Hydrographic Organization</name>
+<abbreviation>IHO</abbreviation></organization></contributor><contributor><role type="publisher"/><organization>
+<name>International Hydrographic Organization</name>
+<abbreviation>IHO</abbreviation></organization></contributor><edition>1.0.1</edition><language current="true">en</language><script current="true">Latn</script><status><stage>in-force</stage></status><copyright><from>2017</from><owner><organization>
+<name>International Hydrographic Organization</name>
+<abbreviation>IHO</abbreviation></organization></owner></copyright><series type="main">
+<title>Standards and Specifications</title>
+<abbreviation>S</abbreviation></series><ext><doctype>standard</doctype><flavor>iho</flavor><editorialgroup><committee><abbreviation>HSSC</abbreviation></committee><workgroup><abbreviation>IBSC</abbreviation></workgroup></editorialgroup></ext></bibdata><localized-strings><localized-string key="scope" language="en">Scope</localized-string><localized-string key="symbolsabbrev" language="en">Symbols and abbreviated terms</localized-string><localized-string key="abbrev" language="en">Abbreviated terms</localized-string><localized-string key="symbols" language="en">Symbols</localized-string><localized-string key="table_of_contents" language="en">Contents</localized-string><localized-string key="introduction" language="en">Introduction</localized-string><localized-string key="foreword" language="en">Foreword</localized-string><localized-string key="abstract" language="en">Abstract</localized-string><localized-string key="acknowledgements" language="en">Acknowledgements</localized-string><localized-string key="termsdef" language="en">Terms and definitions</localized-string><localized-string key="termsdefsymbolsabbrev" language="en">Terms, definitions, symbols and abbreviated terms</localized-string><localized-string key="termsdefsymbols" language="en">Terms, definitions and symbols</localized-string><localized-string key="termsdefabbrev" language="en">Terms, definitions and abbreviated terms</localized-string><localized-string key="normref" language="en">Normative references</localized-string><localized-string key="bibliography" language="en">Bibliography</localized-string><localized-string key="index" language="en">Index</localized-string><localized-string key="see" language="en">see</localized-string><localized-string key="see_also" language="en">see also</localized-string><localized-string key="preface" language="en">Preface</localized-string><localized-string key="section" language="en">Section</localized-string><localized-string key="clause" language="en">Section</localized-string><localized-string key="annex" language="en">Annex</localized-string><localized-string key="appendix" language="en">Appendix</localized-string><localized-string key="continued" language="en">continued</localized-string><localized-string key="no_terms_boilerplate" language="en">No terms and definitions are listed in this document.
+</localized-string><localized-string key="internal_terms_boilerplate" language="en">For the purposes of this document, the following terms and definitions apply.
+</localized-string><localized-string key="norm_with_refs_pref" language="en">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</localized-string><localized-string key="norm_empty_pref" language="en">There are no normative references in this document.</localized-string><localized-string key="external_terms_boilerplate" language="en">For the purposes of this document, the terms and definitions given in % apply.
+</localized-string><localized-string key="internal_external_terms_boilerplate" language="en">For the purposes of this document, the terms and definitions given in % and the following apply.
+</localized-string><localized-string key="no_information_available" language="en">[NO INFORMATION AVAILABLE]</localized-string><localized-string key="term_defined_in" language="en">(%)</localized-string><localized-string key="binary_and" language="en">%1 <conn>and</conn> %2</localized-string><localized-string key="multiple_and" language="en">%1<enum-comma>,</enum-comma> <conn>and</conn> %2</localized-string><localized-string key="binary_or" language="en">%1 <conn>or</conn> %2</localized-string><localized-string key="multiple_or" language="en">%1<enum-comma>,</enum-comma> <conn>or</conn> %2</localized-string><localized-string key="chain_and" language="en">%1 <conn>and</conn> %2</localized-string><localized-string key="chain_or" language="en">%1 <conn>or</conn> %2</localized-string><localized-string key="chain_from" language="en">%1 <conn>from</conn> %2</localized-string><localized-string key="chain_to" language="en">%1 <conn>to</conn> %2</localized-string><localized-string key="nested_xref" language="en">%1<comma>,</comma> %2</localized-string><localized-string key="list_nested_xref" language="en">%1 %2</localized-string><localized-string key="SpelloutRules" language="en">spellout-ordinal</localized-string><localized-string key="OrdinalRules" language="en">digits-ordinal</localized-string><localized-string key="note" language="en">NOTE</localized-string><localized-string key="note_xref" language="en">Note</localized-string><localized-string key="termnote" language="en">Note % to entry</localized-string><localized-string key="list" language="en">List</localized-string><localized-string key="deflist" language="en">Definition List</localized-string><localized-string key="figure" language="en">Figure</localized-string><localized-string key="diagram" language="en">Diagram</localized-string><localized-string key="formula" language="en">Formula</localized-string><localized-string key="inequality" language="en">Formula</localized-string><localized-string key="table" language="en">Table</localized-string><localized-string key="requirement" language="en">Requirement</localized-string><localized-string key="recommendation" language="en">Recommendation</localized-string><localized-string key="permission" language="en">Permission</localized-string><localized-string key="box" language="en">Box</localized-string><localized-string key="no_identifier" language="en">(NO ID)</localized-string><localized-string key="recommendationtest" language="en">Recommendation test</localized-string><localized-string key="requirementtest" language="en">Requirement test</localized-string><localized-string key="permissiontest" language="en">Permission test</localized-string><localized-string key="recommendationclass" language="en">Recommendations class</localized-string><localized-string key="requirementclass" language="en">Requirements class</localized-string><localized-string key="permissionclass" language="en">Permissions class</localized-string><localized-string key="abstracttest" language="en">Abstract test</localized-string><localized-string key="conformanceclass" language="en">Conformance class</localized-string><localized-string key="key" language="en">Key</localized-string><localized-string key="example" language="en">EXAMPLE</localized-string><localized-string key="example_xref" language="en">Example</localized-string><localized-string key="where" language="en">where</localized-string><localized-string key="where_one" language="en">where</localized-string><localized-string key="wholeoftext" language="en">Whole of text</localized-string><localized-string key="draft_label" language="en">draft</localized-string><localized-string key="inform_annex" language="en">informative</localized-string><localized-string key="norm_annex" language="en">normative</localized-string><localized-string key="modified" language="en">modified</localized-string><localized-string key="adapted" language="en">adapted</localized-string><localized-string key="deprecated" language="en">DEPRECATED</localized-string><localized-string key="source" language="en">SOURCE</localized-string><localized-string key="and" language="en">and</localized-string><localized-string key="all_parts" language="en">All Parts</localized-string><localized-string key="edition_ordinal" language="en">{{ var1 | ordinal_word: '', '' }} edition</localized-string><localized-string key="edition" language="en">edition</localized-string><localized-string key="version" language="en">version</localized-string><localized-string key="toc_figures" language="en">List of figures</localized-string><localized-string key="toc_tables" language="en">List of tables</localized-string><localized-string key="toc_recommendations" language="en">List of recommendations</localized-string><localized-string key="month_january" language="en">January</localized-string><localized-string key="month_february" language="en">February</localized-string><localized-string key="month_march" language="en">March</localized-string><localized-string key="month_april" language="en">April</localized-string><localized-string key="month_may" language="en">May</localized-string><localized-string key="month_june" language="en">June</localized-string><localized-string key="month_july" language="en">July</localized-string><localized-string key="month_august" language="en">August</localized-string><localized-string key="month_september" language="en">September</localized-string><localized-string key="month_october" language="en">October</localized-string><localized-string key="month_november" language="en">November</localized-string><localized-string key="month_december" language="en">December</localized-string><localized-string key="obligation" language="en">Obligation</localized-string><localized-string key="admonition.danger" language="en">Danger</localized-string><localized-string key="admonition.warning" language="en">Warning</localized-string><localized-string key="admonition.caution" language="en">Caution</localized-string><localized-string key="admonition.important" language="en">Important</localized-string><localized-string key="admonition.safety_precautions" language="en">Safety Precautions</localized-string><localized-string key="admonition.editorial" language="en">Editorial Note</localized-string><localized-string key="locality.section" language="en">Section</localized-string><localized-string key="locality.clause" language="en">Clause</localized-string><localized-string key="locality.part" language="en">Part</localized-string><localized-string key="locality.paragraph" language="en">Paragraph</localized-string><localized-string key="locality.chapter" language="en">Chapter</localized-string><localized-string key="locality.page" language="en">Page</localized-string><localized-string key="locality.table" language="en">Table</localized-string><localized-string key="locality.annex" language="en">Annex</localized-string><localized-string key="locality.figure" language="en">Figure</localized-string><localized-string key="locality.example" language="en">Example</localized-string><localized-string key="locality.note" language="en">Note</localized-string><localized-string key="locality.formula" language="en">Formula</localized-string><localized-string key="grammar_abbrevs.masculine" language="en">m</localized-string><localized-string key="grammar_abbrevs.feminine" language="en">f</localized-string><localized-string key="grammar_abbrevs.neuter" language="en">n</localized-string><localized-string key="grammar_abbrevs.common" language="en">common</localized-string><localized-string key="grammar_abbrevs.singular" language="en">sg</localized-string><localized-string key="grammar_abbrevs.dual" language="en">dual</localized-string><localized-string key="grammar_abbrevs.pl" language="en">pl</localized-string><localized-string key="grammar_abbrevs.isPreposition" language="en">prep</localized-string><localized-string key="grammar_abbrevs.isParticiple" language="en">part</localized-string><localized-string key="grammar_abbrevs.isAdjective" language="en">adj</localized-string><localized-string key="grammar_abbrevs.isAdverb" language="en">adv</localized-string><localized-string key="grammar_abbrevs.isNoun" language="en">noun</localized-string><localized-string key="grammar_abbrevs.isVerb" language="en">verb</localized-string><localized-string key="relatedterms.deprecates" language="en">deprecates</localized-string><localized-string key="relatedterms.supersedes" language="en">supersedes</localized-string><localized-string key="relatedterms.narrower" language="en">narrower</localized-string><localized-string key="relatedterms.broader" language="en">broader</localized-string><localized-string key="relatedterms.equivalent" language="en">equivalent</localized-string><localized-string key="relatedterms.compare" language="en">compare</localized-string><localized-string key="relatedterms.contrast" language="en">contrast</localized-string><localized-string key="relatedterms.see" language="en">see</localized-string><localized-string key="relatedterms.seealso" language="en">see also</localized-string><localized-string key="Clause.sg" language="en">Clause</localized-string><localized-string key="Clause.pl" language="en">Clauses</localized-string><localized-string key="Annex.sg" language="en">Annex</localized-string><localized-string key="Annex.pl" language="en">Annexes</localized-string><localized-string key="Appendix.sg" language="en">Appendix</localized-string><localized-string key="Appendix.pl" language="en">Appendixes</localized-string><localized-string key="Note.sg" language="en">Note</localized-string><localized-string key="Note.pl" language="en">Notes</localized-string><localized-string key="Note_%_to_entry.sg" language="en">Note % to entry</localized-string><localized-string key="Note_%_to_entry.pl" language="en">Notes % to entry</localized-string><localized-string key="List.sg" language="en">List</localized-string><localized-string key="List.pl" language="en">Lists</localized-string><localized-string key="Figure.sg" language="en">Figure</localized-string><localized-string key="Figure.pl" language="en">Figures</localized-string><localized-string key="Formula.sg" language="en">Formula</localized-string><localized-string key="Formula.pl" language="en">Formulas</localized-string><localized-string key="Table.sg" language="en">Table</localized-string><localized-string key="Table.pl" language="en">Tables</localized-string><localized-string key="Requirement.sg" language="en">Requirement</localized-string><localized-string key="Requirement.pl" language="en">Requirements</localized-string><localized-string key="Recommendation.sg" language="en">Recommendation</localized-string><localized-string key="Recommendation.pl" language="en">Recommendations</localized-string><localized-string key="Permission.sg" language="en">Permission</localized-string><localized-string key="Permission.pl" language="en">Permissions</localized-string><localized-string key="Example.sg" language="en">Example</localized-string><localized-string key="Example.pl" language="en">Examples</localized-string><localized-string key="Part.sg" language="en">Part</localized-string><localized-string key="Part.pl" language="en">Parts</localized-string><localized-string key="Section.sg" language="en">Section</localized-string><localized-string key="Section.pl" language="en">Sections</localized-string><localized-string key="Paragraph.sg" language="en">Paragraph</localized-string><localized-string key="Paragraph.pl" language="en">Paragraphs</localized-string><localized-string key="Chapter.sg" language="en">Chapter</localized-string><localized-string key="Chapter.pl" language="en">Chapters</localized-string><localized-string key="Page.sg" language="en">Page</localized-string><localized-string key="Page.pl" language="en">Pages</localized-string><localized-string key="subclause" language="en">Clause</localized-string><localized-string key="dochistory" language="en">Document History</localized-string><localized-string key="language" language="en">en</localized-string><localized-string key="script" language="en">Latn</localized-string></localized-strings><metanorma-extension><presentation-metadata><name>TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>HTML TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>DOC TOC Heading Levels</name><value>2</value></presentation-metadata><presentation-metadata><name>PDF TOC Heading Levels</name><value>2</value></presentation-metadata><source-highlighter-css>sourcecode table td { padding: 5px; }
+sourcecode table pre { margin: 0; }
+sourcecode, sourcecode .w {
+  color: #444444;
+}
+sourcecode .cp {
+  color: #CC00A3;
+}
+sourcecode .cs {
+  color: #CC00A3;
+}
+sourcecode .c, sourcecode .ch, sourcecode .cd, sourcecode .cm, sourcecode .cpf, sourcecode .c1 {
+  color: #FF0000;
+}
+sourcecode .kc {
+  color: #C34E00;
+}
+sourcecode .kd {
+  color: #0000FF;
+}
+sourcecode .kr {
+  color: #007575;
+}
+sourcecode .k, sourcecode .kn, sourcecode .kp, sourcecode .kt, sourcecode .kv {
+  color: #0000FF;
+}
+sourcecode .s, sourcecode .sb, sourcecode .sc, sourcecode .ld, sourcecode .sd, sourcecode .s2, sourcecode .se, sourcecode .sh, sourcecode .si, sourcecode .sx, sourcecode .sr, sourcecode .s1, sourcecode .ss {
+  color: #009C00;
+}
+sourcecode .sa {
+  color: #0000FF;
+}
+sourcecode .nb, sourcecode .bp {
+  color: #C34E00;
+}
+sourcecode .nt {
+  color: #0000FF;
+}
+
+</source-highlighter-css></metanorma-extension>
+<boilerplate><copyright-statement>
+
+<clause id="_aeb5e35c-43ec-f830-8f28-ed9997551538" obligation="normative">
+<p id="_96890071-d9c7-f874-8364-03c2982c87c7" align="center">© Copyright International Hydrographic Organization 2017</p>
+
+<p id="_35726360-327e-c49d-2f7e-c50beded05fd">This work is copyright. Apart from any use permitted in accordance with the Berne Convention for the Protection of Literary and Artistic Works (1886), and except in the circumstances described below, no part may be translated, reproduced by any process, adapted, communicated or commercially exploited without prior written permission from the International Hydrographic Organization (IHO). Copyright in some of the material in this publication may be owned by another party and permission for the translation and/or reproduction of that material must be obtained from the owner.</p>
+</clause>
+</copyright-statement>
+
+<license-statement>
+
+<clause id="_32135d82-38a5-ab89-d58f-c6a583e0ecf2" obligation="normative">
+<p id="_6807bae6-fe35-6fba-59f5-44090fd3231e">This document or partial material from this document may be translated, reproduced or distributed for general information, on no more than a cost recovery basis. Copies may not be sold or distributed for profit or gain without prior written agreement of the IHO Secretariat and any other copyright holders.</p>
+
+<p id="_4ba6434a-5a09-56da-5a40-3c4ba0295e25">In the event that this document or partial material from this document is reproduced, translated or distributed under the terms described above, the following statements are to be included:</p>
+
+<quote id="_a9c0213c-1c06-9f17-9d04-bd3d5081a897"><p id="_e6ef4d42-bf58-6248-1241-4243b4959dc4">“Material from IHO publication [reference to extract: Title, Edition] is reproduced with the permission of the IHO Secretariat (Permission No ……./…) acting for the International Hydrographic Organization (IHO), which does not accept responsibility for the correctness of the material as reproduced: in case of doubt, the IHO’s authentic text shall prevail. The incorporation of material sourced from IHO shall not be construed as constituting an endorsement by IHO of this product.”</p>
+
+<p id="_6dab5d20-3f67-a559-e529-ef6119963249">“This [document/publication] is a translation of IHO [document/publication] [name]. The IHO has not checked this translation and therefore takes no responsibility for its accuracy. In case of doubt the source version of [name] in [language] should be consulted.”</p>
+</quote>
+
+<p id="_62703033-d11a-d519-507c-480ef5a726c5">The IHO Logo or other identifiers shall not be used in any derived product without prior written permission from the IHO Secretariat.</p>
+</clause>
+</license-statement>
+
+<feedback-statement>
+
+<p id="_e56cf69f-c24d-32ce-b158-bf3c10ebd4f2">Published by the<br/> International Hydrographic Organization <br/> 4b quai Antoine 1 <sup>er</sup><br/> Principauté de Monaco <br/> Tel: (377) 93.10.81.00 <br/> Fax: (377) 93.10.81.40 <br/> info@iho.int <br/> \www.iho.int<br/></p>
+</feedback-statement>
+</boilerplate><preface><clause type="toc" id="_7044d114-d5e5-45a7-8a62-e8afa30f1cb7" displayorder="1"><fmt-title depth="1">Contents</fmt-title></clause>
+<foreword id="_656b7f00-68de-f68a-7635-a28e57e8c268" obligation="informative" displayorder="2">
+<title id="_eddda58c-fa19-49a6-9c7c-ecc4fb689782">Foreword</title><fmt-title depth="1"><semx element="title" source="_eddda58c-fa19-49a6-9c7c-ecc4fb689782">Foreword</semx></fmt-title>
+<p id="_98c57566-3129-ec47-4c46-b1c438422d3e">Comments arising from the experience gained in the application of the standards are welcome. They should be addressed to the Chair of the International Board on Standards of Competence for Hydrographic Surveyors and Nautical Cartographers at the above address. This document is published periodically. Please check with IHO for the latest edition, including current amendments.</p>
+</foreword><introduction id="_introduction" obligation="informative" displayorder="3">
+<title id="_2422eea4-a17c-4ce3-a6fb-34f90ab2082b">Introduction</title><fmt-title depth="1"><semx element="title" source="_2422eea4-a17c-4ce3-a6fb-34f90ab2082b">Introduction</semx></fmt-title>
+<p id="_9be974a4-43c1-7e35-17cf-4f2c4d197900">All components of the hydrographic surveying and nautical cartography professions face challenges as how best to ensure the continuance of high standards and how best to ensure the continuation of best practices based on minimum standards of competence world-wide. In order to achieve these objectives, three international organizations (FIG, IHO and ICA) have developed Standards of competence that institutions or professional bodies may adopt for their educational/training programmes and competency schemes.</p>
+
+<p id="_0858a6e2-6e48-9da3-6a73-0f032db5912f">Standards indicate the minimum competences considered necessary for hydrographic surveyors.</p>
+
+<p id="_bf08a85c-1b63-418a-2c85-6e85e11c0a8e">Standards recognize two levels of programme. Category A programmes introduces content and learning outcomes primarily from the underlying principles level. Category B programmes introduce them primarily from a practical level.</p>
+
+<p id="_b6b8e56e-8064-ecc0-6f40-f2addac4e9a4">The intention is that a Category A qualified individual with appropriate experience, would be a senior professional in their chosen field (government, industry, academia). Category B qualified individuals with appropriate experience would be technical professionals preparing and delivering products and services to meet specifications and outcomes.</p>
+</introduction><clause id="_definitions" obligation="informative" displayorder="4">
+<title id="_e9c9d63a-e31b-454d-b78b-494aa0e102a4">Definitions</title><fmt-title depth="1"><semx element="title" source="_e9c9d63a-e31b-454d-b78b-494aa0e102a4">Definitions</semx></fmt-title>
+<clause id="_subjects_topics_and_elements" obligation="informative">
+<title id="_28c90430-a655-4a48-8d4c-9cc086e73c3c">Subjects, topics, and elements</title><fmt-title depth="2"><semx element="title" source="_28c90430-a655-4a48-8d4c-9cc086e73c3c">Subjects, topics, and elements</semx></fmt-title>
+<p id="_f5447056-897a-ab4e-c68e-14859df32135">The S5-B standard contains the following list of <em><strong>B</strong>asic subjects</em> and <em><strong>E</strong>ssential subjects:</em></p>
+
+<p id="_dcdbcee9-25c5-7524-5155-0803a713741f"><xref target="b1_maths_stats_toe" id="_0e92d0de-a48c-4cc4-ba69-c1c39351d959">B1: Mathematics, Statistics, Theory of Errors</xref><semx element="xref" source="_0e92d0de-a48c-4cc4-ba69-c1c39351d959"><fmt-xref target="b1_maths_stats_toe">B1: Mathematics, Statistics, Theory of Errors</fmt-xref></semx></p>
+
+<p id="_b5413b29-b247-3198-4f96-564ffb64d379"><xref target="b2_ict" id="_61df35a7-0762-407b-9f5f-3a8757eb3152">B2: Information and Communication Technology</xref><semx element="xref" source="_61df35a7-0762-407b-9f5f-3a8757eb3152"><fmt-xref target="b2_ict">B2: Information and Communication Technology</fmt-xref></semx></p>
+
+<p id="_fdcafacf-4f92-ae14-f628-cc7be1f4696f"><xref target="b3_physics" id="_d8c52880-99c7-4042-ad51-2004db67ff06">B3: Physics</xref><semx element="xref" source="_d8c52880-99c7-4042-ad51-2004db67ff06"><fmt-xref target="b3_physics">B3: Physics</fmt-xref></semx></p>
+
+<p id="_c78919d4-5c6a-9b51-9c1d-42b338bf1b45"><xref target="b4_earth_sciences" id="_e6c7edb9-e170-4b99-90ec-90799ff185f3">B4: Earth Sciences</xref><semx element="xref" source="_e6c7edb9-e170-4b99-90ec-90799ff185f3"><fmt-xref target="b4_earth_sciences">B4: Earth Sciences</fmt-xref></semx></p>
+
+<p id="_9a6420f5-cf0f-ba94-4dc5-cf9846e75f61"><xref target="b5_nautical_science" id="_59e4074a-dd85-4328-a4dd-af5f7428cefa">B5: Nautical science</xref><semx element="xref" source="_59e4074a-dd85-4328-a4dd-af5f7428cefa"><fmt-xref target="b5_nautical_science">B5: Nautical science</fmt-xref></semx></p>
+
+<p id="_04c67098-f58e-62f3-4547-7238c2c49ec6"><xref target="b6_meteorology" id="_119f359d-2f8f-4568-b21b-7407999be4c4">B6: Meteorology</xref><semx element="xref" source="_119f359d-2f8f-4568-b21b-7407999be4c4"><fmt-xref target="b6_meteorology">B6: Meteorology</fmt-xref></semx></p>
+
+<p id="_67a1c1a2-8624-ac2f-1324-88e1c76b3aa7"><xref target="e1_underwater_acoustics" id="_6eb01f39-a616-411a-a0d5-14963cbbf5ba">E1: Underwater Acoustics</xref><semx element="xref" source="_6eb01f39-a616-411a-a0d5-14963cbbf5ba"><fmt-xref target="e1_underwater_acoustics">E1: Underwater Acoustics</fmt-xref></semx></p>
+
+<p id="_4a8e5fe2-8810-b3c5-6929-9e9f246e0692"><xref target="e2_remote_sensing" id="_569a3633-d16f-4ec6-a138-201e62b4fd81">E2: Remote Sensing</xref><semx element="xref" source="_569a3633-d16f-4ec6-a138-201e62b4fd81"><fmt-xref target="e2_remote_sensing">E2: Remote Sensing</fmt-xref></semx></p>
+
+<p id="_dc2fb473-7b8a-d272-61b1-91fa12df987e"><xref target="e3_water_levels_and_flow" id="_1b7c2ad8-784a-479e-b005-32a3446bb302">E3: Water Levels and Flow</xref><semx element="xref" source="_1b7c2ad8-784a-479e-b005-32a3446bb302"><fmt-xref target="e3_water_levels_and_flow">E3: Water Levels and Flow</fmt-xref></semx></p>
+
+<p id="_bff52e64-5b34-df79-c73c-54f5aece24f8"><xref target="e4_positioning" id="_cc3e55e8-8349-4331-954d-99959c67c2ed">E4: Positioning</xref><semx element="xref" source="_cc3e55e8-8349-4331-954d-99959c67c2ed"><fmt-xref target="e4_positioning">E4: Positioning</fmt-xref></semx></p>
+
+<p id="_c92d54a6-69ba-c3d0-eee9-9ab77197eee9"><xref target="e5_hydrographic_practice" id="_1697f050-6ab7-4a8d-8803-6d4c9431584f">E5: Hydrographic Practice</xref><semx element="xref" source="_1697f050-6ab7-4a8d-8803-6d4c9431584f"><fmt-xref target="e5_hydrographic_practice">E5: Hydrographic Practice</fmt-xref></semx></p>
+
+<p id="_62411f3e-5ebe-8fcb-a7db-9da26d671b0c"><xref target="e6_hydrographic_data" id="_2712feca-030c-4362-950f-61d2bbfdb741">E6: Hydrographic Data Management</xref><semx element="xref" source="_2712feca-030c-4362-950f-61d2bbfdb741"><fmt-xref target="e6_hydrographic_data">E6: Hydrographic Data Management</fmt-xref></semx></p>
+
+<p id="_a9ac7677-a33d-bb71-2e35-784fae1ef01d"><xref target="e7_environment" id="_d216ebf1-9228-48b3-86b3-f8bd2493f2d9">E7: Environment</xref><semx element="xref" source="_d216ebf1-9228-48b3-86b3-f8bd2493f2d9"><fmt-xref target="e7_environment">E7: Environment</fmt-xref></semx></p>
+
+<p id="_a3f03e59-97fb-1c54-3d21-a931d68d1a10"><xref target="cffp" id="_8ca24f38-e832-42ec-add5-c6074216f659">CFFP: COMPREHENSIVE FINAL FIELD PROJECT</xref><semx element="xref" source="_8ca24f38-e832-42ec-add5-c6074216f659"><fmt-xref target="cffp">CFFP: COMPREHENSIVE FINAL FIELD PROJECT</fmt-xref></semx></p>
+
+<p id="_2b5bed32-4bfb-0b1f-03f2-d28aaa61a0bb"><strong>Topics and Elements:</strong></p>
+
+<ul id="_97f4392a-34f0-23b0-03eb-e83687ef362b"><li><p id="_dc64aec8-c093-7558-ebf9-703f05a08d4a">Each <strong>Essential</strong> or <strong>Basic</strong> <em>subject</em> is comprised of a list of <em>topics</em> which are denoted by Ex.y or Bx.y;</p>
+</li>
+<li><p id="_d56106f8-a838-01fb-a8dc-d8e688742b9c">Each <em>topic</em> contains <em>elements</em> which aredenoted by Ex.y&#x3c;c&#x3e;.</p>
+</li>
+</ul>
+
+<p id="_21fdc95e-c69b-0efe-a1fd-2ef6c9494226">For example, the <em>subject</em> E5 “Hydrographic practice” contains the <em>topic</em> E5.1 “Hydrographic survey projects” which has the <em>element</em> E5.1a “Hydrographic surveys purposes”.</p>
+</clause>
+
+<clause id="_learning_outcomes_and_list_of_content" obligation="informative">
+<title id="_f665e474-20b0-4ecf-9977-b7d16b9c77ee">Learning outcomes and list of content</title><fmt-title depth="2"><semx element="title" source="_f665e474-20b0-4ecf-9977-b7d16b9c77ee">Learning outcomes and list of content</semx></fmt-title>
+<p id="_b440bd54-6937-9603-d907-be98d7cbbcb1">It is important to understand that each <em>element</em> is associated with:</p>
+
+<ul id="_9e560941-52b1-c6e3-a15a-3f2c201210e3"><li><p id="_4eb9e594-b159-0afe-234f-a533539a239f">an intended <em>learning outcome</em>, that a student should be able to achieve on completion of the programme. All <em>learning outcomes</em> should be evaluated, either by or through a combination of, assessment, examination, laboratory work or final project work.</p>
+</li>
+<li><p id="_e1283a40-05d2-a2df-aa1b-c766c03315e4">a list of <em>content</em>. This list is associated with one or more <em>learning outcomes</em> and describes the theoretical knowledge or practical/technical context which the course syllabi should address in order to meet a particular <em>learning outcome</em>.</p>
+</li>
+</ul>
+
+<p id="_5e70abd3-e352-d9e7-cc90-fc4c4cedca35">For the sake of clarity, a level of knowledge associated with each learning outcome has been defined. It is indicated in italics in the left column, by a letter (<em>B: Basic, I: Intermediate;</em> see “Guidelines for the Implementation of the Standards of Competence for Hydrographic Surveyors”). This letter designation (<em>B: Basic, I: Intermediate</em>) complements the learning outcome description associated with each element.</p>
+</clause>
+</clause><clause id="_programme_preparation_and_submission" obligation="informative" displayorder="5">
+<title id="_59e7d6b1-09d8-48ed-ac7b-93eedb50f8b3">Programme preparation and submission</title><fmt-title depth="1"><semx element="title" source="_59e7d6b1-09d8-48ed-ac7b-93eedb50f8b3">Programme preparation and submission</semx></fmt-title>
+<p id="_bc2b78a9-8ead-2205-3625-dffb1e88601b">The preparation of a programme submission to the IBSC should be done in accordance with the document entitled GUIDELINES FOR THE IMPLEMENTATION OF THE STANDARDS OF COMPETENCE FOR HYDROGRAPHIC SURVEYORS. This document is available from the IHO website: <link target="http://www.iho.int/" id="_4c368d1b-218d-4b5a-abd5-bbd66b729a09">www.iho.int</link><semx element="link" source="_4c368d1b-218d-4b5a-abd5-bbd66b729a09"><fmt-link target="http://www.iho.int/">www.iho.int</fmt-link></semx> → Standards &amp; Publications.</p>
+
+<p id="_595cdaf1-1013-ab83-245c-5e8cdffe6741">The cross reference table is a mandatory requirement for a programme submission and <strong>MUST</strong> be completed. A template is specified and is available from the IHO website: <link target="http://www.iho.int/" id="_9828d16e-9401-40be-be83-ec530dd0c141">www.iho.int</link><semx element="link" source="_9828d16e-9401-40be-be83-ec530dd0c141"><fmt-link target="http://www.iho.int/">www.iho.int</fmt-link></semx></p>
+
+<clause id="_list_of_acronyms_and_initialisms_used_in_this_document" obligation="informative">
+<title id="_f1818936-7a79-4fc6-bbb0-61ec993f5128">List of acronyms and initialisms used in this document</title><fmt-title depth="2"><semx element="title" source="_f1818936-7a79-4fc6-bbb0-61ec993f5128">List of acronyms and initialisms used in this document</semx></fmt-title>
+<dl id="_f04c2905-3b39-a029-b965-89c5bd433d65"><dt>1D</dt>
+<dd><p id="_e218b24d-8e2c-3679-c63c-d0b20c47762f">One-dimensional</p>
+</dd>
+<dt>2D</dt>
+<dd><p id="_c8f46f9c-730d-7a7e-0663-68d274267b61">Two-dimensional</p>
+</dd>
+<dt>ADCP</dt>
+<dd><p id="_2cb1ba8d-9f16-129a-c069-46aa55c28dd9">Acoustic Doppler Current Profiler</p>
+</dd>
+<dt>AIS</dt>
+<dd><p id="_fe228598-13e1-246c-0ef7-1596b9e67ed2">Automatic Identification System</p>
+</dd>
+<dt>ASV</dt>
+<dd><p id="_c2299516-016c-bd80-3acf-00c5101f8210">Autonomous Surface Vehicle</p>
+</dd>
+<dt>AUV</dt>
+<dd><p id="_6fdaee41-48b6-9425-74d7-4aea000e9274">Autonomous Underwater Vehicle</p>
+</dd>
+<dt>B</dt>
+<dd><p id="_fadef91f-1f9c-17b2-0765-ed70ad8d13ab">Basic (level of knowledge)</p>
+</dd>
+<dt>CAD</dt>
+<dd><p id="_d4df760c-86b5-ea3a-3668-f3df1c6a09c2">Computer Aided Design</p>
+</dd>
+<dt>CFFP</dt>
+<dd><p id="_b3bc0cda-402d-3843-da4e-7e0161c9dfca">Comprehensive Final Field Project</p>
+</dd>
+<dt>DGNSS</dt>
+<dd><p id="_c76fcf20-696a-1dd4-fe23-578003cda9b9">Differential Global Navigation Satellite System</p>
+</dd>
+<dt>EPIRB</dt>
+<dd><p id="_982e4d22-80e3-1e29-f1ac-e75b14baca0c">Emergency Position Indicating Radio Beacon</p>
+</dd>
+<dt>FIG</dt>
+<dd><p id="_2cb64efa-c2c8-77e6-d476-ece8bc7a96b2">International Federation of Surveyors</p>
+</dd>
+<dt>GIS</dt>
+<dd><p id="_55cc98c7-6785-b6ff-b9f4-05a2f9222af1">Geographical Information System</p>
+</dd>
+<dt>GMDSS</dt>
+<dd><p id="_9121fdf0-b19e-9d20-32e0-4de3ed3996e7">Global Maritime Distress and Safety System</p>
+</dd>
+<dt>GNSS</dt>
+<dd><p id="_41a6cf1e-70d9-ae2d-d1b6-a77f9353efa4">Global Navigation Satellite System</p>
+</dd>
+<dt>GRS80</dt>
+<dd><p id="_d0ad7cf9-2cb7-e037-450a-6349950be516">Geodetic Reference System (1980)</p>
+</dd>
+<dt>I</dt>
+<dd><p id="_0161cc3a-d071-ab00-1c33-f0e4d22403a6">Intermediate (level of knowledge)</p>
+</dd>
+<dt>IBSC</dt>
+<dd><p id="_a2ad8e77-2d64-2852-5518-124fc0948981">International Board on Standards of Competence for Hydrographic Surveyors and Nautical Cartographers</p>
+</dd>
+<dt>ICA</dt>
+<dd><p id="_7218bf87-38f9-a10a-792b-ee67f28a9aa1">International Cartographic Association</p>
+</dd>
+<dt>IHO</dt>
+<dd><p id="_f9d0b7d5-b139-0843-d5c1-b9502787b268">International Hydrographic Organization</p>
+</dd>
+<dt>IMU</dt>
+<dd><p id="_7008ca0f-05ae-e2a4-000c-707d92f77d0e">Inertial Motion Unit</p>
+</dd>
+<dt>INS</dt>
+<dd><p id="_42a974d7-beed-1bf5-a025-b58c980f6221">Inertial Navigation System</p>
+</dd>
+<dt>LAN</dt>
+<dd><p id="_dd04fb29-b694-cfdb-d720-cf50bc6d8b67">Local Area Network</p>
+</dd>
+<dt>LiDAR</dt>
+<dd><p id="_a9d655d1-9316-d970-41d7-622969d02da7">Light Detection And Ranging</p>
+</dd>
+<dt>MBES</dt>
+<dd><p id="_5e1c6e58-c975-5c24-9e40-0d2820c7dc30">Multi Beam Echo Sounder</p>
+</dd>
+<dt>MSL</dt>
+<dd><p id="_60d37f6f-1356-b1b2-7b89-a5f9e837c608">Mean Sea Level</p>
+</dd>
+<dt>NAVTEX</dt>
+<dd><p id="_32c4c6b8-4c84-b9db-6b3c-394b5512b4f9">Navigational Telex</p>
+</dd>
+<dt>P</dt>
+<dd><p id="_fc8f913b-c5d7-017a-fd44-8859a2267b33">Practicals (fieldwork and/or laboratories)</p>
+</dd>
+<dt>RAM</dt>
+<dd><p id="_20b35d5e-0258-e372-e6f3-9b54ca14951e">Random Access Memory</p>
+</dd>
+<dt>ROV</dt>
+<dd><p id="_497c2ba6-7841-a258-c7a9-4db43d68a538">Remotely Operated Underwater Vehicle</p>
+</dd>
+<dt>S-44</dt>
+<dd><p id="_04df0b4b-789b-614e-4ab1-2f80591acecf">IHO Publication S-44 — <em>Standards for Hydrographic Surveys</em></p>
+</dd>
+<dt>S-100</dt>
+<dd><p id="_7b34be09-1637-0e00-c6d3-bdd7083aba55">IHO Publication S-100 <em>Universal Hydrographic Data Model</em></p>
+</dd>
+<dt>S-102</dt>
+<dd><p id="_42ff8311-090a-6472-5259-85bf802b04a6">IHO Publication S-102 <em>Bathymetric Surface Product Specification</em></p>
+</dd>
+<dt>SARSAT</dt>
+<dd><p id="_c4d5b1b8-fc34-8a9d-7628-dfc7bc96bb8b">Search And Rescue Satellite Aided Tracking</p>
+</dd>
+<dt>SBES</dt>
+<dd><p id="_347d681e-78f9-b8b3-0713-9296d7333bc8">Single Beam Echo Sounder</p>
+</dd>
+<dt>SDB</dt>
+<dd><p id="_1e37313b-8231-f034-2fdd-e6f51e5ff028">Satellite Derived Bathymetry</p>
+</dd>
+<dt>SDI</dt>
+<dd><p id="_aa027e18-4fb9-a1ee-9c38-e27d3420a92d">Spatial Data Infrastructure</p>
+</dd>
+<dt>SG</dt>
+<dd><p id="_45f181c4-7efd-5b1a-e694-0253a14197b8">Self-guided exercises (or student’s personal independent work)</p>
+</dd>
+<dt>SSDM</dt>
+<dd><p id="_aed85d3f-5d08-0aa5-a27f-634f2b26c46c">Standard Seabed Data Model</p>
+</dd>
+<dt>T</dt>
+<dd><p id="_1f934a48-eaa4-450b-7e67-bc9ced9a945d">Theoretical (theory through lectures)</p>
+</dd>
+<dt>TIN</dt>
+<dd><p id="_0da53a5c-49c5-da71-1b3b-ead6479f1ef3">Triangulated Irregular Network</p>
+</dd>
+<dt>UNCLOS</dt>
+<dd><p id="_a8d8c11d-53e9-b0b9-7aad-cfec7f33fdf1">United Nations Convention on the Law of the Sea</p>
+</dd>
+<dt>USBL</dt>
+<dd><p id="_61d835fb-be76-0415-3bea-9746efa136a5">Ultra Short Baseline</p>
+</dd>
+<dt>UTM</dt>
+<dd><p id="_c07f6a6f-e389-7eaa-22b2-351788d8c41d">Universal Transverse Mercator</p>
+</dd>
+<dt>WGS84</dt>
+<dd><p id="_d53056bf-2a09-614d-f1bc-ae550bb931f5">World Geodetic System (1984)</p>
+</dd>
+<dt>XML</dt>
+<dd><p id="_7c8af803-6b76-8ee0-8a96-718631734f04">Extended Markup Language</p>
+</dd>
+</dl>
+</clause>
+</clause></preface><sections>
+
+
+
+
+
+<clause id="_basic_subjects" obligation="normative" displayorder="6">
+<title id="_6202e230-78c9-4dac-a137-9bf39d3133d1">Basic subjects</title><fmt-title depth="1"><span class="fmt-caption-label"><semx element="autonum" source="_basic_subjects">1</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_6202e230-78c9-4dac-a137-9bf39d3133d1">Basic subjects</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Section</span> <semx element="autonum" source="_basic_subjects">1</semx></fmt-xref-label>
+<clause id="b1_maths_stats_toe" obligation="normative">
+<title id="_2d44857a-598b-41e7-8856-6f5085220a05">B1: Mathematics, Statistics, Theory of Errors</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b1_maths_stats_toe">1</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_2d44857a-598b-41e7-8856-6f5085220a05">B1: Mathematics, Statistics, Theory of Errors</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b1_maths_stats_toe">1</semx></fmt-xref-label>
+<table id="_58f9ceeb-26a6-0358-00a6-0913729f93fa" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><td valign="top" align="left"><p id="_6cb01bfe-23bf-ece9-3487-3aa9c427a528">B1.1 Linear Algebra <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_bd16069e-a4c6-2a35-b495-00d7647692ff" type="arabic"><li id="_f1ec2809-59d1-4d64-ba6f-ef6cdd482685" label="1"><p id="_4506673a-2627-1fe2-89a2-fd6363f85fb7">Vector and affine spaces, vector and inner products, norms.</p>
+</li>
+<li id="_64bced57-4fe3-40c5-8971-82c933e1207e" label="2"><p id="_4413e9d5-27f7-943f-edcd-aa50d146e637">Linear equations, determinants.</p>
+</li>
+<li id="_554a0dde-d8a7-4b75-8731-fe7166c653a0" label="3"><p id="_3484d053-7c0d-aae1-561e-f6a48e0858f4">Analytical geometry, line and plane equations.</p>
+</li>
+<li id="_816d2840-d7a0-4a9c-ac91-bd30e8045d41" label="4"><p id="_28cce016-601c-ff20-0ff8-1c1c817b8149">Linear operators, matrix representation, composition, inverse, transpose.</p>
+</li>
+<li id="_90b1b916-09a4-4762-8f58-a2fefc171387" label="5"><p id="_ceb25c6a-22bc-08e6-5e2e-806937ba6b87">Translations, rotations, coordinate transformations.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_6312cfb4-6b9a-63b7-63d4-6b58aa0b82e4">Describe and apply 2D transformations involved in surveying and mapping. (E4.1c)<br/> Solve linear equations using matrix methods.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_37c06d15-9eb1-1049-f9f2-52d20402ca8b">B1.2 Differential calculus <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_9ff2b758-db25-10cb-efc8-8a6b4473a8e0" type="arabic"><li id="_1d73d25c-c98f-4463-bd1a-8d663c782a0c" label="1"><p id="_53651699-3e93-b579-9ac6-c0896986f8c2">Real and vector valued functions.</p>
+</li>
+<li id="_d900efa8-c573-4156-b2d7-03aea0c00c86" label="2"><p id="_ce56d1d7-e9cb-abee-8aa7-9c4ba594714f">Gradient of real-valued functions and their discrete approximations.</p>
+</li>
+<li id="_b82d65f0-993c-41ab-b60e-4f07f7ff74d9" label="3"><p id="_f4c75869-9572-7a20-e9ed-e7bb70ecf8fd">Series and integrals.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_26e5a6ab-83bd-5be7-d737-ae34a38a26d3">Compute the gradient of a vector valued function. Define a function as a series.<br/> Calculate explicit integrals of classical functions.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_37b5cf76-e360-292e-da31-3f1504d7af80">B1.3 Trigonometry <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_a144e686-1dbd-bc10-8daf-ad3ad29e2775" type="arabic"><li id="_f3512809-22af-4f09-b49e-4ee466ecf75b" label="1"><p id="_000aa3fe-cbab-d843-9ccd-1c752fae0309">Basic trigonometry</p>
+</li>
+<li id="_61a1f0c7-ef21-493d-b9d0-a450ff5d5380" label="2"><p id="_0ccea888-12c4-9dd3-03a1-4d0ec115d897">Sphere, great circle, rhumb lines, sphere angles, spherical triangles and spherical excess.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_3563bd48-5d51-28a8-f68d-23ca7e56d756">Apply plane and spherical trigonometry to surveying problems.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_4739cbff-612e-5adc-d8d4-b400b5927ba2">B1.4 Statistics <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_480b10b8-0e3e-52ce-77a2-3e54fa0944e5" type="arabic"><li id="_1401b03d-738c-4e5b-8dcf-bdedeb8ee495" label="1"><p id="_5b9eeb47-9880-84a5-1db9-612a2898e25d">Random variables, mean, variance, standard deviation</p>
+</li>
+<li id="_9b9f67ee-67a6-4f69-9f85-e1579de2afbd" label="2"><p id="_4d0b9e5a-a9a0-1c47-a951-d20f50fbdfb9">Covariance and correlation</p>
+</li>
+<li id="_2c4afae9-2dd5-4654-ac90-569fc1395b78" label="3"><p id="_b5216e85-7348-300d-7c4f-0e6091cfdf6d">Estimation of mean, variance, covariance</p>
+</li>
+<li id="_34684a20-f0d7-4cb4-bc8c-43448e4c7596" label="4"><p id="_84710161-a362-e7fb-b58e-7114a66f03ef">Normal distribution</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_b45d634e-a0d9-b707-ef08-081a71d629ae">Explain what is meant by a random variable, estimate the mean, variance and standard deviation for a random variable and also the covariance between random variables.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_86f27a8c-6b81-259e-55de-c2c9c2fee9bb">B1.5 Theory of errors <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_02e13b60-d618-e5cd-4b81-ce011aab79c9" type="arabic"><li id="_77dcd56f-855b-41b8-8470-c6d3495e4c96" label="1"><p id="_4996e9d4-2890-8b88-129f-847844463b5c">Linear observation equations</p>
+</li>
+<li id="_d5de382b-9a54-49a5-90c8-1bfd4df9367c" label="2"><p id="_d3a8eeea-2e6e-a5ea-8c53-2dd9b56225f6">Covariance propagation law</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_d66b1369-f0da-ba08-670f-2aff1e75ac39">Apply the variance propagation law to a linear observation equation, and derive a measurement uncertainty as a function of observables’ covariances.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_3fcac21b-229e-d101-4404-77cc83df82be">B1.6 Least squares <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_c0a0a09c-2328-481a-3285-c1238b6965b7" type="arabic"><li id="_77d94502-c395-4146-8abe-4deb067a1506" label="1"><p id="_8f3dc9f0-cea1-19e6-c777-704d72125d3e">Least squares procedure</p>
+</li>
+<li id="_e7fda57f-b5b2-4d49-836f-bb38786d3deb" label="2"><p id="_baf68b03-1ba9-c1c8-1874-d31bc0c41904">Covariance of estimated parameters</p>
+</li>
+<li id="_525fb2bb-26fb-439b-86a7-ca3a246baab0" label="3"><p id="_b6c3eceb-2da7-0327-95c5-a0e510c9f368">Use of unit variance factor estimate</p>
+</li>
+<li id="_b718461b-ac61-4013-a464-0ba57b9d078d" label="4"><p id="_86bc9c99-3460-1f7b-8041-08a97ce35e86">Interpretation of ellipses of confidence</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_4b788706-1b60-a87c-ad81-bd963aa132e7">Interpret results from a least square estimation applied to survey measurements.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_3d69a898-b5dd-304a-976d-8c96d3688d1f">B1.7 Interpolation <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_6886713c-bf55-3ddb-1363-e9acb0bb4f77" type="arabic"><li id="_e9760b3f-a200-4f9e-9cef-5a7194377e62" label="1"><p id="_eea3cd6c-687f-f377-dd4f-d7ff58955c3f">1D polynomial interpolation</p>
+</li>
+<li id="_7011909f-86da-4946-a932-129927e6dc33" label="2"><p id="_74c7d9f7-8fd6-5124-3cd3-7e49a02247f6">Spatial interpolation by inverse distance weighting methods</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_b98c5bca-3027-642b-1986-e0d5fa44e075">Differentiate between 1-D and spatial interpolation methods. Create and compare interpolated surfaces from one set of sparse survey measurements using appropriate software under different configurations.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="b2_ict" obligation="normative">
+<title id="_32322666-72b0-42f7-a7d3-57a803d1bde3">B2: Information and Communication Technology</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b2_ict">2</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_32322666-72b0-42f7-a7d3-57a803d1bde3">B2: Information and Communication Technology</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b2_ict">2</semx></fmt-xref-label>
+<table id="_4972ab41-1d1e-14a7-1284-b2fde34f7631" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><td valign="top" align="left"><p id="_43ff425d-301e-efff-0445-d96bde518e20">B2.1 Computer systems <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_a1cd7f6f-d02b-a99b-056b-5b65ad9117ac" type="arabic"><li id="_712b88c6-158a-40e1-8dc7-8851d9d3ca4c" label="1"><p id="_864c7561-6124-ae9e-55cd-4bd37cec8f0c">Central Processing Unit</p>
+</li>
+<li id="_8e9322d2-4977-4b1e-8b89-6aa3516eb0d1" label="2"><p id="_a74b2352-e5a2-51c5-8e96-3154f1dc84c9">RAM, data storage</p>
+</li>
+<li id="_0ad85aee-bf16-4f30-bf71-130b8018dd33" label="3"><p id="_196cae5c-0b29-f069-e964-2f9c7b5fbf41">Communication board, serial links, communication ports buffers, Ethernet links, data transmission rates</p>
+</li>
+<li id="_f8a3209e-ab25-4838-87c7-461b0147bd44" label="4"><p id="_13b7022e-636f-fdc3-f4e5-73ca971d8473">Communication protocols</p>
+</li>
+<li id="_4c87a1dc-6508-41eb-814f-33bb5d1aa4fb" label="5"><p id="_318bd5db-6eae-b1e2-b190-71f1c2c7f783">Clocks, clocks drift, time tagging and synchronization of data</p>
+</li>
+<li id="_86d61f18-8d4f-454d-9b4f-107871781945" label="6"><p id="_1b00b81f-cd98-4f07-2649-36722d6a5ff3">Operating systems</p>
+</li>
+<li id="_e48739ea-5186-4e78-a21a-b53502fbaa37" label="7"><p id="_dc770502-fb58-ef63-a099-32f13f03e6b8">Device drivers</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_233f0b6b-7fad-eecc-0444-c474a5b06a71">Describe the different components of a real-time data acquisition system, including various modes of communication and time-tagging.<br/> Describe the role of a device driver and its relation to data exchange.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_0f137952-6688-239a-b455-bed9bf03b76e">B2.2 Office work software suites <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_d0ca570d-24c8-9d64-8693-989f2483216f" type="arabic"><li id="_c79f43a3-099b-4f22-9085-c73a45c12fef" label="1"><p id="_fb461fdb-f4ac-f616-ab3f-d8ad783f313a">Word processors</p>
+</li>
+<li id="_fed11b98-1b84-4a89-8114-28191dc922f7" label="2"><p id="_a8a26b29-f9db-3865-2727-3d1c3df544b9">Spreadsheets</p>
+</li>
+<li id="_3f8c3bdf-c798-40ff-861e-f68848216b0c" label="3"><p id="_b9599b82-8fe2-3677-e978-7093a9f7f84e">Graphics and image processing software</p>
+</li>
+<li id="_1e6aa5e1-1298-4194-b58b-243961303dc9" label="4"><p id="_e065d411-01f7-01b0-9997-68eefd177315">Database management systems and query languages</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_4d9d5387-b299-e2b5-1bf2-02b58125caa0">Use classical office work software suites.<br/> Construct a database, populate it and query its content.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_0157b8a1-b654-c15e-a74f-2dd548288c3b">B2.3 Programming <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_fd35316d-f202-f1b2-fe27-06068245da67" type="arabic"><li id="_566c7dce-e576-416a-8578-4eb35cca87fb" label="1"><p id="_2e5a6e1f-0936-0028-5bca-b75711f97f85">Basic operations of a computer program or script</p>
+</li>
+<li id="_ff58a8c4-ef85-46d0-957f-fcb5f77a4276" label="2"><p id="_fbc145d1-9f11-5ea7-9c45-659855e58d7b">Algorithms (loops, conditional instructions)</p>
+</li>
+<li id="_a77490f3-0c7c-4dff-964b-47656073dea5" label="3"><p id="_c958f7f2-cd87-f090-fd8f-37e814fdd315">Scientific computation environments</p>
+</li>
+<li id="_59f47908-cd0e-463e-a183-fb8e6c29328c" label="4"><p id="_adb11b1f-7859-2d53-9a7c-8b68af1a831b">Application to data exchange, file conversion</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_40bb2af1-cbca-347a-9435-5db31b5b4691">Write a program for data format conversion and/or basic algorithm computation.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_f3d79ec1-3b79-9b53-467d-22279ae68e51">B2.4 Web and network communications <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_db396e0b-c4e5-bb26-7632-038884c9c0c6" type="arabic"><li id="_4a1790f7-1b09-4668-b24f-2deb97d2b494" label="1"><p id="_37be75e5-74b6-d1e2-57dc-46d47b97ac4b">Networks (LANs)</p>
+</li>
+<li id="_74221332-d4f9-4f2f-8efc-308c99d85746" label="2"><p id="_65045517-9744-e0e5-9abf-c439b3c53205">Internet</p>
+</li>
+<li id="_1e924bb5-5bc4-4919-969c-6f33c12cdb7f" label="3"><p id="_e44cbb32-5b42-19f2-021e-d1f1fa0cafc3">Networks integrity</p>
+</li>
+<li id="_cb750a8a-260a-4a79-b10c-4579a6ca6e71" label="4"><p id="_03bbbc6f-ea53-62b8-5497-927dc5f413a1">Communication protocols</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_593f2c67-ea03-af36-424a-703a00ceafca">Describe the different network communication protocols used in remote data exchange applications.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_1735d078-bf7a-98a6-0e6b-e5ee2909a8fe">B2.5 Databases <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_fb93f894-9426-52eb-0ab0-7a0ab1c53240" type="arabic"><li id="_1f526cb8-00cd-4ac7-91f1-f16db0981ebd" label="1"><p id="_039849a1-b751-1469-30d1-6e61a2f0b2a9">File types (binary, text, XML)</p>
+</li>
+<li id="_63de8f1e-00f1-4035-85d9-96026243f330" label="2"><p id="_527898f1-94cb-781b-3e42-c4a4af5e8c55">Relational databases</p>
+</li>
+<li id="_53f5de33-226c-49ab-905b-fcbeca4ea3d4" label="3"><p id="_b936ff13-e735-956d-7123-dead3761beea">Geospatial databases</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_e4a6d7ea-6dfd-fdda-f6f9-503b409d068f">Describe different types of geospatial data and their representation.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="b3_physics" obligation="normative">
+<title id="_265ec07f-016d-4601-b5ce-e3bb9cb1c05f">B3: Physics</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b3_physics">3</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_265ec07f-016d-4601-b5ce-e3bb9cb1c05f">B3: Physics</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b3_physics">3</semx></fmt-xref-label>
+<table id="_8805aad1-15e5-0ca1-3291-774d2e122750" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><td valign="top" align="left"><p id="_455e4569-ea6b-5cfe-f0bd-783690f4180e">B3.1 Mechanics <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_a8fa1856-9c72-a1fd-5d19-f49869d35cab" type="arabic"><li id="_51891912-59b6-4d65-8d13-0c273d9356cb" label="1"><p id="_c6e40f5b-dc9f-e2dd-e680-62706f529301">Kinematics (angular and linear velocities, accelerations)</p>
+</li>
+<li id="_605d1c9e-89d5-4991-b81d-2d63807e4807" label="2"><p id="_d3d6754f-a8ea-7f72-6c6f-c39dbb302ab9">Coriolis Effect</p>
+</li>
+<li id="_89b62987-86fd-4ff1-9e31-6dd6d6629066" label="3"><p id="_96b334e0-c12f-163e-310c-b832aea50b3e">Newton’s law, forces, accelerations, energy</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_9de172cb-0005-9588-2835-f55669934830">Describe the relationship between linear and rotational motions through acceleration and velocity</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_dc8dc9f5-9cf6-0651-c9a6-f0d33e3af775">B3.2 Gravity <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_64f0c2ba-f7fc-ca93-4d79-adac67a98dca" type="arabic"><li id="_45180b7c-e0a4-46f3-88f1-398c1eab5107" label="1"><p id="_7051723a-eddf-b9ca-fc7a-265fd081f575">Gravity field of the earth</p>
+</li>
+<li id="_82735cc4-9e47-4508-b3fc-0b52cdb60f50" label="2"><p id="_168b45a1-39ea-78ca-0966-73d76100ac65">Equipotential surfaces</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_da3b71fd-3bda-5ca9-b38a-c72453802d3a">Describe the gravity field of the earth in terms of acceleration and potential</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_8a9f1fde-409c-e071-fa91-d8ff74f2aad3">B3.3 Waves <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_a7a5bce2-5379-61ab-6256-d9341454c2ba" type="arabic"><li id="_cb4c282a-f421-4fc8-b03d-d0a006a918d1" label="1"><p id="_4f069992-faeb-045e-285b-f09a32767b6e">Electromagnetic waves</p>
+</li>
+<li id="_0e9a23de-97d4-4ed7-ab6d-ae9200b42eab" label="2"><p id="_89f6c07c-5b7a-c78d-2c84-ae6ab09dda59">Pressure waves</p>
+</li>
+<li id="_5dc3a1e5-c928-4466-936f-647cdd09c5ae" label="3"><p id="_52934e5a-3182-adba-bc63-6f0c8446d998">Ocean waves</p>
+</li>
+<li id="_9f5b4cbe-b6ec-45ee-815d-decc6d472155" label="4"><p id="_e68aa1a8-cd4f-5d64-ea24-1ca60d4dc5a1">Wave Propagation</p>
+</li>
+<li id="_619a0485-f3b0-4cd3-aac1-826c43d69895" label="5"><p id="_95b9fbf4-ae66-e73d-76ba-bafc7208be5f">Electromagnetic spectrum</p>
+</li>
+<li id="_5473b968-c70f-491c-9983-ff8636a69356" label="6"><p id="_3364af17-164d-4834-aeab-04ae2f4046ae">Radiation, emission and absorption</p>
+</li>
+<li id="_5c04cf11-0d92-42d2-beb3-55e1bea90ae4" label="7"><p id="_a9978ec2-4dc3-0fe4-2e36-4ba39aa65768">Reflection, refraction, diffraction</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_dfab1a62-5155-c8aa-8ccc-41336478b945">Differentiate between types of waves and their generation and propagation.<br/> Explain how medium parameters affect wave behavior.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="b4_earth_sciences" obligation="normative">
+<title id="_81707351-6ae1-453a-840f-a4baa25cd975">B4: Earth Sciences</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b4_earth_sciences">4</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_81707351-6ae1-453a-840f-a4baa25cd975">B4: Earth Sciences</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b4_earth_sciences">4</semx></fmt-xref-label>
+<table id="_5f239abc-3637-64ce-3372-48a087286a9d" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><td valign="top" align="left"><p id="_1aedd95f-e88e-0806-cfe4-503f9ef0f48b">B4.1 Geography and geology <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_03148212-7dd7-60ea-eda1-deda4bc18364" type="arabic"><li id="_a89a27ad-0cb6-44c5-b111-47f02c9f0024" label="1"><p id="_f1c7ab30-3d9b-db5a-f7e4-bb84e7fef391">Plate tectonics, earthquakes zones</p>
+</li>
+<li id="_760bfaee-8a01-4145-b476-9c07deeb6ac4" label="2"><p id="_85f12ef6-4ece-2437-235d-144ee31a059a">Different types of rocks</p>
+</li>
+<li id="_be115019-1bdc-4836-8ad3-cbae21c672d2" label="3"><p id="_2c1dcf30-5036-c4b9-abc7-097e2e43fb9a">Erosion and deposition</p>
+</li>
+<li id="_ebacff4d-1cda-423c-80bb-74012e68eebc" label="4"><p id="_5274c896-2f40-b5bf-ad2d-725088d5f14c">Rivers and estuaries</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_fa016425-d412-3730-fd7e-e042a9f8127e">Describe the internal structure, the physical characters and dynamics of the Earth referring to ocean basin structure, and the major processes affecting coastal morphology</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_c89f1ea8-df27-dcda-8a11-7a0a3e2dff88">B4.2 Substrates <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_e376377c-7e31-7d68-c573-de76cd4d4fd4" type="arabic"><li id="_3c79c1fa-2072-4ad7-bb38-3aa19ee2e2fb" label="1"><p id="_df1a87ba-6c2f-0798-0ef5-e3d7ebc36044">Sediment types</p>
+</li>
+<li id="_44746764-a113-4dbf-9520-2b5292113f9c" label="2"><p id="_3622061e-2c22-9bf0-e457-7587326bef35">Sedimentary cycles</p>
+</li>
+<li id="_15f6d118-d842-4fbb-b080-feb996d68ea6" label="3"><p id="_adc5f51b-0f33-fc15-d211-16cadf945727">Siltation</p>
+</li>
+<li id="_2ef27620-df31-4333-bc49-fe8688796aca" label="4"><p id="_ade5b557-539b-b534-e4e1-bd21ee74dd0f">Submerged aquatic vegetation</p>
+</li>
+<li id="_e78fd8cc-7bb6-4553-b51e-2ef8643a65f2" label="5"><p id="_b7009a01-8f40-73a9-8797-752df3309758">Corals</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_c7406991-f5ad-681b-4243-4212a87507e6">Distinguish common seafloor characteristics. Describe the ocean bottom as a multilayered structure composed of sediment deposits</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="b5_nautical_science" obligation="normative">
+<title id="_357ae1b5-4e06-40b1-9bd4-6e720550c9b9">B5: Nautical science</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b5_nautical_science">5</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_357ae1b5-4e06-40b1-9bd4-6e720550c9b9">B5: Nautical science</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b5_nautical_science">5</semx></fmt-xref-label>
+<table id="_bd81b417-df97-4383-4a35-810ae2e41bf6" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><td valign="top" align="left"><p id="_0e54b050-4138-7b1a-6abc-53e4ce508e95">B5.1 Conventional aids to navigation <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_2c7e378f-d29c-fe35-6503-ad2cdabb5a09" type="arabic"><li id="_02e5db2f-819c-4c88-8eec-6adc76285d64" label="1"><p id="_6d225dd1-803f-a259-efa1-a97638e84882">Types of buoys and beacons</p>
+</li>
+<li id="_4b334f38-8350-4a9f-bb83-d838747fe228" label="2"><p id="_2f0e7f1b-6351-f046-5080-e408fbbd4635">Radar beacons</p>
+</li>
+<li id="_69f1c732-008e-4ad1-b629-6efc6a4d7841" label="3"><p id="_4409e12f-3624-e01a-c41e-8c8e127d8b4c">AIS systems</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_2152348d-5021-cab2-3cfb-d5bd4007bb92">Describe the principal fixed and floating aids to navigation and the use of automatic identification systems.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_8180d459-acbd-66be-6a56-817e2166e92f">B5.2 GMDSS <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_d4e17b94-6616-6eef-0786-6e26fd13d29c" type="arabic"><li id="_be4a7aec-749a-4435-8cfa-48f54ff778b8" label="1"><p id="_d47d2945-7eda-c5c2-5efa-369e2a0f0583">Sea areas</p>
+</li>
+<li id="_171905f8-510a-4ca6-b0b1-620058ee9074" label="2"><p id="_3b28ad13-d685-cce9-c343-603a1a00cf95">EPIRBs and SARSAT</p>
+</li>
+<li id="_26a266d0-b6b2-4115-88aa-5d5c5259b5ae" label="3"><p id="_1f73a225-d6f1-cac4-4af6-9374548ee7e2">Digital selective calling</p>
+</li>
+<li id="_4f22e8ab-786c-48e9-a3d3-fff4e545a48a" label="4"><p id="_2edbf07f-4084-793c-6e38-14e4a2d34cef">NAVTEX</p>
+</li>
+<li id="_efa57a0b-310b-4256-ac9f-de849f42ec19" label="5"><p id="_b66baac5-a007-4da2-2611-b273c76becf0">Inmarsat-C</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_5c9b09d5-7aae-d3d8-39a5-074ae27d792a">Describe the components and purpose of GMDSS.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_915edaf7-434c-8504-7bcb-21fb64371c5c">B5.3 Nautical charts <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_ab1e0783-a5be-4428-a57c-53556d093958" type="arabic"><li id="_453537dc-8b0c-45b9-b817-d694de7f7ea2" label="1"><p id="_eafc1dfb-4302-c963-51ad-54d5c57bbb1a">Content, datum, projection, scale and types of nautical charts</p>
+</li>
+<li id="_2366ea4f-edd5-465a-a284-250caa41805a" label="2"><p id="_1f8e6658-7454-66b3-b6ad-9ddefe1068f0">Chart symbols</p>
+</li>
+<li id="_2ffd46b4-9b9f-452b-9c3e-cb8042590ad5" label="3"><p id="_a46d47e0-50bc-c199-2876-077527640c4f">Chart graticules</p>
+</li>
+<li id="_6e7f65fb-6b21-4260-ba9a-2ddd5ae88328" label="4"><p id="_bad4003e-6325-7f5c-43eb-3cc7257e419f">Uncertainty indicators (e.g. source diagram, reliability diagram, zone of confidence, notes)</p>
+</li>
+<li id="_c40dd35b-01e4-40c7-9c32-71c0ea8bc7fe" label="5"><p id="_2a794e25-51a0-9889-d113-cf682f5a731c">Navigational hazards</p>
+</li>
+<li id="_5931dee3-8283-4772-8aed-81f2508a180c" label="6"><p id="_0f9f52f5-5bf8-ecb6-b7bc-da359a6058ee">Plotting instruments</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_e138b72f-ca7c-aaae-9645-b10cdef6677e">Layout a route on a nautical chart, plot positions, identifies navigational hazards and revise navigational plan as required.<br/> Describe the content of a nautical chart and explain datum, projection, scale <br/> Describe the uncertainty indicators associated with nautical charts.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_b138985f-129b-44d6-5ce9-1945882567d0">B5.4 Navigation publications <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_d471a4f0-3535-4063-abed-7a3016588a1c" type="arabic"><li id="_888dbc3e-80df-4fe1-8a78-3b3a9838c5dd" label="1"><p id="_9243e773-1786-00a1-56a5-dc20993888ce">Sailing directions,</p>
+</li>
+<li id="_470ffa04-b377-4ba0-b7ce-c0b55216d33d" label="2"><p id="_50d2de96-57ab-162f-90c3-9a3ba47b69d8">Light and radio lists,</p>
+</li>
+<li id="_4cb91164-61e6-43e7-9b74-d737c77f9bb5" label="3"><p id="_66764f89-b1a4-b096-c269-017cc8959968">Tides and current tables</p>
+</li>
+<li id="_57b0a128-d3b6-43f0-a56f-572344c51352" label="4"><p id="_ef31456d-ea4d-1fd4-3ca7-384e1495a918">Notice to mariners</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_e28c870e-f26c-abff-8a3c-3a8b71bee00a">Use content of nautical publications in a survey planning context.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_f96dbf0c-98c6-8587-35bc-d16fc4099ce3">B5.5 Compasses <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_2724c31f-44ea-7c4c-d12a-67e73e911301" type="arabic"><li id="_eb77bbe0-c5c3-4353-a5d5-49da8e5856a1" label="1"><p id="_8d22dfe4-8347-7faf-c490-9ee5c3c171f3">Earth magnetic field</p>
+</li>
+<li id="_facf4006-214f-452b-9f3a-150341a0f9e4" label="2"><p id="_64fcd5a5-2ba3-0133-acaf-55223c7b5790">Magnetic compasses</p>
+</li>
+<li id="_d385e5d9-d93e-43da-909b-378bb6a29fc2" label="3"><p id="_3af09460-2ca6-56ab-10eb-3800b93005d9">Gyros</p>
+</li>
+<li id="_2b710199-0a78-4dd7-bec5-878d761acb54" label="4"><p id="_ef03dcec-5208-e5d3-b7b0-78c9481ab81e">Compass error and corrections</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_81039b6f-9ac2-4e93-6aa1-8f2f77b5d7a3">Describe the capabilities, limitations and errors of magnetic and gyro compasses. Determine and apply corrections for magnetic and gyro compass error.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_eb51c01a-73a1-6639-58c5-c72a958ebb3b">B5.6 Emergency procedures <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_1222eee3-4f62-4903-bc84-694ee6e91823" type="arabic"><li id="_b9f7afc0-3729-4ad4-a70e-d6721507292c" label="1"><p id="_b322e0da-e1aa-e533-e754-c0acfa51ea9f">Fire extinguishers</p>
+</li>
+<li id="_4d935ec3-c064-4814-851d-30d4aaa3d7c8" label="2"><p id="_9ee30e0a-e70c-944f-dd5e-486b14774d6d">Life preservers and cold water survival suits, life rafts</p>
+</li>
+<li id="_d4f1daac-2c5f-4ecf-b30b-0c2d550ff9c6" label="3"><p id="_de514cc3-5716-d08b-16e7-77f7fa02efce">Distress signals and EPIRB</p>
+</li>
+<li id="_bc448679-62a1-4682-9e6c-ec43e9ac3d94" label="4"><p id="_abaee0fd-6f11-5b77-f966-45b01b3d7cb6">Procedures for man-overboard, fire, and abandoning ship</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_6ee96fe0-8c1b-2549-43fc-d2aba72e59b5">Explain the importance of the emergency equipment and procedures.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_53ac1a36-6d12-3096-e8e4-b1472b85cf85">B5.7 Safe working practice <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_b8e333f8-e53c-d260-7e56-e4f076dadae3" type="arabic"><li id="_c3af59f2-29d5-4b08-a93f-151996e90998" label="1"><p id="_914c59eb-9480-a498-0120-3dfc85334e8d">Water-tight doors and hatches</p>
+</li>
+<li id="_3f56c396-9cfa-40ee-ba8f-6403ca77b384" label="2"><p id="_c524e8b7-3472-72c2-e3c4-2dd3061de8cf">Suspended loads</p>
+</li>
+<li id="_ae71eb6f-5898-4566-abc3-914c388c9a48" label="3"><p id="_26876b56-cd25-d925-9d27-aba112b395e9">Enclosed spaces</p>
+</li>
+<li id="_55970c56-64e0-48db-a494-2df8ec0c04ef" label="4"><p id="_53f6b840-841c-10d1-5e85-1defe8ffa349">Working aloft, with equipment over the side</p>
+</li>
+<li id="_f587bfbd-1df0-4cdd-a0e7-a789110f742d" label="5"><p id="_b83e5204-5c17-1fbf-7d5b-748036397ce5">Work permitting</p>
+</li>
+<li id="_4bea3087-b63e-4b0a-a164-46372058fe08" label="6"><p id="_2c58fae4-44ba-fa93-c2b1-4b8d85e839ec">Securing equipment for sea</p>
+</li>
+<li id="_a57329a5-a3a8-445a-84b0-b0642abf6e14" label="7"><p id="_3c9692e3-a647-124f-1b9d-d9ade756063c">Cables and antenna installation</p>
+</li>
+<li id="_41a39a11-86d6-4e9b-b379-10371e749b21" label="8"><p id="_d071bd3d-c897-2141-c267-3b9af8a5af79">Earthing of electrical equipment</p>
+</li>
+<li id="_8af5337f-7e53-4c74-8d63-585d518fd014" label="9"><p id="_f13ea112-7199-624c-9252-199e4a98284e">High voltage electrical safety</p>
+</li>
+<li id="_af6b3d6f-d80b-491f-b181-79c0de24daad" label="10"><p id="_f5a979f4-e85e-e013-4fd5-84eb03a1725d">Personal protective equipment</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_931800c3-091a-a6fd-afd9-4891e836a43b">Describe procedures for maintaining a safe working environment.<br/> Draw a diagram to indicate safe cable routes for survey instruments. <br/> Describe methods for securing equipment for heavy weather.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_c41cedfc-2793-e412-154a-2725ae6d069f">B5.8 Rope and wires <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_62fe88ff-9da8-a384-fdec-93c46fa67b06" type="arabic"><li id="_512b3a9c-3ba8-42dc-b0c8-4d84384df9df" label="1"><p id="_13d1aaed-dfaa-2bc6-9290-f17f7b4d8aef">Types of wire and rope</p>
+</li>
+<li id="_20a8f8b0-2a0f-4057-bbf9-f9998164728e" label="2"><p id="_2f38c2c4-87cf-ed9e-e17b-60b41ac2f473">Characteristics (stretch, floating, strength) of ropes.</p>
+</li>
+<li id="_dcd2e2fb-5ee5-4676-b88b-507c702312de" label="3"><p id="_10db527d-6056-d4d1-4b71-824af8c4bf2b">Basic knots</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_3b907f3b-9f00-fab7-e206-770c0dbf7e7b">Select and tie basic knots.<br/> Select appropriate wire or rope.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_fb9acc29-2b0c-b978-a5fe-45ddc73925dc">B5.9 Towed and over the side instruments <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_99262ce8-bdc5-7992-7c8b-eb88becbe3c7" type="arabic"><li id="_f6d8e42e-2e2d-4cb9-85d7-de13f3a518a3" label="1"><p id="_e964ee76-bfb8-3a47-84aa-884b190fdb39">Rosette systems and instruments</p>
+</li>
+<li id="_50d082ca-e917-4e36-9c27-9623183997bf" label="2"><p id="_d7780879-5bd9-3664-df26-58c061246fa5">ROVs, AUVs, towed systems, catenary and layback</p>
+</li>
+<li id="_e70b8ca5-a714-42c4-b991-04492400c506" label="3"><p id="_d782a7ee-e2d2-8e7e-dddd-318ce375cd5e">A-frames, cable blocks, electro-mechanical wire, slip rings and optical cabling</p>
+</li>
+<li id="_2ca30d36-40a6-4670-ac04-4a87c08132a5" label="4"><p id="_feb2cc80-0f8c-f341-48e0-83fecd3ff33d">Moonpools</p>
+</li>
+<li id="_f027ed21-bbdb-40bc-9596-32261b731b4b" label="5"><p id="_f25672fd-bcd5-cfe3-9fe0-0e4971516bc4">Launch and recovery</p>
+</li>
+<li id="_7d0bb520-85c9-49ff-9615-cdc076122345" label="6"><p id="_46c6f8db-35fc-0aed-8ba6-472b5b33b87d">Station keeping and maneuvering</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_5670d377-7a92-77bc-d3b1-1e305dfa0d0d">Deploy and recover oceanographic and hydrographic equipment</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_6f22bb5c-5c4b-2240-bd1c-58f4663c1eae">B5.10 Anchoring <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_17842884-d294-bce6-bd93-ff538512983d" type="arabic"><li id="_5d0dec26-0c9d-4412-8178-b0bb55574d40" label="1"><p id="_e4fd5df3-5074-4941-ace9-95979510761f">Shipboard ground tackle including anchor, chain, windlass, stoppers</p>
+</li>
+<li id="_53f3dc52-a7b2-4879-ba82-de9b5f5bd96c" label="2"><p id="_258b3263-c7aa-286e-df64-699d5078fe3a">Small boat anchoring</p>
+</li>
+<li id="_b07d9a30-2122-4ca2-a874-6dbf6d90f0db" label="3"><p id="_abf0c9fd-d337-cc35-733f-64b8dc228082">Multiple anchors</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_2232f61c-ba52-8e05-32be-76496232387b">Describe ship and small boats anchoring and ground tackle.<br/> Explain how the final position of the vessel can be adjusted through the use of anchors.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_518af98e-0abb-d72e-07ac-17a9a13ce256">B5.11 Instrument moorings <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_b2093ff0-a8ba-6b2d-ec49-440ad0ed5cd1" type="arabic"><li id="_4dd0dbfd-1a89-4d76-9568-4f9755865802" label="1"><p id="_1a4613b6-3b98-3e2b-a756-2592afc0eaf1">Launch and recovery</p>
+</li>
+<li id="_83890007-82b0-4d67-ae90-e3d25db98795" label="2"><p id="_410dfd12-5c8a-06e7-6417-51950e27b6b2">Anchors and acoustic releases</p>
+</li>
+<li id="_78bef79a-2ae6-4e3c-8138-86511c42a0ea" label="3"><p id="_b1da0813-b700-fa8d-2b99-38b08732f12d">Scope, wire, flotation, tension</p>
+</li>
+<li id="_4d4aff98-c9f4-41a2-9303-b3fa9095a3b3" label="4"><p id="_3336f950-012a-5e23-a0d8-4bf8252a23cd">Weights</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_9ffdb722-12ba-449e-3601-bba5b6cd76e0">Prepare, deploy and recover seabed instruments.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="b6_meteorology" obligation="normative">
+<title id="_86631fb6-3b45-419f-bc52-8fff70da79a5">B6: Meteorology</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b6_meteorology">6</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_86631fb6-3b45-419f-bc52-8fff70da79a5">B6: Meteorology</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_basic_subjects">1</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="b6_meteorology">6</semx></fmt-xref-label>
+<table id="_2300e2fc-3b75-c76f-6f22-5528fb7b6780" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><td valign="top" align="left"><p id="_5023edc7-bd02-1d8a-6cc1-6fe964ce302d">B6.1 Weather observations <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_d9553f34-76d4-f88c-b56c-f4df43b18264" type="arabic"><li id="_b4f52753-4f4e-448c-9a44-7cf5cfb5811a" label="1"><p id="_ecc48727-8f99-349a-fc33-2a919fb1b4fd">Vertical structure and the variability of the atmosphere</p>
+</li>
+<li id="_84cc393d-6f74-4f8d-b592-05dc891dd6e1" label="2"><p id="_64fa8433-98f8-854e-8499-1c89e2b4ce52">Temperature, humidity, dew-point, frost-point</p>
+</li>
+<li id="_dbbd5628-70d1-45c6-b6d5-17bb341b19f6" label="3"><p id="_dce86234-2f22-f9be-7d91-187cf9a526e2">Atmospheric pressure, winds</p>
+</li>
+<li id="_f0ae12fe-d4ed-4643-91cd-475eda202afb" label="4"><p id="_f4ed30c8-6ebf-d56d-02df-dacd23dff166">Clouds and precipitations</p>
+</li>
+<li id="_d6fe514f-cfc5-4ecb-ad59-4ca8794f2454" label="5"><p id="_5cc71eab-b8c6-c3af-f097-14aa49fccd42">Rain, snow</p>
+</li>
+<li id="_02921473-82e0-41c1-9bca-3f34dd41861d" label="6"><p id="_4d0d015c-3eab-fd5d-df74-2d3e9fa6c724">Visibility, advection fog and radiation fog</p>
+</li>
+<li id="_206cb117-938a-4ddb-a333-b97eff7b9525" label="7"><p id="_1532e490-2221-1045-a119-bbee7b26ae51">Pressure systems</p>
+</li>
+<li id="_e7a1a7e4-b560-40a7-8d59-4b4fe19b79fb" label="8"><p id="_c9038302-524f-c0d5-dca5-5aa6339253b5">Geostrophic winds, anabatic and katabatic winds</p>
+</li>
+<li id="_932d4d8e-a0ba-4896-9cca-31474933c70d" label="9"><p id="_7b7cd6cd-3764-f24b-f443-6ff43f629b03">Instruments and sensors used to register temperatures, pressure, direction and intensity of wind</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_1976f785-4d41-abc4-f538-ea1bca271f56">Define physical meteorological parameters<br/> Operate instruments and sensors used to register temperature, pressure, direction and intensity of wind. Record these parameters according to internationally accepted standards. <br/> Identify characteristics of weather by simple observation of the sea and the sky.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_6117870a-0577-f979-cc98-25e805ff8ce2">B6.2 Wind <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_b12b75fd-3801-4dc6-2e5f-473ab598d9d1">Explain the relation between atmospheric pressure, temperature and wind. Describe wind circulation around pressure systems and the effect of friction.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_41b00eaa-db7c-7026-0929-b9c9c13b3ec7">B6.3 Weather forecasting <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_299938e9-4fc6-81c5-9466-79b7493f8b49" type="arabic"><li id="_d7022ac7-e2f1-443d-8993-92875f5f5257" label="1"><p id="_fa858b4f-338a-5dc7-913f-f6585429f6c4">Synoptic charts</p>
+</li>
+<li id="_fea280ae-02dc-427f-8a02-517ceb7a848d" label="2"><p id="_8f1cc873-eaba-a02f-f1b3-269dc4ac5132">Weather forecast</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_16e8abbb-7cab-fd41-3a95-b865aa36d70d">Interpret a synoptic chart. Produce an operational short range forecast based on meteorological information, weather bulletins and facsimile charts</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+</clause>
+
+<clause id="_essential_subjects" obligation="normative" displayorder="7">
+<title id="_20530a5d-eef0-43f4-bbb8-2e6a53842269">Essential subjects</title><fmt-title depth="1"><span class="fmt-caption-label"><semx element="autonum" source="_essential_subjects">2</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_20530a5d-eef0-43f4-bbb8-2e6a53842269">Essential subjects</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Section</span> <semx element="autonum" source="_essential_subjects">2</semx></fmt-xref-label>
+<clause id="e1_underwater_acoustics" obligation="normative">
+<title id="_488b3f0c-d5e6-42ff-98cc-8674b8b3c11b">E1: Underwater Acoustics</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e1_underwater_acoustics">1</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_488b3f0c-d5e6-42ff-98cc-8674b8b3c11b">E1: Underwater Acoustics</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e1_underwater_acoustics">1</semx></fmt-xref-label>
+<table id="_227f0858-53b6-4243-f0b1-2b7382d35327" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><th colspan="3" valign="top" align="left">E1.1 Acoustic Theory</th>
+</tr><tr><td valign="top" align="left"><p id="_4491f9d8-f970-2f1a-acf1-2fe7f30e0b81">E1.1a Generation of acoustic waves <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="4" align="left"><ol id="_56c66450-6dca-1016-60c6-209641716209" type="arabic"><li id="_0a5e649b-6353-464c-9baa-7e665fca7403" label="1"><p id="_b7484254-3b04-8985-b1cc-93086847fb8b">Plane and spherical waves in terms of wavelength, amplitude and frequency.</p>
+</li>
+<li id="_4d8eeaac-d720-40c4-8896-4016db589740" label="2"><p id="_bdc8bba2-919b-88b1-8d12-b1ad5da8b8b7">Speed of sound in relation to water properties and profile in the water column.</p>
+</li>
+<li id="_2fac70b8-d9a3-4d5a-a132-02b5bb28cfda" label="3"><p id="_6df6970c-de9b-0f35-38d2-1e8ab01d5f08">Acoustic units, intensities and sound levels</p>
+</li>
+<li id="_19ab53b7-77a7-4f8c-bf99-af1c5df8fa31" label="4"><p id="_b179f9f8-c5a5-eced-7b5f-62deabcf577b">Active Sonar Equation including sound source, causes of propagation loss in relation to water properties together with characteristics of the sea floor and targets, noise level and directivity</p>
+</li>
+<li id="_3125069d-9dd0-48aa-ba19-af7171405e68" label="5"><p id="_c12ee572-a538-1b5e-7ae6-871fb3115039">Refraction and the path of sound rays through the water column.</p>
+</li>
+<li id="_efca7a17-65dc-4099-aafc-ec13f2aef656" label="6"><p id="_e1bbd98a-7996-62bb-2841-24f14cdeda01">Transducer principles and beam characteristics</p>
+</li>
+<li id="_d666ff67-f351-48e1-8870-f08c342b8744" label="7"><p id="_7f932caf-50d0-3446-d544-e3eb0aa35a39">System parameters including bandwidth, pulse length, pulse repetition rate, gain, detection threshold, range resolution and spatial resolution.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_835630c1-5371-5846-25ce-5bf70d4c3309">Explain how transducer parameters impact upon beam characteristics.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_0d8cdf4e-090b-7925-67bf-479cfab7f610">E1.1b Propagation of acoustic waves <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_355b44f9-25fa-2787-69d8-533c197200af">Using appropriate units, describe acoustic wave behavior with reference to physical properties of the water column.<br/> Create a sound speed profiles from water column measurements and describe its effect on the acoustic ray path.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_52b3ba8a-74f2-5831-0bf4-cae80850eee7">E1.1c Reflection, scattering and system performance <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_6182b2c4-8c93-4576-f7a2-8cf1225e55ea">Detail sources of noise and the impact of noise on operation of acoustic systems.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_b1cdb3bc-f05d-3ee7-472f-ac982e0f836f">E1.1d Reception of acoustic waves <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_ddb63762-5f29-2fa3-753a-32dca03e99e8">Explain how a system is optimized in terms of environmental factors for measurement and target detection.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E1.2 Single Beam Systems &amp; Side Scan Sonar</th>
+</tr><tr><td valign="top" align="left"><p id="_0ca6befa-7081-96b9-8c4c-80abbbebd0be">E1.2a Single beam echo sounders <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="4" align="left"><ol id="_7b624f36-a5fd-2877-ebf2-2179d2603013" type="arabic"><li id="_2b6fcddb-1e3b-4d08-89aa-6527865fbbd8" label="1"><p id="_8338a1fe-1bf3-c48b-67fa-eb75a45f80da">Split beam and dual beam echo sounders</p>
+</li>
+<li id="_27778064-bc4d-4979-bbbf-b78b4f32ba48" label="2"><p id="_150c55d2-cad8-43fa-856a-88ba4af55565">Components of a single beam echo sounder.</p>
+</li>
+<li id="_441d367c-a72d-46d1-90a9-815bad7d643f" label="3"><p id="_5b2bd5d2-13d2-2334-0e48-da65eb89cdfa">Operation of single beam echo sounders.</p>
+</li>
+<li id="_fc3ee551-e687-40ec-96c6-5db5b11559e6" label="4"><p id="_11a5cce8-e22d-d7a7-f27f-666537bf5657">Bottom detection principles.</p>
+</li>
+<li id="_3d072951-87d6-4be1-bd29-d5c31b028839" label="5"><p id="_34ffe0b4-23f7-86f5-b57d-524cb4a53e83">Full-echo-envelope returns</p>
+</li>
+<li id="_91b2d87e-08a2-4bb8-9a89-01cf7c0b8eb8" label="6"><p id="_0222410e-bed3-4556-c680-7b7ac9b3b516">Sub-bottom profiling systems.</p>
+</li>
+<li id="_c04dcca1-70f3-4809-b365-eea246640fe7" label="7"><p id="_52bc0a8b-3e60-43ff-0dba-c1c93835bdd8">Validation &amp; Calibration.</p>
+</li>
+<li id="_2c687746-4408-425e-9478-46f6bf9798d3" label="8"><p id="_0b80cec1-0041-2a21-2a0b-8736093a0d80">Principles, components, geometry and deployment of side scan sonar systems.</p>
+</li>
+<li id="_2f720bc4-1ced-44b7-b4c6-4193542e2f30" label="9"><p id="_28d24b58-8115-a298-cf14-aefa65012f5f">Side scan sonar backscatter and sea floor reflection.</p>
+</li>
+<li id="_078cdcf1-bcb6-43e7-a1aa-cffc31ca919e" label="10"><p id="_0f5b6c2b-58e5-d326-b7fa-87457f56ef63">Side scan images and sources of distortion.</p>
+</li>
+<li id="_15aae244-803b-4cb2-85a4-c6d0021d9caa" label="11"><p id="_47bc4559-fc60-5563-84e9-19e1ce1d2e32">Combining sources of uncertainty.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_590e516a-011d-697e-3ab3-9f4eae7d77b2">Set up, deploy and operate a single beam echo sounder.<br/> Select appropriate range, scale, frequency and pulse repetition rate for specific applications in relation to spatial resolution, bottom penetration and depth of water.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_98928ac6-0601-0a4e-7413-a128a21f8bf7">E1.2b Single beam echo sounder data recording. <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_5a0b0d25-1618-b286-c06b-a3d6fdb2e46b">Interpret echo sounder returns through differentiation between return signals.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_c02660ab-0718-4a11-1fb8-0ecef5efe354">E1.2c Range uncertainty <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_c7d33222-049e-0c55-8523-11fee73802cf">Detail and quantify components contributing to uncertainty in derived ranges.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_7e5c381a-c24b-3dc1-356c-47f88bd8f216">E1.2d Side scan sonar <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_88ad859c-3ff4-4e05-0c7d-8bce69d7fb51">Set up, deploy and operate side scan sonar. Interpret side scan sonar records considering target characteristics, system configuration, potential sources of noise and distortion.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E1.3 Swath Systems</th>
+</tr><tr><td valign="top" align="left"><p id="_25eafd41-b4dc-eb10-73a8-d359cd2d1ff7">E1.3a Beam characteristics <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="6" align="left"><ol id="_3a905423-2770-954d-9e1a-1504fbe41983" type="arabic"><li id="_4130cf84-f21b-49b5-a78b-094d4aab8f00" label="1"><p id="_ef4238cf-6ce5-2964-6945-9b192e2fe619">Transducer elements and arrays.</p>
+</li>
+<li id="_cc2e2eef-25a4-49e5-b0ec-5d4e8ea2658c" label="2"><p id="_eb95b0b4-aee0-20ef-a6ec-13597712cfdf">Beam forming and beam steering</p>
+</li>
+<li id="_4137fc5b-540d-413b-b68d-dc6625ac4137" label="3"><p id="_8716dbc3-75d1-ce3c-5a09-7d49f7b1ab71">Principles and geometry of multi-beam and interferometric (phase measurement) sonar systems</p>
+</li>
+<li id="_6823dabe-443b-4435-8ad6-9982422a7de5" label="4"><p id="_9c0f19f0-ae39-ada1-d3d3-06a23f06cc41">Amplitude and phase bottom detection</p>
+</li>
+<li id="_64f82254-91c9-4e6b-938b-17d1436f9196" label="5"><p id="_e6b2dc6b-8209-1bb6-a5f0-834ebbd62df4">Variations in beam spacing and footprint size</p>
+</li>
+<li id="_2b8ca842-8ca4-4a34-8117-b4cb2807c7fb" label="6"><p id="_23a807e7-4a44-f464-8c85-5a375628de84">Backscatter and seabed classification</p>
+</li>
+<li id="_95032a14-2741-4c11-be0c-e66bb645f4c4" label="7"><p id="_57d52e8e-023e-adfd-5f28-039c99d1c2cb">Hull and pole mounting of transducers considering platform motion. Integration of components including time stamping, attitude compensation, sensor offsets and networking.</p>
+</li>
+<li id="_7b409fc7-a154-47e3-b2f9-be752baf898b" label="8"><p id="_a2a968f0-6aa5-f501-75bc-a3e1f989525d">Surface and water column sound speed monitoring</p>
+</li>
+<li id="_61d7137f-7226-478f-87df-f9af382285b9" label="9"><p id="_5d539133-fda5-40f9-b9b2-c8a11af03189">Gain, power, pulse length</p>
+</li>
+<li id="_0cbfe266-fdc2-4759-8efd-3cad363a1f88" label="10"><p id="_341090e0-3707-407a-e920-1fe1badde013">Quality control procedures</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_2d6edaca-d12e-9b9d-be70-e1486fb22e6f">Define characteristics of beams in relation to transducer settings.<br/> Compare phase and interferometric systems with multi-beam systems</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_7add1a6a-4bef-f272-9562-318f0510a170">E1.3b Backscatter and water column returns <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_c43aa49f-3f1c-4c0c-6f93-555a23b022d6">Describe characteristics of returns in the context of seabed type, angle of incidence and scatter from within the water column</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_93089cd5-7dd0-6d70-c6c8-93acc438641a">E1.3c Bottom spatial coverage <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_c78a221e-f526-ca67-6008-b206030353bc">Determine sounding density and object detection capability as functions of system parameters</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_7107e6ce-a871-db53-f48b-e45b1e0de83e">E1.3d Installation and configuration <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_f856abfb-3189-689c-a4b2-950db519ba98">Describe suitable mounting structure and location for transducers given operational constraints</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_1d96affc-2c1a-5ac6-129e-7ec62b44e1f1">E1.3e Range and angle uncertainty <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_48fe693f-4490-d2d3-d1db-4d1571863a9b">Differentiate between error sources in phase and amplitude detection modes.<br/> Identify sources of range and angle uncertainty depending on acoustic parameter configuration</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_f01ecbdc-bf60-4454-dff3-2c390da50308">E1.3f Operation <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_75fa6091-409b-6f82-aeff-ccdf2dd9a6d3">Set up, deploy and operate a swath sonar system.<br/> Identify problems or artefacts in on-line data due to inappropriate configuration or changing environmental parameters. <br/> Tune acoustic parameters for optimum performance. <br/> Apply quality control procedures to data acquisition and on-line processing</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="e2_remote_sensing" obligation="normative">
+<title id="_e67312ba-4dcc-4a46-917f-16e22cfb56c2">E2: Remote Sensing</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e2_remote_sensing">2</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_e67312ba-4dcc-4a46-917f-16e22cfb56c2">E2: Remote Sensing</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e2_remote_sensing">2</semx></fmt-xref-label>
+<table id="_31532419-773a-b8f2-7590-aab65105d9dc" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><th colspan="3" valign="top" align="left">E2.1 LiDAR</th>
+</tr><tr><td valign="top" align="left"><p id="_c0c77fd5-f582-65a2-af21-6ca65af5264c">E2.1a Airborne LiDAR systems <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="3" align="left"><ol id="_11586124-2d4c-8583-27d5-21811284887b" type="arabic"><li id="_a675c562-326a-4173-be63-73ae7f601ecb" label="1"><p id="_2511d651-b0b6-748b-dcc8-59b36835b958">Wavelength, water penetration and ground detection</p>
+</li>
+<li id="_75161d85-019e-4586-a8e2-b52ec2ffa35d" label="2"><p id="_c65a5765-ef92-5ff9-b5f4-e20dfa0d7412">Scanning frequency and pattern in relation to power, coverage and spatial density.</p>
+</li>
+<li id="_9390aca0-bca6-40d4-afc7-1dee535b743d" label="3"><p id="_7b62ae63-dc9c-bf6b-4303-27bfdc835a67">Influence of sea surface roughness, water column turbidity on the beam pattern and penetration.</p>
+</li>
+<li id="_4e71eb14-1ad3-47c9-9bf7-a524820fe411" label="4"><p id="_5ce2ea28-92ba-9fb2-0dac-1a8b190f407c">Sea bed optical characteristics and bottom detection.</p>
+</li>
+<li id="_d1861230-fa1c-4fed-9960-9c6d745a565c" label="5"><p id="_d6ffc094-549f-08db-0d75-86136022a6d3">Secchi disc and Secchi depth</p>
+</li>
+<li id="_4075d97d-2432-4723-84d7-26f6d6602d9a" label="6"><p id="_a0b94c6d-df2a-91b6-e24a-ca0616a18565">Optical characteristics of coastal terrain.</p>
+</li>
+<li id="_eccc73f8-0fdb-4c41-bce3-1fd063d089dd" label="7"><p id="_df9e8918-5eb7-b8c4-62d6-1dc8ffc08676">Influence of geometry and waveform on feature detection.</p>
+</li>
+<li id="_fa8aa994-0ec9-4eca-be97-205aef3a1041" label="8"><p id="_6cff286e-11ea-6862-ef9f-c7992d5e69a7">Integration of components including time stamping, attitude compensation, sensor offsets and networking.</p>
+</li>
+<li id="_06e7216b-7403-4416-bc5d-4ae558bb88dd" label="9"><p id="_53210592-4582-86f6-5ba5-234c56a50644">Combined bathymetric and topographic LiDAR systems</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_a81013a0-1dff-b444-2ad0-406695ffecf1">Explain the principles, capabilities and limitations of topographic and bathymetric LiDAR.<br/> Describe the physical environment and operational situations in which bathymetric LiDAR surveys are complementary to echo sounder surveys</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_bdaa0f84-e9e6-f537-0262-d6308f955a77">E2.1b Airborne LiDAR data products <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_6a229390-74a1-e5eb-4e0a-81dbe5bc9743">Extract high and low water lines from bathymetric and topographic LiDAR data sets.<br/> Use topographic and bathymetric LiDAR data to complement other spatial data.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_bfe2f54b-e013-8942-285b-4828aaa2939e">E2.1c Terrestrial LiDAR <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_66d7f592-d31d-65ba-fec7-a835f823241c">Use terrestrial LiDAR data to complement other coastal spatial data.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E2.2 Remote Sensing</th>
+</tr><tr><td valign="top" align="left"><p id="_13de080b-8efd-69ae-a2d5-37f43d900d03">E2.2a Remotely sensed bathymetry <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_304aa8bb-2fca-feff-bb4a-8e5ae2580ef1" type="arabic"><li id="_bb158d35-2b7f-420d-83f4-c89666013afa" label="1"><p id="_a8f11d8f-eb88-bb5c-797c-3d3d9997c9f1">Multispectral imagery and water penetration in relation to wavelength</p>
+</li>
+<li id="_f0dd9eef-00ef-4d13-8e63-f108703ac809" label="2"><p id="_80e1b933-8a8e-0780-b69e-d802d6b20209">Satellite Derived Bathymetry (SDB)</p>
+</li>
+<li id="_d6b1ca04-f53d-4244-aa71-d71a219aac68" label="3"><p id="_c2427750-5057-f816-bf50-96adfdaa039d">Spatial resolution and accuracy available.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_3956ff6b-e99b-d3f7-daa1-1e3104528021">Demonstrate awareness of techniques and data sources in remotely sensed bathymetric data and the spatial parameters associated with such data.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_f7aec8fe-7a5e-f082-6962-2d777398993b">E2.2b Shoreline delineation <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_280cfeff-87bb-1a41-6b8d-36f3cfdee8f4" type="arabic"><li id="_e015cb34-d6eb-4e70-9579-5ec323a5bff7" label="1"><p id="_5ba520f7-04db-294d-aa49-feecebe56c94">Multispectral imagery, reflectance in relation to wavelength and terrain characteristics.</p>
+</li>
+<li id="_af3742a0-8184-41a1-a73e-2325dd287a9a" label="2"><p id="_34c1240a-238c-6956-4ebf-79c6ecdf27c9">Geometrical properties of satellite images and aerial photographs</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_f6388885-8390-25f6-f995-45f126fbec28">Describe geometrical properties of images and use them to create a shoreline map from images and aerial photographs.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="e3_water_levels_and_flow" obligation="normative">
+<title id="_d041186e-a7e7-4ece-ae46-ee2593c97dc3">E3: Water Levels and Flow</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e3_water_levels_and_flow">3</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_d041186e-a7e7-4ece-ae46-ee2593c97dc3">E3: Water Levels and Flow</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e3_water_levels_and_flow">3</semx></fmt-xref-label>
+<table id="_2aa62bfc-44d0-73a5-9f89-536b8c2a5d26" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><th colspan="3" valign="top" align="left">E3.1 Principles of Water Levels</th>
+</tr><tr><td valign="top" align="left"><p id="_5167823d-8957-67d8-703d-3551427882c0">E3.1a Tidal fundamentals <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_eee1468c-cbc5-2a21-94e7-db41f5043ac9" type="arabic"><li id="_711412df-c34d-4c2f-9858-2ffc8384134e" label="1"><p id="_d51b4691-0abf-7207-fd3c-b4ca9d8c87e0">Tide generating forces, the equilibrium and real tides.</p>
+</li>
+<li id="_1a181b62-e554-4791-b360-47e60d7094dd" label="2"><p id="_8eb6efb4-04bf-946c-0923-b03a698a49da">Major harmonic constituents and different types of tide.</p>
+</li>
+<li id="_8e96a586-6b9a-4fbd-adb8-e0026a7d0b26" label="3"><p id="_0b718d4a-e155-4c1a-e7a3-585ee9ac74c4">Amphidromic points and co-tidal charts.</p>
+</li>
+<li id="_d20b8f2d-2b9d-4f14-825d-a17b8ac47460" label="4"><p id="_cf1e5ae0-bef4-7486-fbf4-cc8a09d32b48">Geomorphological influences on tidal characteristics</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_d9094a7f-bfba-40c1-1c3f-df7ac24815e0">Explain tidal characteristics in terms of tide raising forces and local and regional morphological features.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_d0db3395-ee4e-0a0c-d662-829849df187d">E3.1b Tidal information <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_c461c053-79b4-30b2-80f6-a4fd0c5b88be" type="arabic"><li id="_11b2a5cc-024f-4c08-9cd5-c002d9356100" label="1"><p id="_a013192a-3e7f-aa94-ff15-49c48433e928">Tide and current tables</p>
+</li>
+<li id="_ff63b368-296a-444e-b81b-b0b546fb7fc2" label="2"><p id="_232aadae-5423-616b-4a29-75fa79b73e1d">Tide prediction tools</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_7c89eb77-0fad-fcaf-1d65-1b0b1e6ce641">Use tide tables and appropriate software to determine predicted water levels and tidal currents.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_6b7cb706-adab-7732-e935-85cf095fa4e9">E3.1c Non-tidal water level variations <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_75718c72-dac6-f337-6f00-e55ae16d7074" type="arabic"><li id="_fb615eeb-23ce-4d80-8dc4-f2cbbc17cef4" label="1"><p id="_8f33292a-3f18-77a3-3125-70972f199794">Changes in water level caused by: atmospheric pressure, wind, seiches, ocean temperature and precipitation.</p>
+</li>
+<li id="_49a32b42-9a9f-4722-9f00-7b8e152462e2" label="2"><p id="_5483dad0-31ba-3af7-2273-311aa77f4bdb">Water level variations in estuaries, wetlands and rivers</p>
+</li>
+<li id="_284b7bc5-4681-42a8-b2e9-c78ccc70339b" label="3"><p id="_551bcc7c-2987-bb23-063f-9a9956f7678c">Water level variations occurring in inland lakes, rivers, reservoirs and canals</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_cf0dab13-e88a-e6ff-5371-e8f8c157df6f">Describe the effect of non-tidal influences on tidal water levels in the conduct of a hydrographic survey<br/> Describe sources of water level variations occurring in inland waters</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E3.2 Water Level Measurement</th>
+</tr><tr><td valign="top" align="left"><p id="_c42f5b7d-7e56-980a-d37c-eebce3e4b4e9">E3.2a Water level gauges <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="4" align="left"><ol id="_4d9c513b-6e6a-45cc-6edb-5ae4557b1438" type="arabic"><li id="_59bb94e9-c63e-453c-a297-5b22c50010c2" label="1"><p id="_ae1d00ab-e52d-d9fb-a284-62c166cd5ac4">Operating principles of various types of water level gauges including pressure (vented and unvented), GNSS buoys, float, radar, acoustic sensors and tide poles/boards/staffs.</p>
+</li>
+<li id="_276aae14-e497-4aa5-853f-10073d0af3c3" label="2"><p id="_dd309101-ad0d-3371-264c-8da6b2dc6228">Installing water level gauges, establishment and levelling of associated survey marks</p>
+</li>
+<li id="_4dd147ef-b800-440d-8236-9eabf9e368d1" label="3"><p id="_af6e91c7-3ee7-11fd-77a7-7b277f5ff4a1">Networks of water level gauges</p>
+</li>
+<li id="_5e8bd50c-71e7-4c2b-b254-52fa0855fde4" label="4"><p id="_66cc1dbe-96fe-dd7a-d06b-fa799f1deb22">Reference levels such as MSL, chart datum, and mean high water.</p>
+</li>
+<li id="_df3e963e-082e-4e9b-9764-85c8553d0796" label="5"><p id="_cdf2bb3e-2e78-dd68-9980-097aaf41634c">River and lake datums</p>
+</li>
+<li id="_d1b51165-9e01-48b3-a2db-ace174d4f3a1" label="6"><p id="_64d4ef67-1072-95f7-bae6-f1e0b1121c97">Uncertainties associated with measurement devices</p>
+</li>
+<li id="_c9ad8d5e-42e5-4f6e-aa32-28efac20b768" label="7"><p id="_3fbb4307-fcdb-82d8-6daa-8c9cb24a4166">Uncertainties associated with duration of observations.</p>
+</li>
+<li id="_47674c54-f326-4a8d-ab81-e11d4e2b0e48" label="8"><p id="_71c0c140-1d77-6ce9-b32e-59662cc50b76">Uncertainties associated with spatial separation of water level measurements.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_3532c850-cb27-00fd-49c2-88245b06ffe7">Explain the principles of operation of different types of water level gauges.<br/> Install, level and calibrate a water level gauge.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_b2291a5f-ae7f-5b2e-b580-267ac6d4e117">E3.2b Tidal measurement <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_1b443952-b60e-93bb-8bf5-3fbcef99b209">Configure water level gauges for logging data, data communication, data download and for network operation with appropriate quality control measures.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_dcb2fa12-fed1-d9d7-b82c-624b4b4b9895">E3.2c Water level datums <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_3c3f66b0-754d-0092-2f82-8ed1af0f9412">Define various tidally based reference levels on the basis of tide time series and explain how these values are computed.<br/> Describe how vertical reference levels in rivers and lakes are defined, and determined in practice.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_9ee86aa3-5d19-10f5-3c21-350b05ff9cee">E3.2d Uncertainty in water level <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_d514d4b1-2a87-daa7-84ac-8e004f777f81">Relate uncertainty in water levels to uncertainties in measurement, duration and distance from water level gauge.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E3.3 Water Level Reduction</th>
+</tr><tr><td valign="top" align="left"><p id="_5c10eb6c-3fca-ff1e-ec3e-c3cf031f7b48">E3.3a Water level reduction of soundings <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_e9ba75cc-cdc3-afd3-53d9-041884d235e8" type="arabic"><li id="_889776a5-63a1-4c53-819c-54657f93f2b3" label="1"><p id="_16491003-e0ce-d8be-b1b8-8ecde5d45ac0">Vessel draft, squat</p>
+</li>
+<li id="_b7fc7063-1045-44c3-b091-05ddac85ddf7" label="2"><p id="_ad2e7b33-f882-71ca-f95a-ef652b71a631">Lever-arms and Position Reference Point offsets</p>
+</li>
+<li id="_bf00fa8b-90ec-48bb-b1a6-e5bcfb77d1df" label="3"><p id="_8aedc7ac-a22a-3eb1-e957-48575b825a81">Vertical datums for sounding reduction</p>
+</li>
+<li id="_9a9fbde5-d2be-4174-ba52-964b5186e180" label="4"><p id="_deb66623-050c-0891-6281-d2da4c8b2ff8">Predicted tides versus measured tide reduction</p>
+</li>
+<li id="_6c361ada-a8f2-44bc-a418-2cfd97d3e714" label="5"><p id="_f06812ed-016a-e2a8-daa1-82270cbe45d4">Co-tidal charts</p>
+</li>
+<li id="_e5ebbff0-601e-48cb-bdab-23e4f4c860b8" label="6"><p id="_d3aec5cb-daa1-257d-646d-eb7b2bd6c55a">Reduction of survey data to a datum using GNSS observations</p>
+</li>
+<li id="_3d580855-5e72-4431-8654-3c88b0731efc" label="7"><p id="_04eb7fd3-af8f-af66-1979-d7a58d279665">Reduction of survey data using water level observations</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_a8797494-ee18-7349-9798-3ea9239f48c4">Use tidal information, and vessel parameters to reduce soundings to a specified datum.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_3dd3a091-cd1e-c3eb-4f72-f58c9e366239">E3.3b Reduction of soundings using GNSS observations <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_91c0ccbb-0e3f-f18a-5e70-b503fe817013">Configure and calibrate GNSS to reduce soundings to a specified survey datum.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E3.4 Currents</th>
+</tr><tr><td valign="top" align="left"><p id="_154a2afe-470a-ad13-adb6-26529c1dc963">E3.4a Tidal streams and currents <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_a1d53206-845e-fa82-6fc1-7896d20abfa7" type="arabic"><li id="_7ec0aad7-9af1-48cd-b35e-eb06cd903c98" label="1"><p id="_62c3c615-b3ea-feb3-f58b-873658ba0af3">The relationship between currents and tides</p>
+</li>
+<li id="_c0b4fe9f-9567-46da-88ca-6fd2204d5412" label="2"><p id="_9a913067-d860-bb4b-9425-b46d8c570c54">Rectilinear and rotary tidal streams</p>
+</li>
+<li id="_706799e2-d197-46ce-bb38-ca694bfced6d" label="3"><p id="_6dde564e-d692-db74-ad2a-0bd7aee2ed0f">Methods for measuring tidal streams and currents, including current meters, acoustic current profilers (ADCP) and drogues.</p>
+</li>
+<li id="_b584b32e-7925-4d83-8c3c-27e0a6a53149" label="4"><p id="_9fc979ac-815b-7380-1d5d-1e2bb1471ac3">Current surveys</p>
+</li>
+<li id="_87cd6322-c6b0-4a1c-874b-c5492cf88a39" label="5"><p id="_057d3692-1c1f-a4fd-20b0-ef82966afd10">Surface current radar observation</p>
+</li>
+<li id="_4c629db8-e799-4334-b15f-41986e749d9c" label="6"><p id="_dcb0f6fa-5f44-2625-1169-e993c99b70b4">Portraying current data</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_f790e8b7-bc8e-7de4-0ff8-261fa7ba57b1">Explain the forces behind currents and change in currents with tides.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_c4059564-4881-b842-5557-bdaa85b13da1">E3.4b Current measurement and portrayal <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_78894879-36f1-9535-e11f-ab2ffdcb0215">Describe techniques for current measurement and identify appropriate methods for acquiring and displaying current data.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="e4_positioning" obligation="normative">
+<title id="_a12c1e21-631f-4025-b890-aaa254cd2956">E4: Positioning</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e4_positioning">4</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_a12c1e21-631f-4025-b890-aaa254cd2956">E4: Positioning</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e4_positioning">4</semx></fmt-xref-label>
+<table id="_7d2001f1-49ff-1399-9375-471ccac428f3" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><th colspan="3" valign="top" align="left">E4.1 Geodesy</th>
+</tr><tr><td valign="top" align="left"><p id="_e39e383b-2fab-c12f-b679-f6030e1c885a">E4.1a Introduction to Geodesy <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="4" align="left"><ol id="_bf4cb117-8fc3-e5a7-4422-45bdb4ff8f78" type="arabic"><li id="_0622504d-337a-4aae-96d7-0d5be3531f5e" label="1"><p id="_98e76fe8-7f8b-a9cf-33b6-386e8c77c313">Shape of the Earth as a sphere, ellipsoid of revolution and the geoid;</p>
+</li>
+<li id="_57ecf735-28c0-4f02-bee1-acbdee623ec2" label="2"><p id="_8e5a63f7-8c87-71ce-dd09-7193ea0ec21a">Definitions of astronomical terms and time.</p>
+</li>
+<li id="_494a9bc7-e0e1-440d-b9ea-a0555fecc82a" label="3"><p id="_eebd814c-671e-781b-850e-d68e2ea38360">Geodetic computations on the ellipsoid.</p>
+</li>
+<li id="_2e3a8430-babe-468f-98b1-1db626879147" label="4"><p id="_2ccb38fd-3125-31b0-e609-670677130096">Local geodetic reference frames</p>
+</li>
+<li id="_b173dcf2-7123-4606-84bc-9cfbe2d59545" label="5"><p id="_a65bffcd-68af-d8ed-720d-c498e26766ef">Vertical datums</p>
+</li>
+<li id="_527d2117-71e4-4847-a9c3-10b85f0630bd" label="6"><p id="_4abdcd10-0236-8061-5db9-6eaf9f332490">Terrestrial reference systems and reference frames.</p>
+</li>
+<li id="_72c6ddee-a6ab-4b2b-9f5d-9f31467319cb" label="7"><p id="_0b96e474-a4b3-c64c-dd01-a4c5043bb36b">Modern geodetic datums WGS84, GRS80.</p>
+</li>
+<li id="_fbb5faa4-71be-4ca4-9c38-72c78f9041cd" label="8"><p id="_3616e17f-c771-7fec-bf53-da08e789be87">Datums and datum transformation techniques</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_25746035-17d1-0802-85f6-89b4ebf0b99d">Describe the shape of the Earth in terms of potential and ellipsoidal models</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_dedc3ede-39f5-2774-6a61-ca29f64bda4e">E4.1b Coordinate systems, frames and datums <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_81009efd-31f5-492b-aed3-5baeefd762d0">Describe modern geodetic reference systems and associated reference frames.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_a2b4169d-85c3-54bf-a5f7-fb74778c91d6">E4.1c Geodetic transformations and associated computations <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_8e890806-d204-2c68-1e80-b86f429ba3df">Describe horizontal and vertical datum transformation concepts</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_4090cc70-b88c-300f-5c20-a33e95754ad0">E4.1d Ellipsoidal computations <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_d623ff65-809f-bbd6-b540-d714c50dbd17">Describe geometry of lines on the ellipsoid and perform forward and inverse computations on the ellipsoidal surface using available software.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E4.2 Principles of Cartography</th>
+</tr><tr><td valign="top" align="left"><p id="_2e48b3e9-fe49-fff5-ecc1-adf9cdf664d9">E4.2 Map projections <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_45f50f7c-127a-5a06-0fd8-e47a632c560d" type="arabic"><li id="_9da37363-c920-4704-865a-8e5de57585ab" label="1"><p id="_624a2f61-c688-6eb8-ff7f-298aea1ac090">Geometrical properties of map projections</p>
+</li>
+<li id="_4a6297db-0668-4917-8807-4e7ebf1e4bcc" label="2"><p id="_eaf57594-0f62-4c13-bd2b-7c095b62da20">Cylindrical, conical projections including the UTM system and stereographic</p>
+</li>
+<li id="_8faaea70-c9f3-42e3-9f8e-bf6804617944" label="3"><p id="_67bd8c4d-c6f4-a8d9-2b3c-8fb5032c3f9e">Analytical projection formulae and planimetric coordinates</p>
+</li>
+<li id="_c9891145-439b-4d50-8c15-849c3de3846b" label="4"><p id="_91d54f57-1b9e-cf9c-aabb-5ebf88a2937a">Distortions in distance and direction associated with different map projections</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_35030748-e6df-c07f-4983-42b5e2e746aa">Describe the properties and distortions in different types of projections used in maps and charts.<br/> Explain the selection of projection type and apply appropriate projection formulae.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E4.3 Positioning Measurements, Methods and Techniques</th>
+</tr><tr><td valign="top" align="left"><p id="_c2cb327f-b6ff-4351-26d8-a711e2681f33">E4.3a Positioning fundamentals <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="5" align="left"><ol id="_d4fc0b82-e88d-384b-5504-dd346db2fd31" type="arabic"><li id="_c1519108-f378-4f0a-9eca-83bf40019d87" label="1"><p id="_5c1495c9-d23e-af31-a5b7-e311cb41c773">Principles of distance measurement and angle measurement</p>
+</li>
+<li id="_1e2e91fa-6b21-43f4-a8ba-61531dc6f5a4" label="2"><p id="_c9214b26-8e28-19ee-274e-91f780ca0ac5">Principles of 2D adjustment</p>
+</li>
+<li id="_759ae7cc-146d-4e31-ad01-3608193268bc" label="3"><p id="_ed7c215e-92f8-3c0a-4dda-2f64c01ae6e6">Sextant</p>
+</li>
+<li id="_18893794-7992-4354-9e60-2e857f605af0" label="4"><p id="_5a45421a-88d7-d301-87b6-05223f62e578">Total station</p>
+</li>
+<li id="_525eef0f-dda5-4fc7-9515-e3b8d2fbd81a" label="5"><p id="_82169b51-f35a-a7cb-cca2-779a140a6e93">Theodolite</p>
+</li>
+<li id="_0c09ae9e-f866-4d89-aaa0-0afeb9f6031d" label="6"><p id="_e65e3fff-fa8c-ab0a-e454-2380b7f252d6">Electromagnetic positioning devices</p>
+</li>
+<li id="_012ec911-df00-4d11-8842-36950e113c50" label="7"><p id="_3821d0c8-100c-753a-21c2-8fdf081ca1c6">Intersection, Resection, Polar and Traverse</p>
+</li>
+<li id="_dc4ab018-ff48-4cb7-9d84-a071a30dce45" label="8"><p id="_150d926f-9f3a-9043-e13a-0d6bce16e982">Astronomic methods for determination of orientation.</p>
+</li>
+<li id="_1cd9d0d1-994c-4428-b72a-dd6413696dd2" label="9"><p id="_9999fc4e-eb80-839b-b07a-c9b52407765d">Expansion of traditional geodetic networks</p>
+</li>
+<li id="_b5e8c36d-c08c-4990-a15f-16cb486a133f" label="10"><p id="_e29c0af2-1458-8a58-4e15-ab9a3b7b2f98">Principle of GNSS positioning</p>
+</li>
+<li id="_0a885232-dbfe-452b-be03-ab5491a61886" label="11"><p id="_62b2631f-71b3-9b40-c23e-38f540931357">GNSS services characteristics (single baseline, network, Precise Point Positioning)</p>
+</li>
+<li id="_c0dd34dc-e894-4b13-aaee-c7f5b75becb4" label="12"><p id="_3201f76a-3229-f30d-48e7-aa172c0b3044">Performance of code vs. carrier; differential vs. autonomous modes; multiple vs. single frequency; fixed vs. float ambiguity resolution</p>
+</li>
+<li id="_74f4237e-0bff-4131-b884-e02c27e99214" label="13"><p id="_727ff54f-9b94-c1b5-8409-3129f144bc5b">Atmosphere (troposphere, ionosphere) effects on GNSS signals</p>
+</li>
+<li id="_0f07a5fb-f627-4a4f-be14-e70a3559b9cc" label="14"><p id="_3088a015-9e4a-49b3-5f86-44fca0ee0afe">Control stations</p>
+</li>
+<li id="_a913f285-bf72-4e6b-b43c-7d19f4fdfb44" label="15"><p id="_7b4bdbf5-b9a6-9f46-eb01-a1bc5977af3d">Logistical aspects of providing control</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_181b944b-6224-4d15-95f9-66f0ab999107">Undertake control surveys, establish, mark and describe control stations, describe horizontal positioning procedures, apply appropriate methods and use corresponding instruments for positioning.<br/> Correct gyros using astronomic methods.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_aa1d3824-9028-2e89-84c9-25642158c8c3">E4.3b Satellite positioning <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_a71f869a-2206-a857-9eaa-058491d179d6">Explain the GNSS concept and principles. Define pseudo ranging and carrier phase based modes of satellite positioning Differentiate between base station and permanent networks, real-time and post-processing.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_3641a0f3-1ded-d9f1-2237-42fc0363978d">E4.3c Positioning systems <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_2da4a2ca-93e6-dc6d-0ceb-61f34bd8db68">Field test and use distance and angle measurement instruments. Apply field validation procedures<br/> Operate GNSS and DGNSS equipment, assess accuracy and precision, post-process GNSS data using appropriate software.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_58d18a1f-5e8a-9c23-cd84-173331b7bdfc">E4.3d Historical surveys <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_383d7cca-f547-64fb-707e-db77ddd3df9c">Relate historical surveys to legacy positioning systems.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_5fe4ff15-b238-fbaf-2fea-67421c148c23">E4.3e Survey control <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_c14d88be-86f3-aee8-d818-078df3f4ab0f">Establish, mark, and describe control stations, particularly hydrographic stations.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E4.4 Vertical Positioning</th>
+</tr><tr><td valign="top" align="left"><p id="_6bd1de11-2b2f-3f60-f3e6-71a4c040c458">E4.4a Height systems <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_7f9f728b-2e4a-824a-7df6-8c119db7f5b1" type="arabic"><li id="_1dc5ea76-5df5-48e7-8be6-910bc387903e" label="1"><p id="_631b91e6-989e-3762-dce7-30db2287112d">Height systems (dynamic, orthometric and normal)</p>
+</li>
+<li id="_4638c62a-7de6-4616-8afa-52c96f36528d" label="2"><p id="_89a9fae7-2f7e-52fc-7ba9-b2f6df2ef67c">Leveling instruments</p>
+</li>
+<li id="_5f69e8a3-548c-4f07-bbac-40d78dc6be61" label="3"><p id="_22cc92c8-cb85-c722-b042-289c71d20b94">Total stations</p>
+</li>
+<li id="_489c76f5-ed7c-486f-8301-5ef1d85d5359" label="4"><p id="_bf960108-580b-05c8-7c89-2c744139064d">Effects of curvature and refraction</p>
+</li>
+<li id="_3b94ee57-59b3-4775-b60d-3e6b795fe4fb" label="5"><p id="_ceb97e97-e214-c580-f1cb-19abfe572616">GNSS observations</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_5f91b0de-8a54-c5fe-ca8a-3b5bf830ac77">Differentiate between gravity-related and ellipsoidal heights</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_e6f86204-f2ba-7c93-a47f-0975842dcdd6">E4.4b Elevation measurements and computation <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_71184bf1-870f-61fc-1c5f-850538616b29">Describe methods for determining elevation differences.<br/> Determine height using GNSS equipment. <br/> Compute elevations and leveling networks from observed leveling data. Use observation techniques for correction of curvature and refraction.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E4.5 Acoustic Positioning</th>
+</tr><tr><td valign="top" align="left"><p id="_e9e2c3f9-5beb-6f43-edcd-d0e3980ba2c2">E4.5a Acoustic positioning concepts <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_1040785e-3426-16d2-2285-4a617287c5a8" type="arabic"><li id="_b3b9025e-bf50-45e7-bfa5-2744c8fbebae" label="1"><p id="_b7a3dbeb-6433-4068-8691-7ce677589c5a">Long baseline</p>
+</li>
+<li id="_a60db8f2-60f9-4b7f-84e0-16492e7ab72e" label="2"><p id="_488b79e0-2ee0-81f4-cd0a-689f2cd45d82">Short baseline</p>
+</li>
+<li id="_f9c3fe42-ea5a-49a2-a056-f981ab9e783e" label="3"><p id="_22bfaa37-d073-6c23-2272-38a54b7d4929">Ultra-short baseline</p>
+</li>
+<li id="_9adb39f1-6228-472b-8bc5-25be07517eb8" label="4"><p id="_d3076570-5f3e-372e-6479-20899fa263de">Transponders</p>
+</li>
+<li id="_d207f2a7-cda0-46a7-a778-f3658443a5bd" label="5"><p id="_fe965512-3fef-4a6c-4bbd-1e2c9632db24">Depth sensors</p>
+</li>
+<li id="_3dc5bf46-0f98-4a25-8ea0-0066079045cf" label="6"><p id="_5d8f519b-d389-9371-e381-94d2a13a202c">Integration with INS and velocity sensors</p>
+</li>
+<li id="_0d28ae7c-1c36-43b1-9d8d-b2d9e80d5012" label="7"><p id="_e1128990-0473-7f89-953d-b4d083703cc7">Use of acoustics for positioning towed vehicles, ROVs and AUVs</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_595e81dd-e1ce-c2a1-9b19-d42ec6c15717">Describe the deployment, calibration, signal structure and performance of acoustic positioning devices. Describe the use of acoustic positioning systems in offshore survey operations.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_bbe06ceb-bb10-f234-8fdd-a1604f27741b">E4.5b Acoustic positioning systems <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_d500f355-f69f-6f63-b36c-368b96526f11">Describe the principles of integrated subsea positioning systems and their application to remote survey platforms</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E4.6 Inertial Navigation</th>
+</tr><tr><td valign="top" align="left"><p id="_e561beca-62de-f5e5-a046-b15e88a92b91">E4.6a Inertial Measurement Units <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_e74bec76-28d8-fe89-0ad4-1eec885b7439" type="arabic"><li id="_2d792e39-ce21-4684-a6c4-d1150470e037" label="1"><p id="_f74f7c2d-66c4-01b0-51d6-cd89559ecdcd">Gyros and accelerometers</p>
+</li>
+<li id="_7de7ff58-3f20-4933-ade6-c77a53fe0763" label="2"><p id="_49ff043a-c949-bfba-3f0e-cc0af50df5f1">IMU</p>
+</li>
+<li id="_b01e72d8-cbce-448e-8d30-cdf461f02b16" label="3"><p id="_da1087c8-787a-a6d6-b926-d92814477a4c">Procedures for INS static and dynamic alignment</p>
+</li>
+<li id="_3d5009ee-366a-44e3-b161-8eb78b655bc4" label="4"><p id="_c1af6481-c571-5c8a-05d2-1a4ef8f736e5">Use of IMU in heave estimation</p>
+</li>
+<li id="_34c86d77-073e-4be0-b385-131b8ef8f41e" label="5"><p id="_15456df3-43e5-1c22-20d4-afab3820002c">Aided Inertial navigation:</p>
+<ol id="_db691675-ca7d-d347-4523-194071882b58" type="alphabet"><li id="_a7888b31-30dd-4946-8249-1bcb70557bae" label="a"><p id="_04055dcb-cf7c-51bc-9413-e8ea3b004ec3">ADCP/INS</p>
+</li>
+<li id="_fef2d905-bf38-46a8-8879-e8c9aa3752f9" label="b"><p id="_740997bf-d444-30ec-888d-4ba4323efa78">GNSS/INS</p>
+</li>
+<li id="_b6a73872-85ec-4752-9bbc-86321a40b27f" label="c"><p id="_9e92d511-bb7b-02b1-f505-0b324fdfd207">USBL/Depth/INS</p>
+</li>
+</ol>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_bbb7e199-0892-97a6-a370-9d6d6ee52a8f">Describe principles and use of IMU’s including north finding and heave estimation. Compare IMU heading measurements with magnetic and gyro compasses.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_a843689f-4c7e-29a5-e8c2-a1d3af78cbce">E4.6b Inertial Navigation Systems <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_fa6b1c21-3599-f8a6-bf72-6333059dccc7">Distinguish IMUs and INS, and describe dynamic alignment of INS.<br/> Explain the concepts of aided inertial navigation system.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E4.7 Uncertainty in Positioning</th>
+</tr><tr><td valign="top" align="left"><p id="_4d8e2f31-44a9-3208-d870-adaa16120187">E4.7 Sources of uncertainty <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_f6e82c3e-3fa4-060f-6ec2-39c59d5c6abe" type="arabic"><li id="_fdb430cf-08db-41ec-ab74-8fe5797ce5eb" label="1"><p id="_855ff530-a7b8-08f6-8a8a-adf001bda3a0">Static surveys:</p>
+<ol id="_080b246c-76a1-4f1a-9a1a-89039f9a334a" type="alphabet"><li id="_4ead4aa3-e149-44c6-8a37-75248fd70b4d" label="a"><p id="_f72c6780-9273-4ae8-adc4-ed8e4db40708">GNSS observations</p>
+</li>
+<li id="_683dd110-aeda-4d20-9398-e76dcb404841" label="b"><p id="_6dd28e2d-2f5b-3152-b6bc-556b6f1fc14b">Total stations</p>
+</li>
+<li id="_8dfc345e-153c-4979-8cb5-d3aac08f7ab5" label="c"><p id="_b21aabbb-9f84-4f2d-a01f-d3fac98d2f0e">Leveling instruments</p>
+</li>
+<li id="_cc625320-097c-4566-8b00-bc0d1f476a19" label="d"><p id="_18758718-4829-3552-7747-070f74e8af07">Acoustic positioning</p>
+</li>
+</ol>
+</li>
+<li id="_4ecd19c7-390d-4fae-974b-39dbc14b4eb4" label="2"><p id="_a3290b09-2e68-70e4-80c1-a649eb1c468d">Mobile surveys:</p>
+<ol id="_dd8a7458-7126-ba26-878a-cdef853fcbea" type="alphabet"><li id="_a6d78b1f-58bd-4331-9545-3eea8b5732ba" label="a"><p id="_acca6283-3948-f738-c294-fd8c0a2cd589">GNSS equipment</p>
+</li>
+<li id="_e104ef3d-cbc1-4888-8551-8978e1b36b0b" label="b"><p id="_6dbcb10a-e56a-e12f-6bcc-5eddadb2615e">IMU/INS</p>
+</li>
+<li id="_982962d0-f264-46d7-8241-608853ca9592" label="c"><p id="_66db40fa-7836-d829-f71b-4b226971e844">Acoustic positioning</p>
+</li>
+</ol>
+</li>
+<li id="_140ccaa8-e212-41c7-b1ba-73c08217c3f1" label="3"><p id="_c88cf129-f5c8-709f-f8c6-114a98515173">Total propagated uncertainty</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_e5f6dc1a-2555-5c48-e858-e3355de20ec3">Describe and explain the sources and magnitude of uncertainties associated with each positioning method and positioning system.<br/> Monitor, review and assess the performance of each positioning system to be used including repeatability, precision and accuracies of relative and absolute positions using appropriate statistical tools.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="e5_hydrographic_practice" obligation="normative">
+<title id="_d2570dfb-3f78-43fc-a76c-4d308412e8dc">E5: Hydrographic Practice</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e5_hydrographic_practice">5</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_d2570dfb-3f78-43fc-a76c-4d308412e8dc">E5: Hydrographic Practice</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e5_hydrographic_practice">5</semx></fmt-xref-label>
+<table id="_f43943d7-f862-dcc2-2317-9ec0c0c8d95c" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><th colspan="3" valign="top" align="left">E5.1 Hydrographic Survey Projects</th>
+</tr><tr><td valign="top" align="left"><p id="_c62ff011-b497-f271-a877-02b2ee8e4028">E5.1a Hydrographic survey purposes <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="3" align="left"><ol id="_29cd4d79-3f0a-68fd-020e-2b38f21f0b00" type="arabic"><li id="_6114f83d-a9c2-4826-89d4-bfd39ba42312" label="1"><p id="_a3e3687e-c327-bbba-bed9-7f7611186bd2">IHO S-44 and other survey quality standards.</p>
+</li>
+<li id="_c7fbd473-2d10-430d-80c0-d8b5391f2b5d" label="2"><p id="_8ea92e6e-d75c-7d17-525d-b92a9ae420e4">Hydrographic instructions and tenders</p>
+</li>
+<li id="_a932203b-d60a-4eeb-9bb6-fb36e147e43a" label="3"><p id="_4f1cb8eb-272a-7189-49f9-7abee37d8c9b">Types of surveys, such as:</p>
+<ol id="_1468e1e4-6d75-e70f-526d-7a39e0fc1ebc" type="alphabet"><li id="_c389df48-4c7a-4082-8f88-574149b89648" label="a"><p id="_3d5a4fdb-52a9-5571-682d-db370c58c273">Nautical charting survey</p>
+</li>
+<li id="_62f431f1-e500-4354-a604-4034beeab047" label="b"><p id="_046adfd9-58b8-24f9-34a5-ee070529a58c">Boundary delimitation survey</p>
+</li>
+<li id="_039057c4-e05b-48de-8247-ca4a04ce6279" label="c"><p id="_b98219d9-91d4-595e-9538-ce0731b30870">Ports, Harbor and waterways surveys</p>
+</li>
+<li id="_78468907-2a9c-452b-b58f-2713cc9a6766" label="d"><p id="_242b73ff-3e3b-e5cf-dcf3-fb0386b90a07">Engineering works and dredging surveys</p>
+</li>
+<li id="_39784c38-bfd6-49a7-91b5-b12e991728b5" label="e"><p id="_0ddb16f2-d790-1bdc-e28d-ffe33b5a122a">Coastal engineering surveys</p>
+</li>
+<li id="_652b2539-2d14-40a3-ad54-8436bc4da489" label="f"><p id="_e90c8207-ee8c-6690-e2f3-8ca269bba900">Inland surveys</p>
+</li>
+<li id="_3b22cc66-4828-41a7-a22a-8c04cf283a47" label="g"><p id="_91af6e03-a1af-a303-51f6-ed08a2e8b52f">Erosion and land-sea interface monitoring</p>
+</li>
+<li id="_87211241-b3ba-4b86-91d9-bbec6c24dbec" label="h"><p id="_b46a4fcc-e7db-a84c-cd84-c3cac0e3700a">Environmental impact assessment</p>
+</li>
+<li id="_836f5072-e171-4c53-95fa-63c6292e8e0e" label="i"><p id="_54ee9d62-95fd-29ac-268c-2d4415c34ac6">Deep sea and ROVs /AUVs surveys</p>
+</li>
+<li id="_be98a9a8-8927-4e89-9eef-a6917b77cb9d" label="j"><p id="_00bdfb65-0d21-7268-0b4c-b4d47644803f">Seismic and geomagnetic surveys</p>
+</li>
+<li id="_abe26e43-740c-443e-b0c5-e220275906ae" label="k"><p id="_82b0cd80-9a58-937f-1ec8-f6061853ede7">Pipeline route, pipeline installation and cable laying surveys</p>
+</li>
+</ol>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_9295e750-8f8e-a722-69cd-2387a637c7ff">Compare, interpret and apply hydrographic instructions and tenders associated with survey specifications.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_1a1a3422-e662-0dd2-b074-5f89252b7f71">E5.1b Hydrographic survey execution requirements <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_4c6478d2-2643-a00d-6325-273eef6dfd65">Identify the different phases and terminology associated with types of survey operations.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_50bb1ebf-4c51-620c-f69a-e19d0e490d36">E5.1c Hydrographic survey project organization <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_37df1b78-7eb2-9f7d-d739-c9ac5970f7b9">Distinguish the roles and responsibilities of individuals within a survey team.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E5.2 Hydrographic Survey Operations</th>
+</tr><tr><td valign="top" align="left"><p id="_b8cb48dd-9520-02fb-81d0-9339517314d9">E5.2a Operational survey data transfer <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_5cadd6c2-18cd-1c54-aba8-368281b492a1" type="arabic"><li id="_8c7956c1-a20d-464e-a1dd-542fc2421fef" label="1"><p id="_709480c5-50e4-3213-9f44-8d421a9b2b8e">Remote water level measurement,</p>
+</li>
+<li id="_de808db4-b24b-4bbf-bc85-16ff82fc3294" label="2"><p id="_2103ff40-8631-3d72-5817-ccdea577efae">Shore based stations in support of positioning systems</p>
+</li>
+<li id="_5f3e1c98-12e9-4645-a50a-e4883ee6601b" label="3"><p id="_21e9e691-5b49-385e-0522-1a18d8ab04dd">Use of remote survey platforms and real time communication of data acquired.</p>
+</li>
+<li id="_b1d55623-24f9-4c8e-a7ba-83e3f9fc7c9d" label="4"><p id="_3d8092e0-c1cd-8913-0a28-4f11ccbb4f3f">Data telemetry links including radio, satellite, telephonic and underwater communications.</p>
+</li>
+<li id="_3242e58c-b250-47ce-8e63-3e5fe797a402" label="5"><p id="_d426e01f-f9b4-12e1-27e5-97adae56497a">Compatibility between equipment and communications devices.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_5f24d300-ca93-7f88-a99a-8b7f9cd125f7">Describe data telemetry in support of on board survey data including applications and methods.<br/> Implement a data telemetry link between a survey infrastructure component and a survey system for real-time use.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_550ba9d9-4f98-8d67-cc08-d10d41c82c72">E5.2b Survey systems <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_41eb2232-14a7-c1bc-ed70-1c48ee7e053d" type="arabic"><li id="_883ffca3-db14-446d-b14a-6417ab22c221" label="1"><p id="_70bdf3ee-7560-0afb-29a1-f58c4ef1c845">Installation and calibration requirements for:</p>
+<ol id="_2894c0a4-49dc-f094-1d73-941122c0d1c3" type="alphabet"><li id="_e3aefbed-b789-4699-88fb-d4aa2a4109dc" label="a"><p id="_0354d2dd-c79e-68b9-6682-b177b1062b35">Echo sounders</p>
+</li>
+<li id="_2b2315d1-213f-4092-a3b6-07039b6aba35" label="b"><p id="_0488af8b-9f27-3ab5-df76-de11b3a9c185">Swath systems</p>
+</li>
+<li id="_7df4fc4c-0009-4585-ba5b-0d3093842c40" label="c"><p id="_489d1b4d-40c9-2106-89c8-01315b8e0374">Side scan sonar</p>
+</li>
+<li id="_9adff9c5-c0f1-46a7-912f-555f909f236c" label="d"><p id="_7f91af4e-76fe-894d-3a75-542fc15db575">Surface and sub-surface positioning system</p>
+</li>
+<li id="_bcfba014-fb7a-4692-8a33-e5074f6f433b" label="e"><p id="_27df7226-d443-8cdf-5a9e-bb60fbc9e00a">IMU/INS</p>
+</li>
+</ol>
+</li>
+<li id="_380e9185-4657-4b3f-8914-5c01a689dab0" label="2"><p id="_2ccf9caa-2817-22c8-5317-81c9dabc6ca2">Sound velocity probes and profilers</p>
+</li>
+<li id="_69b46df8-bf8b-4194-9c6a-a1605fd23f9d" label="3"><p id="_731b3e90-14d4-01a2-646a-aa1c94b6a358">Data acquisition and integration systems</p>
+</li>
+<li id="_61e7f925-d0ca-42da-a8c7-db9a973344d2" label="4"><p id="_fc9e0aae-8102-5b97-ea15-7fc5a5f663aa">Bar check</p>
+</li>
+<li id="_c6062117-954d-4d94-b4b8-291b500614a2" label="5"><p id="_7712184b-3667-27f2-98b2-49ff8326cb19">Boresight calibration for alignment bias</p>
+</li>
+<li id="_d180cc89-d8be-4993-8df6-101d81ff9341" label="6"><p id="_d8c5541c-ac73-2557-c42f-c609cd718ebb">Layback calculations</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_c4077380-2f79-c93d-eb0e-d7966c3ac58b">Explain the importance of the correct installation, calibration and determination of the attitude and position of each sensor.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_293b23a4-550b-b696-07bd-b0b25c3c92b7">E5.2c Calibration and corrections <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_fec71e17-45bd-03d9-7222-41bf2f3756d8">Setup, integrate and test survey system including sensors, acquisition system time-stamping strategy with appropriate physical offset determination.<br/> Explain the purposes and apply speed of sound measurements in acoustic systems.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_ce3b38bf-6403-122a-5829-310ff67ede14">E5.2d Line planning <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_81c3775b-95b6-814e-228a-376823bc133f" type="arabic"><li id="_e64e3cd5-2e6d-42bf-a399-8015b8aeb227" label="1"><p id="_c384bc81-7704-cc08-cdda-e4c825195f48">Planning for data acquisition including line spacing and sample locations in alignment with tasks to be performed on surveys and equipment to be used.</p>
+</li>
+<li id="_3acf226e-c8ba-4db5-a4dc-7e8714c548e6" label="2"><p id="_5be6674c-6a57-888b-4a6d-56906be73885">Planning of survey operation considering currents, tides and survey speed.</p>
+</li>
+<li id="_353725b5-43da-4462-b782-b935e2c3ff9f" label="3"><p id="_88206381-d251-1f9d-c3d0-793f94f1533f">Track guidance and route following information systems.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_718186ed-c3ce-f07a-6c13-6885461e9b6f">Plan survey vessel survey lines as well as towed, remote vehicle and autonomous vehicle lines in space and time.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_150e7f6f-941d-015c-2baf-0b402b511465">E5.2e Line keeping <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><p id="_8f76fb90-e1cd-dade-9481-93c042251aba">Explain the methods of maintaining a survey vessel or survey system on a planned survey line or route. Describe the effects on the survey quality due to the vessel motion (speed over the ground, angular velocity).</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_ba6634ab-04f2-9a80-50e3-553bc761392f">E5.2f Survey operations <em>(B)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_c68278f5-6231-1af9-18be-8d04a5af6505" type="arabic"><li id="_14af8d9b-841c-47b6-a268-74aa52a2f833" label="1"><p id="_0d551cf8-1dec-10d6-1c9c-129d687aebeb">Survey parameters including:</p>
+<ol id="_5ddd6c3d-a229-7b09-7129-aa1477319a17" type="alphabet"><li id="_2136547d-0510-4d86-8806-c1dacd95d5a3" label="a"><p id="_974e180d-6121-332e-04f1-5af92f66498f">scale,</p>
+</li>
+<li id="_a6545b93-cb16-4151-9490-a7a356524744" label="b"><p id="_2b8c0637-e7ef-1a10-9bdd-2c66de859b1e">positional accuracy and precision,</p>
+</li>
+<li id="_aebf8864-c044-4737-96c1-6557efa8edef" label="c"><p id="_c140cdd3-b6fe-d08d-7d27-9e290fb6a42e">survey speed,</p>
+</li>
+<li id="_170a1645-6675-4e69-9039-d7e80676a239" label="d"><p id="_dd692d7d-d0ef-68b2-90df-1e3eadce3a39">line orientation,</p>
+</li>
+<li id="_54ca9cfc-60d1-46ef-8880-33b40a8a1baf" label="e"><p id="_a4c71415-c80a-8198-f173-17103ec27970">environmental and oceanographic parameters</p>
+</li>
+<li id="_6c65d785-d729-45a7-a14c-b60d75790f49" label="f"><p id="_66140e6e-8159-3893-a6e5-f2805a5c9555">survey lines, interlines and cross lines,</p>
+</li>
+<li id="_8dd5115b-0e76-458d-920b-6d8ff0c23b23" label="g"><p id="_e855da40-45f5-c37c-4e95-8f96a39c6c8c">sounding density and spatial resolution</p>
+</li>
+<li id="_aee63ceb-c75e-44f9-a1cc-7bf49c1e0e2a" label="h"><p id="_46b3a7bb-4121-46a6-6236-1352bfd2e86b">overlap</p>
+</li>
+<li id="_9fe34de6-1917-48af-a9b5-8dc9609a358f" label="i"><p id="_65548e9e-1903-c22c-d1d7-3c49a2a3e585">data coverage.</p>
+</li>
+</ol>
+</li>
+<li id="_4070c9dd-33e6-48f3-99f0-bf9806bf58af" label="2"><p id="_069b99c0-db16-adc0-5113-37f5c128a565">Quality control of:</p>
+<ol id="_ca63ce1f-8165-f480-8c2f-cba824346eca" type="alphabet"><li id="_b366f913-d16a-470c-aaf3-a633f970135a" label="a"><p id="_0e8dba80-e1c2-4c00-5145-dd848ba61fd7">Horizontal position</p>
+</li>
+<li id="_4f0004e1-440d-4bd2-9dbd-82ab24e67432" label="b"><p id="_6a8e70c5-5eb0-08ba-1da6-fc767917efd1">Vertical position (heave, squat, water level)</p>
+</li>
+<li id="_e36cdc8d-3c54-40cf-baee-8a2129dc9142" label="c"><p id="_7deffbc3-a0e1-0f8a-87ff-478916fa9d44">Coverage and overlap</p>
+</li>
+<li id="_4fd8b046-7dca-457e-90cc-48447388bc6a" label="d"><p id="_2ee0137d-02cd-31ad-dc94-3927720662ea">Swath system data</p>
+</li>
+<li id="_d5cc3beb-6bfe-41b6-8060-f104d89de12f" label="e"><p id="_342587e5-8a29-12ce-15dc-e4438bb7a4b1">Sound speed</p>
+</li>
+</ol>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_74d8811d-4fef-694f-effa-f6b14701949f">Describe the roles and the relationships of the following survey parameters: scale, positional accuracy, survey speed, line orientation, survey lines, interlines, cross lines, fix interval, data coverage.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_1f5180b5-2dd6-6965-45db-49185b81e857">E5.2g Quality control <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_f60c6e56-82b3-5121-787d-c25a8c35d34f">Explain methods for quality control of survey data and the quality assurance of survey operations.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E5.3 Hydrographic Survey Documentation</th>
+</tr><tr><td valign="top" align="left"><p id="_f10609ce-fc7c-f318-fff3-a690d8d4f183">E5.3a Documentation <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_c5e991c4-2a66-de0f-efb8-b0ff30afc833" type="arabic"><li id="_0e1280a5-3668-41b7-89b8-59bcd3b86910" label="1"><p id="_a55fe66e-4c98-2999-7d51-978c6a209f28">Production of reports associated with the survey to include items such as:</p>
+<ol id="_b450ee1c-44ee-e13f-3cb7-b01cd836117f" type="alphabet"><li id="_6ab84ba9-8f02-4d66-8b05-68fc028173a1" label="a"><p id="_b29e1897-d3e0-eea2-0122-39a20b99c978">Coverage including special investigation areas</p>
+</li>
+<li id="_444a00f1-04ff-49be-a577-d5b1c3d715ca" label="b"><p id="_00f0a3f4-f6a4-3b1f-b679-2e0e714a15e2">Features such as rocks, wrecks, obstructions, wellheads and pipelines (least depth, extent and position)</p>
+</li>
+<li id="_72dd2464-f72e-4c7d-aa3e-cea287c55df4" label="c"><p id="_5aaeea9e-274e-33b3-2d45-ef5f8a7d1eb4">Track charts</p>
+</li>
+<li id="_4df1a9ca-6e20-4cf9-8121-208029686997" label="d"><p id="_57dbe317-7ed6-de64-c819-72c7e79e33d4">Geodetic control on features such as shoreline and navigation aids</p>
+</li>
+</ol>
+</li>
+<li id="_00cea07a-6970-4489-be7a-1ad24c2c96f0" label="2"><p id="_6d534612-024a-6835-6256-f5ef35195062">Metadata to include data types of data obtained together with associated quality measures such as positional, thematic and temporal uncertainty as well as lineage.</p>
+</li>
+<li id="_0eba10a1-11a6-4747-80ec-928a4eb38e21" label="3"><p id="_dc878d50-a23f-3e0b-6511-1b4ae78c4bf4">Maintaining survey notes on event by event findings during data acquisition.</p>
+</li>
+<li id="_d0232527-7138-414e-94fb-6f037098ad22" label="4"><p id="_abd15bc8-4484-fed2-049a-7e062d8c1bef">Quality control procedures implemented and calibration reports produced</p>
+</li>
+<li id="_13a627b8-4874-4473-a3ae-2132085f2ade" label="5"><p id="_d88eec4c-84e7-eb30-a926-87355ee5ba3f">Compliance with survey specifications and standards.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_52dce1e7-3435-b315-8099-8a390b8f42aa">Create and compare different documents associated with survey procedures in alignment with requirements using files, charts and reporting tools.<br/> Describe the sources and means by which metadata files are created and populated.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E5.4 Legal Aspects</th>
+</tr><tr><td valign="top" align="left"><p id="_62399319-43d0-1f09-dad6-0494de8f98e1">E5.4a Liability of the hydrographic surveyor <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_49b613c4-1071-9720-a7bb-3264c39b7ac1" type="arabic"><li id="_cbfbccf6-cc7f-4617-a431-c05f5d204194" label="1"><p id="_fe4e26a9-0403-0491-6107-23e89a1a094b">Nautical charts.</p>
+</li>
+<li id="_2593e5a3-4b12-4d01-aa25-dd5b5195e536" label="2"><p id="_757a5acf-f3a4-1366-91ff-cdae0eeecd52">Notice to mariners.</p>
+</li>
+<li id="_4dc9f511-6d5a-484a-bf4a-8a3fab297409" label="3"><p id="_534ae8dd-c46e-7d9a-2f2c-c92c4fb7b48c">Survey reports.</p>
+</li>
+<li id="_2cbc6071-59c5-4571-8a8c-4bb38ba6303c" label="4"><p id="_993c479c-d20c-ead3-b217-e135427bf80f">Fundamentals of professional liability relating to surveying</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_ebf11759-4583-c8a9-1cfe-a15e5c0abc22">Detail the role and responsibilities of the hydrographic surveyor as required under professional ethics, industry standards and national/international legislation/conventions.<br/> Explain the potential liability of the hydrographic surveyor</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_58d8f381-cebe-bdc6-9ff4-8b4a6732f1a2">E5.4b Delimitations <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_c214a129-141e-91d9-138c-d33f3b8bf69e" type="arabic"><li id="_c466844d-fa11-4f47-9b58-6ae09dd86ad5" label="1"><p id="_20e43beb-5bd2-988e-8a0c-8cb8b9644467">Historical development of 1982 UNCLOS Baselines – normal (including closing lines); straight and archipelagic</p>
+</li>
+<li id="_6d6ba39d-2ed0-474d-8a04-cf2940dbbb7d" label="2"><p id="_90f8bf45-7673-d75e-485a-f31c7e24bd69">Base points</p>
+</li>
+<li id="_0e568f5b-ebe1-4c72-b7e4-86fa469bb894" label="3"><p id="_668796e2-a194-c160-f390-4004a5fdda80">Baselines</p>
+</li>
+<li id="_8006c0a5-999e-4413-8607-cfe1713aeacf" label="4"><p id="_49145055-321b-7b11-b8f6-171f4fb83063">Internal waters.</p>
+</li>
+<li id="_aa871801-adcf-4690-b674-ac5a7c8db6ef" label="5"><p id="_48c515c9-b235-1d4e-a355-008073e66034">Territorial seas.</p>
+</li>
+<li id="_1cac2bad-a95c-4807-83a5-5f0474244d64" label="6"><p id="_08961177-dcba-44e7-e2fa-c17cd756a97f">Contiguous zones.</p>
+</li>
+<li id="_af93f023-ebf7-4c26-9a22-afad9c52ff2a" label="7"><p id="_d4b36a44-6875-9f31-0b75-fd0149e70f9a">Exclusive Economic Zone</p>
+</li>
+<li id="_c01803dd-c479-4df0-b4ee-f70b776aa0dd" label="8"><p id="_7adfe5db-23a8-db4f-3ad8-531577eb7b78">Extended continental shelf.</p>
+</li>
+<li id="_48a80baa-c788-4bb5-bc6d-b6e37d03897c" label="9"><p id="_b0a34060-ac9d-a71c-5436-d3cd6508029e">High seas</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_e879e7e2-f686-4ddc-ea34-9946bbb7f561">Describe the types of baselines under UNCLOS and how the territorial sea limit is projected from them, including the use of low tide elevations.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="e6_hydrographic_data" obligation="normative">
+<title id="_4ff70395-28f1-492b-b794-364264d6f7ed">E6: Hydrographic Data Management</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e6_hydrographic_data">6</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_4ff70395-28f1-492b-b794-364264d6f7ed">E6: Hydrographic Data Management</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e6_hydrographic_data">6</semx></fmt-xref-label>
+<table id="_ebec7281-0103-509f-58ea-c60ad646c04c" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><th colspan="3" valign="top" align="left">E6.1 Real-Time Data Acquisition and Control</th>
+</tr><tr><td valign="top" align="left"><p id="_acb9fb97-a1ce-ef5d-3e83-7aadd11182a5">E6.1a Hydrographic Data acquisition <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_d8b3a00d-8a2b-f036-32f4-7744f32310a1" type="arabic"><li id="_efdcf962-48ba-4680-a56b-ea2e2d71c644" label="1"><p id="_ad1ef313-5e4c-beda-d4d1-2d762d8db870">Integration and logging of data from various sensors in accordance with survey specifications to include equipment such as:</p>
+<ol id="_17fbe218-74c8-7ac6-ae3b-6eba49dfa36e" type="alphabet"><li id="_59e3b7f4-b79b-4f1b-ac90-a514f7a16806" label="a"><p id="_0ce2c7b3-31b2-fad5-0a5f-f1853c90b13c">Echo sounder (SBES, MBES)</p>
+</li>
+<li id="_d30c57b9-fab2-464f-8bc9-b148facd7a12" label="b"><p id="_0a982274-6695-6f1b-2014-366e3281eefa">LiDAR</p>
+</li>
+<li id="_6a1fa7ca-134a-4085-89a3-1a3db985feae" label="c"><p id="_de175a9e-db73-d130-ac3b-916a25d5ef62">Sound velocity profiler, surface velocity probe</p>
+</li>
+<li id="_350136fe-5a0f-43e3-8ba5-063d65d9baf9" label="d"><p id="_e7562bf6-5eb0-8613-2a35-ce6b4de3ef9d">Side-scan sonar</p>
+</li>
+<li id="_b16ef5fd-07ca-4dde-a310-48969fd5db2d" label="e"><p id="_b28e1834-c174-14c0-4678-154a7039893a">Surface positioning system</p>
+</li>
+<li id="_32e81535-3f65-42a1-8a36-a3a49cd59345" label="f"><p id="_d320f2d3-d031-6815-ae91-2560714d03f1">IMU / INS</p>
+</li>
+<li id="_9db6c36f-3164-49b1-87ed-aabca5ee96b9" label="g"><p id="_0397508b-6c49-fa1a-8fad-91e0718caa04">Subsea positioning system (USBL)</p>
+</li>
+<li id="_0865cdaf-e484-4669-8e77-7eca9a56d3d6" label="h"><p id="_124f128c-6300-ff5c-8357-1a715b4459a1">ROV / AUV / ASV</p>
+</li>
+</ol>
+</li>
+<li id="_ef0c995b-3f3c-4b0e-80d9-c64269431fa9" label="2"><p id="_4730f150-5a55-c131-3f49-2fe5ef4790cc">Data acquisition system and software</p>
+</li>
+<li id="_e32b3dd7-ad26-47e6-851f-a911550dfb91" label="3"><p id="_4586cb3b-b36d-8fd0-7c85-ab3d6e5c16dd">Time-tagging</p>
+</li>
+<li id="_03221067-388e-4fc1-8fb3-a9837b693e3f" label="4"><p id="_aa2e2a0d-aca0-40b6-912e-018ed5ead641">Data visualization</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_351d67cf-7b19-64db-53f2-d4188f204a62">Configure the data collection and recording software for sensors and select sampling rates, gating and filtering settings. Describe the process of on-line data validation and selection.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_23eff186-dc26-a5ac-a57d-7a01bce07444">E6.1b Real-time data monitoring <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_930563b7-f905-af4a-b089-0fb3a38f8187">Demonstrate that the data meets survey requirements through on-line monitoring of display and visualization tools. Use monitoring software to detect possible biases and errors in the data.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_9592a7b1-90d6-055e-6888-f687707627d9">E6.1c Data transfer and storage <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_fc39ba30-6661-300c-66ce-088946f10cdc" type="arabic"><li id="_92531185-4c91-4306-be30-efc8b0374882" label="1"><p id="_e5d368dc-1780-dfd7-d508-8036552aae0d">Content of files in different formats used to record data in survey planning, data acquisition and products.</p>
+</li>
+<li id="_f0948e2c-953e-4d55-ae3c-3833e5f75bac" label="2"><p id="_82e69d91-d127-a713-04f6-907faf7e735b">Organization of survey databases</p>
+</li>
+<li id="_bb1114a6-7fcf-4919-9c85-96de39908391" label="3"><p id="_02319f6f-bdce-4e49-0811-57e5ed817c4b">Data storage and backup systems</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_c1c3bd35-6402-924f-44a8-cfe44f792461">Create the required data types that will be part of standard exchange formats.<br/> Configure systems for secure storage, transfer and backup of survey data</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E6.2 Data Processing and Analysis</th>
+</tr><tr><td valign="top" align="left"><p id="_d330fce9-4adf-0bf0-0006-fa3a6f2881be">E6.2a Spatial data cleaning <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_52e6df13-09ea-44f4-0381-81df748f418f" type="arabic"><li id="_ec6cd611-03e6-4a75-a94a-353433604ba7" label="1"><p id="_134bb4b6-5997-370f-14ff-302e8f7e2790">Data cleaning techniques (manual and automated)</p>
+</li>
+<li id="_aa8c0395-fd43-485a-be11-49d45d02923c" label="2"><p id="_d2706d37-6617-f723-8fab-71423196807e">Identification of outliers</p>
+</li>
+<li id="_87d07655-ac3f-4691-95d9-4e883a8c5d03" label="3"><p id="_f7f36a7b-3586-3731-8500-1b980e08f5c2">Identification of real features</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_a98d4cfa-968c-040c-a104-4b44c4a0854c">Apply data cleaning techniques using appropriate software.<br/> Distinguish between noise, outliers  real features</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_4b7ff53d-9689-ac8c-9be7-b82abb19a10d">E6.2b Spatial data quality control <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_a7ec9fec-aa1b-845d-b4c4-c76e87c84e7d" type="arabic"><li id="_ad998977-885c-4a5a-a76c-744b01e42b4d" label="1"><p id="_f38ba36e-3db9-3c46-d30e-d64397f2bb25">Total propagated uncertainty — horizontal</p>
+</li>
+<li id="_12b36924-1e75-46ca-9de7-7e2bd08e5010" label="2"><p id="_eb3f7618-a80a-9c4f-4dbc-c45f05eec9ca">Total propagated uncertainty — vertical</p>
+</li>
+<li id="_4b555e26-db13-40f4-a1a6-11dd4728468d" label="3"><p id="_df33dded-a1dd-daae-b64c-05f3cf182b0b">Comparing crossing or adjacent data between survey lines</p>
+</li>
+<li id="_67ff775d-7eb2-44e7-beaf-2c77c49c1a9d" label="4"><p id="_f7773925-4a42-a243-139f-1fdc4390be83">Comparing overlapping data between survey platforms</p>
+</li>
+<li id="_aa0e9029-1120-4412-84f6-649297b6d9de" label="5"><p id="_dde6e3ae-2ffb-6f65-6a13-5ba86f411211">Identification of systematic errors</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_5c971f3f-9187-6ae8-8ae1-48f4b17ece36">Assess the total propagated uncertainty of survey data relative to the survey specificationApply procedures used to assess, accept and reject data.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_2235fef3-22cb-5cb4-3bce-eb6efd0f924d">E6.2c Spatial data representation <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_e102d95f-eb8b-4b0c-ee06-73d8f2319572" type="arabic"><li id="_841e3888-f800-4fb3-8eae-2cfc1044a44f" label="1"><p id="_12e47bfa-de13-50ec-e3a8-f4c72d3f2f31">Data interpolation techniques</p>
+</li>
+<li id="_f6cd51ca-d45f-4784-a878-9914e53fc4c9" label="2"><p id="_9c378608-e872-5f3d-84a9-594cb8329983">Grids and TINs</p>
+</li>
+<li id="_a6175776-a387-43a5-a42e-d94eee51784c" label="3"><p id="_bef08655-3cc1-e7b9-70eb-30a8fd673650">Contouring</p>
+</li>
+<li id="_c22b53f3-3685-455b-8e8c-0beee064d70d" label="4"><p id="_d090bf9d-45ac-620e-7efe-eb017d5fb3fb">Volume computations</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_c04caabe-b05a-f6ff-8cc1-5f5de8f07fd3">Apply spatial data processing methods to create digital terrain models or gridded surfaces and contouring.<br/> Apply estimation procedures to survey measurements and volume computations.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E6.3 Data Organization and Presentation</th>
+</tr><tr><td valign="top" align="left"><p id="_6568253b-0412-f243-b1da-c3eb7e961bbd">E6.3a Databases <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_48276824-ff2b-e20a-55fb-e718a3cbc5b2" type="arabic"><li id="_54bb2e59-73ad-46b0-9b36-cfe35a32a523" label="1"><p id="_86f961a7-88a9-403f-fa37-9a1fd91ab1bf">Raster and vector data models and commonly used file types</p>
+</li>
+<li id="_23783bd0-153c-49c0-af5b-9cee14910d17" label="2"><p id="_26c76d63-9362-f01a-f860-a0f1850a99c6">Spatial Data Infrastructures including GIS</p>
+</li>
+<li id="_302366b5-0013-4aa8-9e7a-c88441b465f6" label="3"><p id="_b24e81d7-c8c5-f796-530f-8263a32bf964">Databases to hold different types of feature and geographical information</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_7e91867b-34bc-f1dd-39dc-7e1f4a626c96">Explain the concepts of raster and vector data models. Describe the concepts of Spatial Data Infrastructures (SDI). Use file types that support the exchange of hydrographic data to transfer data between acquisition, database and GIS environments.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_2156af93-42cf-0706-76d9-84e797df7f21">E6.3b Marine GIS basics <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_02eb0432-e48f-0149-c041-99c30899dd18" type="arabic"><li id="_c3a01ab0-9818-4649-990d-5b27f5a7747c" label="1"><p id="_2aa191a5-fee0-af07-50fa-71023e16107d">Features and feature types of point, line and polygon with marine examples.</p>
+</li>
+<li id="_48ea1301-447a-40eb-9819-196ee0d75611" label="2"><p id="_c93c0322-c55f-bf85-ef7d-5168c82958ef">Marine and coastal data bases</p>
+</li>
+<li id="_8cf79992-91f1-400f-9517-3de4b6bafc34" label="3"><p id="_a7fd85ec-ef2a-b48f-61f7-6a3a007d444f">Coordinate reference system</p>
+</li>
+<li id="_78d830a0-d0a9-4e75-bc12-137f29e6aae2" label="4"><p id="_e7277b65-d6d2-634e-e0aa-927098afb982">Vertical datums</p>
+</li>
+<li id="_16b535bd-5c14-4a9f-b410-8e27db058bff" label="5"><p id="_35bb8d74-2231-f1dc-7b04-573929d5da82">Survey metadata</p>
+</li>
+<li id="_a060b282-02ff-4b9e-a02f-3f2ed8dc65bd" label="6"><p id="_56e97066-8a42-57f2-743e-3f334c7d0918">Base maps and images</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_f8ca8019-35f9-ad70-94ba-fb7939f32d07">Explain the concept and use of Geographical Information Systems (GIS) within the marine environment.<br/> Create a GIS project using marine spatial data. <br/> Merge and mash up data sets of different origin by applying datum and projection transformations.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_b58f6405-311b-fe2e-9b75-285e87678830">E6.3c Visualization and presentation <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_bf66d73a-a957-6814-c49a-900f907f50b9" type="arabic"><li id="_437ec8c9-408e-44dd-970d-eab5d9949c2d" label="1"><p id="_cf315f90-9160-07b2-8b95-a72a42776d51">Symbology</p>
+</li>
+<li id="_be96bae2-92f4-4c44-9e3e-773e7bedc2b0" label="2"><p id="_c623baa0-0742-8f08-3686-dbc51d19e34f">Use of color schemes</p>
+</li>
+<li id="_5fbdb733-d111-4899-8e1c-c2fb84dce592" label="3"><p id="_bb96c02e-536c-0b52-89b1-8376db2d6401">Shading and illumination</p>
+</li>
+<li id="_3436fc42-fffd-4116-8c6c-1d3114ce1806" label="4"><p id="_74c3eaa7-0406-ec37-795b-8727f7ed8a58">Resolution</p>
+</li>
+<li id="_36d4f3f9-eff9-403f-a0ea-0a092ec7d856" label="5"><p id="_f6dc682b-b972-74bd-5e81-8fcf21ac450f">Vertical scale / exaggeration</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_381aaa3a-c528-15f5-61b1-f85e45683b0d">Configure elements of a viewing package to highlight features of interest within a hydrographic data set.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_3755cb51-7e80-db7b-2d94-30883cc1eebc">E6.3d Deliverables <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_29931c7f-331c-90c9-af0e-b76884734727" type="arabic"><li id="_18e0c4df-b7be-4c04-b2f1-abd72d6f296c" label="1"><p id="_1c1bf901-5d03-b821-6c4d-55bb10a1dbb7">Products provided directly from source data such as sounding data files and metadata.</p>
+</li>
+<li id="_348ef4bf-3774-4df6-80f2-e467af682cde" label="2"><p id="_55f485db-505d-7d60-1a5c-412e4458212e">Feature databases such as wrecks, rocks and obstructions</p>
+</li>
+<li id="_2fcbe286-9bde-424f-b39c-122b29ce53ef" label="3"><p id="_eec4d780-8ce2-d579-cc4b-9145d07f5ff7">Data required for sailing directions, light lists, port guides and notices to mariners.</p>
+</li>
+<li id="_2a912a8d-166d-4791-9609-d8514159d84c" label="4"><p id="_fea52079-6adb-7305-d9b6-a30d0a31f449">Data required for offshore hazards and anomalies survey</p>
+</li>
+<li id="_b87ebf9d-ddc0-42ce-bf02-1350c2f37ea3" label="5"><p id="_b4a8400e-5b2e-8ea7-c3bf-597f39785f8f">Digital and paper products derived from source data for various survey types and usage such as GIS and CAD files and/or geo-referenced images.</p>
+</li>
+<li id="_f2e2bf94-b2af-4ce7-9387-77de4b0da941" label="6"><p id="_af5a1a7b-7dce-1718-a3d6-5bb25743b30b">Reports on quality control, procedures, results and conclusions detailing processes adopted within survey operations and data processing.</p>
+</li>
+<li id="_591c8650-b4ee-4c57-9c91-ec28bbc3f8cf" label="7"><p id="_de3f9731-53a8-6a6c-f5d7-1a336f7777cc">Product standards including:</p>
+<ol id="_81ab77ca-200b-42bf-1e94-4130aed9b796" type="alphabet"><li id="_bb052cee-8c33-44df-8eb9-55b6213d0360" label="a"><p id="_96f7683a-7aa2-9c79-efe6-42d157b23cee">IHO S-100 and product standards such as S-102.</p>
+</li>
+<li id="_5c9f50a3-4eb7-4809-884d-ac7e26f5ec45" label="b"><p id="_898e18a5-40bc-ad87-3d55-56cb5d2fd6a5">Standard Seabed Data Model (SSDM).</p>
+</li>
+</ol>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_a5e0fdf1-5b97-b360-2b70-71accca08bea">Describe hydrographic deliverables and produce paper products as well as digital products in accordance with specifications and standards.<br/> Prepare a report on a hydrographic survey.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+
+<clause id="e7_environment" obligation="normative">
+<title id="_c7528d56-14ed-487f-ad9f-cd9f464d3894">E7: Environment</title><fmt-title depth="2"><span class="fmt-caption-label"><semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e7_environment">7</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_c7528d56-14ed-487f-ad9f-cd9f464d3894">E7: Environment</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Clause</span> <semx element="autonum" source="_essential_subjects">2</semx><span class="fmt-autonum-delim">.</span><semx element="autonum" source="e7_environment">7</semx></fmt-xref-label>
+<table id="_99e1bb30-5c45-5366-c6bd-69830f7d44b0" unnumbered="true"><thead><tr><th valign="top" align="left">Topic/Element</th>
+<th valign="top" align="left">Content</th>
+<th valign="top" align="left">Learning outcomes</th>
+</tr></thead>
+<tbody><tr><th colspan="3" valign="top" align="left">E7.1 Oceanography</th>
+</tr><tr><td valign="top" align="left"><p id="_606e89e8-452c-d9b3-ae9f-29de48c89755">E7.1a Physical properties of sea water <em>(I)</em></p>
+</td>
+<td valign="top" rowspan="2" align="left"><ol id="_11f45598-adf8-06b4-41b1-50f9df023cb1" type="arabic"><li id="_63105f23-3222-47c1-b76e-2baebfe74b3a" label="1"><p id="_2e816537-a943-90b7-b40a-f615b7358463">Units used in measuring and describing physical properties of sea water, normal ranges and relationships including: salinity, conductivity, temperature, pressure, density.</p>
+</li>
+<li id="_ccc64f19-d802-45ac-bbde-0141064336c1" label="2"><p id="_30c310e9-2d3b-6c13-e0b0-f2677fc5252d">Oceanographic sampling and methods for measuring common oceanographic parameters and profiles</p>
+</li>
+<li id="_f0ccf5e0-cb28-4740-a029-9887c68d21e5" label="3"><p id="_5de3d7c4-7fb2-ea88-1ebc-d8f47bb2cecc">oceanographic sensors (e.g. for temperature, conductivity, and depth) and need for calibration</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_9ae25239-2210-7b8d-ff12-a48111bc6512">Use oceanographic sensors to measure physical properties of sea water and compute speed of sound using observed physical properties of sea water.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_d677eef9-43df-3d44-9b7c-38bff34178dd">E7.1b Oceanographic measurements <em>(I)</em></p>
+</td>
+<td valign="top" align="left"><p id="_0bc43dbe-c6e1-b519-afc4-d581acea0b7f">Set up, test and verify oceanographic survey sensors to meet specifications.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_c621e507-db28-f531-6512-a802e8292714">E7.1c Waves <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_fdb54be9-9d2b-a62f-df08-8ec3b8437e17" type="arabic"><li id="_358d4787-7c38-45fb-9570-47201ae3a6f8" label="1"><p id="_a0da3fa8-f65e-7433-ea1b-c8b2703109cc">Wave parameters and elements involved in the wave growth process including fetch and bathymetry</p>
+</li>
+<li id="_43f06c20-7d78-4739-8743-429dab666f1a" label="2"><p id="_45beafc8-f457-55eb-5754-72db3c442ea0">Breaking waves, long-shore drift and rip current processes.</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_dabd400c-db95-b7cd-2a99-1e5c7499eea8">Outline wave generation processes and discuss mitigation tactics against the impact of waves in planning survey operations.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E7.2 Marine Geology and Geophysics</th>
+</tr><tr><td valign="top" align="left"><p id="_69a77564-14d2-e67d-03aa-2dfaf1851e3d">E7.2a Seabed characteristics <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_6ce3b4c8-af5c-0bde-6431-5fc90d7a65a5" type="arabic"><li id="_c11f84ce-b69b-4daf-9102-be1a6969ad62" label="1"><p id="_cc795db1-22c1-37c6-99ee-7c68cf5d178a">Seabed samplers such as grabs, corers and dredges and basic sediment types.</p>
+</li>
+<li id="_430f001e-a213-4c6f-98da-31dad4d72864" label="2"><p id="_6e7cb420-a480-0243-90fb-2cd8dd3499c9">Types of seabed</p>
+</li>
+<li id="_bc88f7fd-91db-48d7-bdbc-8201884ffcb2" label="3"><p id="_d0ab8395-bb08-6533-b757-5583329552d3">Processes involved in seabed dynamics</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_6aadd84d-470d-eeff-5852-acb760e7483e">Explain the objectives of seabed sampling detailing sampling equipment and how samples are stored and analyzed.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_aa685df9-e3ef-088a-33ea-0a63f35472c7">E7.2b Magnetic surveys <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_36397708-9f57-3a3d-c99b-d44a73b907c0" type="arabic"><li id="_d3826893-0530-46ff-8ffb-26a0d6530cd1" label="1"><p id="_a7679d48-a59d-2b3b-8f09-72b44417be2f">Magnetic fields and anomalies</p>
+</li>
+<li id="_ea0d8f56-842f-490e-b3c0-78fb73a620e0" label="2"><p id="_9f9090a3-1361-4536-c4c7-afdf87bea1cf">Objectives of magnetic surveys to detect pipelines, cables and ordnance.</p>
+</li>
+<li id="_82ab2169-4009-4213-a8aa-b7b099bb8e17" label="3"><p id="_3435a53e-e1be-ed3f-fa87-fef67c9727fd">Magnetometers</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_b3403164-adcb-082e-22da-05b9aa523dad">Describe Earth’s magnetic field and explain the use of magnetometers and the objectives of magnetic surveys.</p>
+</td>
+</tr><tr><td valign="top" align="left"><p id="_f470878f-5ed1-dbe1-3e1a-192ee29b9d7a">E7.2c Seismic surveys <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_271c22bd-abba-90a7-5809-88fc00eb1d31" type="arabic"><li id="_a6e309a4-c01a-4201-bed0-6a8f80a17333" label="1"><p id="_7a19102e-dc29-e622-ee63-d6bf9dd4a83f">Continuous reflection/refraction seismic profiling.</p>
+</li>
+<li id="_28619ad5-0c2f-4c30-8ee0-673838576d7f" label="2"><p id="_5ce1a3a9-671f-b18d-751e-f68191f1fb6c">Typical sound sources, receivers and recorders.</p>
+</li>
+<li id="_c1528ead-2d3c-4faa-97a9-ee0689f7bf0d" label="3"><p id="_e50ae8bb-9379-4d01-2ede-5f8f50a67c49">High resolution seismic systems</p>
+</li>
+<li id="_d153a505-381d-42f4-a6e9-155f5ce8d0bf" label="4"><p id="_2b4d868d-9cae-b8ce-6821-10c986d3c3d0">Sub-bottom profilers</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_182c71f0-5e50-f545-c98f-acca1f410006">Explain the objectives of seismic surveys and the equipment used to conduct such surveys.</p>
+</td>
+</tr><tr><th colspan="3" valign="top" align="left">E7.3 Environmental impact</th>
+</tr><tr><td valign="top" align="left"><p id="_4888d27d-b76e-0eff-ed76-7a04d11ce15b">E7.3a Impact of surveys <em>(B)</em></p>
+</td>
+<td valign="top" align="left"><ol id="_3c90a563-cb73-b9e1-cc58-900ef05e26f2" type="arabic"><li id="_9e461f59-808c-4bec-b371-3e816e005084" label="1"><p id="_ddf2741c-6824-42b9-f6d7-d3b9657bdd50">Permanent and temporary threshold shifts (hearing) for marine mammals.</p>
+</li>
+<li id="_c7aceef6-4847-469e-a2fc-a9e9aef4692e" label="2"><p id="_29dcab07-3404-65ac-dc2f-5c6bfc100a9e">Use of physical techniques such as bar sweeps in environmentally sensitive areas.</p>
+</li>
+<li id="_7edc4e56-98e0-4640-a2ad-e698b7c81c93" label="3"><p id="_5190d8cf-6b4e-fe31-7393-32e3846d7c82">Respect for cultural traditions in relation to use of the environment</p>
+</li>
+<li id="_cb787a9d-4bf0-4835-917d-8f3ab27f1ad2" label="4"><p id="_003f5bb0-f18f-890a-829f-756241ddde51">Marine protected areas</p>
+</li>
+</ol>
+</td>
+<td valign="top" align="left"><p id="_51a30955-7975-e6ca-e63d-12ed0fa394b2">Describe appropriate procedures and limitations for use of surveying equipment in compliance with environmental laws and marine protected area regulations.</p>
+</td>
+</tr></tbody>
+</table>
+</clause>
+</clause>
+
+<clause id="cffp" obligation="normative" displayorder="8">
+<title id="_a89eb423-7dab-48d5-a464-dd944c106ee6">CFFP: Comprehensive Final Field Project</title><fmt-title depth="1"><span class="fmt-caption-label"><semx element="autonum" source="cffp">3</semx></span><span class="fmt-caption-delim"><tab/></span><semx element="title" source="_a89eb423-7dab-48d5-a464-dd944c106ee6">CFFP: Comprehensive Final Field Project</semx></fmt-title><fmt-xref-label><span class="fmt-element-name">Section</span> <semx element="autonum" source="cffp">3</semx></fmt-xref-label>
+<p id="_bf6122bf-5f9c-8efb-ec1a-a4f7cb1188f0">Programmes must include a supervised and evaluated Comprehensive Final Field Project with a minimum aggregate period of <strong>at least four weeks</strong>; see “GUIDELINES FOR THE IMPLEMENTATION OF THE STANDARDS OF COMPETENCE FOR HYDROGRAPHIC SURVEYORS AND NAUTICAL CARTOGRAPHERS”.</p>
+
+<p id="_91d22898-1d36-ef35-b2ad-dbc53a0eba04">The Comprehensive Final Field Project for Category “B” level shall comprise a comprehensive field survey incorporating different aspects of hydrography in a complex environment with varying sea-floor and oceanographic conditions.</p>
+
+<p id="_77a5a537-6932-e9fe-23d3-750aa5b9df8c">Students should undertake:</p>
+
+<ul id="_2fc9d4b4-f199-c1a7-a754-20cc683e20b1"><li><p id="_194c28a3-e3ed-63ad-d5fc-77fddb8945fe">Survey specification and planning;</p>
+</li>
+<li><p id="_d3046e7b-927a-4c3d-524e-cd1b953c701f">Hydrographic and oceanographic measurements using a comprehensive suite of instruments;</p>
+</li>
+<li><p id="_bdba7297-68d8-3696-d267-532def252bf0">Data processing, quality control and quality assurance ;</p>
+</li>
+<li><p id="_d1e45a5b-5c4f-4661-fb01-6c2a9179a47b">Preparation of different type of product deliverables and reports.</p>
+</li>
+<note id="_5481ef57-d0f6-733a-1501-f55d499eb8bf" autonum=""><fmt-name><span class="fmt-caption-label"><span class="fmt-element-name">NOTE</span></span><span class="fmt-label-delim"><tab/></span></fmt-name><fmt-xref-label><span class="fmt-element-name">Note</span></fmt-xref-label><fmt-xref-label container="cffp"><span class="fmt-xref-container"><span class="fmt-element-name">Section</span> <semx element="autonum" source="cffp">3</semx></span><span class="fmt-comma">,</span> <span class="fmt-element-name">Note</span></fmt-xref-label><p id="_3870d634-5481-fb6a-cec5-5981fae3610b">the Comprehensive Final Field Project does not include the practical exercises that form a part of the course modules syllabi and are designed to complement the theory.</p>
+</note></ul>
+
+
+</clause>
+</sections>
+</metanorma>
