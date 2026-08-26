@@ -28,6 +28,7 @@ module Metanorma
     end
 
     configure {}
+    autoload :Document, "metanorma/iho/document"
   end
 end
 Metanorma::Registry.instance.register(Metanorma::Iho::Processor)
