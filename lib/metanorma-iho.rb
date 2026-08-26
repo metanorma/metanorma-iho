@@ -15,4 +15,3 @@ if defined? Metanorma::Registry
   require_relative "metanorma/iho"
   Metanorma::Registry.instance.register(Metanorma::Iho::Processor)
 end
-require "metanorma/iho/document"
