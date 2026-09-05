@@ -1,4 +1,5 @@
 require "metanorma-core"
+require "metanorma/iho/document"
 require "metanorma-generic"
 require "metanorma/iho/processor"
 
