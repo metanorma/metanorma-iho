@@ -8,6 +8,53 @@
 
 	<xsl:variable name="debug">false</xsl:variable>
 
+	<xsl:variable name="variables_">
+		<xsl:for-each select="//mn:metanorma">
+			<xsl:variable name="num"><xsl:number level="any" count="mn:metanorma"/></xsl:variable>
+
+			<xsl:variable name="current_document">
+				<xsl:copy-of select="."/>
+			</xsl:variable>
+
+			<xsl:for-each select="xalan:nodeset($current_document)">
+				<mnx:doc num="{$num}">
+
+					<xsl:variable name="title-en"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@language = 'en']/node()"/></xsl:variable>
+					<xsl:variable name="title-main"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'main']/node()"/></xsl:variable>
+
+					<title_header>
+						<xsl:copy-of select="$title-main"/>
+						<xsl:if test="normalize-space($title-main) = ''"><xsl:copy-of select="$title-en"/></xsl:if>
+					</title_header>
+
+					<xsl:variable name="docidentifier_parent" select="normalize-space(/mn:metanorma/mn:bibdata/mn:docidentifier[@type = 'IHO-parent-document'])"/>
+					<docidentifier>
+						<xsl:value-of select="$docidentifier_parent"/>
+						<xsl:if test="$docidentifier_parent = ''"><xsl:value-of select="/mn:metanorma/mn:bibdata/mn:docidentifier[@type = 'IHO']"/></xsl:if>
+					</docidentifier>
+
+					<edition><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:edition[normalize-space(@language) = '']"/></edition>
+
+					<month_year><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:date[@type = 'published']"/></month_year>
+
+				</mnx:doc>
+			</xsl:for-each>
+		</xsl:for-each>
+	</xsl:variable>
+	<xsl:variable name="variables" select="xalan:nodeset($variables_)"/>
+
+	<xsl:template name="getVariable">
+		<xsl:param name="variable"/>
+		<xsl:variable name="num" select="number(java:org.metanorma.fop.global.Variables.getVariable('num'))"/>
+		<xsl:value-of select="$variables/mnx:doc[@num = $num]/*[local-name() = $variable]"/>
+	</xsl:template>
+
+	<xsl:template name="getVariableCopyOf">
+		<xsl:param name="variable"/>
+		<xsl:variable name="num" select="number(java:org.metanorma.fop.global.Variables.getVariable('num'))"/>
+		<xsl:copy-of select="$variables/mnx:doc[@num = $num]/*[local-name() = $variable]/node()"/>
+	</xsl:template>
+
 	<!-- Example:
 		<item level="1" id="Foreword" display="true">Foreword</item>
 		<item id="term-script" display="false">3.2</item>
@@ -204,43 +251,17 @@
 			<xsl:for-each select="xalan:nodeset($updated_xml)//mn:metanorma">
 				<xsl:variable name="num"><xsl:number level="any" count="mn:metanorma"/></xsl:variable>
 
+				<xsl:variable name="setVariable" select="java:org.metanorma.fop.global.Variables.setVariable('num', $num)"/>
+
 				<xsl:variable name="current_document">
 					<xsl:copy-of select="."/>
 				</xsl:variable>
 
 				<xsl:for-each select="xalan:nodeset($current_document)">
 
-					<xsl:variable name="title-en"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@language = 'en']/node()"/></xsl:variable>
-					<xsl:variable name="title-main_"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'main']/node()"/></xsl:variable>
+					<xsl:call-template name="cover-page"/>
 
-					<xsl:variable name="title_header">
-						<xsl:copy-of select="$title-main_"/>
-						<xsl:if test="normalize-space($title-main_) = ''"><xsl:copy-of select="$title-en"/></xsl:if>
-					</xsl:variable>
-
-					<xsl:variable name="docidentifier_parent" select="normalize-space(/mn:metanorma/mn:bibdata/mn:docidentifier[@type = 'IHO-parent-document'])"/>
-					<xsl:variable name="docidentifier">
-						<xsl:value-of select="$docidentifier_parent"/>
-						<xsl:if test="$docidentifier_parent = ''"><xsl:value-of select="/mn:metanorma/mn:bibdata/mn:docidentifier[@type = 'IHO']"/></xsl:if>
-					</xsl:variable>
-
-					<xsl:variable name="copyrightText" select="concat('© International Hydrographic Association ', /mn:metanorma/mn:bibdata/mn:copyright/mn:from ,' – All rights reserved')"/>
-					<xsl:variable name="edition"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:edition[normalize-space(@language) = '']"/></xsl:variable>
-					<xsl:variable name="month_year"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:date[@type = 'published']"/></xsl:variable>
-
-					<xsl:call-template name="cover-page">
-						<xsl:with-param name="num" select="$num"/>
-						<xsl:with-param name="docidentifier" select="$docidentifier"/>
-						<xsl:with-param name="edition" select="$edition"/>
-						<xsl:with-param name="month_year" select="$month_year"/>
-					</xsl:call-template>
-
-					<xsl:call-template name="inner-cover-page">
-						<xsl:with-param name="title_header" select="$title_header"/>
-						<xsl:with-param name="docidentifier" select="$docidentifier"/>
-						<xsl:with-param name="edition" select="$edition"/>
-						<xsl:with-param name="month_year" select="$month_year"/>
-					</xsl:call-template>
+					<xsl:call-template name="inner-cover-page"/>
 
 					<xsl:variable name="updated_xml_with_pages">
 						<xsl:call-template name="processPrefaceAndMainSectionsIHO_items"/>
@@ -261,10 +282,6 @@
 
 								<xsl:call-template name="insertFootnoteSeparatorCommon"/>
 								<xsl:call-template name="insertHeaderFooter">
-									<xsl:with-param name="title_header" select="$title_header"/>
-									<xsl:with-param name="docidentifier" select="$docidentifier"/>
-									<xsl:with-param name="edition" select="$edition"/>
-									<xsl:with-param name="month_year" select="$month_year"/>
 									<xsl:with-param name="font-weight">normal</xsl:with-param>
 									<xsl:with-param name="orientation"><xsl:call-template name="getPageSequenceOrientation"/></xsl:with-param>
 								</xsl:call-template>
@@ -290,9 +307,7 @@
 
 									<!-- Contents, Document History, ... except Foreword and Introduction -->
 									<!-- <xsl:call-template name="processPrefaceSectionsDefault"/> -->
-									<xsl:apply-templates select="*[not(self::mn:foreword) and not(self::mn:introduction)]">
-										<xsl:with-param name="num" select="$num"/>
-									</xsl:apply-templates>
+									<xsl:apply-templates select="*[not(self::mn:foreword) and not(self::mn:introduction)]"/>
 
 								</fo:flow>
 							</fo:page-sequence>
@@ -309,10 +324,6 @@
 
 								<xsl:call-template name="insertFootnoteSeparatorCommon"/>
 								<xsl:call-template name="insertHeaderFooter">
-									<xsl:with-param name="title_header" select="$title_header"/>
-									<xsl:with-param name="docidentifier" select="$docidentifier"/>
-									<xsl:with-param name="edition" select="$edition"/>
-									<xsl:with-param name="month_year" select="$month_year"/>
 									<xsl:with-param name="font-weight">normal</xsl:with-param>
 									<xsl:with-param name="orientation"><xsl:call-template name="getPageSequenceOrientation"/></xsl:with-param>
 								</xsl:call-template>
@@ -341,10 +352,6 @@
 
 									<xsl:call-template name="insertFootnoteSeparatorCommon"/>
 									<xsl:call-template name="insertHeaderFooter">
-										<xsl:with-param name="title_header" select="$title_header"/>
-										<xsl:with-param name="docidentifier" select="$docidentifier"/>
-										<xsl:with-param name="edition" select="$edition"/>
-										<xsl:with-param name="month_year" select="$month_year"/>
 										<xsl:with-param name="orientation"><xsl:call-template name="getPageSequenceOrientation"/></xsl:with-param>
 									</xsl:call-template>
 									<fo:flow flow-name="xsl-region-body" role="SKIP">
@@ -424,10 +431,7 @@
 	</xsl:template>
 
 	<xsl:template name="cover-page">
-		<xsl:param name="num"/>
-		<xsl:param name="docidentifier"/>
-		<xsl:param name="edition"/>
-		<xsl:param name="month_year"/>
+		<xsl:variable name="num" select="number(java:org.metanorma.fop.global.Variables.getVariable('num'))"/>
 
 		<xsl:variable name="title-en"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@language = 'en']/node()"/></xsl:variable>
 		<xsl:variable name="title-main_"><xsl:apply-templates select="/mn:metanorma/mn:bibdata/mn:title[@type = 'main']/node()"/></xsl:variable>
@@ -448,6 +452,16 @@
 					</xsl:if>
 					<fo:block id="firstpage_id_{$num}"> </fo:block>
 				</fo:block-container>
+
+				<xsl:variable name="docidentifier">
+					<xsl:call-template name="getVariable"><xsl:with-param name="variable">docidentifier</xsl:with-param></xsl:call-template>
+				</xsl:variable>
+				<xsl:variable name="edition">
+					<xsl:call-template name="getVariable"><xsl:with-param name="variable">edition</xsl:with-param></xsl:call-template>
+				</xsl:variable>
+				<xsl:variable name="month_year">
+					<xsl:call-template name="getVariable"><xsl:with-param name="variable">month_year</xsl:with-param></xsl:call-template>
+				</xsl:variable>
 
 				<xsl:variable name="isCoverPageImage" select="normalize-space(/mn:metanorma/mn:metanorma-extension/mn:presentation-metadata/mn:coverpage-image/mn:image and 1 = 1)"/>
 
@@ -606,18 +620,10 @@
 	</xsl:template>
 
 	<xsl:template name="inner-cover-page">
-		<xsl:param name="title_header"/>
-		<xsl:param name="docidentifier"/>
-		<xsl:param name="edition"/>
-		<xsl:param name="month_year"/>
 		<xsl:choose>
 			<xsl:when test="/mn:metanorma/mn:boilerplate/*[not(self::mn:feedback-statement)]">
 				<fo:page-sequence master-reference="preface" format="i" force-page-count="no-force">
 					<xsl:call-template name="insertHeaderFooter">
-						<xsl:with-param name="title_header" select="$title_header"/>
-						<xsl:with-param name="docidentifier" select="$docidentifier"/>
-						<xsl:with-param name="edition" select="$edition"/>
-						<xsl:with-param name="month_year" select="$month_year"/>
 						<xsl:with-param name="font-weight">normal</xsl:with-param>
 					</xsl:call-template>
 					<fo:flow flow-name="xsl-region-body" role="SKIP">
@@ -639,12 +645,7 @@
 				<!-- https://github.com/metanorma/metanorma-iho/issues/293:
 					If the publication has no copyright boxed note (normally on page ii of the publication), page ii should be "Page intentionally left blank". -->
 				<fo:page-sequence master-reference="blankpage" format="i" force-page-count="no-force">
-					<xsl:call-template name="insertHeaderFooterBlank">
-						<xsl:with-param name="title_header" select="$title_header"/>
-						<xsl:with-param name="docidentifier" select="$docidentifier"/>
-						<xsl:with-param name="edition" select="$edition"/>
-						<xsl:with-param name="month_year" select="$month_year"/>
-					</xsl:call-template>
+					<xsl:call-template name="insertHeaderFooterBlank"/>
 					<fo:flow flow-name="xsl-region-body">
 						<fo:block/>
 					</fo:flow>
@@ -719,7 +720,7 @@
 	</xsl:template>
 
 	<xsl:template match="mn:preface//mn:clause[@type = 'toc']" name="toc" priority="4">
-		<xsl:param name="num"/>
+		<xsl:variable name="num" select="number(java:org.metanorma.fop.global.Variables.getVariable('num'))"/>
 		<!-- Table of Contents -->
 		<fo:block xsl:use-attribute-sets="toc-container-style">
 			<xsl:call-template name="refine_toc-container-style"/>
@@ -800,7 +801,7 @@
 	</xsl:template>
 
 	<xsl:template match="mnx:contents//mnx:item[@display = 'true']">
-		<xsl:param name="num"/>
+		<xsl:variable name="num" select="number(java:org.metanorma.fop.global.Variables.getVariable('num'))"/>
 		<fo:block role="TOCI">
 			<fo:list-block xsl:use-attribute-sets="toc-item-block-style" role="SKIP">
 
@@ -1129,28 +1130,21 @@
 	</xsl:template>
 
 	<xsl:template name="insertHeaderFooter">
-		<xsl:param name="title_header"/>
-		<xsl:param name="docidentifier"/>
-		<xsl:param name="edition"/>
-		<xsl:param name="month_year"/>
 		<xsl:param name="font-weight" select="'bold'"/>
 		<xsl:param name="orientation"/>
 
 		<xsl:call-template name="insertHeader">
-			<xsl:with-param name="title_header" select="$title_header"/>
 			<xsl:with-param name="orientation" select="$orientation"/>
 		</xsl:call-template>
 
-		<xsl:call-template name="insertFooter">
-			<xsl:with-param name="docidentifier" select="$docidentifier"/>
-			<xsl:with-param name="edition" select="$edition"/>
-			<xsl:with-param name="month_year" select="$month_year"/>
-		</xsl:call-template>
+		<xsl:call-template name="insertFooter"/>
 	</xsl:template>
 
 	<xsl:template name="insertHeader">
-		<xsl:param name="title_header"/>
 		<xsl:param name="orientation"/>
+		<xsl:variable name="title_header">
+			<xsl:call-template name="getVariableCopyOf"><xsl:with-param name="variable">title_header</xsl:with-param></xsl:call-template>
+		</xsl:variable>
 		<fo:static-content flow-name="header-odd" role="artifact">
 			<fo:block-container height="100%" font-size="8pt">
 				<fo:block padding-top="12.5mm">
@@ -1188,14 +1182,15 @@
 			</fo:block-container>
 		</fo:static-content>
 		<xsl:call-template name="insertHeaderBlank">
-			<xsl:with-param name="title_header" select="$title_header"/>
 			<xsl:with-param name="orientation" select="$orientation"/>
 		</xsl:call-template>
 	</xsl:template>
 
 	<xsl:template name="insertHeaderBlank">
-		<xsl:param name="title_header"/>
 		<xsl:param name="orientation"/>
+		<xsl:variable name="title_header">
+			<xsl:call-template name="getVariableCopyOf"><xsl:with-param name="variable">title_header</xsl:with-param></xsl:call-template>
+		</xsl:variable>
 		<fo:static-content flow-name="header-blank" role="artifact">
 			<fo:block-container height="100%" font-size="8pt">
 				<fo:block padding-top="12.5mm">
@@ -1224,9 +1219,15 @@
 	</xsl:template>
 
 	<xsl:template name="insertFooter">
-		<xsl:param name="docidentifier"/>
-		<xsl:param name="edition"/>
-		<xsl:param name="month_year"/>
+		<xsl:variable name="docidentifier">
+			<xsl:call-template name="getVariable"><xsl:with-param name="variable">docidentifier</xsl:with-param></xsl:call-template>
+		</xsl:variable>
+		<xsl:variable name="month_year">
+			<xsl:call-template name="getVariable"><xsl:with-param name="variable">month_year</xsl:with-param></xsl:call-template>
+		</xsl:variable>
+		<xsl:variable name="edition">
+			<xsl:call-template name="getVariable"><xsl:with-param name="variable">edition</xsl:with-param></xsl:call-template>
+		</xsl:variable>
 		<fo:static-content flow-name="footer" role="artifact">
 			<fo:block-container height="100%" display-align="after">
 				<fo:block padding-bottom="12.5mm" font-size="8pt" text-align-last="justify">
@@ -1245,18 +1246,8 @@
 	</xsl:template>
 
 	<xsl:template name="insertHeaderFooterBlank">
-		<xsl:param name="title_header"/>
-		<xsl:param name="docidentifier"/>
-		<xsl:param name="edition"/>
-		<xsl:param name="month_year"/>
-		<xsl:call-template name="insertHeaderBlank">
-			<xsl:with-param name="title_header" select="$title_header"/>
-		</xsl:call-template>
-		<xsl:call-template name="insertFooter">
-			<xsl:with-param name="docidentifier" select="$docidentifier"/>
-			<xsl:with-param name="edition" select="$edition"/>
-			<xsl:with-param name="month_year" select="$month_year"/>
-		</xsl:call-template>
+		<xsl:call-template name="insertHeaderBlank"/>
+		<xsl:call-template name="insertFooter"/>
 	</xsl:template>
 
 	<xsl:template match="mn:logo[@type = 'desc' or @type = 'mark' or @type = 'sign']">
