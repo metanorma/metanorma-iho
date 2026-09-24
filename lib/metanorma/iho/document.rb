@@ -4,6 +4,7 @@ require "metanorma/standoc"
 require "metanorma/iso/document/models"
 module Metanorma
   module Iho
+    autoload :Html, File.expand_path("html", __dir__)
   end
 end
 
