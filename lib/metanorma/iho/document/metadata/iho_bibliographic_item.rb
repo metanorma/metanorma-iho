@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "metanorma/iso/document"
+
 module Metanorma
   module Iho::Document
     module Metadata

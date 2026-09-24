@@ -4,6 +4,7 @@
 # directly (without first requiring metanorma/iho.rb).
 module Metanorma
   module Iho
+    autoload :Html, File.expand_path("html", __dir__)
   end
 end
 
@@ -28,6 +29,20 @@ end
 if defined?(Metanorma::Registers::Setup.setup_iho_register)
   Metanorma::Registers::Setup.setup_iho_register
 end
+
+# OCP adoption: ONE registration in the metanorma-core flavor table —
+# model root, processor, and pubid module. HTML rendering uses the
+# flavor's renderer over the harness standard renderer.
+require "metanorma-core"
+require "metanorma/document"
+Metanorma::Core::Flavors.register(Metanorma::Core::Flavor.new(
+  name: :iho,
+  gem: "metanorma-iho",
+  model_root: Metanorma::Iho::Document::Root,
+  processor: defined?(Metanorma::Iho::Processor) ? Metanorma::Iho::Processor : nil,
+  pubid_module: :"Pubid::Iho",
+  renderers: { html: Metanorma::Iho::Html::Renderer },
+))
 
 module Metanorma
   deprecate_constant :IhoDocument
