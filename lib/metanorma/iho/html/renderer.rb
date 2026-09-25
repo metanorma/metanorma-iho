@@ -10,6 +10,94 @@ module Metanorma
       class Renderer < Metanorma::Html::StandardRenderer
         register_render "Metanorma::Iho::Document::Root",
                         :render_standard_document
+
+        # IHO cover matter: document identity strapline, development
+        # stage and publisher line, content-equivalent to the former
+        # isodoc title page (html_iho_titlepage.html).
+        def render_coverpage(doc)
+          super + render_liquid("_element.html.liquid", {
+            "tag" => "div",
+            "extra_attrs" => element_attrs(class: "iho-cover-details"),
+            "content" => iho_cover_details(doc),
+          })
+        end
+
+        def iho_cover_details(doc)
+          bibdata = doc.bibdata
+          return "" unless bibdata
+
+          lines = []
+          docnumber = scalar_bibdata_value(bibdata, :docnumber)
+          edition = iho_edition(bibdata)
+          identity = [
+            docnumber ? "S-#{docnumber}" : nil,
+            edition ? "Edition #{edition}" : nil,
+          ].compact.join(" · ")
+          lines << identity unless identity.empty?
+
+          stage = iho_stage(bibdata)
+          lines << stage if stage
+
+          lines << "IHO Standard" if docnumber
+
+          owner_line = iho_copyright_line(bibdata)
+          lines << owner_line if owner_line
+
+          lines.map { |l| render_liquid("_element.html.liquid", {
+            "tag" => "p",
+            "extra_attrs" => "",
+            "content" => escape_html(l),
+          }) }.join
+        end
+
+        def scalar_bibdata_value(bibdata, attr_name)
+          v = bibdata.respond_to?(attr_name) ? bibdata.public_send(attr_name) : nil
+          v.is_a?(String) ? v : nil
+        end
+
+        def iho_edition(bibdata)
+          return nil unless bibdata.respond_to?(:edition)
+
+          Array(bibdata.edition).filter_map do |e|
+            next e if e.is_a?(String)
+            next e.content if e.respond_to?(:content) && e.content.is_a?(String)
+
+            nil
+          end.first
+        end
+
+        def iho_stage(bibdata)
+          st = bibdata.respond_to?(:status) ? bibdata.status : nil
+          stage = st.respond_to?(:stage) ? st.stage : nil
+          # Guard: a non-string stage (lutaml can yield nested or cyclic
+          # values here) must never reach to_s/inspect — stringifying a
+          # self-referential structure allocates without bound.
+          return nil unless stage.is_a?(String) && !stage.empty?
+
+          stage.split("-").map(&:capitalize).join(" ")
+        end
+
+        def iho_copyright_line(bibdata)
+          cr = bibdata.respond_to?(:copyright) ? bibdata.copyright : nil
+          entry = Array(cr).first
+          return nil unless entry
+
+          year = entry.respond_to?(:from) ? entry.from : nil
+          year = nil unless year.is_a?(String)
+          owner_name = nil
+          owner = entry.respond_to?(:owner) ? Array(entry.owner).first : nil
+          if owner.respond_to?(:content) && owner.content.is_a?(String)
+            owner_name = owner.content
+          elsif owner.respond_to?(:name)
+            names = owner.name
+            owner_name = names.is_a?(Array) ? names.filter_map do |n|
+              n.respond_to?(:content) && n.content.is_a?(String) ? n.content : nil
+            end.first : (names.is_a?(String) ? names : nil)
+          end
+          return nil unless owner_name
+
+          year ? "© #{year} #{owner_name}" : owner_name
+        end
         register_render "Metanorma::Standoc::Document::Sections::Sections",
                         :render_sections
 
