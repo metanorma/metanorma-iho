@@ -69,12 +69,16 @@ module Metanorma
         def iho_stage(bibdata)
           st = bibdata.respond_to?(:status) ? bibdata.status : nil
           stage = st.respond_to?(:stage) ? st.stage : nil
-          # Guard: a non-string stage (lutaml can yield nested or cyclic
-          # values here) must never reach to_s/inspect — stringifying a
-          # self-referential structure allocates without bound.
-          return nil unless stage.is_a?(String) && !stage.empty?
+          # status.stage is an Array of StageElement (mixed-content):
+          # stringifying the array inspects model objects and can hit
+          # self-referential structures — extract the text value.
+          element = Array(stage).first
+          return nil unless element.respond_to?(:value)
 
-          stage.split("-").map(&:capitalize).join(" ")
+          text = Array(element.value).join.strip
+          return nil if text.empty?
+
+          text.split("-").map(&:capitalize).join(" ")
         end
 
         def iho_copyright_line(bibdata)
