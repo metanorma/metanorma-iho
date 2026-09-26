@@ -1,0 +1,46 @@
+primary: "#05164D"
+accent: "#00AAA9"
+accent_deep: "#008887"
+gradient: "linear-gradient(135deg, #03103a 0%, #05164D 50%, #00AAA9 100%)"
+primary_light: "#eaf5f5"
+accent_light: "#e0f7f6"
+warm: "#FEDC5B"
+warm_light: "#fff9e6"
+sidebar_bg: "#f0f5f8"
+font_body: '"Source Serif 4", "Georgia", serif'
+font_sans: '"Source Sans 3", "Helvetica Neue", Arial, sans-serif'
+font_mono: '"Source Code Pro", "Menlo", monospace'
+font_url: "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=Source+Code+Pro:wght@400;500&display=swap"
+header_background: "linear-gradient(135deg, #03103a 0%, #05164D 40%, #00AAA9 100%)"
+cover_background: "linear-gradient(175deg, #020a20 0%, #03103a 25%, #05164D 55%, #008887 85%, #00AAA9 100%)"
+cover_before_bg: "background: radial-gradient(ellipse at 30% 20%, rgba(0,170,169,0.2) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(254,220,91,0.1) 0%, transparent 40%)"
+cover_after_bg: "height: 4px; background: linear-gradient(90deg, #00AAA9, #05164D, #FEDC5B, #00AAA9)"
+progress_bar_color: "#00AAA9"
+note_border: "#00AAA9"
+note_bg: "#e0f7f6"
+note_color: "#00AAA9"
+example_border: "#05164D"
+example_bg: "#eaf5f5"
+example_color: "#008887"
+admonition_border: "#FEDC5B"
+admonition_bg: "#fff9e6"
+admonition_color: "#b8860b"
+footer_border_color: "#00AAA9"
+cover_separator_color: "rgba(0,170,169,0.3)"
+
+# Publisher metadata
+publishers:
+  - "IHO"
+publisher_name: "IHO"
+logos_light:
+  "IHO": "iho-logo.svg"
+
+# Section ordering
+preface_order:
+  - foreword
+  - introduction
+  - abstract
+  - clause
+  - acknowledgements
+  - executivesummary
+toc_filter_types: []
