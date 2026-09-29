@@ -4,14 +4,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}" }
 gemspec
 
 # TEMPORARY: cross-PR branch pins so CI can resolve the in-flight
-# metanorma-standoc namespace rename (Metanorma::Standoc::Document)
-# and the pubid-2 / relaton-bib 2.2 / metanorma-document 0.5 chain.
-# Revert each pin once the corresponding PR merges:
-#   - https://github.com/metanorma/metanorma-standoc/pull/1232
-#   - https://github.com/metanorma/metanorma-document/pull/45
-gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "feat/move-standard-document"
-gem "metanorma-document", github: "metanorma/metanorma-document", branch: "feat/model-validation-l1-declarations"
-gem "isodoc", github: "metanorma/isodoc", branch: "rt-pubid-2-migration"
+# metanorma-document render stack (moved flavor models + registry) and
+# the pubid-2 / relaton-bib 2.2 chain. Revert each pin once the
+# corresponding change releases:
+#   - metanorma-standoc (fix/boilerplate-paragraphs-quote): standoc 3.5
+#   - metanorma-document (fix/nested-block-inline-dispatch): #75
+#   - metanorma-iso (feat/model-validation-migration): IsoDocument model
+gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "fix/boilerplate-paragraphs-quote"
+gem "metanorma-document", github: "metanorma/metanorma-document", branch: "fix/nested-block-inline-dispatch"
+gem "isodoc", github: "metanorma/isodoc", branch: "main"
+gem "metanorma-generic", github: "metanorma/metanorma-generic", branch: "feat/move-generic-document"
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-validation-migration"
 gem "relaton-bib", "~> 2.2.0.pre.alpha.1"
 gem "pubid", github: "pubid/pubid", branch: "main"
 
