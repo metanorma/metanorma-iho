@@ -1,4 +1,5 @@
 require "metanorma-core"
+require "metanorma/iho/document"
 require "metanorma-generic"
 require "metanorma/iho/processor"
 
@@ -30,3 +31,14 @@ module Metanorma
   end
 end
 Metanorma::Registry.instance.register(Metanorma::Iho::Processor)
+
+# Registry styling: the flavor owns its index theme, registered
+# programmatically with the metanorma-document theme system.
+begin
+  require "metanorma/html"
+  Metanorma::Html::Theme.register_themes_dir(
+    File.expand_path("iho/themes", __dir__),
+  )
+rescue LoadError
+  # metanorma-document unavailable; registry styling inert
+end
