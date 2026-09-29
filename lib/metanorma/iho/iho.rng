@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar ns='https://www.metanorma.org/ns/standoc' xmlns="http://relaxng.org/ns/structure/1.0">
   <include href="relaton-iho.rng"/>
-  <include href="isodoc.rng">
+  <include href="standoc.rng">
     <define name="annex">
       <element name="annex">
         <ref name="Annex-Section-Attributes"/>
