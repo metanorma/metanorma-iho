@@ -69,18 +69,20 @@ body {
 }
 .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.5rem; }
 
-/* Brand lockup — logo fixed to the header line, never oversized */
+/* Brand lockup — logo fixed to the header line, never oversized.
+   Direct height (not %) on the svg: percentage heights on flex children
+   collapse in iOS Safari. */
 .brand-logo {
   display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto;
   height: 32px; width: auto;
   overflow: hidden;
 }
 .brand-logo svg {
-  height: 100%; width: auto; max-width: 130px;
+  height: 32px; width: auto; max-width: 130px;
   display: block;
 }
 .header-brand { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
-.header-brand .brand-logo { flex: 0 0 auto; }
 
 /* Header — same bar as the documents */
 .doc-header {
@@ -89,8 +91,6 @@ body {
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
 }
-.header-brand { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
-.header-brand svg.header-logo { height: 26px; width: auto; }
 .header-org {
   font-family: var(--font-sans); font-weight: 600; font-size: 0.8rem;
   letter-spacing: 0.05em; text-transform: uppercase;
