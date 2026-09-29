@@ -15,6 +15,10 @@ gem "metanorma-document", github: "metanorma/metanorma-document", branch: "fix/n
 gem "isodoc", github: "metanorma/isodoc", branch: "main"
 gem "metanorma-generic", github: "metanorma/metanorma-generic", branch: "feat/move-generic-document"
 gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-validation-migration"
+# CI resolved leptris 1.9.242, whose native XML parser rejects
+# multibyte UTF-8 (canon HTML comparison dies on the IHO cover
+# address); 1.9.270 parses it. Test-only pin.
+gem "leptris", "~> 1.9.270"
 gem "relaton-bib", "~> 2.2.0.pre.alpha.1"
 gem "pubid", github: "pubid/pubid", branch: "main"
 
