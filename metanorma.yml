@@ -5,6 +5,13 @@ document_namespace: https://www.metanorma.org/ns/iho
 xml_root_tag: 'iho-standard'
 validate_rng_file: lib/metanorma/iho/iho.rng
 i18nyaml: lib/isodoc/iho/i18n-en.yaml
+committees:
+  - code: hssc
+    full_name: Hydrographic Services and Standards Committee
+  - code: ircc
+    full_name: Inter-Regional Coordination Committee
+  - code: ihb
+    full_name: International Hydrographic Bureau
 htmlcoverpage: lib/isodoc/iho/html/html_iho_titlepage.html
 htmlintropage: lib/isodoc/iho/html/html_iho_intro.html
 htmlstylesheet: lib/isodoc/iho/html/htmlstyle.scss
