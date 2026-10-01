@@ -854,7 +854,7 @@ RSpec.describe IsoDoc do
                 </fmt-title>
                 <bibitem id="ISBN" type="book">
                    <biblio-tag>
-                      [1]
+                      [14]
                       <tab/>
                    </biblio-tag>
                    <formattedref>
@@ -873,7 +873,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ISSN" type="journal">
                    <biblio-tag>
-                      [2]
+                      [15]
                       <tab/>
                    </biblio-tag>
                    <formattedref>
@@ -958,7 +958,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ISO3696" type="standard">
                    <biblio-tag>
-                      [3]
+                      [16]
                       <tab/>
                    </biblio-tag>
                    <formattedref>ISO 3696: Water for analytical laboratory use.</formattedref>
@@ -975,7 +975,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ref10">
                    <biblio-tag>
-                      [4]
+                      [17]
                       <tab/>
                    </biblio-tag>
                    <formattedref format="application/x-isodoc+xml">
@@ -993,7 +993,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ref11" suppress_identifier="true">
                    <biblio-tag>
-                      [5]
+                      [18]
                       <tab/>
                    </biblio-tag>
                    <formattedref>IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</formattedref>
@@ -1002,7 +1002,7 @@ RSpec.describe IsoDoc do
                 </bibitem>
                 <bibitem id="ref12">
                    <biblio-tag>
-                      [6]
+                      [19]
                       <tab/>
                    </biblio-tag>
                    <formattedref format="application/x-isodoc+xml">
@@ -1114,12 +1114,12 @@ RSpec.describe IsoDoc do
              <div>
                 <h1 class="Section3">Bibliography</h1>
                 <p id="ISBN" class="Biblio">
-                   [1] 
+                   [14] 
                    <i>Chemicals for analytical laboratory use</i>
                    , n.p.: n.d., ISBN: ISBN.
                 </p>
                 <p id="ISSN" class="Biblio">
-                   [2] 
+                   [15] 
                    <i>Instruments for analytical laboratory use</i>
                    , n.d., ISSN: ISSN.
                 </p>
@@ -1135,9 +1135,9 @@ RSpec.describe IsoDoc do
                       This is another annotation of document ISSN.
                    </p>
                 </div>
-                <p id="ISO3696" class="Biblio">[3]  ISO 3696: Water for analytical laboratory use.</p>
+                <p id="ISO3696" class="Biblio">[16]  ISO 3696: Water for analytical laboratory use.</p>
                 <p id="ref10" class="Biblio">
-                   [4] 
+                   [17] 
                    <span style="font-variant:small-caps;">Standard No I.C.C 167</span>
                    .
                    <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i>
@@ -1145,9 +1145,9 @@ RSpec.describe IsoDoc do
                    <a href="http://www.icc.or.at">http://www.icc.or.at</a>
                    )
                 </p>
-                <p id="ref11" class="Biblio">[5]  IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</p>
+                <p id="ref11" class="Biblio">[18]  IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</p>
                 <p id="ref12" class="Biblio">
-                   [6]  CitationWorks. 2019.
+                   [19]  CitationWorks. 2019.
                    <i>How to cite a reference</i>
                    .
                 </p>
