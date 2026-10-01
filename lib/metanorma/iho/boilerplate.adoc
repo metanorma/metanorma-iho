@@ -27,6 +27,6 @@ International Hydrographic Organization +
 Principauté de Monaco +
 Tel: (377) 93.10.81.00 +
 Fax: (377) 93.10.81.40 +
-\info@iho.int +
-pass:[www.iho.int] +
+link:mailto:info@iho.int[info@iho.int] +
+link:https://www.iho.int[www.iho.int] +
 
