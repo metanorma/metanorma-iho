@@ -156,6 +156,17 @@ module IsoDoc
         ""
       end
 
+      # Continue [n] reference numbering from normative into informative
+      # references, so ordinals stay unique document-wide.
+      def bibliography_bibitem_tag(docxml)
+        i = 0
+        [true, false].each do |norm|
+          docxml.xpath(ns("//references[@normative = '#{norm}']")).each do |r|
+            i = bibliography_bibitem_tag1(r, i, norm)
+          end
+        end
+      end
+
       def ul_label_list(_elem)
         %w(&#x2022; &#x2014; &#x6f;)
       end
