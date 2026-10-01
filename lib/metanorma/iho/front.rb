@@ -18,7 +18,9 @@ module Metanorma
       end
 
       def metadata_ext(node, ext)
-        unless node.attr("workgroup")
+        # Compile probes run the converter on bare internal documents
+        # without user attributes; only warn on real document headers.
+        if node.attr("docnumber") && node.attr("workgroup").nil?
           @log.add("IHO_1", nil)
         end
         super

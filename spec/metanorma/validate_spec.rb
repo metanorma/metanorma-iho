@@ -14,6 +14,22 @@ RSpec.describe Metanorma::Iho do
       .to include("Missing workgroup attribute for document")
   end
 
+  it "does not warn about missing workgroup for internal probe documents" do
+    FileUtils.rm_f "test.err.html"
+    Asciidoctor.convert(<<~"INPUT", backend: :iho, header_footer: true)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+
+      == Clause 1
+
+      Subclause
+    INPUT
+    expect(File.read("test.err.html"))
+      .not_to include("Missing workgroup attribute for document")
+  end
+
   it "validates document against Metanorma XML schema" do
     Asciidoctor.convert(<<~"INPUT", backend: :iho, header_footer: true)
       = A
