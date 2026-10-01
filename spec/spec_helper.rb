@@ -73,6 +73,7 @@ VALIDATING_BLANK_HDR = <<~HDR.freeze
   = Document title
   Author
   :docfile: test.adoc
+  :docnumber: 1000
   :nodoc:
 
 HDR
