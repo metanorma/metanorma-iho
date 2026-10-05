@@ -1,7 +1,6 @@
 require_relative "init"
 require "isodoc"
 require "metanorma-generic"
-require_relative "../../metanorma/iho/relaton_render/general"
 
 module IsoDoc
   module Iho
