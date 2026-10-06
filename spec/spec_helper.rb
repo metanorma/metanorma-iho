@@ -17,6 +17,7 @@ require "metanorma-core"
 require "canon"
 
 Canon::Config.instance.profile = :metanorma
+require "isodoc/spec_helpers/canon_html_input_guard"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -33,6 +34,13 @@ end
 def metadata(xml)
   xml.sort.to_h.delete_if do |k, v|
     k.to_s == "bibdata" || v.nil? || (v.respond_to?(:empty?) && v.empty?)
+  end.transform_values do |v|
+    # committee objects compare as their plain shape
+    if v.is_a?(Metanorma::Generic::Committee)
+      { code: v.code, full_name: v.full_name }
+    else
+      v
+    end
   end
 end
 
