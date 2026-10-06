@@ -323,9 +323,6 @@ RSpec.describe IsoDoc do
     pres_output = IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
-    File.write("/tmp/iho_ref4_pres.xml",
-      strip_guid(pres_output
-        .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
     expect(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_xml_equivalent_to presxml
