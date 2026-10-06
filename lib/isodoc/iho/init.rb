@@ -21,9 +21,10 @@ module IsoDoc
       end
 
       def bibrenderer(options = {})
-        ::Relaton::Render::Iho::General.new(options
-          .merge(language: @lang, script: @script, i18nhash: @i18n.get,
-                 config: @relatonrenderconfig))
+        require_relative "../../metanorma/iho/citation_style"
+
+        Metanorma::Iho::CitationStyle.new(options
+          .merge(language: @lang, script: @script, i18nhash: @i18n.get))
       end
 
       def info(isoxml, out)
