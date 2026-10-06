@@ -13,8 +13,9 @@ module Metanorma
       STYLE_PATH = File.join(__dir__, "iho-style.yml")
 
       # The IHO data elements, scoped to this renderer alone: the raw
-      # numeric edition
-      ELEMENTS = { edition: IhoElements::IhoEdition }.freeze
+      # numeric edition, and the creator citing its affiliation
+      ELEMENTS = { edition: IhoElements::IhoEdition,
+                   creator: IhoElements::IhoCreator }.freeze
 
       def initialize(options = {})
         super

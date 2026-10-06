@@ -5,6 +5,29 @@ module Metanorma
     # IHO-specific data elements extending the engine's ISO 690
     # vocabulary, passed to the renderer as its element map
     module IhoElements
+      # The IHO creator cites the affiliation's organization name
+      # after the creator list ("D. Balenson, Internet Engineering
+      # Task Force"), the 1.x name_fields affiliation behaviour
+      class IhoCreator < ::Relaton::Render::Iso690::Elements::Creator
+        def render
+          out = super.to_s
+          aff = affiliation_names
+          out.empty? || aff.empty? ? out : "#{out}, #{aff}"
+        end
+
+        private
+
+        def affiliation_names
+          creators.filter_map do |c|
+            person = c.person or next ""
+
+            Array(person.affiliation).filter_map do |a|
+              Array(a.organization&.name).map(&:content).first.to_s
+            end.reject(&:empty?).first.to_s
+          end.reject(&:empty?).uniq.join(", ")
+        end
+      end
+
       # The IHO edition cites only for IHO-published documents (the
       # 1.x edition_fields_format gate), as the raw numeric edition
       # carrying its own label ("edition 3.1.0"); worded editions
