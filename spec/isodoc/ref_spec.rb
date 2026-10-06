@@ -167,7 +167,7 @@ RSpec.describe IsoDoc do
               <bibitem id="ref1" type="standard"><biblio-tag>[1]<tab/></biblio-tag><formattedref>S-57 edition 3.1.0: IHO Transfer Standard for Digital Hydrographic Data, International Hydrographic Organization (<fmt-link target="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</fmt-link>).</formattedref>  <fetched/>  <title type="main" format="text/plain" language="en">IHO Transfer Standard for Digital Hydrographic Data</title>  <title type="main" format="text/plain" language="fr">Normes de l&#x2019;OHI pour le transfert de donn&#xE9;es hydrographiques num&#xE9;riques</title>  <uri type="pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</uri>  <docidentifier type="IHO">S-57</docidentifier><docidentifier scope="biblio-tag">S-57</docidentifier>  <docnumber>57</docnumber>  <date type="published">    <from>2000</from>  </date>  <contributor>    <role type="publisher"/>    <organization>      <name>International Hydrographic Organization</name>      <abbreviation>IHO</abbreviation>      <uri>www.iho.int</uri>    </organization>  </contributor>  <edition>3.1.0</edition>  <version>    <revision-date>2000-11-01</revision-date>  </version>  <language>en</language>  <language>fr</language>  <script>Latn</script>  <status>    <stage>in-force</stage>  </status>  <copyright>    <from>2000</from>    <owner>      <organization>        <name>International Hydrographic Organization</name>        <abbreviation>IHO</abbreviation>        <uri>www.iho.int</uri>      </organization>    </owner>  </copyright>  <series type="main">    <title type="original" format="text/plain">      Standards and Specifications      Normes et Sp&#xE9;cifications    </title>    <place>Monaco</place>    <organization>International Hydrographic Organization</organization>    <number>S</number>  </series>  <place>Monaco</place>  <validity>    <validityBegins>2000-11-01 00:00</validityBegins>  </validity></bibitem><bibitem id="ref2" type="standard"><biblio-tag>[2]<tab/></biblio-tag><formattedref>NIST&#xA0;FIPS&#xA0;186: Digital Signature Standard (DSS), National Institute of Standards and Technology (<fmt-link target="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</fmt-link>).</formattedref>  <fetched/>  <title format="text/plain" language="en" script="Latn">Digital Signature Standard (DSS)</title>  <uri type="uri">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</uri>  <docidentifier type="NIST">NIST&#xA0;FIPS&#xA0;186</docidentifier><docidentifier scope="biblio-tag">NIST&#xA0;FIPS&#xA0;186</docidentifier>  <date type="published">    <on>1996-12</on>  </date>  <date type="obsoleted">    <on>1998-12</on>  </date>  <date type="issued">    <on>1994-05</on>  </date>  <contributor>    <role type="author"/>    <organization>      <name>National Institute of Standards and Technology</name>    </organization>  </contributor>  <edition>Revision 1</edition>  <language>en</language>  <script>Latn</script>  <status>    <stage>final</stage>    <substage>withdrawn</substage>  </status>  <copyright>    <from>1996</from>    <owner>      <organization>        <name>National Institute of Standards and Technology</name>        <abbreviation>NIST</abbreviation>        <uri>www.nist.gov</uri>      </organization>    </owner>  </copyright>  <relation type="supersedes">    <bibitem>      <formattedref format="text/plain" language="en" script="Latn">FIPS 186</formattedref>      <uri type="src">https://csrc.nist.gov/publications/detail/fips/186/archive/1994-05-19</uri>    </bibitem>  </relation>  <relation type="updates">    <bibitem>      <formattedref format="text/plain" language="en" script="Latn">FIPS 186-1</formattedref>      <uri type="src">https://csrc.nist.gov/publications/detail/fips/186/1/archive/1998-12-15</uri>    </bibitem>  </relation>  <place>Gaithersburg, MD</place>  <keyword>ADP security</keyword>  <keyword>computer security</keyword>  <keyword>digital signatures</keyword>  <keyword>public-key cryptography</keyword>  <keyword>Federal Information Processing Standard</keyword></bibitem><bibitem id="ref3" type="standard"><biblio-tag>[3]<tab/></biblio-tag><formattedref>NIST&#xA0;FIPS&#xA0;180-1: Secure Hash Standard, National Institute of Standards and Technology (<fmt-link target="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</fmt-link>).</formattedref>  <fetched/>  <title format="text/plain" language="en" script="Latn">Secure Hash Standard</title>  <uri type="uri">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</uri>  <uri type="doi">https://doi.org/10.6028/NIST.FIPS.180-1</uri>  <docidentifier type="NIST">NIST&#xA0;FIPS&#xA0;180-1</docidentifier><docidentifier scope="biblio-tag">NIST&#xA0;FIPS&#xA0;180-1</docidentifier>  <date type="published">    <on>1995-04</on>  </date>  <date type="obsoleted">    <on>2002-08</on>  </date>  <date type="issued">    <on>1995-04</on>  </date>  <contributor>    <role type="author"/>    <organization>      <name>National Institute of Standards and Technology</name>    </organization>  </contributor>  <language>en</language>  <script>Latn</script>  <status>    <stage>final</stage>    <substage>withdrawn</substage>  </status>  <copyright>    <from>1995</from>    <owner>      <organization>        <name>National Institute of Standards and Technology</name>        <abbreviation>NIST</abbreviation>        <uri>www.nist.gov</uri>      </organization>    </owner>  </copyright>  <relation type="supersedes">    <bibitem>      <formattedref format="text/plain" language="en" script="Latn">FIPS 180</formattedref>      <uri type="src">https://csrc.nist.gov/publications/detail/fips/180/archive/1993-05-11</uri>    </bibitem>  </relation>  <relation type="updates">    <bibitem>      <formattedref format="text/plain" language="en" script="Latn">FIPS 180-2</formattedref>      <uri type="src">https://csrc.nist.gov/publications/detail/fips/180/2/archive/2002-08-01</uri>    </bibitem>  </relation>  <place>Gaithersburg, MD</place>  <keyword>computer security</keyword>  <keyword>digital signatures</keyword>  <keyword>Federal Information Processing Standard</keyword>  <keyword>hash algorithm</keyword></bibitem><bibitem id="ref4" type="standard"><biblio-tag>[4]<tab/></biblio-tag><formattedref>ITU-T&#xA0;X.509: Information technology &#x2013; Open Systems Interconnection &#x2013; The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (<fmt-link target="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</fmt-link>).</formattedref>  <fetched/>  <title type="title-main" format="text/plain" language="en" script="Latn">Information technology &#x2013; Open Systems Interconnection &#x2013; The Directory: Public-key and attribute certificate frameworks</title>  <title type="main" format="text/plain" language="en" script="Latn">Information technology &#x2013; Open Systems Interconnection &#x2013; The Directory: Public-key and attribute certificate frameworks</title>  <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</uri>  <docidentifier type="ITU">ITU-T&#xA0;X.509</docidentifier>  <docidentifier type="ISO">ISO/IEC&#xA0;9594-8</docidentifier><docidentifier scope="biblio-tag">ITU-T&#xA0;X.509</docidentifier><docidentifier scope="biblio-tag">ISO/IEC&#xA0;9594-8</docidentifier>  <contributor>    <role type="publisher"/>    <organization>      <name>International Telecommunication Union</name>      <abbreviation>ITU</abbreviation>      <uri>www.itu.int</uri>    </organization>  </contributor>  <edition>9</edition>  <language>en</language>  <script>Latn</script>  <status>    <stage>Published</stage>  </status>  <copyright>    <from>2019</from>    <owner>      <organization>        <name>International Telecommunication Union</name>        <abbreviation>ITU</abbreviation>        <uri>www.itu.int</uri>      </organization>    </owner>  </copyright>  <relation type="complements">    <bibitem type="standard">      <formattedref format="text/plain" language="en" script="Latn">X Suppl. 34 (01/2019)</formattedref>    </bibitem>  </relation>  <relation type="instance">    <bibitem type="standard">      <fetched/>      <title type="title-main" format="text/plain" language="en" script="Latn">Information technology &#x2013; Open Systems Interconnection &#x2013; The Directory: Public-key and attribute certificate frameworks</title>      <title type="main" format="text/plain" language="en" script="Latn">Information technology &#x2013; Open Systems Interconnection &#x2013; The Directory: Public-key and attribute certificate frameworks</title>      <uri type="src">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</uri>      <docidentifier type="ITU">ITU-T X.509</docidentifier>      <docidentifier type="ISO">ISO/IEC 9594-8</docidentifier>      <date type="published">        <on>2019</on>      </date>      <contributor>        <role type="publisher"/>        <organization>          <name>International Telecommunication Union</name>          <abbreviation>ITU</abbreviation>          <uri>www.itu.int</uri>        </organization>      </contributor>      <edition>9</edition>      <language>en</language>      <script>Latn</script>            <status>        <stage>Published</stage>      </status>      <copyright>        <from>2019</from>        <owner>          <organization>            <name>International Telecommunication Union</name>            <abbreviation>ITU</abbreviation>            <uri>www.itu.int</uri>          </organization>        </owner>      </copyright>      <relation type="complements">        <bibitem type="standard">          <formattedref format="text/plain" language="en" script="Latn">X Suppl. 34 (01/2019)</formattedref>        </bibitem>      </relation>      <place>Geneva</place>    </bibitem>  </relation>  <place>Geneva</place></bibitem><bibitem id="ref5"><biblio-tag>[5]<tab/></biblio-tag>
         <formattedref format="application/x-isodoc+xml">ZIP File Format Specification, PKWare Inc.</formattedref><docidentifier type="metanorma-ordinal">[1]</docidentifier>
   
-      </bibitem><bibitem id="ref6" type="standard"><biblio-tag>[6]<tab/></biblio-tag><formattedref>NIST&#xA0;FIPS&#xA0;81: DES Modes of Operation, National Bureau of Standards (<fmt-link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</fmt-link>).</formattedref>  <fetched/>  <title format="text/plain" language="en" script="Latn">DES Modes of Operation</title>  <uri type="uri">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</uri>  <uri type="doi">https://doi.org/10.6028/NBS.FIPS.81</uri>  <docidentifier type="NIST">NIST&#xA0;FIPS&#xA0;81</docidentifier><docidentifier scope="biblio-tag">NIST&#xA0;FIPS&#xA0;81</docidentifier>  <date type="published">    <on>1980-12</on>  </date>  <date type="obsoleted">    <on>2005-05</on>  </date>  <date type="issued">    <on>1980-12</on>  </date>  <contributor>    <role type="author"/>    <organization>      <name>National Bureau of Standards</name>    </organization>  </contributor>  <language>en</language>  <script>Latn</script>  <status>    <stage>final</stage>    <substage>withdrawn</substage>  </status>  <copyright>    <from>1980</from>    <owner>      <organization>        <name>National Institute of Standards and Technology</name>        <abbreviation>NIST</abbreviation>        <uri>www.nist.gov</uri>      </organization>    </owner>  </copyright>  <place>Gaithersburg, MD</place>  <keyword>cryptography</keyword>  <keyword>data security</keyword>  <keyword>DES</keyword>  <keyword>encryption</keyword>  <keyword>Federal Information Processing Standards</keyword>  <keyword>computer security</keyword>  <keyword>modes of operation</keyword></bibitem><bibitem id="ref7" type="standard"><biblio-tag>[7]<tab/></biblio-tag><formattedref>IETF&#xA0;RFC&#xA0;1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson (<fmt-link target="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</fmt-link>).</formattedref>  <fetched/>  <title format="text/plain" language="en" script="Latn">Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers</title>  <uri type="xml">https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1423.xml</uri>  <uri type="src">https://www.rfc-editor.org/info/rfc1423</uri>  <docidentifier type="IETF">IETF&#xA0;RFC&#xA0;1423</docidentifier>  <docidentifier type="IETF" scope="anchor">IETF&#xA0;RFC1423</docidentifier>  <docidentifier type="DOI">DOI&#xA0;10.17487/RFC1423</docidentifier><docidentifier scope="biblio-tag">IETF&#xA0;RFC&#xA0;1423</docidentifier>  <date type="published">    <on>1993-02</on>  </date>  <contributor>    <role type="author"/>    <person>      <name>        <completename language="en">D. Balenson</completename>      </name>      <affiliation>        <organization>          <name>Internet Engineering Task Force</name>          <abbreviation>IETF</abbreviation>        </organization>      </affiliation>    </person>  </contributor>  <contributor>    <role type="publisher"/>    <organization>      <name>Internet Engineering Task Force</name>      <abbreviation>IETF</abbreviation>    </organization>  </contributor>  <language>en</language>  <script>Latn</script>    <series type="main">    <title format="text/plain" language="en" script="Latn">RFC</title>    <number>1423</number>  </series>  <place>Fremont, CA</place></bibitem><bibitem id="ref8"><biblio-tag>[8]<tab/></biblio-tag>
+      </bibitem><bibitem id="ref6" type="standard"><biblio-tag>[6]<tab/></biblio-tag><formattedref>NIST&#xA0;FIPS&#xA0;81: DES Modes of Operation, National Bureau of Standards (<fmt-link target="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</fmt-link>).</formattedref>  <fetched/>  <title format="text/plain" language="en" script="Latn">DES Modes of Operation</title>  <uri type="uri">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</uri>  <uri type="doi">https://doi.org/10.6028/NBS.FIPS.81</uri>  <docidentifier type="NIST">NIST&#xA0;FIPS&#xA0;81</docidentifier><docidentifier scope="biblio-tag">NIST&#xA0;FIPS&#xA0;81</docidentifier>  <date type="published">    <on>1980-12</on>  </date>  <date type="obsoleted">    <on>2005-05</on>  </date>  <date type="issued">    <on>1980-12</on>  </date>  <contributor>    <role type="author"/>    <organization>      <name>National Bureau of Standards</name>    </organization>  </contributor>  <language>en</language>  <script>Latn</script>  <status>    <stage>final</stage>    <substage>withdrawn</substage>  </status>  <copyright>    <from>1980</from>    <owner>      <organization>        <name>National Institute of Standards and Technology</name>        <abbreviation>NIST</abbreviation>        <uri>www.nist.gov</uri>      </organization>    </owner>  </copyright>  <place>Gaithersburg, MD</place>  <keyword>cryptography</keyword>  <keyword>data security</keyword>  <keyword>DES</keyword>  <keyword>encryption</keyword>  <keyword>Federal Information Processing Standards</keyword>  <keyword>computer security</keyword>  <keyword>modes of operation</keyword></bibitem><bibitem id="ref7" type="standard"><biblio-tag>[7]<tab/></biblio-tag><formattedref>IETF&#xA0;RFC&#xA0;1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (<fmt-link target="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</fmt-link>).</formattedref>  <fetched/>  <title format="text/plain" language="en" script="Latn">Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers</title>  <uri type="xml">https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1423.xml</uri>  <uri type="src">https://www.rfc-editor.org/info/rfc1423</uri>  <docidentifier type="IETF">IETF&#xA0;RFC&#xA0;1423</docidentifier>  <docidentifier type="IETF" scope="anchor">IETF&#xA0;RFC1423</docidentifier>  <docidentifier type="DOI">DOI&#xA0;10.17487/RFC1423</docidentifier><docidentifier scope="biblio-tag">IETF&#xA0;RFC&#xA0;1423</docidentifier>  <date type="published">    <on>1993-02</on>  </date>  <contributor>    <role type="author"/>    <person>      <name>        <completename language="en">D. Balenson</completename>      </name>      <affiliation>        <organization>          <name>Internet Engineering Task Force</name>          <abbreviation>IETF</abbreviation>        </organization>      </affiliation>    </person>  </contributor>  <contributor>    <role type="publisher"/>    <organization>      <name>Internet Engineering Task Force</name>      <abbreviation>IETF</abbreviation>    </organization>  </contributor>  <language>en</language>  <script>Latn</script>    <series type="main">    <title format="text/plain" language="en" script="Latn">RFC</title>    <number>1423</number>  </series>  <place>Fremont, CA</place></bibitem><bibitem id="ref8"><biblio-tag>[8]<tab/></biblio-tag>
         <formattedref format="application/x-isodoc+xml">Blowfish encryption algorithm, B. Schneier, Fast Software Encryption, Cambridge Security Workshop Proceedings (December 1993), Springer-Verlag, 1994, pp. 191-204 (<link target="http://www.counterpane.com" id="_"/><semx element="link" source="_"><fmt-link target="http://www.counterpane.com"/></semx>)</formattedref><docidentifier type="metanorma-ordinal">[2]</docidentifier>
   
       </bibitem><bibitem id="ref9" type="standard"><biblio-tag>[9]<tab/></biblio-tag><formattedref>ISO/IEC&#xA0;13239:2002: Information technology&#x2009;&#x2014;&#x2009;Telecommunications and information exchange between systems&#x2009;&#x2014;&#x2009;High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (<fmt-link target="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</fmt-link>).</formattedref>  <fetched/>  <title type="title-intro" format="text/plain" language="en" script="Latn">Information technology</title>  <title type="title-main" format="text/plain" language="en" script="Latn">Telecommunications and information exchange between systems</title>  <title type="title-part" format="text/plain" language="en" script="Latn">High-level data link control (HDLC) procedures</title>  <title type="main" format="text/plain" language="en" script="Latn">Information technology&#x2009;&#x2014;&#x2009;Telecommunications and information exchange between systems&#x2009;&#x2014;&#x2009;High-level data link control (HDLC) procedures</title>  <title type="title-intro" format="text/plain" language="fr" script="Latn">Technologies de l&#x2019;information</title>  <title type="title-main" format="text/plain" language="fr" script="Latn">T&#xE9;l&#xE9;communications et &#xE9;change d&#x2019;information entre syst&#xE8;mes</title>  <title type="title-part" format="text/plain" language="fr" script="Latn">Proc&#xE9;dures de commande de liaison de donn&#xE9;es &#xE0; haut niveau (HDLC)</title>  <title type="main" format="text/plain" language="fr" script="Latn">Technologies de l&#x2019;information&#x2009;&#x2014;&#x2009;T&#xE9;l&#xE9;communications et &#xE9;change d&#x2019;information entre syst&#xE8;mes&#x2009;&#x2014;&#x2009;Proc&#xE9;dures de commande de liaison de donn&#xE9;es &#xE0; haut niveau (HDLC)</title>  <uri type="src">https://www.iso.org/standard/37010.html</uri>  <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:37010:en</uri>  <uri type="rss">https://www.iso.org/contents/data/standard/03/70/37010.detail.rss</uri>  <docidentifier type="ISO">ISO/IEC&#xA0;13239:2002</docidentifier><docidentifier scope="biblio-tag">ISO/IEC&#xA0;13239:2002</docidentifier>  <docnumber>13239</docnumber>  <date type="published">    <on>2002</on>  </date>  <contributor>    <role type="publisher"/>    <organization>      <name>International Organization for Standardization</name>      <abbreviation>ISO</abbreviation>      <uri>www.iso.org</uri>    </organization>  </contributor>  <contributor>    <role type="publisher"/>    <organization>      <name>International Electrotechnical Commission</name>      <abbreviation>IEC</abbreviation>      <uri>www.iec.ch</uri>    </organization>  </contributor>  <edition>3</edition>  <language>en</language>  <language>fr</language>  <script>Latn</script>      <status>    <stage>90</stage>    <substage>93</substage>  </status>  <copyright>    <from>2002</from>    <owner>      <organization>        <name>ISO/IEC</name>      </organization>    </owner>  </copyright>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO/IEC 3309:1993</formattedref>    </bibitem>  </relation>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO/IEC 4335:1993</formattedref>    </bibitem>  </relation>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO/IEC 7809:1993</formattedref>    </bibitem>  </relation>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO/IEC 8885:1993</formattedref>    </bibitem>  </relation>  <relation type="obsoletes">    <bibitem type="standard">      <formattedref format="text/plain">ISO/IEC 13239:2000</formattedref>    </bibitem>  </relation>  <place>Geneva</place></bibitem>
@@ -277,144 +277,55 @@ RSpec.describe IsoDoc do
     OUTPUT
 
     html = <<~OUTPUT
-      #{HTML_HDR}
-             <br/>
-             <div id="_7867a7ec-bc46-423a-b6c3-b6c5be91c490" class="TOC">
-                <h1 class="IntroTitle">Contents</h1>
-             </div>
-             <br/>
-             <div id="_">
-                <h1 class="ForewordTitle">Foreword</h1>
-                <p id="_">
-                   <a href="#ref1">S-57</a>
-                   <a href="#ref2">NIST FIPS 186</a>
-                   <a href="#ref3">NIST FIPS 180-1</a>
-                   <a href="#ref4">ITU-T X.509 / ISO/IEC 9594-8</a>
-                   <a href="#ref5">[1]</a>
-                   <a href="#ref6">NIST FIPS 81</a>
-                   <a href="#ref7">IETF RFC 1423</a>
-                   <a href="#ref8">[2]</a>
-                   <a href="#ref9">ISO/IEC 13239:2002</a>
-                   <a href="#ISO712">ISO 712</a>
-                   <a href="#ISBN">[3]</a>
-                   <a href="#ISSN">[4]</a>
-                   <a href="#ISO16634">ISO 16634:--</a>
-                   <a href="#ref11">???</a>
-                   <a href="#ref10">[6]</a>
-                   <a href="#ref12">[Citn]</a>
-                </p>
-             </div>
-             <div>
-                <h1>1  Normative References</h1>
-                <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-                <p id="ref1" class="NormRef">
-                   [1]  S-57 edition 3.1.0: IHO Transfer Standard for Digital Hydrographic Data, International Hydrographic Organization (
-                   <a href="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</a>
-                   ).
-                </p>
-                <p id="ref2" class="NormRef">
-                   [2]  NIST FIPS 186: Digital Signature Standard (DSS), National Institute of Standards and Technology (
-                   <a href="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</a>
-                   ).
-                </p>
-                <p id="ref3" class="NormRef">
-                   [3]  NIST FIPS 180-1: Secure Hash Standard, National Institute of Standards and Technology (
-                   <a href="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</a>
-                   ).
-                </p>
-                <p id="ref4" class="NormRef">
-                   [4]  ITU-T X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (
-                   <a href="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</a>
-                   ).
-                </p>
-                <p id="ref5" class="NormRef">[5]  ZIP File Format Specification, PKWare Inc.</p>
-                <p id="ref6" class="NormRef">
-                   [6]  NIST FIPS 81: DES Modes of Operation, National Bureau of Standards (
-                   <a href="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</a>
-                   ).
-                </p>
-                <p id="ref7" class="NormRef">
-                   [7]  IETF RFC 1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (
-                   <a href="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</a>
-                   ).
-                </p>
-                <p id="ref8" class="NormRef">
-                   [8]  Blowfish encryption algorithm, B. Schneier, Fast Software Encryption, Cambridge Security Workshop Proceedings (December 1993), Springer-Verlag, 1994, pp. 191-204 (
-                   <a href="http://www.counterpane.com">http://www.counterpane.com</a>
-                   )
-                </p>
-                <p id="ref9" class="NormRef">
-                   [9]  ISO/IEC 13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (
-                   <a href="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</a>
-                   ).
-                </p>
-                <p id="ISO712" class="NormRef">[10]  ISO 712: Cereals and cereal products, International Organization for Standardization.</p>
-                <p id="ISO16634" class="NormRef">[11]  ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</p>
-                <p id="ISO20483" class="NormRef">[12]  ISO 20483:2013-2014: Cereals and pulses, International Organization for Standardization.</p>
-                <p id="ref110" class="NormRef">
-                   [13] 
-                   <span style="font-variant:small-caps;">Standard No I.C.C 167</span>
-                   .
-                   <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i>
-                   (see
-                   <a href="http://www.icc.or.at">http://www.icc.or.at</a>
-                   )
-                </p>
-                <div id="A" class="display Note NormRef">
-                   <p>
-                      <span class="note_label">NOTE  </span>
-                      This is an annotation of ISO 20483:2013-2014
-                   </p>
-                </div>
-             </div>
-             <br/>
-             <div>
-                <h1 class="Section3">Bibliography</h1>
-                <p id="ISBN" class="Biblio">
-                   [14] 
-                   <i>Chemicals for analytical laboratory use</i>
-                   , n.p.: n.d., ISBN: ISBN.
-                </p>
-                <p id="ISSN" class="Biblio">
-                   [15] 
-                   <i>Instruments for analytical laboratory use</i>
-                   , n.d., ISSN: ISSN.
-                </p>
-                <div id="B" class="display Note Biblio">
-                   <p>
-                      <span class="note_label">NOTE 1  </span>
-                      This is an annotation of document ISSN.
-                   </p>
-                </div>
-                <div id="C" class="display Note Biblio">
-                   <p>
-                      <span class="note_label">NOTE 2  </span>
-                      This is another annotation of document ISSN.
-                   </p>
-                </div>
-                <p id="ISO3696" class="Biblio">[16]  ISO 3696: Water for analytical laboratory use.</p>
-                <p id="ref10" class="Biblio">
-                   [17] 
-                   <span style="font-variant:small-caps;">Standard No I.C.C 167</span>
-                   .
-                   <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i>
-                   (see
-                   <a href="http://www.icc.or.at">http://www.icc.or.at</a>
-                   )
-                </p>
-                <p id="ref11" class="Biblio">[18]  IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</p>
-                <p id="ref12" class="Biblio">
-                   [19]  CitationWorks. 2019.
-                   <i>How to cite a reference</i>
-                   .
-                </p>
-             </div>
-          </div>
-       </body>
+      <body lang="EN-US" link="blue" vlink="#954F72" xml:lang="EN-US" class="container"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_" class="TOC"><h1 class="IntroTitle">Contents</h1></div><br/><div id="_"><h1 class="ForewordTitle">Foreword</h1><p id="_">
+        <a href="#ref1">S-57</a>
+        <a href="#ref2">NIST FIPS 186</a>
+        <a href="#ref3">NIST FIPS 180-1</a>
+        <a href="#ref4">ITU-T X.509 / ISO/IEC 9594-8</a>
+        <a href="#ref5">[1]</a>
+        <a href="#ref6">NIST FIPS 81</a>
+        <a href="#ref7">IETF RFC 1423</a>
+        <a href="#ref8">[2]</a>
+        <a href="#ref9">ISO/IEC 13239:2002</a>
+        <a href="#ISO712">ISO 712</a>
+        <a href="#ISBN">[3]</a>
+        <a href="#ISSN">[4]</a>
+        <a href="#ISO16634">ISO 16634:--</a>
+        <a href="#ref11">???</a>
+        <a href="#ref10">[6]</a>
+        <a href="#ref12">[Citn]</a>
+        </p></div><div><h1>1  Normative References</h1>
+          <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
+              <p id="ref1" class="NormRef">[1]  S-57 edition 3.1.0: IHO Transfer Standard for Digital Hydrographic Data, International Hydrographic Organization (<a href="https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf">https://iho.int/uploads/user/pubs/standards/s-57/31Main.pdf</a>).</p><p id="ref2" class="NormRef">[2]  NIST FIPS 186: Digital Signature Standard (DSS), National Institute of Standards and Technology (<a href="https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30">https://csrc.nist.gov/publications/detail/fips/186/archive/1996-12-30</a>).</p><p id="ref3" class="NormRef">[3]  NIST FIPS 180-1: Secure Hash Standard, National Institute of Standards and Technology (<a href="https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17">https://csrc.nist.gov/publications/detail/fips/180/1/archive/1995-04-17</a>).</p><p id="ref4" class="NormRef">[4]  ITU-T X.509: Information technology – Open Systems Interconnection – The Directory: Public-key and attribute certificate frameworks, International Telecommunication Union (<a href="https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en">https://www.itu.int/ITU-T/recommendations/rec.aspx?rec=14033&amp;lang=en</a>).</p><p id="ref5" class="NormRef">[5]  ZIP File Format Specification, PKWare Inc.</p><p id="ref6" class="NormRef">[6]  NIST FIPS 81: DES Modes of Operation, National Bureau of Standards (<a href="https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02">https://csrc.nist.gov/publications/detail/fips/81/archive/1980-12-02</a>).</p><p id="ref7" class="NormRef">[7]  IETF RFC 1423: Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers, D. Balenson, Internet Engineering Task Force (<a href="https://www.rfc-editor.org/info/rfc1423">https://www.rfc-editor.org/info/rfc1423</a>).</p><p id="ref8" class="NormRef">[8]  Blowfish encryption algorithm, B. Schneier, Fast Software Encryption, Cambridge Security Workshop Proceedings (December 1993), Springer-Verlag, 1994, pp. 191-204 (<a href="http://www.counterpane.com">http://www.counterpane.com</a>)</p><p id="ref9" class="NormRef">[9]  ISO/IEC 13239:2002: Information technology — Telecommunications and information exchange between systems — High-level data link control (HDLC) procedures, International Organization for Standardization and International Electrotechnical Commission (<a href="https://www.iso.org/standard/37010.html">https://www.iso.org/standard/37010.html</a>).</p>
+      <p id="ISO712" class="NormRef">[10]  ISO 712: Cereals and cereal products, International Organization for Standardization.</p>
+      <p id="ISO16634" class="NormRef">[11]  ISO 16634:-- (all parts): Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs.</p>
+      <p id="ISO20483" class="NormRef">[12]  ISO 20483:2013-2014: Cereals and pulses, International Organization for Standardization.</p>
+      <p id="ref110" class="NormRef">[13]  <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)
+      </p><div id="A" class="display Note NormRef"><p><span class="note_label">NOTE  </span>This is an annotation of ISO 20483:2013-2014</p></div>
+
+
+      </div><br/><div><h1 class="Section3">Bibliography</h1>
+
+      <p id="ISBN" class="Biblio">[14]  Chemicals for analytical laboratory use.</p>
+      <p id="ISSN" class="Biblio">[15]  ISSN ISSN: Instruments for analytical laboratory use.
+
+      </p><div id="B" class="display Note Biblio"><p><span class="note_label">NOTE 1  </span>This is an annotation of document ISSN.</p></div><div id="C" class="display Note Biblio"><p><span class="note_label">NOTE 2  </span>This is another annotation of document ISSN.</p></div>
+
+
+      <p id="ISO3696" class="Biblio">[16]  ISO 3696: Water for analytical laboratory use.</p>
+      <p id="ref10" class="Biblio">[17]  <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
+      <p id="ref11" class="Biblio">[18]  IETF RFC 10: Internet Calendaring and Scheduling Core Object Specification (iCalendar).</p>
+      <p id="ref12" class="Biblio">[19]  CitationWorks. 2019. <i>How to cite a reference</i>.</p>
+
+
+      </div></div></body>
     OUTPUT
     pres_output = IsoDoc::Iho::PresentationXMLConvert
       .new(presxml_options)
       .convert("test", input, true)
+    File.write("/tmp/iho_ref4_pres.xml",
+      strip_guid(pres_output
+        .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
     expect(strip_guid(pres_output
       .sub(%r{<localized-strings>.*</localized-strings>}m, "")))
       .to be_xml_equivalent_to presxml
