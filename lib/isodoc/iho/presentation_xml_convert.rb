@@ -1,7 +1,6 @@
 require_relative "init"
 require "isodoc"
 require "metanorma-generic"
-require_relative "../../relaton/render/general"
 
 module IsoDoc
   module Iho
@@ -98,9 +97,10 @@ module IsoDoc
       end
 
       def format_personalname(contrib)
-        Relaton::Render::General.new(template: { book: "{{ creatornames }}" })
-          .render("<bibitem type='book'>#{contrib.to_xml}</bibitem>",
-                  embedded: true)
+        require_relative "../../metanorma/iho/citation_style"
+
+        Metanorma::Iho::CitationStyle.new
+          .creator_names("<bibitem type='book'>#{contrib.to_xml}</bibitem>")
       end
 
       def dochistory_description(item)

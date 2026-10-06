@@ -1,0 +1,37 @@
+# The metanorma-iho CitationStyle instance (relaton-render 3.0.0.pre
+# Iso690 engine). Identifier-led standards: the identifier and edition
+# lead, the title follows, and the publisher closes with its uri.
+name: "ISO 690 (metanorma-iho flavour)"
+scheme:
+  system: name-date
+  nameForm:
+    initials: true
+    initialsSeparator: ""
+    initialsPeriod: false
+    orgUpcase: false
+    creatorFallback: publisher_name
+  locale:
+    labels:
+      in: ""
+      oxford_comma: ""
+      no_place: "n.p."
+      available_from: ""
+templates:
+  titleOpen: ""
+  titleClose: ""
+  identifierMode: first
+  citation: "{{surname}}, {{date}}{{disambiguator}}"
+  reference: "{{identifier}} {{edition}}: {{title}}, {{creator}} ({{location}})"
+  name: "{{surname}} {{givenNames}}"
+  uri: "<fmt-link target='{{uri}}'>{{uri}}</fmt-link>"
+perType:
+  - type: report
+    template: "{{identifier}} {{edition}}: {{title}}, {{creator}} ({{location}})"
+  - type: monograph
+    template: "{{title}}, {{creator}}. {{date}}."
+  - type: component_part
+    template: "{{title}}, {{creator}}. {{componentpart}}. {{date}}. {{extent}}."
+  - type: online
+    template: "{{title}}, {{creator}}. {{edition}}. {{date}}. {{location}}."
+  - type: webdoc
+    template: "{{title}}, {{creator}}. {{date}}. {{location}}."
