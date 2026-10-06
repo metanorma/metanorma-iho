@@ -6,8 +6,9 @@ scheme:
   system: name-date
   nameForm:
     initials: true
-    initialsSeparator: ""
-    initialsPeriod: false
+    subsequentInitials: true
+    initialsSeparator: " "
+    initialsPeriod: true
     orgUpcase: false
     creatorFallback: publisher_name
   locale:
@@ -21,12 +22,12 @@ templates:
   titleClose: ""
   identifierMode: first
   citation: "{{surname}}, {{date}}{{disambiguator}}"
-  reference: "{{identifier}} {{edition}}: {{title}}, {{creator}} ({{location}})"
-  name: "{{surname}} {{givenNames}}"
+  reference: "{{identifier}}{{edition}}: {{title}}, {{creator}} ({{location}})"
+  name: "{{surname}}, {{givenNames}}"
   uri: "<fmt-link target='{{uri}}'>{{uri}}</fmt-link>"
 perType:
   - type: report
-    template: "{{identifier}} {{edition}}: {{title}}, {{creator}} ({{location}})"
+    template: "{{identifier}}{{edition}}: {{title}}, {{creator}} ({{location}})"
   - type: monograph
     template: "{{title}}, {{creator}}. {{date}}."
   - type: component_part

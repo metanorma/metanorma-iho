@@ -14,7 +14,7 @@ module Metanorma
           return "" unless iho_publisher?
 
           text = edition_text
-          text.match?(/\A\d/) ? "edition #{text}" : ""
+          text.match?(/\A\d/) ? " edition #{text}" : ""
         end
 
         private
