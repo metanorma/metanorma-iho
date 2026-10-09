@@ -12,10 +12,9 @@ module Metanorma
     class CitationStyle < ::Relaton::Render::General
       STYLE_PATH = File.join(__dir__, "iho-style.yml")
 
-      # The IHO data elements, scoped to this renderer alone: the raw
-      # numeric edition, and the creator citing its affiliation
-      ELEMENTS = { edition: IhoElements::IhoEdition,
-                   creator: IhoElements::IhoCreator }.freeze
+      # The IHO presentation-of-models rules are engine-registered
+      # (iho_creator, iho_edition) and selected as pack data in
+      # iho-style.yml
 
       def initialize(options = {})
         super
@@ -25,7 +24,6 @@ module Metanorma
           script: options[:script] || "Latn",
           labels: options[:i18nhash] || {},
           style: options[:style] || STYLE_PATH,
-          elements: ELEMENTS,
         )
       end
     end

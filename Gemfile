@@ -2,7 +2,7 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 source "https://rubygems.org"
-gem "relaton-render", "3.0.0.pre.alpha.21" # uri escape + authorizer + subsequentInitials
+gem "relaton-render", "3.0.0.pre.alpha.36" # iho_creator/iho_edition named rules
 gem "isodoc", github: "metanorma/isodoc", branch: "main" # relaton-render range #846
 gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main" # Standoc::Document split + relaton 3 allowance
 gem "metanorma-utils", github: "metanorma/metanorma-utils", branch: "main" # Metanorma::Utils::GcBudget API, unreleased
