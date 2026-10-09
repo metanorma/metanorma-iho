@@ -17,6 +17,9 @@ scheme:
       oxford_comma: ""
       no_place: "n.p."
       available_from: ""
+rules:
+  creator: iho_creator
+  edition: iho_edition
 templates:
   titleOpen: ""
   titleClose: ""
