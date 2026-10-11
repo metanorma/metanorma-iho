@@ -2,7 +2,7 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 source "https://rubygems.org"
-gem "relaton-render", "3.0.0.pre.alpha.36" # iho_creator/iho_edition named rules
+gem "relaton-render", "= 3.0.0.pre.alpha.43" # iho_creator/iho_edition named rules
 gem "isodoc", github: "metanorma/isodoc", branch: "main" # relaton-render range #846
 gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main" # Standoc::Document split + relaton 3 allowance
 gem "metanorma-utils", github: "metanorma/metanorma-utils", branch: "main" # Metanorma::Utils::GcBudget API, unreleased
@@ -10,7 +10,7 @@ gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main" # Citatio
 gem "metanorma-generic", github: "metanorma/metanorma-generic", branch: "main" # SvgmapElement, unreleased
 gem "pubid", "~> 2.0.0.pre.alpha" # relaton 3 monogem pairs with pubid 2
 gem "pubid-core", "~> 1.15"
-gem "relaton-bib", "~> 2.2.0.pre.alpha.1"
+gem "relaton-bib", "2.2.0.pre.alpha.1"
 gem "metanorma-plugin-lutaml", github: "metanorma/metanorma-plugin-lutaml", branch: "main" # LutamlDataPreprocessor, unreleased
 gem "metanorma-document", github: "metanorma/metanorma-document", branch: "main" # TEMPORARY audit chain
 
@@ -28,6 +28,4 @@ gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-vali
 # relaton v3 monogem + pubid-2 prerelease chain (isodoc PR#825)
 gem "isodoc",
     github: "metanorma/isodoc",
-    branch: "rt-pubid-2-migration"
-gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
-gem "pubid", "2.0.0.pre.alpha.8" # relaton 3.0.0.pre.alpha.1 pairs with pre-rename pubid; .alpha.9 renamed base_identifier->base
+    branch: "rt-pubid-2-migration"gem "pubid", "2.0.0.pre.alpha.8" # relaton 3.0.0.pre.alpha.1 pairs with pre-rename pubid; .alpha.9 renamed base_identifier->base
