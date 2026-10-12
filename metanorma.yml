@@ -42,10 +42,19 @@ published_stages:
   - retired
 default_stage: in-force
 stage_abbreviations:
+  # M-3 2/2007 stage names (pre-2026; deprecated, still accepted)
   draft-proposal:
   draft-development:
   draft-testing:
   draft-implementation:
+  # M3-E-2026 development stages; the abbreviation renders in the
+  # document identifier, e.g. S-102(WD) (M-3 clause on standardisation
+  # stages, document-ID conventions)
+  concept-proposal: CP
+  proposal-development: PD
+  working-draft: WD
+  endorsement-draft: ED
+  approval-draft: AD
   in-force:
   retired:
 committee_types:
