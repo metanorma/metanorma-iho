@@ -160,6 +160,7 @@ RSpec.describe IsoDoc::Iho do
         stable_untildate: "XXX",
         stage: "Working Draft",
         stage_display: "Working Draft",
+        stageabbr: "WD",
         supplementtitle: "Supplement Title",
         tc: "Hydrographic Services and Standards Committee",
         tc_committee: { code: "hssc",

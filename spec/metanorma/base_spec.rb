@@ -84,7 +84,7 @@ RSpec.describe Metanorma::Iho do
       <bibdata type="standard">
         <title language="en" type="main">Main Title</title>
         <title language="en" type="title-main">Main Title</title>
-      <docidentifier primary="true" type="IHO">B-1000</docidentifier>
+      <docidentifier primary="true" type="IHO">B-1000(WD)</docidentifier>
       <docnumber>1000</docnumber>
        <date type='implemented'>
          <on>2000-01-01</on>
@@ -1103,5 +1103,35 @@ RSpec.describe Metanorma::Iho do
     misc = xml.at("//xmlns:metanorma-extension/xmlns:clause")
     expect(strip_guid(misc.to_xml))
       .to be_equivalent_to output
+  end
+
+  # IHO M3-E-2026 standardisation stages (metanorma-iho#553): the stage
+  # abbreviation renders inside the document identifier, so a document
+  # at a development stage is identifiable in itself.
+  %w[concept-proposal proposal-development working-draft
+     endorsement-draft approval-draft].zip(%w[CP PD WD ED AD])
+    .each do |stage, abbr|
+    it "renders the M-3 2026 #{stage} (#{abbr}) stage in the document identifier" do
+      input = <<~INPUT
+        = Document title
+        Author
+        :docfile: test.adoc
+        :nodoc:
+        :novalid:
+        :docnumber: 102
+        :doctype: standard
+        :status: #{stage}
+        :language: en
+        :title: Test
+
+        Paragraph.
+      INPUT
+      xml = Nokogiri::XML(Asciidoctor.convert(input, backend: :iho,
+                                                    header_footer: true))
+      expect(xml.at("//xmlns:bibdata/xmlns:docidentifier").text)
+        .to eq("S-102(#{abbr})")
+      expect(xml.at("//xmlns:bibdata/xmlns:status/xmlns:stage").text)
+        .to eq(stage)
+    end
   end
 end
