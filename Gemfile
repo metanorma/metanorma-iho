@@ -7,7 +7,7 @@ gemspec
 # pins for the engine mains — released standoc/isodoc still cap the
 # old relaton line
 gem "pubid", github: "pubid/pubid", branch: "main"
-gem "relaton-cli", ">= 3.0.0.pre.alpha.1"
+gem "relaton-cli", ">= 3.0.0.pre.alpha.1", github: "metanorma/relaton-cli", branch: "main"
 gem "isodoc", github: "metanorma/isodoc", branch: "main"
 gem "isodoc-i18n", github: "metanorma/isodoc-i18n", branch: "main"
 gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "main"
