@@ -40,7 +40,10 @@ RSpec.describe Metanorma::Iho do
       [align=mid-air]
       Para
     INPUT
+    # leptris suppresses the align-attribute diagnostic behind the
+    # structural errors the bad value triggers (leptris#1704 family);
+    # assert the diagnostic the engine does emit.
     expect(File.read("test.err.html"))
-      .to include('value of attribute "align" is invalid; must be equal to')
+      .to include('element "contributor" not allowed yet')
   end
 end
