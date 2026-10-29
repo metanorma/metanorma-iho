@@ -78,7 +78,10 @@ module Metanorma
           text = Array(element.value).join.strip
           return nil if text.empty?
 
-          text.split("-").map(&:capitalize).join(" ")
+          label = text.split("-").map(&:capitalize).join(" ")
+          abbr = element.respond_to?(:abbreviation) ? element.abbreviation : nil
+          abbr = Array(abbr).filter_map { |a| a.respond_to?(:value) ? Array(a.value).join.strip : nil }.first
+          abbr && !abbr.empty? ? "#{label} (#{abbr})" : label
         end
 
         def iho_copyright_line(bibdata)

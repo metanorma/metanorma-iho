@@ -156,7 +156,7 @@ RSpec.describe Metanorma::Iho do
         <language>en</language>
         <script>Latn</script>
         <status>
-          <stage>working-draft</stage>
+          <stage abbreviation="WD">working-draft</stage>
         </status>
         <copyright>
           <from>2001</from>

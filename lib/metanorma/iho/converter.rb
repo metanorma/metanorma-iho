@@ -15,6 +15,24 @@ module Metanorma
         Metanorma::Iho.configuration
       end
 
+      # IHO M-3 (2026) development-stage vocabulary (metanorma-iho#553):
+      # a `:status:` value may be the stage slug or its M-3 abbreviation;
+      # both normalize to the slug with the abbreviation carried on the
+      # stage element. Values outside the M-3 vocabulary pass through
+      # unchanged (in-force, draft, ...).
+      def metadata_status(node, xml)
+        return super unless node.attr("status")
+
+        stage, abbr = M3Stages.normalize(node.attr("status"))
+        abbr ||= node.attr("docstage-abbrev")
+        xml.status do |s|
+          add_noko_elem(s, "stage", stage, abbreviation: abbr)
+          add_noko_elem(s, "substage", node.attr("docsubstage") ||
+                        node.attr("substage"))
+          add_noko_elem(s, "iteration", node.attr("iteration"))
+        end
+      end
+
       def presentation_xml_converter(node)
         IsoDoc::Iho::PresentationXMLConvert
           .new(html_extract_attributes(node)
