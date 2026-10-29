@@ -6,6 +6,7 @@ require "metanorma/iho/processor"
 module Metanorma
   module Iho
     autoload :CitationStyle, "metanorma/iho/citation_style"
+    autoload :M3Stages, "metanorma/iho/m3_stages"
 
     class Configuration < Metanorma::Generic::Configuration
       def initialize(*args)
