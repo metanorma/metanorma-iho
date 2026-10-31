@@ -188,7 +188,7 @@ RSpec.describe IsoDoc::Iho do
     expect(result[:logo_desc]).not_to include a_eacute
     expect(result[:logo_sign]).to match(/<svg/m)
     expect(result.except(:logo, :logo_mark, :logo_desc, :logo_sign))
-      .to be_equivalent_to(output.except(:logo, :logo_mark,
+      .to eq(output.except(:logo, :logo_mark,
                                          :logo_desc, :logo_sign))
 
     presxml = IsoDoc::Iho::PresentationXMLConvert
