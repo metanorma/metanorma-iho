@@ -24,7 +24,32 @@ module Metanorma
           @log.add("IHO_1", nil)
         end
         super
+        metadata_committee(node, ext)
         metadata_commentperiod(node, ext)
+      end
+
+      # IHO S-4 documents carry their editorial group as plain attributes:
+      # :committee:/:workgroup: (with _2, _3… suffixes for additional
+      # groups). Emitted into bibdata <ext><editorialgroup>, the shape
+      # relaton's IHO hash parser normalizes
+      # (relaton/iho/hash_parser_v1#editorialgroup_hash_to_bib). The
+      # emission was dropped in d1af149 as an IEC-motivated ride-along
+      # (metanorma-iec#191); IHO genuinely uses it.
+      def metadata_committee(node, xml)
+        node.attr("workgroup") or return
+        i = 1
+        while node.attr("workgroup#{i == 1 ? "" : "_#{i}"}")
+          sfx = i == 1 ? "" : "_#{i}"
+          xml.editorialgroup do |a|
+            a.committee do |n|
+              n.abbreviation node.attr("committee#{sfx}").to_s.upcase
+            end
+            a.workgroup do |n|
+              n.abbreviation node.attr("workgroup#{sfx}").upcase
+            end
+          end
+          i += 1
+        end
       end
 
       def metadata_commentperiod(node, xml)
