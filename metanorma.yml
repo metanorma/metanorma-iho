@@ -12,6 +12,8 @@ committees:
     full_name: Inter-Regional Coordination Committee
   - code: ihb
     full_name: International Hydrographic Bureau
+  - code: ncwg
+    full_name: Nautical Cartography Working Group
 htmlcoverpage: lib/isodoc/iho/html/html_iho_titlepage.html
 htmlintropage: lib/isodoc/iho/html/html_iho_intro.html
 htmlstylesheet: lib/isodoc/iho/html/htmlstyle.scss
