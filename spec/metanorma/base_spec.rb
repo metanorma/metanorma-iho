@@ -177,6 +177,30 @@ RSpec.describe Metanorma::Iho do
                    <structuredidentifier>
             <docnumber>1000</docnumber>
          </structuredidentifier>
+                   <editorialgroup>
+          <committee>
+            <abbreviation>HSSC</abbreviation>
+          </committee>
+          <workgroup>
+            <abbreviation>WG1</abbreviation>
+          </workgroup>
+        </editorialgroup>
+                   <editorialgroup>
+          <committee>
+            <abbreviation>IRCC</abbreviation>
+          </committee>
+          <workgroup>
+            <abbreviation>WG2</abbreviation>
+          </workgroup>
+        </editorialgroup>
+                   <editorialgroup>
+          <committee>
+            <abbreviation>HSSC</abbreviation>
+          </committee>
+          <workgroup>
+            <abbreviation>WG3</abbreviation>
+          </workgroup>
+        </editorialgroup>
                    <commentperiod>
         <from>2010-01-01</from>
         <to>2011-01-01</to>
