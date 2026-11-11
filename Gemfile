@@ -5,7 +5,6 @@ gemspec
 
 # canonical line: relaton 3 finals over the α engine line
 gem "pubid", "~> 2.0"
-gem "relaton-cli", "~> 3.0"
 gem "isodoc", "~> 3.7.9"
 gem "isodoc-i18n", github: "metanorma/isodoc-i18n", branch: "main"
 gem "metanorma-standoc", "~> 3.5.7"
