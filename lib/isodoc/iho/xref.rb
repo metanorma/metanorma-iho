@@ -142,6 +142,12 @@ module IsoDoc
 
       def middle_section_asset_names(doc)
         doc.xpath(ns(middle_sections)).each do |c|
+          # Flavors may declare multiple normative-reference titles
+          # (e.g. IALA normref_titles: References, Further reading), yielding
+          # several //bibliography/references[@normative='true'] elements.
+          # Section anchoring registers only the first normref match, so the
+          # remainder carry no anchor and have no label to hang assets from.
+          @anchors[c["id"]] or next
           hierarchical_asset_names(c, @anchors[c["id"]][:label])
         end
       end
