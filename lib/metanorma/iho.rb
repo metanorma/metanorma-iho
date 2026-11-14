@@ -5,6 +5,7 @@ require "metanorma/iho/processor"
 
 module Metanorma
   module Iho
+    autoload :Amendment, "metanorma/iho/amendment"
     autoload :CitationStyle, "metanorma/iho/citation_style"
     autoload :M3Stages, "metanorma/iho/m3_stages"
 
