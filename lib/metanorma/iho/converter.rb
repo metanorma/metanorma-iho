@@ -15,6 +15,23 @@ module Metanorma
         Metanorma::Iho.configuration
       end
 
+      # A taste registers its own vocabulary through its metanorma.yml,
+      # handed to the converter as the :customize: document attribute
+      # (metanorma-iho#578). The generic implementation files it under
+      # the generic flavour's configuration, which nothing on this
+      # flavour's path reads: file it under this flavour's
+      # configuration instead, and re-register this flavour's
+      # processor. The taste's doctype vocabulary extends the base's
+      # rather than replacing it: a document of the base vocabulary
+      # stays legal under a taste that declares its own.
+      def read_config_file(path_to_config_file)
+        base_doctypes = configuration.doctypes || {}
+        configuration.set_default_values_from_yaml_file(path_to_config_file)
+        taste_doctypes = configuration.doctypes and
+          configuration.doctypes = base_doctypes.merge(taste_doctypes)
+        Metanorma::Registry.instance.register(Metanorma::Iho::Processor)
+      end
+
       # IHO M-3 (2026) development-stage vocabulary (metanorma-iho#553):
       # a `:status:` value may be the stage slug or its M-3 abbreviation;
       # both normalize to the slug with the abbreviation carried on the
