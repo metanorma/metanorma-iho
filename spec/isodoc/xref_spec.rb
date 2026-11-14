@@ -2520,3 +2520,36 @@ RSpec.describe IsoDoc do
       .to be_xml_equivalent_to output
   end
 end
+
+RSpec.describe IsoDoc do
+  # Flavors may declare several normative-reference titles (IALA:
+  # "References", "Further reading"), so multiple
+  # //bibliography/references[@normative='true'] elements arise. Only the
+  # first is section-anchored; the asset-naming pass must skip the rest
+  # instead of dereferencing a missing anchor (metanorma-iho#584).
+  it "presentation conversion survives an unanchored second normref" do
+    input = <<~INPUT
+      <iso-standard xmlns="http://riboseinc.com/isoxml">
+      <sections>
+      <clause id="scope" type="scope"><title>Scope</title>
+      <p>Text</p>
+      </clause>
+      </sections>
+      <bibliography>
+      <references normative="true" id="normref1">
+      <title>Normative references</title>
+      <bibitem id="r1"><title>Ref 1</title></bibitem>
+      </references>
+      <references normative="true" id="normref2">
+      <title>Further reading</title>
+      <bibitem id="r2"><title>Ref 2</title></bibitem>
+      </references>
+      </bibliography>
+      </iso-standard>
+    INPUT
+    ret = Nokogiri::XML(IsoDoc::Iho::PresentationXMLConvert
+      .new(presxml_options)
+      .convert("test", input, true))
+    expect(ret.at("//xmlns:references[@normative = 'true']")).not_to be_nil
+  end
+end
