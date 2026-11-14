@@ -17,6 +17,16 @@ module Metanorma
         end
       end
 
+      # The :urn: document attribute carries the document's URN; bibdata
+      # keeps it as a typed uri (metanorma-iho#579). Generating the URN
+      # through pubid belongs to the consuming taste; this is the
+      # generic attribute-to-bibdata propagation, inert when the
+      # attribute is absent.
+      def metadata_source(node, xml)
+        super
+        add_noko_elem(xml, "uri", node.attr("urn"), type: "urn")
+      end
+
       def metadata_ext(node, ext)
         # Compile probes run the converter on bare internal documents
         # without user attributes; only warn on real document headers.
