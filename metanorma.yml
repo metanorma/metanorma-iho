@@ -68,6 +68,7 @@ doctypes:
   - specification
   - resolution
   - regulation
+  - report
 default_doctype: standard
 symbols_titles:
   - Abbreviations

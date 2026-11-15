@@ -1159,3 +1159,27 @@ RSpec.describe Metanorma::Iho do
     end
   end
 end
+
+RSpec.describe "report doctype" do
+  # mn-samples-iala#16: the report taste doctype maps onto this base's
+  # report doctype; the base vocabulary must accept it or the compile
+  # lints "not a legal document type" and silently records standard.
+  it "records :doctype: report without reverting to the default" do
+    input = <<~"INPUT"
+      = Workshop report
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :docnumber: 1000
+      :doctype: report
+      :copyright-year: 2026
+      :language: en
+      :title: Workshop report
+
+      Text.
+    INPUT
+    xml = Nokogiri::XML(Asciidoctor.convert(input, *OPTIONS))
+    expect(xml.at("//xmlns:doctype").text).to eq("report")
+  end
+end
