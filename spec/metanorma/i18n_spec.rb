@@ -34,7 +34,7 @@ RSpec.describe "IHO French and Spanish i18n" do
     fr = labels("fr")
     expect(fr["clause"]).to eq "Section"
     expect(fr["table_of_contents"]).to eq "Table des matières"
-    expect(fr["org_name"]).to eq "Organisation Hydrographique Internationale"
+    expect(fr["org_name"]).to eq "Organisation hydrographique internationale"
     expect(fr["org_abbrev"]).to eq "OHI"
 
     es = labels("es")
@@ -54,7 +54,7 @@ RSpec.describe "IHO French and Spanish i18n" do
     expect(boilerplate("en").at("//copyright-statement").text)
       .to include "© Copyright International Hydrographic Organization"
     expect(boilerplate("fr").at("//copyright-statement").text)
-      .to include "Organisation Hydrographique Internationale"
+      .to include "Organisation hydrographique internationale"
     expect(boilerplate("es").at("//copyright-statement").text)
       .to include "Organización Hidrográfica Internacional"
     expect(boilerplate("es").at("//feedback-statement").text)
