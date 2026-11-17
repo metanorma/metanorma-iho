@@ -1,5 +1,6 @@
 require "metanorma-standoc"
 require "metanorma-generic"
+require "pubid"
 require_relative "front"
 
 module Metanorma
