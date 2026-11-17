@@ -62,6 +62,57 @@ module Metanorma
         end
       end
 
+      # Loose-leaf sections (metanorma-iho#573). In a Part document
+      # (:partnumber: B) a top-level clause declares its update unit with
+      # [update-unit=B-400], a Pubid::Iho spec citation (B-400 is the
+      # section-level citation of Section 400 of Part B). Each declaring
+      # clause is enumerated in bibdata as a hasPart relation whose
+      # bibitem carries the section title and the Pubid::Iho identifiers.
+      def metadata_relations(node, xml)
+        super
+        metadata_update_units(node, xml)
+      end
+
+      def metadata_update_units(node, xml)
+        part = node.attr("partnumber") or return
+        update_unit_sections(node).each do |sect|
+          id = update_unit_identifier(sect, part) or next
+          xml.relation type: "hasPart" do |r|
+            r.bibitem do |b|
+              add_noko_elem(b, "title", sect.title)
+              add_noko_elem(b, "docidentifier", id.to_s,
+                            type: "IHO", primary: "true")
+              add_noko_elem(b, "docidentifier", id.to_urn, type: "URN")
+            end
+          end
+        end
+      end
+
+      def update_unit_sections(node)
+        node.find_by(context: :section) do |s|
+          s.level == 1 && s.attr("update-unit")
+        end
+      end
+
+      def update_unit_identifier(sect, part)
+        val = sect.attr("update-unit").to_s.strip
+        id = update_unit_parse(val)
+        if id.nil?
+          @log.add("IHO_2", sect, params: [val])
+        elsif id.part.to_s.casecmp(part.to_s).nonzero?
+          @log.add("IHO_3", sect, params: [val, part])
+          id = nil
+        end
+        id
+      end
+
+      def update_unit_parse(val)
+        id = Pubid::Iho::Identifier.parse(val)
+        id.respond_to?(:spec) && id.spec && id.part ? id : nil
+      rescue StandardError
+        nil
+      end
+
       def metadata_commentperiod(node, xml)
         from = node.attr("comment-from") or return
         xml.commentperiod do |c|

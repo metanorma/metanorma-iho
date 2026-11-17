@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_ruby_version = Gem::Requirement.new(">= 3.3.0")
 
+  spec.add_dependency "pubid", "~> 2.0", ">= 2.0.30"
   spec.add_dependency "metanorma-generic", "~> 3.5.1"
 
   spec.add_development_dependency "debug"
