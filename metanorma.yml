@@ -4,7 +4,10 @@ organization_name_long: International Hydrographic Organization
 document_namespace: https://www.metanorma.org/ns/iho
 xml_root_tag: 'iho-standard'
 validate_rng_file: lib/metanorma/iho/iho.rng
-i18nyaml: lib/isodoc/iho/i18n-en.yaml
+i18nyaml:
+  en: lib/isodoc/iho/i18n-en.yaml
+  fr: lib/isodoc/iho/i18n-fr.yaml
+  es: lib/isodoc/iho/i18n-es.yaml
 committees:
   - code: hssc
     full_name: Hydrographic Services and Standards Committee
@@ -22,7 +25,10 @@ html_headerfont: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-
 html_monospacefont: '"Fira Code",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'
 html_normalfontsize: "15px"
 html_footnotefontsize: "0.9em"
-boilerplate: lib/metanorma/iho/boilerplate.adoc
+boilerplate:
+  en: lib/metanorma/iho/boilerplate.adoc
+  fr: lib/metanorma/iho/boilerplate-fr.adoc
+  es: lib/metanorma/iho/boilerplate-es.adoc
 webfont:
   - "https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
 standardstylesheet: lib/isodoc/iho/html/iho.scss

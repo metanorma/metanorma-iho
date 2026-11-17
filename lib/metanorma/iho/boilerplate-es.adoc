@@ -1,0 +1,31 @@
+== copyright-statement
+=== {blank}
+[align="center"]
+© Copyright Organización Hidrográfica Internacional {{ docyear }}
+
+Esta obra está protegida por derechos de autor. Salvo el uso permitido de conformidad con el Convenio de Berna para la Protección de las Obras Literarias y Artísticas (1886), y salvo en las circunstancias descritas a continuación, ninguna parte podrá ser traducida, reproducida por ningún procedimiento, adaptada, comunicada ni explotada comercialmente sin el permiso previo por escrito de la Organización Hidrográfica Internacional (OHI). Los derechos de autor de algunos materiales de esta publicación pueden pertenecer a terceros, y el permiso para la traducción y/o reproducción de dichos materiales deberá obtenerse de su titular.
+
+
+== license-statement
+=== {blank}
+Este documento, o partes de este documento, podrá traducirse, reproducirse o distribuirse con fines de información general, únicamente a precio de coste. No podrán venderse ni distribuirse copias con fines lucrativos sin el acuerdo previo por escrito de la Secretaría de la OHI y de cualquier otro titular de los derechos de autor.
+
+En caso de que este documento, o partes de este documento, se reproduzca, traduzca o distribuya en las condiciones descritas anteriormente, deberán incluirse las siguientes declaraciones:
+
+____
+"El material de la publicación de la OHI [referencia del extracto: título, edición] se reproduce con el permiso de la Secretaría de la OHI (Permiso N.º ……./…) en nombre de la Organización Hidrográfica Internacional (OHI), que no acepta ninguna responsabilidad por la exactitud del material reproducido: en caso de duda, prevalecerá el texto auténtico de la OHI. La incorporación de material procedente de la OHI no se interpretará como una aprobación de este producto por parte de la OHI."
+
+"Este [documento/esta publicación] es una traducción del [documento/de la publicación] de la OHI [nombre]. La OHI no ha verificado esta traducción y, por lo tanto, no asume ninguna responsabilidad por su exactitud. En caso de duda, deberá consultarse la versión original de [nombre] en [idioma]."
+____
+
+El logotipo de la OHI u otros identificadores no deberán utilizarse en ningún producto derivado sin el permiso previo por escrito de la Secretaría de la OHI.
+
+== feedback-statement
+Publicado por la +
+Organización Hidrográfica Internacional +
+4b quai Antoine 1^er^ +
+Principado de Mónaco +
+Tel.: (377) 93.10.81.00 +
+Fax: (377) 93.10.81.40 +
+link:mailto:info@iho.int[info@iho.int] +
+link:https://www.iho.int[www.iho.int] +
