@@ -1,0 +1,10 @@
+table_of_contents: Contenidos
+clause: Sección
+subclause: Cláusula
+dochistory: Historial del documento
+org_name: Organización Hidrográfica Internacional
+org_abbrev: OHI
+published_on: Publicado
+all_rights_reserved: Todos los derechos reservados
+punct:
+  biblio-field-delimiter: ", "

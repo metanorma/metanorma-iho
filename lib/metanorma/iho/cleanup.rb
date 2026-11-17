@@ -3,6 +3,16 @@ module Metanorma
     class Cleanup < ::Metanorma::Generic::Cleanup
       extend Forwardable
 
+      # Boilerplate is selected by document language (en/fr/es,
+      # metanorma-iho#566); any other language keeps the English IHO
+      # boilerplate rather than falling through to the standoc default.
+      def boilerplate_file(xmldoc)
+        f = configuration.boilerplate
+        f.is_a?(Hash) && !f[@lang] && f["en"] and
+          return @conv.baselocation(f["en"])
+        super
+      end
+
       def bibdata_docidentifier_cleanup(isoxml)
         bibdata_docidentifier_i18n(isoxml)
         super

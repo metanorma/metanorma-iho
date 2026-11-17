@@ -733,7 +733,7 @@ AAAPAAAAAAAAAAAAAAAAAAcCAABkcnMvZG93bnJldi54bWxQSwUGAAAAAAMAAwC3AAAA/AIAAAAA
   <v:textbox style='mso-fit-shape-to-text:t' inset="5mm,8mm,5mm,8mm">
      <div>
      <p class="MsoNormal"><b style='mso-bidi-font-weight:normal'><span
-        lang="EN-US" style='font-family:"Arial",sans-serif'>{{ docnumber}} {% if edition %}Edition {{ edition }}{% endif %}</span></b></p>
+        lang="EN-US" style='font-family:"Arial",sans-serif'>{{ docnumber}} {% if edition %}{{ labels["edition"] | capitalize }} {{ edition }}{% endif %}</span></b></p>
      </div>
    </v:textbox>
  </v:shape>

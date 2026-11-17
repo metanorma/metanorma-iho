@@ -3,7 +3,7 @@
 </div>
 
 <div class="document-type-band" id="{{ doctype | downcase | replace: ' ', '-' }}-band">
-  <p class="document-type">IHO {{ doctype }}</p>
+  <p class="document-type">{{ labels["org_abbrev"] | default: "IHO" }} {{ doctype }}</p>
 </div>
 
 
@@ -18,7 +18,7 @@
       <div class="coverpage-doc-identity">
         <div class="doc-number">
           <span class="docnumber">{{ docnumber }}</span>
-          {% if edition %}<span class="docyear">Edition {{ edition }}</span>{% endif %}
+          {% if edition %}<span class="docyear">{{ labels["edition"] | capitalize }} {{ edition }}</span>{% endif %}
           <span class="docyear">{{ draftinfo }}</span>
         </div>
 
@@ -29,7 +29,7 @@
       </div>
 
       <div class="coverpage-logo">
-        <span>International Hydographic Organization. {{ docyear }}</span><br/>
+        <span>{{ labels["org_name"] | default: "International Hydrographic Organization" }}. {{ docyear }}</span><br/>
         <div class="logo-img">
         {{ logo }}
         </div>
@@ -55,7 +55,7 @@
 
     <div class="WordSection11">
       <div class="coverpage-stage-block" >
-        <span class="coverpage-stage" id="{{ doctype | replace: ' ', '-' | downcase }}">IHO {{ doctype }}</span>
+        <span class="coverpage-stage" id="{{ doctype | replace: ' ', '-' | downcase }}">{{ labels["org_abbrev"] | default: "IHO" }} {{ doctype }}</span>
       </div>
 
       <div class="coverpage-stage-block" >
@@ -64,7 +64,7 @@
           {{- stage -}}
           {%- else -%}
           {%- if publisheddate and publisheddate != "XXXX" -%}
-          Published {{ publisheddate -}}
+          {{ labels["published_on"] | default: "Published" }} {{ publisheddate -}}
           {%- endif -%}
           {%- endif -%}</span></p>
       </div>

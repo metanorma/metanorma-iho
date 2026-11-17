@@ -4,3 +4,7 @@ subclause: Clause
 dochistory: Document History
 punct:
   biblio-field-delimiter: ", "
+org_name: International Hydrographic Organization
+org_abbrev: IHO
+published_on: Published
+all_rights_reserved: All rights reserved
