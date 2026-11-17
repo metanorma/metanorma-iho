@@ -39,7 +39,7 @@ RSpec.describe "IHO French and Spanish i18n" do
 
     es = labels("es")
     expect(es["clause"]).to eq "Sección"
-    expect(es["table_of_contents"]).to eq "Índice"
+    expect(es["table_of_contents"]).to eq "Contenidos"
     expect(es["org_name"]).to eq "Organización Hidrográfica Internacional"
     expect(es["org_abbrev"]).to eq "OHI"
   end
@@ -58,7 +58,7 @@ RSpec.describe "IHO French and Spanish i18n" do
     expect(boilerplate("es").at("//copyright-statement").text)
       .to include "Organización Hidrográfica Internacional"
     expect(boilerplate("es").at("//feedback-statement").text)
-      .to include "Principado de Mónaco"
+      .to include "Principado de Monaco"
   end
 
   it "keeps the English boilerplate for other languages" do
