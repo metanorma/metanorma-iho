@@ -35,6 +35,24 @@ module IsoDoc
         end
       end
 
+      # The cover identity: the FIRST publisher organization's name and
+      # abbreviation, with the IHO identity as the defaults so existing
+      # IHO documents render unchanged.
+      def publisher_identity(isoxml)
+        org = isoxml.at(ns("//bibdata/contributor[role/@type = 'publisher']" \
+                           "/organization"))
+        name = org&.at(ns("./name"))&.text || "International Hydrographic " \
+          "Organization"
+        abbr = org&.at(ns("./abbreviation"))&.text || "IHO"
+        set(:publisher_name, name)
+        set(:publisher_abbr, abbr)
+        # The cover templates read org_name / org_abbrev labels; document
+        # bibdata drives them so a non-IHO publisher's identity (WMO on
+        # S-1XX product specifications) replaces the flavor defaults.
+        labels["org_name"] = name
+        labels["org_abbrev"] = abbr
+      end
+
       def images_logo_xpaths
         org = "//bibdata/contributor[role/@type = 'publisher']/organization"
         {
@@ -47,6 +65,7 @@ module IsoDoc
 
       def images(xml, out)
         super
+        publisher_identity(xml)
         images_logo_xpaths.each do |k, v|
           i = xml.at(ns(v))
           set(k, i ? to_xml(i.at("./*[local-name() = 'svg']"))&.strip : nil)
