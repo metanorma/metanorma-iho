@@ -38,7 +38,7 @@ module Metanorma
           stage = iho_stage(bibdata)
           lines << stage if stage
 
-          lines << "IHO Standard" if docnumber
+          lines << "#{publisher_abbr(bibdata)} Standard" if docnumber
 
           owner_line = iho_copyright_line(bibdata)
           lines << owner_line if owner_line
@@ -82,6 +82,24 @@ module Metanorma
           abbr = element.respond_to?(:abbreviation) ? element.abbreviation : nil
           abbr = Array(abbr).filter_map { |a| a.respond_to?(:value) ? Array(a.value).join.strip : nil }.first
           abbr && !abbr.empty? ? "#{label} (#{abbr})" : label
+        end
+
+        # The cover identity strapline follows the document's publisher:
+        # the first publisher organization's abbreviation, "IHO" when the
+        # document does not name one.
+        def publisher_abbr(bibdata)
+          orgs = bibdata.respond_to?(:contributor) ? Array(bibdata.contributor) : []
+          abbr = orgs.filter_map do |c|
+            role = c.respond_to?(:role) ? Array(c.role).first : nil
+            next unless role.respond_to?(:type) && role.type.to_s == "publisher"
+
+            org = c.respond_to?(:organization) ? Array(c.organization).first : nil
+            next unless org.respond_to?(:abbreviation)
+
+            a = org.abbreviation
+            a.is_a?(String) ? a : nil
+          end.first
+          abbr.nil? || abbr.empty? ? "IHO" : abbr
         end
 
         def iho_copyright_line(bibdata)

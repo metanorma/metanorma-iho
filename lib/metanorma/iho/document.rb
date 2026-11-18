@@ -32,6 +32,10 @@ Metanorma::Core::Flavors.register(Metanorma::Core::Flavor.new(
   model_root: Metanorma::Iho::Document::Root,
   pubid_module: :"Pubid::Iho",
   renderers: { html: lambda do |_document, **_options|
-    Metanorma::Html::StandardRenderer
+    # The IHO subclass carries the flavor registrations (Root/Sections
+    # dispatch) and the IHO cover renderer; the base StandardRenderer
+    # would render IHO documents unflavored.
+    require "metanorma/iho/html/renderer"
+    Metanorma::Iho::Html::Renderer
   end },
 ))
