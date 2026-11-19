@@ -151,6 +151,10 @@ RSpec.describe IsoDoc::Iho do
         parttitle: "Part Title",
         publisheddate: "XXX",
         publisher: "International Hydrographic Organization",
+        # metanorma-iho#588: the cover identity is asserted at the
+        # Metadata level from the bibdata publisher organization.
+        publisher_abbr: "IHO",
+        publisher_name: "International Hydrographic Organization",
         receiveddate: "XXX",
         revdate: "2000-01-01",
         revdate_monthyear: "January 2000",
