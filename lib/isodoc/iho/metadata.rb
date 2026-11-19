@@ -46,9 +46,14 @@ module IsoDoc
         abbr = org&.at(ns("./abbreviation"))&.text || "IHO"
         set(:publisher_name, name)
         set(:publisher_abbr, abbr)
-        # The cover templates read org_name / org_abbrev labels; document
-        # bibdata drives them so a non-IHO publisher's identity (WMO on
-        # S-1XX product specifications) replaces the flavor defaults.
+        return unless org
+
+        # The cover templates read org_name / org_abbrev labels. Only a
+        # publisher NAMED in document bibdata (WMO on S-1XX product
+        # specifications) replaces them: when bibdata names no publisher,
+        # the flavor's own localized labels stand, as they are the IHO
+        # identity in the document language (metanorma-iho#566: S-4 is
+        # published in English, French and Spanish editions).
         labels["org_name"] = name
         labels["org_abbrev"] = abbr
       end
