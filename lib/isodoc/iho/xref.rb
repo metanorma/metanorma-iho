@@ -61,6 +61,17 @@ module IsoDoc
       # super
       # end
 
+      # Resolution-style documents (IALA general-assembly resolutions and
+      # their kin) transcribe their content as bare blocks directly under
+      # <sections>, with no clause wrappers. Give those blocks their
+      # displayorder after the modelled sections: the top-level render
+      # walk in HTML, Word and PDF presupposes @displayorder on every
+      # element, and blocks left unordered are silently dropped from the
+      # output.
+      UNMODELLED_SECTIONS_XPATH =
+        "//sections/*[not(self::clause or self::terms or " \
+        "self::definitions or self::references or self::floating-title)]"
+
       def clause_order_main(docxml)
         if docxml.at(ns("//bibliography//references[@normative = 'true']")) ||
             docxml.at(ns("//sections/references[@normative = 'true']"))
@@ -69,6 +80,7 @@ module IsoDoc
             { path: "#{@klass.norm_ref_xpath} | //sections/references" },
             { path: "//sections/terms | //sections/definitions | " \
                     "//sections/clause[not(@type = 'scope')]", multi: true },
+            { path: UNMODELLED_SECTIONS_XPATH, multi: true },
           ]
         else
           [
@@ -77,6 +89,7 @@ module IsoDoc
                     "//bibliography/references[@normative = 'true'] | " \
                     "//bibliography/clause[.//references[@normative = 'true']] | " \
                     "//sections/clause", multi: true },
+            { path: UNMODELLED_SECTIONS_XPATH, multi: true },
           ]
         end
       end
