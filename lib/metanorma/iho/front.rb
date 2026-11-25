@@ -38,6 +38,37 @@ module Metanorma
         metadata_commentperiod(node, ext)
       end
 
+      # S-158:1xx validation-check specifications carry the product
+      # number as a Pubid::Iho `checks_for` member ("S-158:102" is
+      # S-158 checks for S-102), not as part of the document number.
+      # The :checks-for: document attribute carries it; the identifier is
+      # constructed through Pubid::Iho so the face and the MRN URN
+      # stay grammar-canonical. Documents without :checks-for: keep the
+      # generic docid_template path.
+      def metadata_id(node, xml)
+        if (id = checks_for_identifier(node))
+          # The IHO document face is unprefixed ("S-158:102"); the
+          # publisher rides the docidentifier type and the URN.
+          urn = id.to_urn
+          id.publisher = nil
+          add_noko_elem(xml, "docidentifier", id.to_s.strip,
+                        primary: "true", boilerplate: true,
+                        type: metadata_id_primary_type(node))
+          add_noko_elem(xml, "docidentifier", urn, type: "URN")
+        else
+          super
+        end
+      end
+
+      def checks_for_identifier(node)
+        checks_for = node.attr("checks-for") or return nil
+        number = node.attr("docnumber") or return nil
+        Pubid::Iho::Identifier.parse("S-#{number}:#{checks_for}")
+      rescue Pubid::Errors::ParseError
+        @log.add("IHO_4", nil, params: [number, checks_for])
+        nil
+      end
+
       # IHO S-4 documents carry their editorial group as plain attributes:
       # :committee:/:workgroup: (with _2, _3… suffixes for additional
       # groups). Emitted into bibdata <ext><editorialgroup>, the shape

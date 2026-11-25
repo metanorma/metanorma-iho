@@ -50,8 +50,8 @@ RSpec.describe "IHO section-level identifiers in Part bibdata" do
   it "enumerates declared sections as hasPart relations" do
     doc = convert(":partnumber: B", two_sections)
     expect(relation_ids(doc)).to eq(
-      [["Section 400", "IHO S-4 B-400", "urn:iho:s:4:part-B:spec-400"],
-       ["Section 500", "IHO S-4 B-500", "urn:iho:s:4:part-B:spec-500"]],
+      [["Section 400", "IHO S-4 B-400", "urn:mrn:iho:pub:spec:s4:part-B:spec-400"],
+       ["Section 500", "IHO S-4 B-500", "urn:mrn:iho:pub:spec:s4:part-B:spec-500"]],
     )
   end
 
