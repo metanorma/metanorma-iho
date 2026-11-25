@@ -14,6 +14,10 @@ module Metanorma
                    error: "update-unit `%s` does not belong to Part %s " \
                           "of this document",
                    severity: 2 },
+        "IHO_4": { category: "AsciiDoc Input",
+                   error: "`%s:%s` is not a valid S-158:1xx checks-for " \
+                          "identifier (expected e.g. 158:102)",
+                   severity: 2 },
       }.freeze
       # rubocop:enable Naming/VariableNumber
 
