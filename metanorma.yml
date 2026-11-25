@@ -15,8 +15,44 @@ committees:
     full_name: Inter-Regional Coordination Committee
   - code: ihb
     full_name: International Hydrographic Bureau
+  - code: cbsc
+    full_name: Capacity Building Sub-Committee
+  - code: cdsc
+    full_name: Capacity Development Sub-Committee
+  - code: csbwg
+    full_name: Crowd-Sourced Bathymetry Working Group
+  - code: dcdb
+    full_name: IHO Data Centre for Digital Bathymetry
+  - code: dqwg
+    full_name: Data Quality Working Group
+  - code: encwg
+    full_name: ENC Standards Maintenance Working Group
+  - code: hdcg
+    full_name: Hydrographic Dictionary Content Group
+  - code: hswg
+    full_name: Hydrographic Surveys Working Group
+  - code: ibsc
+    full_name: International Board on Standards of Competence for Hydrographic Surveyors and Nautical Cartographers
+  - code: ienwg
+    full_name: IHO-European Commission Network Working Group
+  - code: jwg-mgi
+    full_name: IHO Joint Working Group on Marine Geospatial Information
   - code: ncwg
     full_name: Nautical Cartography Working Group
+  - code: nipwg
+    full_name: Nautical Information Provision Working Group
+  - code: s-100wg
+    full_name: S-100 Working Group
+  - code: sprwg
+    full_name: Strategic Plan Review Working Group
+  - code: tsmad
+    full_name: Transfer Standard Maintenance and Application Development Working Group
+  - code: twcwg
+    full_name: Tides, Water Levels and Currents Working Group
+  - code: wendwg
+    full_name: Worldwide ENC Database Working Group
+  - code: wwnws
+    full_name: Worldwide Navigational Warning Service Sub-Committee
 htmlcoverpage: lib/isodoc/iho/html/html_iho_titlepage.html
 htmlintropage: lib/isodoc/iho/html/html_iho_intro.html
 htmlstylesheet: lib/isodoc/iho/html/htmlstyle.scss
