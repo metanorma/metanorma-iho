@@ -15927,13 +15927,23 @@
 		<xsl:param name="letter-spacing" select="'0.15'"/>
 		<xsl:if test="string-length($text) &gt; 0">
 			<xsl:variable name="char" select="substring($text, 1, 1)"/>
-			<fo:inline padding-right="{$letter-spacing}mm">
-				<xsl:if test="$char = '®'">
-					<xsl:attribute name="font-size">58%</xsl:attribute>
-					<xsl:attribute name="baseline-shift">30%</xsl:attribute>
-				</xsl:if>
-				<xsl:value-of select="$char"/>
-			</fo:inline>
+			<xsl:choose>
+				<xsl:when test="contains($letter-spacing, 'em') or contains($letter-spacing, 'mm')">
+					<!-- for negative letter spacing (in em) -->
+					<fo:inline letter-spacing="{$letter-spacing}">
+						<xsl:value-of select="$char"/>
+					</fo:inline>
+				</xsl:when>
+				<xsl:otherwise>
+					<fo:inline padding-right="{$letter-spacing}mm">
+						<xsl:if test="$char = '®'">
+							<xsl:attribute name="font-size">58%</xsl:attribute>
+							<xsl:attribute name="baseline-shift">30%</xsl:attribute>
+						</xsl:if>
+						<xsl:value-of select="$char"/>
+					</fo:inline>
+				</xsl:otherwise>
+			</xsl:choose>
 			<xsl:call-template name="add-letter-spacing">
 				<xsl:with-param name="text" select="substring($text, 2)"/>
 				<xsl:with-param name="letter-spacing" select="$letter-spacing"/>
