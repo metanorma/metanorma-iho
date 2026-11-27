@@ -2188,8 +2188,20 @@
 			<xsl:if test="$docnum != '1'">_<xsl:value-of select="$docnum"/></xsl:if>
 		</xsl:variable>
 		<xsl:variable name="named_dest_doc" select="normalize-space($named_dest_doc_)"/>
-		<xsl:if test="not(key('kid', $named_dest_doc))"> <!-- if element with id '$named_dest_doc' doesn't exist in the document -->
-			<xsl:attribute name="named_dest"><xsl:value-of select="normalize-space($named_dest_doc)"/></xsl:attribute>
+		<xsl:variable name="named_dest_unique_">
+			<xsl:choose>
+				<xsl:when test="normalize-space($caption_label) != '' and count(//mn:fmt-name[translate(normalize-space(.//mn:span[@class = 'fmt-caption-label']), ' ()', '') = $caption_label]) &gt; 1">
+				<!-- duplicate caption numbers across clauses (e.g. two "Table 1" in front matter): qualify with the owner element id so fo ids stay unique -->
+				<xsl:value-of select="concat(normalize-space($named_dest_doc), '_', ancestor::*[@id][1]/@id)"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="normalize-space($named_dest_doc)"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="named_dest_unique" select="normalize-space($named_dest_unique_)"/>
+		<xsl:if test="$named_dest_unique != '' and not(key('kid', $named_dest_unique))"> <!-- if element with id '$named_dest_unique' doesn't exist in the document -->
+			<xsl:attribute name="named_dest"><xsl:value-of select="$named_dest_unique"/></xsl:attribute>
 		</xsl:if>
 	</xsl:if>
 	</xsl:template>
